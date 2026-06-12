@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { LLMPromptListSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -25,48 +26,7 @@ export const LlmPromptsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
   results: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        prompt: Schema.optional(Schema.Unknown),
-        version: Schema.optional(Schema.Number),
-        created_by: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              id: Schema.optional(Schema.Number),
-              uuid: Schema.optional(Schema.String),
-              distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-              first_name: Schema.optional(Schema.String),
-              last_name: Schema.optional(Schema.String),
-              email: Schema.optional(Schema.String),
-              is_email_verified: Schema.optional(Schema.NullOr(Schema.Boolean)),
-              hedgehog_config: Schema.optional(
-                Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-              ),
-              role_at_organization: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-        created_at: Schema.optional(Schema.String),
-        updated_at: Schema.optional(Schema.String),
-        deleted: Schema.optional(Schema.Boolean),
-        is_latest: Schema.optional(Schema.Boolean),
-        latest_version: Schema.optional(Schema.Number),
-        version_count: Schema.optional(Schema.Number),
-        first_version_created_at: Schema.optional(Schema.String),
-        outline: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              level: Schema.optional(Schema.Number),
-              text: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        prompt_preview: Schema.optional(Schema.String),
-        prompt_size_bytes: Schema.optional(Schema.Number),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => LLMPromptListSchema)),
   ),
 });
 export type LlmPromptsListOutput = typeof LlmPromptsListOutput.Type;

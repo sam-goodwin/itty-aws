@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { RedirectUriDtoSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
@@ -11,14 +12,7 @@ export const ApplicationsControllerUpdateInput =
     description: Schema.optional(Schema.NullOr(Schema.String)),
     scopes: Schema.optional(Schema.NullOr(Schema.Array(Schema.String))),
     redirect_uris: Schema.optional(
-      Schema.NullOr(
-        Schema.Array(
-          Schema.Struct({
-            uri: Schema.optional(Schema.String),
-            default: Schema.optional(Schema.NullOr(Schema.Boolean)),
-          }),
-        ),
-      ),
+      Schema.NullOr(Schema.Array(Schema.suspend(() => RedirectUriDtoSchema))),
     ),
   }).pipe(T.Http({ method: "PUT", path: "/connect/applications/{id}" }));
 export type ApplicationsControllerUpdateInput =

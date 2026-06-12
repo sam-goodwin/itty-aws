@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { PostgresClusterParameterSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
@@ -18,43 +19,7 @@ export type ListParametersInput = typeof ListParametersInput.Type;
 
 // Output Schema
 export const ListParametersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    id: Schema.String,
-    name: Schema.String,
-    display_name: Schema.String,
-    namespace: Schema.Literals(["patroni", "pgconf", "pgbouncer"]),
-    category: Schema.String,
-    description: Schema.String,
-    extension: Schema.Boolean,
-    immutable: Schema.Boolean,
-    parameter_type: Schema.Literals([
-      "array",
-      "boolean",
-      "bytes",
-      "float",
-      "integer",
-      "seconds",
-      "select",
-      "string",
-      "time",
-    ]),
-    default_value: Schema.String,
-    value: Schema.String,
-    required: Schema.Boolean,
-    created_at: Schema.String,
-    updated_at: Schema.String,
-    restart: Schema.Boolean,
-    max: Schema.Number,
-    min: Schema.Number,
-    step: Schema.Number,
-    url: Schema.String,
-    options: Schema.Array(Schema.String),
-    actor: Schema.Struct({
-      id: Schema.String,
-      display_name: Schema.String,
-      avatar_url: Schema.String,
-    }),
-  }),
+  Schema.suspend(() => PostgresClusterParameterSchema),
 );
 export type ListParametersOutput = typeof ListParametersOutput.Type;
 

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { RuleSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -6,7 +7,7 @@ import * as T from "../traits.ts";
 export const UpdatePolicyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   policyId: Schema.String.pipe(T.PathParam()),
   description: Schema.optional(Schema.String),
-  rules: Schema.Array(Schema.Unknown),
+  rules: Schema.Array(Schema.suspend(() => RuleSchema)),
 }).pipe(
   T.Http({ method: "PUT", path: "/v2/policy-engine/policies/{policyId}" }),
 );
@@ -17,7 +18,7 @@ export const UpdatePolicyOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String,
   description: Schema.optional(Schema.String),
   scope: Schema.Literals(["project", "account"]),
-  rules: Schema.Array(Schema.Unknown),
+  rules: Schema.Array(Schema.suspend(() => RuleSchema)),
   createdAt: Schema.String,
   updatedAt: Schema.String,
 });

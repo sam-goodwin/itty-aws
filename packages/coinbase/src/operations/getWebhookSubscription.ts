@@ -1,7 +1,8 @@
 import * as Schema from "effect/Schema";
+import { WebhookTargetSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const GetWebhookSubscriptionInput =
@@ -26,15 +27,12 @@ export const GetWebhookSubscriptionOutput =
     isEnabled: Schema.Boolean,
     metadata: Schema.optional(
       Schema.Struct({
-        secret: Schema.optional(SensitiveString),
+        secret: Schema.optional(SensitiveOutputString),
       }),
     ),
-    secret: SensitiveString,
+    secret: SensitiveOutputString,
     subscriptionId: Schema.String,
-    target: Schema.Struct({
-      url: Schema.String,
-      headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
+    target: Schema.suspend(() => WebhookTargetSchema),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   });
 export type GetWebhookSubscriptionOutput =

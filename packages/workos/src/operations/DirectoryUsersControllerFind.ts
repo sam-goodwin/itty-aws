@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { DirectoryGroupSchema, SlimRoleSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
@@ -42,36 +43,12 @@ export const DirectoryUsersControllerFindOutput =
     custom_attributes: Schema.optional(
       Schema.Record(Schema.String, Schema.Unknown),
     ),
-    role: Schema.optional(
-      Schema.Struct({
-        slug: Schema.optional(Schema.String),
-      }),
-    ),
-    roles: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          slug: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    role: Schema.optional(Schema.suspend(() => SlimRoleSchema)),
+    roles: Schema.optional(Schema.Array(Schema.suspend(() => SlimRoleSchema))),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
     groups: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          object: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          idp_id: Schema.optional(Schema.String),
-          directory_id: Schema.optional(Schema.String),
-          organization_id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          raw_attributes: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DirectoryGroupSchema)),
     ),
   });
 export type DirectoryUsersControllerFindOutput =

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ExternalDataSourceConnectionOptionSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -27,11 +28,7 @@ export const ExternalDataSourcesConnectionsListOutput =
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          prefix: Schema.optional(Schema.NullOr(Schema.String)),
-          engine: Schema.optional(Schema.Unknown),
-        }),
+        Schema.suspend(() => ExternalDataSourceConnectionOptionSchema),
       ),
     ),
   });

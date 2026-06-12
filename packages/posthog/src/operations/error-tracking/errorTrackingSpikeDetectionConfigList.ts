@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ErrorTrackingSpikeDetectionConfigSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
@@ -19,11 +20,7 @@ export type ErrorTrackingSpikeDetectionConfigListInput =
 // Output Schema
 export const ErrorTrackingSpikeDetectionConfigListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      snooze_duration_minutes: Schema.optional(Schema.Number),
-      multiplier: Schema.optional(Schema.Number),
-      threshold: Schema.optional(Schema.Number),
-    }),
+    Schema.suspend(() => ErrorTrackingSpikeDetectionConfigSchema),
   );
 export type ErrorTrackingSpikeDetectionConfigListOutput =
   typeof ErrorTrackingSpikeDetectionConfigListOutput.Type;

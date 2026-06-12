@@ -1,7 +1,14 @@
 import * as Schema from "effect/Schema";
+import {
+  terminal_configuration_configuration_resource_cellular_configSchema,
+  terminal_configuration_configuration_resource_device_type_specific_configSchema,
+  terminal_configuration_configuration_resource_offline_configSchema,
+  terminal_configuration_configuration_resource_reboot_windowSchema,
+  terminal_configuration_configuration_resource_tippingSchema,
+  terminal_configuration_configuration_resource_wifi_configSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const PostTerminalConfigurationsInput =
@@ -57,19 +64,22 @@ export type PostTerminalConfigurationsInput =
 export const PostTerminalConfigurationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     bbpos_wisepad3: Schema.optional(
-      Schema.Struct({
-        splashscreen: Schema.optional(Schema.Unknown),
-      }),
+      Schema.suspend(
+        () =>
+          terminal_configuration_configuration_resource_device_type_specific_configSchema,
+      ),
     ),
     bbpos_wisepos_e: Schema.optional(
-      Schema.Struct({
-        splashscreen: Schema.optional(Schema.Unknown),
-      }),
+      Schema.suspend(
+        () =>
+          terminal_configuration_configuration_resource_device_type_specific_configSchema,
+      ),
     ),
     cellular: Schema.optional(
-      Schema.Struct({
-        enabled: Schema.Boolean,
-      }),
+      Schema.suspend(
+        () =>
+          terminal_configuration_configuration_resource_cellular_configSchema,
+      ),
     ),
     id: Schema.String,
     is_account_default: Schema.NullOr(Schema.Boolean),
@@ -77,297 +87,43 @@ export const PostTerminalConfigurationsOutput =
     name: Schema.NullOr(Schema.String),
     object: Schema.Literals(["terminal.configuration"]),
     offline: Schema.optional(
-      Schema.Struct({
-        enabled: Schema.NullOr(Schema.Boolean),
-      }),
+      Schema.suspend(
+        () =>
+          terminal_configuration_configuration_resource_offline_configSchema,
+      ),
     ),
     reboot_window: Schema.optional(
-      Schema.Struct({
-        end_hour: Schema.Number,
-        start_hour: Schema.Number,
-      }),
+      Schema.suspend(
+        () => terminal_configuration_configuration_resource_reboot_windowSchema,
+      ),
     ),
     stripe_s700: Schema.optional(
-      Schema.Struct({
-        splashscreen: Schema.optional(Schema.Unknown),
-      }),
+      Schema.suspend(
+        () =>
+          terminal_configuration_configuration_resource_device_type_specific_configSchema,
+      ),
     ),
     stripe_s710: Schema.optional(
-      Schema.Struct({
-        splashscreen: Schema.optional(Schema.Unknown),
-      }),
+      Schema.suspend(
+        () =>
+          terminal_configuration_configuration_resource_device_type_specific_configSchema,
+      ),
     ),
     tipping: Schema.optional(
-      Schema.Struct({
-        aed: Schema.optional(
-          Schema.Struct({
-            fixed_amounts: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            percentages: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            smart_tip_threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-        aud: Schema.optional(
-          Schema.Struct({
-            fixed_amounts: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            percentages: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            smart_tip_threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-        cad: Schema.optional(
-          Schema.Struct({
-            fixed_amounts: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            percentages: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            smart_tip_threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-        chf: Schema.optional(
-          Schema.Struct({
-            fixed_amounts: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            percentages: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            smart_tip_threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-        czk: Schema.optional(
-          Schema.Struct({
-            fixed_amounts: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            percentages: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            smart_tip_threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-        dkk: Schema.optional(
-          Schema.Struct({
-            fixed_amounts: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            percentages: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            smart_tip_threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-        eur: Schema.optional(
-          Schema.Struct({
-            fixed_amounts: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            percentages: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            smart_tip_threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-        gbp: Schema.optional(
-          Schema.Struct({
-            fixed_amounts: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            percentages: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            smart_tip_threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-        gip: Schema.optional(
-          Schema.Struct({
-            fixed_amounts: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            percentages: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            smart_tip_threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-        hkd: Schema.optional(
-          Schema.Struct({
-            fixed_amounts: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            percentages: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            smart_tip_threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-        huf: Schema.optional(
-          Schema.Struct({
-            fixed_amounts: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            percentages: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            smart_tip_threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-        jpy: Schema.optional(
-          Schema.Struct({
-            fixed_amounts: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            percentages: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            smart_tip_threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-        mxn: Schema.optional(
-          Schema.Struct({
-            fixed_amounts: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            percentages: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            smart_tip_threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-        myr: Schema.optional(
-          Schema.Struct({
-            fixed_amounts: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            percentages: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            smart_tip_threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-        nok: Schema.optional(
-          Schema.Struct({
-            fixed_amounts: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            percentages: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            smart_tip_threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-        nzd: Schema.optional(
-          Schema.Struct({
-            fixed_amounts: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            percentages: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            smart_tip_threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-        pln: Schema.optional(
-          Schema.Struct({
-            fixed_amounts: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            percentages: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            smart_tip_threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-        ron: Schema.optional(
-          Schema.Struct({
-            fixed_amounts: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            percentages: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            smart_tip_threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-        sek: Schema.optional(
-          Schema.Struct({
-            fixed_amounts: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            percentages: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            smart_tip_threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-        sgd: Schema.optional(
-          Schema.Struct({
-            fixed_amounts: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            percentages: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            smart_tip_threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-        usd: Schema.optional(
-          Schema.Struct({
-            fixed_amounts: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            percentages: Schema.optional(
-              Schema.NullOr(Schema.Array(Schema.Number)),
-            ),
-            smart_tip_threshold: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => terminal_configuration_configuration_resource_tippingSchema,
+      ),
     ),
     verifone_p400: Schema.optional(
-      Schema.Struct({
-        splashscreen: Schema.optional(Schema.Unknown),
-      }),
+      Schema.suspend(
+        () =>
+          terminal_configuration_configuration_resource_device_type_specific_configSchema,
+      ),
     ),
     wifi: Schema.optional(
-      Schema.Struct({
-        enterprise_eap_peap: Schema.optional(
-          Schema.Struct({
-            ca_certificate_file: Schema.optional(Schema.String),
-            password: SensitiveString,
-            ssid: Schema.String,
-            username: Schema.String,
-          }),
-        ),
-        enterprise_eap_tls: Schema.optional(
-          Schema.Struct({
-            ca_certificate_file: Schema.optional(Schema.String),
-            client_certificate_file: Schema.String,
-            private_key_file: Schema.String,
-            private_key_file_password: Schema.optional(SensitiveString),
-            ssid: Schema.String,
-          }),
-        ),
-        personal_psk: Schema.optional(
-          Schema.Struct({
-            password: SensitiveString,
-            ssid: Schema.String,
-          }),
-        ),
-        type: Schema.Literals([
-          "enterprise_eap_peap",
-          "enterprise_eap_tls",
-          "personal_psk",
-        ]),
-      }),
+      Schema.suspend(
+        () => terminal_configuration_configuration_resource_wifi_configSchema,
+      ),
     ),
   });
 export type PostTerminalConfigurationsOutput =

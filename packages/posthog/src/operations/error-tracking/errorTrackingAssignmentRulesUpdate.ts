@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { FilterLogicalOperatorSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -11,7 +12,9 @@ export const ErrorTrackingAssignmentRulesUpdateInput =
     filters: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
-          type: Schema.optional(Schema.Literals(["AND", "OR"])),
+          type: Schema.optional(
+            Schema.suspend(() => FilterLogicalOperatorSchema),
+          ),
           values: Schema.optional(Schema.Array(Schema.Unknown)),
         }),
       ),

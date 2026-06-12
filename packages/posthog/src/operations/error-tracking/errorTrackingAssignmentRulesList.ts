@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ErrorTrackingAssignmentRuleSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -25,24 +26,7 @@ export const ErrorTrackingAssignmentRulesListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          filters: Schema.optional(Schema.Unknown),
-          assignee: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                type: Schema.optional(Schema.Literals(["user", "role"])),
-                id: Schema.optional(Schema.Unknown),
-              }),
-            ),
-          ),
-          order_key: Schema.optional(Schema.Number),
-          disabled_data: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ErrorTrackingAssignmentRuleSchema)),
     ),
   });
 export type ErrorTrackingAssignmentRulesListOutput =

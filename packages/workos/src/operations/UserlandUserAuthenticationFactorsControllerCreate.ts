@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  AuthenticationChallengeSchema,
+  AuthenticationFactorEnrolledSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
@@ -25,41 +29,10 @@ export type UserlandUserAuthenticationFactorsControllerCreateInput =
 export const UserlandUserAuthenticationFactorsControllerCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     authentication_factor: Schema.optional(
-      Schema.Struct({
-        object: Schema.optional(Schema.String),
-        id: Schema.optional(Schema.String),
-        type: Schema.optional(
-          Schema.Literals(["generic_otp", "sms", "totp", "webauthn"]),
-        ),
-        user_id: Schema.optional(Schema.String),
-        sms: Schema.optional(
-          Schema.Struct({
-            phone_number: Schema.String,
-          }),
-        ),
-        totp: Schema.optional(
-          Schema.Struct({
-            issuer: Schema.String,
-            user: Schema.String,
-            secret: SensitiveString,
-            qr_code: Schema.String,
-            uri: Schema.String,
-          }),
-        ),
-        created_at: Schema.optional(Schema.String),
-        updated_at: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => AuthenticationFactorEnrolledSchema),
     ),
     authentication_challenge: Schema.optional(
-      Schema.Struct({
-        object: Schema.optional(Schema.String),
-        id: Schema.optional(Schema.String),
-        expires_at: Schema.optional(Schema.String),
-        code: Schema.optional(Schema.String),
-        authentication_factor_id: Schema.optional(Schema.String),
-        created_at: Schema.optional(Schema.String),
-        updated_at: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => AuthenticationChallengeSchema),
     ),
   });
 export type UserlandUserAuthenticationFactorsControllerCreateOutput =

@@ -1,4 +1,9 @@
 import * as Schema from "effect/Schema";
+import {
+  GroupUsageMetricDisplayEnumSchema,
+  GroupUsageMetricFormatEnumSchema,
+  MathEnumSchema,
+} from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
@@ -23,11 +28,15 @@ export const GroupsTypesMetricsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
-    format: Schema.optional(Schema.Literals(["numeric", "currency"])),
+    format: Schema.optional(
+      Schema.suspend(() => GroupUsageMetricFormatEnumSchema),
+    ),
     interval: Schema.optional(Schema.Number),
-    display: Schema.optional(Schema.Literals(["number", "sparkline"])),
+    display: Schema.optional(
+      Schema.suspend(() => GroupUsageMetricDisplayEnumSchema),
+    ),
     filters: Schema.optional(Schema.Unknown),
-    math: Schema.optional(Schema.Literals(["count", "sum"])),
+    math: Schema.optional(Schema.suspend(() => MathEnumSchema)),
     math_property: Schema.optional(Schema.NullOr(Schema.String)),
   });
 export type GroupsTypesMetricsRetrieveOutput =

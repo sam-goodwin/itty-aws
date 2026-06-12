@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { currency_optionSchema, price_tierSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -113,25 +114,7 @@ export const PostPricesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   currency_options: Schema.optional(
     Schema.Record(
       Schema.String,
-      Schema.Struct({
-        custom_unit_amount: Schema.Unknown,
-        tax_behavior: Schema.NullOr(
-          Schema.Literals(["exclusive", "inclusive", "unspecified"]),
-        ),
-        tiers: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              flat_amount: Schema.NullOr(Schema.Number),
-              flat_amount_decimal: Schema.NullOr(Schema.String),
-              unit_amount: Schema.NullOr(Schema.Number),
-              unit_amount_decimal: Schema.NullOr(Schema.String),
-              up_to: Schema.NullOr(Schema.Number),
-            }),
-          ),
-        ),
-        unit_amount: Schema.NullOr(Schema.Number),
-        unit_amount_decimal: Schema.NullOr(Schema.String),
-      }),
+      Schema.suspend(() => currency_optionSchema),
     ),
   ),
   custom_unit_amount: Schema.Unknown,
@@ -146,17 +129,7 @@ export const PostPricesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tax_behavior: Schema.NullOr(
     Schema.Literals(["exclusive", "inclusive", "unspecified"]),
   ),
-  tiers: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        flat_amount: Schema.NullOr(Schema.Number),
-        flat_amount_decimal: Schema.NullOr(Schema.String),
-        unit_amount: Schema.NullOr(Schema.Number),
-        unit_amount_decimal: Schema.NullOr(Schema.String),
-        up_to: Schema.NullOr(Schema.Number),
-      }),
-    ),
-  ),
+  tiers: Schema.optional(Schema.Array(Schema.suspend(() => price_tierSchema))),
   tiers_mode: Schema.NullOr(Schema.Literals(["graduated", "volume"])),
   transform_quantity: Schema.Unknown,
   type: Schema.Literals(["one_time", "recurring"]),

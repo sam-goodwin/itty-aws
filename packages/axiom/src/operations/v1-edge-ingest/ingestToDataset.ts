@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { IngestFailureSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../../errors.ts";
@@ -17,12 +18,7 @@ export const IngestToDatasetOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   blocksCreated: Schema.Number,
   failed: Schema.Number,
   failures: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        error: Schema.String,
-        timestamp: Schema.String,
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => IngestFailureSchema)),
   ),
   ingested: Schema.Number,
   processedBytes: Schema.Number,

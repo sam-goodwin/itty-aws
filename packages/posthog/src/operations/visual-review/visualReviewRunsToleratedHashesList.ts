@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ToleratedHashEntrySchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -27,17 +28,7 @@ export const VisualReviewRunsToleratedHashesListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          alternate_hash: Schema.optional(Schema.String),
-          baseline_hash: Schema.optional(Schema.String),
-          reason: Schema.optional(Schema.String),
-          diff_percentage: Schema.optional(Schema.NullOr(Schema.Number)),
-          created_at: Schema.optional(Schema.String),
-          source_run_id: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ToleratedHashEntrySchema)),
     ),
   });
 export type VisualReviewRunsToleratedHashesListOutput =

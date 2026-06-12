@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { shipping_rateSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -23,42 +24,7 @@ export type GetShippingRatesInput = typeof GetShippingRatesInput.Type;
 // Output Schema
 export const GetShippingRatesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    data: Schema.Array(
-      Schema.Struct({
-        active: Schema.Boolean,
-        created: Schema.Number,
-        delivery_estimate: Schema.Unknown,
-        display_name: Schema.NullOr(Schema.String),
-        fixed_amount: Schema.optional(
-          Schema.Struct({
-            amount: Schema.Number,
-            currency: Schema.String,
-            currency_options: Schema.optional(
-              Schema.Record(
-                Schema.String,
-                Schema.Struct({
-                  amount: Schema.Number,
-                  tax_behavior: Schema.Literals([
-                    "exclusive",
-                    "inclusive",
-                    "unspecified",
-                  ]),
-                }),
-              ),
-            ),
-          }),
-        ),
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        metadata: Schema.Record(Schema.String, Schema.String),
-        object: Schema.Literals(["shipping_rate"]),
-        tax_behavior: Schema.NullOr(
-          Schema.Literals(["exclusive", "inclusive", "unspecified"]),
-        ),
-        tax_code: Schema.Unknown,
-        type: Schema.Literals(["fixed_amount"]),
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => shipping_rateSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

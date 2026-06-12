@@ -1,4 +1,11 @@
 import * as Schema from "effect/Schema";
+import {
+  LLMSkillEditOperationSchema,
+  LLMSkillFileEditSchema,
+  LLMSkillFileInputSchema,
+  LLMSkillFileManifestSchema,
+  LLMSkillOutlineEntrySchema,
+} from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -10,12 +17,7 @@ export const LlmSkillsNamePartialUpdateInput =
     skill_name: Schema.String.pipe(T.PathParam()),
     body: Schema.optional(Schema.String),
     edits: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          old: Schema.optional(Schema.String),
-          new: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LLMSkillEditOperationSchema)),
     ),
     description: Schema.optional(Schema.String),
     license: Schema.optional(Schema.String),
@@ -23,28 +25,10 @@ export const LlmSkillsNamePartialUpdateInput =
     allowed_tools: Schema.optional(Schema.Array(Schema.String)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     files: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          path: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.String),
-          content_type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LLMSkillFileInputSchema)),
     ),
     file_edits: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          path: Schema.optional(Schema.String),
-          edits: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                old: Schema.optional(Schema.String),
-                new: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LLMSkillFileEditSchema)),
     ),
     base_version: Schema.optional(Schema.Number),
   }).pipe(
@@ -68,20 +52,10 @@ export const LlmSkillsNamePartialUpdateOutput =
     allowed_tools: Schema.optional(Schema.Array(Schema.String)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     files: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          path: Schema.optional(Schema.String),
-          content_type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LLMSkillFileManifestSchema)),
     ),
     outline: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          level: Schema.optional(Schema.Number),
-          text: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LLMSkillOutlineEntrySchema)),
     ),
     version: Schema.optional(Schema.Number),
     created_by: Schema.optional(

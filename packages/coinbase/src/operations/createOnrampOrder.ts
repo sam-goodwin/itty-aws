@@ -1,4 +1,9 @@
 import * as Schema from "effect/Schema";
+import {
+  OnrampOrderPaymentMethodTypeIdSchema,
+  OnrampOrderSchema,
+  OnrampPaymentLinkSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -14,10 +19,7 @@ export const CreateOnrampOrderInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     partnerUserRef: Schema.String,
     paymentAmount: Schema.optional(Schema.String),
     paymentCurrency: Schema.String,
-    paymentMethod: Schema.Literals([
-      "GUEST_CHECKOUT_APPLE_PAY",
-      "GUEST_CHECKOUT_GOOGLE_PAY",
-    ]),
+    paymentMethod: Schema.suspend(() => OnrampOrderPaymentMethodTypeIdSchema),
     phoneNumber: Schema.String,
     phoneNumberVerifiedAt: Schema.String,
     purchaseAmount: Schema.optional(Schema.String),
@@ -31,47 +33,8 @@ export type CreateOnrampOrderInput = typeof CreateOnrampOrderInput.Type;
 // Output Schema
 export const CreateOnrampOrderOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    order: Schema.Struct({
-      orderId: Schema.String,
-      paymentTotal: Schema.String,
-      paymentSubtotal: Schema.String,
-      paymentCurrency: Schema.String,
-      paymentMethod: Schema.Literals([
-        "GUEST_CHECKOUT_APPLE_PAY",
-        "GUEST_CHECKOUT_GOOGLE_PAY",
-      ]),
-      purchaseAmount: Schema.String,
-      purchaseCurrency: Schema.String,
-      fees: Schema.Array(
-        Schema.Struct({
-          type: Schema.Literals(["FEE_TYPE_NETWORK", "FEE_TYPE_EXCHANGE"]),
-          amount: Schema.String,
-          currency: Schema.String,
-        }),
-      ),
-      exchangeRate: Schema.String,
-      destinationAddress: Schema.String,
-      destinationNetwork: Schema.String,
-      status: Schema.Literals([
-        "ONRAMP_ORDER_STATUS_PENDING_AUTH",
-        "ONRAMP_ORDER_STATUS_PENDING_PAYMENT",
-        "ONRAMP_ORDER_STATUS_PROCESSING",
-        "ONRAMP_ORDER_STATUS_COMPLETED",
-        "ONRAMP_ORDER_STATUS_FAILED",
-      ]),
-      txHash: Schema.optional(Schema.String),
-      createdAt: Schema.String,
-      updatedAt: Schema.String,
-      partnerUserRef: Schema.optional(Schema.String),
-    }),
-    paymentLink: Schema.optional(
-      Schema.Struct({
-        url: Schema.String,
-        paymentLinkType: Schema.Literals([
-          "PAYMENT_LINK_TYPE_APPLE_PAY_BUTTON",
-        ]),
-      }),
-    ),
+    order: Schema.suspend(() => OnrampOrderSchema),
+    paymentLink: Schema.optional(Schema.suspend(() => OnrampPaymentLinkSchema)),
   });
 export type CreateOnrampOrderOutput = typeof CreateOnrampOrderOutput.Type;
 

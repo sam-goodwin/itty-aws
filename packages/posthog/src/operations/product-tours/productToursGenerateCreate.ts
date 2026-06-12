@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { GenerateStepResponseSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -26,13 +27,7 @@ export type ProductToursGenerateCreateInput =
 export const ProductToursGenerateCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     steps: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          step_id: Schema.optional(Schema.String),
-          title: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GenerateStepResponseSchema)),
     ),
   });
 export type ProductToursGenerateCreateOutput =

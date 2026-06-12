@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { IntentOptionsSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import {
@@ -25,21 +26,7 @@ export const PortalSessionsControllerCreateInput =
         "bring_your_own_key",
       ]),
     ),
-    intent_options: Schema.optional(
-      Schema.Struct({
-        sso: Schema.optional(
-          Schema.Struct({
-            bookmark_slug: Schema.optional(Schema.String),
-            provider_type: Schema.optional(Schema.String),
-          }),
-        ),
-        domain_verification: Schema.optional(
-          Schema.Struct({
-            domain_name: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    intent_options: Schema.optional(Schema.suspend(() => IntentOptionsSchema)),
     it_contact_emails: Schema.optional(Schema.Array(Schema.String)),
   }).pipe(T.Http({ method: "POST", path: "/portal/generate_link" }));
 export type PortalSessionsControllerCreateInput =

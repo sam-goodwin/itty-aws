@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { CreateDatabaseOutputSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Conflict } from "../errors.ts";
@@ -44,13 +45,7 @@ export type CreateDatabaseInput = typeof CreateDatabaseInput.Type;
 
 // Output Schema
 export const CreateDatabaseOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  database: Schema.optional(
-    Schema.Struct({
-      DbId: Schema.optional(Schema.String),
-      Hostname: Schema.optional(Schema.String),
-      Name: Schema.optional(Schema.String),
-    }),
-  ),
+  database: Schema.optional(Schema.suspend(() => CreateDatabaseOutputSchema)),
 });
 export type CreateDatabaseOutput = typeof CreateDatabaseOutput.Type;
 

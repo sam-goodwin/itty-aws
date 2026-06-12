@@ -1,4 +1,9 @@
 import * as Schema from "effect/Schema";
+import {
+  OnrampQuotePaymentMethodTypeIdSchema,
+  OnrampQuoteSchema,
+  OnrampSessionSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -12,14 +17,7 @@ export const CreateOnrampSessionInput =
     purchaseAmount: Schema.optional(Schema.String),
     paymentCurrency: Schema.optional(Schema.String),
     paymentMethod: Schema.optional(
-      Schema.Literals([
-        "CARD",
-        "ACH",
-        "APPLE_PAY",
-        "PAYPAL",
-        "FIAT_WALLET",
-        "CRYPTO_WALLET",
-      ]),
+      Schema.suspend(() => OnrampQuotePaymentMethodTypeIdSchema),
     ),
     country: Schema.optional(Schema.String),
     subdivision: Schema.optional(Schema.String),
@@ -32,27 +30,8 @@ export type CreateOnrampSessionInput = typeof CreateOnrampSessionInput.Type;
 // Output Schema
 export const CreateOnrampSessionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    session: Schema.Struct({
-      onrampUrl: Schema.String,
-    }),
-    quote: Schema.optional(
-      Schema.Struct({
-        paymentTotal: Schema.String,
-        paymentSubtotal: Schema.String,
-        paymentCurrency: Schema.String,
-        purchaseAmount: Schema.String,
-        purchaseCurrency: Schema.String,
-        destinationNetwork: Schema.String,
-        fees: Schema.Array(
-          Schema.Struct({
-            type: Schema.Literals(["FEE_TYPE_NETWORK", "FEE_TYPE_EXCHANGE"]),
-            amount: Schema.String,
-            currency: Schema.String,
-          }),
-        ),
-        exchangeRate: Schema.String,
-      }),
-    ),
+    session: Schema.suspend(() => OnrampSessionSchema),
+    quote: Schema.optional(Schema.suspend(() => OnrampQuoteSchema)),
   });
 export type CreateOnrampSessionOutput = typeof CreateOnrampSessionOutput.Type;
 

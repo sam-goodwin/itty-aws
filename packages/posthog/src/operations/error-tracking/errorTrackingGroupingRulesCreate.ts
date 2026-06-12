@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { FilterLogicalOperatorSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -9,7 +10,9 @@ export const ErrorTrackingGroupingRulesCreateInput =
     project_id: Schema.String.pipe(T.PathParam()),
     filters: Schema.optional(
       Schema.Struct({
-        type: Schema.optional(Schema.Literals(["AND", "OR"])),
+        type: Schema.optional(
+          Schema.suspend(() => FilterLogicalOperatorSchema),
+        ),
         values: Schema.optional(Schema.Array(Schema.Unknown)),
       }),
     ),

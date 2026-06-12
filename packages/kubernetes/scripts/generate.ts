@@ -138,7 +138,7 @@ const GROUP_DISPLAY_NAMES: Record<string, string> = {
 // Read generated operation files (skip index.ts)
 const opFiles = fs
   .readdirSync(tempDir)
-  .filter((f) => f.endsWith(".ts") && f !== "index.ts")
+  .filter((f) => f.endsWith(".ts") && f !== "index.ts" && f !== "_schemas.ts")
   .sort();
 
 // Group files by API group
@@ -253,6 +253,19 @@ import * as T from "../traits.ts";`;
     imports += `\nimport { ${[...sensitive].sort().join(", ")} } from "../sensitive.ts";`;
   }
 
+  // Import the shared named schemas this group references (emitted once in
+  // `_schemas.ts`); the per-operation `./_schemas.ts` imports are stripped by
+  // `extractBody`, so re-add a single merged one here.
+  const usedDefs = new Set<string>();
+  for (const op of ops) {
+    for (const m of op.code.matchAll(/Schema\.suspend\(\(\) => (\w+)\)/g)) {
+      usedDefs.add(m[1]);
+    }
+  }
+  if (usedDefs.size > 0) {
+    imports += `\nimport { ${[...usedDefs].sort().join(", ")} } from "./_schemas.ts";`;
+  }
+
   // Concatenate all operation bodies
   const bodies = ops.map((op) => extractBody(op.code));
 
@@ -263,6 +276,12 @@ import * as T from "../traits.ts";`;
   console.log(
     `📦 ${group}.ts (${ops.length} operations)`,
   );
+}
+
+// Copy the shared named-schema module into services/ so the imports resolve.
+const tempSchemas = path.join(tempDir, "_schemas.ts");
+if (fs.existsSync(tempSchemas)) {
+  fs.copyFileSync(tempSchemas, path.join(servicesDir, "_schemas.ts"));
 }
 
 // Write services index.ts

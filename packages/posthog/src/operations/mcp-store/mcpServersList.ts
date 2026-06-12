@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { MCPServerTemplateSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -22,27 +23,7 @@ export const McpServersListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
   results: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        url: Schema.optional(Schema.String),
-        docs_url: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        auth_type: Schema.optional(Schema.Literals(["api_key", "oauth"])),
-        icon_key: Schema.optional(Schema.String),
-        category: Schema.optional(
-          Schema.Literals([
-            "business",
-            "data",
-            "design",
-            "dev",
-            "infra",
-            "productivity",
-          ]),
-        ),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => MCPServerTemplateSchema)),
   ),
 });
 export type McpServersListOutput = typeof McpServersListOutput.Type;

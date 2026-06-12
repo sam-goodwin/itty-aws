@@ -8,12 +8,43 @@ import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
+import {
+  io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationSchema,
+  io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationSpecSchema,
+  io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationStatusSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+  io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+} from "./_schemas.ts";
 
 // Input Schema
 export const CreateStoragemigrationV1beta1StorageVersionMigrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationSpecSchema,
+      ),
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -29,73 +60,21 @@ export const CreateStoragemigrationV1beta1StorageVersionMigrationOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        resource: Schema.Struct({
-          group: Schema.String,
-          resource: Schema.String,
-        }),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationSpecSchema,
+      ),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationStatusSchema,
+      ),
     ),
   });
 export type CreateStoragemigrationV1beta1StorageVersionMigrationOutput =
@@ -133,37 +112,14 @@ export const DeleteStoragemigrationV1beta1CollectionStorageVersionMigrationOutpu
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -203,37 +159,14 @@ export const DeleteStoragemigrationV1beta1StorageVersionMigrationOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -268,24 +201,24 @@ export const GetStoragemigrationAPIGroupOutput =
     kind: Schema.optional(Schema.String),
     name: Schema.String,
     preferredVersion: Schema.optional(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
     serverAddressByClientCIDRs: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
+        Schema.suspend(
+          () =>
+            io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+        ),
       ),
     ),
     versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
   });
 export type GetStoragemigrationAPIGroupOutput =
@@ -316,18 +249,9 @@ export const GetStoragemigrationV1beta1APIResourcesOutput =
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
     resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+      ),
     ),
   });
 export type GetStoragemigrationV1beta1APIResourcesOutput =
@@ -358,95 +282,13 @@ export const ListStoragemigrationV1beta1StorageVersionMigrationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            resource: Schema.Struct({
-              group: Schema.String,
-              resource: Schema.String,
-            }),
-          }),
-        ),
-        status: Schema.optional(
-          Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  lastTransitionTime: Schema.String,
-                  message: Schema.String,
-                  observedGeneration: Schema.optional(Schema.Number),
-                  reason: Schema.String,
-                  status: Schema.String,
-                  type: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListStoragemigrationV1beta1StorageVersionMigrationOutput =
@@ -481,73 +323,21 @@ export const PatchStoragemigrationV1beta1StorageVersionMigrationOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        resource: Schema.Struct({
-          group: Schema.String,
-          resource: Schema.String,
-        }),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationSpecSchema,
+      ),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationStatusSchema,
+      ),
     ),
   });
 export type PatchStoragemigrationV1beta1StorageVersionMigrationOutput =
@@ -586,73 +376,21 @@ export const PatchStoragemigrationV1beta1StorageVersionMigrationStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        resource: Schema.Struct({
-          group: Schema.String,
-          resource: Schema.String,
-        }),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationSpecSchema,
+      ),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationStatusSchema,
+      ),
     ),
   });
 export type PatchStoragemigrationV1beta1StorageVersionMigrationStatusOutput =
@@ -689,73 +427,21 @@ export const ReadStoragemigrationV1beta1StorageVersionMigrationOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        resource: Schema.Struct({
-          group: Schema.String,
-          resource: Schema.String,
-        }),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationSpecSchema,
+      ),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationStatusSchema,
+      ),
     ),
   });
 export type ReadStoragemigrationV1beta1StorageVersionMigrationOutput =
@@ -788,73 +474,21 @@ export const ReadStoragemigrationV1beta1StorageVersionMigrationStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        resource: Schema.Struct({
-          group: Schema.String,
-          resource: Schema.String,
-        }),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationSpecSchema,
+      ),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationStatusSchema,
+      ),
     ),
   });
 export type ReadStoragemigrationV1beta1StorageVersionMigrationStatusOutput =
@@ -876,6 +510,25 @@ export const ReplaceStoragemigrationV1beta1StorageVersionMigrationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationSpecSchema,
+      ),
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -891,73 +544,21 @@ export const ReplaceStoragemigrationV1beta1StorageVersionMigrationOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        resource: Schema.Struct({
-          group: Schema.String,
-          resource: Schema.String,
-        }),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationSpecSchema,
+      ),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationStatusSchema,
+      ),
     ),
   });
 export type ReplaceStoragemigrationV1beta1StorageVersionMigrationOutput =
@@ -981,6 +582,25 @@ export const ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationSpecSchema,
+      ),
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -996,73 +616,21 @@ export const ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        resource: Schema.Struct({
-          group: Schema.String,
-          resource: Schema.String,
-        }),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationSpecSchema,
+      ),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_storagemigration_v1beta1_StorageVersionMigrationStatusSchema,
+      ),
     ),
   });
 export type ReplaceStoragemigrationV1beta1StorageVersionMigrationStatusOutput =
@@ -1097,7 +665,9 @@ export type WatchStoragemigrationV1beta1StorageVersionMigrationInput =
 // Output Schema
 export const WatchStoragemigrationV1beta1StorageVersionMigrationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchStoragemigrationV1beta1StorageVersionMigrationOutput =
@@ -1126,7 +696,9 @@ export type WatchStoragemigrationV1beta1StorageVersionMigrationListInput =
 // Output Schema
 export const WatchStoragemigrationV1beta1StorageVersionMigrationListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchStoragemigrationV1beta1StorageVersionMigrationListOutput =

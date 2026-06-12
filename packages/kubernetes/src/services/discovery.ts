@@ -8,12 +8,42 @@ import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
+import {
+  io_k8s_api_discovery_v1_EndpointPortSchema,
+  io_k8s_api_discovery_v1_EndpointSchema,
+  io_k8s_api_discovery_v1_EndpointSliceSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+  io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+} from "./_schemas.ts";
 
 // Input Schema
 export const CreateDiscoveryV1NamespacedEndpointSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    addressType: Schema.String,
+    apiVersion: Schema.optional(Schema.String),
+    endpoints: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => io_k8s_api_discovery_v1_EndpointSchema),
+      ),
+    ),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    ports: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => io_k8s_api_discovery_v1_EndpointPortSchema),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -30,106 +60,18 @@ export const CreateDiscoveryV1NamespacedEndpointSliceOutput =
     apiVersion: Schema.optional(Schema.String),
     endpoints: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          addresses: Schema.Array(Schema.String),
-          conditions: Schema.optional(
-            Schema.Struct({
-              ready: Schema.optional(Schema.Boolean),
-              serving: Schema.optional(Schema.Boolean),
-              terminating: Schema.optional(Schema.Boolean),
-            }),
-          ),
-          deprecatedTopology: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          hints: Schema.optional(
-            Schema.Struct({
-              forNodes: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.String,
-                  }),
-                ),
-              ),
-              forZones: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.String,
-                  }),
-                ),
-              ),
-            }),
-          ),
-          hostname: Schema.optional(Schema.String),
-          nodeName: Schema.optional(Schema.String),
-          targetRef: Schema.optional(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldPath: Schema.optional(Schema.String),
-              kind: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              namespace: Schema.optional(Schema.String),
-              resourceVersion: Schema.optional(Schema.String),
-              uid: Schema.optional(Schema.String),
-            }),
-          ),
-          zone: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => io_k8s_api_discovery_v1_EndpointSchema),
       ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     ports: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          appProtocol: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          port: Schema.optional(Schema.Number),
-          protocol: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => io_k8s_api_discovery_v1_EndpointPortSchema),
       ),
     ),
   });
@@ -168,37 +110,14 @@ export const DeleteDiscoveryV1CollectionNamespacedEndpointSliceOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -236,37 +155,14 @@ export const DeleteDiscoveryV1NamespacedEndpointSliceOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -300,24 +196,24 @@ export const GetDiscoveryAPIGroupOutput =
     kind: Schema.optional(Schema.String),
     name: Schema.String,
     preferredVersion: Schema.optional(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
     serverAddressByClientCIDRs: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
+        Schema.suspend(
+          () =>
+            io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+        ),
       ),
     ),
     versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
   });
 export type GetDiscoveryAPIGroupOutput = typeof GetDiscoveryAPIGroupOutput.Type;
@@ -347,18 +243,9 @@ export const GetDiscoveryV1APIResourcesOutput =
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
     resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+      ),
     ),
   });
 export type GetDiscoveryV1APIResourcesOutput =
@@ -387,130 +274,11 @@ export const ListDiscoveryV1EndpointSliceForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        addressType: Schema.String,
-        apiVersion: Schema.optional(Schema.String),
-        endpoints: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              addresses: Schema.Array(Schema.String),
-              conditions: Schema.optional(
-                Schema.Struct({
-                  ready: Schema.optional(Schema.Boolean),
-                  serving: Schema.optional(Schema.Boolean),
-                  terminating: Schema.optional(Schema.Boolean),
-                }),
-              ),
-              deprecatedTopology: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              hints: Schema.optional(
-                Schema.Struct({
-                  forNodes: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.String,
-                      }),
-                    ),
-                  ),
-                  forZones: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.String,
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-              hostname: Schema.optional(Schema.String),
-              nodeName: Schema.optional(Schema.String),
-              targetRef: Schema.optional(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldPath: Schema.optional(Schema.String),
-                  kind: Schema.optional(Schema.String),
-                  name: Schema.optional(Schema.String),
-                  namespace: Schema.optional(Schema.String),
-                  resourceVersion: Schema.optional(Schema.String),
-                  uid: Schema.optional(Schema.String),
-                }),
-              ),
-              zone: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        ports: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              appProtocol: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              port: Schema.optional(Schema.Number),
-              protocol: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_discovery_v1_EndpointSliceSchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListDiscoveryV1EndpointSliceForAllNamespacesOutput =
@@ -541,130 +309,11 @@ export const ListDiscoveryV1NamespacedEndpointSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        addressType: Schema.String,
-        apiVersion: Schema.optional(Schema.String),
-        endpoints: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              addresses: Schema.Array(Schema.String),
-              conditions: Schema.optional(
-                Schema.Struct({
-                  ready: Schema.optional(Schema.Boolean),
-                  serving: Schema.optional(Schema.Boolean),
-                  terminating: Schema.optional(Schema.Boolean),
-                }),
-              ),
-              deprecatedTopology: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              hints: Schema.optional(
-                Schema.Struct({
-                  forNodes: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.String,
-                      }),
-                    ),
-                  ),
-                  forZones: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        name: Schema.String,
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-              hostname: Schema.optional(Schema.String),
-              nodeName: Schema.optional(Schema.String),
-              targetRef: Schema.optional(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldPath: Schema.optional(Schema.String),
-                  kind: Schema.optional(Schema.String),
-                  name: Schema.optional(Schema.String),
-                  namespace: Schema.optional(Schema.String),
-                  resourceVersion: Schema.optional(Schema.String),
-                  uid: Schema.optional(Schema.String),
-                }),
-              ),
-              zone: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        ports: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              appProtocol: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              port: Schema.optional(Schema.Number),
-              protocol: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_discovery_v1_EndpointSliceSchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListDiscoveryV1NamespacedEndpointSliceOutput =
@@ -700,106 +349,18 @@ export const PatchDiscoveryV1NamespacedEndpointSliceOutput =
     apiVersion: Schema.optional(Schema.String),
     endpoints: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          addresses: Schema.Array(Schema.String),
-          conditions: Schema.optional(
-            Schema.Struct({
-              ready: Schema.optional(Schema.Boolean),
-              serving: Schema.optional(Schema.Boolean),
-              terminating: Schema.optional(Schema.Boolean),
-            }),
-          ),
-          deprecatedTopology: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          hints: Schema.optional(
-            Schema.Struct({
-              forNodes: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.String,
-                  }),
-                ),
-              ),
-              forZones: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.String,
-                  }),
-                ),
-              ),
-            }),
-          ),
-          hostname: Schema.optional(Schema.String),
-          nodeName: Schema.optional(Schema.String),
-          targetRef: Schema.optional(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldPath: Schema.optional(Schema.String),
-              kind: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              namespace: Schema.optional(Schema.String),
-              resourceVersion: Schema.optional(Schema.String),
-              uid: Schema.optional(Schema.String),
-            }),
-          ),
-          zone: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => io_k8s_api_discovery_v1_EndpointSchema),
       ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     ports: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          appProtocol: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          port: Schema.optional(Schema.Number),
-          protocol: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => io_k8s_api_discovery_v1_EndpointPortSchema),
       ),
     ),
   });
@@ -837,106 +398,18 @@ export const ReadDiscoveryV1NamespacedEndpointSliceOutput =
     apiVersion: Schema.optional(Schema.String),
     endpoints: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          addresses: Schema.Array(Schema.String),
-          conditions: Schema.optional(
-            Schema.Struct({
-              ready: Schema.optional(Schema.Boolean),
-              serving: Schema.optional(Schema.Boolean),
-              terminating: Schema.optional(Schema.Boolean),
-            }),
-          ),
-          deprecatedTopology: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          hints: Schema.optional(
-            Schema.Struct({
-              forNodes: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.String,
-                  }),
-                ),
-              ),
-              forZones: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.String,
-                  }),
-                ),
-              ),
-            }),
-          ),
-          hostname: Schema.optional(Schema.String),
-          nodeName: Schema.optional(Schema.String),
-          targetRef: Schema.optional(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldPath: Schema.optional(Schema.String),
-              kind: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              namespace: Schema.optional(Schema.String),
-              resourceVersion: Schema.optional(Schema.String),
-              uid: Schema.optional(Schema.String),
-            }),
-          ),
-          zone: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => io_k8s_api_discovery_v1_EndpointSchema),
       ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     ports: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          appProtocol: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          port: Schema.optional(Schema.Number),
-          protocol: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => io_k8s_api_discovery_v1_EndpointPortSchema),
       ),
     ),
   });
@@ -958,6 +431,24 @@ export const ReplaceDiscoveryV1NamespacedEndpointSliceInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    addressType: Schema.String,
+    apiVersion: Schema.optional(Schema.String),
+    endpoints: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => io_k8s_api_discovery_v1_EndpointSchema),
+      ),
+    ),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    ports: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => io_k8s_api_discovery_v1_EndpointPortSchema),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -974,106 +465,18 @@ export const ReplaceDiscoveryV1NamespacedEndpointSliceOutput =
     apiVersion: Schema.optional(Schema.String),
     endpoints: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          addresses: Schema.Array(Schema.String),
-          conditions: Schema.optional(
-            Schema.Struct({
-              ready: Schema.optional(Schema.Boolean),
-              serving: Schema.optional(Schema.Boolean),
-              terminating: Schema.optional(Schema.Boolean),
-            }),
-          ),
-          deprecatedTopology: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          hints: Schema.optional(
-            Schema.Struct({
-              forNodes: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.String,
-                  }),
-                ),
-              ),
-              forZones: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.String,
-                  }),
-                ),
-              ),
-            }),
-          ),
-          hostname: Schema.optional(Schema.String),
-          nodeName: Schema.optional(Schema.String),
-          targetRef: Schema.optional(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldPath: Schema.optional(Schema.String),
-              kind: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              namespace: Schema.optional(Schema.String),
-              resourceVersion: Schema.optional(Schema.String),
-              uid: Schema.optional(Schema.String),
-            }),
-          ),
-          zone: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => io_k8s_api_discovery_v1_EndpointSchema),
       ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     ports: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          appProtocol: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          port: Schema.optional(Schema.Number),
-          protocol: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => io_k8s_api_discovery_v1_EndpointPortSchema),
       ),
     ),
   });
@@ -1107,7 +510,9 @@ export type WatchDiscoveryV1EndpointSliceListForAllNamespacesInput =
 // Output Schema
 export const WatchDiscoveryV1EndpointSliceListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchDiscoveryV1EndpointSliceListForAllNamespacesOutput =
@@ -1136,7 +541,9 @@ export type WatchDiscoveryV1NamespacedEndpointSliceInput =
 // Output Schema
 export const WatchDiscoveryV1NamespacedEndpointSliceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchDiscoveryV1NamespacedEndpointSliceOutput =
@@ -1165,7 +572,9 @@ export type WatchDiscoveryV1NamespacedEndpointSliceListInput =
 // Output Schema
 export const WatchDiscoveryV1NamespacedEndpointSliceListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchDiscoveryV1NamespacedEndpointSliceListOutput =

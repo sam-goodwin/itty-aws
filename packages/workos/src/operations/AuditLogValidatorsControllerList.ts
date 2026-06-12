@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { AuditLogActionJsonSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
@@ -25,39 +26,7 @@ export const AuditLogValidatorsControllerListOutput =
       }),
     ),
     data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          object: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          schema: Schema.optional(
-            Schema.Struct({
-              object: Schema.optional(Schema.String),
-              version: Schema.optional(Schema.Number),
-              actor: Schema.optional(
-                Schema.Struct({
-                  metadata: Schema.Record(Schema.String, Schema.Unknown),
-                }),
-              ),
-              targets: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.String,
-                    metadata: Schema.optional(
-                      Schema.Record(Schema.String, Schema.Unknown),
-                    ),
-                  }),
-                ),
-              ),
-              metadata: Schema.optional(
-                Schema.Record(Schema.String, Schema.Unknown),
-              ),
-              created_at: Schema.optional(Schema.String),
-            }),
-          ),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AuditLogActionJsonSchema)),
     ),
   });
 export type AuditLogValidatorsControllerListOutput =

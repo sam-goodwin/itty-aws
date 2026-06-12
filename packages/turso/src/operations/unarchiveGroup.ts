@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { GroupSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
@@ -17,16 +18,7 @@ export type UnarchiveGroupInput = typeof UnarchiveGroupInput.Type;
 
 // Output Schema
 export const UnarchiveGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  group: Schema.optional(
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      uuid: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(Schema.String)),
-      primary: Schema.optional(Schema.String),
-      delete_protection: Schema.optional(Schema.Boolean),
-    }),
-  ),
+  group: Schema.optional(Schema.suspend(() => GroupSchema)),
 });
 export type UnarchiveGroupOutput = typeof UnarchiveGroupOutput.Type;
 

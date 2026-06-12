@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { SlimRoleSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
@@ -31,9 +32,7 @@ export const UserlandUserOrganizationMembershipsControllerDeactivateOutput =
     ),
     created_at: Schema.String,
     updated_at: Schema.String,
-    role: Schema.Struct({
-      slug: Schema.optional(Schema.String),
-    }),
+    role: Schema.suspend(() => SlimRoleSchema),
   });
 export type UserlandUserOrganizationMembershipsControllerDeactivateOutput =
   typeof UserlandUserOrganizationMembershipsControllerDeactivateOutput.Type;

@@ -1,4 +1,11 @@
 import * as Schema from "effect/Schema";
+import {
+  treasury_financial_accounts_resource_financial_addresses_featuresSchema,
+  treasury_financial_accounts_resource_inbound_transfersSchema,
+  treasury_financial_accounts_resource_outbound_paymentsSchema,
+  treasury_financial_accounts_resource_outbound_transfersSchema,
+  treasury_financial_accounts_resource_toggle_settingsSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -21,300 +28,41 @@ export type GetTreasuryFinancialAccountsFinancialAccountFeaturesInput =
 export const GetTreasuryFinancialAccountsFinancialAccountFeaturesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     card_issuing: Schema.optional(
-      Schema.Struct({
-        requested: Schema.Boolean,
-        status: Schema.Literals(["active", "pending", "restricted"]),
-        status_details: Schema.Array(
-          Schema.Struct({
-            code: Schema.Literals([
-              "activating",
-              "capability_not_requested",
-              "financial_account_closed",
-              "rejected_other",
-              "rejected_unsupported_business",
-              "requirements_past_due",
-              "requirements_pending_verification",
-              "restricted_by_platform",
-              "restricted_other",
-            ]),
-            resolution: Schema.NullOr(
-              Schema.Literals([
-                "contact_stripe",
-                "provide_information",
-                "remove_restriction",
-              ]),
-            ),
-            restriction: Schema.optional(
-              Schema.Literals(["inbound_flows", "outbound_flows"]),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => treasury_financial_accounts_resource_toggle_settingsSchema,
+      ),
     ),
     deposit_insurance: Schema.optional(
-      Schema.Struct({
-        requested: Schema.Boolean,
-        status: Schema.Literals(["active", "pending", "restricted"]),
-        status_details: Schema.Array(
-          Schema.Struct({
-            code: Schema.Literals([
-              "activating",
-              "capability_not_requested",
-              "financial_account_closed",
-              "rejected_other",
-              "rejected_unsupported_business",
-              "requirements_past_due",
-              "requirements_pending_verification",
-              "restricted_by_platform",
-              "restricted_other",
-            ]),
-            resolution: Schema.NullOr(
-              Schema.Literals([
-                "contact_stripe",
-                "provide_information",
-                "remove_restriction",
-              ]),
-            ),
-            restriction: Schema.optional(
-              Schema.Literals(["inbound_flows", "outbound_flows"]),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => treasury_financial_accounts_resource_toggle_settingsSchema,
+      ),
     ),
     financial_addresses: Schema.optional(
-      Schema.Struct({
-        aba: Schema.optional(
-          Schema.Struct({
-            requested: Schema.Boolean,
-            status: Schema.Literals(["active", "pending", "restricted"]),
-            status_details: Schema.Array(
-              Schema.Struct({
-                code: Schema.Literals([
-                  "activating",
-                  "capability_not_requested",
-                  "financial_account_closed",
-                  "rejected_other",
-                  "rejected_unsupported_business",
-                  "requirements_past_due",
-                  "requirements_pending_verification",
-                  "restricted_by_platform",
-                  "restricted_other",
-                ]),
-                resolution: Schema.NullOr(
-                  Schema.Literals([
-                    "contact_stripe",
-                    "provide_information",
-                    "remove_restriction",
-                  ]),
-                ),
-                restriction: Schema.optional(
-                  Schema.Literals(["inbound_flows", "outbound_flows"]),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          treasury_financial_accounts_resource_financial_addresses_featuresSchema,
+      ),
     ),
     inbound_transfers: Schema.optional(
-      Schema.Struct({
-        ach: Schema.optional(
-          Schema.Struct({
-            requested: Schema.Boolean,
-            status: Schema.Literals(["active", "pending", "restricted"]),
-            status_details: Schema.Array(
-              Schema.Struct({
-                code: Schema.Literals([
-                  "activating",
-                  "capability_not_requested",
-                  "financial_account_closed",
-                  "rejected_other",
-                  "rejected_unsupported_business",
-                  "requirements_past_due",
-                  "requirements_pending_verification",
-                  "restricted_by_platform",
-                  "restricted_other",
-                ]),
-                resolution: Schema.NullOr(
-                  Schema.Literals([
-                    "contact_stripe",
-                    "provide_information",
-                    "remove_restriction",
-                  ]),
-                ),
-                restriction: Schema.optional(
-                  Schema.Literals(["inbound_flows", "outbound_flows"]),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => treasury_financial_accounts_resource_inbound_transfersSchema,
+      ),
     ),
     intra_stripe_flows: Schema.optional(
-      Schema.Struct({
-        requested: Schema.Boolean,
-        status: Schema.Literals(["active", "pending", "restricted"]),
-        status_details: Schema.Array(
-          Schema.Struct({
-            code: Schema.Literals([
-              "activating",
-              "capability_not_requested",
-              "financial_account_closed",
-              "rejected_other",
-              "rejected_unsupported_business",
-              "requirements_past_due",
-              "requirements_pending_verification",
-              "restricted_by_platform",
-              "restricted_other",
-            ]),
-            resolution: Schema.NullOr(
-              Schema.Literals([
-                "contact_stripe",
-                "provide_information",
-                "remove_restriction",
-              ]),
-            ),
-            restriction: Schema.optional(
-              Schema.Literals(["inbound_flows", "outbound_flows"]),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => treasury_financial_accounts_resource_toggle_settingsSchema,
+      ),
     ),
     object: Schema.Literals(["treasury.financial_account_features"]),
     outbound_payments: Schema.optional(
-      Schema.Struct({
-        ach: Schema.optional(
-          Schema.Struct({
-            requested: Schema.Boolean,
-            status: Schema.Literals(["active", "pending", "restricted"]),
-            status_details: Schema.Array(
-              Schema.Struct({
-                code: Schema.Literals([
-                  "activating",
-                  "capability_not_requested",
-                  "financial_account_closed",
-                  "rejected_other",
-                  "rejected_unsupported_business",
-                  "requirements_past_due",
-                  "requirements_pending_verification",
-                  "restricted_by_platform",
-                  "restricted_other",
-                ]),
-                resolution: Schema.NullOr(
-                  Schema.Literals([
-                    "contact_stripe",
-                    "provide_information",
-                    "remove_restriction",
-                  ]),
-                ),
-                restriction: Schema.optional(
-                  Schema.Literals(["inbound_flows", "outbound_flows"]),
-                ),
-              }),
-            ),
-          }),
-        ),
-        us_domestic_wire: Schema.optional(
-          Schema.Struct({
-            requested: Schema.Boolean,
-            status: Schema.Literals(["active", "pending", "restricted"]),
-            status_details: Schema.Array(
-              Schema.Struct({
-                code: Schema.Literals([
-                  "activating",
-                  "capability_not_requested",
-                  "financial_account_closed",
-                  "rejected_other",
-                  "rejected_unsupported_business",
-                  "requirements_past_due",
-                  "requirements_pending_verification",
-                  "restricted_by_platform",
-                  "restricted_other",
-                ]),
-                resolution: Schema.NullOr(
-                  Schema.Literals([
-                    "contact_stripe",
-                    "provide_information",
-                    "remove_restriction",
-                  ]),
-                ),
-                restriction: Schema.optional(
-                  Schema.Literals(["inbound_flows", "outbound_flows"]),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => treasury_financial_accounts_resource_outbound_paymentsSchema,
+      ),
     ),
     outbound_transfers: Schema.optional(
-      Schema.Struct({
-        ach: Schema.optional(
-          Schema.Struct({
-            requested: Schema.Boolean,
-            status: Schema.Literals(["active", "pending", "restricted"]),
-            status_details: Schema.Array(
-              Schema.Struct({
-                code: Schema.Literals([
-                  "activating",
-                  "capability_not_requested",
-                  "financial_account_closed",
-                  "rejected_other",
-                  "rejected_unsupported_business",
-                  "requirements_past_due",
-                  "requirements_pending_verification",
-                  "restricted_by_platform",
-                  "restricted_other",
-                ]),
-                resolution: Schema.NullOr(
-                  Schema.Literals([
-                    "contact_stripe",
-                    "provide_information",
-                    "remove_restriction",
-                  ]),
-                ),
-                restriction: Schema.optional(
-                  Schema.Literals(["inbound_flows", "outbound_flows"]),
-                ),
-              }),
-            ),
-          }),
-        ),
-        us_domestic_wire: Schema.optional(
-          Schema.Struct({
-            requested: Schema.Boolean,
-            status: Schema.Literals(["active", "pending", "restricted"]),
-            status_details: Schema.Array(
-              Schema.Struct({
-                code: Schema.Literals([
-                  "activating",
-                  "capability_not_requested",
-                  "financial_account_closed",
-                  "rejected_other",
-                  "rejected_unsupported_business",
-                  "requirements_past_due",
-                  "requirements_pending_verification",
-                  "restricted_by_platform",
-                  "restricted_other",
-                ]),
-                resolution: Schema.NullOr(
-                  Schema.Literals([
-                    "contact_stripe",
-                    "provide_information",
-                    "remove_restriction",
-                  ]),
-                ),
-                restriction: Schema.optional(
-                  Schema.Literals(["inbound_flows", "outbound_flows"]),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => treasury_financial_accounts_resource_outbound_transfersSchema,
+      ),
     ),
   });
 export type GetTreasuryFinancialAccountsFinancialAccountFeaturesOutput =

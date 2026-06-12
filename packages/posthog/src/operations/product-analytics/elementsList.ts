@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ElementSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -18,21 +19,7 @@ export const ElementsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   count: Schema.optional(Schema.Number),
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
-  results: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        text: Schema.optional(Schema.NullOr(Schema.String)),
-        tag_name: Schema.optional(Schema.NullOr(Schema.String)),
-        attr_class: Schema.optional(Schema.NullOr(Schema.Array(Schema.String))),
-        href: Schema.optional(Schema.NullOr(Schema.String)),
-        attr_id: Schema.optional(Schema.NullOr(Schema.String)),
-        nth_child: Schema.optional(Schema.NullOr(Schema.Number)),
-        nth_of_type: Schema.optional(Schema.NullOr(Schema.Number)),
-        attributes: Schema.optional(Schema.Unknown),
-        order: Schema.optional(Schema.NullOr(Schema.Number)),
-      }),
-    ),
-  ),
+  results: Schema.optional(Schema.Array(Schema.suspend(() => ElementSchema))),
 });
 export type ElementsListOutput = typeof ElementsListOutput.Type;
 

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { InstanceSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
@@ -20,15 +21,7 @@ export type GetDatabaseInstanceInput = typeof GetDatabaseInstanceInput.Type;
 // Output Schema
 export const GetDatabaseInstanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    instance: Schema.optional(
-      Schema.Struct({
-        uuid: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["primary", "replica"])),
-        region: Schema.optional(Schema.String),
-        hostname: Schema.optional(Schema.String),
-      }),
-    ),
+    instance: Schema.optional(Schema.suspend(() => InstanceSchema)),
   });
 export type GetDatabaseInstanceOutput = typeof GetDatabaseInstanceOutput.Type;
 

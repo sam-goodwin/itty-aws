@@ -7,7 +7,7 @@ import {
   NotFound,
   UnprocessableEntity,
 } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const PostV1DatabasesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -53,21 +53,21 @@ export const PostV1DatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             Schema.Struct({
               host: Schema.String,
               port: Schema.Number,
-              connectionString: Schema.optional(SensitiveString),
+              connectionString: Schema.optional(SensitiveOutputString),
             }),
           ),
           pooled: Schema.optional(
             Schema.Struct({
               host: Schema.String,
               port: Schema.Number,
-              connectionString: Schema.optional(SensitiveString),
+              connectionString: Schema.optional(SensitiveOutputString),
             }),
           ),
           accelerate: Schema.optional(
             Schema.Struct({
               host: Schema.String,
               port: Schema.Number,
-              connectionString: Schema.optional(SensitiveString),
+              connectionString: Schema.optional(SensitiveOutputString),
             }),
           ),
         }),

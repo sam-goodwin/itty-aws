@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  LLMSkillFileInputSchema,
+  LLMSkillOutlineEntrySchema,
+} from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -15,21 +19,10 @@ export const LlmSkillsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   allowed_tools: Schema.optional(Schema.Array(Schema.String)),
   metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   files: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        path: Schema.optional(Schema.String),
-        content: Schema.optional(Schema.String),
-        content_type: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => LLMSkillFileInputSchema)),
   ),
   outline: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        level: Schema.optional(Schema.Number),
-        text: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => LLMSkillOutlineEntrySchema)),
   ),
   version: Schema.optional(Schema.Number),
   created_by: Schema.optional(
@@ -75,21 +68,10 @@ export const LlmSkillsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   allowed_tools: Schema.optional(Schema.Array(Schema.String)),
   metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
   files: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        path: Schema.optional(Schema.String),
-        content: Schema.optional(Schema.String),
-        content_type: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => LLMSkillFileInputSchema)),
   ),
   outline: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        level: Schema.optional(Schema.Number),
-        text: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => LLMSkillOutlineEntrySchema)),
   ),
   version: Schema.optional(Schema.Number),
   created_by: Schema.optional(

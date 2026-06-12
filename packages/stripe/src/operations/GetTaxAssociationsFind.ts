@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { tax_product_resource_tax_association_transaction_attemptsSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -26,26 +27,9 @@ export const GetTaxAssociationsFindOutput =
     payment_intent: Schema.String,
     tax_transaction_attempts: Schema.NullOr(
       Schema.Array(
-        Schema.Struct({
-          committed: Schema.optional(
-            Schema.Struct({
-              transaction: Schema.String,
-            }),
-          ),
-          errored: Schema.optional(
-            Schema.Struct({
-              reason: Schema.Literals([
-                "another_payment_associated_with_calculation",
-                "calculation_expired",
-                "currency_mismatch",
-                "original_transaction_voided",
-                "unique_reference_violation",
-              ]),
-            }),
-          ),
-          source: Schema.String,
-          status: Schema.String,
-        }),
+        Schema.suspend(
+          () => tax_product_resource_tax_association_transaction_attemptsSchema,
+        ),
       ),
     ),
   });

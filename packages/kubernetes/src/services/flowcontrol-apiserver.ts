@@ -8,12 +8,40 @@ import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
+import {
+  io_k8s_api_flowcontrol_v1_FlowSchemaSchema,
+  io_k8s_api_flowcontrol_v1_FlowSchemaSpecSchema,
+  io_k8s_api_flowcontrol_v1_FlowSchemaStatusSchema,
+  io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationSchema,
+  io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationSpecSchema,
+  io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationStatusSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+  io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+} from "./_schemas.ts";
 
 // Input Schema
 export const CreateFlowcontrolApiserverV1FlowSchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(() => io_k8s_api_flowcontrol_v1_FlowSchemaSpecSchema),
+    ),
+    status: Schema.optional(
+      Schema.suspend(() => io_k8s_api_flowcontrol_v1_FlowSchemaStatusSchema),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -29,122 +57,15 @@ export const CreateFlowcontrolApiserverV1FlowSchemaOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        distinguisherMethod: Schema.optional(
-          Schema.Struct({
-            type: Schema.String,
-          }),
-        ),
-        matchingPrecedence: Schema.optional(Schema.Number),
-        priorityLevelConfiguration: Schema.Struct({
-          name: Schema.String,
-        }),
-        rules: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              nonResourceRules: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    nonResourceURLs: Schema.Array(Schema.String),
-                    verbs: Schema.Array(Schema.String),
-                  }),
-                ),
-              ),
-              resourceRules: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiGroups: Schema.Array(Schema.String),
-                    clusterScope: Schema.optional(Schema.Boolean),
-                    namespaces: Schema.optional(Schema.Array(Schema.String)),
-                    resources: Schema.Array(Schema.String),
-                    verbs: Schema.Array(Schema.String),
-                  }),
-                ),
-              ),
-              subjects: Schema.Array(
-                Schema.Struct({
-                  group: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                    }),
-                  ),
-                  kind: Schema.String,
-                  serviceAccount: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                      namespace: Schema.String,
-                    }),
-                  ),
-                  user: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_flowcontrol_v1_FlowSchemaSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_flowcontrol_v1_FlowSchemaStatusSchema),
     ),
   });
 export type CreateFlowcontrolApiserverV1FlowSchemaOutput =
@@ -168,6 +89,23 @@ export const CreateFlowcontrolApiserverV1PriorityLevelConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationSpecSchema,
+      ),
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -183,93 +121,19 @@ export const CreateFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        exempt: Schema.optional(
-          Schema.Struct({
-            lendablePercent: Schema.optional(Schema.Number),
-            nominalConcurrencyShares: Schema.optional(Schema.Number),
-          }),
-        ),
-        limited: Schema.optional(
-          Schema.Struct({
-            borrowingLimitPercent: Schema.optional(Schema.Number),
-            lendablePercent: Schema.optional(Schema.Number),
-            limitResponse: Schema.optional(
-              Schema.Struct({
-                queuing: Schema.optional(
-                  Schema.Struct({
-                    handSize: Schema.optional(Schema.Number),
-                    queueLengthLimit: Schema.optional(Schema.Number),
-                    queues: Schema.optional(Schema.Number),
-                  }),
-                ),
-                type: Schema.String,
-              }),
-            ),
-            nominalConcurrencyShares: Schema.optional(Schema.Number),
-          }),
-        ),
-        type: Schema.String,
-      }),
+      Schema.suspend(
+        () => io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationSpecSchema,
+      ),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationStatusSchema,
+      ),
     ),
   });
 export type CreateFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
@@ -307,37 +171,14 @@ export const DeleteFlowcontrolApiserverV1CollectionFlowSchemaOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -375,37 +216,14 @@ export const DeleteFlowcontrolApiserverV1CollectionPriorityLevelConfigurationOut
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -445,37 +263,14 @@ export const DeleteFlowcontrolApiserverV1FlowSchemaOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -514,37 +309,14 @@ export const DeleteFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -579,24 +351,24 @@ export const GetFlowcontrolApiserverAPIGroupOutput =
     kind: Schema.optional(Schema.String),
     name: Schema.String,
     preferredVersion: Schema.optional(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
     serverAddressByClientCIDRs: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
+        Schema.suspend(
+          () =>
+            io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+        ),
       ),
     ),
     versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
   });
 export type GetFlowcontrolApiserverAPIGroupOutput =
@@ -626,18 +398,9 @@ export const GetFlowcontrolApiserverV1APIResourcesOutput =
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
     resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+      ),
     ),
   });
 export type GetFlowcontrolApiserverV1APIResourcesOutput =
@@ -668,146 +431,11 @@ export const ListFlowcontrolApiserverV1FlowSchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            distinguisherMethod: Schema.optional(
-              Schema.Struct({
-                type: Schema.String,
-              }),
-            ),
-            matchingPrecedence: Schema.optional(Schema.Number),
-            priorityLevelConfiguration: Schema.Struct({
-              name: Schema.String,
-            }),
-            rules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  nonResourceRules: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        nonResourceURLs: Schema.Array(Schema.String),
-                        verbs: Schema.Array(Schema.String),
-                      }),
-                    ),
-                  ),
-                  resourceRules: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        apiGroups: Schema.Array(Schema.String),
-                        clusterScope: Schema.optional(Schema.Boolean),
-                        namespaces: Schema.optional(
-                          Schema.Array(Schema.String),
-                        ),
-                        resources: Schema.Array(Schema.String),
-                        verbs: Schema.Array(Schema.String),
-                      }),
-                    ),
-                  ),
-                  subjects: Schema.Array(
-                    Schema.Struct({
-                      group: Schema.optional(
-                        Schema.Struct({
-                          name: Schema.String,
-                        }),
-                      ),
-                      kind: Schema.String,
-                      serviceAccount: Schema.optional(
-                        Schema.Struct({
-                          name: Schema.String,
-                          namespace: Schema.String,
-                        }),
-                      ),
-                      user: Schema.optional(
-                        Schema.Struct({
-                          name: Schema.String,
-                        }),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-        status: Schema.optional(
-          Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  lastTransitionTime: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  reason: Schema.optional(Schema.String),
-                  status: Schema.optional(Schema.String),
-                  type: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_flowcontrol_v1_FlowSchemaSchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListFlowcontrolApiserverV1FlowSchemaOutput =
@@ -838,115 +466,13 @@ export const ListFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            exempt: Schema.optional(
-              Schema.Struct({
-                lendablePercent: Schema.optional(Schema.Number),
-                nominalConcurrencyShares: Schema.optional(Schema.Number),
-              }),
-            ),
-            limited: Schema.optional(
-              Schema.Struct({
-                borrowingLimitPercent: Schema.optional(Schema.Number),
-                lendablePercent: Schema.optional(Schema.Number),
-                limitResponse: Schema.optional(
-                  Schema.Struct({
-                    queuing: Schema.optional(
-                      Schema.Struct({
-                        handSize: Schema.optional(Schema.Number),
-                        queueLengthLimit: Schema.optional(Schema.Number),
-                        queues: Schema.optional(Schema.Number),
-                      }),
-                    ),
-                    type: Schema.String,
-                  }),
-                ),
-                nominalConcurrencyShares: Schema.optional(Schema.Number),
-              }),
-            ),
-            type: Schema.String,
-          }),
-        ),
-        status: Schema.optional(
-          Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  lastTransitionTime: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  reason: Schema.optional(Schema.String),
-                  status: Schema.optional(Schema.String),
-                  type: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
@@ -981,122 +507,15 @@ export const PatchFlowcontrolApiserverV1FlowSchemaOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        distinguisherMethod: Schema.optional(
-          Schema.Struct({
-            type: Schema.String,
-          }),
-        ),
-        matchingPrecedence: Schema.optional(Schema.Number),
-        priorityLevelConfiguration: Schema.Struct({
-          name: Schema.String,
-        }),
-        rules: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              nonResourceRules: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    nonResourceURLs: Schema.Array(Schema.String),
-                    verbs: Schema.Array(Schema.String),
-                  }),
-                ),
-              ),
-              resourceRules: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiGroups: Schema.Array(Schema.String),
-                    clusterScope: Schema.optional(Schema.Boolean),
-                    namespaces: Schema.optional(Schema.Array(Schema.String)),
-                    resources: Schema.Array(Schema.String),
-                    verbs: Schema.Array(Schema.String),
-                  }),
-                ),
-              ),
-              subjects: Schema.Array(
-                Schema.Struct({
-                  group: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                    }),
-                  ),
-                  kind: Schema.String,
-                  serviceAccount: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                      namespace: Schema.String,
-                    }),
-                  ),
-                  user: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_flowcontrol_v1_FlowSchemaSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_flowcontrol_v1_FlowSchemaStatusSchema),
     ),
   });
 export type PatchFlowcontrolApiserverV1FlowSchemaOutput =
@@ -1135,122 +554,15 @@ export const PatchFlowcontrolApiserverV1FlowSchemaStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        distinguisherMethod: Schema.optional(
-          Schema.Struct({
-            type: Schema.String,
-          }),
-        ),
-        matchingPrecedence: Schema.optional(Schema.Number),
-        priorityLevelConfiguration: Schema.Struct({
-          name: Schema.String,
-        }),
-        rules: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              nonResourceRules: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    nonResourceURLs: Schema.Array(Schema.String),
-                    verbs: Schema.Array(Schema.String),
-                  }),
-                ),
-              ),
-              resourceRules: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiGroups: Schema.Array(Schema.String),
-                    clusterScope: Schema.optional(Schema.Boolean),
-                    namespaces: Schema.optional(Schema.Array(Schema.String)),
-                    resources: Schema.Array(Schema.String),
-                    verbs: Schema.Array(Schema.String),
-                  }),
-                ),
-              ),
-              subjects: Schema.Array(
-                Schema.Struct({
-                  group: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                    }),
-                  ),
-                  kind: Schema.String,
-                  serviceAccount: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                      namespace: Schema.String,
-                    }),
-                  ),
-                  user: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_flowcontrol_v1_FlowSchemaSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_flowcontrol_v1_FlowSchemaStatusSchema),
     ),
   });
 export type PatchFlowcontrolApiserverV1FlowSchemaStatusOutput =
@@ -1289,93 +601,19 @@ export const PatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        exempt: Schema.optional(
-          Schema.Struct({
-            lendablePercent: Schema.optional(Schema.Number),
-            nominalConcurrencyShares: Schema.optional(Schema.Number),
-          }),
-        ),
-        limited: Schema.optional(
-          Schema.Struct({
-            borrowingLimitPercent: Schema.optional(Schema.Number),
-            lendablePercent: Schema.optional(Schema.Number),
-            limitResponse: Schema.optional(
-              Schema.Struct({
-                queuing: Schema.optional(
-                  Schema.Struct({
-                    handSize: Schema.optional(Schema.Number),
-                    queueLengthLimit: Schema.optional(Schema.Number),
-                    queues: Schema.optional(Schema.Number),
-                  }),
-                ),
-                type: Schema.String,
-              }),
-            ),
-            nominalConcurrencyShares: Schema.optional(Schema.Number),
-          }),
-        ),
-        type: Schema.String,
-      }),
+      Schema.suspend(
+        () => io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationSpecSchema,
+      ),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationStatusSchema,
+      ),
     ),
   });
 export type PatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
@@ -1414,93 +652,19 @@ export const PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        exempt: Schema.optional(
-          Schema.Struct({
-            lendablePercent: Schema.optional(Schema.Number),
-            nominalConcurrencyShares: Schema.optional(Schema.Number),
-          }),
-        ),
-        limited: Schema.optional(
-          Schema.Struct({
-            borrowingLimitPercent: Schema.optional(Schema.Number),
-            lendablePercent: Schema.optional(Schema.Number),
-            limitResponse: Schema.optional(
-              Schema.Struct({
-                queuing: Schema.optional(
-                  Schema.Struct({
-                    handSize: Schema.optional(Schema.Number),
-                    queueLengthLimit: Schema.optional(Schema.Number),
-                    queues: Schema.optional(Schema.Number),
-                  }),
-                ),
-                type: Schema.String,
-              }),
-            ),
-            nominalConcurrencyShares: Schema.optional(Schema.Number),
-          }),
-        ),
-        type: Schema.String,
-      }),
+      Schema.suspend(
+        () => io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationSpecSchema,
+      ),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationStatusSchema,
+      ),
     ),
   });
 export type PatchFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput =
@@ -1538,122 +702,15 @@ export const ReadFlowcontrolApiserverV1FlowSchemaOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        distinguisherMethod: Schema.optional(
-          Schema.Struct({
-            type: Schema.String,
-          }),
-        ),
-        matchingPrecedence: Schema.optional(Schema.Number),
-        priorityLevelConfiguration: Schema.Struct({
-          name: Schema.String,
-        }),
-        rules: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              nonResourceRules: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    nonResourceURLs: Schema.Array(Schema.String),
-                    verbs: Schema.Array(Schema.String),
-                  }),
-                ),
-              ),
-              resourceRules: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiGroups: Schema.Array(Schema.String),
-                    clusterScope: Schema.optional(Schema.Boolean),
-                    namespaces: Schema.optional(Schema.Array(Schema.String)),
-                    resources: Schema.Array(Schema.String),
-                    verbs: Schema.Array(Schema.String),
-                  }),
-                ),
-              ),
-              subjects: Schema.Array(
-                Schema.Struct({
-                  group: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                    }),
-                  ),
-                  kind: Schema.String,
-                  serviceAccount: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                      namespace: Schema.String,
-                    }),
-                  ),
-                  user: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_flowcontrol_v1_FlowSchemaSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_flowcontrol_v1_FlowSchemaStatusSchema),
     ),
   });
 export type ReadFlowcontrolApiserverV1FlowSchemaOutput =
@@ -1686,122 +743,15 @@ export const ReadFlowcontrolApiserverV1FlowSchemaStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        distinguisherMethod: Schema.optional(
-          Schema.Struct({
-            type: Schema.String,
-          }),
-        ),
-        matchingPrecedence: Schema.optional(Schema.Number),
-        priorityLevelConfiguration: Schema.Struct({
-          name: Schema.String,
-        }),
-        rules: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              nonResourceRules: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    nonResourceURLs: Schema.Array(Schema.String),
-                    verbs: Schema.Array(Schema.String),
-                  }),
-                ),
-              ),
-              resourceRules: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiGroups: Schema.Array(Schema.String),
-                    clusterScope: Schema.optional(Schema.Boolean),
-                    namespaces: Schema.optional(Schema.Array(Schema.String)),
-                    resources: Schema.Array(Schema.String),
-                    verbs: Schema.Array(Schema.String),
-                  }),
-                ),
-              ),
-              subjects: Schema.Array(
-                Schema.Struct({
-                  group: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                    }),
-                  ),
-                  kind: Schema.String,
-                  serviceAccount: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                      namespace: Schema.String,
-                    }),
-                  ),
-                  user: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_flowcontrol_v1_FlowSchemaSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_flowcontrol_v1_FlowSchemaStatusSchema),
     ),
   });
 export type ReadFlowcontrolApiserverV1FlowSchemaStatusOutput =
@@ -1834,93 +784,19 @@ export const ReadFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        exempt: Schema.optional(
-          Schema.Struct({
-            lendablePercent: Schema.optional(Schema.Number),
-            nominalConcurrencyShares: Schema.optional(Schema.Number),
-          }),
-        ),
-        limited: Schema.optional(
-          Schema.Struct({
-            borrowingLimitPercent: Schema.optional(Schema.Number),
-            lendablePercent: Schema.optional(Schema.Number),
-            limitResponse: Schema.optional(
-              Schema.Struct({
-                queuing: Schema.optional(
-                  Schema.Struct({
-                    handSize: Schema.optional(Schema.Number),
-                    queueLengthLimit: Schema.optional(Schema.Number),
-                    queues: Schema.optional(Schema.Number),
-                  }),
-                ),
-                type: Schema.String,
-              }),
-            ),
-            nominalConcurrencyShares: Schema.optional(Schema.Number),
-          }),
-        ),
-        type: Schema.String,
-      }),
+      Schema.suspend(
+        () => io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationSpecSchema,
+      ),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationStatusSchema,
+      ),
     ),
   });
 export type ReadFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
@@ -1953,93 +829,19 @@ export const ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        exempt: Schema.optional(
-          Schema.Struct({
-            lendablePercent: Schema.optional(Schema.Number),
-            nominalConcurrencyShares: Schema.optional(Schema.Number),
-          }),
-        ),
-        limited: Schema.optional(
-          Schema.Struct({
-            borrowingLimitPercent: Schema.optional(Schema.Number),
-            lendablePercent: Schema.optional(Schema.Number),
-            limitResponse: Schema.optional(
-              Schema.Struct({
-                queuing: Schema.optional(
-                  Schema.Struct({
-                    handSize: Schema.optional(Schema.Number),
-                    queueLengthLimit: Schema.optional(Schema.Number),
-                    queues: Schema.optional(Schema.Number),
-                  }),
-                ),
-                type: Schema.String,
-              }),
-            ),
-            nominalConcurrencyShares: Schema.optional(Schema.Number),
-          }),
-        ),
-        type: Schema.String,
-      }),
+      Schema.suspend(
+        () => io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationSpecSchema,
+      ),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationStatusSchema,
+      ),
     ),
   });
 export type ReadFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput =
@@ -2062,6 +864,19 @@ export const ReplaceFlowcontrolApiserverV1FlowSchemaInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(() => io_k8s_api_flowcontrol_v1_FlowSchemaSpecSchema),
+    ),
+    status: Schema.optional(
+      Schema.suspend(() => io_k8s_api_flowcontrol_v1_FlowSchemaStatusSchema),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2077,122 +892,15 @@ export const ReplaceFlowcontrolApiserverV1FlowSchemaOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        distinguisherMethod: Schema.optional(
-          Schema.Struct({
-            type: Schema.String,
-          }),
-        ),
-        matchingPrecedence: Schema.optional(Schema.Number),
-        priorityLevelConfiguration: Schema.Struct({
-          name: Schema.String,
-        }),
-        rules: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              nonResourceRules: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    nonResourceURLs: Schema.Array(Schema.String),
-                    verbs: Schema.Array(Schema.String),
-                  }),
-                ),
-              ),
-              resourceRules: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiGroups: Schema.Array(Schema.String),
-                    clusterScope: Schema.optional(Schema.Boolean),
-                    namespaces: Schema.optional(Schema.Array(Schema.String)),
-                    resources: Schema.Array(Schema.String),
-                    verbs: Schema.Array(Schema.String),
-                  }),
-                ),
-              ),
-              subjects: Schema.Array(
-                Schema.Struct({
-                  group: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                    }),
-                  ),
-                  kind: Schema.String,
-                  serviceAccount: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                      namespace: Schema.String,
-                    }),
-                  ),
-                  user: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_flowcontrol_v1_FlowSchemaSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_flowcontrol_v1_FlowSchemaStatusSchema),
     ),
   });
 export type ReplaceFlowcontrolApiserverV1FlowSchemaOutput =
@@ -2216,6 +924,19 @@ export const ReplaceFlowcontrolApiserverV1FlowSchemaStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(() => io_k8s_api_flowcontrol_v1_FlowSchemaSpecSchema),
+    ),
+    status: Schema.optional(
+      Schema.suspend(() => io_k8s_api_flowcontrol_v1_FlowSchemaStatusSchema),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2231,122 +952,15 @@ export const ReplaceFlowcontrolApiserverV1FlowSchemaStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        distinguisherMethod: Schema.optional(
-          Schema.Struct({
-            type: Schema.String,
-          }),
-        ),
-        matchingPrecedence: Schema.optional(Schema.Number),
-        priorityLevelConfiguration: Schema.Struct({
-          name: Schema.String,
-        }),
-        rules: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              nonResourceRules: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    nonResourceURLs: Schema.Array(Schema.String),
-                    verbs: Schema.Array(Schema.String),
-                  }),
-                ),
-              ),
-              resourceRules: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiGroups: Schema.Array(Schema.String),
-                    clusterScope: Schema.optional(Schema.Boolean),
-                    namespaces: Schema.optional(Schema.Array(Schema.String)),
-                    resources: Schema.Array(Schema.String),
-                    verbs: Schema.Array(Schema.String),
-                  }),
-                ),
-              ),
-              subjects: Schema.Array(
-                Schema.Struct({
-                  group: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                    }),
-                  ),
-                  kind: Schema.String,
-                  serviceAccount: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                      namespace: Schema.String,
-                    }),
-                  ),
-                  user: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_flowcontrol_v1_FlowSchemaSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_flowcontrol_v1_FlowSchemaStatusSchema),
     ),
   });
 export type ReplaceFlowcontrolApiserverV1FlowSchemaStatusOutput =
@@ -2370,6 +984,23 @@ export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationSpecSchema,
+      ),
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2385,93 +1016,19 @@ export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        exempt: Schema.optional(
-          Schema.Struct({
-            lendablePercent: Schema.optional(Schema.Number),
-            nominalConcurrencyShares: Schema.optional(Schema.Number),
-          }),
-        ),
-        limited: Schema.optional(
-          Schema.Struct({
-            borrowingLimitPercent: Schema.optional(Schema.Number),
-            lendablePercent: Schema.optional(Schema.Number),
-            limitResponse: Schema.optional(
-              Schema.Struct({
-                queuing: Schema.optional(
-                  Schema.Struct({
-                    handSize: Schema.optional(Schema.Number),
-                    queueLengthLimit: Schema.optional(Schema.Number),
-                    queues: Schema.optional(Schema.Number),
-                  }),
-                ),
-                type: Schema.String,
-              }),
-            ),
-            nominalConcurrencyShares: Schema.optional(Schema.Number),
-          }),
-        ),
-        type: Schema.String,
-      }),
+      Schema.suspend(
+        () => io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationSpecSchema,
+      ),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationStatusSchema,
+      ),
     ),
   });
 export type ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
@@ -2495,6 +1052,23 @@ export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusInput 
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationSpecSchema,
+      ),
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2510,93 +1084,19 @@ export const ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        exempt: Schema.optional(
-          Schema.Struct({
-            lendablePercent: Schema.optional(Schema.Number),
-            nominalConcurrencyShares: Schema.optional(Schema.Number),
-          }),
-        ),
-        limited: Schema.optional(
-          Schema.Struct({
-            borrowingLimitPercent: Schema.optional(Schema.Number),
-            lendablePercent: Schema.optional(Schema.Number),
-            limitResponse: Schema.optional(
-              Schema.Struct({
-                queuing: Schema.optional(
-                  Schema.Struct({
-                    handSize: Schema.optional(Schema.Number),
-                    queueLengthLimit: Schema.optional(Schema.Number),
-                    queues: Schema.optional(Schema.Number),
-                  }),
-                ),
-                type: Schema.String,
-              }),
-            ),
-            nominalConcurrencyShares: Schema.optional(Schema.Number),
-          }),
-        ),
-        type: Schema.String,
-      }),
+      Schema.suspend(
+        () => io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationSpecSchema,
+      ),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_flowcontrol_v1_PriorityLevelConfigurationStatusSchema,
+      ),
     ),
   });
 export type ReplaceFlowcontrolApiserverV1PriorityLevelConfigurationStatusOutput =
@@ -2631,7 +1131,9 @@ export type WatchFlowcontrolApiserverV1FlowSchemaInput =
 // Output Schema
 export const WatchFlowcontrolApiserverV1FlowSchemaOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchFlowcontrolApiserverV1FlowSchemaOutput =
@@ -2660,7 +1162,9 @@ export type WatchFlowcontrolApiserverV1FlowSchemaListInput =
 // Output Schema
 export const WatchFlowcontrolApiserverV1FlowSchemaListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchFlowcontrolApiserverV1FlowSchemaListOutput =
@@ -2689,7 +1193,9 @@ export type WatchFlowcontrolApiserverV1PriorityLevelConfigurationInput =
 // Output Schema
 export const WatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchFlowcontrolApiserverV1PriorityLevelConfigurationOutput =
@@ -2718,7 +1224,9 @@ export type WatchFlowcontrolApiserverV1PriorityLevelConfigurationListInput =
 // Output Schema
 export const WatchFlowcontrolApiserverV1PriorityLevelConfigurationListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchFlowcontrolApiserverV1PriorityLevelConfigurationListOutput =

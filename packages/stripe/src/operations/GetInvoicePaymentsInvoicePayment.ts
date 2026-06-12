@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  invoices_payments_invoice_payment_associated_paymentSchema,
+  invoices_payments_invoice_payment_status_transitionsSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -29,17 +33,13 @@ export const GetInvoicePaymentsInvoicePaymentOutput =
     is_default: Schema.Boolean,
     livemode: Schema.Boolean,
     object: Schema.Literals(["invoice_payment"]),
-    payment: Schema.Struct({
-      charge: Schema.optional(Schema.Unknown),
-      payment_intent: Schema.optional(Schema.Unknown),
-      payment_record: Schema.optional(Schema.Unknown),
-      type: Schema.Literals(["charge", "payment_intent", "payment_record"]),
-    }),
+    payment: Schema.suspend(
+      () => invoices_payments_invoice_payment_associated_paymentSchema,
+    ),
     status: Schema.String,
-    status_transitions: Schema.Struct({
-      canceled_at: Schema.NullOr(Schema.Number),
-      paid_at: Schema.NullOr(Schema.Number),
-    }),
+    status_transitions: Schema.suspend(
+      () => invoices_payments_invoice_payment_status_transitionsSchema,
+    ),
   });
 export type GetInvoicePaymentsInvoicePaymentOutput =
   typeof GetInvoicePaymentsInvoicePaymentOutput.Type;

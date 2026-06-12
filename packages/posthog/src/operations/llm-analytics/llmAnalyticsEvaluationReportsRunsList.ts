@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { EvaluationReportRunSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -26,26 +27,7 @@ export const LlmAnalyticsEvaluationReportsRunsListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          report: Schema.optional(Schema.String),
-          content: Schema.optional(Schema.Unknown),
-          metadata: Schema.optional(Schema.Unknown),
-          period_start: Schema.optional(Schema.String),
-          period_end: Schema.optional(Schema.String),
-          delivery_status: Schema.optional(
-            Schema.Literals([
-              "pending",
-              "delivered",
-              "partial_failure",
-              "failed",
-            ]),
-          ),
-          delivery_errors: Schema.optional(Schema.Unknown),
-          created_at: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => EvaluationReportRunSchema)),
     ),
   });
 export type LlmAnalyticsEvaluationReportsRunsListOutput =

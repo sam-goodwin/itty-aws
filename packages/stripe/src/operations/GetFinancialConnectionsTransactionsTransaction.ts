@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { bank_connections_resource_transaction_resource_status_transitionsSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -28,10 +29,10 @@ export const GetFinancialConnectionsTransactionsTransactionOutput =
     livemode: Schema.Boolean,
     object: Schema.Literals(["financial_connections.transaction"]),
     status: Schema.Literals(["pending", "posted", "void"]),
-    status_transitions: Schema.Struct({
-      posted_at: Schema.NullOr(Schema.Number),
-      void_at: Schema.NullOr(Schema.Number),
-    }),
+    status_transitions: Schema.suspend(
+      () =>
+        bank_connections_resource_transaction_resource_status_transitionsSchema,
+    ),
     transacted_at: Schema.Number,
     transaction_refresh: Schema.String,
     updated: Schema.Number,

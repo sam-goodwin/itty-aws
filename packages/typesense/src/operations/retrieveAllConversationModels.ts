@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ConversationModelSchemaSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -13,9 +14,7 @@ export type RetrieveAllConversationModelsInput =
 // Output Schema
 export const RetrieveAllConversationModelsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-    }),
+    Schema.suspend(() => ConversationModelSchemaSchema),
   );
 export type RetrieveAllConversationModelsOutput =
   typeof RetrieveAllConversationModelsOutput.Type;

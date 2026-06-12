@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { InterestingNoteSchema, SummaryBulletSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -33,20 +34,10 @@ export const LlmAnalyticsSummarizationCreateOutput =
         title: Schema.optional(Schema.String),
         flow_diagram: Schema.optional(Schema.String),
         summary_bullets: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              text: Schema.optional(Schema.String),
-              line_refs: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => SummaryBulletSchema)),
         ),
         interesting_notes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              text: Schema.optional(Schema.String),
-              line_refs: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => InterestingNoteSchema)),
         ),
       }),
     ),

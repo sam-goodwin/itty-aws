@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { treasury_debit_reversalSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -28,27 +29,7 @@ export type GetTreasuryDebitReversalsInput =
 // Output Schema
 export const GetTreasuryDebitReversalsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        amount: Schema.Number,
-        created: Schema.Number,
-        currency: Schema.String,
-        financial_account: Schema.NullOr(Schema.String),
-        hosted_regulatory_receipt_url: Schema.NullOr(Schema.String),
-        id: Schema.String,
-        linked_flows: Schema.Unknown,
-        livemode: Schema.Boolean,
-        metadata: Schema.Record(Schema.String, Schema.String),
-        network: Schema.Literals(["ach", "card"]),
-        object: Schema.Literals(["treasury.debit_reversal"]),
-        received_debit: Schema.String,
-        status: Schema.Literals(["failed", "processing", "succeeded"]),
-        status_transitions: Schema.Struct({
-          completed_at: Schema.NullOr(Schema.Number),
-        }),
-        transaction: Schema.Unknown,
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => treasury_debit_reversalSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

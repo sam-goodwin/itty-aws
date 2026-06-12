@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { customer_balance_transactionSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -26,36 +27,7 @@ export type GetCustomersCustomerBalanceTransactionsInput =
 export const GetCustomersCustomerBalanceTransactionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
-      Schema.Struct({
-        amount: Schema.Number,
-        checkout_session: Schema.Unknown,
-        created: Schema.Number,
-        credit_note: Schema.Unknown,
-        currency: Schema.String,
-        customer: Schema.Unknown,
-        customer_account: Schema.NullOr(Schema.String),
-        description: Schema.NullOr(Schema.String),
-        ending_balance: Schema.Number,
-        id: Schema.String,
-        invoice: Schema.Unknown,
-        livemode: Schema.Boolean,
-        metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-        object: Schema.Literals(["customer_balance_transaction"]),
-        type: Schema.Literals([
-          "adjustment",
-          "applied_to_invoice",
-          "checkout_session_subscription_payment",
-          "checkout_session_subscription_payment_canceled",
-          "credit_note",
-          "initial",
-          "invoice_overpaid",
-          "invoice_too_large",
-          "invoice_too_small",
-          "migration",
-          "unapplied_from_invoice",
-          "unspent_receiver_credit",
-        ]),
-      }),
+      Schema.suspend(() => customer_balance_transactionSchema),
     ),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),

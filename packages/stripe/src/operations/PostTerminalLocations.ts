@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { addressSchema, legal_entity_japan_addressSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -56,35 +57,12 @@ export type PostTerminalLocationsInput = typeof PostTerminalLocationsInput.Type;
 // Output Schema
 export const PostTerminalLocationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    address: Schema.Struct({
-      city: Schema.NullOr(Schema.String),
-      country: Schema.NullOr(Schema.String),
-      line1: Schema.NullOr(Schema.String),
-      line2: Schema.NullOr(Schema.String),
-      postal_code: Schema.NullOr(Schema.String),
-      state: Schema.NullOr(Schema.String),
-    }),
+    address: Schema.suspend(() => addressSchema),
     address_kana: Schema.optional(
-      Schema.Struct({
-        city: Schema.NullOr(Schema.String),
-        country: Schema.NullOr(Schema.String),
-        line1: Schema.NullOr(Schema.String),
-        line2: Schema.NullOr(Schema.String),
-        postal_code: Schema.NullOr(Schema.String),
-        state: Schema.NullOr(Schema.String),
-        town: Schema.NullOr(Schema.String),
-      }),
+      Schema.suspend(() => legal_entity_japan_addressSchema),
     ),
     address_kanji: Schema.optional(
-      Schema.Struct({
-        city: Schema.NullOr(Schema.String),
-        country: Schema.NullOr(Schema.String),
-        line1: Schema.NullOr(Schema.String),
-        line2: Schema.NullOr(Schema.String),
-        postal_code: Schema.NullOr(Schema.String),
-        state: Schema.NullOr(Schema.String),
-        town: Schema.NullOr(Schema.String),
-      }),
+      Schema.suspend(() => legal_entity_japan_addressSchema),
     ),
     configuration_overrides: Schema.optional(Schema.String),
     display_name: Schema.String,

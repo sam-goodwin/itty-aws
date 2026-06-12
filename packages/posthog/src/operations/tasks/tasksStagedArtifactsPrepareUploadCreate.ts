@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  TaskStagedArtifactPrepareUploadResponseSchema,
+  TaskStagedArtifactPrepareUploadSchema,
+} from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -9,25 +13,7 @@ export const TasksStagedArtifactsPrepareUploadCreateInput =
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     artifacts: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(
-            Schema.Literals([
-              "plan",
-              "context",
-              "reference",
-              "output",
-              "artifact",
-              "tree_snapshot",
-              "user_attachment",
-            ]),
-          ),
-          source: Schema.optional(Schema.String),
-          size: Schema.optional(Schema.Number),
-          content_type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TaskStagedArtifactPrepareUploadSchema)),
     ),
   }).pipe(
     T.Http({
@@ -43,24 +29,7 @@ export const TasksStagedArtifactsPrepareUploadCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     artifacts: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          source: Schema.optional(Schema.String),
-          size: Schema.optional(Schema.Number),
-          content_type: Schema.optional(Schema.String),
-          storage_path: Schema.optional(Schema.String),
-          expires_in: Schema.optional(Schema.Number),
-          presigned_post: Schema.optional(
-            Schema.Struct({
-              url: Schema.optional(Schema.String),
-              fields: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-        }),
+        Schema.suspend(() => TaskStagedArtifactPrepareUploadResponseSchema),
       ),
     ),
   });

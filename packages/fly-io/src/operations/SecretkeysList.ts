@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { SecretKeySchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
@@ -14,15 +15,7 @@ export type SecretkeysListInput = typeof SecretkeysListInput.Type;
 // Output Schema
 export const SecretkeysListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   secret_keys: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        created_at: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        public_key: Schema.optional(Schema.Array(Schema.Number)),
-        type: Schema.optional(Schema.String),
-        updated_at: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => SecretKeySchema)),
   ),
 });
 export type SecretkeysListOutput = typeof SecretkeysListOutput.Type;

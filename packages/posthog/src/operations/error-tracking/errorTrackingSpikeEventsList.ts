@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ErrorTrackingSpikeEventSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -25,21 +26,7 @@ export const ErrorTrackingSpikeEventsListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          issue: Schema.optional(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.NullOr(Schema.String)),
-              description: Schema.optional(Schema.NullOr(Schema.String)),
-            }),
-          ),
-          detected_at: Schema.optional(Schema.String),
-          computed_baseline: Schema.optional(Schema.Number),
-          current_bucket_value: Schema.optional(Schema.Number),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ErrorTrackingSpikeEventSchema)),
     ),
   });
 export type ErrorTrackingSpikeEventsListOutput =

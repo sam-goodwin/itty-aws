@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { EndpointColumnSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
@@ -70,12 +71,7 @@ export const EndpointsRetrieveOutput =
       Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
     ),
     columns: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => EndpointColumnSchema)),
     ),
     version: Schema.optional(Schema.Number),
     version_id: Schema.optional(Schema.String),

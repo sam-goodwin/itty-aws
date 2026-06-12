@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  EvaluationPatternSchema,
+  EvaluationSummaryStatisticsSchema,
+} from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -25,43 +29,17 @@ export const LlmAnalyticsEvaluationSummaryCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     overall_assessment: Schema.optional(Schema.String),
     pass_patterns: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          title: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          frequency: Schema.optional(Schema.String),
-          example_generation_ids: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => EvaluationPatternSchema)),
     ),
     fail_patterns: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          title: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          frequency: Schema.optional(Schema.String),
-          example_generation_ids: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => EvaluationPatternSchema)),
     ),
     na_patterns: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          title: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          frequency: Schema.optional(Schema.String),
-          example_generation_ids: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => EvaluationPatternSchema)),
     ),
     recommendations: Schema.optional(Schema.Array(Schema.String)),
     statistics: Schema.optional(
-      Schema.Struct({
-        total_analyzed: Schema.optional(Schema.Number),
-        pass_count: Schema.optional(Schema.Number),
-        fail_count: Schema.optional(Schema.Number),
-        na_count: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => EvaluationSummaryStatisticsSchema),
     ),
   });
 export type LlmAnalyticsEvaluationSummaryCreateOutput =

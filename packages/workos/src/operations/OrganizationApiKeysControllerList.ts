@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ApiKeySchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
@@ -21,26 +22,7 @@ export type OrganizationApiKeysControllerListInput =
 export const OrganizationApiKeysControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
-    data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          object: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          owner: Schema.optional(
-            Schema.Struct({
-              type: Schema.String,
-              id: Schema.String,
-            }),
-          ),
-          name: Schema.optional(Schema.String),
-          obfuscated_value: Schema.optional(Schema.String),
-          last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
-          permissions: Schema.optional(Schema.Array(Schema.String)),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    data: Schema.optional(Schema.Array(Schema.suspend(() => ApiKeySchema))),
     list_metadata: Schema.optional(
       Schema.Struct({
         before: Schema.NullOr(Schema.String),

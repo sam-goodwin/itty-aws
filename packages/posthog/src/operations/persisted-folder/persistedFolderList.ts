@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { PersistedFolderSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -24,18 +25,7 @@ export const PersistedFolderListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          type: Schema.optional(
-            Schema.Literals(["home", "pinned", "custom_products"]),
-          ),
-          protocol: Schema.optional(Schema.String),
-          path: Schema.optional(Schema.String),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PersistedFolderSchema)),
     ),
   });
 export type PersistedFolderListOutput = typeof PersistedFolderListOutput.Type;

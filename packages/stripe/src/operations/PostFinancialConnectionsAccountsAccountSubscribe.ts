@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { bank_connections_resource_account_number_detailsSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -24,15 +25,9 @@ export const PostFinancialConnectionsAccountsAccountSubscribeOutput =
     account_holder: Schema.Unknown,
     account_numbers: Schema.NullOr(
       Schema.Array(
-        Schema.Struct({
-          expected_expiry_date: Schema.NullOr(Schema.Number),
-          identifier_type: Schema.Literals([
-            "account_number",
-            "tokenized_account_number",
-          ]),
-          status: Schema.Literals(["deactivated", "transactable"]),
-          supported_networks: Schema.Array(Schema.Literals(["ach"])),
-        }),
+        Schema.suspend(
+          () => bank_connections_resource_account_number_detailsSchema,
+        ),
       ),
     ),
     balance: Schema.Unknown,

@@ -8,12 +8,55 @@ import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
+import {
+  io_k8s_api_admissionregistration_v1_MutatingAdmissionPolicyBindingSchema,
+  io_k8s_api_admissionregistration_v1_MutatingAdmissionPolicyBindingSpecSchema,
+  io_k8s_api_admissionregistration_v1_MutatingAdmissionPolicySchema,
+  io_k8s_api_admissionregistration_v1_MutatingAdmissionPolicySpecSchema,
+  io_k8s_api_admissionregistration_v1_MutatingWebhookConfigurationSchema,
+  io_k8s_api_admissionregistration_v1_MutatingWebhookSchema,
+  io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicyBindingSchema,
+  io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicyBindingSpecSchema,
+  io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicySchema,
+  io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicySpecSchema,
+  io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicyStatusSchema,
+  io_k8s_api_admissionregistration_v1_ValidatingWebhookConfigurationSchema,
+  io_k8s_api_admissionregistration_v1_ValidatingWebhookSchema,
+  io_k8s_api_admissionregistration_v1alpha1_MutatingAdmissionPolicyBindingSchema,
+  io_k8s_api_admissionregistration_v1alpha1_MutatingAdmissionPolicyBindingSpecSchema,
+  io_k8s_api_admissionregistration_v1alpha1_MutatingAdmissionPolicySchema,
+  io_k8s_api_admissionregistration_v1alpha1_MutatingAdmissionPolicySpecSchema,
+  io_k8s_api_admissionregistration_v1beta1_MutatingAdmissionPolicyBindingSchema,
+  io_k8s_api_admissionregistration_v1beta1_MutatingAdmissionPolicyBindingSpecSchema,
+  io_k8s_api_admissionregistration_v1beta1_MutatingAdmissionPolicySchema,
+  io_k8s_api_admissionregistration_v1beta1_MutatingAdmissionPolicySpecSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+  io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+} from "./_schemas.ts";
 
 // Input Schema
 export const CreateAdmissionregistrationV1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_MutatingAdmissionPolicySpecSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -29,154 +72,15 @@ export const CreateAdmissionregistrationV1MutatingAdmissionPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        failurePolicy: Schema.optional(Schema.String),
-        matchConditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-        matchConstraints: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        mutations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              applyConfiguration: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              jsonPatch: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              patchType: Schema.String,
-            }),
-          ),
-        ),
-        paramKind: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-          }),
-        ),
-        reinvocationPolicy: Schema.optional(Schema.String),
-        variables: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_MutatingAdmissionPolicySpecSchema,
+      ),
     ),
   });
 export type CreateAdmissionregistrationV1MutatingAdmissionPolicyOutput =
@@ -200,6 +104,19 @@ export const CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_MutatingAdmissionPolicyBindingSpecSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -215,137 +132,15 @@ export const CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        matchResources: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        paramRef: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            parameterNotFoundAction: Schema.optional(Schema.String),
-            selector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-          }),
-        ),
-        policyName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_MutatingAdmissionPolicyBindingSpecSchema,
+      ),
     ),
   });
 export type CreateAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
@@ -371,6 +166,20 @@ export const CreateAdmissionregistrationV1MutatingWebhookConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    webhooks: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => io_k8s_api_admissionregistration_v1_MutatingWebhookSchema,
+        ),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -386,123 +195,15 @@ export const CreateAdmissionregistrationV1MutatingWebhookConfigurationOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     webhooks: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          admissionReviewVersions: Schema.Array(Schema.String),
-          clientConfig: Schema.Struct({
-            caBundle: Schema.optional(Schema.String),
-            service: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                namespace: Schema.String,
-                path: Schema.optional(Schema.String),
-                port: Schema.optional(Schema.Number),
-              }),
-            ),
-            url: Schema.optional(Schema.String),
-          }),
-          failurePolicy: Schema.optional(Schema.String),
-          matchConditions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                expression: Schema.String,
-                name: Schema.String,
-              }),
-            ),
-          ),
-          matchPolicy: Schema.optional(Schema.String),
-          name: Schema.String,
-          namespaceSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          objectSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          reinvocationPolicy: Schema.optional(Schema.String),
-          rules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                operations: Schema.optional(Schema.Array(Schema.String)),
-                resources: Schema.optional(Schema.Array(Schema.String)),
-                scope: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          sideEffects: Schema.String,
-          timeoutSeconds: Schema.optional(Schema.Number),
-        }),
+        Schema.suspend(
+          () => io_k8s_api_admissionregistration_v1_MutatingWebhookSchema,
+        ),
       ),
     ),
   });
@@ -528,6 +229,25 @@ export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicySpecSchema,
+      ),
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicyStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -543,183 +263,21 @@ export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        auditAnnotations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              key: Schema.String,
-              valueExpression: Schema.String,
-            }),
-          ),
-        ),
-        failurePolicy: Schema.optional(Schema.String),
-        matchConditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-        matchConstraints: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        paramKind: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-          }),
-        ),
-        validations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              message: Schema.optional(Schema.String),
-              messageExpression: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        variables: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicySpecSchema,
+      ),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        observedGeneration: Schema.optional(Schema.Number),
-        typeChecking: Schema.optional(
-          Schema.Struct({
-            expressionWarnings: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  fieldRef: Schema.String,
-                  warning: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicyStatusSchema,
+      ),
     ),
   });
 export type CreateAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
@@ -743,6 +301,17 @@ export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput 
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(
+      () =>
+        io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicyBindingSpecSchema,
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -758,137 +327,14 @@ export const CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      matchResources: Schema.optional(
-        Schema.Struct({
-          excludeResourceRules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                operations: Schema.optional(Schema.Array(Schema.String)),
-                resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                resources: Schema.optional(Schema.Array(Schema.String)),
-                scope: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          matchPolicy: Schema.optional(Schema.String),
-          namespaceSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          objectSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          resourceRules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                operations: Schema.optional(Schema.Array(Schema.String)),
-                resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                resources: Schema.optional(Schema.Array(Schema.String)),
-                scope: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      paramRef: Schema.optional(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          parameterNotFoundAction: Schema.optional(Schema.String),
-          selector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-        }),
-      ),
-      policyName: Schema.String,
-      validationActions: Schema.Array(Schema.String),
-    }),
+    spec: Schema.suspend(
+      () =>
+        io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicyBindingSpecSchema,
+    ),
   });
 export type CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
   typeof CreateAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput.Type;
@@ -913,6 +359,20 @@ export const CreateAdmissionregistrationV1ValidatingWebhookConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    webhooks: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => io_k8s_api_admissionregistration_v1_ValidatingWebhookSchema,
+        ),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -928,122 +388,15 @@ export const CreateAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     webhooks: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          admissionReviewVersions: Schema.Array(Schema.String),
-          clientConfig: Schema.Struct({
-            caBundle: Schema.optional(Schema.String),
-            service: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                namespace: Schema.String,
-                path: Schema.optional(Schema.String),
-                port: Schema.optional(Schema.Number),
-              }),
-            ),
-            url: Schema.optional(Schema.String),
-          }),
-          failurePolicy: Schema.optional(Schema.String),
-          matchConditions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                expression: Schema.String,
-                name: Schema.String,
-              }),
-            ),
-          ),
-          matchPolicy: Schema.optional(Schema.String),
-          name: Schema.String,
-          namespaceSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          objectSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          rules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                operations: Schema.optional(Schema.Array(Schema.String)),
-                resources: Schema.optional(Schema.Array(Schema.String)),
-                scope: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          sideEffects: Schema.String,
-          timeoutSeconds: Schema.optional(Schema.Number),
-        }),
+        Schema.suspend(
+          () => io_k8s_api_admissionregistration_v1_ValidatingWebhookSchema,
+        ),
       ),
     ),
   });
@@ -1070,6 +423,19 @@ export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1alpha1_MutatingAdmissionPolicySpecSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1085,154 +451,15 @@ export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        failurePolicy: Schema.optional(Schema.String),
-        matchConditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-        matchConstraints: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        mutations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              applyConfiguration: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              jsonPatch: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              patchType: Schema.String,
-            }),
-          ),
-        ),
-        paramKind: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-          }),
-        ),
-        reinvocationPolicy: Schema.optional(Schema.String),
-        variables: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1alpha1_MutatingAdmissionPolicySpecSchema,
+      ),
     ),
   });
 export type CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
@@ -1258,6 +485,19 @@ export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingIn
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1alpha1_MutatingAdmissionPolicyBindingSpecSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1273,137 +513,15 @@ export const CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOu
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        matchResources: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        paramRef: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            parameterNotFoundAction: Schema.optional(Schema.String),
-            selector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-          }),
-        ),
-        policyName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1alpha1_MutatingAdmissionPolicyBindingSpecSchema,
+      ),
     ),
   });
 export type CreateAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
@@ -1429,6 +547,19 @@ export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1beta1_MutatingAdmissionPolicySpecSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1444,154 +575,15 @@ export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        failurePolicy: Schema.optional(Schema.String),
-        matchConditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-        matchConstraints: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        mutations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              applyConfiguration: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              jsonPatch: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              patchType: Schema.String,
-            }),
-          ),
-        ),
-        paramKind: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-          }),
-        ),
-        reinvocationPolicy: Schema.optional(Schema.String),
-        variables: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1beta1_MutatingAdmissionPolicySpecSchema,
+      ),
     ),
   });
 export type CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
@@ -1616,6 +608,19 @@ export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInp
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1beta1_MutatingAdmissionPolicyBindingSpecSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1631,137 +636,15 @@ export const CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOut
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        matchResources: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        paramRef: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            parameterNotFoundAction: Schema.optional(Schema.String),
-            selector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-          }),
-        ),
-        policyName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1beta1_MutatingAdmissionPolicyBindingSpecSchema,
+      ),
     ),
   });
 export type CreateAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
@@ -1801,37 +684,14 @@ export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyOutpu
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1871,37 +731,14 @@ export const DeleteAdmissionregistrationV1CollectionMutatingAdmissionPolicyBindi
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1941,37 +778,14 @@ export const DeleteAdmissionregistrationV1CollectionMutatingWebhookConfiguration
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -2011,37 +825,14 @@ export const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyOut
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -2081,37 +872,14 @@ export const DeleteAdmissionregistrationV1CollectionValidatingAdmissionPolicyBin
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -2151,37 +919,14 @@ export const DeleteAdmissionregistrationV1CollectionValidatingWebhookConfigurati
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -2221,37 +966,14 @@ export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -2290,37 +1012,14 @@ export const DeleteAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -2361,37 +1060,14 @@ export const DeleteAdmissionregistrationV1MutatingWebhookConfigurationOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -2431,37 +1107,14 @@ export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -2500,37 +1153,14 @@ export const DeleteAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -2571,37 +1201,14 @@ export const DeleteAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -2642,37 +1249,14 @@ export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolic
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -2712,37 +1296,14 @@ export const DeleteAdmissionregistrationV1alpha1CollectionMutatingAdmissionPolic
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -2782,37 +1343,14 @@ export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -2853,37 +1391,14 @@ export const DeleteAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOu
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -2924,37 +1439,14 @@ export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicy
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -2994,37 +1486,14 @@ export const DeleteAdmissionregistrationV1beta1CollectionMutatingAdmissionPolicy
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -3064,37 +1533,14 @@ export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -3134,37 +1580,14 @@ export const DeleteAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOut
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -3201,24 +1624,24 @@ export const GetAdmissionregistrationAPIGroupOutput =
     kind: Schema.optional(Schema.String),
     name: Schema.String,
     preferredVersion: Schema.optional(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
     serverAddressByClientCIDRs: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
+        Schema.suspend(
+          () =>
+            io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+        ),
       ),
     ),
     versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
   });
 export type GetAdmissionregistrationAPIGroupOutput =
@@ -3248,18 +1671,9 @@ export const GetAdmissionregistrationV1APIResourcesOutput =
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
     resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+      ),
     ),
   });
 export type GetAdmissionregistrationV1APIResourcesOutput =
@@ -3292,18 +1706,9 @@ export const GetAdmissionregistrationV1alpha1APIResourcesOutput =
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
     resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+      ),
     ),
   });
 export type GetAdmissionregistrationV1alpha1APIResourcesOutput =
@@ -3336,18 +1741,9 @@ export const GetAdmissionregistrationV1beta1APIResourcesOutput =
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
     resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+      ),
     ),
   });
 export type GetAdmissionregistrationV1beta1APIResourcesOutput =
@@ -3378,180 +1774,13 @@ export const ListAdmissionregistrationV1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            failurePolicy: Schema.optional(Schema.String),
-            matchConditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  expression: Schema.String,
-                  name: Schema.String,
-                }),
-              ),
-            ),
-            matchConstraints: Schema.optional(
-              Schema.Struct({
-                excludeResourceRules: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                      apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                      operations: Schema.optional(Schema.Array(Schema.String)),
-                      resourceNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      resources: Schema.optional(Schema.Array(Schema.String)),
-                      scope: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                matchPolicy: Schema.optional(Schema.String),
-                namespaceSelector: Schema.optional(
-                  Schema.Struct({
-                    matchExpressions: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                    matchLabels: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                objectSelector: Schema.optional(
-                  Schema.Struct({
-                    matchExpressions: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                    matchLabels: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                resourceRules: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                      apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                      operations: Schema.optional(Schema.Array(Schema.String)),
-                      resourceNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      resources: Schema.optional(Schema.Array(Schema.String)),
-                      scope: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            mutations: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  applyConfiguration: Schema.optional(
-                    Schema.Struct({
-                      expression: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  jsonPatch: Schema.optional(
-                    Schema.Struct({
-                      expression: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  patchType: Schema.String,
-                }),
-              ),
-            ),
-            paramKind: Schema.optional(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-              }),
-            ),
-            reinvocationPolicy: Schema.optional(Schema.String),
-            variables: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  expression: Schema.String,
-                  name: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_admissionregistration_v1_MutatingAdmissionPolicySchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListAdmissionregistrationV1MutatingAdmissionPolicyOutput =
@@ -3582,163 +1811,14 @@ export const ListAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            matchResources: Schema.optional(
-              Schema.Struct({
-                excludeResourceRules: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                      apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                      operations: Schema.optional(Schema.Array(Schema.String)),
-                      resourceNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      resources: Schema.optional(Schema.Array(Schema.String)),
-                      scope: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                matchPolicy: Schema.optional(Schema.String),
-                namespaceSelector: Schema.optional(
-                  Schema.Struct({
-                    matchExpressions: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                    matchLabels: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                objectSelector: Schema.optional(
-                  Schema.Struct({
-                    matchExpressions: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                    matchLabels: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                resourceRules: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                      apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                      operations: Schema.optional(Schema.Array(Schema.String)),
-                      resourceNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      resources: Schema.optional(Schema.Array(Schema.String)),
-                      scope: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            paramRef: Schema.optional(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                namespace: Schema.optional(Schema.String),
-                parameterNotFoundAction: Schema.optional(Schema.String),
-                selector: Schema.optional(
-                  Schema.Struct({
-                    matchExpressions: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                    matchLabels: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            policyName: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_MutatingAdmissionPolicyBindingSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
@@ -3770,146 +1850,14 @@ export const ListAdmissionregistrationV1MutatingWebhookConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        webhooks: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              admissionReviewVersions: Schema.Array(Schema.String),
-              clientConfig: Schema.Struct({
-                caBundle: Schema.optional(Schema.String),
-                service: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.String,
-                    namespace: Schema.String,
-                    path: Schema.optional(Schema.String),
-                    port: Schema.optional(Schema.Number),
-                  }),
-                ),
-                url: Schema.optional(Schema.String),
-              }),
-              failurePolicy: Schema.optional(Schema.String),
-              matchConditions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    expression: Schema.String,
-                    name: Schema.String,
-                  }),
-                ),
-              ),
-              matchPolicy: Schema.optional(Schema.String),
-              name: Schema.String,
-              namespaceSelector: Schema.optional(
-                Schema.Struct({
-                  matchExpressions: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        key: Schema.String,
-                        operator: Schema.String,
-                        values: Schema.optional(Schema.Array(Schema.String)),
-                      }),
-                    ),
-                  ),
-                  matchLabels: Schema.optional(
-                    Schema.Record(Schema.String, Schema.String),
-                  ),
-                }),
-              ),
-              objectSelector: Schema.optional(
-                Schema.Struct({
-                  matchExpressions: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        key: Schema.String,
-                        operator: Schema.String,
-                        values: Schema.optional(Schema.Array(Schema.String)),
-                      }),
-                    ),
-                  ),
-                  matchLabels: Schema.optional(
-                    Schema.Record(Schema.String, Schema.String),
-                  ),
-                }),
-              ),
-              reinvocationPolicy: Schema.optional(Schema.String),
-              rules: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                    apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                    operations: Schema.optional(Schema.Array(Schema.String)),
-                    resources: Schema.optional(Schema.Array(Schema.String)),
-                    scope: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              sideEffects: Schema.String,
-              timeoutSeconds: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_MutatingWebhookConfigurationSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListAdmissionregistrationV1MutatingWebhookConfigurationOutput =
@@ -3940,209 +1888,14 @@ export const ListAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            auditAnnotations: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  key: Schema.String,
-                  valueExpression: Schema.String,
-                }),
-              ),
-            ),
-            failurePolicy: Schema.optional(Schema.String),
-            matchConditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  expression: Schema.String,
-                  name: Schema.String,
-                }),
-              ),
-            ),
-            matchConstraints: Schema.optional(
-              Schema.Struct({
-                excludeResourceRules: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                      apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                      operations: Schema.optional(Schema.Array(Schema.String)),
-                      resourceNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      resources: Schema.optional(Schema.Array(Schema.String)),
-                      scope: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                matchPolicy: Schema.optional(Schema.String),
-                namespaceSelector: Schema.optional(
-                  Schema.Struct({
-                    matchExpressions: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                    matchLabels: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                objectSelector: Schema.optional(
-                  Schema.Struct({
-                    matchExpressions: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                    matchLabels: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                resourceRules: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                      apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                      operations: Schema.optional(Schema.Array(Schema.String)),
-                      resourceNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      resources: Schema.optional(Schema.Array(Schema.String)),
-                      scope: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            paramKind: Schema.optional(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-              }),
-            ),
-            validations: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  expression: Schema.String,
-                  message: Schema.optional(Schema.String),
-                  messageExpression: Schema.optional(Schema.String),
-                  reason: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            variables: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  expression: Schema.String,
-                  name: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-        status: Schema.optional(
-          Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  lastTransitionTime: Schema.String,
-                  message: Schema.String,
-                  observedGeneration: Schema.optional(Schema.Number),
-                  reason: Schema.String,
-                  status: Schema.String,
-                  type: Schema.String,
-                }),
-              ),
-            ),
-            observedGeneration: Schema.optional(Schema.Number),
-            typeChecking: Schema.optional(
-              Schema.Struct({
-                expressionWarnings: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      fieldRef: Schema.String,
-                      warning: Schema.String,
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicySchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
@@ -4173,158 +1926,14 @@ export const ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.Struct({
-          matchResources: Schema.optional(
-            Schema.Struct({
-              excludeResourceRules: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                    apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                    operations: Schema.optional(Schema.Array(Schema.String)),
-                    resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                    resources: Schema.optional(Schema.Array(Schema.String)),
-                    scope: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              matchPolicy: Schema.optional(Schema.String),
-              namespaceSelector: Schema.optional(
-                Schema.Struct({
-                  matchExpressions: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        key: Schema.String,
-                        operator: Schema.String,
-                        values: Schema.optional(Schema.Array(Schema.String)),
-                      }),
-                    ),
-                  ),
-                  matchLabels: Schema.optional(
-                    Schema.Record(Schema.String, Schema.String),
-                  ),
-                }),
-              ),
-              objectSelector: Schema.optional(
-                Schema.Struct({
-                  matchExpressions: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        key: Schema.String,
-                        operator: Schema.String,
-                        values: Schema.optional(Schema.Array(Schema.String)),
-                      }),
-                    ),
-                  ),
-                  matchLabels: Schema.optional(
-                    Schema.Record(Schema.String, Schema.String),
-                  ),
-                }),
-              ),
-              resourceRules: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                    apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                    operations: Schema.optional(Schema.Array(Schema.String)),
-                    resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                    resources: Schema.optional(Schema.Array(Schema.String)),
-                    scope: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-          paramRef: Schema.optional(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              namespace: Schema.optional(Schema.String),
-              parameterNotFoundAction: Schema.optional(Schema.String),
-              selector: Schema.optional(
-                Schema.Struct({
-                  matchExpressions: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        key: Schema.String,
-                        operator: Schema.String,
-                        values: Schema.optional(Schema.Array(Schema.String)),
-                      }),
-                    ),
-                  ),
-                  matchLabels: Schema.optional(
-                    Schema.Record(Schema.String, Schema.String),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          policyName: Schema.String,
-          validationActions: Schema.Array(Schema.String),
-        }),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicyBindingSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
@@ -4357,145 +1966,14 @@ export const ListAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        webhooks: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              admissionReviewVersions: Schema.Array(Schema.String),
-              clientConfig: Schema.Struct({
-                caBundle: Schema.optional(Schema.String),
-                service: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.String,
-                    namespace: Schema.String,
-                    path: Schema.optional(Schema.String),
-                    port: Schema.optional(Schema.Number),
-                  }),
-                ),
-                url: Schema.optional(Schema.String),
-              }),
-              failurePolicy: Schema.optional(Schema.String),
-              matchConditions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    expression: Schema.String,
-                    name: Schema.String,
-                  }),
-                ),
-              ),
-              matchPolicy: Schema.optional(Schema.String),
-              name: Schema.String,
-              namespaceSelector: Schema.optional(
-                Schema.Struct({
-                  matchExpressions: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        key: Schema.String,
-                        operator: Schema.String,
-                        values: Schema.optional(Schema.Array(Schema.String)),
-                      }),
-                    ),
-                  ),
-                  matchLabels: Schema.optional(
-                    Schema.Record(Schema.String, Schema.String),
-                  ),
-                }),
-              ),
-              objectSelector: Schema.optional(
-                Schema.Struct({
-                  matchExpressions: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        key: Schema.String,
-                        operator: Schema.String,
-                        values: Schema.optional(Schema.Array(Schema.String)),
-                      }),
-                    ),
-                  ),
-                  matchLabels: Schema.optional(
-                    Schema.Record(Schema.String, Schema.String),
-                  ),
-                }),
-              ),
-              rules: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                    apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                    operations: Schema.optional(Schema.Array(Schema.String)),
-                    resources: Schema.optional(Schema.Array(Schema.String)),
-                    scope: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              sideEffects: Schema.String,
-              timeoutSeconds: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingWebhookConfigurationSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
@@ -4527,180 +2005,14 @@ export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            failurePolicy: Schema.optional(Schema.String),
-            matchConditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  expression: Schema.String,
-                  name: Schema.String,
-                }),
-              ),
-            ),
-            matchConstraints: Schema.optional(
-              Schema.Struct({
-                excludeResourceRules: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                      apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                      operations: Schema.optional(Schema.Array(Schema.String)),
-                      resourceNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      resources: Schema.optional(Schema.Array(Schema.String)),
-                      scope: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                matchPolicy: Schema.optional(Schema.String),
-                namespaceSelector: Schema.optional(
-                  Schema.Struct({
-                    matchExpressions: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                    matchLabels: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                objectSelector: Schema.optional(
-                  Schema.Struct({
-                    matchExpressions: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                    matchLabels: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                resourceRules: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                      apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                      operations: Schema.optional(Schema.Array(Schema.String)),
-                      resourceNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      resources: Schema.optional(Schema.Array(Schema.String)),
-                      scope: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            mutations: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  applyConfiguration: Schema.optional(
-                    Schema.Struct({
-                      expression: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  jsonPatch: Schema.optional(
-                    Schema.Struct({
-                      expression: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  patchType: Schema.String,
-                }),
-              ),
-            ),
-            paramKind: Schema.optional(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-              }),
-            ),
-            reinvocationPolicy: Schema.optional(Schema.String),
-            variables: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  expression: Schema.String,
-                  name: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1alpha1_MutatingAdmissionPolicySchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
@@ -4732,163 +2044,14 @@ export const ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutp
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            matchResources: Schema.optional(
-              Schema.Struct({
-                excludeResourceRules: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                      apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                      operations: Schema.optional(Schema.Array(Schema.String)),
-                      resourceNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      resources: Schema.optional(Schema.Array(Schema.String)),
-                      scope: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                matchPolicy: Schema.optional(Schema.String),
-                namespaceSelector: Schema.optional(
-                  Schema.Struct({
-                    matchExpressions: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                    matchLabels: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                objectSelector: Schema.optional(
-                  Schema.Struct({
-                    matchExpressions: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                    matchLabels: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                resourceRules: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                      apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                      operations: Schema.optional(Schema.Array(Schema.String)),
-                      resourceNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      resources: Schema.optional(Schema.Array(Schema.String)),
-                      scope: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            paramRef: Schema.optional(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                namespace: Schema.optional(Schema.String),
-                parameterNotFoundAction: Schema.optional(Schema.String),
-                selector: Schema.optional(
-                  Schema.Struct({
-                    matchExpressions: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                    matchLabels: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            policyName: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1alpha1_MutatingAdmissionPolicyBindingSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
@@ -4921,180 +2084,14 @@ export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            failurePolicy: Schema.optional(Schema.String),
-            matchConditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  expression: Schema.String,
-                  name: Schema.String,
-                }),
-              ),
-            ),
-            matchConstraints: Schema.optional(
-              Schema.Struct({
-                excludeResourceRules: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                      apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                      operations: Schema.optional(Schema.Array(Schema.String)),
-                      resourceNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      resources: Schema.optional(Schema.Array(Schema.String)),
-                      scope: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                matchPolicy: Schema.optional(Schema.String),
-                namespaceSelector: Schema.optional(
-                  Schema.Struct({
-                    matchExpressions: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                    matchLabels: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                objectSelector: Schema.optional(
-                  Schema.Struct({
-                    matchExpressions: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                    matchLabels: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                resourceRules: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                      apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                      operations: Schema.optional(Schema.Array(Schema.String)),
-                      resourceNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      resources: Schema.optional(Schema.Array(Schema.String)),
-                      scope: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            mutations: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  applyConfiguration: Schema.optional(
-                    Schema.Struct({
-                      expression: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  jsonPatch: Schema.optional(
-                    Schema.Struct({
-                      expression: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  patchType: Schema.String,
-                }),
-              ),
-            ),
-            paramKind: Schema.optional(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-              }),
-            ),
-            reinvocationPolicy: Schema.optional(Schema.String),
-            variables: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  expression: Schema.String,
-                  name: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1beta1_MutatingAdmissionPolicySchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
@@ -5125,163 +2122,14 @@ export const ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutpu
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            matchResources: Schema.optional(
-              Schema.Struct({
-                excludeResourceRules: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                      apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                      operations: Schema.optional(Schema.Array(Schema.String)),
-                      resourceNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      resources: Schema.optional(Schema.Array(Schema.String)),
-                      scope: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-                matchPolicy: Schema.optional(Schema.String),
-                namespaceSelector: Schema.optional(
-                  Schema.Struct({
-                    matchExpressions: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                    matchLabels: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                objectSelector: Schema.optional(
-                  Schema.Struct({
-                    matchExpressions: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                    matchLabels: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-                resourceRules: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                      apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                      operations: Schema.optional(Schema.Array(Schema.String)),
-                      resourceNames: Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      resources: Schema.optional(Schema.Array(Schema.String)),
-                      scope: Schema.optional(Schema.String),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-            paramRef: Schema.optional(
-              Schema.Struct({
-                name: Schema.optional(Schema.String),
-                namespace: Schema.optional(Schema.String),
-                parameterNotFoundAction: Schema.optional(Schema.String),
-                selector: Schema.optional(
-                  Schema.Struct({
-                    matchExpressions: Schema.optional(
-                      Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                          operator: Schema.String,
-                          values: Schema.optional(Schema.Array(Schema.String)),
-                        }),
-                      ),
-                    ),
-                    matchLabels: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            policyName: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1beta1_MutatingAdmissionPolicyBindingSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
@@ -5318,154 +2166,15 @@ export const PatchAdmissionregistrationV1MutatingAdmissionPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        failurePolicy: Schema.optional(Schema.String),
-        matchConditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-        matchConstraints: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        mutations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              applyConfiguration: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              jsonPatch: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              patchType: Schema.String,
-            }),
-          ),
-        ),
-        paramKind: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-          }),
-        ),
-        reinvocationPolicy: Schema.optional(Schema.String),
-        variables: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_MutatingAdmissionPolicySpecSchema,
+      ),
     ),
   });
 export type PatchAdmissionregistrationV1MutatingAdmissionPolicyOutput =
@@ -5504,137 +2213,15 @@ export const PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        matchResources: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        paramRef: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            parameterNotFoundAction: Schema.optional(Schema.String),
-            selector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-          }),
-        ),
-        policyName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_MutatingAdmissionPolicyBindingSpecSchema,
+      ),
     ),
   });
 export type PatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
@@ -5675,123 +2262,15 @@ export const PatchAdmissionregistrationV1MutatingWebhookConfigurationOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     webhooks: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          admissionReviewVersions: Schema.Array(Schema.String),
-          clientConfig: Schema.Struct({
-            caBundle: Schema.optional(Schema.String),
-            service: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                namespace: Schema.String,
-                path: Schema.optional(Schema.String),
-                port: Schema.optional(Schema.Number),
-              }),
-            ),
-            url: Schema.optional(Schema.String),
-          }),
-          failurePolicy: Schema.optional(Schema.String),
-          matchConditions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                expression: Schema.String,
-                name: Schema.String,
-              }),
-            ),
-          ),
-          matchPolicy: Schema.optional(Schema.String),
-          name: Schema.String,
-          namespaceSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          objectSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          reinvocationPolicy: Schema.optional(Schema.String),
-          rules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                operations: Schema.optional(Schema.Array(Schema.String)),
-                resources: Schema.optional(Schema.Array(Schema.String)),
-                scope: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          sideEffects: Schema.String,
-          timeoutSeconds: Schema.optional(Schema.Number),
-        }),
+        Schema.suspend(
+          () => io_k8s_api_admissionregistration_v1_MutatingWebhookSchema,
+        ),
       ),
     ),
   });
@@ -5832,183 +2311,21 @@ export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        auditAnnotations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              key: Schema.String,
-              valueExpression: Schema.String,
-            }),
-          ),
-        ),
-        failurePolicy: Schema.optional(Schema.String),
-        matchConditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-        matchConstraints: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        paramKind: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-          }),
-        ),
-        validations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              message: Schema.optional(Schema.String),
-              messageExpression: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        variables: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicySpecSchema,
+      ),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        observedGeneration: Schema.optional(Schema.Number),
-        typeChecking: Schema.optional(
-          Schema.Struct({
-            expressionWarnings: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  fieldRef: Schema.String,
-                  warning: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicyStatusSchema,
+      ),
     ),
   });
 export type PatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
@@ -6047,137 +2364,14 @@ export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput 
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      matchResources: Schema.optional(
-        Schema.Struct({
-          excludeResourceRules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                operations: Schema.optional(Schema.Array(Schema.String)),
-                resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                resources: Schema.optional(Schema.Array(Schema.String)),
-                scope: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          matchPolicy: Schema.optional(Schema.String),
-          namespaceSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          objectSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          resourceRules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                operations: Schema.optional(Schema.Array(Schema.String)),
-                resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                resources: Schema.optional(Schema.Array(Schema.String)),
-                scope: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      paramRef: Schema.optional(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          parameterNotFoundAction: Schema.optional(Schema.String),
-          selector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-        }),
-      ),
-      policyName: Schema.String,
-      validationActions: Schema.Array(Schema.String),
-    }),
+    spec: Schema.suspend(
+      () =>
+        io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicyBindingSpecSchema,
+    ),
   });
 export type PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
   typeof PatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput.Type;
@@ -6217,183 +2411,21 @@ export const PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        auditAnnotations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              key: Schema.String,
-              valueExpression: Schema.String,
-            }),
-          ),
-        ),
-        failurePolicy: Schema.optional(Schema.String),
-        matchConditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-        matchConstraints: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        paramKind: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-          }),
-        ),
-        validations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              message: Schema.optional(Schema.String),
-              messageExpression: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        variables: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicySpecSchema,
+      ),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        observedGeneration: Schema.optional(Schema.Number),
-        typeChecking: Schema.optional(
-          Schema.Struct({
-            expressionWarnings: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  fieldRef: Schema.String,
-                  warning: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicyStatusSchema,
+      ),
     ),
   });
 export type PatchAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
@@ -6434,122 +2466,15 @@ export const PatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     webhooks: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          admissionReviewVersions: Schema.Array(Schema.String),
-          clientConfig: Schema.Struct({
-            caBundle: Schema.optional(Schema.String),
-            service: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                namespace: Schema.String,
-                path: Schema.optional(Schema.String),
-                port: Schema.optional(Schema.Number),
-              }),
-            ),
-            url: Schema.optional(Schema.String),
-          }),
-          failurePolicy: Schema.optional(Schema.String),
-          matchConditions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                expression: Schema.String,
-                name: Schema.String,
-              }),
-            ),
-          ),
-          matchPolicy: Schema.optional(Schema.String),
-          name: Schema.String,
-          namespaceSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          objectSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          rules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                operations: Schema.optional(Schema.Array(Schema.String)),
-                resources: Schema.optional(Schema.Array(Schema.String)),
-                scope: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          sideEffects: Schema.String,
-          timeoutSeconds: Schema.optional(Schema.Number),
-        }),
+        Schema.suspend(
+          () => io_k8s_api_admissionregistration_v1_ValidatingWebhookSchema,
+        ),
       ),
     ),
   });
@@ -6591,154 +2516,15 @@ export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        failurePolicy: Schema.optional(Schema.String),
-        matchConditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-        matchConstraints: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        mutations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              applyConfiguration: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              jsonPatch: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              patchType: Schema.String,
-            }),
-          ),
-        ),
-        paramKind: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-          }),
-        ),
-        reinvocationPolicy: Schema.optional(Schema.String),
-        variables: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1alpha1_MutatingAdmissionPolicySpecSchema,
+      ),
     ),
   });
 export type PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
@@ -6778,137 +2564,15 @@ export const PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOut
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        matchResources: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        paramRef: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            parameterNotFoundAction: Schema.optional(Schema.String),
-            selector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-          }),
-        ),
-        policyName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1alpha1_MutatingAdmissionPolicyBindingSpecSchema,
+      ),
     ),
   });
 export type PatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
@@ -6949,154 +2613,15 @@ export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        failurePolicy: Schema.optional(Schema.String),
-        matchConditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-        matchConstraints: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        mutations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              applyConfiguration: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              jsonPatch: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              patchType: Schema.String,
-            }),
-          ),
-        ),
-        paramKind: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-          }),
-        ),
-        reinvocationPolicy: Schema.optional(Schema.String),
-        variables: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1beta1_MutatingAdmissionPolicySpecSchema,
+      ),
     ),
   });
 export type PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
@@ -7136,137 +2661,15 @@ export const PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutp
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        matchResources: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        paramRef: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            parameterNotFoundAction: Schema.optional(Schema.String),
-            selector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-          }),
-        ),
-        policyName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1beta1_MutatingAdmissionPolicyBindingSpecSchema,
+      ),
     ),
   });
 export type PatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
@@ -7304,154 +2707,15 @@ export const ReadAdmissionregistrationV1MutatingAdmissionPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        failurePolicy: Schema.optional(Schema.String),
-        matchConditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-        matchConstraints: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        mutations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              applyConfiguration: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              jsonPatch: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              patchType: Schema.String,
-            }),
-          ),
-        ),
-        paramKind: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-          }),
-        ),
-        reinvocationPolicy: Schema.optional(Schema.String),
-        variables: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_MutatingAdmissionPolicySpecSchema,
+      ),
     ),
   });
 export type ReadAdmissionregistrationV1MutatingAdmissionPolicyOutput =
@@ -7484,137 +2748,15 @@ export const ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        matchResources: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        paramRef: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            parameterNotFoundAction: Schema.optional(Schema.String),
-            selector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-          }),
-        ),
-        policyName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_MutatingAdmissionPolicyBindingSpecSchema,
+      ),
     ),
   });
 export type ReadAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
@@ -7648,123 +2790,15 @@ export const ReadAdmissionregistrationV1MutatingWebhookConfigurationOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     webhooks: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          admissionReviewVersions: Schema.Array(Schema.String),
-          clientConfig: Schema.Struct({
-            caBundle: Schema.optional(Schema.String),
-            service: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                namespace: Schema.String,
-                path: Schema.optional(Schema.String),
-                port: Schema.optional(Schema.Number),
-              }),
-            ),
-            url: Schema.optional(Schema.String),
-          }),
-          failurePolicy: Schema.optional(Schema.String),
-          matchConditions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                expression: Schema.String,
-                name: Schema.String,
-              }),
-            ),
-          ),
-          matchPolicy: Schema.optional(Schema.String),
-          name: Schema.String,
-          namespaceSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          objectSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          reinvocationPolicy: Schema.optional(Schema.String),
-          rules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                operations: Schema.optional(Schema.Array(Schema.String)),
-                resources: Schema.optional(Schema.Array(Schema.String)),
-                scope: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          sideEffects: Schema.String,
-          timeoutSeconds: Schema.optional(Schema.Number),
-        }),
+        Schema.suspend(
+          () => io_k8s_api_admissionregistration_v1_MutatingWebhookSchema,
+        ),
       ),
     ),
   });
@@ -7798,183 +2832,21 @@ export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        auditAnnotations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              key: Schema.String,
-              valueExpression: Schema.String,
-            }),
-          ),
-        ),
-        failurePolicy: Schema.optional(Schema.String),
-        matchConditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-        matchConstraints: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        paramKind: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-          }),
-        ),
-        validations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              message: Schema.optional(Schema.String),
-              messageExpression: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        variables: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicySpecSchema,
+      ),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        observedGeneration: Schema.optional(Schema.Number),
-        typeChecking: Schema.optional(
-          Schema.Struct({
-            expressionWarnings: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  fieldRef: Schema.String,
-                  warning: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicyStatusSchema,
+      ),
     ),
   });
 export type ReadAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
@@ -8007,137 +2879,14 @@ export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      matchResources: Schema.optional(
-        Schema.Struct({
-          excludeResourceRules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                operations: Schema.optional(Schema.Array(Schema.String)),
-                resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                resources: Schema.optional(Schema.Array(Schema.String)),
-                scope: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          matchPolicy: Schema.optional(Schema.String),
-          namespaceSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          objectSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          resourceRules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                operations: Schema.optional(Schema.Array(Schema.String)),
-                resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                resources: Schema.optional(Schema.Array(Schema.String)),
-                scope: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      paramRef: Schema.optional(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          parameterNotFoundAction: Schema.optional(Schema.String),
-          selector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-        }),
-      ),
-      policyName: Schema.String,
-      validationActions: Schema.Array(Schema.String),
-    }),
+    spec: Schema.suspend(
+      () =>
+        io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicyBindingSpecSchema,
+    ),
   });
 export type ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
   typeof ReadAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput.Type;
@@ -8171,183 +2920,21 @@ export const ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        auditAnnotations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              key: Schema.String,
-              valueExpression: Schema.String,
-            }),
-          ),
-        ),
-        failurePolicy: Schema.optional(Schema.String),
-        matchConditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-        matchConstraints: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        paramKind: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-          }),
-        ),
-        validations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              message: Schema.optional(Schema.String),
-              messageExpression: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        variables: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicySpecSchema,
+      ),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        observedGeneration: Schema.optional(Schema.Number),
-        typeChecking: Schema.optional(
-          Schema.Struct({
-            expressionWarnings: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  fieldRef: Schema.String,
-                  warning: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicyStatusSchema,
+      ),
     ),
   });
 export type ReadAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
@@ -8382,122 +2969,15 @@ export const ReadAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     webhooks: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          admissionReviewVersions: Schema.Array(Schema.String),
-          clientConfig: Schema.Struct({
-            caBundle: Schema.optional(Schema.String),
-            service: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                namespace: Schema.String,
-                path: Schema.optional(Schema.String),
-                port: Schema.optional(Schema.Number),
-              }),
-            ),
-            url: Schema.optional(Schema.String),
-          }),
-          failurePolicy: Schema.optional(Schema.String),
-          matchConditions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                expression: Schema.String,
-                name: Schema.String,
-              }),
-            ),
-          ),
-          matchPolicy: Schema.optional(Schema.String),
-          name: Schema.String,
-          namespaceSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          objectSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          rules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                operations: Schema.optional(Schema.Array(Schema.String)),
-                resources: Schema.optional(Schema.Array(Schema.String)),
-                scope: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          sideEffects: Schema.String,
-          timeoutSeconds: Schema.optional(Schema.Number),
-        }),
+        Schema.suspend(
+          () => io_k8s_api_admissionregistration_v1_ValidatingWebhookSchema,
+        ),
       ),
     ),
   });
@@ -8532,154 +3012,15 @@ export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        failurePolicy: Schema.optional(Schema.String),
-        matchConditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-        matchConstraints: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        mutations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              applyConfiguration: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              jsonPatch: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              patchType: Schema.String,
-            }),
-          ),
-        ),
-        paramKind: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-          }),
-        ),
-        reinvocationPolicy: Schema.optional(Schema.String),
-        variables: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1alpha1_MutatingAdmissionPolicySpecSchema,
+      ),
     ),
   });
 export type ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
@@ -8713,137 +3054,15 @@ export const ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutp
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        matchResources: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        paramRef: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            parameterNotFoundAction: Schema.optional(Schema.String),
-            selector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-          }),
-        ),
-        policyName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1alpha1_MutatingAdmissionPolicyBindingSpecSchema,
+      ),
     ),
   });
 export type ReadAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
@@ -8878,154 +3097,15 @@ export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        failurePolicy: Schema.optional(Schema.String),
-        matchConditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-        matchConstraints: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        mutations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              applyConfiguration: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              jsonPatch: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              patchType: Schema.String,
-            }),
-          ),
-        ),
-        paramKind: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-          }),
-        ),
-        reinvocationPolicy: Schema.optional(Schema.String),
-        variables: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1beta1_MutatingAdmissionPolicySpecSchema,
+      ),
     ),
   });
 export type ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
@@ -9058,137 +3138,15 @@ export const ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutpu
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        matchResources: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        paramRef: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            parameterNotFoundAction: Schema.optional(Schema.String),
-            selector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-          }),
-        ),
-        policyName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1beta1_MutatingAdmissionPolicyBindingSpecSchema,
+      ),
     ),
   });
 export type ReadAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
@@ -9211,6 +3169,19 @@ export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_MutatingAdmissionPolicySpecSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -9226,154 +3197,15 @@ export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        failurePolicy: Schema.optional(Schema.String),
-        matchConditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-        matchConstraints: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        mutations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              applyConfiguration: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              jsonPatch: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              patchType: Schema.String,
-            }),
-          ),
-        ),
-        paramKind: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-          }),
-        ),
-        reinvocationPolicy: Schema.optional(Schema.String),
-        variables: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_MutatingAdmissionPolicySpecSchema,
+      ),
     ),
   });
 export type ReplaceAdmissionregistrationV1MutatingAdmissionPolicyOutput =
@@ -9397,6 +3229,19 @@ export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_MutatingAdmissionPolicyBindingSpecSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -9412,137 +3257,15 @@ export const ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput 
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        matchResources: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        paramRef: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            parameterNotFoundAction: Schema.optional(Schema.String),
-            selector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-          }),
-        ),
-        policyName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_MutatingAdmissionPolicyBindingSpecSchema,
+      ),
     ),
   });
 export type ReplaceAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
@@ -9568,6 +3291,20 @@ export const ReplaceAdmissionregistrationV1MutatingWebhookConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    webhooks: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => io_k8s_api_admissionregistration_v1_MutatingWebhookSchema,
+        ),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -9583,123 +3320,15 @@ export const ReplaceAdmissionregistrationV1MutatingWebhookConfigurationOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     webhooks: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          admissionReviewVersions: Schema.Array(Schema.String),
-          clientConfig: Schema.Struct({
-            caBundle: Schema.optional(Schema.String),
-            service: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                namespace: Schema.String,
-                path: Schema.optional(Schema.String),
-                port: Schema.optional(Schema.Number),
-              }),
-            ),
-            url: Schema.optional(Schema.String),
-          }),
-          failurePolicy: Schema.optional(Schema.String),
-          matchConditions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                expression: Schema.String,
-                name: Schema.String,
-              }),
-            ),
-          ),
-          matchPolicy: Schema.optional(Schema.String),
-          name: Schema.String,
-          namespaceSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          objectSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          reinvocationPolicy: Schema.optional(Schema.String),
-          rules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                operations: Schema.optional(Schema.Array(Schema.String)),
-                resources: Schema.optional(Schema.Array(Schema.String)),
-                scope: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          sideEffects: Schema.String,
-          timeoutSeconds: Schema.optional(Schema.Number),
-        }),
+        Schema.suspend(
+          () => io_k8s_api_admissionregistration_v1_MutatingWebhookSchema,
+        ),
       ),
     ),
   });
@@ -9726,6 +3355,25 @@ export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicySpecSchema,
+      ),
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicyStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -9741,183 +3389,21 @@ export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        auditAnnotations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              key: Schema.String,
-              valueExpression: Schema.String,
-            }),
-          ),
-        ),
-        failurePolicy: Schema.optional(Schema.String),
-        matchConditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-        matchConstraints: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        paramKind: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-          }),
-        ),
-        validations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              message: Schema.optional(Schema.String),
-              messageExpression: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        variables: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicySpecSchema,
+      ),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        observedGeneration: Schema.optional(Schema.Number),
-        typeChecking: Schema.optional(
-          Schema.Struct({
-            expressionWarnings: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  fieldRef: Schema.String,
-                  warning: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicyStatusSchema,
+      ),
     ),
   });
 export type ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
@@ -9941,6 +3427,17 @@ export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(
+      () =>
+        io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicyBindingSpecSchema,
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -9956,137 +3453,14 @@ export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutpu
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      matchResources: Schema.optional(
-        Schema.Struct({
-          excludeResourceRules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                operations: Schema.optional(Schema.Array(Schema.String)),
-                resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                resources: Schema.optional(Schema.Array(Schema.String)),
-                scope: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          matchPolicy: Schema.optional(Schema.String),
-          namespaceSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          objectSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          resourceRules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                operations: Schema.optional(Schema.Array(Schema.String)),
-                resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                resources: Schema.optional(Schema.Array(Schema.String)),
-                scope: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      paramRef: Schema.optional(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          parameterNotFoundAction: Schema.optional(Schema.String),
-          selector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-        }),
-      ),
-      policyName: Schema.String,
-      validationActions: Schema.Array(Schema.String),
-    }),
+    spec: Schema.suspend(
+      () =>
+        io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicyBindingSpecSchema,
+    ),
   });
 export type ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
   typeof ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput.Type;
@@ -10111,6 +3485,25 @@ export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusInput 
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicySpecSchema,
+      ),
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicyStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -10126,183 +3519,21 @@ export const ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        auditAnnotations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              key: Schema.String,
-              valueExpression: Schema.String,
-            }),
-          ),
-        ),
-        failurePolicy: Schema.optional(Schema.String),
-        matchConditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-        matchConstraints: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        paramKind: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-          }),
-        ),
-        validations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              message: Schema.optional(Schema.String),
-              messageExpression: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        variables: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicySpecSchema,
+      ),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        observedGeneration: Schema.optional(Schema.Number),
-        typeChecking: Schema.optional(
-          Schema.Struct({
-            expressionWarnings: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  fieldRef: Schema.String,
-                  warning: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1_ValidatingAdmissionPolicyStatusSchema,
+      ),
     ),
   });
 export type ReplaceAdmissionregistrationV1ValidatingAdmissionPolicyStatusOutput =
@@ -10328,6 +3559,20 @@ export const ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    webhooks: Schema.optional(
+      Schema.Array(
+        Schema.suspend(
+          () => io_k8s_api_admissionregistration_v1_ValidatingWebhookSchema,
+        ),
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -10343,122 +3588,15 @@ export const ReplaceAdmissionregistrationV1ValidatingWebhookConfigurationOutput 
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     webhooks: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          admissionReviewVersions: Schema.Array(Schema.String),
-          clientConfig: Schema.Struct({
-            caBundle: Schema.optional(Schema.String),
-            service: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                namespace: Schema.String,
-                path: Schema.optional(Schema.String),
-                port: Schema.optional(Schema.Number),
-              }),
-            ),
-            url: Schema.optional(Schema.String),
-          }),
-          failurePolicy: Schema.optional(Schema.String),
-          matchConditions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                expression: Schema.String,
-                name: Schema.String,
-              }),
-            ),
-          ),
-          matchPolicy: Schema.optional(Schema.String),
-          name: Schema.String,
-          namespaceSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          objectSelector: Schema.optional(
-            Schema.Struct({
-              matchExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    operator: Schema.String,
-                    values: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-              ),
-              matchLabels: Schema.optional(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-            }),
-          ),
-          rules: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                operations: Schema.optional(Schema.Array(Schema.String)),
-                resources: Schema.optional(Schema.Array(Schema.String)),
-                scope: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          sideEffects: Schema.String,
-          timeoutSeconds: Schema.optional(Schema.Number),
-        }),
+        Schema.suspend(
+          () => io_k8s_api_admissionregistration_v1_ValidatingWebhookSchema,
+        ),
       ),
     ),
   });
@@ -10485,6 +3623,19 @@ export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1alpha1_MutatingAdmissionPolicySpecSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -10500,154 +3651,15 @@ export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        failurePolicy: Schema.optional(Schema.String),
-        matchConditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-        matchConstraints: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        mutations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              applyConfiguration: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              jsonPatch: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              patchType: Schema.String,
-            }),
-          ),
-        ),
-        paramKind: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-          }),
-        ),
-        reinvocationPolicy: Schema.optional(Schema.String),
-        variables: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1alpha1_MutatingAdmissionPolicySpecSchema,
+      ),
     ),
   });
 export type ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
@@ -10673,6 +3685,19 @@ export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingI
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1alpha1_MutatingAdmissionPolicyBindingSpecSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -10688,137 +3713,15 @@ export const ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingO
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        matchResources: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        paramRef: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            parameterNotFoundAction: Schema.optional(Schema.String),
-            selector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-          }),
-        ),
-        policyName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1alpha1_MutatingAdmissionPolicyBindingSpecSchema,
+      ),
     ),
   });
 export type ReplaceAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
@@ -10844,6 +3747,19 @@ export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1beta1_MutatingAdmissionPolicySpecSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -10859,154 +3775,15 @@ export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        failurePolicy: Schema.optional(Schema.String),
-        matchConditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-        matchConstraints: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        mutations: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              applyConfiguration: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              jsonPatch: Schema.optional(
-                Schema.Struct({
-                  expression: Schema.optional(Schema.String),
-                }),
-              ),
-              patchType: Schema.String,
-            }),
-          ),
-        ),
-        paramKind: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-          }),
-        ),
-        reinvocationPolicy: Schema.optional(Schema.String),
-        variables: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              expression: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1beta1_MutatingAdmissionPolicySpecSchema,
+      ),
     ),
   });
 export type ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
@@ -11032,6 +3809,19 @@ export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingIn
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1beta1_MutatingAdmissionPolicyBindingSpecSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -11047,137 +3837,15 @@ export const ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOu
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        matchResources: Schema.optional(
-          Schema.Struct({
-            excludeResourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            matchPolicy: Schema.optional(Schema.String),
-            namespaceSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            objectSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            resourceRules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiGroups: Schema.optional(Schema.Array(Schema.String)),
-                  apiVersions: Schema.optional(Schema.Array(Schema.String)),
-                  operations: Schema.optional(Schema.Array(Schema.String)),
-                  resourceNames: Schema.optional(Schema.Array(Schema.String)),
-                  resources: Schema.optional(Schema.Array(Schema.String)),
-                  scope: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        paramRef: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            parameterNotFoundAction: Schema.optional(Schema.String),
-            selector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-          }),
-        ),
-        policyName: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_api_admissionregistration_v1beta1_MutatingAdmissionPolicyBindingSpecSchema,
+      ),
     ),
   });
 export type ReplaceAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
@@ -11212,7 +3880,9 @@ export type WatchAdmissionregistrationV1MutatingAdmissionPolicyInput =
 // Output Schema
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAdmissionregistrationV1MutatingAdmissionPolicyOutput =
@@ -11241,7 +3911,9 @@ export type WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingInput =
 // Output Schema
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingOutput =
@@ -11272,7 +3944,9 @@ export type WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListInput 
 // Output Schema
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAdmissionregistrationV1MutatingAdmissionPolicyBindingListOutput =
@@ -11303,7 +3977,9 @@ export type WatchAdmissionregistrationV1MutatingAdmissionPolicyListInput =
 // Output Schema
 export const WatchAdmissionregistrationV1MutatingAdmissionPolicyListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAdmissionregistrationV1MutatingAdmissionPolicyListOutput =
@@ -11332,7 +4008,9 @@ export type WatchAdmissionregistrationV1MutatingWebhookConfigurationInput =
 // Output Schema
 export const WatchAdmissionregistrationV1MutatingWebhookConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAdmissionregistrationV1MutatingWebhookConfigurationOutput =
@@ -11362,7 +4040,9 @@ export type WatchAdmissionregistrationV1MutatingWebhookConfigurationListInput =
 // Output Schema
 export const WatchAdmissionregistrationV1MutatingWebhookConfigurationListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAdmissionregistrationV1MutatingWebhookConfigurationListOutput =
@@ -11393,7 +4073,9 @@ export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyInput =
 // Output Schema
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyOutput =
@@ -11422,7 +4104,9 @@ export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingInput =
 // Output Schema
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingOutput =
@@ -11453,7 +4137,9 @@ export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListInpu
 // Output Schema
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyBindingListOutput =
@@ -11484,7 +4170,9 @@ export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyListInput =
 // Output Schema
 export const WatchAdmissionregistrationV1ValidatingAdmissionPolicyListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAdmissionregistrationV1ValidatingAdmissionPolicyListOutput =
@@ -11514,7 +4202,9 @@ export type WatchAdmissionregistrationV1ValidatingWebhookConfigurationInput =
 // Output Schema
 export const WatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAdmissionregistrationV1ValidatingWebhookConfigurationOutput =
@@ -11545,7 +4235,9 @@ export type WatchAdmissionregistrationV1ValidatingWebhookConfigurationListInput 
 // Output Schema
 export const WatchAdmissionregistrationV1ValidatingWebhookConfigurationListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAdmissionregistrationV1ValidatingWebhookConfigurationListOutput =
@@ -11576,7 +4268,9 @@ export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyInput =
 // Output Schema
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyOutput =
@@ -11606,7 +4300,9 @@ export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingInpu
 // Output Schema
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingOutput =
@@ -11637,7 +4333,9 @@ export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingList
 // Output Schema
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyBindingListOutput =
@@ -11668,7 +4366,9 @@ export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListInput =
 // Output Schema
 export const WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAdmissionregistrationV1alpha1MutatingAdmissionPolicyListOutput =
@@ -11699,7 +4399,9 @@ export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyInput =
 // Output Schema
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyOutput =
@@ -11729,7 +4431,9 @@ export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingInput
 // Output Schema
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingOutput =
@@ -11760,7 +4464,9 @@ export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListI
 // Output Schema
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyBindingListOutput =
@@ -11791,7 +4497,9 @@ export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListInput =
 // Output Schema
 export const WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAdmissionregistrationV1beta1MutatingAdmissionPolicyListOutput =

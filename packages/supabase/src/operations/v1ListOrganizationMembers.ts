@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { V1OrganizationMemberResponseSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
@@ -14,13 +15,7 @@ export type V1ListOrganizationMembersInput =
 // Output Schema
 export const V1ListOrganizationMembersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      user_id: Schema.String,
-      user_name: Schema.String,
-      email: Schema.optional(Schema.String),
-      role_name: Schema.String,
-      mfa_enabled: Schema.Boolean,
-    }),
+    Schema.suspend(() => V1OrganizationMemberResponseSchema),
   );
 export type V1ListOrganizationMembersOutput =
   typeof V1ListOrganizationMembersOutput.Type;

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { AppSecretSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
@@ -13,17 +14,7 @@ export type SecretsListInput = typeof SecretsListInput.Type;
 
 // Output Schema
 export const SecretsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  secrets: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        created_at: Schema.optional(Schema.String),
-        digest: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        updated_at: Schema.optional(Schema.String),
-        value: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  secrets: Schema.optional(Schema.Array(Schema.suspend(() => AppSecretSchema))),
 });
 export type SecretsListOutput = typeof SecretsListOutput.Type;
 

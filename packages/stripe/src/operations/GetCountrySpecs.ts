@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { country_specSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -19,30 +20,7 @@ export type GetCountrySpecsInput = typeof GetCountrySpecsInput.Type;
 
 // Output Schema
 export const GetCountrySpecsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  data: Schema.Array(
-    Schema.Struct({
-      default_currency: Schema.String,
-      id: Schema.String,
-      object: Schema.Literals(["country_spec"]),
-      supported_bank_account_currencies: Schema.Record(
-        Schema.String,
-        Schema.Array(Schema.String),
-      ),
-      supported_payment_currencies: Schema.Array(Schema.String),
-      supported_payment_methods: Schema.Array(Schema.String),
-      supported_transfer_countries: Schema.Array(Schema.String),
-      verification_fields: Schema.Struct({
-        company: Schema.Struct({
-          additional: Schema.Array(Schema.String),
-          minimum: Schema.Array(Schema.String),
-        }),
-        individual: Schema.Struct({
-          additional: Schema.Array(Schema.String),
-          minimum: Schema.Array(Schema.String),
-        }),
-      }),
-    }),
-  ),
+  data: Schema.Array(Schema.suspend(() => country_specSchema)),
   has_more: Schema.Boolean,
   object: Schema.Literals(["list"]),
   url: Schema.String,

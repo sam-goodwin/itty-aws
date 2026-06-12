@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { OnrampOrderSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -12,39 +13,7 @@ export type GetOnrampOrderByIdInput = typeof GetOnrampOrderByIdInput.Type;
 // Output Schema
 export const GetOnrampOrderByIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    order: Schema.Struct({
-      orderId: Schema.String,
-      paymentTotal: Schema.String,
-      paymentSubtotal: Schema.String,
-      paymentCurrency: Schema.String,
-      paymentMethod: Schema.Literals([
-        "GUEST_CHECKOUT_APPLE_PAY",
-        "GUEST_CHECKOUT_GOOGLE_PAY",
-      ]),
-      purchaseAmount: Schema.String,
-      purchaseCurrency: Schema.String,
-      fees: Schema.Array(
-        Schema.Struct({
-          type: Schema.Literals(["FEE_TYPE_NETWORK", "FEE_TYPE_EXCHANGE"]),
-          amount: Schema.String,
-          currency: Schema.String,
-        }),
-      ),
-      exchangeRate: Schema.String,
-      destinationAddress: Schema.String,
-      destinationNetwork: Schema.String,
-      status: Schema.Literals([
-        "ONRAMP_ORDER_STATUS_PENDING_AUTH",
-        "ONRAMP_ORDER_STATUS_PENDING_PAYMENT",
-        "ONRAMP_ORDER_STATUS_PROCESSING",
-        "ONRAMP_ORDER_STATUS_COMPLETED",
-        "ONRAMP_ORDER_STATUS_FAILED",
-      ]),
-      txHash: Schema.optional(Schema.String),
-      createdAt: Schema.String,
-      updatedAt: Schema.String,
-      partnerUserRef: Schema.optional(Schema.String),
-    }),
+    order: Schema.suspend(() => OnrampOrderSchema),
   });
 export type GetOnrampOrderByIdOutput = typeof GetOnrampOrderByIdOutput.Type;
 

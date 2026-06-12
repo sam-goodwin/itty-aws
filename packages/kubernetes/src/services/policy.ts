@@ -8,12 +8,39 @@ import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
+import {
+  io_k8s_api_policy_v1_PodDisruptionBudgetSchema,
+  io_k8s_api_policy_v1_PodDisruptionBudgetSpecSchema,
+  io_k8s_api_policy_v1_PodDisruptionBudgetStatusSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+  io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+} from "./_schemas.ts";
 
 // Input Schema
 export const CreatePolicyV1NamespacedPodDisruptionBudgetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(() => io_k8s_api_policy_v1_PodDisruptionBudgetSpecSchema),
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_policy_v1_PodDisruptionBudgetStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -29,95 +56,17 @@ export const CreatePolicyV1NamespacedPodDisruptionBudgetOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        maxUnavailable: Schema.optional(Schema.String),
-        minAvailable: Schema.optional(Schema.String),
-        selector: Schema.optional(
-          Schema.Struct({
-            matchExpressions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  key: Schema.String,
-                  operator: Schema.String,
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            matchLabels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-          }),
-        ),
-        unhealthyPodEvictionPolicy: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => io_k8s_api_policy_v1_PodDisruptionBudgetSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        currentHealthy: Schema.optional(Schema.Number),
-        desiredHealthy: Schema.optional(Schema.Number),
-        disruptedPods: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        disruptionsAllowed: Schema.optional(Schema.Number),
-        expectedPods: Schema.optional(Schema.Number),
-        observedGeneration: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_policy_v1_PodDisruptionBudgetStatusSchema,
+      ),
     ),
   });
 export type CreatePolicyV1NamespacedPodDisruptionBudgetOutput =
@@ -155,37 +104,14 @@ export const DeletePolicyV1CollectionNamespacedPodDisruptionBudgetOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -223,37 +149,14 @@ export const DeletePolicyV1NamespacedPodDisruptionBudgetOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -286,24 +189,24 @@ export const GetPolicyAPIGroupOutput =
     kind: Schema.optional(Schema.String),
     name: Schema.String,
     preferredVersion: Schema.optional(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
     serverAddressByClientCIDRs: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
+        Schema.suspend(
+          () =>
+            io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+        ),
       ),
     ),
     versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
   });
 export type GetPolicyAPIGroupOutput = typeof GetPolicyAPIGroupOutput.Type;
@@ -331,18 +234,9 @@ export const GetPolicyV1APIResourcesOutput =
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
     resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+      ),
     ),
   });
 export type GetPolicyV1APIResourcesOutput =
@@ -374,117 +268,11 @@ export const ListPolicyV1NamespacedPodDisruptionBudgetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            maxUnavailable: Schema.optional(Schema.String),
-            minAvailable: Schema.optional(Schema.String),
-            selector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            unhealthyPodEvictionPolicy: Schema.optional(Schema.String),
-          }),
-        ),
-        status: Schema.optional(
-          Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  lastTransitionTime: Schema.String,
-                  message: Schema.String,
-                  observedGeneration: Schema.optional(Schema.Number),
-                  reason: Schema.String,
-                  status: Schema.String,
-                  type: Schema.String,
-                }),
-              ),
-            ),
-            currentHealthy: Schema.optional(Schema.Number),
-            desiredHealthy: Schema.optional(Schema.Number),
-            disruptedPods: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            disruptionsAllowed: Schema.optional(Schema.Number),
-            expectedPods: Schema.optional(Schema.Number),
-            observedGeneration: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_policy_v1_PodDisruptionBudgetSchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListPolicyV1NamespacedPodDisruptionBudgetOutput =
@@ -512,117 +300,11 @@ export const ListPolicyV1PodDisruptionBudgetForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            maxUnavailable: Schema.optional(Schema.String),
-            minAvailable: Schema.optional(Schema.String),
-            selector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            unhealthyPodEvictionPolicy: Schema.optional(Schema.String),
-          }),
-        ),
-        status: Schema.optional(
-          Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  lastTransitionTime: Schema.String,
-                  message: Schema.String,
-                  observedGeneration: Schema.optional(Schema.Number),
-                  reason: Schema.String,
-                  status: Schema.String,
-                  type: Schema.String,
-                }),
-              ),
-            ),
-            currentHealthy: Schema.optional(Schema.Number),
-            desiredHealthy: Schema.optional(Schema.Number),
-            disruptedPods: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            disruptionsAllowed: Schema.optional(Schema.Number),
-            expectedPods: Schema.optional(Schema.Number),
-            observedGeneration: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_policy_v1_PodDisruptionBudgetSchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListPolicyV1PodDisruptionBudgetForAllNamespacesOutput =
@@ -657,95 +339,17 @@ export const PatchPolicyV1NamespacedPodDisruptionBudgetOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        maxUnavailable: Schema.optional(Schema.String),
-        minAvailable: Schema.optional(Schema.String),
-        selector: Schema.optional(
-          Schema.Struct({
-            matchExpressions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  key: Schema.String,
-                  operator: Schema.String,
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            matchLabels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-          }),
-        ),
-        unhealthyPodEvictionPolicy: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => io_k8s_api_policy_v1_PodDisruptionBudgetSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        currentHealthy: Schema.optional(Schema.Number),
-        desiredHealthy: Schema.optional(Schema.Number),
-        disruptedPods: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        disruptionsAllowed: Schema.optional(Schema.Number),
-        expectedPods: Schema.optional(Schema.Number),
-        observedGeneration: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_policy_v1_PodDisruptionBudgetStatusSchema,
+      ),
     ),
   });
 export type PatchPolicyV1NamespacedPodDisruptionBudgetOutput =
@@ -784,95 +388,17 @@ export const PatchPolicyV1NamespacedPodDisruptionBudgetStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        maxUnavailable: Schema.optional(Schema.String),
-        minAvailable: Schema.optional(Schema.String),
-        selector: Schema.optional(
-          Schema.Struct({
-            matchExpressions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  key: Schema.String,
-                  operator: Schema.String,
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            matchLabels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-          }),
-        ),
-        unhealthyPodEvictionPolicy: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => io_k8s_api_policy_v1_PodDisruptionBudgetSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        currentHealthy: Schema.optional(Schema.Number),
-        desiredHealthy: Schema.optional(Schema.Number),
-        disruptedPods: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        disruptionsAllowed: Schema.optional(Schema.Number),
-        expectedPods: Schema.optional(Schema.Number),
-        observedGeneration: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_policy_v1_PodDisruptionBudgetStatusSchema,
+      ),
     ),
   });
 export type PatchPolicyV1NamespacedPodDisruptionBudgetStatusOutput =
@@ -908,95 +434,17 @@ export const ReadPolicyV1NamespacedPodDisruptionBudgetOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        maxUnavailable: Schema.optional(Schema.String),
-        minAvailable: Schema.optional(Schema.String),
-        selector: Schema.optional(
-          Schema.Struct({
-            matchExpressions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  key: Schema.String,
-                  operator: Schema.String,
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            matchLabels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-          }),
-        ),
-        unhealthyPodEvictionPolicy: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => io_k8s_api_policy_v1_PodDisruptionBudgetSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        currentHealthy: Schema.optional(Schema.Number),
-        desiredHealthy: Schema.optional(Schema.Number),
-        disruptedPods: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        disruptionsAllowed: Schema.optional(Schema.Number),
-        expectedPods: Schema.optional(Schema.Number),
-        observedGeneration: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_policy_v1_PodDisruptionBudgetStatusSchema,
+      ),
     ),
   });
 export type ReadPolicyV1NamespacedPodDisruptionBudgetOutput =
@@ -1029,95 +477,17 @@ export const ReadPolicyV1NamespacedPodDisruptionBudgetStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        maxUnavailable: Schema.optional(Schema.String),
-        minAvailable: Schema.optional(Schema.String),
-        selector: Schema.optional(
-          Schema.Struct({
-            matchExpressions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  key: Schema.String,
-                  operator: Schema.String,
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            matchLabels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-          }),
-        ),
-        unhealthyPodEvictionPolicy: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => io_k8s_api_policy_v1_PodDisruptionBudgetSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        currentHealthy: Schema.optional(Schema.Number),
-        desiredHealthy: Schema.optional(Schema.Number),
-        disruptedPods: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        disruptionsAllowed: Schema.optional(Schema.Number),
-        expectedPods: Schema.optional(Schema.Number),
-        observedGeneration: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_policy_v1_PodDisruptionBudgetStatusSchema,
+      ),
     ),
   });
 export type ReadPolicyV1NamespacedPodDisruptionBudgetStatusOutput =
@@ -1138,6 +508,21 @@ export const ReplacePolicyV1NamespacedPodDisruptionBudgetInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(() => io_k8s_api_policy_v1_PodDisruptionBudgetSpecSchema),
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_policy_v1_PodDisruptionBudgetStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1153,95 +538,17 @@ export const ReplacePolicyV1NamespacedPodDisruptionBudgetOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        maxUnavailable: Schema.optional(Schema.String),
-        minAvailable: Schema.optional(Schema.String),
-        selector: Schema.optional(
-          Schema.Struct({
-            matchExpressions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  key: Schema.String,
-                  operator: Schema.String,
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            matchLabels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-          }),
-        ),
-        unhealthyPodEvictionPolicy: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => io_k8s_api_policy_v1_PodDisruptionBudgetSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        currentHealthy: Schema.optional(Schema.Number),
-        desiredHealthy: Schema.optional(Schema.Number),
-        disruptedPods: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        disruptionsAllowed: Schema.optional(Schema.Number),
-        expectedPods: Schema.optional(Schema.Number),
-        observedGeneration: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_policy_v1_PodDisruptionBudgetStatusSchema,
+      ),
     ),
   });
 export type ReplacePolicyV1NamespacedPodDisruptionBudgetOutput =
@@ -1265,6 +572,21 @@ export const ReplacePolicyV1NamespacedPodDisruptionBudgetStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(() => io_k8s_api_policy_v1_PodDisruptionBudgetSpecSchema),
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_policy_v1_PodDisruptionBudgetStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1280,95 +602,17 @@ export const ReplacePolicyV1NamespacedPodDisruptionBudgetStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        maxUnavailable: Schema.optional(Schema.String),
-        minAvailable: Schema.optional(Schema.String),
-        selector: Schema.optional(
-          Schema.Struct({
-            matchExpressions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  key: Schema.String,
-                  operator: Schema.String,
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            matchLabels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-          }),
-        ),
-        unhealthyPodEvictionPolicy: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => io_k8s_api_policy_v1_PodDisruptionBudgetSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        currentHealthy: Schema.optional(Schema.Number),
-        desiredHealthy: Schema.optional(Schema.Number),
-        disruptedPods: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        disruptionsAllowed: Schema.optional(Schema.Number),
-        expectedPods: Schema.optional(Schema.Number),
-        observedGeneration: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_policy_v1_PodDisruptionBudgetStatusSchema,
+      ),
     ),
   });
 export type ReplacePolicyV1NamespacedPodDisruptionBudgetStatusOutput =
@@ -1401,7 +645,9 @@ export type WatchPolicyV1NamespacedPodDisruptionBudgetInput =
 // Output Schema
 export const WatchPolicyV1NamespacedPodDisruptionBudgetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchPolicyV1NamespacedPodDisruptionBudgetOutput =
@@ -1430,7 +676,9 @@ export type WatchPolicyV1NamespacedPodDisruptionBudgetListInput =
 // Output Schema
 export const WatchPolicyV1NamespacedPodDisruptionBudgetListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchPolicyV1NamespacedPodDisruptionBudgetListOutput =
@@ -1459,7 +707,9 @@ export type WatchPolicyV1PodDisruptionBudgetListForAllNamespacesInput =
 // Output Schema
 export const WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchPolicyV1PodDisruptionBudgetListForAllNamespacesOutput =

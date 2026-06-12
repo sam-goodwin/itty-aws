@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { MachineEventSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
@@ -20,14 +21,7 @@ export type MachinesListEventsInput = typeof MachinesListEventsInput.Type;
 // Output Schema
 export const MachinesListEventsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      request: Schema.optional(Schema.Unknown),
-      source: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      timestamp: Schema.optional(Schema.Number),
-      type: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => MachineEventSchema),
   );
 export type MachinesListEventsOutput = typeof MachinesListEventsOutput.Type;
 

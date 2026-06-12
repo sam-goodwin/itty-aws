@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { PolicySchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -12,16 +13,7 @@ export type ListPoliciesInput = typeof ListPoliciesInput.Type;
 
 // Output Schema
 export const ListPoliciesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  policies: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      description: Schema.optional(Schema.String),
-      scope: Schema.Literals(["project", "account"]),
-      rules: Schema.Array(Schema.Unknown),
-      createdAt: Schema.String,
-      updatedAt: Schema.String,
-    }),
-  ),
+  policies: Schema.Array(Schema.suspend(() => PolicySchema)),
   nextPageToken: Schema.optional(Schema.String),
 });
 export type ListPoliciesOutput = typeof ListPoliciesOutput.Type;

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { AuditLogSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -21,43 +22,7 @@ export type ListOrganizationAuditLogsInput =
 export const ListOrganizationAuditLogsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     audit_logs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          code: Schema.optional(
-            Schema.Literals([
-              "user-signup",
-              "db-create",
-              "db-delete",
-              "db-protect",
-              "db-unprotect",
-              "db-token-create",
-              "group-token-create",
-              "user-token-create",
-              "instance-create",
-              "instance-delete",
-              "org-create",
-              "org-delete",
-              "org-member-add",
-              "org-member-rm",
-              "org-member-leave",
-              "org-plan-update",
-              "org-set-overages",
-              "group-create",
-              "group-delete",
-              "group-unarchive",
-              "group-protect",
-              "group-unprotect",
-              "db-aunrchive",
-              "user-delete",
-            ]),
-          ),
-          message: Schema.optional(Schema.String),
-          origin: Schema.optional(Schema.String),
-          author: Schema.optional(Schema.String),
-          created_at: Schema.optional(Schema.String),
-          data: Schema.optional(Schema.Unknown),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AuditLogSchema)),
     ),
     pagination: Schema.optional(
       Schema.Struct({

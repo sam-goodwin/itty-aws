@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { DashboardTileResultSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -26,20 +27,7 @@ export type DashboardsRunInsightsRetrieveInput =
 export const DashboardsRunInsightsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          insight: Schema.optional(
-            Schema.Struct({
-              id: Schema.optional(Schema.Number),
-              short_id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.NullOr(Schema.String)),
-              derived_name: Schema.optional(Schema.NullOr(Schema.String)),
-              result: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DashboardTileResultSchema)),
     ),
   });
 export type DashboardsRunInsightsRetrieveOutput =

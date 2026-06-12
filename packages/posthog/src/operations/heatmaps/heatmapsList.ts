@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { HeatmapsResponseSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -19,20 +20,7 @@ export const HeatmapsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
   results: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        results: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              count: Schema.optional(Schema.Number),
-              pointer_y: Schema.optional(Schema.Number),
-              pointer_relative_x: Schema.optional(Schema.Number),
-              pointer_target_fixed: Schema.optional(Schema.Boolean),
-            }),
-          ),
-        ),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => HeatmapsResponseSchema)),
   ),
 });
 export type HeatmapsListOutput = typeof HeatmapsListOutput.Type;

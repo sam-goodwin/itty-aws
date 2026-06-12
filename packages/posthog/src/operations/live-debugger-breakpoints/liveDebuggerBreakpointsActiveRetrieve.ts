@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ActiveBreakpointSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -23,16 +24,7 @@ export type LiveDebuggerBreakpointsActiveRetrieveInput =
 export const LiveDebuggerBreakpointsActiveRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     breakpoints: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          repository: Schema.optional(Schema.NullOr(Schema.String)),
-          filename: Schema.optional(Schema.String),
-          line_number: Schema.optional(Schema.Number),
-          enabled: Schema.optional(Schema.Boolean),
-          condition: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ActiveBreakpointSchema)),
     ),
   });
 export type LiveDebuggerBreakpointsActiveRetrieveOutput =

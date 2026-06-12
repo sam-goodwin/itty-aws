@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { exchange_rateSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -20,13 +21,7 @@ export type GetExchangeRatesInput = typeof GetExchangeRatesInput.Type;
 // Output Schema
 export const GetExchangeRatesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    data: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        object: Schema.Literals(["exchange_rate"]),
-        rates: Schema.Record(Schema.String, Schema.Number),
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => exchange_rateSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

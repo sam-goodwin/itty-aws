@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { IntegrationKindEnumSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
@@ -20,42 +21,7 @@ export type IntegrationsRetrieveInput = typeof IntegrationsRetrieveInput.Type;
 export const IntegrationsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.Number),
-    kind: Schema.optional(
-      Schema.Literals([
-        "slack",
-        "slack-posthog-code",
-        "salesforce",
-        "hubspot",
-        "google-pubsub",
-        "google-cloud-storage",
-        "google-ads",
-        "google-sheets",
-        "google-cloud-service-account",
-        "snapchat",
-        "linkedin-ads",
-        "reddit-ads",
-        "tiktok-ads",
-        "bing-ads",
-        "intercom",
-        "email",
-        "linear",
-        "github",
-        "gitlab",
-        "meta-ads",
-        "twilio",
-        "clickup",
-        "vercel",
-        "databricks",
-        "azure-blob",
-        "firebase",
-        "jira",
-        "pinterest-ads",
-        "stripe",
-        "customerio-app",
-        "customerio-webhook",
-        "customerio-track",
-      ]),
-    ),
+    kind: Schema.optional(Schema.suspend(() => IntegrationKindEnumSchema)),
     config: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
     created_by: Schema.optional(

@@ -1,7 +1,8 @@
 import * as Schema from "effect/Schema";
+import { customer_session_resource_componentsSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const PostCustomerSessionsInput =
@@ -103,28 +104,9 @@ export type PostCustomerSessionsInput = typeof PostCustomerSessionsInput.Type;
 // Output Schema
 export const PostCustomerSessionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    client_secret: SensitiveString,
+    client_secret: SensitiveOutputString,
     components: Schema.optional(
-      Schema.Struct({
-        buy_button: Schema.Struct({
-          enabled: Schema.Boolean,
-        }),
-        customer_sheet: Schema.Struct({
-          enabled: Schema.Boolean,
-          features: Schema.Unknown,
-        }),
-        mobile_payment_element: Schema.Struct({
-          enabled: Schema.Boolean,
-          features: Schema.Unknown,
-        }),
-        payment_element: Schema.Struct({
-          enabled: Schema.Boolean,
-          features: Schema.Unknown,
-        }),
-        pricing_table: Schema.Struct({
-          enabled: Schema.Boolean,
-        }),
-      }),
+      Schema.suspend(() => customer_session_resource_componentsSchema),
     ),
     created: Schema.Number,
     customer: Schema.Unknown,

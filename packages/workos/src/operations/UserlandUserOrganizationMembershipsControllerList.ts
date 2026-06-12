@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { UserlandUserOrganizationMembershipSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
@@ -34,27 +35,7 @@ export const UserlandUserOrganizationMembershipsControllerListOutput =
     ),
     data: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          object: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          user_id: Schema.optional(Schema.String),
-          organization_id: Schema.optional(Schema.String),
-          status: Schema.optional(
-            Schema.Literals(["active", "inactive", "pending"]),
-          ),
-          directory_managed: Schema.optional(Schema.Boolean),
-          organization_name: Schema.optional(Schema.String),
-          custom_attributes: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-          role: Schema.optional(
-            Schema.Struct({
-              slug: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
+        Schema.suspend(() => UserlandUserOrganizationMembershipSchema),
       ),
     ),
   });

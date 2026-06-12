@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  LLMSkillFileManifestSchema,
+  LLMSkillOutlineEntrySchema,
+} from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -29,20 +33,10 @@ export const LlmSkillsNameRetrieveOutput =
     allowed_tools: Schema.optional(Schema.Array(Schema.String)),
     metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     files: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          path: Schema.optional(Schema.String),
-          content_type: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LLMSkillFileManifestSchema)),
     ),
     outline: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          level: Schema.optional(Schema.Number),
-          text: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LLMSkillOutlineEntrySchema)),
     ),
     version: Schema.optional(Schema.Number),
     created_by: Schema.optional(

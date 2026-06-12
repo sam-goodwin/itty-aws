@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const PostV1DatabasesByDatabaseIdConnectionsInput =
@@ -30,25 +30,25 @@ export const PostV1DatabasesByDatabaseIdConnectionsOutput =
           Schema.Struct({
             host: Schema.String,
             port: Schema.Number,
-            connectionString: SensitiveString,
+            connectionString: SensitiveOutputString,
           }),
         ),
         pooled: Schema.optional(
           Schema.Struct({
             host: Schema.String,
             port: Schema.Number,
-            connectionString: SensitiveString,
+            connectionString: SensitiveOutputString,
           }),
         ),
         accelerate: Schema.optional(
           Schema.Struct({
             host: Schema.String,
             port: Schema.Number,
-            connectionString: SensitiveString,
+            connectionString: SensitiveOutputString,
           }),
         ),
       }),
-      connectionString: SensitiveString,
+      connectionString: SensitiveOutputString,
       directConnection: Schema.optional(
         Schema.NullOr(
           Schema.Struct({

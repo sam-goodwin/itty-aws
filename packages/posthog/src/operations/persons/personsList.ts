@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { PersonRecordSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -22,17 +23,7 @@ export const PersonsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   previous: Schema.optional(Schema.NullOr(Schema.String)),
   count: Schema.optional(Schema.Number),
   results: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Number),
-        name: Schema.optional(Schema.String),
-        distinct_ids: Schema.optional(Schema.Array(Schema.String)),
-        properties: Schema.optional(Schema.Unknown),
-        created_at: Schema.optional(Schema.String),
-        uuid: Schema.optional(Schema.String),
-        last_seen_at: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => PersonRecordSchema)),
   ),
 });
 export type PersonsListOutput = typeof PersonsListOutput.Type;

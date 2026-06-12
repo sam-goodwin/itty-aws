@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { WebhookEventResponseSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -22,30 +23,7 @@ export type ListWebhookSubscriptionEventsInput =
 // Output Schema
 export const ListWebhookSubscriptionEventsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    events: Schema.Array(
-      Schema.Struct({
-        eventId: Schema.String,
-        eventTypeName: Schema.String,
-        status: Schema.Literals([
-          "pending",
-          "processing",
-          "succeeded",
-          "failed",
-          "retrying",
-        ]),
-        createdAt: Schema.String,
-        succeededAt: Schema.optional(Schema.String),
-        retryCount: Schema.Number,
-        response: Schema.optional(
-          Schema.Struct({
-            httpCode: Schema.optional(Schema.Number),
-            elapsedTimeMs: Schema.optional(Schema.Number),
-            body: Schema.optional(Schema.String),
-            errorName: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
-    ),
+    events: Schema.Array(Schema.suspend(() => WebhookEventResponseSchema)),
   });
 export type ListWebhookSubscriptionEventsOutput =
   typeof ListWebhookSubscriptionEventsOutput.Type;

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { NetworkAccessLevelEnumSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -10,7 +11,7 @@ export const SandboxPartialUpdateInput =
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     network_access_level: Schema.optional(
-      Schema.Literals(["trusted", "full", "custom"]),
+      Schema.suspend(() => NetworkAccessLevelEnumSchema),
     ),
     allowed_domains: Schema.optional(Schema.Array(Schema.String)),
     include_default_domains: Schema.optional(Schema.Boolean),
@@ -53,7 +54,7 @@ export const SandboxPartialUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     network_access_level: Schema.optional(
-      Schema.Literals(["trusted", "full", "custom"]),
+      Schema.suspend(() => NetworkAccessLevelEnumSchema),
     ),
     allowed_domains: Schema.optional(Schema.Array(Schema.String)),
     include_default_domains: Schema.optional(Schema.Boolean),

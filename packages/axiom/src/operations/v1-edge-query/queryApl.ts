@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { QueryOptionsSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
@@ -29,37 +30,7 @@ export const QueryAplInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   libraries: Schema.optional(Schema.Array(Schema.String)),
   maxBinAutoGroups: Schema.optional(Schema.Number),
   queryEdgeDeployment: Schema.optional(Schema.String),
-  queryOptions: Schema.optional(
-    Schema.Struct({
-      against: Schema.optional(Schema.String),
-      againstStart: Schema.optional(Schema.String),
-      againstTimestamp: Schema.optional(Schema.String),
-      aggChartOpts: Schema.optional(Schema.String),
-      caseSensitive: Schema.optional(Schema.String),
-      containsTimeFilter: Schema.optional(Schema.String),
-      datasets: Schema.optional(Schema.String),
-      displayNull: Schema.optional(Schema.String),
-      editorContent: Schema.optional(Schema.String),
-      endColumn: Schema.optional(Schema.String),
-      endLineNumber: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      integrationsFilter: Schema.optional(Schema.String),
-      nanosecondPrecision: Schema.optional(Schema.String),
-      openIntervals: Schema.optional(Schema.String),
-      overlayCharts: Schema.optional(Schema.String),
-      queryObject: Schema.optional(Schema.String),
-      quickRange: Schema.optional(Schema.String),
-      resolution: Schema.optional(Schema.String),
-      resultsHistogram: Schema.optional(Schema.String),
-      selection: Schema.optional(Schema.String),
-      shownColumns: Schema.optional(Schema.String),
-      startColumn: Schema.optional(Schema.String),
-      startLineNumber: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      timeSeriesVariant: Schema.optional(Schema.String),
-      timeSeriesView: Schema.optional(Schema.String),
-    }),
-  ),
+  queryOptions: Schema.optional(Schema.suspend(() => QueryOptionsSchema)),
   queryRegion: Schema.optional(Schema.String),
   startTime: Schema.optional(Schema.String),
   variables: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),

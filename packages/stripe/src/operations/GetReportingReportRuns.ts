@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { reporting_report_runSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -23,29 +24,7 @@ export type GetReportingReportRunsInput =
 // Output Schema
 export const GetReportingReportRunsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        created: Schema.Number,
-        error: Schema.NullOr(Schema.String),
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        object: Schema.Literals(["reporting.report_run"]),
-        parameters: Schema.Struct({
-          columns: Schema.optional(Schema.Array(Schema.String)),
-          connected_account: Schema.optional(Schema.String),
-          currency: Schema.optional(Schema.String),
-          interval_end: Schema.optional(Schema.Number),
-          interval_start: Schema.optional(Schema.Number),
-          payout: Schema.optional(Schema.String),
-          reporting_category: Schema.optional(Schema.String),
-          timezone: Schema.optional(Schema.String),
-        }),
-        report_type: Schema.String,
-        result: Schema.Unknown,
-        status: Schema.String,
-        succeeded_at: Schema.NullOr(Schema.Number),
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => reporting_report_runSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

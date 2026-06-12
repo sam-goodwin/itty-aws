@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { InviteV2Schema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -19,15 +20,7 @@ export type ListOrganizationInvitesV2Input =
 export const ListOrganizationInvitesV2Output =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     invites: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          email: Schema.optional(Schema.String),
-          role: Schema.optional(Schema.Literals(["admin", "member", "viewer"])),
-          token: Schema.optional(Schema.String),
-          created_at: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => InviteV2Schema)),
     ),
   });
 export type ListOrganizationInvitesV2Output =

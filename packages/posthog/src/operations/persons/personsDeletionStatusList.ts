@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { AsyncDeletionStatusSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -28,14 +29,7 @@ export const PersonsDeletionStatusListOutput =
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     count: Schema.optional(Schema.Number),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          person_uuid: Schema.optional(Schema.String),
-          created_at: Schema.optional(Schema.String),
-          status: Schema.optional(Schema.String),
-          delete_verified_at: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AsyncDeletionStatusSchema)),
     ),
   });
 export type PersonsDeletionStatusListOutput =

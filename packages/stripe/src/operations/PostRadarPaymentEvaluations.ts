@@ -1,4 +1,11 @@
 import * as Schema from "effect/Schema";
+import {
+  insights_resources_payment_evaluation_client_device_metadataSchema,
+  insights_resources_payment_evaluation_customer_detailsSchema,
+  insights_resources_payment_evaluation_eventSchema,
+  insights_resources_payment_evaluation_payment_detailsSchema,
+  insights_resources_payment_evaluation_signalsSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -95,92 +102,20 @@ export type PostRadarPaymentEvaluationsInput =
 export const PostRadarPaymentEvaluationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     client_device_metadata_details: Schema.optional(
-      Schema.Struct({
-        radar_session: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          insights_resources_payment_evaluation_client_device_metadataSchema,
+      ),
     ),
     created_at: Schema.Number,
     customer_details: Schema.optional(
-      Schema.Struct({
-        customer: Schema.NullOr(Schema.String),
-        customer_account: Schema.NullOr(Schema.String),
-        email: Schema.NullOr(Schema.String),
-        name: Schema.NullOr(Schema.String),
-        phone: Schema.NullOr(Schema.String),
-      }),
+      Schema.suspend(
+        () => insights_resources_payment_evaluation_customer_detailsSchema,
+      ),
     ),
     events: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          dispute_opened: Schema.optional(
-            Schema.Struct({
-              amount: Schema.Number,
-              currency: Schema.String,
-              reason: Schema.Literals([
-                "account_not_available",
-                "credit_not_processed",
-                "customer_initiated",
-                "duplicate",
-                "fraudulent",
-                "general",
-                "noncompliant",
-                "product_not_received",
-                "product_unacceptable",
-                "subscription_canceled",
-                "unrecognized",
-              ]),
-            }),
-          ),
-          early_fraud_warning_received: Schema.optional(
-            Schema.Struct({
-              fraud_type: Schema.Literals([
-                "made_with_lost_card",
-                "made_with_stolen_card",
-                "other",
-                "unauthorized_use_of_card",
-              ]),
-            }),
-          ),
-          occurred_at: Schema.Number,
-          refunded: Schema.optional(
-            Schema.Struct({
-              amount: Schema.Number,
-              currency: Schema.String,
-              reason: Schema.Literals([
-                "duplicate",
-                "fraudulent",
-                "other",
-                "requested_by_customer",
-              ]),
-            }),
-          ),
-          type: Schema.Literals([
-            "dispute_opened",
-            "early_fraud_warning_received",
-            "refunded",
-            "user_intervention_raised",
-            "user_intervention_resolved",
-          ]),
-          user_intervention_raised: Schema.optional(
-            Schema.Struct({
-              custom: Schema.optional(
-                Schema.Struct({
-                  type: Schema.String,
-                }),
-              ),
-              key: Schema.String,
-              type: Schema.Literals(["3ds", "captcha", "custom"]),
-            }),
-          ),
-          user_intervention_resolved: Schema.optional(
-            Schema.Struct({
-              key: Schema.String,
-              outcome: Schema.NullOr(
-                Schema.Literals(["abandoned", "failed", "passed"]),
-              ),
-            }),
-          ),
-        }),
+        Schema.suspend(() => insights_resources_payment_evaluation_eventSchema),
       ),
     ),
     id: Schema.String,
@@ -189,24 +124,14 @@ export const PostRadarPaymentEvaluationsOutput =
     object: Schema.Literals(["radar.payment_evaluation"]),
     outcome: Schema.optional(Schema.Unknown),
     payment_details: Schema.optional(
-      Schema.Struct({
-        amount: Schema.Number,
-        currency: Schema.String,
-        description: Schema.NullOr(Schema.String),
-        money_movement_details: Schema.Unknown,
-        payment_method_details: Schema.Unknown,
-        shipping_details: Schema.Unknown,
-        statement_descriptor: Schema.NullOr(Schema.String),
-      }),
+      Schema.suspend(
+        () => insights_resources_payment_evaluation_payment_detailsSchema,
+      ),
     ),
     recommended_action: Schema.Literals(["block", "continue"]),
-    signals: Schema.Struct({
-      fraudulent_payment: Schema.Struct({
-        evaluated_at: Schema.Number,
-        risk_level: Schema.Literals(["elevated", "highest", "normal"]),
-        score: Schema.Number,
-      }),
-    }),
+    signals: Schema.suspend(
+      () => insights_resources_payment_evaluation_signalsSchema,
+    ),
   });
 export type PostRadarPaymentEvaluationsOutput =
   typeof PostRadarPaymentEvaluationsOutput.Type;

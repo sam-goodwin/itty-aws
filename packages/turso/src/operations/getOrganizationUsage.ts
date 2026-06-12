@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { DatabaseUsageOutputSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -32,34 +33,7 @@ export const GetOrganizationUsageOutput =
           }),
         ),
         databases: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              uuid: Schema.optional(Schema.String),
-              instances: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    uuid: Schema.optional(Schema.String),
-                    usage: Schema.optional(
-                      Schema.Struct({
-                        rows_read: Schema.optional(Schema.Number),
-                        rows_written: Schema.optional(Schema.Number),
-                        storage_bytes: Schema.optional(Schema.Number),
-                        bytes_synced: Schema.optional(Schema.Number),
-                      }),
-                    ),
-                  }),
-                ),
-              ),
-              total: Schema.optional(
-                Schema.Struct({
-                  rows_read: Schema.optional(Schema.Number),
-                  rows_written: Schema.optional(Schema.Number),
-                  storage_bytes: Schema.optional(Schema.Number),
-                  bytes_synced: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => DatabaseUsageOutputSchema)),
         ),
       }),
     ),

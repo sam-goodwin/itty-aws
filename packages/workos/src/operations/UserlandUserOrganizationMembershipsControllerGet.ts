@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { SlimRoleSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
@@ -31,11 +32,7 @@ export const UserlandUserOrganizationMembershipsControllerGetOutput =
     ),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-    role: Schema.optional(
-      Schema.Struct({
-        slug: Schema.optional(Schema.String),
-      }),
-    ),
+    role: Schema.optional(Schema.suspend(() => SlimRoleSchema)),
   });
 export type UserlandUserOrganizationMembershipsControllerGetOutput =
   typeof UserlandUserOrganizationMembershipsControllerGetOutput.Type;

@@ -1,17 +1,12 @@
 import * as Schema from "effect/Schema";
+import { EvmSwapsNetworkSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
 export const CreateEvmSwapQuoteInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    network: Schema.Literals([
-      "base",
-      "ethereum",
-      "arbitrum",
-      "optimism",
-      "polygon",
-    ]),
+    network: Schema.suspend(() => EvmSwapsNetworkSchema),
     toToken: Schema.String,
     fromToken: Schema.String,
     fromAmount: Schema.String,

@@ -1,4 +1,11 @@
 import * as Schema from "effect/Schema";
+import {
+  AlertCheckSchema,
+  AlertConditionTypeSchema,
+  AlertScheduleRestrictionWindowSchema,
+  InsightThresholdTypeSchema,
+  InsightsThresholdBoundsSchema,
+} from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -36,12 +43,11 @@ export const AlertsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       configuration: Schema.optional(
         Schema.Struct({
           bounds: Schema.optional(
-            Schema.Struct({
-              lower: Schema.optional(Schema.NullOr(Schema.Number)),
-              upper: Schema.optional(Schema.NullOr(Schema.Number)),
-            }),
+            Schema.suspend(() => InsightsThresholdBoundsSchema),
           ),
-          type: Schema.optional(Schema.Literals(["absolute", "percentage"])),
+          type: Schema.optional(
+            Schema.suspend(() => InsightThresholdTypeSchema),
+          ),
         }),
       ),
     }),
@@ -49,13 +55,7 @@ export const AlertsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   condition: Schema.optional(
     Schema.NullOr(
       Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals([
-            "absolute_value",
-            "relative_increase",
-            "relative_decrease",
-          ]),
-        ),
+        type: Schema.optional(Schema.suspend(() => AlertConditionTypeSchema)),
       }),
     ),
   ),
@@ -64,32 +64,7 @@ export const AlertsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   last_notified_at: Schema.optional(Schema.NullOr(Schema.String)),
   last_checked_at: Schema.optional(Schema.NullOr(Schema.String)),
   next_check_at: Schema.optional(Schema.NullOr(Schema.String)),
-  checks: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        created_at: Schema.optional(Schema.String),
-        calculated_value: Schema.optional(Schema.NullOr(Schema.Number)),
-        state: Schema.optional(
-          Schema.Literals(["Firing", "Not firing", "Errored", "Snoozed"]),
-        ),
-        targets_notified: Schema.optional(Schema.Boolean),
-        anomaly_scores: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        triggered_points: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        triggered_dates: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        interval: Schema.optional(Schema.NullOr(Schema.String)),
-        triggered_metadata: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        investigation_status: Schema.optional(Schema.Unknown),
-        investigation_verdict: Schema.optional(Schema.Unknown),
-        investigation_summary: Schema.optional(Schema.NullOr(Schema.String)),
-        investigation_notebook_short_id: Schema.optional(
-          Schema.NullOr(Schema.String),
-        ),
-        notification_sent_at: Schema.optional(Schema.NullOr(Schema.String)),
-        notification_suppressed_by_agent: Schema.optional(Schema.Boolean),
-      }),
-    ),
-  ),
+  checks: Schema.optional(Schema.Array(Schema.suspend(() => AlertCheckSchema))),
   checks_total: Schema.optional(Schema.NullOr(Schema.Number)),
   config: Schema.optional(
     Schema.NullOr(
@@ -111,10 +86,7 @@ export const AlertsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         blocked_windows: Schema.optional(
           Schema.Array(
-            Schema.Struct({
-              start: Schema.optional(Schema.String),
-              end: Schema.optional(Schema.String),
-            }),
+            Schema.suspend(() => AlertScheduleRestrictionWindowSchema),
           ),
         ),
       }),
@@ -161,12 +133,11 @@ export const AlertsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       configuration: Schema.optional(
         Schema.Struct({
           bounds: Schema.optional(
-            Schema.Struct({
-              lower: Schema.optional(Schema.NullOr(Schema.Number)),
-              upper: Schema.optional(Schema.NullOr(Schema.Number)),
-            }),
+            Schema.suspend(() => InsightsThresholdBoundsSchema),
           ),
-          type: Schema.optional(Schema.Literals(["absolute", "percentage"])),
+          type: Schema.optional(
+            Schema.suspend(() => InsightThresholdTypeSchema),
+          ),
         }),
       ),
     }),
@@ -174,13 +145,7 @@ export const AlertsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   condition: Schema.optional(
     Schema.NullOr(
       Schema.Struct({
-        type: Schema.optional(
-          Schema.Literals([
-            "absolute_value",
-            "relative_increase",
-            "relative_decrease",
-          ]),
-        ),
+        type: Schema.optional(Schema.suspend(() => AlertConditionTypeSchema)),
       }),
     ),
   ),
@@ -189,32 +154,7 @@ export const AlertsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   last_notified_at: Schema.optional(Schema.NullOr(Schema.String)),
   last_checked_at: Schema.optional(Schema.NullOr(Schema.String)),
   next_check_at: Schema.optional(Schema.NullOr(Schema.String)),
-  checks: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        created_at: Schema.optional(Schema.String),
-        calculated_value: Schema.optional(Schema.NullOr(Schema.Number)),
-        state: Schema.optional(
-          Schema.Literals(["Firing", "Not firing", "Errored", "Snoozed"]),
-        ),
-        targets_notified: Schema.optional(Schema.Boolean),
-        anomaly_scores: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        triggered_points: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        triggered_dates: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        interval: Schema.optional(Schema.NullOr(Schema.String)),
-        triggered_metadata: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        investigation_status: Schema.optional(Schema.Unknown),
-        investigation_verdict: Schema.optional(Schema.Unknown),
-        investigation_summary: Schema.optional(Schema.NullOr(Schema.String)),
-        investigation_notebook_short_id: Schema.optional(
-          Schema.NullOr(Schema.String),
-        ),
-        notification_sent_at: Schema.optional(Schema.NullOr(Schema.String)),
-        notification_suppressed_by_agent: Schema.optional(Schema.Boolean),
-      }),
-    ),
-  ),
+  checks: Schema.optional(Schema.Array(Schema.suspend(() => AlertCheckSchema))),
   checks_total: Schema.optional(Schema.NullOr(Schema.Number)),
   config: Schema.optional(
     Schema.NullOr(
@@ -236,10 +176,7 @@ export const AlertsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Struct({
         blocked_windows: Schema.optional(
           Schema.Array(
-            Schema.Struct({
-              start: Schema.optional(Schema.String),
-              end: Schema.optional(Schema.String),
-            }),
+            Schema.suspend(() => AlertScheduleRestrictionWindowSchema),
           ),
         ),
       }),

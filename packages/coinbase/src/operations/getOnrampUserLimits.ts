@@ -1,33 +1,27 @@
 import * as Schema from "effect/Schema";
+import {
+  OnrampOrderPaymentMethodTypeIdSchema,
+  OnrampUserIdTypeSchema,
+  OnrampUserLimitSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
 export const GetOnrampUserLimitsInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    paymentMethodType: Schema.Literals([
-      "GUEST_CHECKOUT_APPLE_PAY",
-      "GUEST_CHECKOUT_GOOGLE_PAY",
-    ]),
+    paymentMethodType: Schema.suspend(
+      () => OnrampOrderPaymentMethodTypeIdSchema,
+    ),
     userId: Schema.String,
-    userIdType: Schema.Literals(["phone_number"]),
+    userIdType: Schema.suspend(() => OnrampUserIdTypeSchema),
   }).pipe(T.Http({ method: "POST", path: "/v2/onramp/limits" }));
 export type GetOnrampUserLimitsInput = typeof GetOnrampUserLimitsInput.Type;
 
 // Output Schema
 export const GetOnrampUserLimitsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    limits: Schema.Array(
-      Schema.Struct({
-        limitType: Schema.Literals([
-          "weekly_spending",
-          "lifetime_transactions",
-        ]),
-        currency: Schema.optional(Schema.String),
-        limit: Schema.String,
-        remaining: Schema.String,
-      }),
-    ),
+    limits: Schema.Array(Schema.suspend(() => OnrampUserLimitSchema)),
   });
 export type GetOnrampUserLimitsOutput = typeof GetOnrampUserLimitsOutput.Type;
 

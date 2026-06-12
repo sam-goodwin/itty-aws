@@ -1,4 +1,11 @@
 import * as Schema from "effect/Schema";
+import {
+  addressSchema,
+  legal_entity_dobSchema,
+  legal_entity_person_verificationSchema,
+  person_additional_tos_acceptancesSchema,
+  person_relationshipSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -199,30 +206,13 @@ export const PostAccountsAccountPersonsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account: Schema.optional(Schema.String),
     additional_tos_acceptances: Schema.optional(
-      Schema.Struct({
-        account: Schema.Unknown,
-      }),
+      Schema.suspend(() => person_additional_tos_acceptancesSchema),
     ),
-    address: Schema.optional(
-      Schema.Struct({
-        city: Schema.NullOr(Schema.String),
-        country: Schema.NullOr(Schema.String),
-        line1: Schema.NullOr(Schema.String),
-        line2: Schema.NullOr(Schema.String),
-        postal_code: Schema.NullOr(Schema.String),
-        state: Schema.NullOr(Schema.String),
-      }),
-    ),
+    address: Schema.optional(Schema.suspend(() => addressSchema)),
     address_kana: Schema.optional(Schema.Unknown),
     address_kanji: Schema.optional(Schema.Unknown),
     created: Schema.Number,
-    dob: Schema.optional(
-      Schema.Struct({
-        day: Schema.NullOr(Schema.Number),
-        month: Schema.NullOr(Schema.Number),
-        year: Schema.NullOr(Schema.Number),
-      }),
-    ),
+    dob: Schema.optional(Schema.suspend(() => legal_entity_dobSchema)),
     email: Schema.optional(Schema.NullOr(Schema.String)),
     first_name: Schema.optional(Schema.NullOr(Schema.String)),
     first_name_kana: Schema.optional(Schema.NullOr(Schema.String)),
@@ -242,46 +232,15 @@ export const PostAccountsAccountPersonsOutput =
     object: Schema.Literals(["person"]),
     phone: Schema.optional(Schema.NullOr(Schema.String)),
     political_exposure: Schema.optional(Schema.Literals(["existing", "none"])),
-    registered_address: Schema.optional(
-      Schema.Struct({
-        city: Schema.NullOr(Schema.String),
-        country: Schema.NullOr(Schema.String),
-        line1: Schema.NullOr(Schema.String),
-        line2: Schema.NullOr(Schema.String),
-        postal_code: Schema.NullOr(Schema.String),
-        state: Schema.NullOr(Schema.String),
-      }),
-    ),
+    registered_address: Schema.optional(Schema.suspend(() => addressSchema)),
     relationship: Schema.optional(
-      Schema.Struct({
-        authorizer: Schema.NullOr(Schema.Boolean),
-        director: Schema.NullOr(Schema.Boolean),
-        executive: Schema.NullOr(Schema.Boolean),
-        legal_guardian: Schema.NullOr(Schema.Boolean),
-        owner: Schema.NullOr(Schema.Boolean),
-        percent_ownership: Schema.NullOr(Schema.Number),
-        representative: Schema.NullOr(Schema.Boolean),
-        title: Schema.NullOr(Schema.String),
-      }),
+      Schema.suspend(() => person_relationshipSchema),
     ),
     requirements: Schema.optional(Schema.Unknown),
     ssn_last_4_provided: Schema.optional(Schema.Boolean),
     us_cfpb_data: Schema.optional(Schema.Unknown),
     verification: Schema.optional(
-      Schema.Struct({
-        additional_document: Schema.optional(Schema.Unknown),
-        details: Schema.optional(Schema.NullOr(Schema.String)),
-        details_code: Schema.optional(Schema.NullOr(Schema.String)),
-        document: Schema.optional(
-          Schema.Struct({
-            back: Schema.Unknown,
-            details: Schema.NullOr(Schema.String),
-            details_code: Schema.NullOr(Schema.String),
-            front: Schema.Unknown,
-          }),
-        ),
-        status: Schema.String,
-      }),
+      Schema.suspend(() => legal_entity_person_verificationSchema),
     ),
   });
 export type PostAccountsAccountPersonsOutput =

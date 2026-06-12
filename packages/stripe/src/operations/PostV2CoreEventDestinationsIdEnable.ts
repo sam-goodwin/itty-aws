@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const PostV2CoreEventDestinationsIdEnableInput =
@@ -53,7 +53,7 @@ export const PostV2CoreEventDestinationsIdEnableOutput =
     updated: Schema.String,
     webhook_endpoint: Schema.optional(
       Schema.Struct({
-        signing_secret: Schema.optional(SensitiveString),
+        signing_secret: Schema.optional(SensitiveOutputString),
         url: Schema.optional(Schema.String),
       }),
     ),

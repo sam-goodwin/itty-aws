@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { invoice_paymentSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -25,30 +26,7 @@ export type GetInvoicePaymentsInput = typeof GetInvoicePaymentsInput.Type;
 // Output Schema
 export const GetInvoicePaymentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        amount_paid: Schema.NullOr(Schema.Number),
-        amount_requested: Schema.Number,
-        created: Schema.Number,
-        currency: Schema.String,
-        id: Schema.String,
-        invoice: Schema.Unknown,
-        is_default: Schema.Boolean,
-        livemode: Schema.Boolean,
-        object: Schema.Literals(["invoice_payment"]),
-        payment: Schema.Struct({
-          charge: Schema.optional(Schema.Unknown),
-          payment_intent: Schema.optional(Schema.Unknown),
-          payment_record: Schema.optional(Schema.Unknown),
-          type: Schema.Literals(["charge", "payment_intent", "payment_record"]),
-        }),
-        status: Schema.String,
-        status_transitions: Schema.Struct({
-          canceled_at: Schema.NullOr(Schema.Number),
-          paid_at: Schema.NullOr(Schema.Number),
-        }),
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => invoice_paymentSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { DatasetFieldSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
@@ -13,13 +14,7 @@ export type GetFieldsForDatasetInput = typeof GetFieldsForDatasetInput.Type;
 // Output Schema
 export const GetFieldsForDatasetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      hidden: Schema.optional(Schema.Boolean),
-      name: Schema.String,
-      type: Schema.String,
-      unit: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => DatasetFieldSchema),
   );
 export type GetFieldsForDatasetOutput = typeof GetFieldsForDatasetOutput.Type;
 

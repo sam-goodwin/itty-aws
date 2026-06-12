@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { AppOrganizationInfoSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
@@ -17,11 +18,7 @@ export const AppsShowOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.optional(Schema.String),
   network: Schema.optional(Schema.String),
   organization: Schema.optional(
-    Schema.Struct({
-      internal_numeric_id: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      slug: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => AppOrganizationInfoSchema),
   ),
   status: Schema.optional(Schema.String),
   volume_count: Schema.optional(Schema.Number),

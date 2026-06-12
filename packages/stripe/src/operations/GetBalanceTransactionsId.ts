@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { feeSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -33,15 +34,7 @@ export const GetBalanceTransactionsIdOutput =
     description: Schema.NullOr(Schema.String),
     exchange_rate: Schema.NullOr(Schema.Number),
     fee: Schema.Number,
-    fee_details: Schema.Array(
-      Schema.Struct({
-        amount: Schema.Number,
-        application: Schema.NullOr(Schema.String),
-        currency: Schema.String,
-        description: Schema.NullOr(Schema.String),
-        type: Schema.String,
-      }),
-    ),
+    fee_details: Schema.Array(Schema.suspend(() => feeSchema)),
     id: Schema.String,
     net: Schema.Number,
     object: Schema.Literals(["balance_transaction"]),

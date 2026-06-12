@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { DirectoryUserWithGroupsSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
@@ -21,69 +22,7 @@ export const DirectoryUsersControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          object: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          directory_id: Schema.optional(Schema.String),
-          organization_id: Schema.optional(Schema.String),
-          idp_id: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.NullOr(Schema.String)),
-          first_name: Schema.optional(Schema.NullOr(Schema.String)),
-          last_name: Schema.optional(Schema.NullOr(Schema.String)),
-          emails: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                primary: Schema.optional(Schema.Boolean),
-                type: Schema.optional(Schema.String),
-                value: Schema.optional(Schema.NullOr(Schema.String)),
-              }),
-            ),
-          ),
-          job_title: Schema.optional(Schema.NullOr(Schema.String)),
-          username: Schema.optional(Schema.NullOr(Schema.String)),
-          state: Schema.optional(
-            Schema.Literals(["active", "suspended", "inactive"]),
-          ),
-          raw_attributes: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-          custom_attributes: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-          role: Schema.optional(
-            Schema.Struct({
-              slug: Schema.optional(Schema.String),
-            }),
-          ),
-          roles: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                slug: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-          groups: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                object: Schema.optional(Schema.String),
-                id: Schema.optional(Schema.String),
-                idp_id: Schema.optional(Schema.String),
-                directory_id: Schema.optional(Schema.String),
-                organization_id: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                raw_attributes: Schema.optional(
-                  Schema.Record(Schema.String, Schema.Unknown),
-                ),
-                created_at: Schema.optional(Schema.String),
-                updated_at: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DirectoryUserWithGroupsSchema)),
     ),
     list_metadata: Schema.optional(
       Schema.Struct({

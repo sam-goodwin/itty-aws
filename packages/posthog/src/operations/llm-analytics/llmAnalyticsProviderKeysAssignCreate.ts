@@ -1,24 +1,16 @@
 import * as Schema from "effect/Schema";
+import { LLMProviderEnumSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
-import { SensitiveString } from "../../sensitive.ts";
+import { SensitiveString, SensitiveOutputString } from "../../sensitive.ts";
 
 // Input Schema
 export const LlmAnalyticsProviderKeysAssignCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
-    provider: Schema.optional(
-      Schema.Literals([
-        "openai",
-        "anthropic",
-        "gemini",
-        "openrouter",
-        "fireworks",
-        "azure_openai",
-      ]),
-    ),
+    provider: Schema.optional(Schema.suspend(() => LLMProviderEnumSchema)),
     name: Schema.optional(Schema.String),
     state: Schema.optional(
       Schema.Literals(["unknown", "ok", "invalid", "error"]),
@@ -63,22 +55,13 @@ export type LlmAnalyticsProviderKeysAssignCreateInput =
 export const LlmAnalyticsProviderKeysAssignCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
-    provider: Schema.optional(
-      Schema.Literals([
-        "openai",
-        "anthropic",
-        "gemini",
-        "openrouter",
-        "fireworks",
-        "azure_openai",
-      ]),
-    ),
+    provider: Schema.optional(Schema.suspend(() => LLMProviderEnumSchema)),
     name: Schema.optional(Schema.String),
     state: Schema.optional(
       Schema.Literals(["unknown", "ok", "invalid", "error"]),
     ),
     error_message: Schema.optional(Schema.NullOr(Schema.String)),
-    api_key: Schema.optional(SensitiveString),
+    api_key: Schema.optional(SensitiveOutputString),
     api_key_masked: Schema.optional(Schema.String),
     azure_endpoint: Schema.optional(Schema.String),
     api_version: Schema.optional(Schema.String),

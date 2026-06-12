@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { SolanaAccountSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -13,15 +14,7 @@ export type ListSolanaAccountsInput = typeof ListSolanaAccountsInput.Type;
 // Output Schema
 export const ListSolanaAccountsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accounts: Schema.Array(
-      Schema.Struct({
-        address: Schema.String,
-        name: Schema.optional(Schema.String),
-        policies: Schema.optional(Schema.Array(Schema.String)),
-        createdAt: Schema.optional(Schema.String),
-        updatedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    accounts: Schema.Array(Schema.suspend(() => SolanaAccountSchema)),
     nextPageToken: Schema.optional(Schema.String),
   });
 export type ListSolanaAccountsOutput = typeof ListSolanaAccountsOutput.Type;

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { SentimentResultSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -27,24 +28,7 @@ export const LlmAnalyticsSentimentCreateOutput =
     results: Schema.optional(
       Schema.Record(
         Schema.String,
-        Schema.Struct({
-          label: Schema.optional(Schema.String),
-          score: Schema.optional(Schema.Number),
-          scores: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
-          messages: Schema.optional(
-            Schema.Record(
-              Schema.String,
-              Schema.Struct({
-                label: Schema.optional(Schema.String),
-                score: Schema.optional(Schema.Number),
-                scores: Schema.optional(
-                  Schema.Record(Schema.String, Schema.Number),
-                ),
-              }),
-            ),
-          ),
-          message_count: Schema.optional(Schema.Number),
-        }),
+        Schema.suspend(() => SentimentResultSchema),
       ),
     ),
   });

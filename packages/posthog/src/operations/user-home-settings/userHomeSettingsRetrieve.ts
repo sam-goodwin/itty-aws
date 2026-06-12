@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { PinnedSceneTabSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
@@ -15,21 +16,7 @@ export type UserHomeSettingsRetrieveInput =
 export const UserHomeSettingsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tabs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          pathname: Schema.optional(Schema.String),
-          search: Schema.optional(Schema.String),
-          hash: Schema.optional(Schema.String),
-          title: Schema.optional(Schema.String),
-          customTitle: Schema.optional(Schema.NullOr(Schema.String)),
-          iconType: Schema.optional(Schema.String),
-          sceneId: Schema.optional(Schema.NullOr(Schema.String)),
-          sceneKey: Schema.optional(Schema.NullOr(Schema.String)),
-          sceneParams: Schema.optional(Schema.Unknown),
-          pinned: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PinnedSceneTabSchema)),
     ),
     homepage: Schema.optional(
       Schema.NullOr(

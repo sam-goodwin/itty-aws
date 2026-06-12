@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { forwarding_requestSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -22,31 +23,7 @@ export type GetForwardingRequestsInput = typeof GetForwardingRequestsInput.Type;
 // Output Schema
 export const GetForwardingRequestsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        created: Schema.Number,
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        metadata: Schema.optional(
-          Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-        ),
-        object: Schema.Literals(["forwarding.request"]),
-        payment_method: Schema.String,
-        replacements: Schema.Array(
-          Schema.Literals([
-            "card_cvc",
-            "card_expiry",
-            "card_number",
-            "cardholder_name",
-            "request_signature",
-          ]),
-        ),
-        request_context: Schema.Unknown,
-        request_details: Schema.Unknown,
-        response_details: Schema.Unknown,
-        url: Schema.NullOr(Schema.String),
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => forwarding_requestSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

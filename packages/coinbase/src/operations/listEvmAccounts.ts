@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { EvmAccountSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -11,15 +12,7 @@ export type ListEvmAccountsInput = typeof ListEvmAccountsInput.Type;
 
 // Output Schema
 export const ListEvmAccountsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accounts: Schema.Array(
-    Schema.Struct({
-      address: Schema.String,
-      name: Schema.optional(Schema.String),
-      policies: Schema.optional(Schema.Array(Schema.String)),
-      createdAt: Schema.optional(Schema.String),
-      updatedAt: Schema.optional(Schema.String),
-    }),
-  ),
+  accounts: Schema.Array(Schema.suspend(() => EvmAccountSchema)),
   nextPageToken: Schema.optional(Schema.String),
 });
 export type ListEvmAccountsOutput = typeof ListEvmAccountsOutput.Type;

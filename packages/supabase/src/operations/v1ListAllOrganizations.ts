@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { OrganizationResponseV1Schema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
@@ -14,11 +15,7 @@ export type V1ListAllOrganizationsInput =
 // Output Schema
 export const V1ListAllOrganizationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      slug: Schema.String,
-      name: Schema.String,
-    }),
+    Schema.suspend(() => OrganizationResponseV1Schema),
   );
 export type V1ListAllOrganizationsOutput =
   typeof V1ListAllOrganizationsOutput.Type;

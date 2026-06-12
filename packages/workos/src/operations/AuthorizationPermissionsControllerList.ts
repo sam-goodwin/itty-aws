@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { AuthorizationPermissionSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
@@ -19,19 +20,7 @@ export const AuthorizationPermissionsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          object: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          slug: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.NullOr(Schema.String)),
-          system: Schema.optional(Schema.Boolean),
-          resource_type_slug: Schema.optional(Schema.String),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AuthorizationPermissionSchema)),
     ),
     list_metadata: Schema.optional(
       Schema.Struct({

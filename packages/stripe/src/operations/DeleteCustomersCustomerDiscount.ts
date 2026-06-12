@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { discount_sourceSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -28,10 +29,7 @@ export const DeleteCustomersCustomerDiscountOutput =
     invoice_item: Schema.NullOr(Schema.String),
     object: Schema.Literals(["discount"]),
     promotion_code: Schema.Unknown,
-    source: Schema.Struct({
-      coupon: Schema.Unknown,
-      type: Schema.Literals(["coupon"]),
-    }),
+    source: Schema.suspend(() => discount_sourceSchema),
     start: Schema.Number,
     subscription: Schema.NullOr(Schema.String),
     subscription_item: Schema.NullOr(Schema.String),

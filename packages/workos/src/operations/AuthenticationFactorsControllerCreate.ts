@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const AuthenticationFactorsControllerCreateInput =
@@ -34,7 +34,7 @@ export const AuthenticationFactorsControllerCreateOutput =
       Schema.Struct({
         issuer: Schema.String,
         user: Schema.String,
-        secret: SensitiveString,
+        secret: SensitiveOutputString,
         qr_code: Schema.String,
         uri: Schema.String,
       }),

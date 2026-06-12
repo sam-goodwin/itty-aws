@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { SpendPermissionResponseObjectSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -20,33 +21,7 @@ export type ListSpendPermissionsInput = typeof ListSpendPermissionsInput.Type;
 export const ListSpendPermissionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     spendPermissions: Schema.Array(
-      Schema.Struct({
-        permission: Schema.Struct({
-          account: Schema.String,
-          spender: Schema.String,
-          token: Schema.String,
-          allowance: Schema.String,
-          period: Schema.String,
-          start: Schema.String,
-          end: Schema.String,
-          salt: Schema.String,
-          extraData: Schema.String,
-        }),
-        permissionHash: Schema.String,
-        revoked: Schema.Boolean,
-        revokedAt: Schema.optional(Schema.String),
-        createdAt: Schema.String,
-        network: Schema.Literals([
-          "base",
-          "base-sepolia",
-          "ethereum",
-          "ethereum-sepolia",
-          "optimism",
-          "arbitrum",
-          "avalanche",
-          "polygon",
-        ]),
-      }),
+      Schema.suspend(() => SpendPermissionResponseObjectSchema),
     ),
     nextPageToken: Schema.optional(Schema.String),
   });

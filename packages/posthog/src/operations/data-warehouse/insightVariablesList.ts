@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { InsightVariableSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -23,20 +24,7 @@ export const InsightVariablesListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(
-            Schema.Literals(["String", "Number", "Boolean", "List", "Date"]),
-          ),
-          default_value: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          created_by: Schema.optional(Schema.NullOr(Schema.Number)),
-          created_at: Schema.optional(Schema.String),
-          code_name: Schema.optional(Schema.NullOr(Schema.String)),
-          values: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => InsightVariableSchema)),
     ),
   });
 export type InsightVariablesListOutput = typeof InsightVariablesListOutput.Type;

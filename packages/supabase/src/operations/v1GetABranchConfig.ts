@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const V1GetABranchConfigInput =
@@ -39,7 +39,7 @@ export const V1GetABranchConfigOutput =
     db_port: Schema.Number,
     db_user: Schema.optional(Schema.String),
     db_pass: Schema.optional(Schema.String),
-    jwt_secret: Schema.optional(SensitiveString),
+    jwt_secret: Schema.optional(SensitiveOutputString),
   });
 export type V1GetABranchConfigOutput = typeof V1GetABranchConfigOutput.Type;
 

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { external_accountSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -24,7 +25,7 @@ export type GetAccountsAccountExternalAccountsInput =
 // Output Schema
 export const GetAccountsAccountExternalAccountsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(Schema.Unknown),
+    data: Schema.Array(Schema.suspend(() => external_accountSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

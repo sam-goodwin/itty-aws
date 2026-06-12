@@ -8,12 +8,39 @@ import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
+import {
+  io_k8s_api_apiserverinternal_v1alpha1_StorageVersionSchema,
+  io_k8s_api_apiserverinternal_v1alpha1_StorageVersionSpecSchema,
+  io_k8s_api_apiserverinternal_v1alpha1_StorageVersionStatusSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+  io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+} from "./_schemas.ts";
 
 // Input Schema
 export const CreateInternalApiserverV1alpha1StorageVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_apiserverinternal_v1alpha1_StorageVersionSpecSchema,
+      ),
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_apiserverinternal_v1alpha1_StorageVersionStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -28,73 +55,18 @@ export const CreateInternalApiserverV1alpha1StorageVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
-    metadata: Schema.Struct({
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      creationTimestamp: Schema.optional(Schema.String),
-      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-      deletionTimestamp: Schema.optional(Schema.String),
-      finalizers: Schema.optional(Schema.Array(Schema.String)),
-      generateName: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.Number),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      managedFields: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            fieldsType: Schema.optional(Schema.String),
-            fieldsV1: Schema.optional(Schema.Unknown),
-            manager: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            subresource: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
+    metadata: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_apiserverinternal_v1alpha1_StorageVersionSpecSchema,
       ),
-      name: Schema.optional(Schema.String),
-      namespace: Schema.optional(Schema.String),
-      ownerReferences: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            apiVersion: Schema.String,
-            blockOwnerDeletion: Schema.optional(Schema.Boolean),
-            controller: Schema.optional(Schema.Boolean),
-            kind: Schema.String,
-            name: Schema.String,
-            uid: Schema.String,
-          }),
-        ),
-      ),
-      resourceVersion: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-    }),
-    spec: Schema.optional(Schema.Unknown),
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        commonEncodingVersion: Schema.optional(Schema.String),
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        storageVersions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiServerID: Schema.String,
-              decodableVersions: Schema.Array(Schema.String),
-              encodingVersion: Schema.String,
-              servedVersions: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_apiserverinternal_v1alpha1_StorageVersionStatusSchema,
+      ),
     ),
   });
 export type CreateInternalApiserverV1alpha1StorageVersionOutput =
@@ -132,37 +104,14 @@ export const DeleteInternalApiserverV1alpha1CollectionStorageVersionOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -200,37 +149,14 @@ export const DeleteInternalApiserverV1alpha1StorageVersionOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -265,24 +191,24 @@ export const GetInternalApiserverAPIGroupOutput =
     kind: Schema.optional(Schema.String),
     name: Schema.String,
     preferredVersion: Schema.optional(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
     serverAddressByClientCIDRs: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
+        Schema.suspend(
+          () =>
+            io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+        ),
       ),
     ),
     versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
   });
 export type GetInternalApiserverAPIGroupOutput =
@@ -315,18 +241,9 @@ export const GetInternalApiserverV1alpha1APIResourcesOutput =
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
     resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+      ),
     ),
   });
 export type GetInternalApiserverV1alpha1APIResourcesOutput =
@@ -357,94 +274,13 @@ export const ListInternalApiserverV1alpha1StorageVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.Struct({
-          annotations: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          creationTimestamp: Schema.optional(Schema.String),
-          deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-          deletionTimestamp: Schema.optional(Schema.String),
-          finalizers: Schema.optional(Schema.Array(Schema.String)),
-          generateName: Schema.optional(Schema.String),
-          generation: Schema.optional(Schema.Number),
-          labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          managedFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldsType: Schema.optional(Schema.String),
-                fieldsV1: Schema.optional(Schema.Unknown),
-                manager: Schema.optional(Schema.String),
-                operation: Schema.optional(Schema.String),
-                subresource: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          name: Schema.optional(Schema.String),
-          namespace: Schema.optional(Schema.String),
-          ownerReferences: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                apiVersion: Schema.String,
-                blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                controller: Schema.optional(Schema.Boolean),
-                kind: Schema.String,
-                name: Schema.String,
-                uid: Schema.String,
-              }),
-            ),
-          ),
-          resourceVersion: Schema.optional(Schema.String),
-          selfLink: Schema.optional(Schema.String),
-          uid: Schema.optional(Schema.String),
-        }),
-        spec: Schema.optional(Schema.Unknown),
-        status: Schema.optional(
-          Schema.Struct({
-            commonEncodingVersion: Schema.optional(Schema.String),
-            conditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  lastTransitionTime: Schema.optional(Schema.String),
-                  message: Schema.String,
-                  observedGeneration: Schema.optional(Schema.Number),
-                  reason: Schema.String,
-                  status: Schema.String,
-                  type: Schema.String,
-                }),
-              ),
-            ),
-            storageVersions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiServerID: Schema.String,
-                  decodableVersions: Schema.Array(Schema.String),
-                  encodingVersion: Schema.String,
-                  servedVersions: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_apiserverinternal_v1alpha1_StorageVersionSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListInternalApiserverV1alpha1StorageVersionOutput =
@@ -478,73 +314,18 @@ export const PatchInternalApiserverV1alpha1StorageVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
-    metadata: Schema.Struct({
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      creationTimestamp: Schema.optional(Schema.String),
-      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-      deletionTimestamp: Schema.optional(Schema.String),
-      finalizers: Schema.optional(Schema.Array(Schema.String)),
-      generateName: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.Number),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      managedFields: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            fieldsType: Schema.optional(Schema.String),
-            fieldsV1: Schema.optional(Schema.Unknown),
-            manager: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            subresource: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
+    metadata: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_apiserverinternal_v1alpha1_StorageVersionSpecSchema,
       ),
-      name: Schema.optional(Schema.String),
-      namespace: Schema.optional(Schema.String),
-      ownerReferences: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            apiVersion: Schema.String,
-            blockOwnerDeletion: Schema.optional(Schema.Boolean),
-            controller: Schema.optional(Schema.Boolean),
-            kind: Schema.String,
-            name: Schema.String,
-            uid: Schema.String,
-          }),
-        ),
-      ),
-      resourceVersion: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-    }),
-    spec: Schema.optional(Schema.Unknown),
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        commonEncodingVersion: Schema.optional(Schema.String),
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        storageVersions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiServerID: Schema.String,
-              decodableVersions: Schema.Array(Schema.String),
-              encodingVersion: Schema.String,
-              servedVersions: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_apiserverinternal_v1alpha1_StorageVersionStatusSchema,
+      ),
     ),
   });
 export type PatchInternalApiserverV1alpha1StorageVersionOutput =
@@ -582,73 +363,18 @@ export const PatchInternalApiserverV1alpha1StorageVersionStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
-    metadata: Schema.Struct({
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      creationTimestamp: Schema.optional(Schema.String),
-      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-      deletionTimestamp: Schema.optional(Schema.String),
-      finalizers: Schema.optional(Schema.Array(Schema.String)),
-      generateName: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.Number),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      managedFields: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            fieldsType: Schema.optional(Schema.String),
-            fieldsV1: Schema.optional(Schema.Unknown),
-            manager: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            subresource: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
+    metadata: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_apiserverinternal_v1alpha1_StorageVersionSpecSchema,
       ),
-      name: Schema.optional(Schema.String),
-      namespace: Schema.optional(Schema.String),
-      ownerReferences: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            apiVersion: Schema.String,
-            blockOwnerDeletion: Schema.optional(Schema.Boolean),
-            controller: Schema.optional(Schema.Boolean),
-            kind: Schema.String,
-            name: Schema.String,
-            uid: Schema.String,
-          }),
-        ),
-      ),
-      resourceVersion: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-    }),
-    spec: Schema.optional(Schema.Unknown),
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        commonEncodingVersion: Schema.optional(Schema.String),
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        storageVersions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiServerID: Schema.String,
-              decodableVersions: Schema.Array(Schema.String),
-              encodingVersion: Schema.String,
-              servedVersions: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_apiserverinternal_v1alpha1_StorageVersionStatusSchema,
+      ),
     ),
   });
 export type PatchInternalApiserverV1alpha1StorageVersionStatusOutput =
@@ -683,73 +409,18 @@ export const ReadInternalApiserverV1alpha1StorageVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
-    metadata: Schema.Struct({
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      creationTimestamp: Schema.optional(Schema.String),
-      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-      deletionTimestamp: Schema.optional(Schema.String),
-      finalizers: Schema.optional(Schema.Array(Schema.String)),
-      generateName: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.Number),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      managedFields: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            fieldsType: Schema.optional(Schema.String),
-            fieldsV1: Schema.optional(Schema.Unknown),
-            manager: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            subresource: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
+    metadata: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_apiserverinternal_v1alpha1_StorageVersionSpecSchema,
       ),
-      name: Schema.optional(Schema.String),
-      namespace: Schema.optional(Schema.String),
-      ownerReferences: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            apiVersion: Schema.String,
-            blockOwnerDeletion: Schema.optional(Schema.Boolean),
-            controller: Schema.optional(Schema.Boolean),
-            kind: Schema.String,
-            name: Schema.String,
-            uid: Schema.String,
-          }),
-        ),
-      ),
-      resourceVersion: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-    }),
-    spec: Schema.optional(Schema.Unknown),
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        commonEncodingVersion: Schema.optional(Schema.String),
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        storageVersions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiServerID: Schema.String,
-              decodableVersions: Schema.Array(Schema.String),
-              encodingVersion: Schema.String,
-              servedVersions: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_apiserverinternal_v1alpha1_StorageVersionStatusSchema,
+      ),
     ),
   });
 export type ReadInternalApiserverV1alpha1StorageVersionOutput =
@@ -781,73 +452,18 @@ export const ReadInternalApiserverV1alpha1StorageVersionStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
-    metadata: Schema.Struct({
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      creationTimestamp: Schema.optional(Schema.String),
-      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-      deletionTimestamp: Schema.optional(Schema.String),
-      finalizers: Schema.optional(Schema.Array(Schema.String)),
-      generateName: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.Number),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      managedFields: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            fieldsType: Schema.optional(Schema.String),
-            fieldsV1: Schema.optional(Schema.Unknown),
-            manager: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            subresource: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
+    metadata: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_apiserverinternal_v1alpha1_StorageVersionSpecSchema,
       ),
-      name: Schema.optional(Schema.String),
-      namespace: Schema.optional(Schema.String),
-      ownerReferences: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            apiVersion: Schema.String,
-            blockOwnerDeletion: Schema.optional(Schema.Boolean),
-            controller: Schema.optional(Schema.Boolean),
-            kind: Schema.String,
-            name: Schema.String,
-            uid: Schema.String,
-          }),
-        ),
-      ),
-      resourceVersion: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-    }),
-    spec: Schema.optional(Schema.Unknown),
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        commonEncodingVersion: Schema.optional(Schema.String),
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        storageVersions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiServerID: Schema.String,
-              decodableVersions: Schema.Array(Schema.String),
-              encodingVersion: Schema.String,
-              servedVersions: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_apiserverinternal_v1alpha1_StorageVersionStatusSchema,
+      ),
     ),
   });
 export type ReadInternalApiserverV1alpha1StorageVersionStatusOutput =
@@ -868,6 +484,21 @@ export const ReplaceInternalApiserverV1alpha1StorageVersionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_apiserverinternal_v1alpha1_StorageVersionSpecSchema,
+      ),
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_apiserverinternal_v1alpha1_StorageVersionStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -882,73 +513,18 @@ export const ReplaceInternalApiserverV1alpha1StorageVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
-    metadata: Schema.Struct({
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      creationTimestamp: Schema.optional(Schema.String),
-      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-      deletionTimestamp: Schema.optional(Schema.String),
-      finalizers: Schema.optional(Schema.Array(Schema.String)),
-      generateName: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.Number),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      managedFields: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            fieldsType: Schema.optional(Schema.String),
-            fieldsV1: Schema.optional(Schema.Unknown),
-            manager: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            subresource: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
+    metadata: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_apiserverinternal_v1alpha1_StorageVersionSpecSchema,
       ),
-      name: Schema.optional(Schema.String),
-      namespace: Schema.optional(Schema.String),
-      ownerReferences: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            apiVersion: Schema.String,
-            blockOwnerDeletion: Schema.optional(Schema.Boolean),
-            controller: Schema.optional(Schema.Boolean),
-            kind: Schema.String,
-            name: Schema.String,
-            uid: Schema.String,
-          }),
-        ),
-      ),
-      resourceVersion: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-    }),
-    spec: Schema.optional(Schema.Unknown),
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        commonEncodingVersion: Schema.optional(Schema.String),
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        storageVersions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiServerID: Schema.String,
-              decodableVersions: Schema.Array(Schema.String),
-              encodingVersion: Schema.String,
-              servedVersions: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_apiserverinternal_v1alpha1_StorageVersionStatusSchema,
+      ),
     ),
   });
 export type ReplaceInternalApiserverV1alpha1StorageVersionOutput =
@@ -972,6 +548,21 @@ export const ReplaceInternalApiserverV1alpha1StorageVersionStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_apiserverinternal_v1alpha1_StorageVersionSpecSchema,
+      ),
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_apiserverinternal_v1alpha1_StorageVersionStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -986,73 +577,18 @@ export const ReplaceInternalApiserverV1alpha1StorageVersionStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
-    metadata: Schema.Struct({
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      creationTimestamp: Schema.optional(Schema.String),
-      deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-      deletionTimestamp: Schema.optional(Schema.String),
-      finalizers: Schema.optional(Schema.Array(Schema.String)),
-      generateName: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.Number),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      managedFields: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            fieldsType: Schema.optional(Schema.String),
-            fieldsV1: Schema.optional(Schema.Unknown),
-            manager: Schema.optional(Schema.String),
-            operation: Schema.optional(Schema.String),
-            subresource: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
+    metadata: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+    ),
+    spec: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_apiserverinternal_v1alpha1_StorageVersionSpecSchema,
       ),
-      name: Schema.optional(Schema.String),
-      namespace: Schema.optional(Schema.String),
-      ownerReferences: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            apiVersion: Schema.String,
-            blockOwnerDeletion: Schema.optional(Schema.Boolean),
-            controller: Schema.optional(Schema.Boolean),
-            kind: Schema.String,
-            name: Schema.String,
-            uid: Schema.String,
-          }),
-        ),
-      ),
-      resourceVersion: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-    }),
-    spec: Schema.optional(Schema.Unknown),
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        commonEncodingVersion: Schema.optional(Schema.String),
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        storageVersions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiServerID: Schema.String,
-              decodableVersions: Schema.Array(Schema.String),
-              encodingVersion: Schema.String,
-              servedVersions: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_apiserverinternal_v1alpha1_StorageVersionStatusSchema,
+      ),
     ),
   });
 export type ReplaceInternalApiserverV1alpha1StorageVersionStatusOutput =
@@ -1085,7 +621,9 @@ export type WatchInternalApiserverV1alpha1StorageVersionInput =
 // Output Schema
 export const WatchInternalApiserverV1alpha1StorageVersionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchInternalApiserverV1alpha1StorageVersionOutput =
@@ -1114,7 +652,9 @@ export type WatchInternalApiserverV1alpha1StorageVersionListInput =
 // Output Schema
 export const WatchInternalApiserverV1alpha1StorageVersionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchInternalApiserverV1alpha1StorageVersionListOutput =

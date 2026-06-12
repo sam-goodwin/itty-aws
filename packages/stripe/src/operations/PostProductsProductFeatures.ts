@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { entitlements_featureSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -21,15 +22,7 @@ export type PostProductsProductFeaturesInput =
 // Output Schema
 export const PostProductsProductFeaturesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    entitlement_feature: Schema.Struct({
-      active: Schema.Boolean,
-      id: Schema.String,
-      livemode: Schema.Boolean,
-      lookup_key: Schema.String,
-      metadata: Schema.Record(Schema.String, Schema.String),
-      name: Schema.String,
-      object: Schema.Literals(["entitlements.feature"]),
-    }),
+    entitlement_feature: Schema.suspend(() => entitlements_featureSchema),
     id: Schema.String,
     livemode: Schema.Boolean,
     object: Schema.Literals(["product_feature"]),

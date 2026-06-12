@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { EndUserSolanaAccountSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -13,10 +14,7 @@ export type AddEndUserSolanaAccountInput =
 // Output Schema
 export const AddEndUserSolanaAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    solanaAccount: Schema.Struct({
-      address: Schema.String,
-      createdAt: Schema.String,
-    }),
+    solanaAccount: Schema.suspend(() => EndUserSolanaAccountSchema),
   });
 export type AddEndUserSolanaAccountOutput =
   typeof AddEndUserSolanaAccountOutput.Type;

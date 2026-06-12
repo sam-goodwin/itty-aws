@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { product_marketing_featureSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -107,9 +108,7 @@ export const PostProductsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   images: Schema.Array(Schema.String),
   livemode: Schema.Boolean,
   marketing_features: Schema.Array(
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => product_marketing_featureSchema),
   ),
   metadata: Schema.Record(Schema.String, Schema.String),
   name: Schema.String,

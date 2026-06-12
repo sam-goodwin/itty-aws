@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
-import { SensitiveString } from "../../sensitive.ts";
+import { SensitiveOutputString } from "../../sensitive.ts";
 
 // Input Schema
 export const ExternalDataSourcesRetrieveInput =
@@ -25,7 +25,7 @@ export const ExternalDataSourcesRetrieveOutput =
     created_at: Schema.optional(Schema.String),
     created_by: Schema.optional(Schema.NullOr(Schema.String)),
     status: Schema.optional(Schema.String),
-    client_secret: Schema.optional(SensitiveString),
+    client_secret: Schema.optional(SensitiveOutputString),
     account_id: Schema.optional(Schema.String),
     source_type: Schema.optional(
       Schema.Literals([

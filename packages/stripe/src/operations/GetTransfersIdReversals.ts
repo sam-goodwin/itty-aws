@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { transfer_reversalSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -23,20 +24,7 @@ export type GetTransfersIdReversalsInput =
 // Output Schema
 export const GetTransfersIdReversalsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        amount: Schema.Number,
-        balance_transaction: Schema.Unknown,
-        created: Schema.Number,
-        currency: Schema.String,
-        destination_payment_refund: Schema.Unknown,
-        id: Schema.String,
-        metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-        object: Schema.Literals(["transfer_reversal"]),
-        source_refund: Schema.Unknown,
-        transfer: Schema.Unknown,
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => transfer_reversalSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

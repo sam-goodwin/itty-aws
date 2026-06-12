@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { terminal_onboarding_link_link_optionsSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -29,9 +30,9 @@ export type PostTerminalOnboardingLinksInput =
 // Output Schema
 export const PostTerminalOnboardingLinksOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    link_options: Schema.Struct({
-      apple_terms_and_conditions: Schema.Unknown,
-    }),
+    link_options: Schema.suspend(
+      () => terminal_onboarding_link_link_optionsSchema,
+    ),
     link_type: Schema.Literals(["apple_terms_and_conditions"]),
     object: Schema.Literals(["terminal.onboarding_link"]),
     on_behalf_of: Schema.NullOr(Schema.String),

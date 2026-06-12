@@ -1,7 +1,8 @@
 import * as Schema from "effect/Schema";
+import { gelato_related_personSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const PostIdentityVerificationSessionsSessionInput =
@@ -35,7 +36,7 @@ export type PostIdentityVerificationSessionsSessionInput =
 export const PostIdentityVerificationSessionsSessionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     client_reference_id: Schema.NullOr(Schema.String),
-    client_secret: SensitiveNullableString,
+    client_secret: SensitiveOutputNullableString,
     created: Schema.Number,
     id: Schema.String,
     last_error: Schema.Unknown,
@@ -49,10 +50,7 @@ export const PostIdentityVerificationSessionsSessionOutput =
     related_customer: Schema.NullOr(Schema.String),
     related_customer_account: Schema.NullOr(Schema.String),
     related_person: Schema.optional(
-      Schema.Struct({
-        account: Schema.String,
-        person: Schema.String,
-      }),
+      Schema.suspend(() => gelato_related_personSchema),
     ),
     status: Schema.Literals([
       "canceled",

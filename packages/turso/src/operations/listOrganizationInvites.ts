@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { InviteSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -18,34 +19,7 @@ export type ListOrganizationInvitesInput =
 // Output Schema
 export const ListOrganizationInvitesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    invites: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          ID: Schema.optional(Schema.Number),
-          CreatedAt: Schema.optional(Schema.String),
-          UpdatedAt: Schema.optional(Schema.String),
-          DeletedAt: Schema.optional(Schema.String),
-          Role: Schema.optional(Schema.Literals(["admin", "member", "viewer"])),
-          Email: Schema.optional(Schema.String),
-          OrganizationID: Schema.optional(Schema.Number),
-          Token: Schema.optional(Schema.String),
-          Organization: Schema.optional(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              slug: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.Literals(["personal", "team"])),
-              overages: Schema.optional(Schema.Boolean),
-              blocked_reads: Schema.optional(Schema.Boolean),
-              blocked_writes: Schema.optional(Schema.Boolean),
-              plan_id: Schema.optional(Schema.String),
-              plan_timeline: Schema.optional(Schema.String),
-              platform: Schema.optional(Schema.String),
-            }),
-          ),
-          Accepted: Schema.optional(Schema.Boolean),
-        }),
-      ),
-    ),
+    invites: Schema.optional(Schema.Array(Schema.suspend(() => InviteSchema))),
   });
 export type ListOrganizationInvitesOutput =
   typeof ListOrganizationInvitesOutput.Type;

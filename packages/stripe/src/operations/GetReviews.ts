@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { reviewSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -20,35 +21,7 @@ export type GetReviewsInput = typeof GetReviewsInput.Type;
 
 // Output Schema
 export const GetReviewsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  data: Schema.Array(
-    Schema.Struct({
-      billing_zip: Schema.NullOr(Schema.String),
-      charge: Schema.Unknown,
-      closed_reason: Schema.NullOr(
-        Schema.Literals([
-          "acknowledged",
-          "approved",
-          "canceled",
-          "disputed",
-          "payment_never_settled",
-          "redacted",
-          "refunded",
-          "refunded_as_fraud",
-        ]),
-      ),
-      created: Schema.Number,
-      id: Schema.String,
-      ip_address: Schema.NullOr(Schema.String),
-      ip_address_location: Schema.Unknown,
-      livemode: Schema.Boolean,
-      object: Schema.Literals(["review"]),
-      open: Schema.Boolean,
-      opened_reason: Schema.Literals(["manual", "rule"]),
-      payment_intent: Schema.optional(Schema.Unknown),
-      reason: Schema.String,
-      session: Schema.Unknown,
-    }),
-  ),
+  data: Schema.Array(Schema.suspend(() => reviewSchema)),
   has_more: Schema.Boolean,
   object: Schema.Literals(["list"]),
   url: Schema.String,

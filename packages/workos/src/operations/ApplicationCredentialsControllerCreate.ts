@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const ApplicationCredentialsControllerCreateInput =
@@ -26,7 +26,7 @@ export const ApplicationCredentialsControllerCreateOutput =
     last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.optional(Schema.String),
     updated_at: Schema.optional(Schema.String),
-    secret: Schema.optional(SensitiveString),
+    secret: Schema.optional(SensitiveOutputString),
   });
 export type ApplicationCredentialsControllerCreateOutput =
   typeof ApplicationCredentialsControllerCreateOutput.Type;

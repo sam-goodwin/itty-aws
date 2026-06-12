@@ -1,7 +1,8 @@
 import * as Schema from "effect/Schema";
+import { connect_embedded_account_session_create_componentsSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const PostAccountSessionsInput =
@@ -251,147 +252,10 @@ export type PostAccountSessionsInput = typeof PostAccountSessionsInput.Type;
 export const PostAccountSessionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     account: Schema.String,
-    client_secret: SensitiveString,
-    components: Schema.Struct({
-      account_management: Schema.Struct({
-        enabled: Schema.Boolean,
-        features: Schema.Struct({
-          disable_stripe_user_authentication: Schema.Boolean,
-          external_account_collection: Schema.Boolean,
-        }),
-      }),
-      account_onboarding: Schema.Struct({
-        enabled: Schema.Boolean,
-        features: Schema.Struct({
-          disable_stripe_user_authentication: Schema.Boolean,
-          external_account_collection: Schema.Boolean,
-        }),
-      }),
-      balances: Schema.Struct({
-        enabled: Schema.Boolean,
-        features: Schema.Struct({
-          disable_stripe_user_authentication: Schema.Boolean,
-          edit_payout_schedule: Schema.Boolean,
-          external_account_collection: Schema.Boolean,
-          instant_payouts: Schema.Boolean,
-          standard_payouts: Schema.Boolean,
-        }),
-      }),
-      disputes_list: Schema.Struct({
-        enabled: Schema.Boolean,
-        features: Schema.Struct({
-          capture_payments: Schema.Boolean,
-          destination_on_behalf_of_charge_management: Schema.Boolean,
-          dispute_management: Schema.Boolean,
-          refund_management: Schema.Boolean,
-        }),
-      }),
-      documents: Schema.Struct({
-        enabled: Schema.Boolean,
-        features: Schema.Struct({}),
-      }),
-      financial_account: Schema.Struct({
-        enabled: Schema.Boolean,
-        features: Schema.Struct({
-          disable_stripe_user_authentication: Schema.Boolean,
-          external_account_collection: Schema.Boolean,
-          send_money: Schema.Boolean,
-          transfer_balance: Schema.Boolean,
-        }),
-      }),
-      financial_account_transactions: Schema.Struct({
-        enabled: Schema.Boolean,
-        features: Schema.Struct({
-          card_spend_dispute_management: Schema.Boolean,
-        }),
-      }),
-      instant_payouts_promotion: Schema.Struct({
-        enabled: Schema.Boolean,
-        features: Schema.Struct({
-          disable_stripe_user_authentication: Schema.Boolean,
-          external_account_collection: Schema.Boolean,
-          instant_payouts: Schema.Boolean,
-        }),
-      }),
-      issuing_card: Schema.Struct({
-        enabled: Schema.Boolean,
-        features: Schema.Struct({
-          card_management: Schema.Boolean,
-          card_spend_dispute_management: Schema.Boolean,
-          cardholder_management: Schema.Boolean,
-          spend_control_management: Schema.Boolean,
-        }),
-      }),
-      issuing_cards_list: Schema.Struct({
-        enabled: Schema.Boolean,
-        features: Schema.Struct({
-          card_management: Schema.Boolean,
-          card_spend_dispute_management: Schema.Boolean,
-          cardholder_management: Schema.Boolean,
-          disable_stripe_user_authentication: Schema.Boolean,
-          spend_control_management: Schema.Boolean,
-        }),
-      }),
-      notification_banner: Schema.Struct({
-        enabled: Schema.Boolean,
-        features: Schema.Struct({
-          disable_stripe_user_authentication: Schema.Boolean,
-          external_account_collection: Schema.Boolean,
-        }),
-      }),
-      payment_details: Schema.Struct({
-        enabled: Schema.Boolean,
-        features: Schema.Struct({
-          capture_payments: Schema.Boolean,
-          destination_on_behalf_of_charge_management: Schema.Boolean,
-          dispute_management: Schema.Boolean,
-          refund_management: Schema.Boolean,
-        }),
-      }),
-      payment_disputes: Schema.Struct({
-        enabled: Schema.Boolean,
-        features: Schema.Struct({
-          destination_on_behalf_of_charge_management: Schema.Boolean,
-          dispute_management: Schema.Boolean,
-          refund_management: Schema.Boolean,
-        }),
-      }),
-      payments: Schema.Struct({
-        enabled: Schema.Boolean,
-        features: Schema.Struct({
-          capture_payments: Schema.Boolean,
-          destination_on_behalf_of_charge_management: Schema.Boolean,
-          dispute_management: Schema.Boolean,
-          refund_management: Schema.Boolean,
-        }),
-      }),
-      payout_details: Schema.Struct({
-        enabled: Schema.Boolean,
-        features: Schema.Struct({}),
-      }),
-      payouts: Schema.Struct({
-        enabled: Schema.Boolean,
-        features: Schema.Struct({
-          disable_stripe_user_authentication: Schema.Boolean,
-          edit_payout_schedule: Schema.Boolean,
-          external_account_collection: Schema.Boolean,
-          instant_payouts: Schema.Boolean,
-          standard_payouts: Schema.Boolean,
-        }),
-      }),
-      payouts_list: Schema.Struct({
-        enabled: Schema.Boolean,
-        features: Schema.Struct({}),
-      }),
-      tax_registrations: Schema.Struct({
-        enabled: Schema.Boolean,
-        features: Schema.Struct({}),
-      }),
-      tax_settings: Schema.Struct({
-        enabled: Schema.Boolean,
-        features: Schema.Struct({}),
-      }),
-    }),
+    client_secret: SensitiveOutputString,
+    components: Schema.suspend(
+      () => connect_embedded_account_session_create_componentsSchema,
+    ),
     expires_at: Schema.Number,
     livemode: Schema.Boolean,
     object: Schema.Literals(["account_session"]),

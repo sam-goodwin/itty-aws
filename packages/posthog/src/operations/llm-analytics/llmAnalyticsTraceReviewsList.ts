@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { TraceReviewSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -31,75 +32,7 @@ export const LlmAnalyticsTraceReviewsListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          trace_id: Schema.optional(Schema.String),
-          comment: Schema.optional(Schema.NullOr(Schema.String)),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-          created_by: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                id: Schema.optional(Schema.Number),
-                uuid: Schema.optional(Schema.String),
-                distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-                first_name: Schema.optional(Schema.String),
-                last_name: Schema.optional(Schema.String),
-                email: Schema.optional(Schema.String),
-                is_email_verified: Schema.optional(
-                  Schema.NullOr(Schema.Boolean),
-                ),
-                hedgehog_config: Schema.optional(
-                  Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-                ),
-                role_at_organization: Schema.optional(Schema.Unknown),
-              }),
-            ),
-          ),
-          reviewed_by: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                id: Schema.optional(Schema.Number),
-                uuid: Schema.optional(Schema.String),
-                distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-                first_name: Schema.optional(Schema.String),
-                last_name: Schema.optional(Schema.String),
-                email: Schema.optional(Schema.String),
-                is_email_verified: Schema.optional(
-                  Schema.NullOr(Schema.Boolean),
-                ),
-                hedgehog_config: Schema.optional(
-                  Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-                ),
-                role_at_organization: Schema.optional(Schema.Unknown),
-              }),
-            ),
-          ),
-          scores: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                id: Schema.optional(Schema.String),
-                definition_id: Schema.optional(Schema.String),
-                definition_name: Schema.optional(Schema.String),
-                definition_kind: Schema.optional(Schema.String),
-                definition_archived: Schema.optional(Schema.Boolean),
-                definition_version_id: Schema.optional(Schema.String),
-                definition_version: Schema.optional(Schema.Number),
-                definition_config: Schema.optional(Schema.Unknown),
-                categorical_values: Schema.optional(
-                  Schema.NullOr(Schema.Array(Schema.String)),
-                ),
-                numeric_value: Schema.optional(Schema.NullOr(Schema.String)),
-                boolean_value: Schema.optional(Schema.NullOr(Schema.Boolean)),
-                created_at: Schema.optional(Schema.String),
-                updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-              }),
-            ),
-          ),
-          team: Schema.optional(Schema.Number),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TraceReviewSchema)),
     ),
   });
 export type LlmAnalyticsTraceReviewsListOutput =

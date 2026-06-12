@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
+import { webhook_endpointSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const GetWebhookEndpointsInput =
@@ -22,22 +22,7 @@ export type GetWebhookEndpointsInput = typeof GetWebhookEndpointsInput.Type;
 // Output Schema
 export const GetWebhookEndpointsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        api_version: Schema.NullOr(Schema.String),
-        application: Schema.NullOr(Schema.String),
-        created: Schema.Number,
-        description: Schema.NullOr(Schema.String),
-        enabled_events: Schema.Array(Schema.String),
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        metadata: Schema.Record(Schema.String, Schema.String),
-        object: Schema.Literals(["webhook_endpoint"]),
-        secret: Schema.optional(SensitiveString),
-        status: Schema.String,
-        url: Schema.String,
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => webhook_endpointSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

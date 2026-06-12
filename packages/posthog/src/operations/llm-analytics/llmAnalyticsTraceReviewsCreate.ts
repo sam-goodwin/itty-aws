@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  TraceReviewScoreSchema,
+  TraceReviewScoreWriteSchema,
+} from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -10,17 +14,7 @@ export const LlmAnalyticsTraceReviewsCreateInput =
     trace_id: Schema.optional(Schema.String),
     comment: Schema.optional(Schema.NullOr(Schema.String)),
     scores: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          definition_id: Schema.optional(Schema.String),
-          definition_version_id: Schema.optional(Schema.NullOr(Schema.String)),
-          categorical_values: Schema.optional(
-            Schema.NullOr(Schema.Array(Schema.String)),
-          ),
-          numeric_value: Schema.optional(Schema.NullOr(Schema.String)),
-          boolean_value: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TraceReviewScoreWriteSchema)),
     ),
     queue_id: Schema.optional(Schema.NullOr(Schema.String)),
   }).pipe(
@@ -75,25 +69,7 @@ export const LlmAnalyticsTraceReviewsCreateOutput =
       ),
     ),
     scores: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          definition_id: Schema.optional(Schema.String),
-          definition_name: Schema.optional(Schema.String),
-          definition_kind: Schema.optional(Schema.String),
-          definition_archived: Schema.optional(Schema.Boolean),
-          definition_version_id: Schema.optional(Schema.String),
-          definition_version: Schema.optional(Schema.Number),
-          definition_config: Schema.optional(Schema.Unknown),
-          categorical_values: Schema.optional(
-            Schema.NullOr(Schema.Array(Schema.String)),
-          ),
-          numeric_value: Schema.optional(Schema.NullOr(Schema.String)),
-          boolean_value: Schema.optional(Schema.NullOr(Schema.Boolean)),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TraceReviewScoreSchema)),
     ),
     team: Schema.optional(Schema.Number),
   });

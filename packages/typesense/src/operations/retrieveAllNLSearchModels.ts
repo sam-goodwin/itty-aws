@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { NLSearchModelSchemaSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -13,9 +14,7 @@ export type RetrieveAllNLSearchModelsInput =
 // Output Schema
 export const RetrieveAllNLSearchModelsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-    }),
+    Schema.suspend(() => NLSearchModelSchemaSchema),
   );
 export type RetrieveAllNLSearchModelsOutput =
   typeof RetrieveAllNLSearchModelsOutput.Type;

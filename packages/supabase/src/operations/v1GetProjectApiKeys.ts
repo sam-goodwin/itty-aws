@@ -1,8 +1,8 @@
 import * as Schema from "effect/Schema";
+import { ApiKeyResponseSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const V1GetProjectApiKeysInput =
@@ -15,22 +15,7 @@ export type V1GetProjectApiKeysInput = typeof V1GetProjectApiKeysInput.Type;
 // Output Schema
 export const V1GetProjectApiKeysOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      api_key: Schema.optional(SensitiveNullableString),
-      id: Schema.optional(Schema.NullOr(Schema.String)),
-      type: Schema.optional(
-        Schema.NullOr(Schema.Literals(["legacy", "publishable", "secret"])),
-      ),
-      prefix: Schema.optional(Schema.NullOr(Schema.String)),
-      name: Schema.String,
-      description: Schema.optional(Schema.NullOr(Schema.String)),
-      hash: Schema.optional(Schema.NullOr(Schema.String)),
-      secret_jwt_template: Schema.optional(
-        Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      inserted_at: Schema.optional(Schema.NullOr(Schema.String)),
-      updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-    }),
+    Schema.suspend(() => ApiKeyResponseSchema),
   );
 export type V1GetProjectApiKeysOutput = typeof V1GetProjectApiKeysOutput.Type;
 

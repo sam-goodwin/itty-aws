@@ -1,11 +1,18 @@
 import * as Schema from "effect/Schema";
+import {
+  AuthenticationMethodsSchema,
+  EndUserEvmAccountSchema,
+  EndUserEvmSmartAccountSchema,
+  EndUserSolanaAccountSchema,
+  MFAMethodsSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
 export const ImportEndUserInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   userId: Schema.String,
-  authenticationMethods: Schema.Array(Schema.Unknown),
+  authenticationMethods: Schema.suspend(() => AuthenticationMethodsSchema),
   encryptedPrivateKey: Schema.String,
   keyType: Schema.Literals(["evm", "solana"]),
 }).pipe(T.Http({ method: "POST", path: "/v2/end-users/import" }));
@@ -14,43 +21,19 @@ export type ImportEndUserInput = typeof ImportEndUserInput.Type;
 // Output Schema
 export const ImportEndUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   userId: Schema.String,
-  authenticationMethods: Schema.Array(Schema.Unknown),
-  mfaMethods: Schema.optional(
-    Schema.Struct({
-      enrollmentPromptedAt: Schema.optional(Schema.String),
-      totp: Schema.optional(
-        Schema.Struct({
-          enrolledAt: Schema.String,
-        }),
-      ),
-      sms: Schema.optional(
-        Schema.Struct({
-          enrolledAt: Schema.String,
-        }),
-      ),
-    }),
-  ),
+  authenticationMethods: Schema.suspend(() => AuthenticationMethodsSchema),
+  mfaMethods: Schema.optional(Schema.suspend(() => MFAMethodsSchema)),
   evmAccounts: Schema.Array(Schema.String),
   evmAccountObjects: Schema.Array(
-    Schema.Struct({
-      address: Schema.String,
-      createdAt: Schema.String,
-    }),
+    Schema.suspend(() => EndUserEvmAccountSchema),
   ),
   evmSmartAccounts: Schema.Array(Schema.String),
   evmSmartAccountObjects: Schema.Array(
-    Schema.Struct({
-      address: Schema.String,
-      ownerAddresses: Schema.Array(Schema.String),
-      createdAt: Schema.String,
-    }),
+    Schema.suspend(() => EndUserEvmSmartAccountSchema),
   ),
   solanaAccounts: Schema.Array(Schema.String),
   solanaAccountObjects: Schema.Array(
-    Schema.Struct({
-      address: Schema.String,
-      createdAt: Schema.String,
-    }),
+    Schema.suspend(() => EndUserSolanaAccountSchema),
   ),
   createdAt: Schema.String,
 });

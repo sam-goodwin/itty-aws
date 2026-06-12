@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { NetworkAccessLevelEnumSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
@@ -20,7 +21,7 @@ export const SandboxRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   network_access_level: Schema.optional(
-    Schema.Literals(["trusted", "full", "custom"]),
+    Schema.suspend(() => NetworkAccessLevelEnumSchema),
   ),
   allowed_domains: Schema.optional(Schema.Array(Schema.String)),
   include_default_domains: Schema.optional(Schema.Boolean),

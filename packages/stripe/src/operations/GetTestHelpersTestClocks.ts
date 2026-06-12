@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { test_helpers_test_clockSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -22,25 +23,7 @@ export type GetTestHelpersTestClocksInput =
 // Output Schema
 export const GetTestHelpersTestClocksOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        created: Schema.Number,
-        deletes_after: Schema.Number,
-        frozen_time: Schema.Number,
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        name: Schema.NullOr(Schema.String),
-        object: Schema.Literals(["test_helpers.test_clock"]),
-        status: Schema.Literals(["advancing", "internal_failure", "ready"]),
-        status_details: Schema.Struct({
-          advancing: Schema.optional(
-            Schema.Struct({
-              target_frozen_time: Schema.Number,
-            }),
-          ),
-        }),
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => test_helpers_test_clockSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

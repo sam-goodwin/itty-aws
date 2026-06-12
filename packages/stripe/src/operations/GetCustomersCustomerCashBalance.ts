@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { customer_balance_customer_balance_settingsSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -25,10 +26,9 @@ export const GetCustomersCustomerCashBalanceOutput =
     customer_account: Schema.NullOr(Schema.String),
     livemode: Schema.Boolean,
     object: Schema.Literals(["cash_balance"]),
-    settings: Schema.Struct({
-      reconciliation_mode: Schema.Literals(["automatic", "manual"]),
-      using_merchant_default: Schema.Boolean,
-    }),
+    settings: Schema.suspend(
+      () => customer_balance_customer_balance_settingsSchema,
+    ),
   });
 export type GetCustomersCustomerCashBalanceOutput =
   typeof GetCustomersCustomerCashBalanceOutput.Type;

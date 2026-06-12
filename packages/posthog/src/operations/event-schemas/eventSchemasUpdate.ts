@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  EventDefinitionBasicSchema,
+  SchemaPropertyGroupPropertySchema,
+} from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -15,34 +19,10 @@ export const EventSchemasUpdateInput =
         name: Schema.optional(Schema.String),
         description: Schema.optional(Schema.String),
         properties: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              property_type: Schema.optional(
-                Schema.Literals([
-                  "DateTime",
-                  "String",
-                  "Numeric",
-                  "Boolean",
-                  "Object",
-                ]),
-              ),
-              is_required: Schema.optional(Schema.Boolean),
-              is_optional_in_types: Schema.optional(Schema.Boolean),
-              description: Schema.optional(Schema.String),
-              created_at: Schema.optional(Schema.String),
-              updated_at: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => SchemaPropertyGroupPropertySchema)),
         ),
         events: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => EventDefinitionBasicSchema)),
         ),
         created_at: Schema.optional(Schema.String),
         updated_at: Schema.optional(Schema.String),
@@ -87,34 +67,10 @@ export const EventSchemasUpdateOutput =
         name: Schema.optional(Schema.String),
         description: Schema.optional(Schema.String),
         properties: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              property_type: Schema.optional(
-                Schema.Literals([
-                  "DateTime",
-                  "String",
-                  "Numeric",
-                  "Boolean",
-                  "Object",
-                ]),
-              ),
-              is_required: Schema.optional(Schema.Boolean),
-              is_optional_in_types: Schema.optional(Schema.Boolean),
-              description: Schema.optional(Schema.String),
-              created_at: Schema.optional(Schema.String),
-              updated_at: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => SchemaPropertyGroupPropertySchema)),
         ),
         events: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => EventDefinitionBasicSchema)),
         ),
         created_at: Schema.optional(Schema.String),
         updated_at: Schema.optional(Schema.String),

@@ -1,4 +1,9 @@
 import * as Schema from "effect/Schema";
+import {
+  ExitConditionEnumSchema,
+  HogFlowActionSchema,
+  HogFlowStatusEnumSchema,
+} from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -12,7 +17,7 @@ export const HogFlowsSchedulesPartialUpdateInput =
     name: Schema.optional(Schema.NullOr(Schema.String)),
     description: Schema.optional(Schema.String),
     version: Schema.optional(Schema.Number),
-    status: Schema.optional(Schema.Literals(["draft", "active", "archived"])),
+    status: Schema.optional(Schema.suspend(() => HogFlowStatusEnumSchema)),
     created_at: Schema.optional(Schema.String),
     created_by: Schema.optional(
       Schema.NullOr(
@@ -45,57 +50,11 @@ export const HogFlowsSchedulesPartialUpdateInput =
     ),
     conversion: Schema.optional(Schema.NullOr(Schema.Unknown)),
     exit_condition: Schema.optional(
-      Schema.Literals([
-        "exit_on_conversion",
-        "exit_on_trigger_not_matched",
-        "exit_on_trigger_not_matched_or_conversion",
-        "exit_only_at_end",
-      ]),
+      Schema.suspend(() => ExitConditionEnumSchema),
     ),
     edges: Schema.optional(Schema.Unknown),
     actions: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          on_error: Schema.optional(Schema.Unknown),
-          created_at: Schema.optional(Schema.Number),
-          updated_at: Schema.optional(Schema.Number),
-          filters: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                source: Schema.optional(
-                  Schema.Literals([
-                    "events",
-                    "person-updates",
-                    "data-warehouse-table",
-                  ]),
-                ),
-                actions: Schema.optional(
-                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-                ),
-                events: Schema.optional(
-                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-                ),
-                data_warehouse: Schema.optional(
-                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-                ),
-                properties: Schema.optional(
-                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-                ),
-                bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
-                transpiled: Schema.optional(Schema.Unknown),
-                filter_test_accounts: Schema.optional(Schema.Boolean),
-                bytecode_error: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          type: Schema.optional(Schema.String),
-          config: Schema.optional(Schema.Unknown),
-          output_variable: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => HogFlowActionSchema)),
     ),
     abort_action: Schema.optional(Schema.NullOr(Schema.String)),
     variables: Schema.optional(
@@ -118,7 +77,7 @@ export const HogFlowsSchedulesPartialUpdateOutput =
     name: Schema.optional(Schema.NullOr(Schema.String)),
     description: Schema.optional(Schema.String),
     version: Schema.optional(Schema.Number),
-    status: Schema.optional(Schema.Literals(["draft", "active", "archived"])),
+    status: Schema.optional(Schema.suspend(() => HogFlowStatusEnumSchema)),
     created_at: Schema.optional(Schema.String),
     created_by: Schema.optional(
       Schema.NullOr(
@@ -151,57 +110,11 @@ export const HogFlowsSchedulesPartialUpdateOutput =
     ),
     conversion: Schema.optional(Schema.NullOr(Schema.Unknown)),
     exit_condition: Schema.optional(
-      Schema.Literals([
-        "exit_on_conversion",
-        "exit_on_trigger_not_matched",
-        "exit_on_trigger_not_matched_or_conversion",
-        "exit_only_at_end",
-      ]),
+      Schema.suspend(() => ExitConditionEnumSchema),
     ),
     edges: Schema.optional(Schema.Unknown),
     actions: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          on_error: Schema.optional(Schema.Unknown),
-          created_at: Schema.optional(Schema.Number),
-          updated_at: Schema.optional(Schema.Number),
-          filters: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                source: Schema.optional(
-                  Schema.Literals([
-                    "events",
-                    "person-updates",
-                    "data-warehouse-table",
-                  ]),
-                ),
-                actions: Schema.optional(
-                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-                ),
-                events: Schema.optional(
-                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-                ),
-                data_warehouse: Schema.optional(
-                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-                ),
-                properties: Schema.optional(
-                  Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-                ),
-                bytecode: Schema.optional(Schema.NullOr(Schema.Unknown)),
-                transpiled: Schema.optional(Schema.Unknown),
-                filter_test_accounts: Schema.optional(Schema.Boolean),
-                bytecode_error: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          type: Schema.optional(Schema.String),
-          config: Schema.optional(Schema.Unknown),
-          output_variable: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => HogFlowActionSchema)),
     ),
     abort_action: Schema.optional(Schema.NullOr(Schema.String)),
     variables: Schema.optional(

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { placement_RegionPlacementSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
@@ -35,13 +36,7 @@ export type PlatformPlacementsPostInput =
 export const PlatformPlacementsPostOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     regions: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          concurrency: Schema.optional(Schema.Number),
-          count: Schema.optional(Schema.Number),
-          region: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => placement_RegionPlacementSchema)),
     ),
   });
 export type PlatformPlacementsPostOutput =

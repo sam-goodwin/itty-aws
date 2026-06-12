@@ -8,12 +8,41 @@ import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
+import {
+  io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionSchema,
+  io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionSpecSchema,
+  io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionStatusSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+  io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+} from "./_schemas.ts";
 
 // Input Schema
 export const CreateApiextensionsV1CustomResourceDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(
+      () =>
+        io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionSpecSchema,
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -29,235 +58,19 @@ export const CreateApiextensionsV1CustomResourceDefinitionOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      conversion: Schema.optional(
-        Schema.Struct({
-          strategy: Schema.String,
-          webhook: Schema.optional(
-            Schema.Struct({
-              clientConfig: Schema.optional(
-                Schema.Struct({
-                  caBundle: Schema.optional(Schema.String),
-                  service: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                      namespace: Schema.String,
-                      path: Schema.optional(Schema.String),
-                      port: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                  url: Schema.optional(Schema.String),
-                }),
-              ),
-              conversionReviewVersions: Schema.Array(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      group: Schema.String,
-      names: Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        kind: Schema.String,
-        listKind: Schema.optional(Schema.String),
-        plural: Schema.String,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singular: Schema.optional(Schema.String),
-      }),
-      preserveUnknownFields: Schema.optional(Schema.Boolean),
-      scope: Schema.String,
-      versions: Schema.Array(
-        Schema.Struct({
-          additionalPrinterColumns: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                description: Schema.optional(Schema.String),
-                format: Schema.optional(Schema.String),
-                jsonPath: Schema.String,
-                name: Schema.String,
-                priority: Schema.optional(Schema.Number),
-                type: Schema.String,
-              }),
-            ),
-          ),
-          deprecated: Schema.optional(Schema.Boolean),
-          deprecationWarning: Schema.optional(Schema.String),
-          name: Schema.String,
-          schema: Schema.optional(
-            Schema.Struct({
-              openAPIV3Schema: Schema.optional(
-                Schema.Struct({
-                  $ref: Schema.optional(Schema.String),
-                  $schema: Schema.optional(Schema.String),
-                  additionalItems: Schema.optional(Schema.Unknown),
-                  additionalProperties: Schema.optional(Schema.Unknown),
-                  allOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                  anyOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                  default: Schema.optional(Schema.Unknown),
-                  definitions: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  dependencies: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  description: Schema.optional(Schema.String),
-                  enum: Schema.optional(Schema.Array(Schema.Unknown)),
-                  example: Schema.optional(Schema.Unknown),
-                  exclusiveMaximum: Schema.optional(Schema.Boolean),
-                  exclusiveMinimum: Schema.optional(Schema.Boolean),
-                  externalDocs: Schema.optional(
-                    Schema.Struct({
-                      description: Schema.optional(Schema.String),
-                      url: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  format: Schema.optional(Schema.String),
-                  id: Schema.optional(Schema.String),
-                  items: Schema.optional(Schema.Unknown),
-                  maxItems: Schema.optional(Schema.Number),
-                  maxLength: Schema.optional(Schema.Number),
-                  maxProperties: Schema.optional(Schema.Number),
-                  maximum: Schema.optional(Schema.Number),
-                  minItems: Schema.optional(Schema.Number),
-                  minLength: Schema.optional(Schema.Number),
-                  minProperties: Schema.optional(Schema.Number),
-                  minimum: Schema.optional(Schema.Number),
-                  multipleOf: Schema.optional(Schema.Number),
-                  not: Schema.optional(Schema.Unknown),
-                  nullable: Schema.optional(Schema.Boolean),
-                  oneOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                  pattern: Schema.optional(Schema.String),
-                  patternProperties: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  properties: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  required: Schema.optional(Schema.Array(Schema.String)),
-                  title: Schema.optional(Schema.String),
-                  type: Schema.optional(Schema.String),
-                  uniqueItems: Schema.optional(Schema.Boolean),
-                  "x-kubernetes-embedded-resource": Schema.optional(
-                    Schema.Boolean,
-                  ),
-                  "x-kubernetes-int-or-string": Schema.optional(Schema.Boolean),
-                  "x-kubernetes-list-map-keys": Schema.optional(
-                    Schema.Array(Schema.String),
-                  ),
-                  "x-kubernetes-list-type": Schema.optional(Schema.String),
-                  "x-kubernetes-map-type": Schema.optional(Schema.String),
-                  "x-kubernetes-preserve-unknown-fields": Schema.optional(
-                    Schema.Boolean,
-                  ),
-                  "x-kubernetes-validations": Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        fieldPath: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                        messageExpression: Schema.optional(Schema.String),
-                        optionalOldSelf: Schema.optional(Schema.Boolean),
-                        reason: Schema.optional(Schema.String),
-                        rule: Schema.String,
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          selectableFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                jsonPath: Schema.String,
-              }),
-            ),
-          ),
-          served: Schema.Boolean,
-          storage: Schema.Boolean,
-          subresources: Schema.optional(
-            Schema.Struct({
-              scale: Schema.optional(
-                Schema.Struct({
-                  labelSelectorPath: Schema.optional(Schema.String),
-                  specReplicasPath: Schema.String,
-                  statusReplicasPath: Schema.String,
-                }),
-              ),
-              status: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        }),
-      ),
-    }),
+    spec: Schema.suspend(
+      () =>
+        io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        acceptedNames: Schema.optional(
-          Schema.Struct({
-            categories: Schema.optional(Schema.Array(Schema.String)),
-            kind: Schema.String,
-            listKind: Schema.optional(Schema.String),
-            plural: Schema.String,
-            shortNames: Schema.optional(Schema.Array(Schema.String)),
-            singular: Schema.optional(Schema.String),
-          }),
-        ),
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.optional(Schema.String),
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        observedGeneration: Schema.optional(Schema.Number),
-        storedVersions: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionStatusSchema,
+      ),
     ),
   });
 export type CreateApiextensionsV1CustomResourceDefinitionOutput =
@@ -295,37 +108,14 @@ export const DeleteApiextensionsV1CollectionCustomResourceDefinitionOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -363,37 +153,14 @@ export const DeleteApiextensionsV1CustomResourceDefinitionOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -428,24 +195,24 @@ export const GetApiextensionsAPIGroupOutput =
     kind: Schema.optional(Schema.String),
     name: Schema.String,
     preferredVersion: Schema.optional(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
     serverAddressByClientCIDRs: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
+        Schema.suspend(
+          () =>
+            io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+        ),
       ),
     ),
     versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
   });
 export type GetApiextensionsAPIGroupOutput =
@@ -476,18 +243,9 @@ export const GetApiextensionsV1APIResourcesOutput =
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
     resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+      ),
     ),
   });
 export type GetApiextensionsV1APIResourcesOutput =
@@ -518,259 +276,14 @@ export const ListApiextensionsV1CustomResourceDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.Struct({
-          conversion: Schema.optional(
-            Schema.Struct({
-              strategy: Schema.String,
-              webhook: Schema.optional(
-                Schema.Struct({
-                  clientConfig: Schema.optional(
-                    Schema.Struct({
-                      caBundle: Schema.optional(Schema.String),
-                      service: Schema.optional(
-                        Schema.Struct({
-                          name: Schema.String,
-                          namespace: Schema.String,
-                          path: Schema.optional(Schema.String),
-                          port: Schema.optional(Schema.Number),
-                        }),
-                      ),
-                      url: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  conversionReviewVersions: Schema.Array(Schema.String),
-                }),
-              ),
-            }),
-          ),
-          group: Schema.String,
-          names: Schema.Struct({
-            categories: Schema.optional(Schema.Array(Schema.String)),
-            kind: Schema.String,
-            listKind: Schema.optional(Schema.String),
-            plural: Schema.String,
-            shortNames: Schema.optional(Schema.Array(Schema.String)),
-            singular: Schema.optional(Schema.String),
-          }),
-          preserveUnknownFields: Schema.optional(Schema.Boolean),
-          scope: Schema.String,
-          versions: Schema.Array(
-            Schema.Struct({
-              additionalPrinterColumns: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    description: Schema.optional(Schema.String),
-                    format: Schema.optional(Schema.String),
-                    jsonPath: Schema.String,
-                    name: Schema.String,
-                    priority: Schema.optional(Schema.Number),
-                    type: Schema.String,
-                  }),
-                ),
-              ),
-              deprecated: Schema.optional(Schema.Boolean),
-              deprecationWarning: Schema.optional(Schema.String),
-              name: Schema.String,
-              schema: Schema.optional(
-                Schema.Struct({
-                  openAPIV3Schema: Schema.optional(
-                    Schema.Struct({
-                      $ref: Schema.optional(Schema.String),
-                      $schema: Schema.optional(Schema.String),
-                      additionalItems: Schema.optional(Schema.Unknown),
-                      additionalProperties: Schema.optional(Schema.Unknown),
-                      allOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                      anyOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                      default: Schema.optional(Schema.Unknown),
-                      definitions: Schema.optional(
-                        Schema.Record(Schema.String, Schema.Unknown),
-                      ),
-                      dependencies: Schema.optional(
-                        Schema.Record(Schema.String, Schema.Unknown),
-                      ),
-                      description: Schema.optional(Schema.String),
-                      enum: Schema.optional(Schema.Array(Schema.Unknown)),
-                      example: Schema.optional(Schema.Unknown),
-                      exclusiveMaximum: Schema.optional(Schema.Boolean),
-                      exclusiveMinimum: Schema.optional(Schema.Boolean),
-                      externalDocs: Schema.optional(
-                        Schema.Struct({
-                          description: Schema.optional(Schema.String),
-                          url: Schema.optional(Schema.String),
-                        }),
-                      ),
-                      format: Schema.optional(Schema.String),
-                      id: Schema.optional(Schema.String),
-                      items: Schema.optional(Schema.Unknown),
-                      maxItems: Schema.optional(Schema.Number),
-                      maxLength: Schema.optional(Schema.Number),
-                      maxProperties: Schema.optional(Schema.Number),
-                      maximum: Schema.optional(Schema.Number),
-                      minItems: Schema.optional(Schema.Number),
-                      minLength: Schema.optional(Schema.Number),
-                      minProperties: Schema.optional(Schema.Number),
-                      minimum: Schema.optional(Schema.Number),
-                      multipleOf: Schema.optional(Schema.Number),
-                      not: Schema.optional(Schema.Unknown),
-                      nullable: Schema.optional(Schema.Boolean),
-                      oneOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                      pattern: Schema.optional(Schema.String),
-                      patternProperties: Schema.optional(
-                        Schema.Record(Schema.String, Schema.Unknown),
-                      ),
-                      properties: Schema.optional(
-                        Schema.Record(Schema.String, Schema.Unknown),
-                      ),
-                      required: Schema.optional(Schema.Array(Schema.String)),
-                      title: Schema.optional(Schema.String),
-                      type: Schema.optional(Schema.String),
-                      uniqueItems: Schema.optional(Schema.Boolean),
-                      "x-kubernetes-embedded-resource": Schema.optional(
-                        Schema.Boolean,
-                      ),
-                      "x-kubernetes-int-or-string": Schema.optional(
-                        Schema.Boolean,
-                      ),
-                      "x-kubernetes-list-map-keys": Schema.optional(
-                        Schema.Array(Schema.String),
-                      ),
-                      "x-kubernetes-list-type": Schema.optional(Schema.String),
-                      "x-kubernetes-map-type": Schema.optional(Schema.String),
-                      "x-kubernetes-preserve-unknown-fields": Schema.optional(
-                        Schema.Boolean,
-                      ),
-                      "x-kubernetes-validations": Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            fieldPath: Schema.optional(Schema.String),
-                            message: Schema.optional(Schema.String),
-                            messageExpression: Schema.optional(Schema.String),
-                            optionalOldSelf: Schema.optional(Schema.Boolean),
-                            reason: Schema.optional(Schema.String),
-                            rule: Schema.String,
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-              selectableFields: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    jsonPath: Schema.String,
-                  }),
-                ),
-              ),
-              served: Schema.Boolean,
-              storage: Schema.Boolean,
-              subresources: Schema.optional(
-                Schema.Struct({
-                  scale: Schema.optional(
-                    Schema.Struct({
-                      labelSelectorPath: Schema.optional(Schema.String),
-                      specReplicasPath: Schema.String,
-                      statusReplicasPath: Schema.String,
-                    }),
-                  ),
-                  status: Schema.optional(Schema.Unknown),
-                }),
-              ),
-            }),
-          ),
-        }),
-        status: Schema.optional(
-          Schema.Struct({
-            acceptedNames: Schema.optional(
-              Schema.Struct({
-                categories: Schema.optional(Schema.Array(Schema.String)),
-                kind: Schema.String,
-                listKind: Schema.optional(Schema.String),
-                plural: Schema.String,
-                shortNames: Schema.optional(Schema.Array(Schema.String)),
-                singular: Schema.optional(Schema.String),
-              }),
-            ),
-            conditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  lastTransitionTime: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  observedGeneration: Schema.optional(Schema.Number),
-                  reason: Schema.optional(Schema.String),
-                  status: Schema.String,
-                  type: Schema.String,
-                }),
-              ),
-            ),
-            observedGeneration: Schema.optional(Schema.Number),
-            storedVersions: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListApiextensionsV1CustomResourceDefinitionOutput =
@@ -805,235 +318,19 @@ export const PatchApiextensionsV1CustomResourceDefinitionOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      conversion: Schema.optional(
-        Schema.Struct({
-          strategy: Schema.String,
-          webhook: Schema.optional(
-            Schema.Struct({
-              clientConfig: Schema.optional(
-                Schema.Struct({
-                  caBundle: Schema.optional(Schema.String),
-                  service: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                      namespace: Schema.String,
-                      path: Schema.optional(Schema.String),
-                      port: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                  url: Schema.optional(Schema.String),
-                }),
-              ),
-              conversionReviewVersions: Schema.Array(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      group: Schema.String,
-      names: Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        kind: Schema.String,
-        listKind: Schema.optional(Schema.String),
-        plural: Schema.String,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singular: Schema.optional(Schema.String),
-      }),
-      preserveUnknownFields: Schema.optional(Schema.Boolean),
-      scope: Schema.String,
-      versions: Schema.Array(
-        Schema.Struct({
-          additionalPrinterColumns: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                description: Schema.optional(Schema.String),
-                format: Schema.optional(Schema.String),
-                jsonPath: Schema.String,
-                name: Schema.String,
-                priority: Schema.optional(Schema.Number),
-                type: Schema.String,
-              }),
-            ),
-          ),
-          deprecated: Schema.optional(Schema.Boolean),
-          deprecationWarning: Schema.optional(Schema.String),
-          name: Schema.String,
-          schema: Schema.optional(
-            Schema.Struct({
-              openAPIV3Schema: Schema.optional(
-                Schema.Struct({
-                  $ref: Schema.optional(Schema.String),
-                  $schema: Schema.optional(Schema.String),
-                  additionalItems: Schema.optional(Schema.Unknown),
-                  additionalProperties: Schema.optional(Schema.Unknown),
-                  allOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                  anyOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                  default: Schema.optional(Schema.Unknown),
-                  definitions: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  dependencies: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  description: Schema.optional(Schema.String),
-                  enum: Schema.optional(Schema.Array(Schema.Unknown)),
-                  example: Schema.optional(Schema.Unknown),
-                  exclusiveMaximum: Schema.optional(Schema.Boolean),
-                  exclusiveMinimum: Schema.optional(Schema.Boolean),
-                  externalDocs: Schema.optional(
-                    Schema.Struct({
-                      description: Schema.optional(Schema.String),
-                      url: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  format: Schema.optional(Schema.String),
-                  id: Schema.optional(Schema.String),
-                  items: Schema.optional(Schema.Unknown),
-                  maxItems: Schema.optional(Schema.Number),
-                  maxLength: Schema.optional(Schema.Number),
-                  maxProperties: Schema.optional(Schema.Number),
-                  maximum: Schema.optional(Schema.Number),
-                  minItems: Schema.optional(Schema.Number),
-                  minLength: Schema.optional(Schema.Number),
-                  minProperties: Schema.optional(Schema.Number),
-                  minimum: Schema.optional(Schema.Number),
-                  multipleOf: Schema.optional(Schema.Number),
-                  not: Schema.optional(Schema.Unknown),
-                  nullable: Schema.optional(Schema.Boolean),
-                  oneOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                  pattern: Schema.optional(Schema.String),
-                  patternProperties: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  properties: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  required: Schema.optional(Schema.Array(Schema.String)),
-                  title: Schema.optional(Schema.String),
-                  type: Schema.optional(Schema.String),
-                  uniqueItems: Schema.optional(Schema.Boolean),
-                  "x-kubernetes-embedded-resource": Schema.optional(
-                    Schema.Boolean,
-                  ),
-                  "x-kubernetes-int-or-string": Schema.optional(Schema.Boolean),
-                  "x-kubernetes-list-map-keys": Schema.optional(
-                    Schema.Array(Schema.String),
-                  ),
-                  "x-kubernetes-list-type": Schema.optional(Schema.String),
-                  "x-kubernetes-map-type": Schema.optional(Schema.String),
-                  "x-kubernetes-preserve-unknown-fields": Schema.optional(
-                    Schema.Boolean,
-                  ),
-                  "x-kubernetes-validations": Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        fieldPath: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                        messageExpression: Schema.optional(Schema.String),
-                        optionalOldSelf: Schema.optional(Schema.Boolean),
-                        reason: Schema.optional(Schema.String),
-                        rule: Schema.String,
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          selectableFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                jsonPath: Schema.String,
-              }),
-            ),
-          ),
-          served: Schema.Boolean,
-          storage: Schema.Boolean,
-          subresources: Schema.optional(
-            Schema.Struct({
-              scale: Schema.optional(
-                Schema.Struct({
-                  labelSelectorPath: Schema.optional(Schema.String),
-                  specReplicasPath: Schema.String,
-                  statusReplicasPath: Schema.String,
-                }),
-              ),
-              status: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        }),
-      ),
-    }),
+    spec: Schema.suspend(
+      () =>
+        io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        acceptedNames: Schema.optional(
-          Schema.Struct({
-            categories: Schema.optional(Schema.Array(Schema.String)),
-            kind: Schema.String,
-            listKind: Schema.optional(Schema.String),
-            plural: Schema.String,
-            shortNames: Schema.optional(Schema.Array(Schema.String)),
-            singular: Schema.optional(Schema.String),
-          }),
-        ),
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.optional(Schema.String),
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        observedGeneration: Schema.optional(Schema.Number),
-        storedVersions: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionStatusSchema,
+      ),
     ),
   });
 export type PatchApiextensionsV1CustomResourceDefinitionOutput =
@@ -1072,235 +369,19 @@ export const PatchApiextensionsV1CustomResourceDefinitionStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      conversion: Schema.optional(
-        Schema.Struct({
-          strategy: Schema.String,
-          webhook: Schema.optional(
-            Schema.Struct({
-              clientConfig: Schema.optional(
-                Schema.Struct({
-                  caBundle: Schema.optional(Schema.String),
-                  service: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                      namespace: Schema.String,
-                      path: Schema.optional(Schema.String),
-                      port: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                  url: Schema.optional(Schema.String),
-                }),
-              ),
-              conversionReviewVersions: Schema.Array(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      group: Schema.String,
-      names: Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        kind: Schema.String,
-        listKind: Schema.optional(Schema.String),
-        plural: Schema.String,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singular: Schema.optional(Schema.String),
-      }),
-      preserveUnknownFields: Schema.optional(Schema.Boolean),
-      scope: Schema.String,
-      versions: Schema.Array(
-        Schema.Struct({
-          additionalPrinterColumns: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                description: Schema.optional(Schema.String),
-                format: Schema.optional(Schema.String),
-                jsonPath: Schema.String,
-                name: Schema.String,
-                priority: Schema.optional(Schema.Number),
-                type: Schema.String,
-              }),
-            ),
-          ),
-          deprecated: Schema.optional(Schema.Boolean),
-          deprecationWarning: Schema.optional(Schema.String),
-          name: Schema.String,
-          schema: Schema.optional(
-            Schema.Struct({
-              openAPIV3Schema: Schema.optional(
-                Schema.Struct({
-                  $ref: Schema.optional(Schema.String),
-                  $schema: Schema.optional(Schema.String),
-                  additionalItems: Schema.optional(Schema.Unknown),
-                  additionalProperties: Schema.optional(Schema.Unknown),
-                  allOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                  anyOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                  default: Schema.optional(Schema.Unknown),
-                  definitions: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  dependencies: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  description: Schema.optional(Schema.String),
-                  enum: Schema.optional(Schema.Array(Schema.Unknown)),
-                  example: Schema.optional(Schema.Unknown),
-                  exclusiveMaximum: Schema.optional(Schema.Boolean),
-                  exclusiveMinimum: Schema.optional(Schema.Boolean),
-                  externalDocs: Schema.optional(
-                    Schema.Struct({
-                      description: Schema.optional(Schema.String),
-                      url: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  format: Schema.optional(Schema.String),
-                  id: Schema.optional(Schema.String),
-                  items: Schema.optional(Schema.Unknown),
-                  maxItems: Schema.optional(Schema.Number),
-                  maxLength: Schema.optional(Schema.Number),
-                  maxProperties: Schema.optional(Schema.Number),
-                  maximum: Schema.optional(Schema.Number),
-                  minItems: Schema.optional(Schema.Number),
-                  minLength: Schema.optional(Schema.Number),
-                  minProperties: Schema.optional(Schema.Number),
-                  minimum: Schema.optional(Schema.Number),
-                  multipleOf: Schema.optional(Schema.Number),
-                  not: Schema.optional(Schema.Unknown),
-                  nullable: Schema.optional(Schema.Boolean),
-                  oneOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                  pattern: Schema.optional(Schema.String),
-                  patternProperties: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  properties: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  required: Schema.optional(Schema.Array(Schema.String)),
-                  title: Schema.optional(Schema.String),
-                  type: Schema.optional(Schema.String),
-                  uniqueItems: Schema.optional(Schema.Boolean),
-                  "x-kubernetes-embedded-resource": Schema.optional(
-                    Schema.Boolean,
-                  ),
-                  "x-kubernetes-int-or-string": Schema.optional(Schema.Boolean),
-                  "x-kubernetes-list-map-keys": Schema.optional(
-                    Schema.Array(Schema.String),
-                  ),
-                  "x-kubernetes-list-type": Schema.optional(Schema.String),
-                  "x-kubernetes-map-type": Schema.optional(Schema.String),
-                  "x-kubernetes-preserve-unknown-fields": Schema.optional(
-                    Schema.Boolean,
-                  ),
-                  "x-kubernetes-validations": Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        fieldPath: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                        messageExpression: Schema.optional(Schema.String),
-                        optionalOldSelf: Schema.optional(Schema.Boolean),
-                        reason: Schema.optional(Schema.String),
-                        rule: Schema.String,
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          selectableFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                jsonPath: Schema.String,
-              }),
-            ),
-          ),
-          served: Schema.Boolean,
-          storage: Schema.Boolean,
-          subresources: Schema.optional(
-            Schema.Struct({
-              scale: Schema.optional(
-                Schema.Struct({
-                  labelSelectorPath: Schema.optional(Schema.String),
-                  specReplicasPath: Schema.String,
-                  statusReplicasPath: Schema.String,
-                }),
-              ),
-              status: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        }),
-      ),
-    }),
+    spec: Schema.suspend(
+      () =>
+        io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        acceptedNames: Schema.optional(
-          Schema.Struct({
-            categories: Schema.optional(Schema.Array(Schema.String)),
-            kind: Schema.String,
-            listKind: Schema.optional(Schema.String),
-            plural: Schema.String,
-            shortNames: Schema.optional(Schema.Array(Schema.String)),
-            singular: Schema.optional(Schema.String),
-          }),
-        ),
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.optional(Schema.String),
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        observedGeneration: Schema.optional(Schema.Number),
-        storedVersions: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionStatusSchema,
+      ),
     ),
   });
 export type PatchApiextensionsV1CustomResourceDefinitionStatusOutput =
@@ -1336,235 +417,19 @@ export const ReadApiextensionsV1CustomResourceDefinitionOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      conversion: Schema.optional(
-        Schema.Struct({
-          strategy: Schema.String,
-          webhook: Schema.optional(
-            Schema.Struct({
-              clientConfig: Schema.optional(
-                Schema.Struct({
-                  caBundle: Schema.optional(Schema.String),
-                  service: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                      namespace: Schema.String,
-                      path: Schema.optional(Schema.String),
-                      port: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                  url: Schema.optional(Schema.String),
-                }),
-              ),
-              conversionReviewVersions: Schema.Array(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      group: Schema.String,
-      names: Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        kind: Schema.String,
-        listKind: Schema.optional(Schema.String),
-        plural: Schema.String,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singular: Schema.optional(Schema.String),
-      }),
-      preserveUnknownFields: Schema.optional(Schema.Boolean),
-      scope: Schema.String,
-      versions: Schema.Array(
-        Schema.Struct({
-          additionalPrinterColumns: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                description: Schema.optional(Schema.String),
-                format: Schema.optional(Schema.String),
-                jsonPath: Schema.String,
-                name: Schema.String,
-                priority: Schema.optional(Schema.Number),
-                type: Schema.String,
-              }),
-            ),
-          ),
-          deprecated: Schema.optional(Schema.Boolean),
-          deprecationWarning: Schema.optional(Schema.String),
-          name: Schema.String,
-          schema: Schema.optional(
-            Schema.Struct({
-              openAPIV3Schema: Schema.optional(
-                Schema.Struct({
-                  $ref: Schema.optional(Schema.String),
-                  $schema: Schema.optional(Schema.String),
-                  additionalItems: Schema.optional(Schema.Unknown),
-                  additionalProperties: Schema.optional(Schema.Unknown),
-                  allOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                  anyOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                  default: Schema.optional(Schema.Unknown),
-                  definitions: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  dependencies: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  description: Schema.optional(Schema.String),
-                  enum: Schema.optional(Schema.Array(Schema.Unknown)),
-                  example: Schema.optional(Schema.Unknown),
-                  exclusiveMaximum: Schema.optional(Schema.Boolean),
-                  exclusiveMinimum: Schema.optional(Schema.Boolean),
-                  externalDocs: Schema.optional(
-                    Schema.Struct({
-                      description: Schema.optional(Schema.String),
-                      url: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  format: Schema.optional(Schema.String),
-                  id: Schema.optional(Schema.String),
-                  items: Schema.optional(Schema.Unknown),
-                  maxItems: Schema.optional(Schema.Number),
-                  maxLength: Schema.optional(Schema.Number),
-                  maxProperties: Schema.optional(Schema.Number),
-                  maximum: Schema.optional(Schema.Number),
-                  minItems: Schema.optional(Schema.Number),
-                  minLength: Schema.optional(Schema.Number),
-                  minProperties: Schema.optional(Schema.Number),
-                  minimum: Schema.optional(Schema.Number),
-                  multipleOf: Schema.optional(Schema.Number),
-                  not: Schema.optional(Schema.Unknown),
-                  nullable: Schema.optional(Schema.Boolean),
-                  oneOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                  pattern: Schema.optional(Schema.String),
-                  patternProperties: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  properties: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  required: Schema.optional(Schema.Array(Schema.String)),
-                  title: Schema.optional(Schema.String),
-                  type: Schema.optional(Schema.String),
-                  uniqueItems: Schema.optional(Schema.Boolean),
-                  "x-kubernetes-embedded-resource": Schema.optional(
-                    Schema.Boolean,
-                  ),
-                  "x-kubernetes-int-or-string": Schema.optional(Schema.Boolean),
-                  "x-kubernetes-list-map-keys": Schema.optional(
-                    Schema.Array(Schema.String),
-                  ),
-                  "x-kubernetes-list-type": Schema.optional(Schema.String),
-                  "x-kubernetes-map-type": Schema.optional(Schema.String),
-                  "x-kubernetes-preserve-unknown-fields": Schema.optional(
-                    Schema.Boolean,
-                  ),
-                  "x-kubernetes-validations": Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        fieldPath: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                        messageExpression: Schema.optional(Schema.String),
-                        optionalOldSelf: Schema.optional(Schema.Boolean),
-                        reason: Schema.optional(Schema.String),
-                        rule: Schema.String,
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          selectableFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                jsonPath: Schema.String,
-              }),
-            ),
-          ),
-          served: Schema.Boolean,
-          storage: Schema.Boolean,
-          subresources: Schema.optional(
-            Schema.Struct({
-              scale: Schema.optional(
-                Schema.Struct({
-                  labelSelectorPath: Schema.optional(Schema.String),
-                  specReplicasPath: Schema.String,
-                  statusReplicasPath: Schema.String,
-                }),
-              ),
-              status: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        }),
-      ),
-    }),
+    spec: Schema.suspend(
+      () =>
+        io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        acceptedNames: Schema.optional(
-          Schema.Struct({
-            categories: Schema.optional(Schema.Array(Schema.String)),
-            kind: Schema.String,
-            listKind: Schema.optional(Schema.String),
-            plural: Schema.String,
-            shortNames: Schema.optional(Schema.Array(Schema.String)),
-            singular: Schema.optional(Schema.String),
-          }),
-        ),
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.optional(Schema.String),
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        observedGeneration: Schema.optional(Schema.Number),
-        storedVersions: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionStatusSchema,
+      ),
     ),
   });
 export type ReadApiextensionsV1CustomResourceDefinitionOutput =
@@ -1597,235 +462,19 @@ export const ReadApiextensionsV1CustomResourceDefinitionStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      conversion: Schema.optional(
-        Schema.Struct({
-          strategy: Schema.String,
-          webhook: Schema.optional(
-            Schema.Struct({
-              clientConfig: Schema.optional(
-                Schema.Struct({
-                  caBundle: Schema.optional(Schema.String),
-                  service: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                      namespace: Schema.String,
-                      path: Schema.optional(Schema.String),
-                      port: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                  url: Schema.optional(Schema.String),
-                }),
-              ),
-              conversionReviewVersions: Schema.Array(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      group: Schema.String,
-      names: Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        kind: Schema.String,
-        listKind: Schema.optional(Schema.String),
-        plural: Schema.String,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singular: Schema.optional(Schema.String),
-      }),
-      preserveUnknownFields: Schema.optional(Schema.Boolean),
-      scope: Schema.String,
-      versions: Schema.Array(
-        Schema.Struct({
-          additionalPrinterColumns: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                description: Schema.optional(Schema.String),
-                format: Schema.optional(Schema.String),
-                jsonPath: Schema.String,
-                name: Schema.String,
-                priority: Schema.optional(Schema.Number),
-                type: Schema.String,
-              }),
-            ),
-          ),
-          deprecated: Schema.optional(Schema.Boolean),
-          deprecationWarning: Schema.optional(Schema.String),
-          name: Schema.String,
-          schema: Schema.optional(
-            Schema.Struct({
-              openAPIV3Schema: Schema.optional(
-                Schema.Struct({
-                  $ref: Schema.optional(Schema.String),
-                  $schema: Schema.optional(Schema.String),
-                  additionalItems: Schema.optional(Schema.Unknown),
-                  additionalProperties: Schema.optional(Schema.Unknown),
-                  allOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                  anyOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                  default: Schema.optional(Schema.Unknown),
-                  definitions: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  dependencies: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  description: Schema.optional(Schema.String),
-                  enum: Schema.optional(Schema.Array(Schema.Unknown)),
-                  example: Schema.optional(Schema.Unknown),
-                  exclusiveMaximum: Schema.optional(Schema.Boolean),
-                  exclusiveMinimum: Schema.optional(Schema.Boolean),
-                  externalDocs: Schema.optional(
-                    Schema.Struct({
-                      description: Schema.optional(Schema.String),
-                      url: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  format: Schema.optional(Schema.String),
-                  id: Schema.optional(Schema.String),
-                  items: Schema.optional(Schema.Unknown),
-                  maxItems: Schema.optional(Schema.Number),
-                  maxLength: Schema.optional(Schema.Number),
-                  maxProperties: Schema.optional(Schema.Number),
-                  maximum: Schema.optional(Schema.Number),
-                  minItems: Schema.optional(Schema.Number),
-                  minLength: Schema.optional(Schema.Number),
-                  minProperties: Schema.optional(Schema.Number),
-                  minimum: Schema.optional(Schema.Number),
-                  multipleOf: Schema.optional(Schema.Number),
-                  not: Schema.optional(Schema.Unknown),
-                  nullable: Schema.optional(Schema.Boolean),
-                  oneOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                  pattern: Schema.optional(Schema.String),
-                  patternProperties: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  properties: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  required: Schema.optional(Schema.Array(Schema.String)),
-                  title: Schema.optional(Schema.String),
-                  type: Schema.optional(Schema.String),
-                  uniqueItems: Schema.optional(Schema.Boolean),
-                  "x-kubernetes-embedded-resource": Schema.optional(
-                    Schema.Boolean,
-                  ),
-                  "x-kubernetes-int-or-string": Schema.optional(Schema.Boolean),
-                  "x-kubernetes-list-map-keys": Schema.optional(
-                    Schema.Array(Schema.String),
-                  ),
-                  "x-kubernetes-list-type": Schema.optional(Schema.String),
-                  "x-kubernetes-map-type": Schema.optional(Schema.String),
-                  "x-kubernetes-preserve-unknown-fields": Schema.optional(
-                    Schema.Boolean,
-                  ),
-                  "x-kubernetes-validations": Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        fieldPath: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                        messageExpression: Schema.optional(Schema.String),
-                        optionalOldSelf: Schema.optional(Schema.Boolean),
-                        reason: Schema.optional(Schema.String),
-                        rule: Schema.String,
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          selectableFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                jsonPath: Schema.String,
-              }),
-            ),
-          ),
-          served: Schema.Boolean,
-          storage: Schema.Boolean,
-          subresources: Schema.optional(
-            Schema.Struct({
-              scale: Schema.optional(
-                Schema.Struct({
-                  labelSelectorPath: Schema.optional(Schema.String),
-                  specReplicasPath: Schema.String,
-                  statusReplicasPath: Schema.String,
-                }),
-              ),
-              status: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        }),
-      ),
-    }),
+    spec: Schema.suspend(
+      () =>
+        io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        acceptedNames: Schema.optional(
-          Schema.Struct({
-            categories: Schema.optional(Schema.Array(Schema.String)),
-            kind: Schema.String,
-            listKind: Schema.optional(Schema.String),
-            plural: Schema.String,
-            shortNames: Schema.optional(Schema.Array(Schema.String)),
-            singular: Schema.optional(Schema.String),
-          }),
-        ),
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.optional(Schema.String),
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        observedGeneration: Schema.optional(Schema.Number),
-        storedVersions: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionStatusSchema,
+      ),
     ),
   });
 export type ReadApiextensionsV1CustomResourceDefinitionStatusOutput =
@@ -1846,6 +495,23 @@ export const ReplaceApiextensionsV1CustomResourceDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(
+      () =>
+        io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionSpecSchema,
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1861,235 +527,19 @@ export const ReplaceApiextensionsV1CustomResourceDefinitionOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      conversion: Schema.optional(
-        Schema.Struct({
-          strategy: Schema.String,
-          webhook: Schema.optional(
-            Schema.Struct({
-              clientConfig: Schema.optional(
-                Schema.Struct({
-                  caBundle: Schema.optional(Schema.String),
-                  service: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                      namespace: Schema.String,
-                      path: Schema.optional(Schema.String),
-                      port: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                  url: Schema.optional(Schema.String),
-                }),
-              ),
-              conversionReviewVersions: Schema.Array(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      group: Schema.String,
-      names: Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        kind: Schema.String,
-        listKind: Schema.optional(Schema.String),
-        plural: Schema.String,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singular: Schema.optional(Schema.String),
-      }),
-      preserveUnknownFields: Schema.optional(Schema.Boolean),
-      scope: Schema.String,
-      versions: Schema.Array(
-        Schema.Struct({
-          additionalPrinterColumns: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                description: Schema.optional(Schema.String),
-                format: Schema.optional(Schema.String),
-                jsonPath: Schema.String,
-                name: Schema.String,
-                priority: Schema.optional(Schema.Number),
-                type: Schema.String,
-              }),
-            ),
-          ),
-          deprecated: Schema.optional(Schema.Boolean),
-          deprecationWarning: Schema.optional(Schema.String),
-          name: Schema.String,
-          schema: Schema.optional(
-            Schema.Struct({
-              openAPIV3Schema: Schema.optional(
-                Schema.Struct({
-                  $ref: Schema.optional(Schema.String),
-                  $schema: Schema.optional(Schema.String),
-                  additionalItems: Schema.optional(Schema.Unknown),
-                  additionalProperties: Schema.optional(Schema.Unknown),
-                  allOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                  anyOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                  default: Schema.optional(Schema.Unknown),
-                  definitions: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  dependencies: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  description: Schema.optional(Schema.String),
-                  enum: Schema.optional(Schema.Array(Schema.Unknown)),
-                  example: Schema.optional(Schema.Unknown),
-                  exclusiveMaximum: Schema.optional(Schema.Boolean),
-                  exclusiveMinimum: Schema.optional(Schema.Boolean),
-                  externalDocs: Schema.optional(
-                    Schema.Struct({
-                      description: Schema.optional(Schema.String),
-                      url: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  format: Schema.optional(Schema.String),
-                  id: Schema.optional(Schema.String),
-                  items: Schema.optional(Schema.Unknown),
-                  maxItems: Schema.optional(Schema.Number),
-                  maxLength: Schema.optional(Schema.Number),
-                  maxProperties: Schema.optional(Schema.Number),
-                  maximum: Schema.optional(Schema.Number),
-                  minItems: Schema.optional(Schema.Number),
-                  minLength: Schema.optional(Schema.Number),
-                  minProperties: Schema.optional(Schema.Number),
-                  minimum: Schema.optional(Schema.Number),
-                  multipleOf: Schema.optional(Schema.Number),
-                  not: Schema.optional(Schema.Unknown),
-                  nullable: Schema.optional(Schema.Boolean),
-                  oneOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                  pattern: Schema.optional(Schema.String),
-                  patternProperties: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  properties: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  required: Schema.optional(Schema.Array(Schema.String)),
-                  title: Schema.optional(Schema.String),
-                  type: Schema.optional(Schema.String),
-                  uniqueItems: Schema.optional(Schema.Boolean),
-                  "x-kubernetes-embedded-resource": Schema.optional(
-                    Schema.Boolean,
-                  ),
-                  "x-kubernetes-int-or-string": Schema.optional(Schema.Boolean),
-                  "x-kubernetes-list-map-keys": Schema.optional(
-                    Schema.Array(Schema.String),
-                  ),
-                  "x-kubernetes-list-type": Schema.optional(Schema.String),
-                  "x-kubernetes-map-type": Schema.optional(Schema.String),
-                  "x-kubernetes-preserve-unknown-fields": Schema.optional(
-                    Schema.Boolean,
-                  ),
-                  "x-kubernetes-validations": Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        fieldPath: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                        messageExpression: Schema.optional(Schema.String),
-                        optionalOldSelf: Schema.optional(Schema.Boolean),
-                        reason: Schema.optional(Schema.String),
-                        rule: Schema.String,
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          selectableFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                jsonPath: Schema.String,
-              }),
-            ),
-          ),
-          served: Schema.Boolean,
-          storage: Schema.Boolean,
-          subresources: Schema.optional(
-            Schema.Struct({
-              scale: Schema.optional(
-                Schema.Struct({
-                  labelSelectorPath: Schema.optional(Schema.String),
-                  specReplicasPath: Schema.String,
-                  statusReplicasPath: Schema.String,
-                }),
-              ),
-              status: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        }),
-      ),
-    }),
+    spec: Schema.suspend(
+      () =>
+        io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        acceptedNames: Schema.optional(
-          Schema.Struct({
-            categories: Schema.optional(Schema.Array(Schema.String)),
-            kind: Schema.String,
-            listKind: Schema.optional(Schema.String),
-            plural: Schema.String,
-            shortNames: Schema.optional(Schema.Array(Schema.String)),
-            singular: Schema.optional(Schema.String),
-          }),
-        ),
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.optional(Schema.String),
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        observedGeneration: Schema.optional(Schema.Number),
-        storedVersions: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionStatusSchema,
+      ),
     ),
   });
 export type ReplaceApiextensionsV1CustomResourceDefinitionOutput =
@@ -2113,6 +563,23 @@ export const ReplaceApiextensionsV1CustomResourceDefinitionStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(
+      () =>
+        io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionSpecSchema,
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () =>
+          io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2128,235 +595,19 @@ export const ReplaceApiextensionsV1CustomResourceDefinitionStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      conversion: Schema.optional(
-        Schema.Struct({
-          strategy: Schema.String,
-          webhook: Schema.optional(
-            Schema.Struct({
-              clientConfig: Schema.optional(
-                Schema.Struct({
-                  caBundle: Schema.optional(Schema.String),
-                  service: Schema.optional(
-                    Schema.Struct({
-                      name: Schema.String,
-                      namespace: Schema.String,
-                      path: Schema.optional(Schema.String),
-                      port: Schema.optional(Schema.Number),
-                    }),
-                  ),
-                  url: Schema.optional(Schema.String),
-                }),
-              ),
-              conversionReviewVersions: Schema.Array(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      group: Schema.String,
-      names: Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        kind: Schema.String,
-        listKind: Schema.optional(Schema.String),
-        plural: Schema.String,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singular: Schema.optional(Schema.String),
-      }),
-      preserveUnknownFields: Schema.optional(Schema.Boolean),
-      scope: Schema.String,
-      versions: Schema.Array(
-        Schema.Struct({
-          additionalPrinterColumns: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                description: Schema.optional(Schema.String),
-                format: Schema.optional(Schema.String),
-                jsonPath: Schema.String,
-                name: Schema.String,
-                priority: Schema.optional(Schema.Number),
-                type: Schema.String,
-              }),
-            ),
-          ),
-          deprecated: Schema.optional(Schema.Boolean),
-          deprecationWarning: Schema.optional(Schema.String),
-          name: Schema.String,
-          schema: Schema.optional(
-            Schema.Struct({
-              openAPIV3Schema: Schema.optional(
-                Schema.Struct({
-                  $ref: Schema.optional(Schema.String),
-                  $schema: Schema.optional(Schema.String),
-                  additionalItems: Schema.optional(Schema.Unknown),
-                  additionalProperties: Schema.optional(Schema.Unknown),
-                  allOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                  anyOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                  default: Schema.optional(Schema.Unknown),
-                  definitions: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  dependencies: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  description: Schema.optional(Schema.String),
-                  enum: Schema.optional(Schema.Array(Schema.Unknown)),
-                  example: Schema.optional(Schema.Unknown),
-                  exclusiveMaximum: Schema.optional(Schema.Boolean),
-                  exclusiveMinimum: Schema.optional(Schema.Boolean),
-                  externalDocs: Schema.optional(
-                    Schema.Struct({
-                      description: Schema.optional(Schema.String),
-                      url: Schema.optional(Schema.String),
-                    }),
-                  ),
-                  format: Schema.optional(Schema.String),
-                  id: Schema.optional(Schema.String),
-                  items: Schema.optional(Schema.Unknown),
-                  maxItems: Schema.optional(Schema.Number),
-                  maxLength: Schema.optional(Schema.Number),
-                  maxProperties: Schema.optional(Schema.Number),
-                  maximum: Schema.optional(Schema.Number),
-                  minItems: Schema.optional(Schema.Number),
-                  minLength: Schema.optional(Schema.Number),
-                  minProperties: Schema.optional(Schema.Number),
-                  minimum: Schema.optional(Schema.Number),
-                  multipleOf: Schema.optional(Schema.Number),
-                  not: Schema.optional(Schema.Unknown),
-                  nullable: Schema.optional(Schema.Boolean),
-                  oneOf: Schema.optional(Schema.Array(Schema.Unknown)),
-                  pattern: Schema.optional(Schema.String),
-                  patternProperties: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  properties: Schema.optional(
-                    Schema.Record(Schema.String, Schema.Unknown),
-                  ),
-                  required: Schema.optional(Schema.Array(Schema.String)),
-                  title: Schema.optional(Schema.String),
-                  type: Schema.optional(Schema.String),
-                  uniqueItems: Schema.optional(Schema.Boolean),
-                  "x-kubernetes-embedded-resource": Schema.optional(
-                    Schema.Boolean,
-                  ),
-                  "x-kubernetes-int-or-string": Schema.optional(Schema.Boolean),
-                  "x-kubernetes-list-map-keys": Schema.optional(
-                    Schema.Array(Schema.String),
-                  ),
-                  "x-kubernetes-list-type": Schema.optional(Schema.String),
-                  "x-kubernetes-map-type": Schema.optional(Schema.String),
-                  "x-kubernetes-preserve-unknown-fields": Schema.optional(
-                    Schema.Boolean,
-                  ),
-                  "x-kubernetes-validations": Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        fieldPath: Schema.optional(Schema.String),
-                        message: Schema.optional(Schema.String),
-                        messageExpression: Schema.optional(Schema.String),
-                        optionalOldSelf: Schema.optional(Schema.Boolean),
-                        reason: Schema.optional(Schema.String),
-                        rule: Schema.String,
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            }),
-          ),
-          selectableFields: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                jsonPath: Schema.String,
-              }),
-            ),
-          ),
-          served: Schema.Boolean,
-          storage: Schema.Boolean,
-          subresources: Schema.optional(
-            Schema.Struct({
-              scale: Schema.optional(
-                Schema.Struct({
-                  labelSelectorPath: Schema.optional(Schema.String),
-                  specReplicasPath: Schema.String,
-                  statusReplicasPath: Schema.String,
-                }),
-              ),
-              status: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        }),
-      ),
-    }),
+    spec: Schema.suspend(
+      () =>
+        io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        acceptedNames: Schema.optional(
-          Schema.Struct({
-            categories: Schema.optional(Schema.Array(Schema.String)),
-            kind: Schema.String,
-            listKind: Schema.optional(Schema.String),
-            plural: Schema.String,
-            shortNames: Schema.optional(Schema.Array(Schema.String)),
-            singular: Schema.optional(Schema.String),
-          }),
-        ),
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.optional(Schema.String),
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        observedGeneration: Schema.optional(Schema.Number),
-        storedVersions: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apiextensions_apiserver_pkg_apis_apiextensions_v1_CustomResourceDefinitionStatusSchema,
+      ),
     ),
   });
 export type ReplaceApiextensionsV1CustomResourceDefinitionStatusOutput =
@@ -2389,7 +640,9 @@ export type WatchApiextensionsV1CustomResourceDefinitionInput =
 // Output Schema
 export const WatchApiextensionsV1CustomResourceDefinitionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchApiextensionsV1CustomResourceDefinitionOutput =
@@ -2418,7 +671,9 @@ export type WatchApiextensionsV1CustomResourceDefinitionListInput =
 // Output Schema
 export const WatchApiextensionsV1CustomResourceDefinitionListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchApiextensionsV1CustomResourceDefinitionListOutput =

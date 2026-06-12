@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { AnnotationIDSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, NotFound } from "../../errors.ts";
@@ -14,7 +15,7 @@ export const GetAnnotationOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   datasets: Schema.Array(Schema.String),
   description: Schema.optional(Schema.String),
   endTime: Schema.optional(Schema.NullOr(Schema.String)),
-  id: Schema.String,
+  id: Schema.suspend(() => AnnotationIDSchema),
   time: Schema.String,
   title: Schema.optional(Schema.String),
   type: Schema.String,

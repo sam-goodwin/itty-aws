@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ObjectMediaPreviewSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -25,19 +26,7 @@ export const ObjectMediaPreviewsListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-          media_url: Schema.optional(Schema.String),
-          media_type: Schema.optional(Schema.String),
-          metadata: Schema.optional(Schema.Unknown),
-          uploaded_media_id: Schema.optional(Schema.NullOr(Schema.String)),
-          exported_asset_id: Schema.optional(Schema.NullOr(Schema.String)),
-          event_definition_id: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ObjectMediaPreviewSchema)),
     ),
   });
 export type ObjectMediaPreviewsListOutput =

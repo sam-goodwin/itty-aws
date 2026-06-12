@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ByweekdayEnumSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -22,19 +23,7 @@ export const SubscriptionsPartialUpdateInput =
     ),
     interval: Schema.optional(Schema.Number),
     byweekday: Schema.optional(
-      Schema.NullOr(
-        Schema.Array(
-          Schema.Literals([
-            "monday",
-            "tuesday",
-            "wednesday",
-            "thursday",
-            "friday",
-            "saturday",
-            "sunday",
-          ]),
-        ),
-      ),
+      Schema.NullOr(Schema.Array(Schema.suspend(() => ByweekdayEnumSchema))),
     ),
     bysetpos: Schema.optional(Schema.NullOr(Schema.Number)),
     count: Schema.optional(Schema.NullOr(Schema.Number)),
@@ -93,19 +82,7 @@ export const SubscriptionsPartialUpdateOutput =
     ),
     interval: Schema.optional(Schema.Number),
     byweekday: Schema.optional(
-      Schema.NullOr(
-        Schema.Array(
-          Schema.Literals([
-            "monday",
-            "tuesday",
-            "wednesday",
-            "thursday",
-            "friday",
-            "saturday",
-            "sunday",
-          ]),
-        ),
-      ),
+      Schema.NullOr(Schema.Array(Schema.suspend(() => ByweekdayEnumSchema))),
     ),
     bysetpos: Schema.optional(Schema.NullOr(Schema.Number)),
     count: Schema.optional(Schema.NullOr(Schema.Number)),

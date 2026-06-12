@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { FlagSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
@@ -18,23 +19,7 @@ export type FeatureFlagsControllerListInput =
 export const FeatureFlagsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
-    data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          object: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          slug: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.NullOr(Schema.String)),
-          owner: Schema.optional(Schema.Unknown),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-          enabled: Schema.optional(Schema.Boolean),
-          default_value: Schema.optional(Schema.Boolean),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    data: Schema.optional(Schema.Array(Schema.suspend(() => FlagSchema))),
     list_metadata: Schema.optional(
       Schema.Struct({
         before: Schema.NullOr(Schema.String),

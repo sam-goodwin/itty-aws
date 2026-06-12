@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { payment_intent_amount_details_line_itemSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -24,18 +25,7 @@ export type GetPaymentIntentsIntentAmountDetailsLineItemsInput =
 export const GetPaymentIntentsIntentAmountDetailsLineItemsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
-      Schema.Struct({
-        discount_amount: Schema.NullOr(Schema.Number),
-        id: Schema.String,
-        object: Schema.Literals(["payment_intent_amount_details_line_item"]),
-        payment_method_options: Schema.Unknown,
-        product_code: Schema.NullOr(Schema.String),
-        product_name: Schema.String,
-        quantity: Schema.Number,
-        tax: Schema.Unknown,
-        unit_cost: Schema.Number,
-        unit_of_measure: Schema.NullOr(Schema.String),
-      }),
+      Schema.suspend(() => payment_intent_amount_details_line_itemSchema),
     ),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),

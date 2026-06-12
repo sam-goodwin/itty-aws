@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  SignalSourceConfigSourceTypeEnumSchema,
+  SourceProductEnumSchema,
+} from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -9,26 +13,10 @@ export const SignalsSourceConfigsCreateInput =
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
     source_product: Schema.optional(
-      Schema.Literals([
-        "session_replay",
-        "llm_analytics",
-        "github",
-        "linear",
-        "zendesk",
-        "conversations",
-        "error_tracking",
-      ]),
+      Schema.suspend(() => SourceProductEnumSchema),
     ),
     source_type: Schema.optional(
-      Schema.Literals([
-        "session_analysis_cluster",
-        "evaluation",
-        "issue",
-        "ticket",
-        "issue_created",
-        "issue_reopened",
-        "issue_spiking",
-      ]),
+      Schema.suspend(() => SignalSourceConfigSourceTypeEnumSchema),
     ),
     enabled: Schema.optional(Schema.Boolean),
     config: Schema.optional(Schema.Unknown),
@@ -49,26 +37,10 @@ export const SignalsSourceConfigsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     source_product: Schema.optional(
-      Schema.Literals([
-        "session_replay",
-        "llm_analytics",
-        "github",
-        "linear",
-        "zendesk",
-        "conversations",
-        "error_tracking",
-      ]),
+      Schema.suspend(() => SourceProductEnumSchema),
     ),
     source_type: Schema.optional(
-      Schema.Literals([
-        "session_analysis_cluster",
-        "evaluation",
-        "issue",
-        "ticket",
-        "issue_created",
-        "issue_reopened",
-        "issue_spiking",
-      ]),
+      Schema.suspend(() => SignalSourceConfigSourceTypeEnumSchema),
     ),
     enabled: Schema.optional(Schema.Boolean),
     config: Schema.optional(Schema.Unknown),

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { OrgMachineSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
@@ -21,43 +22,7 @@ export const MachinesOrgListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   last_machine_id: Schema.optional(Schema.String),
   last_updated_at: Schema.optional(Schema.String),
   machines: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        app_name: Schema.optional(Schema.String),
-        config: Schema.optional(
-          Schema.Struct({
-            guest: Schema.optional(
-              Schema.Struct({
-                cpu_kind: Schema.optional(Schema.String),
-                cpus: Schema.optional(Schema.Number),
-                gpu_kind: Schema.optional(Schema.String),
-                gpus: Schema.optional(Schema.Number),
-                host_dedication_id: Schema.optional(Schema.String),
-                kernel_args: Schema.optional(Schema.Array(Schema.String)),
-                max_memory_mb: Schema.optional(Schema.Number),
-                memory_mb: Schema.optional(Schema.Number),
-                persist_rootfs: Schema.optional(
-                  Schema.Literals(["never", "always", "restart"]),
-                ),
-              }),
-            ),
-            image: Schema.optional(Schema.String),
-            metadata: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-          }),
-        ),
-        created_at: Schema.optional(Schema.String),
-        id: Schema.optional(Schema.String),
-        instance_id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        private_ip: Schema.optional(Schema.String),
-        region: Schema.optional(Schema.String),
-        state: Schema.optional(Schema.String),
-        updated_at: Schema.optional(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => OrgMachineSchema)),
   ),
   next_cursor: Schema.optional(Schema.String),
 });

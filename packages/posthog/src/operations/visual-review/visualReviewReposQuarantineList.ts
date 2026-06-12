@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { QuarantinedIdentifierEntrySchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -28,26 +29,7 @@ export const VisualReviewReposQuarantineListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          created_by: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                id: Schema.optional(Schema.Number),
-                first_name: Schema.optional(Schema.String),
-                email: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          id: Schema.optional(Schema.String),
-          identifier: Schema.optional(Schema.String),
-          run_type: Schema.optional(Schema.String),
-          reason: Schema.optional(Schema.String),
-          expires_at: Schema.optional(Schema.NullOr(Schema.String)),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => QuarantinedIdentifierEntrySchema)),
     ),
   });
 export type VisualReviewReposQuarantineListOutput =

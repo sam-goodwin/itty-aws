@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { GoalSchema, TopPageSchema, TopSourceSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -107,63 +108,12 @@ export const WebAnalyticsWeeklyDigestOutput =
       }),
     ),
     top_pages: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          host: Schema.optional(Schema.String),
-          path: Schema.optional(Schema.String),
-          visitors: Schema.optional(Schema.Number),
-          change: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                percent: Schema.optional(Schema.Number),
-                direction: Schema.optional(Schema.Literals(["Up", "Down"])),
-                color: Schema.optional(Schema.String),
-                text: Schema.optional(Schema.String),
-                long_text: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TopPageSchema)),
     ),
     top_sources: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          visitors: Schema.optional(Schema.Number),
-          change: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                percent: Schema.optional(Schema.Number),
-                direction: Schema.optional(Schema.Literals(["Up", "Down"])),
-                color: Schema.optional(Schema.String),
-                text: Schema.optional(Schema.String),
-                long_text: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TopSourceSchema)),
     ),
-    goals: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          conversions: Schema.optional(Schema.Number),
-          change: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                percent: Schema.optional(Schema.Number),
-                direction: Schema.optional(Schema.Literals(["Up", "Down"])),
-                color: Schema.optional(Schema.String),
-                text: Schema.optional(Schema.String),
-                long_text: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-    ),
+    goals: Schema.optional(Schema.Array(Schema.suspend(() => GoalSchema))),
     dashboard_url: Schema.optional(Schema.String),
   });
 export type WebAnalyticsWeeklyDigestOutput =

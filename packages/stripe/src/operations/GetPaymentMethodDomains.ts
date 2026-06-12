@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { payment_method_domainSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -24,64 +25,7 @@ export type GetPaymentMethodDomainsInput =
 // Output Schema
 export const GetPaymentMethodDomainsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        amazon_pay: Schema.Struct({
-          status: Schema.Literals(["active", "inactive"]),
-          status_details: Schema.optional(
-            Schema.Struct({
-              error_message: Schema.String,
-            }),
-          ),
-        }),
-        apple_pay: Schema.Struct({
-          status: Schema.Literals(["active", "inactive"]),
-          status_details: Schema.optional(
-            Schema.Struct({
-              error_message: Schema.String,
-            }),
-          ),
-        }),
-        created: Schema.Number,
-        domain_name: Schema.String,
-        enabled: Schema.Boolean,
-        google_pay: Schema.Struct({
-          status: Schema.Literals(["active", "inactive"]),
-          status_details: Schema.optional(
-            Schema.Struct({
-              error_message: Schema.String,
-            }),
-          ),
-        }),
-        id: Schema.String,
-        klarna: Schema.Struct({
-          status: Schema.Literals(["active", "inactive"]),
-          status_details: Schema.optional(
-            Schema.Struct({
-              error_message: Schema.String,
-            }),
-          ),
-        }),
-        link: Schema.Struct({
-          status: Schema.Literals(["active", "inactive"]),
-          status_details: Schema.optional(
-            Schema.Struct({
-              error_message: Schema.String,
-            }),
-          ),
-        }),
-        livemode: Schema.Boolean,
-        object: Schema.Literals(["payment_method_domain"]),
-        paypal: Schema.Struct({
-          status: Schema.Literals(["active", "inactive"]),
-          status_details: Schema.optional(
-            Schema.Struct({
-              error_message: Schema.String,
-            }),
-          ),
-        }),
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => payment_method_domainSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

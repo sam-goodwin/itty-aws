@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { SnapshotManifestItemSchema, UploadTargetSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -9,17 +10,7 @@ export const VisualReviewRunsAddSnapshotsCreateInput =
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
     snapshots: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          identifier: Schema.optional(Schema.String),
-          content_hash: Schema.optional(Schema.String),
-          width: Schema.optional(Schema.NullOr(Schema.Number)),
-          height: Schema.optional(Schema.NullOr(Schema.Number)),
-          metadata: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SnapshotManifestItemSchema)),
     ),
     baseline_hashes: Schema.optional(
       Schema.Record(Schema.String, Schema.String),
@@ -38,13 +29,7 @@ export const VisualReviewRunsAddSnapshotsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     added: Schema.optional(Schema.Number),
     uploads: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          content_hash: Schema.optional(Schema.String),
-          url: Schema.optional(Schema.String),
-          fields: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => UploadTargetSchema)),
     ),
   });
 export type VisualReviewRunsAddSnapshotsCreateOutput =

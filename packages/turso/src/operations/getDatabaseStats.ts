@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { DatabaseStatsOutputSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
@@ -20,13 +21,7 @@ export const GetDatabaseStatsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     top_queries: Schema.optional(
       Schema.NullOr(
-        Schema.Array(
-          Schema.Struct({
-            query: Schema.optional(Schema.String),
-            rows_read: Schema.optional(Schema.Number),
-            rows_written: Schema.optional(Schema.Number),
-          }),
-        ),
+        Schema.Array(Schema.suspend(() => DatabaseStatsOutputSchema)),
       ),
     ),
   },

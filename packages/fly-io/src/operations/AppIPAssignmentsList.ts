@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { IPAssignmentSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
@@ -14,15 +15,7 @@ export type AppIPAssignmentsListInput = typeof AppIPAssignmentsListInput.Type;
 export const AppIPAssignmentsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     ips: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          created_at: Schema.optional(Schema.String),
-          ip: Schema.optional(Schema.String),
-          region: Schema.optional(Schema.String),
-          service_name: Schema.optional(Schema.String),
-          shared: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => IPAssignmentSchema)),
     ),
   });
 export type AppIPAssignmentsListOutput = typeof AppIPAssignmentsListOutput.Type;

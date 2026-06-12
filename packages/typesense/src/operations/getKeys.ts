@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ApiKeySchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -10,17 +11,7 @@ export type GetKeysInput = typeof GetKeysInput.Type;
 
 // Output Schema
 export const GetKeysOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  keys: Schema.Array(
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      description: Schema.String,
-      actions: Schema.Array(Schema.String),
-      collections: Schema.Array(Schema.String),
-      expires_at: Schema.optional(Schema.Number),
-      id: Schema.optional(Schema.Number),
-      value_prefix: Schema.optional(Schema.String),
-    }),
-  ),
+  keys: Schema.Array(Schema.suspend(() => ApiKeySchema)),
 });
 export type GetKeysOutput = typeof GetKeysOutput.Type;
 

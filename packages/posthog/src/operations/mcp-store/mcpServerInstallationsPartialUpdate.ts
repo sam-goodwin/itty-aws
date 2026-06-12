@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { MCPAuthTypeEnumSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -30,7 +31,7 @@ export const McpServerInstallationsPartialUpdateOutput =
     display_name: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
-    auth_type: Schema.optional(Schema.Literals(["api_key", "oauth"])),
+    auth_type: Schema.optional(Schema.suspend(() => MCPAuthTypeEnumSchema)),
     is_enabled: Schema.optional(Schema.Boolean),
     needs_reauth: Schema.optional(Schema.Boolean),
     pending_oauth: Schema.optional(Schema.Boolean),

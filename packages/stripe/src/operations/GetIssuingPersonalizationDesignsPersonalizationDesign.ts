@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  issuing_personalization_design_preferencesSchema,
+  issuing_personalization_design_rejection_reasonsSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -30,39 +34,12 @@ export const GetIssuingPersonalizationDesignsPersonalizationDesignOutput =
     name: Schema.NullOr(Schema.String),
     object: Schema.Literals(["issuing.personalization_design"]),
     physical_bundle: Schema.Unknown,
-    preferences: Schema.Struct({
-      is_default: Schema.Boolean,
-      is_platform_default: Schema.NullOr(Schema.Boolean),
-    }),
-    rejection_reasons: Schema.Struct({
-      card_logo: Schema.NullOr(
-        Schema.Array(
-          Schema.Literals([
-            "geographic_location",
-            "inappropriate",
-            "network_name",
-            "non_binary_image",
-            "non_fiat_currency",
-            "other",
-            "other_entity",
-            "promotional_material",
-          ]),
-        ),
-      ),
-      carrier_text: Schema.NullOr(
-        Schema.Array(
-          Schema.Literals([
-            "geographic_location",
-            "inappropriate",
-            "network_name",
-            "non_fiat_currency",
-            "other",
-            "other_entity",
-            "promotional_material",
-          ]),
-        ),
-      ),
-    }),
+    preferences: Schema.suspend(
+      () => issuing_personalization_design_preferencesSchema,
+    ),
+    rejection_reasons: Schema.suspend(
+      () => issuing_personalization_design_rejection_reasonsSchema,
+    ),
     status: Schema.Literals(["active", "inactive", "rejected", "review"]),
   });
 export type GetIssuingPersonalizationDesignsPersonalizationDesignOutput =

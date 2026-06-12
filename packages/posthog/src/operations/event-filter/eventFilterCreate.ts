@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { EventFilterConfigModeEnumSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -8,7 +9,9 @@ export const EventFilterCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     project_id: Schema.String.pipe(T.PathParam()),
     id: Schema.optional(Schema.String),
-    mode: Schema.optional(Schema.Literals(["disabled", "dry_run", "live"])),
+    mode: Schema.optional(
+      Schema.suspend(() => EventFilterConfigModeEnumSchema),
+    ),
     filter_tree: Schema.optional(Schema.NullOr(Schema.Unknown)),
     test_cases: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),
@@ -26,7 +29,9 @@ export type EventFilterCreateInput = typeof EventFilterCreateInput.Type;
 export const EventFilterCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
-    mode: Schema.optional(Schema.Literals(["disabled", "dry_run", "live"])),
+    mode: Schema.optional(
+      Schema.suspend(() => EventFilterConfigModeEnumSchema),
+    ),
     filter_tree: Schema.optional(Schema.NullOr(Schema.Unknown)),
     test_cases: Schema.optional(Schema.Unknown),
     created_at: Schema.optional(Schema.String),

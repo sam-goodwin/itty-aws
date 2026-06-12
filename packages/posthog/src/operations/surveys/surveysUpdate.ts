@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { SurveyTypeSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -9,9 +10,7 @@ export const SurveysUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   project_id: Schema.String.pipe(T.PathParam()),
   name: Schema.optional(Schema.String),
   description: Schema.optional(Schema.String),
-  type: Schema.optional(
-    Schema.Literals(["popover", "widget", "external_survey", "api"]),
-  ),
+  type: Schema.optional(Schema.suspend(() => SurveyTypeSchema)),
   schedule: Schema.optional(Schema.NullOr(Schema.String)),
   linked_flag: Schema.optional(
     Schema.Struct({
@@ -131,9 +130,7 @@ export const SurveysUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.String),
   name: Schema.optional(Schema.String),
   description: Schema.optional(Schema.String),
-  type: Schema.optional(
-    Schema.Literals(["popover", "widget", "external_survey", "api"]),
-  ),
+  type: Schema.optional(Schema.suspend(() => SurveyTypeSchema)),
   schedule: Schema.optional(Schema.NullOr(Schema.String)),
   linked_flag: Schema.optional(
     Schema.Struct({

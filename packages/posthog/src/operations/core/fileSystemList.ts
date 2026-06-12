@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { FileSystemSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -20,20 +21,7 @@ export const FileSystemListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
   results: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        path: Schema.optional(Schema.String),
-        depth: Schema.optional(Schema.NullOr(Schema.Number)),
-        type: Schema.optional(Schema.String),
-        ref: Schema.optional(Schema.NullOr(Schema.String)),
-        href: Schema.optional(Schema.NullOr(Schema.String)),
-        meta: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        shortcut: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        created_at: Schema.optional(Schema.String),
-        last_viewed_at: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => FileSystemSchema)),
   ),
 });
 export type FileSystemListOutput = typeof FileSystemListOutput.Type;

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { TestHogResultItemSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -26,17 +27,7 @@ export type EvaluationsTestHogCreateInput =
 export const EvaluationsTestHogCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          event_uuid: Schema.optional(Schema.String),
-          trace_id: Schema.optional(Schema.NullOr(Schema.String)),
-          input_preview: Schema.optional(Schema.String),
-          output_preview: Schema.optional(Schema.String),
-          result: Schema.optional(Schema.NullOr(Schema.Boolean)),
-          reasoning: Schema.optional(Schema.NullOr(Schema.String)),
-          error: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TestHogResultItemSchema)),
     ),
     message: Schema.optional(Schema.String),
   });

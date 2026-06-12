@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { PostgresClusterExtensionSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
@@ -18,55 +19,7 @@ export type ListExtensionsInput = typeof ListExtensionsInput.Type;
 
 // Output Schema
 export const ListExtensionsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    id: Schema.String,
-    name: Schema.String,
-    description: Schema.String,
-    internal: Schema.Boolean,
-    shared_preload_allowed: Schema.Boolean,
-    url: Schema.String,
-    available: Schema.Boolean,
-    unavailable_reason: Schema.String,
-    parameters: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-        display_name: Schema.String,
-        namespace: Schema.Literals(["patroni", "pgconf", "pgbouncer"]),
-        category: Schema.String,
-        description: Schema.String,
-        extension: Schema.Boolean,
-        immutable: Schema.Boolean,
-        parameter_type: Schema.Literals([
-          "array",
-          "boolean",
-          "bytes",
-          "float",
-          "integer",
-          "seconds",
-          "select",
-          "string",
-          "time",
-        ]),
-        default_value: Schema.String,
-        value: Schema.String,
-        required: Schema.Boolean,
-        created_at: Schema.String,
-        updated_at: Schema.String,
-        restart: Schema.Boolean,
-        max: Schema.Number,
-        min: Schema.Number,
-        step: Schema.Number,
-        url: Schema.String,
-        options: Schema.Array(Schema.String),
-        actor: Schema.Struct({
-          id: Schema.String,
-          display_name: Schema.String,
-          avatar_url: Schema.String,
-        }),
-      }),
-    ),
-  }),
+  Schema.suspend(() => PostgresClusterExtensionSchema),
 );
 export type ListExtensionsOutput = typeof ListExtensionsOutput.Type;
 

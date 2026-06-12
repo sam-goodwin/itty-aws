@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { payment_method_domain_resource_payment_method_statusSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -20,60 +21,30 @@ export type PostPaymentMethodDomainsPaymentMethodDomainValidateInput =
 // Output Schema
 export const PostPaymentMethodDomainsPaymentMethodDomainValidateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    amazon_pay: Schema.Struct({
-      status: Schema.Literals(["active", "inactive"]),
-      status_details: Schema.optional(
-        Schema.Struct({
-          error_message: Schema.String,
-        }),
-      ),
-    }),
-    apple_pay: Schema.Struct({
-      status: Schema.Literals(["active", "inactive"]),
-      status_details: Schema.optional(
-        Schema.Struct({
-          error_message: Schema.String,
-        }),
-      ),
-    }),
+    amazon_pay: Schema.suspend(
+      () => payment_method_domain_resource_payment_method_statusSchema,
+    ),
+    apple_pay: Schema.suspend(
+      () => payment_method_domain_resource_payment_method_statusSchema,
+    ),
     created: Schema.Number,
     domain_name: Schema.String,
     enabled: Schema.Boolean,
-    google_pay: Schema.Struct({
-      status: Schema.Literals(["active", "inactive"]),
-      status_details: Schema.optional(
-        Schema.Struct({
-          error_message: Schema.String,
-        }),
-      ),
-    }),
+    google_pay: Schema.suspend(
+      () => payment_method_domain_resource_payment_method_statusSchema,
+    ),
     id: Schema.String,
-    klarna: Schema.Struct({
-      status: Schema.Literals(["active", "inactive"]),
-      status_details: Schema.optional(
-        Schema.Struct({
-          error_message: Schema.String,
-        }),
-      ),
-    }),
-    link: Schema.Struct({
-      status: Schema.Literals(["active", "inactive"]),
-      status_details: Schema.optional(
-        Schema.Struct({
-          error_message: Schema.String,
-        }),
-      ),
-    }),
+    klarna: Schema.suspend(
+      () => payment_method_domain_resource_payment_method_statusSchema,
+    ),
+    link: Schema.suspend(
+      () => payment_method_domain_resource_payment_method_statusSchema,
+    ),
     livemode: Schema.Boolean,
     object: Schema.Literals(["payment_method_domain"]),
-    paypal: Schema.Struct({
-      status: Schema.Literals(["active", "inactive"]),
-      status_details: Schema.optional(
-        Schema.Struct({
-          error_message: Schema.String,
-        }),
-      ),
-    }),
+    paypal: Schema.suspend(
+      () => payment_method_domain_resource_payment_method_statusSchema,
+    ),
   });
 export type PostPaymentMethodDomainsPaymentMethodDomainValidateOutput =
   typeof PostPaymentMethodDomainsPaymentMethodDomainValidateOutput.Type;

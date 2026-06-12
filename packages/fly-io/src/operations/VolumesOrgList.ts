@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { OrgVolumeSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -20,37 +21,7 @@ export const VolumesOrgListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   last_updated_at: Schema.optional(Schema.String),
   last_volume_id: Schema.optional(Schema.String),
   next_cursor: Schema.optional(Schema.String),
-  volumes: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        app_name: Schema.optional(Schema.String),
-        attached_alloc_id: Schema.optional(Schema.String),
-        attached_machine_id: Schema.optional(Schema.String),
-        auto_backup_enabled: Schema.optional(Schema.Boolean),
-        block_size: Schema.optional(Schema.Number),
-        blocks: Schema.optional(Schema.Number),
-        blocks_avail: Schema.optional(Schema.Number),
-        blocks_free: Schema.optional(Schema.Number),
-        bytes_total: Schema.optional(Schema.Number),
-        bytes_used: Schema.optional(Schema.Number),
-        created_at: Schema.optional(Schema.String),
-        encrypted: Schema.optional(Schema.Boolean),
-        fstype: Schema.optional(Schema.String),
-        host_status: Schema.optional(
-          Schema.Literals(["ok", "unknown", "unreachable"]),
-        ),
-        id: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        region: Schema.optional(Schema.String),
-        size_gb: Schema.optional(Schema.Number),
-        snapshot_retention: Schema.optional(Schema.Number),
-        state: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["local", "cache"])),
-        updated_at: Schema.optional(Schema.String),
-        zone: Schema.optional(Schema.String),
-      }),
-    ),
-  ),
+  volumes: Schema.optional(Schema.Array(Schema.suspend(() => OrgVolumeSchema))),
 });
 export type VolumesOrgListOutput = typeof VolumesOrgListOutput.Type;
 

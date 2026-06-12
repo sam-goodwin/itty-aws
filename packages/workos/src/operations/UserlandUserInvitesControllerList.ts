@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { UserlandUserInviteSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
@@ -27,27 +28,7 @@ export const UserlandUserInvitesControllerListOutput =
       }),
     ),
     data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          object: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.String),
-          state: Schema.optional(
-            Schema.Literals(["pending", "accepted", "expired", "revoked"]),
-          ),
-          accepted_at: Schema.optional(Schema.NullOr(Schema.String)),
-          revoked_at: Schema.optional(Schema.NullOr(Schema.String)),
-          expires_at: Schema.optional(Schema.String),
-          organization_id: Schema.optional(Schema.NullOr(Schema.String)),
-          inviter_user_id: Schema.optional(Schema.NullOr(Schema.String)),
-          accepted_user_id: Schema.optional(Schema.NullOr(Schema.String)),
-          role_slug: Schema.optional(Schema.NullOr(Schema.String)),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-          token: Schema.optional(Schema.String),
-          accept_invitation_url: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => UserlandUserInviteSchema)),
     ),
   });
 export type UserlandUserInvitesControllerListOutput =

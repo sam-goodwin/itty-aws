@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { invoice_rendering_templateSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -23,18 +24,7 @@ export type GetInvoiceRenderingTemplatesInput =
 // Output Schema
 export const GetInvoiceRenderingTemplatesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        created: Schema.Number,
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-        nickname: Schema.NullOr(Schema.String),
-        object: Schema.Literals(["invoice_rendering_template"]),
-        status: Schema.Literals(["active", "archived"]),
-        version: Schema.Number,
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => invoice_rendering_templateSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

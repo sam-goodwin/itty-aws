@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { FunctionResponseSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
@@ -13,20 +14,7 @@ export type V1ListAllFunctionsInput = typeof V1ListAllFunctionsInput.Type;
 // Output Schema
 export const V1ListAllFunctionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      slug: Schema.String,
-      name: Schema.String,
-      status: Schema.Literals(["ACTIVE", "REMOVED", "THROTTLED"]),
-      version: Schema.Number,
-      created_at: Schema.Number,
-      updated_at: Schema.Number,
-      verify_jwt: Schema.optional(Schema.Boolean),
-      import_map: Schema.optional(Schema.Boolean),
-      entrypoint_path: Schema.optional(Schema.String),
-      import_map_path: Schema.optional(Schema.String),
-      ezbr_sha256: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => FunctionResponseSchema),
   );
 export type V1ListAllFunctionsOutput = typeof V1ListAllFunctionsOutput.Type;
 

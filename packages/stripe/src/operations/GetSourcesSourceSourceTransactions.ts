@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { source_transactionSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -23,77 +24,7 @@ export type GetSourcesSourceSourceTransactionsInput =
 // Output Schema
 export const GetSourcesSourceSourceTransactionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        ach_credit_transfer: Schema.optional(
-          Schema.Struct({
-            customer_data: Schema.optional(Schema.String),
-            fingerprint: Schema.optional(Schema.String),
-            last4: Schema.optional(Schema.String),
-            routing_number: Schema.optional(Schema.String),
-          }),
-        ),
-        amount: Schema.Number,
-        chf_credit_transfer: Schema.optional(
-          Schema.Struct({
-            reference: Schema.optional(Schema.String),
-            sender_address_country: Schema.optional(Schema.String),
-            sender_address_line1: Schema.optional(Schema.String),
-            sender_iban: Schema.optional(Schema.String),
-            sender_name: Schema.optional(Schema.String),
-          }),
-        ),
-        created: Schema.Number,
-        currency: Schema.String,
-        gbp_credit_transfer: Schema.optional(
-          Schema.Struct({
-            fingerprint: Schema.optional(Schema.String),
-            funding_method: Schema.optional(Schema.String),
-            last4: Schema.optional(Schema.String),
-            reference: Schema.optional(Schema.String),
-            sender_account_number: Schema.optional(Schema.String),
-            sender_name: Schema.optional(Schema.String),
-            sender_sort_code: Schema.optional(Schema.String),
-          }),
-        ),
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        object: Schema.Literals(["source_transaction"]),
-        paper_check: Schema.optional(
-          Schema.Struct({
-            available_at: Schema.optional(Schema.String),
-            invoices: Schema.optional(Schema.String),
-          }),
-        ),
-        sepa_credit_transfer: Schema.optional(
-          Schema.Struct({
-            reference: Schema.optional(Schema.String),
-            sender_iban: Schema.optional(Schema.String),
-            sender_name: Schema.optional(Schema.String),
-          }),
-        ),
-        source: Schema.String,
-        status: Schema.String,
-        type: Schema.Literals([
-          "ach_credit_transfer",
-          "ach_debit",
-          "alipay",
-          "bancontact",
-          "card",
-          "card_present",
-          "eps",
-          "giropay",
-          "ideal",
-          "klarna",
-          "multibanco",
-          "p24",
-          "sepa_debit",
-          "sofort",
-          "three_d_secure",
-          "wechat",
-        ]),
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => source_transactionSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

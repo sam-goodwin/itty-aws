@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { country_spec_verification_fieldsSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -30,16 +31,9 @@ export const GetCountrySpecsCountryOutput =
     supported_payment_currencies: Schema.Array(Schema.String),
     supported_payment_methods: Schema.Array(Schema.String),
     supported_transfer_countries: Schema.Array(Schema.String),
-    verification_fields: Schema.Struct({
-      company: Schema.Struct({
-        additional: Schema.Array(Schema.String),
-        minimum: Schema.Array(Schema.String),
-      }),
-      individual: Schema.Struct({
-        additional: Schema.Array(Schema.String),
-        minimum: Schema.Array(Schema.String),
-      }),
-    }),
+    verification_fields: Schema.suspend(
+      () => country_spec_verification_fieldsSchema,
+    ),
   });
 export type GetCountrySpecsCountryOutput =
   typeof GetCountrySpecsCountryOutput.Type;

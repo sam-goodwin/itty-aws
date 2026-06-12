@@ -1,8 +1,9 @@
 import * as Schema from "effect/Schema";
+import { ProfileSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const SsoControllerTokenInput =
@@ -18,89 +19,14 @@ export type SsoControllerTokenInput = typeof SsoControllerTokenInput.Type;
 export const SsoControllerTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     token_type: Schema.optional(Schema.String),
-    access_token: Schema.optional(SensitiveString),
+    access_token: Schema.optional(SensitiveOutputString),
     expires_in: Schema.optional(Schema.Number),
-    profile: Schema.optional(
-      Schema.Struct({
-        object: Schema.optional(Schema.String),
-        id: Schema.optional(Schema.String),
-        organization_id: Schema.optional(Schema.NullOr(Schema.String)),
-        connection_id: Schema.optional(Schema.String),
-        connection_type: Schema.optional(
-          Schema.Literals([
-            "Pending",
-            "ADFSSAML",
-            "AdpOidc",
-            "AppleOAuth",
-            "Auth0Migration",
-            "Auth0SAML",
-            "AzureSAML",
-            "BitbucketOAuth",
-            "CasSAML",
-            "ClassLinkSAML",
-            "CleverOIDC",
-            "CloudflareSAML",
-            "CyberArkSAML",
-            "DiscordOAuth",
-            "DuoSAML",
-            "EntraIdOIDC",
-            "GenericOIDC",
-            "GenericSAML",
-            "GitHubOAuth",
-            "GitLabOAuth",
-            "GoogleOAuth",
-            "GoogleOIDC",
-            "GoogleSAML",
-            "IntuitOAuth",
-            "JumpCloudSAML",
-            "KeycloakSAML",
-            "LastPassSAML",
-            "LinkedInOAuth",
-            "LoginGovOidc",
-            "MagicLink",
-            "MicrosoftOAuth",
-            "MiniOrangeSAML",
-            "NetIqSAML",
-            "OktaOIDC",
-            "OktaSAML",
-            "OneLoginSAML",
-            "OracleSAML",
-            "PingFederateSAML",
-            "PingOneSAML",
-            "RipplingSAML",
-            "SalesforceSAML",
-            "ShibbolethGenericSAML",
-            "ShibbolethSAML",
-            "SimpleSamlPhpSAML",
-            "SalesforceOAuth",
-            "SlackOAuth",
-            "TestIdp",
-            "VercelMarketplaceOAuth",
-            "VercelOAuth",
-            "VMwareSAML",
-            "XeroOAuth",
-          ]),
-        ),
-        idp_id: Schema.optional(Schema.String),
-        email: Schema.optional(Schema.String),
-        first_name: Schema.optional(Schema.NullOr(Schema.String)),
-        last_name: Schema.optional(Schema.NullOr(Schema.String)),
-        role: Schema.optional(Schema.Unknown),
-        roles: Schema.optional(Schema.Unknown),
-        groups: Schema.optional(Schema.Array(Schema.String)),
-        custom_attributes: Schema.optional(
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-        raw_attributes: Schema.optional(
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      }),
-    ),
+    profile: Schema.optional(Schema.suspend(() => ProfileSchema)),
     oauth_tokens: Schema.optional(
       Schema.Struct({
         provider: Schema.String,
-        refresh_token: SensitiveString,
-        access_token: SensitiveString,
+        refresh_token: SensitiveOutputString,
+        access_token: SensitiveOutputString,
         expires_at: Schema.Number,
         scopes: Schema.Array(Schema.String),
       }),

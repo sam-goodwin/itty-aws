@@ -1,8 +1,8 @@
 import * as Schema from "effect/Schema";
+import { LLMProviderKeySchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
-import { SensitiveString } from "../../sensitive.ts";
 
 // Input Schema
 export const LlmAnalyticsProviderKeysListInput =
@@ -26,54 +26,7 @@ export const LlmAnalyticsProviderKeysListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          provider: Schema.optional(
-            Schema.Literals([
-              "openai",
-              "anthropic",
-              "gemini",
-              "openrouter",
-              "fireworks",
-              "azure_openai",
-            ]),
-          ),
-          name: Schema.optional(Schema.String),
-          state: Schema.optional(
-            Schema.Literals(["unknown", "ok", "invalid", "error"]),
-          ),
-          error_message: Schema.optional(Schema.NullOr(Schema.String)),
-          api_key: Schema.optional(SensitiveString),
-          api_key_masked: Schema.optional(Schema.String),
-          azure_endpoint: Schema.optional(Schema.String),
-          api_version: Schema.optional(Schema.String),
-          azure_endpoint_display: Schema.optional(Schema.NullOr(Schema.String)),
-          api_version_display: Schema.optional(Schema.NullOr(Schema.String)),
-          set_as_active: Schema.optional(Schema.Boolean),
-          created_at: Schema.optional(Schema.String),
-          created_by: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                id: Schema.optional(Schema.Number),
-                uuid: Schema.optional(Schema.String),
-                distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-                first_name: Schema.optional(Schema.String),
-                last_name: Schema.optional(Schema.String),
-                email: Schema.optional(Schema.String),
-                is_email_verified: Schema.optional(
-                  Schema.NullOr(Schema.Boolean),
-                ),
-                hedgehog_config: Schema.optional(
-                  Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-                ),
-                role_at_organization: Schema.optional(Schema.Unknown),
-              }),
-            ),
-          ),
-          last_used_at: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LLMProviderKeySchema)),
     ),
   });
 export type LlmAnalyticsProviderKeysListOutput =

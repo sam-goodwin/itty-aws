@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { financial_reporting_finance_report_run_run_parametersSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -679,16 +680,9 @@ export const PostReportingReportRunsOutput =
     id: Schema.String,
     livemode: Schema.Boolean,
     object: Schema.Literals(["reporting.report_run"]),
-    parameters: Schema.Struct({
-      columns: Schema.optional(Schema.Array(Schema.String)),
-      connected_account: Schema.optional(Schema.String),
-      currency: Schema.optional(Schema.String),
-      interval_end: Schema.optional(Schema.Number),
-      interval_start: Schema.optional(Schema.Number),
-      payout: Schema.optional(Schema.String),
-      reporting_category: Schema.optional(Schema.String),
-      timezone: Schema.optional(Schema.String),
-    }),
+    parameters: Schema.suspend(
+      () => financial_reporting_finance_report_run_run_parametersSchema,
+    ),
     report_type: Schema.String,
     result: Schema.Unknown,
     status: Schema.String,

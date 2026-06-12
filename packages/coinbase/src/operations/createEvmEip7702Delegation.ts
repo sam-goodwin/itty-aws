@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { EvmEip7702DelegationNetworkSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -6,15 +7,7 @@ import * as T from "../traits.ts";
 export const CreateEvmEip7702DelegationInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
-    network: Schema.Literals([
-      "base-sepolia",
-      "base",
-      "arbitrum",
-      "optimism",
-      "polygon",
-      "ethereum",
-      "ethereum-sepolia",
-    ]),
+    network: Schema.suspend(() => EvmEip7702DelegationNetworkSchema),
     enableSpendPermissions: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({

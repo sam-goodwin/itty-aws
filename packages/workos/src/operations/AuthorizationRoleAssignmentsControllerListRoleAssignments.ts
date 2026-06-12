@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { RoleAssignmentSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
@@ -25,26 +26,7 @@ export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          object: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          role: Schema.optional(
-            Schema.Struct({
-              slug: Schema.optional(Schema.String),
-            }),
-          ),
-          resource: Schema.optional(
-            Schema.Struct({
-              id: Schema.String,
-              external_id: Schema.String,
-              resource_type_slug: Schema.String,
-            }),
-          ),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => RoleAssignmentSchema)),
     ),
     list_metadata: Schema.optional(
       Schema.Struct({

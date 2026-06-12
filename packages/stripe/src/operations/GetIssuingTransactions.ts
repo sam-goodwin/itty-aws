@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { issuing_transactionSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -26,46 +27,7 @@ export type GetIssuingTransactionsInput =
 // Output Schema
 export const GetIssuingTransactionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        amount: Schema.Number,
-        amount_details: Schema.Unknown,
-        authorization: Schema.Unknown,
-        balance_transaction: Schema.Unknown,
-        card: Schema.Unknown,
-        cardholder: Schema.Unknown,
-        created: Schema.Number,
-        currency: Schema.String,
-        dispute: Schema.Unknown,
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        merchant_amount: Schema.Number,
-        merchant_currency: Schema.String,
-        merchant_data: Schema.Struct({
-          category: Schema.String,
-          category_code: Schema.String,
-          city: Schema.NullOr(Schema.String),
-          country: Schema.NullOr(Schema.String),
-          name: Schema.NullOr(Schema.String),
-          network_id: Schema.String,
-          postal_code: Schema.NullOr(Schema.String),
-          state: Schema.NullOr(Schema.String),
-          tax_id: Schema.NullOr(Schema.String),
-          terminal_id: Schema.NullOr(Schema.String),
-          url: Schema.NullOr(Schema.String),
-        }),
-        metadata: Schema.Record(Schema.String, Schema.String),
-        network_data: Schema.Unknown,
-        object: Schema.Literals(["issuing.transaction"]),
-        purchase_details: Schema.optional(Schema.Unknown),
-        token: Schema.optional(Schema.Unknown),
-        treasury: Schema.optional(Schema.Unknown),
-        type: Schema.Literals(["capture", "refund"]),
-        wallet: Schema.NullOr(
-          Schema.Literals(["apple_pay", "google_pay", "samsung_pay"]),
-        ),
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => issuing_transactionSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

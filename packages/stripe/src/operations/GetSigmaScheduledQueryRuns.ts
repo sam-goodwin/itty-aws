@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { scheduled_query_runSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -22,25 +23,7 @@ export type GetSigmaScheduledQueryRunsInput =
 // Output Schema
 export const GetSigmaScheduledQueryRunsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        created: Schema.Number,
-        data_load_time: Schema.Number,
-        error: Schema.optional(
-          Schema.Struct({
-            message: Schema.String,
-          }),
-        ),
-        file: Schema.Unknown,
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        object: Schema.Literals(["scheduled_query_run"]),
-        result_available_until: Schema.Number,
-        sql: Schema.String,
-        status: Schema.String,
-        title: Schema.String,
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => scheduled_query_runSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

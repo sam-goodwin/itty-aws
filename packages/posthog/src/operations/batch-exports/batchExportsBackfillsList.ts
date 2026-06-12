@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { BatchExportBackfillSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -25,42 +26,7 @@ export const BatchExportsBackfillsListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          progress: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                total_runs: Schema.optional(Schema.NullOr(Schema.Number)),
-                finished_runs: Schema.optional(Schema.NullOr(Schema.Number)),
-                progress: Schema.optional(Schema.NullOr(Schema.Number)),
-              }),
-            ),
-          ),
-          start_at: Schema.optional(Schema.NullOr(Schema.String)),
-          end_at: Schema.optional(Schema.NullOr(Schema.String)),
-          status: Schema.optional(
-            Schema.Literals([
-              "Cancelled",
-              "Completed",
-              "ContinuedAsNew",
-              "Failed",
-              "FailedRetryable",
-              "Terminated",
-              "TimedOut",
-              "Running",
-              "Starting",
-            ]),
-          ),
-          created_at: Schema.optional(Schema.String),
-          finished_at: Schema.optional(Schema.NullOr(Schema.String)),
-          last_updated_at: Schema.optional(Schema.String),
-          total_records_count: Schema.optional(Schema.NullOr(Schema.Number)),
-          adjusted_start_at: Schema.optional(Schema.NullOr(Schema.String)),
-          team: Schema.optional(Schema.Number),
-          batch_export: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => BatchExportBackfillSchema)),
     ),
   });
 export type BatchExportsBackfillsListOutput =

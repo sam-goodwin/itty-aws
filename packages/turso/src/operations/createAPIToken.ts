@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { idSchema, nameSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -11,8 +12,8 @@ export type CreateAPITokenInput = typeof CreateAPITokenInput.Type;
 
 // Output Schema
 export const CreateAPITokenOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  name: Schema.optional(Schema.String),
-  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.suspend(() => nameSchema)),
+  id: Schema.optional(Schema.suspend(() => idSchema)),
   token: Schema.optional(Schema.String),
 });
 export type CreateAPITokenOutput = typeof CreateAPITokenOutput.Type;

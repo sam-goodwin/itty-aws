@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  LLMPromptEditOperationSchema,
+  LLMPromptOutlineEntrySchema,
+} from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -10,12 +14,7 @@ export const LlmPromptsNamePartialUpdateInput =
     prompt_name: Schema.String.pipe(T.PathParam()),
     prompt: Schema.optional(Schema.Unknown),
     edits: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          old: Schema.optional(Schema.String),
-          new: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LLMPromptEditOperationSchema)),
     ),
     base_version: Schema.optional(Schema.Number),
   }).pipe(
@@ -59,12 +58,7 @@ export const LlmPromptsNamePartialUpdateOutput =
     version_count: Schema.optional(Schema.Number),
     first_version_created_at: Schema.optional(Schema.String),
     outline: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          level: Schema.optional(Schema.Number),
-          text: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LLMPromptOutlineEntrySchema)),
     ),
   });
 export type LlmPromptsNamePartialUpdateOutput =

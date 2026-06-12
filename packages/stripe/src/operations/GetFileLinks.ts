@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { file_linkSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -22,19 +23,7 @@ export type GetFileLinksInput = typeof GetFileLinksInput.Type;
 
 // Output Schema
 export const GetFileLinksOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  data: Schema.Array(
-    Schema.Struct({
-      created: Schema.Number,
-      expired: Schema.Boolean,
-      expires_at: Schema.NullOr(Schema.Number),
-      file: Schema.Unknown,
-      id: Schema.String,
-      livemode: Schema.Boolean,
-      metadata: Schema.Record(Schema.String, Schema.String),
-      object: Schema.Literals(["file_link"]),
-      url: Schema.NullOr(Schema.String),
-    }),
-  ),
+  data: Schema.Array(Schema.suspend(() => file_linkSchema)),
   has_more: Schema.Boolean,
   object: Schema.Literals(["list"]),
   url: Schema.String,

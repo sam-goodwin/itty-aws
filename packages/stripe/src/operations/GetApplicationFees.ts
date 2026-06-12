@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { application_feeSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -23,43 +24,7 @@ export type GetApplicationFeesInput = typeof GetApplicationFeesInput.Type;
 // Output Schema
 export const GetApplicationFeesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        account: Schema.Unknown,
-        amount: Schema.Number,
-        amount_refunded: Schema.Number,
-        application: Schema.Unknown,
-        balance_transaction: Schema.Unknown,
-        charge: Schema.Unknown,
-        created: Schema.Number,
-        currency: Schema.String,
-        fee_source: Schema.Unknown,
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        object: Schema.Literals(["application_fee"]),
-        originating_transaction: Schema.Unknown,
-        refunded: Schema.Boolean,
-        refunds: Schema.Struct({
-          data: Schema.Array(
-            Schema.Struct({
-              amount: Schema.Number,
-              balance_transaction: Schema.Unknown,
-              created: Schema.Number,
-              currency: Schema.String,
-              fee: Schema.Unknown,
-              id: Schema.String,
-              metadata: Schema.NullOr(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              object: Schema.Literals(["fee_refund"]),
-            }),
-          ),
-          has_more: Schema.Boolean,
-          object: Schema.Literals(["list"]),
-          url: Schema.String,
-        }),
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => application_feeSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

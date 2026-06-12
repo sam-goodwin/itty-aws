@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { MinimalFeatureFlagSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -21,29 +22,7 @@ export type FeatureFlagsLocalEvaluationRetrieveInput =
 export const FeatureFlagsLocalEvaluationRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     flags: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          team_id: Schema.optional(Schema.Number),
-          name: Schema.optional(Schema.String),
-          key: Schema.optional(Schema.String),
-          filters: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-          deleted: Schema.optional(Schema.Boolean),
-          active: Schema.optional(Schema.Boolean),
-          ensure_experience_continuity: Schema.optional(
-            Schema.NullOr(Schema.Boolean),
-          ),
-          has_encrypted_payloads: Schema.optional(
-            Schema.NullOr(Schema.Boolean),
-          ),
-          version: Schema.optional(Schema.NullOr(Schema.Number)),
-          evaluation_runtime: Schema.optional(Schema.Unknown),
-          bucketing_identifier: Schema.optional(Schema.Unknown),
-          evaluation_contexts: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => MinimalFeatureFlagSchema)),
     ),
     group_type_mapping: Schema.optional(
       Schema.Record(Schema.String, Schema.String),

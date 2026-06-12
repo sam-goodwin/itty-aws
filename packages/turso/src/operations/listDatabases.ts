@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { DatabaseSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -19,28 +20,7 @@ export type ListDatabasesInput = typeof ListDatabasesInput.Type;
 // Output Schema
 export const ListDatabasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   databases: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        Name: Schema.optional(Schema.String),
-        DbId: Schema.optional(Schema.String),
-        Hostname: Schema.optional(Schema.String),
-        block_reads: Schema.optional(Schema.Boolean),
-        block_writes: Schema.optional(Schema.Boolean),
-        regions: Schema.optional(Schema.Array(Schema.String)),
-        primaryRegion: Schema.optional(Schema.String),
-        group: Schema.optional(Schema.String),
-        delete_protection: Schema.optional(Schema.Boolean),
-        parent: Schema.optional(
-          Schema.NullOr(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              branched_at: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => DatabaseSchema)),
   ),
 });
 export type ListDatabasesOutput = typeof ListDatabasesOutput.Type;

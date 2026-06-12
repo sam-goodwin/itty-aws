@@ -1,4 +1,10 @@
 import * as Schema from "effect/Schema";
+import {
+  balance_amountSchema,
+  balance_amount_netSchema,
+  balance_detailSchema,
+  balance_detail_ungatedSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -16,125 +22,19 @@ export type GetBalanceInput = typeof GetBalanceInput.Type;
 
 // Output Schema
 export const GetBalanceOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  available: Schema.Array(
-    Schema.Struct({
-      amount: Schema.Number,
-      currency: Schema.String,
-      source_types: Schema.optional(
-        Schema.Struct({
-          bank_account: Schema.optional(Schema.Number),
-          card: Schema.optional(Schema.Number),
-          fpx: Schema.optional(Schema.Number),
-        }),
-      ),
-    }),
-  ),
+  available: Schema.Array(Schema.suspend(() => balance_amountSchema)),
   connect_reserved: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        amount: Schema.Number,
-        currency: Schema.String,
-        source_types: Schema.optional(
-          Schema.Struct({
-            bank_account: Schema.optional(Schema.Number),
-            card: Schema.optional(Schema.Number),
-            fpx: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => balance_amountSchema)),
   ),
   instant_available: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        amount: Schema.Number,
-        currency: Schema.String,
-        net_available: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              amount: Schema.Number,
-              destination: Schema.String,
-              source_types: Schema.optional(
-                Schema.Struct({
-                  bank_account: Schema.optional(Schema.Number),
-                  card: Schema.optional(Schema.Number),
-                  fpx: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-        ),
-        source_types: Schema.optional(
-          Schema.Struct({
-            bank_account: Schema.optional(Schema.Number),
-            card: Schema.optional(Schema.Number),
-            fpx: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => balance_amount_netSchema)),
   ),
-  issuing: Schema.optional(
-    Schema.Struct({
-      available: Schema.Array(
-        Schema.Struct({
-          amount: Schema.Number,
-          currency: Schema.String,
-          source_types: Schema.optional(
-            Schema.Struct({
-              bank_account: Schema.optional(Schema.Number),
-              card: Schema.optional(Schema.Number),
-              fpx: Schema.optional(Schema.Number),
-            }),
-          ),
-        }),
-      ),
-    }),
-  ),
+  issuing: Schema.optional(Schema.suspend(() => balance_detailSchema)),
   livemode: Schema.Boolean,
   object: Schema.Literals(["balance"]),
-  pending: Schema.Array(
-    Schema.Struct({
-      amount: Schema.Number,
-      currency: Schema.String,
-      source_types: Schema.optional(
-        Schema.Struct({
-          bank_account: Schema.optional(Schema.Number),
-          card: Schema.optional(Schema.Number),
-          fpx: Schema.optional(Schema.Number),
-        }),
-      ),
-    }),
-  ),
+  pending: Schema.Array(Schema.suspend(() => balance_amountSchema)),
   refund_and_dispute_prefunding: Schema.optional(
-    Schema.Struct({
-      available: Schema.Array(
-        Schema.Struct({
-          amount: Schema.Number,
-          currency: Schema.String,
-          source_types: Schema.optional(
-            Schema.Struct({
-              bank_account: Schema.optional(Schema.Number),
-              card: Schema.optional(Schema.Number),
-              fpx: Schema.optional(Schema.Number),
-            }),
-          ),
-        }),
-      ),
-      pending: Schema.Array(
-        Schema.Struct({
-          amount: Schema.Number,
-          currency: Schema.String,
-          source_types: Schema.optional(
-            Schema.Struct({
-              bank_account: Schema.optional(Schema.Number),
-              card: Schema.optional(Schema.Number),
-              fpx: Schema.optional(Schema.Number),
-            }),
-          ),
-        }),
-      ),
-    }),
+    Schema.suspend(() => balance_detail_ungatedSchema),
   ),
 });
 export type GetBalanceOutput = typeof GetBalanceOutput.Type;

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ExportFormatEnumSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -9,18 +10,7 @@ export const ExportsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Number),
   dashboard: Schema.optional(Schema.NullOr(Schema.Number)),
   insight: Schema.optional(Schema.NullOr(Schema.Number)),
-  export_format: Schema.optional(
-    Schema.Literals([
-      "image/png",
-      "application/pdf",
-      "text/csv",
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "video/webm",
-      "video/mp4",
-      "image/gif",
-      "application/json",
-    ]),
-  ),
+  export_format: Schema.optional(Schema.suspend(() => ExportFormatEnumSchema)),
   created_at: Schema.optional(Schema.String),
   has_content: Schema.optional(Schema.Boolean),
   export_context: Schema.optional(Schema.NullOr(Schema.Unknown)),
@@ -37,18 +27,7 @@ export const ExportsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.optional(Schema.Number),
   dashboard: Schema.optional(Schema.NullOr(Schema.Number)),
   insight: Schema.optional(Schema.NullOr(Schema.Number)),
-  export_format: Schema.optional(
-    Schema.Literals([
-      "image/png",
-      "application/pdf",
-      "text/csv",
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "video/webm",
-      "video/mp4",
-      "image/gif",
-      "application/json",
-    ]),
-  ),
+  export_format: Schema.optional(Schema.suspend(() => ExportFormatEnumSchema)),
   created_at: Schema.optional(Schema.String),
   has_content: Schema.optional(Schema.Boolean),
   export_context: Schema.optional(Schema.NullOr(Schema.Unknown)),

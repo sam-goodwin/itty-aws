@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  AuditLogSchemaActorDtoSchema,
+  AuditLogSchemaTargetDtoSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
@@ -7,18 +11,9 @@ import { UnprocessableEntity } from "../errors.ts";
 export const AuditLogValidatorVersionsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     actionName: Schema.String.pipe(T.PathParam()),
-    actor: Schema.optional(
-      Schema.Struct({
-        metadata: Schema.optional(Schema.Unknown),
-      }),
-    ),
+    actor: Schema.optional(Schema.suspend(() => AuditLogSchemaActorDtoSchema)),
     targets: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          type: Schema.optional(Schema.String),
-          metadata: Schema.optional(Schema.Unknown),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AuditLogSchemaTargetDtoSchema)),
     ),
     metadata: Schema.optional(Schema.Unknown),
   }).pipe(

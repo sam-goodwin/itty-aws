@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  tax_product_resource_tax_settings_defaultsSchema,
+  tax_product_resource_tax_settings_status_detailsSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -16,25 +20,16 @@ export type GetTaxSettingsInput = typeof GetTaxSettingsInput.Type;
 
 // Output Schema
 export const GetTaxSettingsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  defaults: Schema.Struct({
-    provider: Schema.Literals(["anrok", "avalara", "sphere", "stripe"]),
-    tax_behavior: Schema.NullOr(
-      Schema.Literals(["exclusive", "inclusive", "inferred_by_currency"]),
-    ),
-    tax_code: Schema.NullOr(Schema.String),
-  }),
+  defaults: Schema.suspend(
+    () => tax_product_resource_tax_settings_defaultsSchema,
+  ),
   head_office: Schema.Unknown,
   livemode: Schema.Boolean,
   object: Schema.Literals(["tax.settings"]),
   status: Schema.Literals(["active", "pending"]),
-  status_details: Schema.Struct({
-    active: Schema.optional(Schema.Struct({})),
-    pending: Schema.optional(
-      Schema.Struct({
-        missing_fields: Schema.NullOr(Schema.Array(Schema.String)),
-      }),
-    ),
-  }),
+  status_details: Schema.suspend(
+    () => tax_product_resource_tax_settings_status_detailsSchema,
+  ),
 });
 export type GetTaxSettingsOutput = typeof GetTaxSettingsOutput.Type;
 

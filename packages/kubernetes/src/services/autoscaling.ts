@@ -8,12 +8,42 @@ import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
+import {
+  io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerSchema,
+  io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerSpecSchema,
+  io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerStatusSchema,
+  io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerSchema,
+  io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerSpecSchema,
+  io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerStatusSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+  io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+} from "./_schemas.ts";
 
 // Input Schema
 export const CreateAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(
+      () => io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerSpecSchema,
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -29,67 +59,17 @@ export const CreateAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      maxReplicas: Schema.Number,
-      minReplicas: Schema.optional(Schema.Number),
-      scaleTargetRef: Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-      }),
-      targetCPUUtilizationPercentage: Schema.optional(Schema.Number),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        currentCPUUtilizationPercentage: Schema.optional(Schema.Number),
-        currentReplicas: Schema.Number,
-        desiredReplicas: Schema.Number,
-        lastScaleTime: Schema.optional(Schema.String),
-        observedGeneration: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerStatusSchema,
+      ),
     ),
   });
 export type CreateAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
@@ -113,6 +93,21 @@ export const CreateAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(
+      () => io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerSpecSchema,
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -128,363 +123,17 @@ export const CreateAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      behavior: Schema.optional(
-        Schema.Struct({
-          scaleDown: Schema.optional(
-            Schema.Struct({
-              policies: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    periodSeconds: Schema.Number,
-                    type: Schema.String,
-                    value: Schema.Number,
-                  }),
-                ),
-              ),
-              selectPolicy: Schema.optional(Schema.String),
-              stabilizationWindowSeconds: Schema.optional(Schema.Number),
-              tolerance: Schema.optional(Schema.String),
-            }),
-          ),
-          scaleUp: Schema.optional(
-            Schema.Struct({
-              policies: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    periodSeconds: Schema.Number,
-                    type: Schema.String,
-                    value: Schema.Number,
-                  }),
-                ),
-              ),
-              selectPolicy: Schema.optional(Schema.String),
-              stabilizationWindowSeconds: Schema.optional(Schema.Number),
-              tolerance: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      maxReplicas: Schema.Number,
-      metrics: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            containerResource: Schema.optional(
-              Schema.Struct({
-                container: Schema.String,
-                name: Schema.String,
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            external: Schema.optional(
-              Schema.Struct({
-                metric: Schema.Struct({
-                  name: Schema.String,
-                  selector: Schema.optional(
-                    Schema.Struct({
-                      matchExpressions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                            operator: Schema.String,
-                            values: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      ),
-                      matchLabels: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            object: Schema.optional(
-              Schema.Struct({
-                describedObject: Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  kind: Schema.String,
-                  name: Schema.String,
-                }),
-                metric: Schema.Struct({
-                  name: Schema.String,
-                  selector: Schema.optional(
-                    Schema.Struct({
-                      matchExpressions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                            operator: Schema.String,
-                            values: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      ),
-                      matchLabels: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            pods: Schema.optional(
-              Schema.Struct({
-                metric: Schema.Struct({
-                  name: Schema.String,
-                  selector: Schema.optional(
-                    Schema.Struct({
-                      matchExpressions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                            operator: Schema.String,
-                            values: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      ),
-                      matchLabels: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            resource: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            type: Schema.String,
-          }),
-        ),
-      ),
-      minReplicas: Schema.optional(Schema.Number),
-      scaleTargetRef: Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        currentMetrics: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              containerResource: Schema.optional(
-                Schema.Struct({
-                  container: Schema.String,
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  name: Schema.String,
-                }),
-              ),
-              external: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  metric: Schema.Struct({
-                    name: Schema.String,
-                    selector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                }),
-              ),
-              object: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  describedObject: Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    kind: Schema.String,
-                    name: Schema.String,
-                  }),
-                  metric: Schema.Struct({
-                    name: Schema.String,
-                    selector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                }),
-              ),
-              pods: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  metric: Schema.Struct({
-                    name: Schema.String,
-                    selector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                }),
-              ),
-              resource: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  name: Schema.String,
-                }),
-              ),
-              type: Schema.String,
-            }),
-          ),
-        ),
-        currentReplicas: Schema.optional(Schema.Number),
-        desiredReplicas: Schema.Number,
-        lastScaleTime: Schema.optional(Schema.String),
-        observedGeneration: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerStatusSchema,
+      ),
     ),
   });
 export type CreateAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
@@ -522,37 +171,14 @@ export const DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerOutpu
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -592,37 +218,14 @@ export const DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -661,37 +264,14 @@ export const DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerOutpu
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -731,37 +311,14 @@ export const DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -796,24 +353,24 @@ export const GetAutoscalingAPIGroupOutput =
     kind: Schema.optional(Schema.String),
     name: Schema.String,
     preferredVersion: Schema.optional(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
     serverAddressByClientCIDRs: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
+        Schema.suspend(
+          () =>
+            io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+        ),
       ),
     ),
     versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
   });
 export type GetAutoscalingAPIGroupOutput =
@@ -844,18 +401,9 @@ export const GetAutoscalingV1APIResourcesOutput =
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
     resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+      ),
     ),
   });
 export type GetAutoscalingV1APIResourcesOutput =
@@ -885,18 +433,9 @@ export const GetAutoscalingV2APIResourcesOutput =
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
     resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+      ),
     ),
   });
 export type GetAutoscalingV2APIResourcesOutput =
@@ -927,89 +466,13 @@ export const ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.Struct({
-          maxReplicas: Schema.Number,
-          minReplicas: Schema.optional(Schema.Number),
-          scaleTargetRef: Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.String,
-            name: Schema.String,
-          }),
-          targetCPUUtilizationPercentage: Schema.optional(Schema.Number),
-        }),
-        status: Schema.optional(
-          Schema.Struct({
-            currentCPUUtilizationPercentage: Schema.optional(Schema.Number),
-            currentReplicas: Schema.Number,
-            desiredReplicas: Schema.Number,
-            lastScaleTime: Schema.optional(Schema.String),
-            observedGeneration: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesOutput =
@@ -1041,89 +504,13 @@ export const ListAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.Struct({
-          maxReplicas: Schema.Number,
-          minReplicas: Schema.optional(Schema.Number),
-          scaleTargetRef: Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.String,
-            name: Schema.String,
-          }),
-          targetCPUUtilizationPercentage: Schema.optional(Schema.Number),
-        }),
-        status: Schema.optional(
-          Schema.Struct({
-            currentCPUUtilizationPercentage: Schema.optional(Schema.Number),
-            currentReplicas: Schema.Number,
-            desiredReplicas: Schema.Number,
-            lastScaleTime: Schema.optional(Schema.String),
-            observedGeneration: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
@@ -1154,385 +541,13 @@ export const ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.Struct({
-          behavior: Schema.optional(
-            Schema.Struct({
-              scaleDown: Schema.optional(
-                Schema.Struct({
-                  policies: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        periodSeconds: Schema.Number,
-                        type: Schema.String,
-                        value: Schema.Number,
-                      }),
-                    ),
-                  ),
-                  selectPolicy: Schema.optional(Schema.String),
-                  stabilizationWindowSeconds: Schema.optional(Schema.Number),
-                  tolerance: Schema.optional(Schema.String),
-                }),
-              ),
-              scaleUp: Schema.optional(
-                Schema.Struct({
-                  policies: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        periodSeconds: Schema.Number,
-                        type: Schema.String,
-                        value: Schema.Number,
-                      }),
-                    ),
-                  ),
-                  selectPolicy: Schema.optional(Schema.String),
-                  stabilizationWindowSeconds: Schema.optional(Schema.Number),
-                  tolerance: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-          maxReplicas: Schema.Number,
-          metrics: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                containerResource: Schema.optional(
-                  Schema.Struct({
-                    container: Schema.String,
-                    name: Schema.String,
-                    target: Schema.Struct({
-                      averageUtilization: Schema.optional(Schema.Number),
-                      averageValue: Schema.optional(Schema.String),
-                      type: Schema.String,
-                      value: Schema.optional(Schema.String),
-                    }),
-                  }),
-                ),
-                external: Schema.optional(
-                  Schema.Struct({
-                    metric: Schema.Struct({
-                      name: Schema.String,
-                      selector: Schema.optional(
-                        Schema.Struct({
-                          matchExpressions: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                key: Schema.String,
-                                operator: Schema.String,
-                                values: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                              }),
-                            ),
-                          ),
-                          matchLabels: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
-                        }),
-                      ),
-                    }),
-                    target: Schema.Struct({
-                      averageUtilization: Schema.optional(Schema.Number),
-                      averageValue: Schema.optional(Schema.String),
-                      type: Schema.String,
-                      value: Schema.optional(Schema.String),
-                    }),
-                  }),
-                ),
-                object: Schema.optional(
-                  Schema.Struct({
-                    describedObject: Schema.Struct({
-                      apiVersion: Schema.optional(Schema.String),
-                      kind: Schema.String,
-                      name: Schema.String,
-                    }),
-                    metric: Schema.Struct({
-                      name: Schema.String,
-                      selector: Schema.optional(
-                        Schema.Struct({
-                          matchExpressions: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                key: Schema.String,
-                                operator: Schema.String,
-                                values: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                              }),
-                            ),
-                          ),
-                          matchLabels: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
-                        }),
-                      ),
-                    }),
-                    target: Schema.Struct({
-                      averageUtilization: Schema.optional(Schema.Number),
-                      averageValue: Schema.optional(Schema.String),
-                      type: Schema.String,
-                      value: Schema.optional(Schema.String),
-                    }),
-                  }),
-                ),
-                pods: Schema.optional(
-                  Schema.Struct({
-                    metric: Schema.Struct({
-                      name: Schema.String,
-                      selector: Schema.optional(
-                        Schema.Struct({
-                          matchExpressions: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                key: Schema.String,
-                                operator: Schema.String,
-                                values: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                              }),
-                            ),
-                          ),
-                          matchLabels: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
-                        }),
-                      ),
-                    }),
-                    target: Schema.Struct({
-                      averageUtilization: Schema.optional(Schema.Number),
-                      averageValue: Schema.optional(Schema.String),
-                      type: Schema.String,
-                      value: Schema.optional(Schema.String),
-                    }),
-                  }),
-                ),
-                resource: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.String,
-                    target: Schema.Struct({
-                      averageUtilization: Schema.optional(Schema.Number),
-                      averageValue: Schema.optional(Schema.String),
-                      type: Schema.String,
-                      value: Schema.optional(Schema.String),
-                    }),
-                  }),
-                ),
-                type: Schema.String,
-              }),
-            ),
-          ),
-          minReplicas: Schema.optional(Schema.Number),
-          scaleTargetRef: Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.String,
-            name: Schema.String,
-          }),
-        }),
-        status: Schema.optional(
-          Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  lastTransitionTime: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  reason: Schema.optional(Schema.String),
-                  status: Schema.String,
-                  type: Schema.String,
-                }),
-              ),
-            ),
-            currentMetrics: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  containerResource: Schema.optional(
-                    Schema.Struct({
-                      container: Schema.String,
-                      current: Schema.Struct({
-                        averageUtilization: Schema.optional(Schema.Number),
-                        averageValue: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.String),
-                      }),
-                      name: Schema.String,
-                    }),
-                  ),
-                  external: Schema.optional(
-                    Schema.Struct({
-                      current: Schema.Struct({
-                        averageUtilization: Schema.optional(Schema.Number),
-                        averageValue: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.String),
-                      }),
-                      metric: Schema.Struct({
-                        name: Schema.String,
-                        selector: Schema.optional(
-                          Schema.Struct({
-                            matchExpressions: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  operator: Schema.String,
-                                  values: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                }),
-                              ),
-                            ),
-                            matchLabels: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                      }),
-                    }),
-                  ),
-                  object: Schema.optional(
-                    Schema.Struct({
-                      current: Schema.Struct({
-                        averageUtilization: Schema.optional(Schema.Number),
-                        averageValue: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.String),
-                      }),
-                      describedObject: Schema.Struct({
-                        apiVersion: Schema.optional(Schema.String),
-                        kind: Schema.String,
-                        name: Schema.String,
-                      }),
-                      metric: Schema.Struct({
-                        name: Schema.String,
-                        selector: Schema.optional(
-                          Schema.Struct({
-                            matchExpressions: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  operator: Schema.String,
-                                  values: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                }),
-                              ),
-                            ),
-                            matchLabels: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                      }),
-                    }),
-                  ),
-                  pods: Schema.optional(
-                    Schema.Struct({
-                      current: Schema.Struct({
-                        averageUtilization: Schema.optional(Schema.Number),
-                        averageValue: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.String),
-                      }),
-                      metric: Schema.Struct({
-                        name: Schema.String,
-                        selector: Schema.optional(
-                          Schema.Struct({
-                            matchExpressions: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  operator: Schema.String,
-                                  values: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                }),
-                              ),
-                            ),
-                            matchLabels: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                      }),
-                    }),
-                  ),
-                  resource: Schema.optional(
-                    Schema.Struct({
-                      current: Schema.Struct({
-                        averageUtilization: Schema.optional(Schema.Number),
-                        averageValue: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.String),
-                      }),
-                      name: Schema.String,
-                    }),
-                  ),
-                  type: Schema.String,
-                }),
-              ),
-            ),
-            currentReplicas: Schema.optional(Schema.Number),
-            desiredReplicas: Schema.Number,
-            lastScaleTime: Schema.optional(Schema.String),
-            observedGeneration: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesOutput =
@@ -1564,385 +579,13 @@ export const ListAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.Struct({
-          behavior: Schema.optional(
-            Schema.Struct({
-              scaleDown: Schema.optional(
-                Schema.Struct({
-                  policies: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        periodSeconds: Schema.Number,
-                        type: Schema.String,
-                        value: Schema.Number,
-                      }),
-                    ),
-                  ),
-                  selectPolicy: Schema.optional(Schema.String),
-                  stabilizationWindowSeconds: Schema.optional(Schema.Number),
-                  tolerance: Schema.optional(Schema.String),
-                }),
-              ),
-              scaleUp: Schema.optional(
-                Schema.Struct({
-                  policies: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        periodSeconds: Schema.Number,
-                        type: Schema.String,
-                        value: Schema.Number,
-                      }),
-                    ),
-                  ),
-                  selectPolicy: Schema.optional(Schema.String),
-                  stabilizationWindowSeconds: Schema.optional(Schema.Number),
-                  tolerance: Schema.optional(Schema.String),
-                }),
-              ),
-            }),
-          ),
-          maxReplicas: Schema.Number,
-          metrics: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                containerResource: Schema.optional(
-                  Schema.Struct({
-                    container: Schema.String,
-                    name: Schema.String,
-                    target: Schema.Struct({
-                      averageUtilization: Schema.optional(Schema.Number),
-                      averageValue: Schema.optional(Schema.String),
-                      type: Schema.String,
-                      value: Schema.optional(Schema.String),
-                    }),
-                  }),
-                ),
-                external: Schema.optional(
-                  Schema.Struct({
-                    metric: Schema.Struct({
-                      name: Schema.String,
-                      selector: Schema.optional(
-                        Schema.Struct({
-                          matchExpressions: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                key: Schema.String,
-                                operator: Schema.String,
-                                values: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                              }),
-                            ),
-                          ),
-                          matchLabels: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
-                        }),
-                      ),
-                    }),
-                    target: Schema.Struct({
-                      averageUtilization: Schema.optional(Schema.Number),
-                      averageValue: Schema.optional(Schema.String),
-                      type: Schema.String,
-                      value: Schema.optional(Schema.String),
-                    }),
-                  }),
-                ),
-                object: Schema.optional(
-                  Schema.Struct({
-                    describedObject: Schema.Struct({
-                      apiVersion: Schema.optional(Schema.String),
-                      kind: Schema.String,
-                      name: Schema.String,
-                    }),
-                    metric: Schema.Struct({
-                      name: Schema.String,
-                      selector: Schema.optional(
-                        Schema.Struct({
-                          matchExpressions: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                key: Schema.String,
-                                operator: Schema.String,
-                                values: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                              }),
-                            ),
-                          ),
-                          matchLabels: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
-                        }),
-                      ),
-                    }),
-                    target: Schema.Struct({
-                      averageUtilization: Schema.optional(Schema.Number),
-                      averageValue: Schema.optional(Schema.String),
-                      type: Schema.String,
-                      value: Schema.optional(Schema.String),
-                    }),
-                  }),
-                ),
-                pods: Schema.optional(
-                  Schema.Struct({
-                    metric: Schema.Struct({
-                      name: Schema.String,
-                      selector: Schema.optional(
-                        Schema.Struct({
-                          matchExpressions: Schema.optional(
-                            Schema.Array(
-                              Schema.Struct({
-                                key: Schema.String,
-                                operator: Schema.String,
-                                values: Schema.optional(
-                                  Schema.Array(Schema.String),
-                                ),
-                              }),
-                            ),
-                          ),
-                          matchLabels: Schema.optional(
-                            Schema.Record(Schema.String, Schema.String),
-                          ),
-                        }),
-                      ),
-                    }),
-                    target: Schema.Struct({
-                      averageUtilization: Schema.optional(Schema.Number),
-                      averageValue: Schema.optional(Schema.String),
-                      type: Schema.String,
-                      value: Schema.optional(Schema.String),
-                    }),
-                  }),
-                ),
-                resource: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.String,
-                    target: Schema.Struct({
-                      averageUtilization: Schema.optional(Schema.Number),
-                      averageValue: Schema.optional(Schema.String),
-                      type: Schema.String,
-                      value: Schema.optional(Schema.String),
-                    }),
-                  }),
-                ),
-                type: Schema.String,
-              }),
-            ),
-          ),
-          minReplicas: Schema.optional(Schema.Number),
-          scaleTargetRef: Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            kind: Schema.String,
-            name: Schema.String,
-          }),
-        }),
-        status: Schema.optional(
-          Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  lastTransitionTime: Schema.optional(Schema.String),
-                  message: Schema.optional(Schema.String),
-                  reason: Schema.optional(Schema.String),
-                  status: Schema.String,
-                  type: Schema.String,
-                }),
-              ),
-            ),
-            currentMetrics: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  containerResource: Schema.optional(
-                    Schema.Struct({
-                      container: Schema.String,
-                      current: Schema.Struct({
-                        averageUtilization: Schema.optional(Schema.Number),
-                        averageValue: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.String),
-                      }),
-                      name: Schema.String,
-                    }),
-                  ),
-                  external: Schema.optional(
-                    Schema.Struct({
-                      current: Schema.Struct({
-                        averageUtilization: Schema.optional(Schema.Number),
-                        averageValue: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.String),
-                      }),
-                      metric: Schema.Struct({
-                        name: Schema.String,
-                        selector: Schema.optional(
-                          Schema.Struct({
-                            matchExpressions: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  operator: Schema.String,
-                                  values: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                }),
-                              ),
-                            ),
-                            matchLabels: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                      }),
-                    }),
-                  ),
-                  object: Schema.optional(
-                    Schema.Struct({
-                      current: Schema.Struct({
-                        averageUtilization: Schema.optional(Schema.Number),
-                        averageValue: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.String),
-                      }),
-                      describedObject: Schema.Struct({
-                        apiVersion: Schema.optional(Schema.String),
-                        kind: Schema.String,
-                        name: Schema.String,
-                      }),
-                      metric: Schema.Struct({
-                        name: Schema.String,
-                        selector: Schema.optional(
-                          Schema.Struct({
-                            matchExpressions: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  operator: Schema.String,
-                                  values: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                }),
-                              ),
-                            ),
-                            matchLabels: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                      }),
-                    }),
-                  ),
-                  pods: Schema.optional(
-                    Schema.Struct({
-                      current: Schema.Struct({
-                        averageUtilization: Schema.optional(Schema.Number),
-                        averageValue: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.String),
-                      }),
-                      metric: Schema.Struct({
-                        name: Schema.String,
-                        selector: Schema.optional(
-                          Schema.Struct({
-                            matchExpressions: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  operator: Schema.String,
-                                  values: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                }),
-                              ),
-                            ),
-                            matchLabels: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                      }),
-                    }),
-                  ),
-                  resource: Schema.optional(
-                    Schema.Struct({
-                      current: Schema.Struct({
-                        averageUtilization: Schema.optional(Schema.Number),
-                        averageValue: Schema.optional(Schema.String),
-                        value: Schema.optional(Schema.String),
-                      }),
-                      name: Schema.String,
-                    }),
-                  ),
-                  type: Schema.String,
-                }),
-              ),
-            ),
-            currentReplicas: Schema.optional(Schema.Number),
-            desiredReplicas: Schema.Number,
-            lastScaleTime: Schema.optional(Schema.String),
-            observedGeneration: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
@@ -1977,67 +620,17 @@ export const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      maxReplicas: Schema.Number,
-      minReplicas: Schema.optional(Schema.Number),
-      scaleTargetRef: Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-      }),
-      targetCPUUtilizationPercentage: Schema.optional(Schema.Number),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        currentCPUUtilizationPercentage: Schema.optional(Schema.Number),
-        currentReplicas: Schema.Number,
-        desiredReplicas: Schema.Number,
-        lastScaleTime: Schema.optional(Schema.String),
-        observedGeneration: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerStatusSchema,
+      ),
     ),
   });
 export type PatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
@@ -2076,67 +669,17 @@ export const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      maxReplicas: Schema.Number,
-      minReplicas: Schema.optional(Schema.Number),
-      scaleTargetRef: Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-      }),
-      targetCPUUtilizationPercentage: Schema.optional(Schema.Number),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        currentCPUUtilizationPercentage: Schema.optional(Schema.Number),
-        currentReplicas: Schema.Number,
-        desiredReplicas: Schema.Number,
-        lastScaleTime: Schema.optional(Schema.String),
-        observedGeneration: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerStatusSchema,
+      ),
     ),
   });
 export type PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput =
@@ -2176,363 +719,17 @@ export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      behavior: Schema.optional(
-        Schema.Struct({
-          scaleDown: Schema.optional(
-            Schema.Struct({
-              policies: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    periodSeconds: Schema.Number,
-                    type: Schema.String,
-                    value: Schema.Number,
-                  }),
-                ),
-              ),
-              selectPolicy: Schema.optional(Schema.String),
-              stabilizationWindowSeconds: Schema.optional(Schema.Number),
-              tolerance: Schema.optional(Schema.String),
-            }),
-          ),
-          scaleUp: Schema.optional(
-            Schema.Struct({
-              policies: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    periodSeconds: Schema.Number,
-                    type: Schema.String,
-                    value: Schema.Number,
-                  }),
-                ),
-              ),
-              selectPolicy: Schema.optional(Schema.String),
-              stabilizationWindowSeconds: Schema.optional(Schema.Number),
-              tolerance: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      maxReplicas: Schema.Number,
-      metrics: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            containerResource: Schema.optional(
-              Schema.Struct({
-                container: Schema.String,
-                name: Schema.String,
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            external: Schema.optional(
-              Schema.Struct({
-                metric: Schema.Struct({
-                  name: Schema.String,
-                  selector: Schema.optional(
-                    Schema.Struct({
-                      matchExpressions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                            operator: Schema.String,
-                            values: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      ),
-                      matchLabels: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            object: Schema.optional(
-              Schema.Struct({
-                describedObject: Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  kind: Schema.String,
-                  name: Schema.String,
-                }),
-                metric: Schema.Struct({
-                  name: Schema.String,
-                  selector: Schema.optional(
-                    Schema.Struct({
-                      matchExpressions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                            operator: Schema.String,
-                            values: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      ),
-                      matchLabels: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            pods: Schema.optional(
-              Schema.Struct({
-                metric: Schema.Struct({
-                  name: Schema.String,
-                  selector: Schema.optional(
-                    Schema.Struct({
-                      matchExpressions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                            operator: Schema.String,
-                            values: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      ),
-                      matchLabels: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            resource: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            type: Schema.String,
-          }),
-        ),
-      ),
-      minReplicas: Schema.optional(Schema.Number),
-      scaleTargetRef: Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        currentMetrics: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              containerResource: Schema.optional(
-                Schema.Struct({
-                  container: Schema.String,
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  name: Schema.String,
-                }),
-              ),
-              external: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  metric: Schema.Struct({
-                    name: Schema.String,
-                    selector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                }),
-              ),
-              object: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  describedObject: Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    kind: Schema.String,
-                    name: Schema.String,
-                  }),
-                  metric: Schema.Struct({
-                    name: Schema.String,
-                    selector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                }),
-              ),
-              pods: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  metric: Schema.Struct({
-                    name: Schema.String,
-                    selector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                }),
-              ),
-              resource: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  name: Schema.String,
-                }),
-              ),
-              type: Schema.String,
-            }),
-          ),
-        ),
-        currentReplicas: Schema.optional(Schema.Number),
-        desiredReplicas: Schema.Number,
-        lastScaleTime: Schema.optional(Schema.String),
-        observedGeneration: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerStatusSchema,
+      ),
     ),
   });
 export type PatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
@@ -2571,363 +768,17 @@ export const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      behavior: Schema.optional(
-        Schema.Struct({
-          scaleDown: Schema.optional(
-            Schema.Struct({
-              policies: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    periodSeconds: Schema.Number,
-                    type: Schema.String,
-                    value: Schema.Number,
-                  }),
-                ),
-              ),
-              selectPolicy: Schema.optional(Schema.String),
-              stabilizationWindowSeconds: Schema.optional(Schema.Number),
-              tolerance: Schema.optional(Schema.String),
-            }),
-          ),
-          scaleUp: Schema.optional(
-            Schema.Struct({
-              policies: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    periodSeconds: Schema.Number,
-                    type: Schema.String,
-                    value: Schema.Number,
-                  }),
-                ),
-              ),
-              selectPolicy: Schema.optional(Schema.String),
-              stabilizationWindowSeconds: Schema.optional(Schema.Number),
-              tolerance: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      maxReplicas: Schema.Number,
-      metrics: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            containerResource: Schema.optional(
-              Schema.Struct({
-                container: Schema.String,
-                name: Schema.String,
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            external: Schema.optional(
-              Schema.Struct({
-                metric: Schema.Struct({
-                  name: Schema.String,
-                  selector: Schema.optional(
-                    Schema.Struct({
-                      matchExpressions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                            operator: Schema.String,
-                            values: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      ),
-                      matchLabels: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            object: Schema.optional(
-              Schema.Struct({
-                describedObject: Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  kind: Schema.String,
-                  name: Schema.String,
-                }),
-                metric: Schema.Struct({
-                  name: Schema.String,
-                  selector: Schema.optional(
-                    Schema.Struct({
-                      matchExpressions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                            operator: Schema.String,
-                            values: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      ),
-                      matchLabels: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            pods: Schema.optional(
-              Schema.Struct({
-                metric: Schema.Struct({
-                  name: Schema.String,
-                  selector: Schema.optional(
-                    Schema.Struct({
-                      matchExpressions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                            operator: Schema.String,
-                            values: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      ),
-                      matchLabels: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            resource: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            type: Schema.String,
-          }),
-        ),
-      ),
-      minReplicas: Schema.optional(Schema.Number),
-      scaleTargetRef: Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        currentMetrics: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              containerResource: Schema.optional(
-                Schema.Struct({
-                  container: Schema.String,
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  name: Schema.String,
-                }),
-              ),
-              external: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  metric: Schema.Struct({
-                    name: Schema.String,
-                    selector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                }),
-              ),
-              object: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  describedObject: Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    kind: Schema.String,
-                    name: Schema.String,
-                  }),
-                  metric: Schema.Struct({
-                    name: Schema.String,
-                    selector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                }),
-              ),
-              pods: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  metric: Schema.Struct({
-                    name: Schema.String,
-                    selector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                }),
-              ),
-              resource: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  name: Schema.String,
-                }),
-              ),
-              type: Schema.String,
-            }),
-          ),
-        ),
-        currentReplicas: Schema.optional(Schema.Number),
-        desiredReplicas: Schema.Number,
-        lastScaleTime: Schema.optional(Schema.String),
-        observedGeneration: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerStatusSchema,
+      ),
     ),
   });
 export type PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
@@ -2964,67 +815,17 @@ export const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      maxReplicas: Schema.Number,
-      minReplicas: Schema.optional(Schema.Number),
-      scaleTargetRef: Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-      }),
-      targetCPUUtilizationPercentage: Schema.optional(Schema.Number),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        currentCPUUtilizationPercentage: Schema.optional(Schema.Number),
-        currentReplicas: Schema.Number,
-        desiredReplicas: Schema.Number,
-        lastScaleTime: Schema.optional(Schema.String),
-        observedGeneration: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerStatusSchema,
+      ),
     ),
   });
 export type ReadAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
@@ -3057,67 +858,17 @@ export const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      maxReplicas: Schema.Number,
-      minReplicas: Schema.optional(Schema.Number),
-      scaleTargetRef: Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-      }),
-      targetCPUUtilizationPercentage: Schema.optional(Schema.Number),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        currentCPUUtilizationPercentage: Schema.optional(Schema.Number),
-        currentReplicas: Schema.Number,
-        desiredReplicas: Schema.Number,
-        lastScaleTime: Schema.optional(Schema.String),
-        observedGeneration: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerStatusSchema,
+      ),
     ),
   });
 export type ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput =
@@ -3151,363 +902,17 @@ export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      behavior: Schema.optional(
-        Schema.Struct({
-          scaleDown: Schema.optional(
-            Schema.Struct({
-              policies: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    periodSeconds: Schema.Number,
-                    type: Schema.String,
-                    value: Schema.Number,
-                  }),
-                ),
-              ),
-              selectPolicy: Schema.optional(Schema.String),
-              stabilizationWindowSeconds: Schema.optional(Schema.Number),
-              tolerance: Schema.optional(Schema.String),
-            }),
-          ),
-          scaleUp: Schema.optional(
-            Schema.Struct({
-              policies: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    periodSeconds: Schema.Number,
-                    type: Schema.String,
-                    value: Schema.Number,
-                  }),
-                ),
-              ),
-              selectPolicy: Schema.optional(Schema.String),
-              stabilizationWindowSeconds: Schema.optional(Schema.Number),
-              tolerance: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      maxReplicas: Schema.Number,
-      metrics: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            containerResource: Schema.optional(
-              Schema.Struct({
-                container: Schema.String,
-                name: Schema.String,
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            external: Schema.optional(
-              Schema.Struct({
-                metric: Schema.Struct({
-                  name: Schema.String,
-                  selector: Schema.optional(
-                    Schema.Struct({
-                      matchExpressions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                            operator: Schema.String,
-                            values: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      ),
-                      matchLabels: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            object: Schema.optional(
-              Schema.Struct({
-                describedObject: Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  kind: Schema.String,
-                  name: Schema.String,
-                }),
-                metric: Schema.Struct({
-                  name: Schema.String,
-                  selector: Schema.optional(
-                    Schema.Struct({
-                      matchExpressions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                            operator: Schema.String,
-                            values: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      ),
-                      matchLabels: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            pods: Schema.optional(
-              Schema.Struct({
-                metric: Schema.Struct({
-                  name: Schema.String,
-                  selector: Schema.optional(
-                    Schema.Struct({
-                      matchExpressions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                            operator: Schema.String,
-                            values: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      ),
-                      matchLabels: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            resource: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            type: Schema.String,
-          }),
-        ),
-      ),
-      minReplicas: Schema.optional(Schema.Number),
-      scaleTargetRef: Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        currentMetrics: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              containerResource: Schema.optional(
-                Schema.Struct({
-                  container: Schema.String,
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  name: Schema.String,
-                }),
-              ),
-              external: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  metric: Schema.Struct({
-                    name: Schema.String,
-                    selector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                }),
-              ),
-              object: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  describedObject: Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    kind: Schema.String,
-                    name: Schema.String,
-                  }),
-                  metric: Schema.Struct({
-                    name: Schema.String,
-                    selector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                }),
-              ),
-              pods: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  metric: Schema.Struct({
-                    name: Schema.String,
-                    selector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                }),
-              ),
-              resource: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  name: Schema.String,
-                }),
-              ),
-              type: Schema.String,
-            }),
-          ),
-        ),
-        currentReplicas: Schema.optional(Schema.Number),
-        desiredReplicas: Schema.Number,
-        lastScaleTime: Schema.optional(Schema.String),
-        observedGeneration: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerStatusSchema,
+      ),
     ),
   });
 export type ReadAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
@@ -3540,363 +945,17 @@ export const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      behavior: Schema.optional(
-        Schema.Struct({
-          scaleDown: Schema.optional(
-            Schema.Struct({
-              policies: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    periodSeconds: Schema.Number,
-                    type: Schema.String,
-                    value: Schema.Number,
-                  }),
-                ),
-              ),
-              selectPolicy: Schema.optional(Schema.String),
-              stabilizationWindowSeconds: Schema.optional(Schema.Number),
-              tolerance: Schema.optional(Schema.String),
-            }),
-          ),
-          scaleUp: Schema.optional(
-            Schema.Struct({
-              policies: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    periodSeconds: Schema.Number,
-                    type: Schema.String,
-                    value: Schema.Number,
-                  }),
-                ),
-              ),
-              selectPolicy: Schema.optional(Schema.String),
-              stabilizationWindowSeconds: Schema.optional(Schema.Number),
-              tolerance: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      maxReplicas: Schema.Number,
-      metrics: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            containerResource: Schema.optional(
-              Schema.Struct({
-                container: Schema.String,
-                name: Schema.String,
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            external: Schema.optional(
-              Schema.Struct({
-                metric: Schema.Struct({
-                  name: Schema.String,
-                  selector: Schema.optional(
-                    Schema.Struct({
-                      matchExpressions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                            operator: Schema.String,
-                            values: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      ),
-                      matchLabels: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            object: Schema.optional(
-              Schema.Struct({
-                describedObject: Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  kind: Schema.String,
-                  name: Schema.String,
-                }),
-                metric: Schema.Struct({
-                  name: Schema.String,
-                  selector: Schema.optional(
-                    Schema.Struct({
-                      matchExpressions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                            operator: Schema.String,
-                            values: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      ),
-                      matchLabels: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            pods: Schema.optional(
-              Schema.Struct({
-                metric: Schema.Struct({
-                  name: Schema.String,
-                  selector: Schema.optional(
-                    Schema.Struct({
-                      matchExpressions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                            operator: Schema.String,
-                            values: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      ),
-                      matchLabels: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            resource: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            type: Schema.String,
-          }),
-        ),
-      ),
-      minReplicas: Schema.optional(Schema.Number),
-      scaleTargetRef: Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        currentMetrics: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              containerResource: Schema.optional(
-                Schema.Struct({
-                  container: Schema.String,
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  name: Schema.String,
-                }),
-              ),
-              external: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  metric: Schema.Struct({
-                    name: Schema.String,
-                    selector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                }),
-              ),
-              object: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  describedObject: Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    kind: Schema.String,
-                    name: Schema.String,
-                  }),
-                  metric: Schema.Struct({
-                    name: Schema.String,
-                    selector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                }),
-              ),
-              pods: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  metric: Schema.Struct({
-                    name: Schema.String,
-                    selector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                }),
-              ),
-              resource: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  name: Schema.String,
-                }),
-              ),
-              type: Schema.String,
-            }),
-          ),
-        ),
-        currentReplicas: Schema.optional(Schema.Number),
-        desiredReplicas: Schema.Number,
-        lastScaleTime: Schema.optional(Schema.String),
-        observedGeneration: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerStatusSchema,
+      ),
     ),
   });
 export type ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
@@ -3918,6 +977,21 @@ export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(
+      () => io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerSpecSchema,
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3933,67 +1007,17 @@ export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      maxReplicas: Schema.Number,
-      minReplicas: Schema.optional(Schema.Number),
-      scaleTargetRef: Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-      }),
-      targetCPUUtilizationPercentage: Schema.optional(Schema.Number),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        currentCPUUtilizationPercentage: Schema.optional(Schema.Number),
-        currentReplicas: Schema.Number,
-        desiredReplicas: Schema.Number,
-        lastScaleTime: Schema.optional(Schema.String),
-        observedGeneration: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerStatusSchema,
+      ),
     ),
   });
 export type ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
@@ -4017,6 +1041,21 @@ export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(
+      () => io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerSpecSchema,
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4032,67 +1071,17 @@ export const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      maxReplicas: Schema.Number,
-      minReplicas: Schema.optional(Schema.Number),
-      scaleTargetRef: Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-      }),
-      targetCPUUtilizationPercentage: Schema.optional(Schema.Number),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        currentCPUUtilizationPercentage: Schema.optional(Schema.Number),
-        currentReplicas: Schema.Number,
-        desiredReplicas: Schema.Number,
-        lastScaleTime: Schema.optional(Schema.String),
-        observedGeneration: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v1_HorizontalPodAutoscalerStatusSchema,
+      ),
     ),
   });
 export type ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusOutput =
@@ -4118,6 +1107,21 @@ export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(
+      () => io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerSpecSchema,
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4133,363 +1137,17 @@ export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      behavior: Schema.optional(
-        Schema.Struct({
-          scaleDown: Schema.optional(
-            Schema.Struct({
-              policies: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    periodSeconds: Schema.Number,
-                    type: Schema.String,
-                    value: Schema.Number,
-                  }),
-                ),
-              ),
-              selectPolicy: Schema.optional(Schema.String),
-              stabilizationWindowSeconds: Schema.optional(Schema.Number),
-              tolerance: Schema.optional(Schema.String),
-            }),
-          ),
-          scaleUp: Schema.optional(
-            Schema.Struct({
-              policies: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    periodSeconds: Schema.Number,
-                    type: Schema.String,
-                    value: Schema.Number,
-                  }),
-                ),
-              ),
-              selectPolicy: Schema.optional(Schema.String),
-              stabilizationWindowSeconds: Schema.optional(Schema.Number),
-              tolerance: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      maxReplicas: Schema.Number,
-      metrics: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            containerResource: Schema.optional(
-              Schema.Struct({
-                container: Schema.String,
-                name: Schema.String,
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            external: Schema.optional(
-              Schema.Struct({
-                metric: Schema.Struct({
-                  name: Schema.String,
-                  selector: Schema.optional(
-                    Schema.Struct({
-                      matchExpressions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                            operator: Schema.String,
-                            values: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      ),
-                      matchLabels: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            object: Schema.optional(
-              Schema.Struct({
-                describedObject: Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  kind: Schema.String,
-                  name: Schema.String,
-                }),
-                metric: Schema.Struct({
-                  name: Schema.String,
-                  selector: Schema.optional(
-                    Schema.Struct({
-                      matchExpressions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                            operator: Schema.String,
-                            values: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      ),
-                      matchLabels: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            pods: Schema.optional(
-              Schema.Struct({
-                metric: Schema.Struct({
-                  name: Schema.String,
-                  selector: Schema.optional(
-                    Schema.Struct({
-                      matchExpressions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                            operator: Schema.String,
-                            values: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      ),
-                      matchLabels: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            resource: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            type: Schema.String,
-          }),
-        ),
-      ),
-      minReplicas: Schema.optional(Schema.Number),
-      scaleTargetRef: Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        currentMetrics: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              containerResource: Schema.optional(
-                Schema.Struct({
-                  container: Schema.String,
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  name: Schema.String,
-                }),
-              ),
-              external: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  metric: Schema.Struct({
-                    name: Schema.String,
-                    selector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                }),
-              ),
-              object: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  describedObject: Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    kind: Schema.String,
-                    name: Schema.String,
-                  }),
-                  metric: Schema.Struct({
-                    name: Schema.String,
-                    selector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                }),
-              ),
-              pods: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  metric: Schema.Struct({
-                    name: Schema.String,
-                    selector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                }),
-              ),
-              resource: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  name: Schema.String,
-                }),
-              ),
-              type: Schema.String,
-            }),
-          ),
-        ),
-        currentReplicas: Schema.optional(Schema.Number),
-        desiredReplicas: Schema.Number,
-        lastScaleTime: Schema.optional(Schema.String),
-        observedGeneration: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerStatusSchema,
+      ),
     ),
   });
 export type ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
@@ -4513,6 +1171,21 @@ export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(
+      () => io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerSpecSchema,
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4528,363 +1201,17 @@ export const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      behavior: Schema.optional(
-        Schema.Struct({
-          scaleDown: Schema.optional(
-            Schema.Struct({
-              policies: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    periodSeconds: Schema.Number,
-                    type: Schema.String,
-                    value: Schema.Number,
-                  }),
-                ),
-              ),
-              selectPolicy: Schema.optional(Schema.String),
-              stabilizationWindowSeconds: Schema.optional(Schema.Number),
-              tolerance: Schema.optional(Schema.String),
-            }),
-          ),
-          scaleUp: Schema.optional(
-            Schema.Struct({
-              policies: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    periodSeconds: Schema.Number,
-                    type: Schema.String,
-                    value: Schema.Number,
-                  }),
-                ),
-              ),
-              selectPolicy: Schema.optional(Schema.String),
-              stabilizationWindowSeconds: Schema.optional(Schema.Number),
-              tolerance: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      maxReplicas: Schema.Number,
-      metrics: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            containerResource: Schema.optional(
-              Schema.Struct({
-                container: Schema.String,
-                name: Schema.String,
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            external: Schema.optional(
-              Schema.Struct({
-                metric: Schema.Struct({
-                  name: Schema.String,
-                  selector: Schema.optional(
-                    Schema.Struct({
-                      matchExpressions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                            operator: Schema.String,
-                            values: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      ),
-                      matchLabels: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            object: Schema.optional(
-              Schema.Struct({
-                describedObject: Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  kind: Schema.String,
-                  name: Schema.String,
-                }),
-                metric: Schema.Struct({
-                  name: Schema.String,
-                  selector: Schema.optional(
-                    Schema.Struct({
-                      matchExpressions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                            operator: Schema.String,
-                            values: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      ),
-                      matchLabels: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            pods: Schema.optional(
-              Schema.Struct({
-                metric: Schema.Struct({
-                  name: Schema.String,
-                  selector: Schema.optional(
-                    Schema.Struct({
-                      matchExpressions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            key: Schema.String,
-                            operator: Schema.String,
-                            values: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                      ),
-                      matchLabels: Schema.optional(
-                        Schema.Record(Schema.String, Schema.String),
-                      ),
-                    }),
-                  ),
-                }),
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            resource: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                target: Schema.Struct({
-                  averageUtilization: Schema.optional(Schema.Number),
-                  averageValue: Schema.optional(Schema.String),
-                  type: Schema.String,
-                  value: Schema.optional(Schema.String),
-                }),
-              }),
-            ),
-            type: Schema.String,
-          }),
-        ),
-      ),
-      minReplicas: Schema.optional(Schema.Number),
-      scaleTargetRef: Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        currentMetrics: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              containerResource: Schema.optional(
-                Schema.Struct({
-                  container: Schema.String,
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  name: Schema.String,
-                }),
-              ),
-              external: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  metric: Schema.Struct({
-                    name: Schema.String,
-                    selector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                }),
-              ),
-              object: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  describedObject: Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    kind: Schema.String,
-                    name: Schema.String,
-                  }),
-                  metric: Schema.Struct({
-                    name: Schema.String,
-                    selector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                }),
-              ),
-              pods: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  metric: Schema.Struct({
-                    name: Schema.String,
-                    selector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                }),
-              ),
-              resource: Schema.optional(
-                Schema.Struct({
-                  current: Schema.Struct({
-                    averageUtilization: Schema.optional(Schema.Number),
-                    averageValue: Schema.optional(Schema.String),
-                    value: Schema.optional(Schema.String),
-                  }),
-                  name: Schema.String,
-                }),
-              ),
-              type: Schema.String,
-            }),
-          ),
-        ),
-        currentReplicas: Schema.optional(Schema.Number),
-        desiredReplicas: Schema.Number,
-        lastScaleTime: Schema.optional(Schema.String),
-        observedGeneration: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_autoscaling_v2_HorizontalPodAutoscalerStatusSchema,
+      ),
     ),
   });
 export type ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusOutput =
@@ -4919,7 +1246,9 @@ export type WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesInput =
 // Output Schema
 export const WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesOutput =
@@ -4950,7 +1279,9 @@ export type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerInput =
 // Output Schema
 export const WatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerOutput =
@@ -4979,7 +1310,9 @@ export type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListInput =
 // Output Schema
 export const WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListOutput =
@@ -5008,7 +1341,9 @@ export type WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesInput =
 // Output Schema
 export const WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesOutput =
@@ -5039,7 +1374,9 @@ export type WatchAutoscalingV2NamespacedHorizontalPodAutoscalerInput =
 // Output Schema
 export const WatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAutoscalingV2NamespacedHorizontalPodAutoscalerOutput =
@@ -5068,7 +1405,9 @@ export type WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListInput =
 // Output Schema
 export const WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListOutput =

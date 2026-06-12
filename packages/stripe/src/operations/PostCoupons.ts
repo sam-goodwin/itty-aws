@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  coupon_applies_toSchema,
+  coupon_currency_optionSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -40,19 +44,13 @@ export type PostCouponsInput = typeof PostCouponsInput.Type;
 // Output Schema
 export const PostCouponsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   amount_off: Schema.NullOr(Schema.Number),
-  applies_to: Schema.optional(
-    Schema.Struct({
-      products: Schema.Array(Schema.String),
-    }),
-  ),
+  applies_to: Schema.optional(Schema.suspend(() => coupon_applies_toSchema)),
   created: Schema.Number,
   currency: Schema.NullOr(Schema.String),
   currency_options: Schema.optional(
     Schema.Record(
       Schema.String,
-      Schema.Struct({
-        amount_off: Schema.Number,
-      }),
+      Schema.suspend(() => coupon_currency_optionSchema),
     ),
   ),
   duration: Schema.Literals(["forever", "once", "repeating"]),

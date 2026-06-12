@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { VolumeSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
@@ -12,31 +13,7 @@ export type VolumesListInput = typeof VolumesListInput.Type;
 
 // Output Schema
 export const VolumesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    attached_alloc_id: Schema.optional(Schema.String),
-    attached_machine_id: Schema.optional(Schema.String),
-    auto_backup_enabled: Schema.optional(Schema.Boolean),
-    block_size: Schema.optional(Schema.Number),
-    blocks: Schema.optional(Schema.Number),
-    blocks_avail: Schema.optional(Schema.Number),
-    blocks_free: Schema.optional(Schema.Number),
-    bytes_total: Schema.optional(Schema.Number),
-    bytes_used: Schema.optional(Schema.Number),
-    created_at: Schema.optional(Schema.String),
-    encrypted: Schema.optional(Schema.Boolean),
-    fstype: Schema.optional(Schema.String),
-    host_status: Schema.optional(
-      Schema.Literals(["ok", "unknown", "unreachable"]),
-    ),
-    id: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    region: Schema.optional(Schema.String),
-    size_gb: Schema.optional(Schema.Number),
-    snapshot_retention: Schema.optional(Schema.Number),
-    state: Schema.optional(Schema.String),
-    type: Schema.optional(Schema.Literals(["local", "cache"])),
-    zone: Schema.optional(Schema.String),
-  }),
+  Schema.suspend(() => VolumeSchema),
 );
 export type VolumesListOutput = typeof VolumesListOutput.Type;
 

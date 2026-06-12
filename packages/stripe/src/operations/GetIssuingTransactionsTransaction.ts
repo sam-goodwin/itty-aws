@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { issuing_authorization_merchant_dataSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -33,19 +34,9 @@ export const GetIssuingTransactionsTransactionOutput =
     livemode: Schema.Boolean,
     merchant_amount: Schema.Number,
     merchant_currency: Schema.String,
-    merchant_data: Schema.Struct({
-      category: Schema.String,
-      category_code: Schema.String,
-      city: Schema.NullOr(Schema.String),
-      country: Schema.NullOr(Schema.String),
-      name: Schema.NullOr(Schema.String),
-      network_id: Schema.String,
-      postal_code: Schema.NullOr(Schema.String),
-      state: Schema.NullOr(Schema.String),
-      tax_id: Schema.NullOr(Schema.String),
-      terminal_id: Schema.NullOr(Schema.String),
-      url: Schema.NullOr(Schema.String),
-    }),
+    merchant_data: Schema.suspend(
+      () => issuing_authorization_merchant_dataSchema,
+    ),
     metadata: Schema.Record(Schema.String, Schema.String),
     network_data: Schema.Unknown,
     object: Schema.Literals(["issuing.transaction"]),

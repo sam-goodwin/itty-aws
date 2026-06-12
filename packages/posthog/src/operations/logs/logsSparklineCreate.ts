@@ -1,4 +1,9 @@
 import * as Schema from "effect/Schema";
+import {
+  SeverityLevelsEnumSchema,
+  _LogPropertyFilterSchema,
+  _LogsSparklineBucketSchema,
+} from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -16,50 +21,12 @@ export const LogsSparklineCreateInput =
           }),
         ),
         severityLevels: Schema.optional(
-          Schema.Array(
-            Schema.Literals([
-              "trace",
-              "debug",
-              "info",
-              "warn",
-              "error",
-              "fatal",
-            ]),
-          ),
+          Schema.Array(Schema.suspend(() => SeverityLevelsEnumSchema)),
         ),
         serviceNames: Schema.optional(Schema.Array(Schema.String)),
         searchTerm: Schema.optional(Schema.String),
         filterGroup: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              key: Schema.optional(Schema.String),
-              type: Schema.optional(
-                Schema.Literals([
-                  "log",
-                  "log_attribute",
-                  "log_resource_attribute",
-                ]),
-              ),
-              operator: Schema.optional(
-                Schema.Literals([
-                  "exact",
-                  "is_not",
-                  "icontains",
-                  "not_icontains",
-                  "regex",
-                  "not_regex",
-                  "gt",
-                  "lt",
-                  "is_date_exact",
-                  "is_date_before",
-                  "is_date_after",
-                  "is_set",
-                  "is_not_set",
-                ]),
-              ),
-              value: Schema.optional(Schema.NullOr(Schema.Unknown)),
-            }),
-          ),
+          Schema.Array(Schema.suspend(() => _LogPropertyFilterSchema)),
         ),
         sparklineBreakdownBy: Schema.optional(
           Schema.Literals(["severity", "service"]),
@@ -78,14 +45,7 @@ export type LogsSparklineCreateInput = typeof LogsSparklineCreateInput.Type;
 export const LogsSparklineCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          time: Schema.optional(Schema.String),
-          severity: Schema.optional(Schema.String),
-          service: Schema.optional(Schema.String),
-          count: Schema.optional(Schema.Number),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => _LogsSparklineBucketSchema)),
     ),
   });
 export type LogsSparklineCreateOutput = typeof LogsSparklineCreateOutput.Type;

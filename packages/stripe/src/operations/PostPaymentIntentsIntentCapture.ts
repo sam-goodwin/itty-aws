@@ -1,7 +1,13 @@
 import * as Schema from "effect/Schema";
+import {
+  payment_flows_amount_detailsSchema,
+  payment_flows_payment_detailsSchema,
+  payment_flows_payment_intent_async_workflowsSchema,
+  payment_flows_payment_intent_presentment_detailsSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
+import { SensitiveOutputNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const PostPaymentIntentsIntentCaptureInput =
@@ -58,60 +64,7 @@ export const PostPaymentIntentsIntentCaptureOutput =
     amount: Schema.Number,
     amount_capturable: Schema.Number,
     amount_details: Schema.optional(
-      Schema.Struct({
-        discount_amount: Schema.optional(Schema.Number),
-        error: Schema.optional(
-          Schema.Struct({
-            code: Schema.NullOr(
-              Schema.Literals([
-                "amount_details_amount_mismatch",
-                "amount_details_tax_shipping_discount_greater_than_amount",
-              ]),
-            ),
-            message: Schema.NullOr(Schema.String),
-          }),
-        ),
-        line_items: Schema.optional(
-          Schema.Struct({
-            data: Schema.Array(
-              Schema.Struct({
-                discount_amount: Schema.NullOr(Schema.Number),
-                id: Schema.String,
-                object: Schema.Literals([
-                  "payment_intent_amount_details_line_item",
-                ]),
-                payment_method_options: Schema.Unknown,
-                product_code: Schema.NullOr(Schema.String),
-                product_name: Schema.String,
-                quantity: Schema.Number,
-                tax: Schema.Unknown,
-                unit_cost: Schema.Number,
-                unit_of_measure: Schema.NullOr(Schema.String),
-              }),
-            ),
-            has_more: Schema.Boolean,
-            object: Schema.Literals(["list"]),
-            url: Schema.String,
-          }),
-        ),
-        shipping: Schema.optional(
-          Schema.Struct({
-            amount: Schema.NullOr(Schema.Number),
-            from_postal_code: Schema.NullOr(Schema.String),
-            to_postal_code: Schema.NullOr(Schema.String),
-          }),
-        ),
-        tax: Schema.optional(
-          Schema.Struct({
-            total_tax_amount: Schema.NullOr(Schema.Number),
-          }),
-        ),
-        tip: Schema.optional(
-          Schema.Struct({
-            amount: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
+      Schema.suspend(() => payment_flows_amount_detailsSchema),
     ),
     amount_received: Schema.Number,
     application: Schema.Unknown,
@@ -131,7 +84,7 @@ export const PostPaymentIntentsIntentCaptureOutput =
       ]),
     ),
     capture_method: Schema.Literals(["automatic", "automatic_async", "manual"]),
-    client_secret: SensitiveNullableString,
+    client_secret: SensitiveOutputNullableString,
     confirmation_method: Schema.Literals(["automatic", "manual"]),
     created: Schema.Number,
     currency: Schema.String,
@@ -195,17 +148,7 @@ export const PostPaymentIntentsIntentCaptureOutput =
       ),
     ),
     hooks: Schema.optional(
-      Schema.Struct({
-        inputs: Schema.optional(
-          Schema.Struct({
-            tax: Schema.optional(
-              Schema.Struct({
-                calculation: Schema.String,
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => payment_flows_payment_intent_async_workflowsSchema),
     ),
     id: Schema.String,
     last_payment_error: Schema.Unknown,
@@ -216,20 +159,16 @@ export const PostPaymentIntentsIntentCaptureOutput =
     object: Schema.Literals(["payment_intent"]),
     on_behalf_of: Schema.Unknown,
     payment_details: Schema.optional(
-      Schema.Struct({
-        customer_reference: Schema.NullOr(Schema.String),
-        order_reference: Schema.NullOr(Schema.String),
-      }),
+      Schema.suspend(() => payment_flows_payment_detailsSchema),
     ),
     payment_method: Schema.Unknown,
     payment_method_configuration_details: Schema.Unknown,
     payment_method_options: Schema.Unknown,
     payment_method_types: Schema.Array(Schema.String),
     presentment_details: Schema.optional(
-      Schema.Struct({
-        presentment_amount: Schema.Number,
-        presentment_currency: Schema.String,
-      }),
+      Schema.suspend(
+        () => payment_flows_payment_intent_presentment_detailsSchema,
+      ),
     ),
     processing: Schema.Unknown,
     receipt_email: Schema.NullOr(Schema.String),

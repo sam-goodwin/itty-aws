@@ -1,8 +1,14 @@
 import * as Schema from "effect/Schema";
+import {
+  OrganizationBasicSchema,
+  PendingInviteSchema,
+  RoleAtOrganizationEnumSchema,
+  ScenePersonalisationBasicSchema,
+} from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
-import { SensitiveString } from "../../sensitive.ts";
+import { SensitiveString, SensitiveOutputString } from "../../sensitive.ts";
 
 // Input Schema
 export const UsersPartialUpdateInput =
@@ -686,21 +692,7 @@ export const UsersPartialUpdateInput =
       }),
     ),
     organizations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          slug: Schema.optional(Schema.String),
-          logo_media_id: Schema.optional(Schema.NullOr(Schema.String)),
-          membership_level: Schema.optional(
-            Schema.NullOr(Schema.Literals([1, 8, 15])),
-          ),
-          members_can_use_personal_api_keys: Schema.optional(Schema.Boolean),
-          is_active: Schema.optional(Schema.NullOr(Schema.Boolean)),
-          is_not_active_reason: Schema.optional(Schema.NullOr(Schema.String)),
-          is_pending_deletion: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OrganizationBasicSchema)),
     ),
     set_current_organization: Schema.optional(Schema.String),
     set_current_team: Schema.optional(Schema.String),
@@ -712,41 +704,19 @@ export const UsersPartialUpdateInput =
     has_sso_enforcement: Schema.optional(Schema.Boolean),
     has_seen_product_intro_for: Schema.optional(Schema.NullOr(Schema.Unknown)),
     scene_personalisation: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          scene: Schema.optional(Schema.String),
-          dashboard: Schema.optional(Schema.NullOr(Schema.Number)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ScenePersonalisationBasicSchema)),
     ),
     theme_mode: Schema.optional(Schema.Unknown),
     hedgehog_config: Schema.optional(Schema.NullOr(Schema.Unknown)),
     allow_sidebar_suggestions: Schema.optional(Schema.NullOr(Schema.Boolean)),
     shortcut_position: Schema.optional(Schema.Unknown),
     role_at_organization: Schema.optional(
-      Schema.Literals([
-        "engineering",
-        "data",
-        "product",
-        "founder",
-        "leadership",
-        "marketing",
-        "sales",
-        "other",
-      ]),
+      Schema.suspend(() => RoleAtOrganizationEnumSchema),
     ),
     passkeys_enabled_for_2fa: Schema.optional(Schema.NullOr(Schema.Boolean)),
     is_organization_first_user: Schema.optional(Schema.NullOr(Schema.Boolean)),
     pending_invites: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          target_email: Schema.optional(Schema.String),
-          organization_id: Schema.optional(Schema.String),
-          organization_name: Schema.optional(Schema.String),
-          created_at: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PendingInviteSchema)),
     ),
   }).pipe(T.Http({ method: "PATCH", path: "/api/users/{uuid}/" }));
 export type UsersPartialUpdateInput = typeof UsersPartialUpdateInput.Type;
@@ -781,7 +751,7 @@ export const UsersPartialUpdateOutput =
         uuid: Schema.optional(Schema.String),
         organization: Schema.optional(Schema.String),
         project_id: Schema.optional(Schema.Number),
-        api_token: Schema.optional(SensitiveString),
+        api_token: Schema.optional(SensitiveOutputString),
         name: Schema.optional(Schema.String),
         completed_snippet_onboarding: Schema.optional(Schema.Boolean),
         has_completed_onboarding_for: Schema.optional(
@@ -1433,67 +1403,31 @@ export const UsersPartialUpdateOutput =
       }),
     ),
     organizations: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          slug: Schema.optional(Schema.String),
-          logo_media_id: Schema.optional(Schema.NullOr(Schema.String)),
-          membership_level: Schema.optional(
-            Schema.NullOr(Schema.Literals([1, 8, 15])),
-          ),
-          members_can_use_personal_api_keys: Schema.optional(Schema.Boolean),
-          is_active: Schema.optional(Schema.NullOr(Schema.Boolean)),
-          is_not_active_reason: Schema.optional(Schema.NullOr(Schema.String)),
-          is_pending_deletion: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OrganizationBasicSchema)),
     ),
     set_current_organization: Schema.optional(Schema.String),
     set_current_team: Schema.optional(Schema.String),
-    password: Schema.optional(SensitiveString),
-    current_password: Schema.optional(SensitiveString),
+    password: Schema.optional(SensitiveOutputString),
+    current_password: Schema.optional(SensitiveOutputString),
     events_column_config: Schema.optional(Schema.Unknown),
     is_2fa_enabled: Schema.optional(Schema.Boolean),
     has_social_auth: Schema.optional(Schema.Boolean),
     has_sso_enforcement: Schema.optional(Schema.Boolean),
     has_seen_product_intro_for: Schema.optional(Schema.NullOr(Schema.Unknown)),
     scene_personalisation: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          scene: Schema.optional(Schema.String),
-          dashboard: Schema.optional(Schema.NullOr(Schema.Number)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ScenePersonalisationBasicSchema)),
     ),
     theme_mode: Schema.optional(Schema.Unknown),
     hedgehog_config: Schema.optional(Schema.NullOr(Schema.Unknown)),
     allow_sidebar_suggestions: Schema.optional(Schema.NullOr(Schema.Boolean)),
     shortcut_position: Schema.optional(Schema.Unknown),
     role_at_organization: Schema.optional(
-      Schema.Literals([
-        "engineering",
-        "data",
-        "product",
-        "founder",
-        "leadership",
-        "marketing",
-        "sales",
-        "other",
-      ]),
+      Schema.suspend(() => RoleAtOrganizationEnumSchema),
     ),
     passkeys_enabled_for_2fa: Schema.optional(Schema.NullOr(Schema.Boolean)),
     is_organization_first_user: Schema.optional(Schema.NullOr(Schema.Boolean)),
     pending_invites: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          target_email: Schema.optional(Schema.String),
-          organization_id: Schema.optional(Schema.String),
-          organization_name: Schema.optional(Schema.String),
-          created_at: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PendingInviteSchema)),
     ),
   });
 export type UsersPartialUpdateOutput = typeof UsersPartialUpdateOutput.Type;

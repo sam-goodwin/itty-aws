@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { VolumeSnapshotSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
@@ -19,15 +20,7 @@ export type VolumesListSnapshotsInput = typeof VolumesListSnapshotsInput.Type;
 // Output Schema
 export const VolumesListSnapshotsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      created_at: Schema.optional(Schema.String),
-      digest: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      retention_days: Schema.optional(Schema.Number),
-      size: Schema.optional(Schema.Number),
-      status: Schema.optional(Schema.String),
-      volume_size: Schema.optional(Schema.Number),
-    }),
+    Schema.suspend(() => VolumeSnapshotSchema),
   );
 export type VolumesListSnapshotsOutput = typeof VolumesListSnapshotsOutput.Type;
 

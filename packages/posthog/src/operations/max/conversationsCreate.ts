@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { AgentModeEnumSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -16,21 +17,7 @@ export const ConversationsCreateInput =
     billing_context: Schema.optional(Schema.Unknown),
     trace_id: Schema.optional(Schema.String),
     session_id: Schema.optional(Schema.String),
-    agent_mode: Schema.optional(
-      Schema.Literals([
-        "product_analytics",
-        "sql",
-        "session_replay",
-        "error_tracking",
-        "plan",
-        "execution",
-        "survey",
-        "research",
-        "flags",
-        "llm_analytics",
-        "sandbox",
-      ]),
-    ),
+    agent_mode: Schema.optional(Schema.suspend(() => AgentModeEnumSchema)),
     is_sandbox: Schema.optional(Schema.Boolean),
     resume_payload: Schema.optional(Schema.NullOr(Schema.Unknown)),
   }).pipe(
@@ -53,21 +40,7 @@ export const ConversationsCreateOutput =
     billing_context: Schema.optional(Schema.Unknown),
     trace_id: Schema.optional(Schema.String),
     session_id: Schema.optional(Schema.String),
-    agent_mode: Schema.optional(
-      Schema.Literals([
-        "product_analytics",
-        "sql",
-        "session_replay",
-        "error_tracking",
-        "plan",
-        "execution",
-        "survey",
-        "research",
-        "flags",
-        "llm_analytics",
-        "sandbox",
-      ]),
-    ),
+    agent_mode: Schema.optional(Schema.suspend(() => AgentModeEnumSchema)),
     is_sandbox: Schema.optional(Schema.Boolean),
     resume_payload: Schema.optional(Schema.NullOr(Schema.Unknown)),
   });

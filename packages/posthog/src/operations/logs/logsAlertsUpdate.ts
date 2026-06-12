@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  LogsAlertStateIntervalSchema,
+  NotificationDestinationTypeEnumSchema,
+} from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -34,26 +38,10 @@ export const LogsAlertsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   consecutive_failures: Schema.optional(Schema.Number),
   last_error_message: Schema.optional(Schema.NullOr(Schema.String)),
   state_timeline: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        start: Schema.optional(Schema.String),
-        end: Schema.optional(Schema.String),
-        state: Schema.optional(
-          Schema.Literals([
-            "not_firing",
-            "firing",
-            "pending_resolve",
-            "errored",
-            "snoozed",
-            "broken",
-          ]),
-        ),
-        enabled: Schema.optional(Schema.Boolean),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => LogsAlertStateIntervalSchema)),
   ),
   destination_types: Schema.optional(
-    Schema.Array(Schema.Literals(["slack", "webhook"])),
+    Schema.Array(Schema.suspend(() => NotificationDestinationTypeEnumSchema)),
   ),
   created_at: Schema.optional(Schema.String),
   created_by: Schema.optional(
@@ -113,26 +101,10 @@ export const LogsAlertsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     consecutive_failures: Schema.optional(Schema.Number),
     last_error_message: Schema.optional(Schema.NullOr(Schema.String)),
     state_timeline: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          start: Schema.optional(Schema.String),
-          end: Schema.optional(Schema.String),
-          state: Schema.optional(
-            Schema.Literals([
-              "not_firing",
-              "firing",
-              "pending_resolve",
-              "errored",
-              "snoozed",
-              "broken",
-            ]),
-          ),
-          enabled: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LogsAlertStateIntervalSchema)),
     ),
     destination_types: Schema.optional(
-      Schema.Array(Schema.Literals(["slack", "webhook"])),
+      Schema.Array(Schema.suspend(() => NotificationDestinationTypeEnumSchema)),
     ),
     created_at: Schema.optional(Schema.String),
     created_by: Schema.optional(

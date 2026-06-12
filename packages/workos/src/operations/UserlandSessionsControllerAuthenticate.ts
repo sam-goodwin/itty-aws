@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { UserlandUserSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import {
@@ -7,7 +8,7 @@ import {
   NotFound,
   UnprocessableEntity,
 } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const UserlandSessionsControllerAuthenticateInput =
@@ -20,27 +21,11 @@ export type UserlandSessionsControllerAuthenticateInput =
 // Output Schema
 export const UserlandSessionsControllerAuthenticateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    user: Schema.optional(
-      Schema.Struct({
-        object: Schema.optional(Schema.String),
-        id: Schema.optional(Schema.String),
-        first_name: Schema.optional(Schema.NullOr(Schema.String)),
-        last_name: Schema.optional(Schema.NullOr(Schema.String)),
-        profile_picture_url: Schema.optional(Schema.NullOr(Schema.String)),
-        email: Schema.optional(Schema.String),
-        email_verified: Schema.optional(Schema.Boolean),
-        external_id: Schema.optional(Schema.NullOr(Schema.String)),
-        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        last_sign_in_at: Schema.optional(Schema.NullOr(Schema.String)),
-        locale: Schema.optional(Schema.NullOr(Schema.String)),
-        created_at: Schema.optional(Schema.String),
-        updated_at: Schema.optional(Schema.String),
-      }),
-    ),
+    user: Schema.optional(Schema.suspend(() => UserlandUserSchema)),
     organization_id: Schema.optional(Schema.String),
     authkit_authorization_code: Schema.optional(Schema.String),
-    access_token: Schema.optional(SensitiveString),
-    refresh_token: Schema.optional(SensitiveString),
+    access_token: Schema.optional(SensitiveOutputString),
+    refresh_token: Schema.optional(SensitiveOutputString),
     authentication_method: Schema.optional(
       Schema.Literals([
         "SSO",
@@ -76,8 +61,8 @@ export const UserlandSessionsControllerAuthenticateOutput =
     oauth_tokens: Schema.optional(
       Schema.Struct({
         provider: Schema.String,
-        refresh_token: SensitiveString,
-        access_token: SensitiveString,
+        refresh_token: SensitiveOutputString,
+        access_token: SensitiveOutputString,
         expires_at: Schema.Number,
         scopes: Schema.Array(Schema.String),
       }),

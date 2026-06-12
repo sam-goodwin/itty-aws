@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { sigma_scheduled_query_run_errorSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -23,9 +24,7 @@ export const GetSigmaScheduledQueryRunsScheduledQueryRunOutput =
     created: Schema.Number,
     data_load_time: Schema.Number,
     error: Schema.optional(
-      Schema.Struct({
-        message: Schema.String,
-      }),
+      Schema.suspend(() => sigma_scheduled_query_run_errorSchema),
     ),
     file: Schema.Unknown,
     id: Schema.String,

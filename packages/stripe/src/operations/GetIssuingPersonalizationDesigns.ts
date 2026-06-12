@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { issuing_personalization_designSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -28,52 +29,7 @@ export type GetIssuingPersonalizationDesignsInput =
 export const GetIssuingPersonalizationDesignsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
-      Schema.Struct({
-        card_logo: Schema.Unknown,
-        carrier_text: Schema.Unknown,
-        created: Schema.Number,
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        lookup_key: Schema.NullOr(Schema.String),
-        metadata: Schema.Record(Schema.String, Schema.String),
-        name: Schema.NullOr(Schema.String),
-        object: Schema.Literals(["issuing.personalization_design"]),
-        physical_bundle: Schema.Unknown,
-        preferences: Schema.Struct({
-          is_default: Schema.Boolean,
-          is_platform_default: Schema.NullOr(Schema.Boolean),
-        }),
-        rejection_reasons: Schema.Struct({
-          card_logo: Schema.NullOr(
-            Schema.Array(
-              Schema.Literals([
-                "geographic_location",
-                "inappropriate",
-                "network_name",
-                "non_binary_image",
-                "non_fiat_currency",
-                "other",
-                "other_entity",
-                "promotional_material",
-              ]),
-            ),
-          ),
-          carrier_text: Schema.NullOr(
-            Schema.Array(
-              Schema.Literals([
-                "geographic_location",
-                "inappropriate",
-                "network_name",
-                "non_fiat_currency",
-                "other",
-                "other_entity",
-                "promotional_material",
-              ]),
-            ),
-          ),
-        }),
-        status: Schema.Literals(["active", "inactive", "rejected", "review"]),
-      }),
+      Schema.suspend(() => issuing_personalization_designSchema),
     ),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { StopwordsSetSchemaSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
@@ -13,11 +14,7 @@ export type RetrieveStopwordsSetInput = typeof RetrieveStopwordsSetInput.Type;
 // Output Schema
 export const RetrieveStopwordsSetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    stopwords: Schema.Struct({
-      id: Schema.String,
-      stopwords: Schema.Array(Schema.String),
-      locale: Schema.optional(Schema.String),
-    }),
+    stopwords: Schema.suspend(() => StopwordsSetSchemaSchema),
   });
 export type RetrieveStopwordsSetOutput = typeof RetrieveStopwordsSetOutput.Type;
 

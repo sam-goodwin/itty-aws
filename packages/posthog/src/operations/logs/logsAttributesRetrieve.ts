@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { _LogAttributeEntrySchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -27,12 +28,7 @@ export type LogsAttributesRetrieveInput =
 export const LogsAttributesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          propertyFilterType: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => _LogAttributeEntrySchema)),
     ),
     count: Schema.optional(Schema.Number),
   });

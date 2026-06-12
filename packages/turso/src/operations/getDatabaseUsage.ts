@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { DatabaseUsageOutputSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
@@ -20,34 +21,7 @@ export type GetDatabaseUsageInput = typeof GetDatabaseUsageInput.Type;
 // Output Schema
 export const GetDatabaseUsageOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    database: Schema.optional(
-      Schema.Struct({
-        uuid: Schema.optional(Schema.String),
-        instances: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              uuid: Schema.optional(Schema.String),
-              usage: Schema.optional(
-                Schema.Struct({
-                  rows_read: Schema.optional(Schema.Number),
-                  rows_written: Schema.optional(Schema.Number),
-                  storage_bytes: Schema.optional(Schema.Number),
-                  bytes_synced: Schema.optional(Schema.Number),
-                }),
-              ),
-            }),
-          ),
-        ),
-        total: Schema.optional(
-          Schema.Struct({
-            rows_read: Schema.optional(Schema.Number),
-            rows_written: Schema.optional(Schema.Number),
-            storage_bytes: Schema.optional(Schema.Number),
-            bytes_synced: Schema.optional(Schema.Number),
-          }),
-        ),
-      }),
-    ),
+    database: Schema.optional(Schema.suspend(() => DatabaseUsageOutputSchema)),
   },
 );
 export type GetDatabaseUsageOutput = typeof GetDatabaseUsageOutput.Type;

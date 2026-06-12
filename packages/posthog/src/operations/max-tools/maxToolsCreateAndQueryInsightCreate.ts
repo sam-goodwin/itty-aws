@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { InsightTypeEnumSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -8,9 +9,7 @@ export const MaxToolsCreateAndQueryInsightCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     project_id: Schema.String.pipe(T.PathParam()),
     query: Schema.optional(Schema.String),
-    insight_type: Schema.optional(
-      Schema.Literals(["trends", "funnel", "retention", "sql"]),
-    ),
+    insight_type: Schema.optional(Schema.suspend(() => InsightTypeEnumSchema)),
   }).pipe(
     T.Http({
       method: "POST",

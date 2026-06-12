@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { GroupUsageMetricSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -26,18 +27,7 @@ export const GroupsTypesMetricsListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          format: Schema.optional(Schema.Literals(["numeric", "currency"])),
-          interval: Schema.optional(Schema.Number),
-          display: Schema.optional(Schema.Literals(["number", "sparkline"])),
-          filters: Schema.optional(Schema.Unknown),
-          math: Schema.optional(Schema.Literals(["count", "sum"])),
-          math_property: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GroupUsageMetricSchema)),
     ),
   });
 export type GroupsTypesMetricsListOutput =

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ActivityLogEntrySchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -22,49 +23,7 @@ export type FeatureFlagsAllActivityRetrieveInput =
 export const FeatureFlagsAllActivityRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          user: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          activity: Schema.optional(Schema.String),
-          scope: Schema.optional(Schema.String),
-          item_id: Schema.optional(Schema.String),
-          detail: Schema.optional(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              changes: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    type: Schema.optional(Schema.String),
-                    action: Schema.optional(Schema.String),
-                    field: Schema.optional(Schema.String),
-                    before: Schema.optional(Schema.Unknown),
-                    after: Schema.optional(Schema.Unknown),
-                  }),
-                ),
-              ),
-              merge: Schema.optional(
-                Schema.Struct({
-                  type: Schema.optional(Schema.String),
-                  source: Schema.optional(Schema.Unknown),
-                  target: Schema.optional(Schema.Unknown),
-                }),
-              ),
-              trigger: Schema.optional(
-                Schema.Struct({
-                  job_type: Schema.optional(Schema.String),
-                  job_id: Schema.optional(Schema.String),
-                  payload: Schema.optional(Schema.Unknown),
-                }),
-              ),
-              name: Schema.optional(Schema.String),
-              short_id: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-            }),
-          ),
-          created_at: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ActivityLogEntrySchema)),
     ),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),

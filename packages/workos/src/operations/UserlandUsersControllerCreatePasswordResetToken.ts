@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const UserlandUsersControllerCreatePasswordResetTokenInput =
@@ -21,8 +21,8 @@ export const UserlandUsersControllerCreatePasswordResetTokenOutput =
     email: Schema.optional(Schema.String),
     expires_at: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
-    password_reset_token: Schema.optional(SensitiveString),
-    password_reset_url: Schema.optional(SensitiveString),
+    password_reset_token: Schema.optional(SensitiveOutputString),
+    password_reset_url: Schema.optional(SensitiveOutputString),
   });
 export type UserlandUsersControllerCreatePasswordResetTokenOutput =
   typeof UserlandUsersControllerCreatePasswordResetTokenOutput.Type;

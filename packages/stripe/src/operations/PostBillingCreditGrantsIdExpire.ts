@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  billing_credit_grants_resource_amountSchema,
+  billing_credit_grants_resource_applicability_configSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -20,22 +24,10 @@ export type PostBillingCreditGrantsIdExpireInput =
 // Output Schema
 export const PostBillingCreditGrantsIdExpireOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    amount: Schema.Struct({
-      monetary: Schema.Unknown,
-      type: Schema.Literals(["monetary"]),
-    }),
-    applicability_config: Schema.Struct({
-      scope: Schema.Struct({
-        price_type: Schema.optional(Schema.Literals(["metered"])),
-        prices: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.NullOr(Schema.String),
-            }),
-          ),
-        ),
-      }),
-    }),
+    amount: Schema.suspend(() => billing_credit_grants_resource_amountSchema),
+    applicability_config: Schema.suspend(
+      () => billing_credit_grants_resource_applicability_configSchema,
+    ),
     category: Schema.Literals(["paid", "promotional"]),
     created: Schema.Number,
     customer: Schema.Unknown,

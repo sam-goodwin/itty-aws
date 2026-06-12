@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { OrganizationDomainDataDtoSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import {
@@ -17,12 +18,7 @@ export const OrganizationsControllerUpdateOrganizationInput =
     allow_profiles_outside_organization: Schema.optional(Schema.Boolean),
     domains: Schema.optional(Schema.Array(Schema.String)),
     domain_data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          domain: Schema.optional(Schema.String),
-          state: Schema.optional(Schema.Literals(["pending", "verified"])),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OrganizationDomainDataDtoSchema)),
     ),
     stripe_customer_id: Schema.optional(Schema.String),
     metadata: Schema.optional(

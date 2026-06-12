@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { v2_core_eventSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -13,28 +14,7 @@ export type GetV2CoreEventsInput = typeof GetV2CoreEventsInput.Type;
 
 // Output Schema
 export const GetV2CoreEventsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  data: Schema.Array(
-    Schema.Struct({
-      changes: Schema.optional(Schema.Unknown),
-      context: Schema.optional(Schema.String),
-      created: Schema.String,
-      id: Schema.String,
-      livemode: Schema.Boolean,
-      object: Schema.Literals(["v2.core.event"]),
-      reason: Schema.optional(
-        Schema.Struct({
-          request: Schema.optional(
-            Schema.Struct({
-              id: Schema.String,
-              idempotency_key: Schema.String,
-            }),
-          ),
-          type: Schema.Literals(["request"]),
-        }),
-      ),
-      type: Schema.String,
-    }),
-  ),
+  data: Schema.Array(Schema.suspend(() => v2_core_eventSchema)),
   next_page_url: Schema.NullOr(Schema.String),
   previous_page_url: Schema.NullOr(Schema.String),
 });

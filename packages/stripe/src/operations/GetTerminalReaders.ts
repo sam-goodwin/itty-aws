@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { terminal_readerSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -39,35 +40,7 @@ export type GetTerminalReadersInput = typeof GetTerminalReadersInput.Type;
 // Output Schema
 export const GetTerminalReadersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        action: Schema.Unknown,
-        device_sw_version: Schema.NullOr(Schema.String),
-        device_type: Schema.Literals([
-          "bbpos_chipper2x",
-          "bbpos_wisepad3",
-          "bbpos_wisepos_e",
-          "mobile_phone_reader",
-          "simulated_stripe_s700",
-          "simulated_stripe_s710",
-          "simulated_wisepos_e",
-          "stripe_m2",
-          "stripe_s700",
-          "stripe_s710",
-          "verifone_P400",
-        ]),
-        id: Schema.String,
-        ip_address: Schema.NullOr(Schema.String),
-        label: Schema.String,
-        last_seen_at: Schema.NullOr(Schema.Number),
-        livemode: Schema.Boolean,
-        location: Schema.Unknown,
-        metadata: Schema.Record(Schema.String, Schema.String),
-        object: Schema.Literals(["terminal.reader"]),
-        serial_number: Schema.String,
-        status: Schema.NullOr(Schema.Literals(["offline", "online"])),
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => terminal_readerSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

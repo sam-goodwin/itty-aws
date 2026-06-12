@@ -1,4 +1,9 @@
 import * as Schema from "effect/Schema";
+import {
+  CurationExcludeSchema,
+  CurationIncludeSchema,
+  CurationRuleSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
@@ -8,26 +13,12 @@ export const UpsertCurationSetItemInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     curationSetName: Schema.String.pipe(T.PathParam()),
     itemId: Schema.String.pipe(T.PathParam()),
-    rule: Schema.Struct({
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      query: Schema.optional(Schema.String),
-      match: Schema.optional(Schema.Literals(["exact", "contains"])),
-      filter_by: Schema.optional(Schema.String),
-    }),
+    rule: Schema.suspend(() => CurationRuleSchema),
     includes: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          position: Schema.Number,
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CurationIncludeSchema)),
     ),
     excludes: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CurationExcludeSchema)),
     ),
     filter_by: Schema.optional(Schema.String),
     remove_matched_tokens: Schema.optional(Schema.Boolean),
@@ -50,26 +41,12 @@ export type UpsertCurationSetItemInput = typeof UpsertCurationSetItemInput.Type;
 // Output Schema
 export const UpsertCurationSetItemOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    rule: Schema.Struct({
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      query: Schema.optional(Schema.String),
-      match: Schema.optional(Schema.Literals(["exact", "contains"])),
-      filter_by: Schema.optional(Schema.String),
-    }),
+    rule: Schema.suspend(() => CurationRuleSchema),
     includes: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          position: Schema.Number,
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CurationIncludeSchema)),
     ),
     excludes: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CurationExcludeSchema)),
     ),
     filter_by: Schema.optional(Schema.String),
     remove_matched_tokens: Schema.optional(Schema.Boolean),

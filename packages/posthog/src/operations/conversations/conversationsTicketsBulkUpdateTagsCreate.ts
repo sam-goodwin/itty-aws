@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  BulkUpdateTagsErrorSchema,
+  BulkUpdateTagsItemSchema,
+} from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -23,20 +27,10 @@ export type ConversationsTicketsBulkUpdateTagsCreateInput =
 export const ConversationsTicketsBulkUpdateTagsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     updated: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          tags: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => BulkUpdateTagsItemSchema)),
     ),
     skipped: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          reason: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => BulkUpdateTagsErrorSchema)),
     ),
   });
 export type ConversationsTicketsBulkUpdateTagsCreateOutput =

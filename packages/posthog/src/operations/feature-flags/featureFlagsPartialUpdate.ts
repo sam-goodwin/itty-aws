@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  FeatureFlagConditionGroupSchemaSchema,
+  FeatureFlagMultivariateVariantSchemaSchema,
+} from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -14,14 +18,7 @@ export const FeatureFlagsPartialUpdateInput =
       Schema.Struct({
         groups: Schema.optional(
           Schema.Array(
-            Schema.Struct({
-              properties: Schema.optional(Schema.Array(Schema.Unknown)),
-              rollout_percentage: Schema.optional(Schema.Number),
-              variant: Schema.optional(Schema.NullOr(Schema.String)),
-              aggregation_group_type_index: Schema.optional(
-                Schema.NullOr(Schema.Number),
-              ),
-            }),
+            Schema.suspend(() => FeatureFlagConditionGroupSchemaSchema),
           ),
         ),
         multivariate: Schema.optional(
@@ -29,11 +26,9 @@ export const FeatureFlagsPartialUpdateInput =
             Schema.Struct({
               variants: Schema.optional(
                 Schema.Array(
-                  Schema.Struct({
-                    key: Schema.optional(Schema.String),
-                    name: Schema.optional(Schema.String),
-                    rollout_percentage: Schema.optional(Schema.Number),
-                  }),
+                  Schema.suspend(
+                    () => FeatureFlagMultivariateVariantSchemaSchema,
+                  ),
                 ),
               ),
             }),

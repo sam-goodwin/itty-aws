@@ -1,4 +1,11 @@
 import * as Schema from "effect/Schema";
+import {
+  billing_bill_resource_invoicing_taxes_taxSchema,
+  credit_note_line_itemSchema,
+  credit_note_refundSchema,
+  credit_notes_pretax_credit_amountSchema,
+  discounts_resource_discount_amountSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -31,126 +38,13 @@ export const PostCreditNotesIdOutput =
     customer_balance_transaction: Schema.Unknown,
     discount_amount: Schema.Number,
     discount_amounts: Schema.Array(
-      Schema.Struct({
-        amount: Schema.Number,
-        discount: Schema.Unknown,
-      }),
+      Schema.suspend(() => discounts_resource_discount_amountSchema),
     ),
     effective_at: Schema.NullOr(Schema.Number),
     id: Schema.String,
     invoice: Schema.Unknown,
     lines: Schema.Struct({
-      data: Schema.Array(
-        Schema.Struct({
-          amount: Schema.Number,
-          description: Schema.NullOr(Schema.String),
-          discount_amount: Schema.Number,
-          discount_amounts: Schema.Array(
-            Schema.Struct({
-              amount: Schema.Number,
-              discount: Schema.Unknown,
-            }),
-          ),
-          id: Schema.String,
-          invoice_line_item: Schema.optional(Schema.String),
-          livemode: Schema.Boolean,
-          metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-          object: Schema.Literals(["credit_note_line_item"]),
-          pretax_credit_amounts: Schema.Array(
-            Schema.Struct({
-              amount: Schema.Number,
-              credit_balance_transaction: Schema.optional(Schema.Unknown),
-              discount: Schema.optional(Schema.Unknown),
-              type: Schema.Literals(["credit_balance_transaction", "discount"]),
-            }),
-          ),
-          quantity: Schema.NullOr(Schema.Number),
-          tax_rates: Schema.Array(
-            Schema.Struct({
-              active: Schema.Boolean,
-              country: Schema.NullOr(Schema.String),
-              created: Schema.Number,
-              description: Schema.NullOr(Schema.String),
-              display_name: Schema.String,
-              effective_percentage: Schema.NullOr(Schema.Number),
-              flat_amount: Schema.Unknown,
-              id: Schema.String,
-              inclusive: Schema.Boolean,
-              jurisdiction: Schema.NullOr(Schema.String),
-              jurisdiction_level: Schema.NullOr(
-                Schema.Literals([
-                  "city",
-                  "country",
-                  "county",
-                  "district",
-                  "multiple",
-                  "state",
-                ]),
-              ),
-              livemode: Schema.Boolean,
-              metadata: Schema.NullOr(
-                Schema.Record(Schema.String, Schema.String),
-              ),
-              object: Schema.Literals(["tax_rate"]),
-              percentage: Schema.Number,
-              rate_type: Schema.NullOr(
-                Schema.Literals(["flat_amount", "percentage"]),
-              ),
-              state: Schema.NullOr(Schema.String),
-              tax_type: Schema.NullOr(
-                Schema.Literals([
-                  "amusement_tax",
-                  "communications_tax",
-                  "gst",
-                  "hst",
-                  "igst",
-                  "jct",
-                  "lease_tax",
-                  "pst",
-                  "qst",
-                  "retail_delivery_fee",
-                  "rst",
-                  "sales_tax",
-                  "service_tax",
-                  "vat",
-                ]),
-              ),
-            }),
-          ),
-          taxes: Schema.NullOr(
-            Schema.Array(
-              Schema.Struct({
-                amount: Schema.Number,
-                tax_behavior: Schema.Literals(["exclusive", "inclusive"]),
-                tax_rate_details: Schema.Unknown,
-                taxability_reason: Schema.Literals([
-                  "customer_exempt",
-                  "not_available",
-                  "not_collecting",
-                  "not_subject_to_tax",
-                  "not_supported",
-                  "portion_product_exempt",
-                  "portion_reduced_rated",
-                  "portion_standard_rated",
-                  "product_exempt",
-                  "product_exempt_holiday",
-                  "proportionally_rated",
-                  "reduced_rated",
-                  "reverse_charge",
-                  "standard_rated",
-                  "taxable_basis_reduced",
-                  "zero_rated",
-                ]),
-                taxable_amount: Schema.NullOr(Schema.Number),
-                type: Schema.Literals(["tax_rate_details"]),
-              }),
-            ),
-          ),
-          type: Schema.Literals(["custom_line_item", "invoice_line_item"]),
-          unit_amount: Schema.NullOr(Schema.Number),
-          unit_amount_decimal: Schema.NullOr(Schema.String),
-        }),
-      ),
+      data: Schema.Array(Schema.suspend(() => credit_note_line_itemSchema)),
       has_more: Schema.Boolean,
       object: Schema.Literals(["list"]),
       url: Schema.String,
@@ -165,12 +59,7 @@ export const PostCreditNotesIdOutput =
     post_payment_amount: Schema.Number,
     pre_payment_amount: Schema.Number,
     pretax_credit_amounts: Schema.Array(
-      Schema.Struct({
-        amount: Schema.Number,
-        credit_balance_transaction: Schema.optional(Schema.Unknown),
-        discount: Schema.optional(Schema.Unknown),
-        type: Schema.Literals(["credit_balance_transaction", "discount"]),
-      }),
+      Schema.suspend(() => credit_notes_pretax_credit_amountSchema),
     ),
     reason: Schema.NullOr(
       Schema.Literals([
@@ -180,16 +69,7 @@ export const PostCreditNotesIdOutput =
         "product_unsatisfactory",
       ]),
     ),
-    refunds: Schema.Array(
-      Schema.Struct({
-        amount_refunded: Schema.Number,
-        payment_record_refund: Schema.Unknown,
-        refund: Schema.Unknown,
-        type: Schema.NullOr(
-          Schema.Literals(["payment_record_refund", "refund"]),
-        ),
-      }),
-    ),
+    refunds: Schema.Array(Schema.suspend(() => credit_note_refundSchema)),
     shipping_cost: Schema.Unknown,
     status: Schema.Literals(["issued", "void"]),
     subtotal: Schema.Number,
@@ -198,31 +78,7 @@ export const PostCreditNotesIdOutput =
     total_excluding_tax: Schema.NullOr(Schema.Number),
     total_taxes: Schema.NullOr(
       Schema.Array(
-        Schema.Struct({
-          amount: Schema.Number,
-          tax_behavior: Schema.Literals(["exclusive", "inclusive"]),
-          tax_rate_details: Schema.Unknown,
-          taxability_reason: Schema.Literals([
-            "customer_exempt",
-            "not_available",
-            "not_collecting",
-            "not_subject_to_tax",
-            "not_supported",
-            "portion_product_exempt",
-            "portion_reduced_rated",
-            "portion_standard_rated",
-            "product_exempt",
-            "product_exempt_holiday",
-            "proportionally_rated",
-            "reduced_rated",
-            "reverse_charge",
-            "standard_rated",
-            "taxable_basis_reduced",
-            "zero_rated",
-          ]),
-          taxable_amount: Schema.NullOr(Schema.Number),
-          type: Schema.Literals(["tax_rate_details"]),
-        }),
+        Schema.suspend(() => billing_bill_resource_invoicing_taxes_taxSchema),
       ),
     ),
     type: Schema.Literals(["mixed", "post_payment", "pre_payment"]),

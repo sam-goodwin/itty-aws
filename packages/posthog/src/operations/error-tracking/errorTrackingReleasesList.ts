@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ErrorTrackingReleaseSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -25,17 +26,7 @@ export const ErrorTrackingReleasesListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          hash_id: Schema.optional(Schema.String),
-          team_id: Schema.optional(Schema.Number),
-          created_at: Schema.optional(Schema.String),
-          metadata: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          version: Schema.optional(Schema.String),
-          project: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ErrorTrackingReleaseSchema)),
     ),
   });
 export type ErrorTrackingReleasesListOutput =

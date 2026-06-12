@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { promotion_codeSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -28,39 +29,7 @@ export type GetPromotionCodesInput = typeof GetPromotionCodesInput.Type;
 // Output Schema
 export const GetPromotionCodesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        active: Schema.Boolean,
-        code: Schema.String,
-        created: Schema.Number,
-        customer: Schema.Unknown,
-        customer_account: Schema.NullOr(Schema.String),
-        expires_at: Schema.NullOr(Schema.Number),
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        max_redemptions: Schema.NullOr(Schema.Number),
-        metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-        object: Schema.Literals(["promotion_code"]),
-        promotion: Schema.Struct({
-          coupon: Schema.Unknown,
-          type: Schema.Literals(["coupon"]),
-        }),
-        restrictions: Schema.Struct({
-          currency_options: Schema.optional(
-            Schema.Record(
-              Schema.String,
-              Schema.Struct({
-                minimum_amount: Schema.Number,
-              }),
-            ),
-          ),
-          first_time_transaction: Schema.Boolean,
-          minimum_amount: Schema.NullOr(Schema.Number),
-          minimum_amount_currency: Schema.NullOr(Schema.String),
-        }),
-        times_redeemed: Schema.Number,
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => promotion_codeSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

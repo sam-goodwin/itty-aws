@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { SlimRoleSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
@@ -22,11 +23,7 @@ export const AuthorizationRoleAssignmentsControllerAssignRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     id: Schema.optional(Schema.String),
-    role: Schema.optional(
-      Schema.Struct({
-        slug: Schema.optional(Schema.String),
-      }),
-    ),
+    role: Schema.optional(Schema.suspend(() => SlimRoleSchema)),
     resource: Schema.optional(
       Schema.Struct({
         id: Schema.String,

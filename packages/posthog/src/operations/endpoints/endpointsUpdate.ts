@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { EndpointColumnSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -79,12 +80,7 @@ export const EndpointsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
   ),
   columns: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => EndpointColumnSchema)),
   ),
 });
 export type EndpointsUpdateOutput = typeof EndpointsUpdateOutput.Type;

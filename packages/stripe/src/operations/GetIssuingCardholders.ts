@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { issuing_cardholderSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -26,61 +27,7 @@ export type GetIssuingCardholdersInput = typeof GetIssuingCardholdersInput.Type;
 // Output Schema
 export const GetIssuingCardholdersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        billing: Schema.Struct({
-          address: Schema.Struct({
-            city: Schema.NullOr(Schema.String),
-            country: Schema.NullOr(Schema.String),
-            line1: Schema.NullOr(Schema.String),
-            line2: Schema.NullOr(Schema.String),
-            postal_code: Schema.NullOr(Schema.String),
-            state: Schema.NullOr(Schema.String),
-          }),
-        }),
-        company: Schema.Unknown,
-        created: Schema.Number,
-        email: Schema.NullOr(Schema.String),
-        id: Schema.String,
-        individual: Schema.Unknown,
-        livemode: Schema.Boolean,
-        metadata: Schema.Record(Schema.String, Schema.String),
-        name: Schema.String,
-        object: Schema.Literals(["issuing.cardholder"]),
-        phone_number: Schema.NullOr(Schema.String),
-        preferred_locales: Schema.NullOr(
-          Schema.Array(Schema.Literals(["de", "en", "es", "fr", "it"])),
-        ),
-        requirements: Schema.Struct({
-          disabled_reason: Schema.NullOr(
-            Schema.Literals([
-              "listed",
-              "rejected.listed",
-              "requirements.past_due",
-              "under_review",
-            ]),
-          ),
-          past_due: Schema.NullOr(
-            Schema.Array(
-              Schema.Literals([
-                "company.tax_id",
-                "individual.card_issuing.user_terms_acceptance.date",
-                "individual.card_issuing.user_terms_acceptance.ip",
-                "individual.dob.day",
-                "individual.dob.month",
-                "individual.dob.year",
-                "individual.first_name",
-                "individual.last_name",
-                "individual.verification.document",
-              ]),
-            ),
-          ),
-        }),
-        spending_controls: Schema.Unknown,
-        status: Schema.Literals(["active", "blocked", "inactive"]),
-        type: Schema.Literals(["company", "individual"]),
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => issuing_cardholderSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

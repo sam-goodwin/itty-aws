@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ProcessStatSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
@@ -21,23 +22,7 @@ export type MachinesListProcessesInput = typeof MachinesListProcessesInput.Type;
 // Output Schema
 export const MachinesListProcessesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      command: Schema.optional(Schema.String),
-      cpu: Schema.optional(Schema.Number),
-      directory: Schema.optional(Schema.String),
-      listen_sockets: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            address: Schema.optional(Schema.String),
-            proto: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      pid: Schema.optional(Schema.Number),
-      rss: Schema.optional(Schema.Number),
-      rtime: Schema.optional(Schema.Number),
-      stime: Schema.optional(Schema.Number),
-    }),
+    Schema.suspend(() => ProcessStatSchema),
   );
 export type MachinesListProcessesOutput =
   typeof MachinesListProcessesOutput.Type;

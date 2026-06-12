@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { VirtualFieldWithIdSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
@@ -10,15 +11,7 @@ export type GetVirtualFieldsInput = typeof GetVirtualFieldsInput.Type;
 
 // Output Schema
 export const GetVirtualFieldsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    dataset: Schema.String,
-    description: Schema.optional(Schema.String),
-    expression: Schema.String,
-    name: Schema.String,
-    type: Schema.optional(Schema.String),
-    unit: Schema.optional(Schema.String),
-    id: Schema.String,
-  }),
+  Schema.suspend(() => VirtualFieldWithIdSchema),
 );
 export type GetVirtualFieldsOutput = typeof GetVirtualFieldsOutput.Type;
 

@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveString, SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const V1ExchangeOauthTokenInput =
@@ -30,8 +30,8 @@ export type V1ExchangeOauthTokenInput = typeof V1ExchangeOauthTokenInput.Type;
 // Output Schema
 export const V1ExchangeOauthTokenOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    access_token: SensitiveString,
-    refresh_token: SensitiveString,
+    access_token: SensitiveOutputString,
+    refresh_token: SensitiveOutputString,
     expires_in: Schema.Number,
     token_type: Schema.Literals(["Bearer"]),
   });

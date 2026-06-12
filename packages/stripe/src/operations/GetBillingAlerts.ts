@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { billing_alertSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -22,19 +23,7 @@ export type GetBillingAlertsInput = typeof GetBillingAlertsInput.Type;
 // Output Schema
 export const GetBillingAlertsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    data: Schema.Array(
-      Schema.Struct({
-        alert_type: Schema.Literals(["usage_threshold"]),
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        object: Schema.Literals(["billing.alert"]),
-        status: Schema.NullOr(
-          Schema.Literals(["active", "archived", "inactive"]),
-        ),
-        title: Schema.String,
-        usage_threshold: Schema.Unknown,
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => billing_alertSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

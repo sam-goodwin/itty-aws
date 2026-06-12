@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { GroupWithIDSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
@@ -10,14 +11,7 @@ export type ListGroupsInput = typeof ListGroupsInput.Type;
 
 // Output Schema
 export const ListGroupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    description: Schema.optional(Schema.String),
-    isManaged: Schema.optional(Schema.Boolean),
-    members: Schema.optional(Schema.Array(Schema.String)),
-    name: Schema.String,
-    roles: Schema.optional(Schema.Array(Schema.String)),
-    id: Schema.String,
-  }),
+  Schema.suspend(() => GroupWithIDSchema),
 );
 export type ListGroupsOutput = typeof ListGroupsOutput.Type;
 

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { billing_meter_event_summarySchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -27,17 +28,7 @@ export type GetBillingMetersIdEventSummariesInput =
 // Output Schema
 export const GetBillingMetersIdEventSummariesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        aggregated_value: Schema.Number,
-        end_time: Schema.Number,
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        meter: Schema.String,
-        object: Schema.Literals(["billing.meter_event_summary"]),
-        start_time: Schema.Number,
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => billing_meter_event_summarySchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

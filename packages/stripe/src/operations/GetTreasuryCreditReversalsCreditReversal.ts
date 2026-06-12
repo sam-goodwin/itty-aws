@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { treasury_received_credits_resource_status_transitionsSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -32,9 +33,9 @@ export const GetTreasuryCreditReversalsCreditReversalOutput =
     object: Schema.Literals(["treasury.credit_reversal"]),
     received_credit: Schema.String,
     status: Schema.Literals(["canceled", "posted", "processing"]),
-    status_transitions: Schema.Struct({
-      posted_at: Schema.NullOr(Schema.Number),
-    }),
+    status_transitions: Schema.suspend(
+      () => treasury_received_credits_resource_status_transitionsSchema,
+    ),
     transaction: Schema.Unknown,
   });
 export type GetTreasuryCreditReversalsCreditReversalOutput =

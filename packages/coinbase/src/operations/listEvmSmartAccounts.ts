@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { EvmSmartAccountSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -13,16 +14,7 @@ export type ListEvmSmartAccountsInput = typeof ListEvmSmartAccountsInput.Type;
 // Output Schema
 export const ListEvmSmartAccountsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accounts: Schema.Array(
-      Schema.Struct({
-        address: Schema.String,
-        owners: Schema.Array(Schema.String),
-        name: Schema.optional(Schema.String),
-        policies: Schema.optional(Schema.Array(Schema.String)),
-        createdAt: Schema.optional(Schema.String),
-        updatedAt: Schema.optional(Schema.String),
-      }),
-    ),
+    accounts: Schema.Array(Schema.suspend(() => EvmSmartAccountSchema)),
     nextPageToken: Schema.optional(Schema.String),
   });
 export type ListEvmSmartAccountsOutput = typeof ListEvmSmartAccountsOutput.Type;

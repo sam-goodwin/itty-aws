@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { GitHubRepoSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
@@ -21,13 +22,7 @@ export type IntegrationsGithubReposRefreshCreateInput =
 export const IntegrationsGithubReposRefreshCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     repositories: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          name: Schema.optional(Schema.String),
-          full_name: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => GitHubRepoSchema)),
     ),
   });
 export type IntegrationsGithubReposRefreshCreateOutput =

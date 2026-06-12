@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { fee_refundSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -34,18 +35,7 @@ export const GetApplicationFeesIdOutput =
     originating_transaction: Schema.Unknown,
     refunded: Schema.Boolean,
     refunds: Schema.Struct({
-      data: Schema.Array(
-        Schema.Struct({
-          amount: Schema.Number,
-          balance_transaction: Schema.Unknown,
-          created: Schema.Number,
-          currency: Schema.String,
-          fee: Schema.Unknown,
-          id: Schema.String,
-          metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-          object: Schema.Literals(["fee_refund"]),
-        }),
-      ),
+      data: Schema.Array(Schema.suspend(() => fee_refundSchema)),
       has_more: Schema.Boolean,
       object: Schema.Literals(["list"]),
       url: Schema.String,

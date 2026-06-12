@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { billing_credit_grantSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -24,41 +25,7 @@ export type GetBillingCreditGrantsInput =
 // Output Schema
 export const GetBillingCreditGrantsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        amount: Schema.Struct({
-          monetary: Schema.Unknown,
-          type: Schema.Literals(["monetary"]),
-        }),
-        applicability_config: Schema.Struct({
-          scope: Schema.Struct({
-            price_type: Schema.optional(Schema.Literals(["metered"])),
-            prices: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.NullOr(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        }),
-        category: Schema.Literals(["paid", "promotional"]),
-        created: Schema.Number,
-        customer: Schema.Unknown,
-        customer_account: Schema.NullOr(Schema.String),
-        effective_at: Schema.NullOr(Schema.Number),
-        expires_at: Schema.NullOr(Schema.Number),
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        metadata: Schema.Record(Schema.String, Schema.String),
-        name: Schema.NullOr(Schema.String),
-        object: Schema.Literals(["billing.credit_grant"]),
-        priority: Schema.optional(Schema.NullOr(Schema.Number)),
-        test_clock: Schema.Unknown,
-        updated: Schema.Number,
-        voided_at: Schema.NullOr(Schema.Number),
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => billing_credit_grantSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

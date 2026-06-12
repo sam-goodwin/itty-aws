@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { entitlements_active_entitlementSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -24,13 +25,7 @@ export type GetEntitlementsActiveEntitlementsInput =
 export const GetEntitlementsActiveEntitlementsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
-      Schema.Struct({
-        feature: Schema.Unknown,
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        lookup_key: Schema.String,
-        object: Schema.Literals(["entitlements.active_entitlement"]),
-      }),
+      Schema.suspend(() => entitlements_active_entitlementSchema),
     ),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),

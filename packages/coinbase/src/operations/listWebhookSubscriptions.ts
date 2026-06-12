@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
+import { WebhookSubscriptionResponseSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const ListWebhookSubscriptionsInput =
@@ -16,25 +16,7 @@ export type ListWebhookSubscriptionsInput =
 export const ListWebhookSubscriptionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     subscriptions: Schema.Array(
-      Schema.Struct({
-        createdAt: Schema.String,
-        updatedAt: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        eventTypes: Schema.Array(Schema.String),
-        isEnabled: Schema.Boolean,
-        metadata: Schema.optional(
-          Schema.Struct({
-            secret: Schema.optional(SensitiveString),
-          }),
-        ),
-        secret: SensitiveString,
-        subscriptionId: Schema.String,
-        target: Schema.Struct({
-          url: Schema.String,
-          headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
+      Schema.suspend(() => WebhookSubscriptionResponseSchema),
     ),
     nextPageToken: Schema.optional(Schema.String),
   });

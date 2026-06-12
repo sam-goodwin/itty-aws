@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { AuditLogEventDtoSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
@@ -7,38 +8,7 @@ import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 export const AuditLogEventsControllerCreateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     organization_id: Schema.optional(Schema.String),
-    event: Schema.optional(
-      Schema.Struct({
-        action: Schema.optional(Schema.String),
-        occurred_at: Schema.optional(Schema.String),
-        actor: Schema.optional(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            metadata: Schema.optional(Schema.Unknown),
-          }),
-        ),
-        targets: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              name: Schema.optional(Schema.String),
-              metadata: Schema.optional(Schema.Unknown),
-            }),
-          ),
-        ),
-        context: Schema.optional(
-          Schema.Struct({
-            location: Schema.optional(Schema.String),
-            user_agent: Schema.optional(Schema.String),
-          }),
-        ),
-        metadata: Schema.optional(Schema.Unknown),
-        version: Schema.optional(Schema.Number),
-      }),
-    ),
+    event: Schema.optional(Schema.suspend(() => AuditLogEventDtoSchema)),
   }).pipe(T.Http({ method: "POST", path: "/audit_logs/events" }));
 export type AuditLogEventsControllerCreateInput =
   typeof AuditLogEventsControllerCreateInput.Type;

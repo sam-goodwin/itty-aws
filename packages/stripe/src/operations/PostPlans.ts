@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { plan_tierSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -59,17 +60,7 @@ export const PostPlansOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   nickname: Schema.NullOr(Schema.String),
   object: Schema.Literals(["plan"]),
   product: Schema.Unknown,
-  tiers: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        flat_amount: Schema.NullOr(Schema.Number),
-        flat_amount_decimal: Schema.NullOr(Schema.String),
-        unit_amount: Schema.NullOr(Schema.Number),
-        unit_amount_decimal: Schema.NullOr(Schema.String),
-        up_to: Schema.NullOr(Schema.Number),
-      }),
-    ),
-  ),
+  tiers: Schema.optional(Schema.Array(Schema.suspend(() => plan_tierSchema))),
   tiers_mode: Schema.NullOr(Schema.Literals(["graduated", "volume"])),
   transform_usage: Schema.Unknown,
   trial_period_days: Schema.NullOr(Schema.Number),

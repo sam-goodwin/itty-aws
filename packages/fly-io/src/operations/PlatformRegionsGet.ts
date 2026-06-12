@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { main_regionRowSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
@@ -15,18 +16,7 @@ export const PlatformRegionsGetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     nearest: Schema.optional(Schema.String),
     regions: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          code: Schema.optional(Schema.String),
-          deprecated: Schema.optional(Schema.Boolean),
-          gateway_available: Schema.optional(Schema.Boolean),
-          geo_region: Schema.optional(Schema.String),
-          latitude: Schema.optional(Schema.Number),
-          longitude: Schema.optional(Schema.Number),
-          name: Schema.optional(Schema.String),
-          requires_paid_plan: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => main_regionRowSchema)),
     ),
   });
 export type PlatformRegionsGetOutput = typeof PlatformRegionsGetOutput.Type;

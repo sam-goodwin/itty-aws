@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { HogFunctionMappingTemplateSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
@@ -35,18 +36,7 @@ export const HogFunctionTemplatesRetrieveOutput =
     masking: Schema.optional(Schema.NullOr(Schema.Unknown)),
     mapping_templates: Schema.optional(
       Schema.NullOr(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            include_by_default: Schema.optional(Schema.NullOr(Schema.Boolean)),
-            use_all_events_by_default: Schema.optional(
-              Schema.NullOr(Schema.Boolean),
-            ),
-            filters: Schema.optional(Schema.NullOr(Schema.Unknown)),
-            inputs: Schema.optional(Schema.NullOr(Schema.Unknown)),
-            inputs_schema: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          }),
-        ),
+        Schema.Array(Schema.suspend(() => HogFunctionMappingTemplateSchema)),
       ),
     ),
   });

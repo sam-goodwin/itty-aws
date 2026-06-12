@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { treasury_received_debits_resource_status_transitionsSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -34,9 +35,9 @@ export const PostTreasuryDebitReversalsOutput =
     object: Schema.Literals(["treasury.debit_reversal"]),
     received_debit: Schema.String,
     status: Schema.Literals(["failed", "processing", "succeeded"]),
-    status_transitions: Schema.Struct({
-      completed_at: Schema.NullOr(Schema.Number),
-    }),
+    status_transitions: Schema.suspend(
+      () => treasury_received_debits_resource_status_transitionsSchema,
+    ),
     transaction: Schema.Unknown,
   });
 export type PostTreasuryDebitReversalsOutput =

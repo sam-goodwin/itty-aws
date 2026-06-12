@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { MCPServerInstallationSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -25,25 +26,7 @@ export const McpServerInstallationsListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          template_id: Schema.optional(Schema.NullOr(Schema.String)),
-          name: Schema.optional(Schema.String),
-          icon_key: Schema.optional(Schema.String),
-          display_name: Schema.optional(Schema.String),
-          url: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          auth_type: Schema.optional(Schema.Literals(["api_key", "oauth"])),
-          is_enabled: Schema.optional(Schema.Boolean),
-          needs_reauth: Schema.optional(Schema.Boolean),
-          pending_oauth: Schema.optional(Schema.Boolean),
-          proxy_url: Schema.optional(Schema.String),
-          tool_count: Schema.optional(Schema.Number),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => MCPServerInstallationSchema)),
     ),
   });
 export type McpServerInstallationsListOutput =

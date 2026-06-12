@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { InviteSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
@@ -21,32 +22,7 @@ export type InviteOrganizationMemberInput =
 // Output Schema
 export const InviteOrganizationMemberOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    invited: Schema.optional(
-      Schema.Struct({
-        ID: Schema.optional(Schema.Number),
-        CreatedAt: Schema.optional(Schema.String),
-        UpdatedAt: Schema.optional(Schema.String),
-        DeletedAt: Schema.optional(Schema.String),
-        Role: Schema.optional(Schema.Literals(["admin", "member", "viewer"])),
-        Email: Schema.optional(Schema.String),
-        OrganizationID: Schema.optional(Schema.Number),
-        Token: Schema.optional(Schema.String),
-        Organization: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            slug: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.Literals(["personal", "team"])),
-            overages: Schema.optional(Schema.Boolean),
-            blocked_reads: Schema.optional(Schema.Boolean),
-            blocked_writes: Schema.optional(Schema.Boolean),
-            plan_id: Schema.optional(Schema.String),
-            plan_timeline: Schema.optional(Schema.String),
-            platform: Schema.optional(Schema.String),
-          }),
-        ),
-        Accepted: Schema.optional(Schema.Boolean),
-      }),
-    ),
+    invited: Schema.optional(Schema.suspend(() => InviteSchema)),
   });
 export type InviteOrganizationMemberOutput =
   typeof InviteOrganizationMemberOutput.Type;

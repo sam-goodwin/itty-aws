@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { billing_credit_balance_transactionSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -26,18 +27,7 @@ export type GetBillingCreditBalanceTransactionsInput =
 export const GetBillingCreditBalanceTransactionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
-      Schema.Struct({
-        created: Schema.Number,
-        credit: Schema.Unknown,
-        credit_grant: Schema.Unknown,
-        debit: Schema.Unknown,
-        effective_at: Schema.Number,
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        object: Schema.Literals(["billing.credit_balance_transaction"]),
-        test_clock: Schema.Unknown,
-        type: Schema.NullOr(Schema.Literals(["credit", "debit"])),
-      }),
+      Schema.suspend(() => billing_credit_balance_transactionSchema),
     ),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),

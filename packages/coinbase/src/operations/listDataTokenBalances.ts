@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { TokenBalanceSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -20,20 +21,7 @@ export type ListDataTokenBalancesInput = typeof ListDataTokenBalancesInput.Type;
 // Output Schema
 export const ListDataTokenBalancesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    balances: Schema.Array(
-      Schema.Struct({
-        amount: Schema.Struct({
-          amount: Schema.String,
-          decimals: Schema.Number,
-        }),
-        token: Schema.Struct({
-          network: Schema.Literals(["base", "base-sepolia", "ethereum"]),
-          symbol: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          contractAddress: Schema.String,
-        }),
-      }),
-    ),
+    balances: Schema.Array(Schema.suspend(() => TokenBalanceSchema)),
     nextPageToken: Schema.optional(Schema.String),
   });
 export type ListDataTokenBalancesOutput =

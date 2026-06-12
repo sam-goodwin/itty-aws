@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { SolanaTokenBalanceSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -21,19 +22,7 @@ export type ListSolanaTokenBalancesInput =
 // Output Schema
 export const ListSolanaTokenBalancesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    balances: Schema.Array(
-      Schema.Struct({
-        amount: Schema.Struct({
-          amount: Schema.String,
-          decimals: Schema.Number,
-        }),
-        token: Schema.Struct({
-          symbol: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          mintAddress: Schema.String,
-        }),
-      }),
-    ),
+    balances: Schema.Array(Schema.suspend(() => SolanaTokenBalanceSchema)),
     nextPageToken: Schema.optional(Schema.String),
   });
 export type ListSolanaTokenBalancesOutput =

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { AuthenticationChallengeSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
@@ -16,15 +17,7 @@ export type AuthenticationChallengesControllerVerifyInput =
 export const AuthenticationChallengesControllerVerifyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     challenge: Schema.optional(
-      Schema.Struct({
-        object: Schema.optional(Schema.String),
-        id: Schema.optional(Schema.String),
-        expires_at: Schema.optional(Schema.String),
-        code: Schema.optional(Schema.String),
-        authentication_factor_id: Schema.optional(Schema.String),
-        created_at: Schema.optional(Schema.String),
-        updated_at: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => AuthenticationChallengeSchema),
     ),
     valid: Schema.optional(Schema.Boolean),
   });

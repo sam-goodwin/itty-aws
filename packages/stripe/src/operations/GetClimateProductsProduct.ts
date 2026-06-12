@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  climate_removals_products_priceSchema,
+  climate_supplierSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -23,11 +27,7 @@ export const GetClimateProductsProductOutput =
     created: Schema.Number,
     current_prices_per_metric_ton: Schema.Record(
       Schema.String,
-      Schema.Struct({
-        amount_fees: Schema.Number,
-        amount_subtotal: Schema.Number,
-        amount_total: Schema.Number,
-      }),
+      Schema.suspend(() => climate_removals_products_priceSchema),
     ),
     delivery_year: Schema.NullOr(Schema.Number),
     id: Schema.String,
@@ -35,30 +35,7 @@ export const GetClimateProductsProductOutput =
     metric_tons_available: Schema.String,
     name: Schema.String,
     object: Schema.Literals(["climate.product"]),
-    suppliers: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        info_url: Schema.String,
-        livemode: Schema.Boolean,
-        locations: Schema.Array(
-          Schema.Struct({
-            city: Schema.NullOr(Schema.String),
-            country: Schema.String,
-            latitude: Schema.NullOr(Schema.Number),
-            longitude: Schema.NullOr(Schema.Number),
-            region: Schema.NullOr(Schema.String),
-          }),
-        ),
-        name: Schema.String,
-        object: Schema.Literals(["climate.supplier"]),
-        removal_pathway: Schema.Literals([
-          "biomass_carbon_removal_and_storage",
-          "direct_air_capture",
-          "enhanced_weathering",
-          "marine_carbon_removal",
-        ]),
-      }),
-    ),
+    suppliers: Schema.Array(Schema.suspend(() => climate_supplierSchema)),
   });
 export type GetClimateProductsProductOutput =
   typeof GetClimateProductsProductOutput.Type;

@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  climate_removals_beneficiarySchema,
+  climate_removals_order_deliveriesSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -26,9 +30,7 @@ export const PostClimateOrdersOrderOutput =
     amount_subtotal: Schema.Number,
     amount_total: Schema.Number,
     beneficiary: Schema.optional(
-      Schema.Struct({
-        public_name: Schema.String,
-      }),
+      Schema.suspend(() => climate_removals_beneficiarySchema),
     ),
     canceled_at: Schema.NullOr(Schema.Number),
     cancellation_reason: Schema.NullOr(
@@ -41,34 +43,7 @@ export const PostClimateOrdersOrderOutput =
     delayed_at: Schema.NullOr(Schema.Number),
     delivered_at: Schema.NullOr(Schema.Number),
     delivery_details: Schema.Array(
-      Schema.Struct({
-        delivered_at: Schema.Number,
-        location: Schema.Unknown,
-        metric_tons: Schema.String,
-        registry_url: Schema.NullOr(Schema.String),
-        supplier: Schema.Struct({
-          id: Schema.String,
-          info_url: Schema.String,
-          livemode: Schema.Boolean,
-          locations: Schema.Array(
-            Schema.Struct({
-              city: Schema.NullOr(Schema.String),
-              country: Schema.String,
-              latitude: Schema.NullOr(Schema.Number),
-              longitude: Schema.NullOr(Schema.Number),
-              region: Schema.NullOr(Schema.String),
-            }),
-          ),
-          name: Schema.String,
-          object: Schema.Literals(["climate.supplier"]),
-          removal_pathway: Schema.Literals([
-            "biomass_carbon_removal_and_storage",
-            "direct_air_capture",
-            "enhanced_weathering",
-            "marine_carbon_removal",
-          ]),
-        }),
-      }),
+      Schema.suspend(() => climate_removals_order_deliveriesSchema),
     ),
     expected_delivery_year: Schema.Number,
     id: Schema.String,

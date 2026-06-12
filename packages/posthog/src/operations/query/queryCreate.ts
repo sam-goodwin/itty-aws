@@ -1,4 +1,9 @@
 import * as Schema from "effect/Schema";
+import {
+  DashboardFilterSchema,
+  LimitContextSchema,
+  RefreshTypeSchema,
+} from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -9,91 +14,12 @@ export const QueryCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   async: Schema.optional(Schema.NullOr(Schema.Boolean)),
   client_query_id: Schema.optional(Schema.NullOr(Schema.String)),
   filters_override: Schema.optional(
-    Schema.Struct({
-      breakdown_filter: Schema.optional(
-        Schema.Struct({
-          breakdown: Schema.optional(Schema.Unknown),
-          breakdown_group_type_index: Schema.optional(
-            Schema.NullOr(Schema.Number),
-          ),
-          breakdown_hide_other_aggregation: Schema.optional(
-            Schema.NullOr(Schema.Boolean),
-          ),
-          breakdown_histogram_bin_count: Schema.optional(
-            Schema.NullOr(Schema.Number),
-          ),
-          breakdown_limit: Schema.optional(Schema.NullOr(Schema.Number)),
-          breakdown_normalize_url: Schema.optional(
-            Schema.NullOr(Schema.Boolean),
-          ),
-          breakdown_path_cleaning: Schema.optional(
-            Schema.NullOr(Schema.Boolean),
-          ),
-          breakdown_type: Schema.optional(
-            Schema.Literals([
-              "cohort",
-              "person",
-              "event",
-              "event_metadata",
-              "group",
-              "session",
-              "hogql",
-              "data_warehouse",
-              "data_warehouse_person_property",
-              "revenue_analytics",
-            ]),
-          ),
-          breakdowns: Schema.optional(
-            Schema.NullOr(
-              Schema.Array(
-                Schema.Struct({
-                  group_type_index: Schema.optional(
-                    Schema.NullOr(Schema.Number),
-                  ),
-                  histogram_bin_count: Schema.optional(
-                    Schema.NullOr(Schema.Number),
-                  ),
-                  normalize_url: Schema.optional(Schema.NullOr(Schema.Boolean)),
-                  property: Schema.optional(Schema.Unknown),
-                  type: Schema.optional(
-                    Schema.Literals([
-                      "cohort",
-                      "person",
-                      "event",
-                      "event_metadata",
-                      "group",
-                      "session",
-                      "hogql",
-                      "data_warehouse_person_property",
-                      "revenue_analytics",
-                    ]),
-                  ),
-                }),
-              ),
-            ),
-          ),
-        }),
-      ),
-      date_from: Schema.optional(Schema.NullOr(Schema.String)),
-      date_to: Schema.optional(Schema.NullOr(Schema.String)),
-      explicitDate: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      properties: Schema.optional(Schema.NullOr(Schema.Array(Schema.Unknown))),
-    }),
+    Schema.suspend(() => DashboardFilterSchema),
   ),
-  limit_context: Schema.optional(Schema.Literals(["posthog_ai", "null"])),
+  limit_context: Schema.optional(Schema.suspend(() => LimitContextSchema)),
   name: Schema.optional(Schema.NullOr(Schema.String)),
   query: Schema.optional(Schema.Unknown),
-  refresh: Schema.optional(
-    Schema.Literals([
-      "async",
-      "async_except_on_cache_miss",
-      "blocking",
-      "force_async",
-      "force_blocking",
-      "force_cache",
-      "lazy_async",
-    ]),
-  ),
+  refresh: Schema.optional(Schema.suspend(() => RefreshTypeSchema)),
   variables_override: Schema.optional(
     Schema.NullOr(
       Schema.Record(

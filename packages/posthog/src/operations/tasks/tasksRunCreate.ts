@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { OriginProductEnumSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -24,16 +25,7 @@ export const TasksRunCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   title_manually_set: Schema.optional(Schema.Boolean),
   description: Schema.optional(Schema.String),
   origin_product: Schema.optional(
-    Schema.Literals([
-      "error_tracking",
-      "eval_clusters",
-      "user_created",
-      "automation",
-      "slack",
-      "support_queue",
-      "session_summaries",
-      "signal_report",
-    ]),
+    Schema.suspend(() => OriginProductEnumSchema),
   ),
   repository: Schema.optional(Schema.NullOr(Schema.String)),
   github_integration: Schema.optional(Schema.NullOr(Schema.Number)),

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { DatasetSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden } from "../../errors.ts";
@@ -11,25 +12,7 @@ export type GetDatasetsInput = typeof GetDatasetsInput.Type;
 
 // Output Schema
 export const GetDatasetsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    canWrite: Schema.optional(Schema.Boolean),
-    created: Schema.String,
-    description: Schema.String,
-    edgeDeployment: Schema.optional(Schema.String),
-    id: Schema.String,
-    kind: Schema.Literals([
-      "otel:metrics:v1",
-      "otel:traces:v1",
-      "otel:logs:v1",
-      "axiom:events:v1",
-    ]),
-    mapFields: Schema.optional(Schema.Array(Schema.String)),
-    name: Schema.String,
-    retentionDays: Schema.optional(Schema.Number),
-    sharedByOrg: Schema.optional(Schema.String),
-    useRetentionPeriod: Schema.optional(Schema.Boolean),
-    who: Schema.String,
-  }),
+  Schema.suspend(() => DatasetSchema),
 );
 export type GetDatasetsOutput = typeof GetDatasetsOutput.Type;
 

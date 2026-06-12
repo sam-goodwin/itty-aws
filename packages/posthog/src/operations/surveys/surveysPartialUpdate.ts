@@ -1,4 +1,14 @@
 import * as Schema from "effect/Schema";
+import {
+  DescriptionContentTypeEnumSchema,
+  DeviceTypesEnumSchema,
+  FeatureFlagConditionGroupSchemaSchema,
+  FeatureFlagMultivariateVariantSchemaSchema,
+  SurveyEventsConditionSchemaSchema,
+  SurveyQuestionInputSchemaSchema,
+  SurveyTypeSchema,
+  WidgetTypeEnumSchema,
+} from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -79,14 +89,7 @@ export const SurveysPartialUpdateInput =
         Schema.Struct({
           groups: Schema.optional(
             Schema.Array(
-              Schema.Struct({
-                properties: Schema.optional(Schema.Array(Schema.Unknown)),
-                rollout_percentage: Schema.optional(Schema.Number),
-                variant: Schema.optional(Schema.NullOr(Schema.String)),
-                aggregation_group_type_index: Schema.optional(
-                  Schema.NullOr(Schema.Number),
-                ),
-              }),
+              Schema.suspend(() => FeatureFlagConditionGroupSchemaSchema),
             ),
           ),
           multivariate: Schema.optional(
@@ -94,11 +97,9 @@ export const SurveysPartialUpdateInput =
               Schema.Struct({
                 variants: Schema.optional(
                   Schema.Array(
-                    Schema.Struct({
-                      key: Schema.optional(Schema.String),
-                      name: Schema.optional(Schema.String),
-                      rollout_percentage: Schema.optional(Schema.Number),
-                    }),
+                    Schema.suspend(
+                      () => FeatureFlagMultivariateVariantSchemaSchema,
+                    ),
                   ),
                 ),
               }),
@@ -118,7 +119,11 @@ export const SurveysPartialUpdateInput =
       ),
     ),
     remove_targeting_flag: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    questions: Schema.optional(Schema.NullOr(Schema.Array(Schema.Unknown))),
+    questions: Schema.optional(
+      Schema.NullOr(
+        Schema.Array(Schema.suspend(() => SurveyQuestionInputSchemaSchema)),
+      ),
+    ),
     conditions: Schema.optional(
       Schema.NullOr(
         Schema.Struct({
@@ -136,19 +141,10 @@ export const SurveysPartialUpdateInput =
             ]),
           ),
           events: Schema.optional(
-            Schema.Struct({
-              repeatedActivation: Schema.optional(Schema.Boolean),
-              values: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
+            Schema.suspend(() => SurveyEventsConditionSchemaSchema),
           ),
           deviceTypes: Schema.optional(
-            Schema.Array(Schema.Literals(["Desktop", "Mobile", "Tablet"])),
+            Schema.Array(Schema.suspend(() => DeviceTypesEnumSchema)),
           ),
           deviceTypesMatchType: Schema.optional(
             Schema.Literals([
@@ -182,7 +178,7 @@ export const SurveysPartialUpdateInput =
           thankYouMessageHeader: Schema.optional(Schema.String),
           thankYouMessageDescription: Schema.optional(Schema.String),
           thankYouMessageDescriptionContentType: Schema.optional(
-            Schema.Literals(["html", "text"]),
+            Schema.suspend(() => DescriptionContentTypeEnumSchema),
           ),
           thankYouMessageCloseButtonText: Schema.optional(Schema.String),
           borderColor: Schema.optional(Schema.String),
@@ -190,7 +186,7 @@ export const SurveysPartialUpdateInput =
           shuffleQuestions: Schema.optional(Schema.Boolean),
           surveyPopupDelaySeconds: Schema.optional(Schema.Number),
           widgetType: Schema.optional(
-            Schema.Literals(["button", "tab", "selector"]),
+            Schema.suspend(() => WidgetTypeEnumSchema),
           ),
           widgetSelector: Schema.optional(Schema.String),
           widgetLabel: Schema.optional(Schema.String),
@@ -258,9 +254,7 @@ export const SurveysPartialUpdateOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
-    type: Schema.optional(
-      Schema.Literals(["popover", "widget", "external_survey", "api"]),
-    ),
+    type: Schema.optional(Schema.suspend(() => SurveyTypeSchema)),
     schedule: Schema.optional(Schema.NullOr(Schema.String)),
     linked_flag: Schema.optional(
       Schema.Struct({

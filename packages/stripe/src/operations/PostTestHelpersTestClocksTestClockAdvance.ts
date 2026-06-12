@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { billing_clocks_resource_status_details_status_detailsSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -29,13 +30,9 @@ export const PostTestHelpersTestClocksTestClockAdvanceOutput =
     name: Schema.NullOr(Schema.String),
     object: Schema.Literals(["test_helpers.test_clock"]),
     status: Schema.Literals(["advancing", "internal_failure", "ready"]),
-    status_details: Schema.Struct({
-      advancing: Schema.optional(
-        Schema.Struct({
-          target_frozen_time: Schema.Number,
-        }),
-      ),
-    }),
+    status_details: Schema.suspend(
+      () => billing_clocks_resource_status_details_status_detailsSchema,
+    ),
   });
 export type PostTestHelpersTestClocksTestClockAdvanceOutput =
   typeof PostTestHelpersTestClocksTestClockAdvanceOutput.Type;

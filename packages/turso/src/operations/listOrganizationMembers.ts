@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { MemberSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -18,17 +19,7 @@ export type ListOrganizationMembersInput =
 // Output Schema
 export const ListOrganizationMembersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    members: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          username: Schema.optional(Schema.String),
-          role: Schema.optional(
-            Schema.Literals(["owner", "admin", "member", "viewer"]),
-          ),
-          email: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    members: Schema.optional(Schema.Array(Schema.suspend(() => MemberSchema))),
   });
 export type ListOrganizationMembersOutput =
   typeof ListOrganizationMembersOutput.Type;

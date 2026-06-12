@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { PauseStateResponseSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -24,11 +25,7 @@ export const SignalsProcessingListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          paused_until: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PauseStateResponseSchema)),
     ),
   });
 export type SignalsProcessingListOutput =

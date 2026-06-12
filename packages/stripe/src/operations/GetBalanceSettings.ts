@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { balance_settings_resource_paymentsSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -19,14 +20,7 @@ export type GetBalanceSettingsInput = typeof GetBalanceSettingsInput.Type;
 export const GetBalanceSettingsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.Literals(["balance_settings"]),
-    payments: Schema.Struct({
-      debit_negative_balances: Schema.NullOr(Schema.Boolean),
-      payouts: Schema.Unknown,
-      settlement_timing: Schema.Struct({
-        delay_days: Schema.Number,
-        delay_days_override: Schema.optional(Schema.Number),
-      }),
-    }),
+    payments: Schema.suspend(() => balance_settings_resource_paymentsSchema),
   });
 export type GetBalanceSettingsOutput = typeof GetBalanceSettingsOutput.Type;
 

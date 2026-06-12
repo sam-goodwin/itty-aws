@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { SecretResponseSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
@@ -11,11 +12,7 @@ export type V1ListAllSecretsInput = typeof V1ListAllSecretsInput.Type;
 
 // Output Schema
 export const V1ListAllSecretsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    name: Schema.String,
-    value: Schema.String,
-    updated_at: Schema.optional(Schema.String),
-  }),
+  Schema.suspend(() => SecretResponseSchema),
 );
 export type V1ListAllSecretsOutput = typeof V1ListAllSecretsOutput.Type;
 

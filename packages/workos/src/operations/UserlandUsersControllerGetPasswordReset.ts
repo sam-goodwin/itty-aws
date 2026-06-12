@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const UserlandUsersControllerGetPasswordResetInput =
@@ -23,8 +23,8 @@ export const UserlandUsersControllerGetPasswordResetOutput =
     email: Schema.optional(Schema.String),
     expires_at: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
-    password_reset_token: Schema.optional(SensitiveString),
-    password_reset_url: Schema.optional(SensitiveString),
+    password_reset_token: Schema.optional(SensitiveOutputString),
+    password_reset_url: Schema.optional(SensitiveOutputString),
   });
 export type UserlandUsersControllerGetPasswordResetOutput =
   typeof UserlandUsersControllerGetPasswordResetOutput.Type;

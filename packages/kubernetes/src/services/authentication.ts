@@ -8,10 +8,32 @@ import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, UnprocessableEntity } from "../errors.ts";
+import {
+  io_k8s_api_authentication_v1_SelfSubjectReviewStatusSchema,
+  io_k8s_api_authentication_v1_TokenReviewSpecSchema,
+  io_k8s_api_authentication_v1_TokenReviewStatusSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+} from "./_schemas.ts";
 
 // Input Schema
 export const CreateAuthenticationV1SelfSubjectReviewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_authentication_v1_SelfSubjectReviewStatusSchema,
+      ),
+    ),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/apis/authentication.k8s.io/v1/selfsubjectreviews",
@@ -26,62 +48,14 @@ export const CreateAuthenticationV1SelfSubjectReviewOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        userInfo: Schema.optional(
-          Schema.Struct({
-            extra: Schema.optional(
-              Schema.Record(Schema.String, Schema.Array(Schema.String)),
-            ),
-            groups: Schema.optional(Schema.Array(Schema.String)),
-            uid: Schema.optional(Schema.String),
-            username: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_authentication_v1_SelfSubjectReviewStatusSchema,
+      ),
     ),
   });
 export type CreateAuthenticationV1SelfSubjectReviewOutput =
@@ -99,7 +73,23 @@ export const createAuthenticationV1SelfSubjectReview =
   }));
 // Input Schema
 export const CreateAuthenticationV1TokenReviewInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(
+      () => io_k8s_api_authentication_v1_TokenReviewSpecSchema,
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_authentication_v1_TokenReviewStatusSchema,
+      ),
+    ),
+  }).pipe(
     T.Http({
       method: "POST",
       path: "/apis/authentication.k8s.io/v1/tokenreviews",
@@ -114,69 +104,17 @@ export const CreateAuthenticationV1TokenReviewOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      audiences: Schema.optional(Schema.Array(Schema.String)),
-      token: Schema.String,
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_authentication_v1_TokenReviewSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        audiences: Schema.optional(Schema.Array(Schema.String)),
-        authenticated: Schema.optional(Schema.Boolean),
-        error: Schema.optional(Schema.String),
-        user: Schema.optional(
-          Schema.Struct({
-            extra: Schema.optional(
-              Schema.Record(Schema.String, Schema.Array(Schema.String)),
-            ),
-            groups: Schema.optional(Schema.Array(Schema.String)),
-            uid: Schema.optional(Schema.String),
-            username: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_authentication_v1_TokenReviewStatusSchema,
+      ),
     ),
   });
 export type CreateAuthenticationV1TokenReviewOutput =
@@ -207,24 +145,24 @@ export const GetAuthenticationAPIGroupOutput =
     kind: Schema.optional(Schema.String),
     name: Schema.String,
     preferredVersion: Schema.optional(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
     serverAddressByClientCIDRs: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
+        Schema.suspend(
+          () =>
+            io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+        ),
       ),
     ),
     versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
   });
 export type GetAuthenticationAPIGroupOutput =
@@ -255,18 +193,9 @@ export const GetAuthenticationV1APIResourcesOutput =
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
     resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+      ),
     ),
   });
 export type GetAuthenticationV1APIResourcesOutput =

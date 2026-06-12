@@ -1,4 +1,11 @@
 import * as Schema from "effect/Schema";
+import {
+  CertificateEntrySchema,
+  CertificateValidationErrorSchema,
+  CertificateValidationSchema,
+  DNSRecordsSchema,
+  DNSRequirementsSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
@@ -21,84 +28,22 @@ export const AppCertificatesCheckOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     acme_requested: Schema.optional(Schema.Boolean),
     certificates: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          created_at: Schema.optional(Schema.String),
-          expires_at: Schema.optional(Schema.String),
-          issued: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                certificate_authority: Schema.optional(Schema.String),
-                expires_at: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.Literals(["rsa", "ecdsa"])),
-              }),
-            ),
-          ),
-          issuer: Schema.optional(Schema.String),
-          source: Schema.optional(Schema.Literals(["custom", "fly"])),
-          status: Schema.optional(
-            Schema.Literals([
-              "active",
-              "pending_ownership",
-              "pending_validation",
-            ]),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CertificateEntrySchema)),
     ),
     configured: Schema.optional(Schema.Boolean),
     dns_provider: Schema.optional(Schema.String),
-    dns_records: Schema.optional(
-      Schema.Struct({
-        a: Schema.optional(Schema.Array(Schema.String)),
-        aaaa: Schema.optional(Schema.Array(Schema.String)),
-        acme_challenge_cname: Schema.optional(Schema.String),
-        cname: Schema.optional(Schema.Array(Schema.String)),
-        ownership_txt: Schema.optional(Schema.String),
-        resolved_addresses: Schema.optional(Schema.Array(Schema.String)),
-        soa: Schema.optional(Schema.String),
-      }),
-    ),
+    dns_records: Schema.optional(Schema.suspend(() => DNSRecordsSchema)),
     dns_requirements: Schema.optional(
-      Schema.Struct({
-        a: Schema.optional(Schema.Array(Schema.String)),
-        aaaa: Schema.optional(Schema.Array(Schema.String)),
-        acme_challenge: Schema.optional(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            target: Schema.optional(Schema.String),
-          }),
-        ),
-        cname: Schema.optional(Schema.String),
-        ownership: Schema.optional(
-          Schema.Struct({
-            app_value: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            org_value: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => DNSRequirementsSchema),
     ),
     hostname: Schema.optional(Schema.String),
     rate_limited_until: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
     validation: Schema.optional(
-      Schema.Struct({
-        alpn_configured: Schema.optional(Schema.Boolean),
-        dns_configured: Schema.optional(Schema.Boolean),
-        http_configured: Schema.optional(Schema.Boolean),
-        ownership_txt_configured: Schema.optional(Schema.Boolean),
-      }),
+      Schema.suspend(() => CertificateValidationSchema),
     ),
     validation_errors: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          code: Schema.optional(Schema.String),
-          message: Schema.optional(Schema.String),
-          remediation: Schema.optional(Schema.String),
-          timestamp: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CertificateValidationErrorSchema)),
     ),
   });
 export type AppCertificatesCheckOutput = typeof AppCertificatesCheckOutput.Type;

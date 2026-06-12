@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { issuing_physical_bundleSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -24,25 +25,7 @@ export type GetIssuingPhysicalBundlesInput =
 // Output Schema
 export const GetIssuingPhysicalBundlesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        features: Schema.Struct({
-          card_logo: Schema.Literals(["optional", "required", "unsupported"]),
-          carrier_text: Schema.Literals([
-            "optional",
-            "required",
-            "unsupported",
-          ]),
-          second_line: Schema.Literals(["optional", "required", "unsupported"]),
-        }),
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        name: Schema.String,
-        object: Schema.Literals(["issuing.physical_bundle"]),
-        status: Schema.Literals(["active", "inactive", "review"]),
-        type: Schema.Literals(["custom", "standard"]),
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => issuing_physical_bundleSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

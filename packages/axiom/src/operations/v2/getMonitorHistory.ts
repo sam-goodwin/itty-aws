@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { AlertHistorySchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { NotFound, UnprocessableEntity } from "../../errors.ts";
@@ -15,12 +16,7 @@ export type GetMonitorHistoryInput = typeof GetMonitorHistoryInput.Type;
 
 // Output Schema
 export const GetMonitorHistoryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    checkId: Schema.String,
-    name: Schema.String,
-    state: Schema.Literals(["open", "closed"]),
-    timestamp: Schema.String,
-  }),
+  Schema.suspend(() => AlertHistorySchema),
 );
 export type GetMonitorHistoryOutput = typeof GetMonitorHistoryOutput.Type;
 

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { EnforcementModeEnumSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -26,7 +27,9 @@ export const EventDefinitionsByNameRetrieveOutput =
     last_seen_at: Schema.optional(Schema.NullOr(Schema.String)),
     last_updated_at: Schema.optional(Schema.String),
     tags: Schema.optional(Schema.Array(Schema.Unknown)),
-    enforcement_mode: Schema.optional(Schema.Literals(["allow", "reject"])),
+    enforcement_mode: Schema.optional(
+      Schema.suspend(() => EnforcementModeEnumSchema),
+    ),
     is_action: Schema.optional(Schema.Boolean),
     action_id: Schema.optional(Schema.Number),
     is_calculating: Schema.optional(Schema.Boolean),

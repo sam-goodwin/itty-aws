@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ThirdPartyAuthSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
@@ -19,17 +20,7 @@ export type V1ListProjectTpaIntegrationsInput =
 // Output Schema
 export const V1ListProjectTpaIntegrationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      type: Schema.String,
-      oidc_issuer_url: Schema.optional(Schema.NullOr(Schema.String)),
-      jwks_url: Schema.optional(Schema.NullOr(Schema.String)),
-      custom_jwks: Schema.optional(Schema.NullOr(Schema.Unknown)),
-      resolved_jwks: Schema.optional(Schema.NullOr(Schema.Unknown)),
-      inserted_at: Schema.String,
-      updated_at: Schema.String,
-      resolved_at: Schema.optional(Schema.NullOr(Schema.String)),
-    }),
+    Schema.suspend(() => ThirdPartyAuthSchema),
   );
 export type V1ListProjectTpaIntegrationsOutput =
   typeof V1ListProjectTpaIntegrationsOutput.Type;

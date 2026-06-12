@@ -1,4 +1,10 @@
 import * as Schema from "effect/Schema";
+import {
+  billing_bill_resource_invoicing_taxes_taxSchema,
+  discounts_resource_discount_amountSchema,
+  invoice_line_item_periodSchema,
+  invoices_resource_pretax_credit_amountSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -69,10 +75,7 @@ export const PostInvoicesInvoiceLinesLineItemIdOutput =
     description: Schema.NullOr(Schema.String),
     discount_amounts: Schema.NullOr(
       Schema.Array(
-        Schema.Struct({
-          amount: Schema.Number,
-          discount: Schema.Unknown,
-        }),
+        Schema.suspend(() => discounts_resource_discount_amountSchema),
       ),
     ),
     discountable: Schema.Boolean,
@@ -83,18 +86,10 @@ export const PostInvoicesInvoiceLinesLineItemIdOutput =
     metadata: Schema.Record(Schema.String, Schema.String),
     object: Schema.Literals(["line_item"]),
     parent: Schema.Unknown,
-    period: Schema.Struct({
-      end: Schema.Number,
-      start: Schema.Number,
-    }),
+    period: Schema.suspend(() => invoice_line_item_periodSchema),
     pretax_credit_amounts: Schema.NullOr(
       Schema.Array(
-        Schema.Struct({
-          amount: Schema.Number,
-          credit_balance_transaction: Schema.optional(Schema.Unknown),
-          discount: Schema.optional(Schema.Unknown),
-          type: Schema.Literals(["credit_balance_transaction", "discount"]),
-        }),
+        Schema.suspend(() => invoices_resource_pretax_credit_amountSchema),
       ),
     ),
     pricing: Schema.Unknown,
@@ -104,31 +99,7 @@ export const PostInvoicesInvoiceLinesLineItemIdOutput =
     subtotal: Schema.Number,
     taxes: Schema.NullOr(
       Schema.Array(
-        Schema.Struct({
-          amount: Schema.Number,
-          tax_behavior: Schema.Literals(["exclusive", "inclusive"]),
-          tax_rate_details: Schema.Unknown,
-          taxability_reason: Schema.Literals([
-            "customer_exempt",
-            "not_available",
-            "not_collecting",
-            "not_subject_to_tax",
-            "not_supported",
-            "portion_product_exempt",
-            "portion_reduced_rated",
-            "portion_standard_rated",
-            "product_exempt",
-            "product_exempt_holiday",
-            "proportionally_rated",
-            "reduced_rated",
-            "reverse_charge",
-            "standard_rated",
-            "taxable_basis_reduced",
-            "zero_rated",
-          ]),
-          taxable_amount: Schema.NullOr(Schema.Number),
-          type: Schema.Literals(["tax_rate_details"]),
-        }),
+        Schema.suspend(() => billing_bill_resource_invoicing_taxes_taxSchema),
       ),
     ),
   });

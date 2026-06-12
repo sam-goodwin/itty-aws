@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ErrorTrackingGroupingRuleSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
@@ -20,28 +21,7 @@ export type ErrorTrackingGroupingRulesListInput =
 export const ErrorTrackingGroupingRulesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          filters: Schema.optional(Schema.Unknown),
-          assignee: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                type: Schema.optional(Schema.Literals(["user", "role"])),
-                id: Schema.optional(Schema.Unknown),
-              }),
-            ),
-          ),
-          description: Schema.optional(Schema.NullOr(Schema.String)),
-          issue: Schema.optional(
-            Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-          ),
-          order_key: Schema.optional(Schema.Number),
-          disabled_data: Schema.optional(Schema.NullOr(Schema.Unknown)),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ErrorTrackingGroupingRuleSchema)),
     ),
   });
 export type ErrorTrackingGroupingRulesListOutput =

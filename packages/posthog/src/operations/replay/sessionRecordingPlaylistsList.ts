@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { SessionRecordingPlaylistSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -27,67 +28,7 @@ export const SessionRecordingPlaylistsListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          short_id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.NullOr(Schema.String)),
-          derived_name: Schema.optional(Schema.NullOr(Schema.String)),
-          description: Schema.optional(Schema.String),
-          pinned: Schema.optional(Schema.Boolean),
-          created_at: Schema.optional(Schema.String),
-          created_by: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                id: Schema.optional(Schema.Number),
-                uuid: Schema.optional(Schema.String),
-                distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-                first_name: Schema.optional(Schema.String),
-                last_name: Schema.optional(Schema.String),
-                email: Schema.optional(Schema.String),
-                is_email_verified: Schema.optional(
-                  Schema.NullOr(Schema.Boolean),
-                ),
-                hedgehog_config: Schema.optional(
-                  Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-                ),
-                role_at_organization: Schema.optional(Schema.Unknown),
-              }),
-            ),
-          ),
-          deleted: Schema.optional(Schema.Boolean),
-          filters: Schema.optional(Schema.Unknown),
-          last_modified_at: Schema.optional(Schema.String),
-          last_modified_by: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                id: Schema.optional(Schema.Number),
-                uuid: Schema.optional(Schema.String),
-                distinct_id: Schema.optional(Schema.NullOr(Schema.String)),
-                first_name: Schema.optional(Schema.String),
-                last_name: Schema.optional(Schema.String),
-                email: Schema.optional(Schema.String),
-                is_email_verified: Schema.optional(
-                  Schema.NullOr(Schema.Boolean),
-                ),
-                hedgehog_config: Schema.optional(
-                  Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-                ),
-                role_at_organization: Schema.optional(Schema.Unknown),
-              }),
-            ),
-          ),
-          recordings_counts: Schema.optional(
-            Schema.Record(
-              Schema.String,
-              Schema.Record(Schema.String, Schema.Unknown),
-            ),
-          ),
-          type: Schema.optional(Schema.Unknown),
-          is_synthetic: Schema.optional(Schema.Boolean),
-          _create_in_folder: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SessionRecordingPlaylistSchema)),
     ),
   });
 export type SessionRecordingPlaylistsListOutput =

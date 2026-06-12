@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { apple_pay_domainSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -22,15 +23,7 @@ export type GetApplePayDomainsInput = typeof GetApplePayDomainsInput.Type;
 // Output Schema
 export const GetApplePayDomainsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        created: Schema.Number,
-        domain_name: Schema.String,
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        object: Schema.Literals(["apple_pay_domain"]),
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => apple_pay_domainSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

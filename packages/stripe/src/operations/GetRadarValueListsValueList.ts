@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { radar_value_list_itemSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -38,17 +39,7 @@ export const GetRadarValueListsValueListOutput =
       "us_bank_account_fingerprint",
     ]),
     list_items: Schema.Struct({
-      data: Schema.Array(
-        Schema.Struct({
-          created: Schema.Number,
-          created_by: Schema.String,
-          id: Schema.String,
-          livemode: Schema.Boolean,
-          object: Schema.Literals(["radar.value_list_item"]),
-          value: Schema.String,
-          value_list: Schema.String,
-        }),
-      ),
+      data: Schema.Array(Schema.suspend(() => radar_value_list_itemSchema)),
       has_more: Schema.Boolean,
       object: Schema.Literals(["list"]),
       url: Schema.String,

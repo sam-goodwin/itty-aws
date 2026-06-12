@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ClusteringJobAnalysisLevelEnumSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
@@ -23,7 +24,7 @@ export const LlmAnalyticsClusteringJobsRetrieveOutput =
     id: Schema.optional(Schema.String),
     name: Schema.optional(Schema.String),
     analysis_level: Schema.optional(
-      Schema.Literals(["trace", "generation", "evaluation"]),
+      Schema.suspend(() => ClusteringJobAnalysisLevelEnumSchema),
     ),
     event_filters: Schema.optional(Schema.Unknown),
     enabled: Schema.optional(Schema.Boolean),

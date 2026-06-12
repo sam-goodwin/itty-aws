@@ -1,7 +1,8 @@
 import * as Schema from "effect/Schema";
+import { MetadataSchema, WebhookTargetSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const UpdateWebhookSubscriptionInput =
@@ -10,11 +11,8 @@ export const UpdateWebhookSubscriptionInput =
     description: Schema.optional(Schema.String),
     eventTypes: Schema.Array(Schema.String),
     isEnabled: Schema.Boolean,
-    target: Schema.Struct({
-      url: Schema.String,
-      headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    target: Schema.suspend(() => WebhookTargetSchema),
+    metadata: Schema.optional(Schema.suspend(() => MetadataSchema)),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
@@ -35,15 +33,12 @@ export const UpdateWebhookSubscriptionOutput =
     isEnabled: Schema.Boolean,
     metadata: Schema.optional(
       Schema.Struct({
-        secret: Schema.optional(SensitiveString),
+        secret: Schema.optional(SensitiveOutputString),
       }),
     ),
-    secret: SensitiveString,
+    secret: SensitiveOutputString,
     subscriptionId: Schema.String,
-    target: Schema.Struct({
-      url: Schema.String,
-      headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
+    target: Schema.suspend(() => WebhookTargetSchema),
     labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   });
 export type UpdateWebhookSubscriptionOutput =

@@ -2,7 +2,10 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { UnprocessableEntity } from "../errors.ts";
-import { SensitiveString, SensitiveNullableString } from "../sensitive.ts";
+import {
+  SensitiveOutputString,
+  SensitiveOutputNullableString,
+} from "../sensitive.ts";
 
 // Input Schema
 export const PostV1ProjectsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -58,21 +61,21 @@ export const PostV1ProjectsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 Schema.Struct({
                   host: Schema.String,
                   port: Schema.Number,
-                  connectionString: Schema.optional(SensitiveString),
+                  connectionString: Schema.optional(SensitiveOutputString),
                 }),
               ),
               pooled: Schema.optional(
                 Schema.Struct({
                   host: Schema.String,
                   port: Schema.Number,
-                  connectionString: Schema.optional(SensitiveString),
+                  connectionString: Schema.optional(SensitiveOutputString),
                 }),
               ),
               accelerate: Schema.optional(
                 Schema.Struct({
                   host: Schema.String,
                   port: Schema.Number,
-                  connectionString: Schema.optional(SensitiveString),
+                  connectionString: Schema.optional(SensitiveOutputString),
                 }),
               ),
             }),
@@ -125,7 +128,7 @@ export const PostV1ProjectsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 }),
               ),
             }),
-            connectionString: SensitiveString,
+            connectionString: SensitiveOutputString,
             directConnection: Schema.optional(
               Schema.NullOr(
                 Schema.Struct({
@@ -137,7 +140,7 @@ export const PostV1ProjectsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
             ),
           }),
         ),
-        connectionString: SensitiveNullableString,
+        connectionString: SensitiveOutputNullableString,
         directConnection: Schema.NullOr(
           Schema.Struct({
             host: Schema.String,

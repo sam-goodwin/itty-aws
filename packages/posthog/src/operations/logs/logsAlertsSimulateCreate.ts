@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { LogsAlertSimulateBucketSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -28,16 +29,7 @@ export type LogsAlertsSimulateCreateInput =
 export const LogsAlertsSimulateCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     buckets: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          timestamp: Schema.optional(Schema.String),
-          count: Schema.optional(Schema.Number),
-          threshold_breached: Schema.optional(Schema.Boolean),
-          state: Schema.optional(Schema.String),
-          notification: Schema.optional(Schema.String),
-          reason: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LogsAlertSimulateBucketSchema)),
     ),
     fire_count: Schema.optional(Schema.Number),
     resolve_count: Schema.optional(Schema.Number),

@@ -1,4 +1,12 @@
 import * as Schema from "effect/Schema";
+import {
+  customer_balance_resource_cash_balance_transaction_resource_adjusted_for_overdraftSchema,
+  customer_balance_resource_cash_balance_transaction_resource_applied_to_payment_transactionSchema,
+  customer_balance_resource_cash_balance_transaction_resource_funded_transactionSchema,
+  customer_balance_resource_cash_balance_transaction_resource_refunded_from_payment_transactionSchema,
+  customer_balance_resource_cash_balance_transaction_resource_transferred_to_balanceSchema,
+  customer_balance_resource_cash_balance_transaction_resource_unapplied_from_payment_transactionSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -24,15 +32,16 @@ export type PostTestHelpersCustomersCustomerFundCashBalanceInput =
 export const PostTestHelpersCustomersCustomerFundCashBalanceOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     adjusted_for_overdraft: Schema.optional(
-      Schema.Struct({
-        balance_transaction: Schema.Unknown,
-        linked_transaction: Schema.Unknown,
-      }),
+      Schema.suspend(
+        () =>
+          customer_balance_resource_cash_balance_transaction_resource_adjusted_for_overdraftSchema,
+      ),
     ),
     applied_to_payment: Schema.optional(
-      Schema.Struct({
-        payment_intent: Schema.Unknown,
-      }),
+      Schema.suspend(
+        () =>
+          customer_balance_resource_cash_balance_transaction_resource_applied_to_payment_transactionSchema,
+      ),
     ),
     created: Schema.Number,
     currency: Schema.String,
@@ -40,61 +49,26 @@ export const PostTestHelpersCustomersCustomerFundCashBalanceOutput =
     customer_account: Schema.NullOr(Schema.String),
     ending_balance: Schema.Number,
     funded: Schema.optional(
-      Schema.Struct({
-        bank_transfer: Schema.Struct({
-          eu_bank_transfer: Schema.optional(
-            Schema.Struct({
-              bic: Schema.NullOr(Schema.String),
-              iban_last4: Schema.NullOr(Schema.String),
-              sender_name: Schema.NullOr(Schema.String),
-            }),
-          ),
-          gb_bank_transfer: Schema.optional(
-            Schema.Struct({
-              account_number_last4: Schema.NullOr(Schema.String),
-              sender_name: Schema.NullOr(Schema.String),
-              sort_code: Schema.NullOr(Schema.String),
-            }),
-          ),
-          jp_bank_transfer: Schema.optional(
-            Schema.Struct({
-              sender_bank: Schema.NullOr(Schema.String),
-              sender_branch: Schema.NullOr(Schema.String),
-              sender_name: Schema.NullOr(Schema.String),
-            }),
-          ),
-          reference: Schema.NullOr(Schema.String),
-          type: Schema.Literals([
-            "eu_bank_transfer",
-            "gb_bank_transfer",
-            "jp_bank_transfer",
-            "mx_bank_transfer",
-            "us_bank_transfer",
-          ]),
-          us_bank_transfer: Schema.optional(
-            Schema.Struct({
-              network: Schema.optional(
-                Schema.Literals(["ach", "domestic_wire_us", "swift"]),
-              ),
-              sender_name: Schema.NullOr(Schema.String),
-            }),
-          ),
-        }),
-      }),
+      Schema.suspend(
+        () =>
+          customer_balance_resource_cash_balance_transaction_resource_funded_transactionSchema,
+      ),
     ),
     id: Schema.String,
     livemode: Schema.Boolean,
     net_amount: Schema.Number,
     object: Schema.Literals(["customer_cash_balance_transaction"]),
     refunded_from_payment: Schema.optional(
-      Schema.Struct({
-        refund: Schema.Unknown,
-      }),
+      Schema.suspend(
+        () =>
+          customer_balance_resource_cash_balance_transaction_resource_refunded_from_payment_transactionSchema,
+      ),
     ),
     transferred_to_balance: Schema.optional(
-      Schema.Struct({
-        balance_transaction: Schema.Unknown,
-      }),
+      Schema.suspend(
+        () =>
+          customer_balance_resource_cash_balance_transaction_resource_transferred_to_balanceSchema,
+      ),
     ),
     type: Schema.Literals([
       "adjusted_for_overdraft",
@@ -108,9 +82,10 @@ export const PostTestHelpersCustomersCustomerFundCashBalanceOutput =
       "unapplied_from_payment",
     ]),
     unapplied_from_payment: Schema.optional(
-      Schema.Struct({
-        payment_intent: Schema.Unknown,
-      }),
+      Schema.suspend(
+        () =>
+          customer_balance_resource_cash_balance_transaction_resource_unapplied_from_payment_transactionSchema,
+      ),
     ),
   });
 export type PostTestHelpersCustomersCustomerFundCashBalanceOutput =

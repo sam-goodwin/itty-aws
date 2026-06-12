@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { productSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -22,33 +23,7 @@ export type GetProductsSearchInput = typeof GetProductsSearchInput.Type;
 // Output Schema
 export const GetProductsSearchOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        active: Schema.Boolean,
-        created: Schema.Number,
-        default_price: Schema.optional(Schema.Unknown),
-        description: Schema.NullOr(Schema.String),
-        id: Schema.String,
-        images: Schema.Array(Schema.String),
-        livemode: Schema.Boolean,
-        marketing_features: Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-          }),
-        ),
-        metadata: Schema.Record(Schema.String, Schema.String),
-        name: Schema.String,
-        object: Schema.Literals(["product"]),
-        package_dimensions: Schema.Unknown,
-        shippable: Schema.NullOr(Schema.Boolean),
-        statement_descriptor: Schema.optional(Schema.NullOr(Schema.String)),
-        tax_code: Schema.optional(Schema.Unknown),
-        type: Schema.Literals(["good", "service"]),
-        unit_label: Schema.optional(Schema.NullOr(Schema.String)),
-        updated: Schema.Number,
-        url: Schema.NullOr(Schema.String),
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => productSchema)),
     has_more: Schema.Boolean,
     next_page: Schema.NullOr(Schema.String),
     object: Schema.Literals(["search_result"]),

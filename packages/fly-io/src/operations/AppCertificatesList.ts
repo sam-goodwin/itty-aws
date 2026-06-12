@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { CertificateSummarySchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound } from "../errors.ts";
@@ -17,23 +18,7 @@ export type AppCertificatesListInput = typeof AppCertificatesListInput.Type;
 export const AppCertificatesListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     certificates: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          acme_alpn_configured: Schema.optional(Schema.Boolean),
-          acme_dns_configured: Schema.optional(Schema.Boolean),
-          acme_http_configured: Schema.optional(Schema.Boolean),
-          acme_requested: Schema.optional(Schema.Boolean),
-          configured: Schema.optional(Schema.Boolean),
-          created_at: Schema.optional(Schema.String),
-          dns_provider: Schema.optional(Schema.String),
-          has_custom_certificate: Schema.optional(Schema.Boolean),
-          has_fly_certificate: Schema.optional(Schema.Boolean),
-          hostname: Schema.optional(Schema.String),
-          ownership_txt_configured: Schema.optional(Schema.Boolean),
-          status: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CertificateSummarySchema)),
     ),
     next_cursor: Schema.optional(Schema.String),
     total_count: Schema.optional(Schema.Number),

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { transferSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -22,47 +23,7 @@ export type GetTransfersInput = typeof GetTransfersInput.Type;
 
 // Output Schema
 export const GetTransfersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  data: Schema.Array(
-    Schema.Struct({
-      amount: Schema.Number,
-      amount_reversed: Schema.Number,
-      balance_transaction: Schema.Unknown,
-      created: Schema.Number,
-      currency: Schema.String,
-      description: Schema.NullOr(Schema.String),
-      destination: Schema.Unknown,
-      destination_payment: Schema.optional(Schema.Unknown),
-      id: Schema.String,
-      livemode: Schema.Boolean,
-      metadata: Schema.Record(Schema.String, Schema.String),
-      object: Schema.Literals(["transfer"]),
-      reversals: Schema.Struct({
-        data: Schema.Array(
-          Schema.Struct({
-            amount: Schema.Number,
-            balance_transaction: Schema.Unknown,
-            created: Schema.Number,
-            currency: Schema.String,
-            destination_payment_refund: Schema.Unknown,
-            id: Schema.String,
-            metadata: Schema.NullOr(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            object: Schema.Literals(["transfer_reversal"]),
-            source_refund: Schema.Unknown,
-            transfer: Schema.Unknown,
-          }),
-        ),
-        has_more: Schema.Boolean,
-        object: Schema.Literals(["list"]),
-        url: Schema.String,
-      }),
-      reversed: Schema.Boolean,
-      source_transaction: Schema.Unknown,
-      source_type: Schema.optional(Schema.String),
-      transfer_group: Schema.NullOr(Schema.String),
-    }),
-  ),
+  data: Schema.Array(Schema.suspend(() => transferSchema)),
   has_more: Schema.Boolean,
   object: Schema.Literals(["list"]),
   url: Schema.String,

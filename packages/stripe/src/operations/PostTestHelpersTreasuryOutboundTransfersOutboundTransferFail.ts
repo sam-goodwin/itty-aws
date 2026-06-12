@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  outbound_transfers_payment_method_detailsSchema,
+  treasury_outbound_transfers_resource_status_transitionsSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -26,41 +30,9 @@ export const PostTestHelpersTreasuryOutboundTransfersOutboundTransferFailOutput 
     currency: Schema.String,
     description: Schema.NullOr(Schema.String),
     destination_payment_method: Schema.NullOr(Schema.String),
-    destination_payment_method_details: Schema.Struct({
-      billing_details: Schema.Struct({
-        address: Schema.Struct({
-          city: Schema.NullOr(Schema.String),
-          country: Schema.NullOr(Schema.String),
-          line1: Schema.NullOr(Schema.String),
-          line2: Schema.NullOr(Schema.String),
-          postal_code: Schema.NullOr(Schema.String),
-          state: Schema.NullOr(Schema.String),
-        }),
-        email: Schema.NullOr(Schema.String),
-        name: Schema.NullOr(Schema.String),
-      }),
-      financial_account: Schema.optional(
-        Schema.Struct({
-          id: Schema.String,
-          network: Schema.Literals(["stripe"]),
-        }),
-      ),
-      type: Schema.Literals(["financial_account", "us_bank_account"]),
-      us_bank_account: Schema.optional(
-        Schema.Struct({
-          account_holder_type: Schema.NullOr(
-            Schema.Literals(["company", "individual"]),
-          ),
-          account_type: Schema.NullOr(Schema.Literals(["checking", "savings"])),
-          bank_name: Schema.NullOr(Schema.String),
-          fingerprint: Schema.NullOr(Schema.String),
-          last4: Schema.NullOr(Schema.String),
-          mandate: Schema.optional(Schema.Unknown),
-          network: Schema.Literals(["ach", "us_domestic_wire"]),
-          routing_number: Schema.NullOr(Schema.String),
-        }),
-      ),
-    }),
+    destination_payment_method_details: Schema.suspend(
+      () => outbound_transfers_payment_method_detailsSchema,
+    ),
     expected_arrival_date: Schema.Number,
     financial_account: Schema.String,
     hosted_regulatory_receipt_url: Schema.NullOr(Schema.String),
@@ -77,12 +49,9 @@ export const PostTestHelpersTreasuryOutboundTransfersOutboundTransferFailOutput 
       "processing",
       "returned",
     ]),
-    status_transitions: Schema.Struct({
-      canceled_at: Schema.NullOr(Schema.Number),
-      failed_at: Schema.NullOr(Schema.Number),
-      posted_at: Schema.NullOr(Schema.Number),
-      returned_at: Schema.NullOr(Schema.Number),
-    }),
+    status_transitions: Schema.suspend(
+      () => treasury_outbound_transfers_resource_status_transitionsSchema,
+    ),
     tracking_details: Schema.Unknown,
     transaction: Schema.Unknown,
   });

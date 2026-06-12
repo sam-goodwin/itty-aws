@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { apps_secretSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -20,22 +21,7 @@ export type GetAppsSecretsInput = typeof GetAppsSecretsInput.Type;
 
 // Output Schema
 export const GetAppsSecretsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  data: Schema.Array(
-    Schema.Struct({
-      created: Schema.Number,
-      deleted: Schema.optional(Schema.Boolean),
-      expires_at: Schema.NullOr(Schema.Number),
-      id: Schema.String,
-      livemode: Schema.Boolean,
-      name: Schema.String,
-      object: Schema.Literals(["apps.secret"]),
-      payload: Schema.optional(Schema.NullOr(Schema.String)),
-      scope: Schema.Struct({
-        type: Schema.Literals(["account", "user"]),
-        user: Schema.optional(Schema.String),
-      }),
-    }),
-  ),
+  data: Schema.Array(Schema.suspend(() => apps_secretSchema)),
   has_more: Schema.Boolean,
   object: Schema.Literals(["list"]),
   url: Schema.String,

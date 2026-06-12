@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { GroupTypeSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
@@ -13,17 +14,7 @@ export type GroupsTypesListInput = typeof GroupsTypesListInput.Type;
 
 // Output Schema
 export const GroupsTypesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    group_type: Schema.optional(Schema.String),
-    group_type_index: Schema.optional(Schema.Number),
-    name_singular: Schema.optional(Schema.NullOr(Schema.String)),
-    name_plural: Schema.optional(Schema.NullOr(Schema.String)),
-    detail_dashboard: Schema.optional(Schema.NullOr(Schema.Number)),
-    default_columns: Schema.optional(
-      Schema.NullOr(Schema.Array(Schema.String)),
-    ),
-    created_at: Schema.optional(Schema.NullOr(Schema.String)),
-  }),
+  Schema.suspend(() => GroupTypeSchema),
 );
 export type GroupsTypesListOutput = typeof GroupsTypesListOutput.Type;
 

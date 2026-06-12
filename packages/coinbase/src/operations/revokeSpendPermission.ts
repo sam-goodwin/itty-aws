@@ -1,4 +1,10 @@
 import * as Schema from "effect/Schema";
+import {
+  EvmCallSchema,
+  EvmUserOperationNetworkSchema,
+  SpendPermissionNetworkSchema,
+  UserOperationReceiptSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -6,16 +12,7 @@ import * as T from "../traits.ts";
 export const RevokeSpendPermissionInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     address: Schema.String.pipe(T.PathParam()),
-    network: Schema.Literals([
-      "base",
-      "base-sepolia",
-      "ethereum",
-      "ethereum-sepolia",
-      "optimism",
-      "arbitrum",
-      "avalanche",
-      "polygon",
-    ]),
+    network: Schema.suspend(() => SpendPermissionNetworkSchema),
     permissionHash: Schema.String,
     paymasterUrl: Schema.optional(Schema.String),
   }).pipe(
@@ -29,27 +26,9 @@ export type RevokeSpendPermissionInput = typeof RevokeSpendPermissionInput.Type;
 // Output Schema
 export const RevokeSpendPermissionOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    network: Schema.Literals([
-      "base-sepolia",
-      "base",
-      "arbitrum",
-      "optimism",
-      "zora",
-      "polygon",
-      "bnb",
-      "avalanche",
-      "ethereum",
-      "ethereum-sepolia",
-    ]),
+    network: Schema.suspend(() => EvmUserOperationNetworkSchema),
     userOpHash: Schema.String,
-    calls: Schema.Array(
-      Schema.Struct({
-        to: Schema.String,
-        value: Schema.String,
-        data: Schema.String,
-        overrideGasLimit: Schema.optional(Schema.String),
-      }),
-    ),
+    calls: Schema.Array(Schema.suspend(() => EvmCallSchema)),
     status: Schema.Literals([
       "pending",
       "signed",
@@ -60,20 +39,7 @@ export const RevokeSpendPermissionOutput =
     ]),
     transactionHash: Schema.optional(Schema.String),
     receipts: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          revert: Schema.optional(
-            Schema.Struct({
-              data: Schema.String,
-              message: Schema.String,
-            }),
-          ),
-          transactionHash: Schema.optional(Schema.String),
-          blockHash: Schema.optional(Schema.String),
-          blockNumber: Schema.optional(Schema.Number),
-          gasUsed: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => UserOperationReceiptSchema)),
     ),
   });
 export type RevokeSpendPermissionOutput =

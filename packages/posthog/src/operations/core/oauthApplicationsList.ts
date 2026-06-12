@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { OrganizationOAuthApplicationSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -24,17 +25,7 @@ export const OauthApplicationsListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          client_id: Schema.optional(Schema.String),
-          redirect_uris_list: Schema.optional(Schema.Array(Schema.String)),
-          is_verified: Schema.optional(Schema.Boolean),
-          created: Schema.optional(Schema.String),
-          updated: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => OrganizationOAuthApplicationSchema)),
     ),
   });
 export type OauthApplicationsListOutput =

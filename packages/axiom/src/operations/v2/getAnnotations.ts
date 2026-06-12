@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { AnnotationSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
@@ -12,16 +13,7 @@ export type GetAnnotationsInput = typeof GetAnnotationsInput.Type;
 
 // Output Schema
 export const GetAnnotationsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    datasets: Schema.Array(Schema.String),
-    description: Schema.optional(Schema.String),
-    endTime: Schema.optional(Schema.NullOr(Schema.String)),
-    id: Schema.String,
-    time: Schema.String,
-    title: Schema.optional(Schema.String),
-    type: Schema.String,
-    url: Schema.optional(Schema.String),
-  }),
+  Schema.suspend(() => AnnotationSchema),
 );
 export type GetAnnotationsOutput = typeof GetAnnotationsOutput.Type;
 

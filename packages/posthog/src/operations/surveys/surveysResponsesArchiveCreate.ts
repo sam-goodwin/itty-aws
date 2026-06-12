@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { SurveyTypeSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -11,9 +12,7 @@ export const SurveysResponsesArchiveCreateInput =
     response_uuid: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     description: Schema.optional(Schema.String),
-    type: Schema.optional(
-      Schema.Literals(["popover", "widget", "external_survey", "api"]),
-    ),
+    type: Schema.optional(Schema.suspend(() => SurveyTypeSchema)),
     schedule: Schema.optional(Schema.NullOr(Schema.String)),
     linked_flag: Schema.optional(
       Schema.Struct({

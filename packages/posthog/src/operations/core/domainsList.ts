@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { OrganizationDomainSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -22,25 +23,7 @@ export const DomainsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
   results: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        domain: Schema.optional(Schema.String),
-        is_verified: Schema.optional(Schema.Boolean),
-        verified_at: Schema.optional(Schema.NullOr(Schema.String)),
-        verification_challenge: Schema.optional(Schema.String),
-        jit_provisioning_enabled: Schema.optional(Schema.Boolean),
-        sso_enforcement: Schema.optional(Schema.String),
-        has_saml: Schema.optional(Schema.Boolean),
-        saml_entity_id: Schema.optional(Schema.NullOr(Schema.String)),
-        saml_acs_url: Schema.optional(Schema.NullOr(Schema.String)),
-        saml_x509_cert: Schema.optional(Schema.NullOr(Schema.String)),
-        has_scim: Schema.optional(Schema.Boolean),
-        scim_enabled: Schema.optional(Schema.Boolean),
-        scim_base_url: Schema.optional(Schema.NullOr(Schema.String)),
-        scim_bearer_token: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => OrganizationDomainSchema)),
   ),
 });
 export type DomainsListOutput = typeof DomainsListOutput.Type;

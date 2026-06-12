@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { SnapshotManifestItemSchema, UploadTargetSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -12,17 +13,7 @@ export const VisualReviewRunsCreateInput =
     commit_sha: Schema.optional(Schema.String),
     branch: Schema.optional(Schema.String),
     snapshots: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          identifier: Schema.optional(Schema.String),
-          content_hash: Schema.optional(Schema.String),
-          width: Schema.optional(Schema.NullOr(Schema.Number)),
-          height: Schema.optional(Schema.NullOr(Schema.Number)),
-          metadata: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SnapshotManifestItemSchema)),
     ),
     pr_number: Schema.optional(Schema.NullOr(Schema.Number)),
     baseline_hashes: Schema.optional(
@@ -46,13 +37,7 @@ export const VisualReviewRunsCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     run_id: Schema.optional(Schema.String),
     uploads: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          content_hash: Schema.optional(Schema.String),
-          url: Schema.optional(Schema.String),
-          fields: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => UploadTargetSchema)),
     ),
   });
 export type VisualReviewRunsCreateOutput =

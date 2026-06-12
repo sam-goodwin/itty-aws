@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { notification_event_dataSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -21,10 +22,7 @@ export const GetEventsIdOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   api_version: Schema.NullOr(Schema.String),
   context: Schema.optional(Schema.String),
   created: Schema.Number,
-  data: Schema.Struct({
-    object: Schema.Unknown,
-    previous_attributes: Schema.optional(Schema.Unknown),
-  }),
+  data: Schema.suspend(() => notification_event_dataSchema),
   id: Schema.String,
   livemode: Schema.Boolean,
   object: Schema.Literals(["event"]),

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { SnapshotHistoryEntrySchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -27,15 +28,7 @@ export const VisualReviewRunsSnapshotHistoryListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          run_id: Schema.optional(Schema.String),
-          result: Schema.optional(Schema.String),
-          branch: Schema.optional(Schema.String),
-          commit_sha: Schema.optional(Schema.String),
-          created_at: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => SnapshotHistoryEntrySchema)),
     ),
   });
 export type VisualReviewRunsSnapshotHistoryListOutput =

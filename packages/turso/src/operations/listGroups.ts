@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { GroupSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -15,18 +16,7 @@ export type ListGroupsInput = typeof ListGroupsInput.Type;
 
 // Output Schema
 export const ListGroupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  groups: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        version: Schema.optional(Schema.String),
-        uuid: Schema.optional(Schema.String),
-        locations: Schema.optional(Schema.Array(Schema.String)),
-        primary: Schema.optional(Schema.String),
-        delete_protection: Schema.optional(Schema.Boolean),
-      }),
-    ),
-  ),
+  groups: Schema.optional(Schema.Array(Schema.suspend(() => GroupSchema))),
 });
 export type ListGroupsOutput = typeof ListGroupsOutput.Type;
 

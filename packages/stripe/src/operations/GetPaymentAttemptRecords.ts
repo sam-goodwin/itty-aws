@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { payment_attempt_recordSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -22,61 +23,7 @@ export type GetPaymentAttemptRecordsInput =
 // Output Schema
 export const GetPaymentAttemptRecordsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        amount: Schema.Struct({
-          currency: Schema.String,
-          value: Schema.Number,
-        }),
-        amount_authorized: Schema.Struct({
-          currency: Schema.String,
-          value: Schema.Number,
-        }),
-        amount_canceled: Schema.Struct({
-          currency: Schema.String,
-          value: Schema.Number,
-        }),
-        amount_failed: Schema.Struct({
-          currency: Schema.String,
-          value: Schema.Number,
-        }),
-        amount_guaranteed: Schema.Struct({
-          currency: Schema.String,
-          value: Schema.Number,
-        }),
-        amount_refunded: Schema.Struct({
-          currency: Schema.String,
-          value: Schema.Number,
-        }),
-        amount_requested: Schema.Struct({
-          currency: Schema.String,
-          value: Schema.Number,
-        }),
-        application: Schema.NullOr(Schema.String),
-        created: Schema.Number,
-        customer_details: Schema.Unknown,
-        customer_presence: Schema.NullOr(
-          Schema.Literals(["off_session", "on_session"]),
-        ),
-        description: Schema.NullOr(Schema.String),
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        metadata: Schema.Record(Schema.String, Schema.String),
-        object: Schema.Literals(["payment_attempt_record"]),
-        payment_method_details: Schema.Unknown,
-        payment_record: Schema.NullOr(Schema.String),
-        processor_details: Schema.Struct({
-          custom: Schema.optional(
-            Schema.Struct({
-              payment_reference: Schema.NullOr(Schema.String),
-            }),
-          ),
-          type: Schema.Literals(["custom"]),
-        }),
-        reported_by: Schema.Literals(["self", "stripe"]),
-        shipping_details: Schema.Unknown,
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => payment_attempt_recordSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

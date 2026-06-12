@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
+import { identity_verification_sessionSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveNullableString } from "../sensitive.ts";
 
 // Input Schema
 export const GetIdentityVerificationSessionsInput =
@@ -31,38 +31,7 @@ export type GetIdentityVerificationSessionsInput =
 export const GetIdentityVerificationSessionsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
-      Schema.Struct({
-        client_reference_id: Schema.NullOr(Schema.String),
-        client_secret: SensitiveNullableString,
-        created: Schema.Number,
-        id: Schema.String,
-        last_error: Schema.Unknown,
-        last_verification_report: Schema.Unknown,
-        livemode: Schema.Boolean,
-        metadata: Schema.Record(Schema.String, Schema.String),
-        object: Schema.Literals(["identity.verification_session"]),
-        options: Schema.Unknown,
-        provided_details: Schema.optional(Schema.Unknown),
-        redaction: Schema.Unknown,
-        related_customer: Schema.NullOr(Schema.String),
-        related_customer_account: Schema.NullOr(Schema.String),
-        related_person: Schema.optional(
-          Schema.Struct({
-            account: Schema.String,
-            person: Schema.String,
-          }),
-        ),
-        status: Schema.Literals([
-          "canceled",
-          "processing",
-          "requires_input",
-          "verified",
-        ]),
-        type: Schema.Literals(["document", "id_number", "verification_flow"]),
-        url: Schema.NullOr(Schema.String),
-        verification_flow: Schema.optional(Schema.String),
-        verified_outputs: Schema.optional(Schema.Unknown),
-      }),
+      Schema.suspend(() => identity_verification_sessionSchema),
     ),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),

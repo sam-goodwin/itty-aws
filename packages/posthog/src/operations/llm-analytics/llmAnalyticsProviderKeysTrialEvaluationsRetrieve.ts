@@ -1,8 +1,9 @@
 import * as Schema from "effect/Schema";
+import { LLMProviderEnumSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
-import { SensitiveString } from "../../sensitive.ts";
+import { SensitiveOutputString } from "../../sensitive.ts";
 
 // Input Schema
 export const LlmAnalyticsProviderKeysTrialEvaluationsRetrieveInput =
@@ -21,22 +22,13 @@ export type LlmAnalyticsProviderKeysTrialEvaluationsRetrieveInput =
 export const LlmAnalyticsProviderKeysTrialEvaluationsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
-    provider: Schema.optional(
-      Schema.Literals([
-        "openai",
-        "anthropic",
-        "gemini",
-        "openrouter",
-        "fireworks",
-        "azure_openai",
-      ]),
-    ),
+    provider: Schema.optional(Schema.suspend(() => LLMProviderEnumSchema)),
     name: Schema.optional(Schema.String),
     state: Schema.optional(
       Schema.Literals(["unknown", "ok", "invalid", "error"]),
     ),
     error_message: Schema.optional(Schema.NullOr(Schema.String)),
-    api_key: Schema.optional(SensitiveString),
+    api_key: Schema.optional(SensitiveOutputString),
     api_key_masked: Schema.optional(Schema.String),
     azure_endpoint: Schema.optional(Schema.String),
     api_version: Schema.optional(Schema.String),

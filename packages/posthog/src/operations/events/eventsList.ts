@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ClickhouseEventSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -24,39 +25,7 @@ export type EventsListInput = typeof EventsListInput.Type;
 export const EventsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   next: Schema.optional(Schema.NullOr(Schema.String)),
   results: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        distinct_id: Schema.optional(Schema.String),
-        properties: Schema.optional(
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-        event: Schema.optional(Schema.String),
-        timestamp: Schema.optional(Schema.String),
-        person: Schema.optional(
-          Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-        ),
-        elements: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              event: Schema.optional(Schema.String),
-              text: Schema.optional(Schema.NullOr(Schema.String)),
-              tag_name: Schema.optional(Schema.NullOr(Schema.String)),
-              attr_class: Schema.optional(
-                Schema.NullOr(Schema.Array(Schema.String)),
-              ),
-              href: Schema.optional(Schema.NullOr(Schema.String)),
-              attr_id: Schema.optional(Schema.NullOr(Schema.String)),
-              nth_child: Schema.optional(Schema.NullOr(Schema.Number)),
-              nth_of_type: Schema.optional(Schema.NullOr(Schema.Number)),
-              attributes: Schema.optional(Schema.Unknown),
-              order: Schema.optional(Schema.NullOr(Schema.Number)),
-            }),
-          ),
-        ),
-        elements_chain: Schema.optional(Schema.String),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => ClickhouseEventSchema)),
   ),
 });
 export type EventsListOutput = typeof EventsListOutput.Type;

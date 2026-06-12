@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { LLMPromptOutlineEntrySchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -50,12 +51,7 @@ export const LlmPromptsNameDuplicateCreateOutput =
     version_count: Schema.optional(Schema.Number),
     first_version_created_at: Schema.optional(Schema.String),
     outline: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          level: Schema.optional(Schema.Number),
-          text: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LLMPromptOutlineEntrySchema)),
     ),
   });
 export type LlmPromptsNameDuplicateCreateOutput =

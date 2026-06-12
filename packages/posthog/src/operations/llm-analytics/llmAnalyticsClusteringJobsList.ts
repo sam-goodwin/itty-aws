@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ClusteringJobSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -25,19 +26,7 @@ export const LlmAnalyticsClusteringJobsListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          analysis_level: Schema.optional(
-            Schema.Literals(["trace", "generation", "evaluation"]),
-          ),
-          event_filters: Schema.optional(Schema.Unknown),
-          enabled: Schema.optional(Schema.Boolean),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ClusteringJobSchema)),
     ),
   });
 export type LlmAnalyticsClusteringJobsListOutput =

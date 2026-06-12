@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { radar_early_fraud_warningSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -25,18 +26,7 @@ export type GetRadarEarlyFraudWarningsInput =
 // Output Schema
 export const GetRadarEarlyFraudWarningsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        actionable: Schema.Boolean,
-        charge: Schema.Unknown,
-        created: Schema.Number,
-        fraud_type: Schema.String,
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        object: Schema.Literals(["radar.early_fraud_warning"]),
-        payment_intent: Schema.optional(Schema.Unknown),
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => radar_early_fraud_warningSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

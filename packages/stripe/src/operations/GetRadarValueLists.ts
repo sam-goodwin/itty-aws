@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { radar_value_listSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -24,47 +25,7 @@ export type GetRadarValueListsInput = typeof GetRadarValueListsInput.Type;
 // Output Schema
 export const GetRadarValueListsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        alias: Schema.String,
-        created: Schema.Number,
-        created_by: Schema.String,
-        id: Schema.String,
-        item_type: Schema.Literals([
-          "card_bin",
-          "card_fingerprint",
-          "case_sensitive_string",
-          "country",
-          "crypto_fingerprint",
-          "customer_id",
-          "email",
-          "ip_address",
-          "sepa_debit_fingerprint",
-          "string",
-          "us_bank_account_fingerprint",
-        ]),
-        list_items: Schema.Struct({
-          data: Schema.Array(
-            Schema.Struct({
-              created: Schema.Number,
-              created_by: Schema.String,
-              id: Schema.String,
-              livemode: Schema.Boolean,
-              object: Schema.Literals(["radar.value_list_item"]),
-              value: Schema.String,
-              value_list: Schema.String,
-            }),
-          ),
-          has_more: Schema.Boolean,
-          object: Schema.Literals(["list"]),
-          url: Schema.String,
-        }),
-        livemode: Schema.Boolean,
-        metadata: Schema.Record(Schema.String, Schema.String),
-        name: Schema.String,
-        object: Schema.Literals(["radar.value_list"]),
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => radar_value_listSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

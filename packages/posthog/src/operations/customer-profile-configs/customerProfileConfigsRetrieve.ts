@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { CustomerProfileConfigScopeEnumSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
@@ -22,14 +23,7 @@ export const CustomerProfileConfigsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
     scope: Schema.optional(
-      Schema.Literals([
-        "person",
-        "group_0",
-        "group_1",
-        "group_2",
-        "group_3",
-        "group_4",
-      ]),
+      Schema.suspend(() => CustomerProfileConfigScopeEnumSchema),
     ),
     content: Schema.optional(Schema.NullOr(Schema.Unknown)),
     sidebar: Schema.optional(Schema.NullOr(Schema.Unknown)),

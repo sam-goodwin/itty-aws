@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ErrorTrackingIssueSplitFingerprintSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -10,11 +11,7 @@ export const ErrorTrackingIssuesSplitCreateInput =
     project_id: Schema.String.pipe(T.PathParam()),
     fingerprints: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          fingerprint: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-        }),
+        Schema.suspend(() => ErrorTrackingIssueSplitFingerprintSchema),
       ),
     ),
   }).pipe(

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { PluginLogEntrySchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -25,23 +26,7 @@ export const PluginConfigsLogsListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          team_id: Schema.optional(Schema.Number),
-          plugin_id: Schema.optional(Schema.Number),
-          plugin_config_id: Schema.optional(Schema.Number),
-          timestamp: Schema.optional(Schema.String),
-          source: Schema.optional(
-            Schema.Literals(["SYSTEM", "PLUGIN", "CONSOLE"]),
-          ),
-          type: Schema.optional(
-            Schema.Literals(["DEBUG", "LOG", "INFO", "WARN", "ERROR"]),
-          ),
-          message: Schema.optional(Schema.String),
-          instance_id: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PluginLogEntrySchema)),
     ),
   });
 export type PluginConfigsLogsListOutput =

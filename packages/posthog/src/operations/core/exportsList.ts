@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ExportedAssetSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -17,31 +18,7 @@ export const ExportsListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   next: Schema.optional(Schema.NullOr(Schema.String)),
   previous: Schema.optional(Schema.NullOr(Schema.String)),
   results: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Number),
-        dashboard: Schema.optional(Schema.NullOr(Schema.Number)),
-        insight: Schema.optional(Schema.NullOr(Schema.Number)),
-        export_format: Schema.optional(
-          Schema.Literals([
-            "image/png",
-            "application/pdf",
-            "text/csv",
-            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-            "video/webm",
-            "video/mp4",
-            "image/gif",
-            "application/json",
-          ]),
-        ),
-        created_at: Schema.optional(Schema.String),
-        has_content: Schema.optional(Schema.Boolean),
-        export_context: Schema.optional(Schema.NullOr(Schema.Unknown)),
-        filename: Schema.optional(Schema.String),
-        expires_after: Schema.optional(Schema.NullOr(Schema.String)),
-        exception: Schema.optional(Schema.NullOr(Schema.String)),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => ExportedAssetSchema)),
   ),
 });
 export type ExportsListOutput = typeof ExportsListOutput.Type;

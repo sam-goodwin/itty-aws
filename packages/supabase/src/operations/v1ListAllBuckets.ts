@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { V1StorageBucketResponseSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
@@ -11,14 +12,7 @@ export type V1ListAllBucketsInput = typeof V1ListAllBucketsInput.Type;
 
 // Output Schema
 export const V1ListAllBucketsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    id: Schema.String,
-    name: Schema.String,
-    owner: Schema.String,
-    created_at: Schema.String,
-    updated_at: Schema.String,
-    public: Schema.Boolean,
-  }),
+  Schema.suspend(() => V1StorageBucketResponseSchema),
 );
 export type V1ListAllBucketsOutput = typeof V1ListAllBucketsOutput.Type;
 

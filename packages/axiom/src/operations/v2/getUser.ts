@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { UserDetailsRoleSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { NotFound } from "../../errors.ts";
@@ -14,12 +15,7 @@ export const GetUserOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   email: Schema.String,
   id: Schema.String,
   name: Schema.String,
-  role: Schema.optional(
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-    }),
-  ),
+  role: Schema.optional(Schema.suspend(() => UserDetailsRoleSchema)),
 });
 export type GetUserOutput = typeof GetUserOutput.Type;
 

@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const DeleteEphemeralKeysKeyInput =
@@ -26,7 +26,7 @@ export const DeleteEphemeralKeysKeyOutput =
     id: Schema.String,
     livemode: Schema.Boolean,
     object: Schema.Literals(["ephemeral_key"]),
-    secret: Schema.optional(SensitiveString),
+    secret: Schema.optional(SensitiveOutputString),
   });
 export type DeleteEphemeralKeysKeyOutput =
   typeof DeleteEphemeralKeysKeyOutput.Type;

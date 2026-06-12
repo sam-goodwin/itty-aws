@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { DependentFlagSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
@@ -20,11 +21,7 @@ export type FeatureFlagsDependentFlagsListInput =
 // Output Schema
 export const FeatureFlagsDependentFlagsListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.Number),
-      key: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => DependentFlagSchema),
   );
 export type FeatureFlagsDependentFlagsListOutput =
   typeof FeatureFlagsDependentFlagsListOutput.Type;

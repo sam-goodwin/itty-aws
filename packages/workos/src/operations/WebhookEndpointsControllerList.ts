@@ -1,7 +1,7 @@
 import * as Schema from "effect/Schema";
+import { WebhookEndpointJsonSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
-import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const WebhookEndpointsControllerListInput =
@@ -19,18 +19,7 @@ export const WebhookEndpointsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          object: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          endpoint_url: Schema.optional(Schema.String),
-          secret: Schema.optional(SensitiveString),
-          status: Schema.optional(Schema.Literals(["enabled", "disabled"])),
-          events: Schema.optional(Schema.Array(Schema.String)),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => WebhookEndpointJsonSchema)),
     ),
     list_metadata: Schema.optional(
       Schema.Struct({

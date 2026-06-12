@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { LogsAlertEventSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -25,29 +26,7 @@ export const LogsAlertsEventsListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          created_at: Schema.optional(Schema.String),
-          kind: Schema.optional(
-            Schema.Literals([
-              "check",
-              "reset",
-              "enable",
-              "disable",
-              "snooze",
-              "unsnooze",
-              "threshold_change",
-            ]),
-          ),
-          state_before: Schema.optional(Schema.String),
-          state_after: Schema.optional(Schema.String),
-          threshold_breached: Schema.optional(Schema.Boolean),
-          result_count: Schema.optional(Schema.NullOr(Schema.Number)),
-          error_message: Schema.optional(Schema.NullOr(Schema.String)),
-          query_duration_ms: Schema.optional(Schema.NullOr(Schema.Number)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LogsAlertEventSchema)),
     ),
   });
 export type LogsAlertsEventsListOutput = typeof LogsAlertsEventsListOutput.Type;

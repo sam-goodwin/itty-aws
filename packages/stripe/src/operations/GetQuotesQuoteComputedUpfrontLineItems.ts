@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { itemSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -23,124 +24,7 @@ export type GetQuotesQuoteComputedUpfrontLineItemsInput =
 // Output Schema
 export const GetQuotesQuoteComputedUpfrontLineItemsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        adjustable_quantity: Schema.Unknown,
-        amount_discount: Schema.Number,
-        amount_subtotal: Schema.Number,
-        amount_tax: Schema.Number,
-        amount_total: Schema.Number,
-        currency: Schema.String,
-        description: Schema.NullOr(Schema.String),
-        discounts: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              amount: Schema.Number,
-              discount: Schema.Struct({
-                checkout_session: Schema.NullOr(Schema.String),
-                customer: Schema.Unknown,
-                customer_account: Schema.NullOr(Schema.String),
-                end: Schema.NullOr(Schema.Number),
-                id: Schema.String,
-                invoice: Schema.NullOr(Schema.String),
-                invoice_item: Schema.NullOr(Schema.String),
-                object: Schema.Literals(["discount"]),
-                promotion_code: Schema.Unknown,
-                source: Schema.Struct({
-                  coupon: Schema.Unknown,
-                  type: Schema.Literals(["coupon"]),
-                }),
-                start: Schema.Number,
-                subscription: Schema.NullOr(Schema.String),
-                subscription_item: Schema.NullOr(Schema.String),
-              }),
-            }),
-          ),
-        ),
-        id: Schema.String,
-        metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-        object: Schema.Literals(["item"]),
-        price: Schema.Unknown,
-        quantity: Schema.NullOr(Schema.Number),
-        taxes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              amount: Schema.Number,
-              rate: Schema.Struct({
-                active: Schema.Boolean,
-                country: Schema.NullOr(Schema.String),
-                created: Schema.Number,
-                description: Schema.NullOr(Schema.String),
-                display_name: Schema.String,
-                effective_percentage: Schema.NullOr(Schema.Number),
-                flat_amount: Schema.Unknown,
-                id: Schema.String,
-                inclusive: Schema.Boolean,
-                jurisdiction: Schema.NullOr(Schema.String),
-                jurisdiction_level: Schema.NullOr(
-                  Schema.Literals([
-                    "city",
-                    "country",
-                    "county",
-                    "district",
-                    "multiple",
-                    "state",
-                  ]),
-                ),
-                livemode: Schema.Boolean,
-                metadata: Schema.NullOr(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                object: Schema.Literals(["tax_rate"]),
-                percentage: Schema.Number,
-                rate_type: Schema.NullOr(
-                  Schema.Literals(["flat_amount", "percentage"]),
-                ),
-                state: Schema.NullOr(Schema.String),
-                tax_type: Schema.NullOr(
-                  Schema.Literals([
-                    "amusement_tax",
-                    "communications_tax",
-                    "gst",
-                    "hst",
-                    "igst",
-                    "jct",
-                    "lease_tax",
-                    "pst",
-                    "qst",
-                    "retail_delivery_fee",
-                    "rst",
-                    "sales_tax",
-                    "service_tax",
-                    "vat",
-                  ]),
-                ),
-              }),
-              taxability_reason: Schema.NullOr(
-                Schema.Literals([
-                  "customer_exempt",
-                  "not_collecting",
-                  "not_subject_to_tax",
-                  "not_supported",
-                  "portion_product_exempt",
-                  "portion_reduced_rated",
-                  "portion_standard_rated",
-                  "product_exempt",
-                  "product_exempt_holiday",
-                  "proportionally_rated",
-                  "reduced_rated",
-                  "reverse_charge",
-                  "standard_rated",
-                  "taxable_basis_reduced",
-                  "zero_rated",
-                ]),
-              ),
-              taxable_amount: Schema.NullOr(Schema.Number),
-            }),
-          ),
-        ),
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => itemSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

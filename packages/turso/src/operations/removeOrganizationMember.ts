@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { usernameSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
@@ -20,7 +21,7 @@ export type RemoveOrganizationMemberInput =
 // Output Schema
 export const RemoveOrganizationMemberOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    member: Schema.optional(Schema.String),
+    member: Schema.optional(Schema.suspend(() => usernameSchema)),
   });
 export type RemoveOrganizationMemberOutput =
   typeof RemoveOrganizationMemberOutput.Type;

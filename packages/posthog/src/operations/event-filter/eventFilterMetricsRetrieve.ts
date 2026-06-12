@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { AppMetricSeriesSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
@@ -21,12 +22,7 @@ export const EventFilterMetricsRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     labels: Schema.optional(Schema.Array(Schema.String)),
     series: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          values: Schema.optional(Schema.Array(Schema.Number)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => AppMetricSeriesSchema)),
     ),
   });
 export type EventFilterMetricsRetrieveOutput =

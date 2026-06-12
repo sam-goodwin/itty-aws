@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { shipping_rate_fixed_amountSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -45,23 +46,7 @@ export const PostShippingRatesShippingRateTokenOutput =
     delivery_estimate: Schema.Unknown,
     display_name: Schema.NullOr(Schema.String),
     fixed_amount: Schema.optional(
-      Schema.Struct({
-        amount: Schema.Number,
-        currency: Schema.String,
-        currency_options: Schema.optional(
-          Schema.Record(
-            Schema.String,
-            Schema.Struct({
-              amount: Schema.Number,
-              tax_behavior: Schema.Literals([
-                "exclusive",
-                "inclusive",
-                "unspecified",
-              ]),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => shipping_rate_fixed_amountSchema),
     ),
     id: Schema.String,
     livemode: Schema.Boolean,

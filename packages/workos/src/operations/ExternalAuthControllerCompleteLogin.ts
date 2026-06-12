@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { UserConsentOptionSchema, UserObjectSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
@@ -7,31 +8,9 @@ import { BadRequest, NotFound, UnprocessableEntity } from "../errors.ts";
 export const ExternalAuthControllerCompleteLoginInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     external_auth_id: Schema.optional(Schema.String),
-    user: Schema.optional(
-      Schema.Struct({
-        id: Schema.optional(Schema.String),
-        email: Schema.optional(Schema.String),
-        first_name: Schema.optional(Schema.String),
-        last_name: Schema.optional(Schema.String),
-        metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      }),
-    ),
+    user: Schema.optional(Schema.suspend(() => UserObjectSchema)),
     user_consent_options: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          claim: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          label: Schema.optional(Schema.String),
-          choices: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                value: Schema.optional(Schema.String),
-                label: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => UserConsentOptionSchema)),
     ),
   }).pipe(T.Http({ method: "POST", path: "/authkit/oauth2/complete" }));
 export type ExternalAuthControllerCompleteLoginInput =

@@ -8,12 +8,46 @@ import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
+import {
+  io_k8s_api_networking_v1_IPAddressSchema,
+  io_k8s_api_networking_v1_IPAddressSpecSchema,
+  io_k8s_api_networking_v1_IngressClassSchema,
+  io_k8s_api_networking_v1_IngressClassSpecSchema,
+  io_k8s_api_networking_v1_IngressSchema,
+  io_k8s_api_networking_v1_IngressSpecSchema,
+  io_k8s_api_networking_v1_IngressStatusSchema,
+  io_k8s_api_networking_v1_NetworkPolicySchema,
+  io_k8s_api_networking_v1_NetworkPolicySpecSchema,
+  io_k8s_api_networking_v1_ServiceCIDRSchema,
+  io_k8s_api_networking_v1_ServiceCIDRSpecSchema,
+  io_k8s_api_networking_v1_ServiceCIDRStatusSchema,
+  io_k8s_api_networking_v1beta1_IPAddressSchema,
+  io_k8s_api_networking_v1beta1_IPAddressSpecSchema,
+  io_k8s_api_networking_v1beta1_ServiceCIDRSchema,
+  io_k8s_api_networking_v1beta1_ServiceCIDRSpecSchema,
+  io_k8s_api_networking_v1beta1_ServiceCIDRStatusSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+  io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+} from "./_schemas.ts";
 
 // Input Schema
 export const CreateNetworkingV1IPAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(() => io_k8s_api_networking_v1_IPAddressSpecSchema),
   }).pipe(
     T.Http({ method: "POST", path: "/apis/networking.k8s.io/v1/ipaddresses" }),
   );
@@ -26,57 +60,11 @@ export const CreateNetworkingV1IPAddressOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      parentRef: Schema.Struct({
-        group: Schema.optional(Schema.String),
-        name: Schema.String,
-        namespace: Schema.optional(Schema.String),
-        resource: Schema.String,
-      }),
-    }),
+    spec: Schema.suspend(() => io_k8s_api_networking_v1_IPAddressSpecSchema),
   });
 export type CreateNetworkingV1IPAddressOutput =
   typeof CreateNetworkingV1IPAddressOutput.Type;
@@ -100,6 +88,16 @@ export const CreateNetworkingV1IngressClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressClassSpecSchema),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -115,62 +113,12 @@ export const CreateNetworkingV1IngressClassOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        controller: Schema.optional(Schema.String),
-        parameters: Schema.optional(
-          Schema.Struct({
-            apiGroup: Schema.optional(Schema.String),
-            kind: Schema.String,
-            name: Schema.String,
-            namespace: Schema.optional(Schema.String),
-            scope: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressClassSpecSchema),
     ),
   });
 export type CreateNetworkingV1IngressClassOutput =
@@ -194,6 +142,19 @@ export const CreateNetworkingV1NamespacedIngressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressSpecSchema),
+    ),
+    status: Schema.optional(
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressStatusSchema),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -209,145 +170,15 @@ export const CreateNetworkingV1NamespacedIngressOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        defaultBackend: Schema.optional(
-          Schema.Struct({
-            resource: Schema.optional(
-              Schema.Struct({
-                apiGroup: Schema.optional(Schema.String),
-                kind: Schema.String,
-                name: Schema.String,
-              }),
-            ),
-            service: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                port: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    number: Schema.optional(Schema.Number),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        ingressClassName: Schema.optional(Schema.String),
-        rules: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              host: Schema.optional(Schema.String),
-              http: Schema.optional(
-                Schema.Struct({
-                  paths: Schema.Array(
-                    Schema.Struct({
-                      backend: Schema.Struct({
-                        resource: Schema.optional(
-                          Schema.Struct({
-                            apiGroup: Schema.optional(Schema.String),
-                            kind: Schema.String,
-                            name: Schema.String,
-                          }),
-                        ),
-                        service: Schema.optional(
-                          Schema.Struct({
-                            name: Schema.String,
-                            port: Schema.optional(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                                number: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          }),
-                        ),
-                      }),
-                      path: Schema.optional(Schema.String),
-                      pathType: Schema.String,
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-        tls: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              hosts: Schema.optional(Schema.Array(Schema.String)),
-              secretName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        loadBalancer: Schema.optional(
-          Schema.Struct({
-            ingress: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  hostname: Schema.optional(Schema.String),
-                  ip: Schema.optional(Schema.String),
-                  ports: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        error: Schema.optional(Schema.String),
-                        port: Schema.Number,
-                        protocol: Schema.String,
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressStatusSchema),
     ),
   });
 export type CreateNetworkingV1NamespacedIngressOutput =
@@ -371,6 +202,16 @@ export const CreateNetworkingV1NamespacedNetworkPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(() => io_k8s_api_networking_v1_NetworkPolicySpecSchema),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -386,195 +227,12 @@ export const CreateNetworkingV1NamespacedNetworkPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        egress: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ports: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    endPort: Schema.optional(Schema.Number),
-                    port: Schema.optional(Schema.String),
-                    protocol: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              to: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    ipBlock: Schema.optional(
-                      Schema.Struct({
-                        cidr: Schema.String,
-                        except: Schema.optional(Schema.Array(Schema.String)),
-                      }),
-                    ),
-                    namespaceSelector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    podSelector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        ingress: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              from: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    ipBlock: Schema.optional(
-                      Schema.Struct({
-                        cidr: Schema.String,
-                        except: Schema.optional(Schema.Array(Schema.String)),
-                      }),
-                    ),
-                    namespaceSelector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    podSelector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              ),
-              ports: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    endPort: Schema.optional(Schema.Number),
-                    port: Schema.optional(Schema.String),
-                    protocol: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        podSelector: Schema.optional(
-          Schema.Struct({
-            matchExpressions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  key: Schema.String,
-                  operator: Schema.String,
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            matchLabels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-          }),
-        ),
-        policyTypes: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_NetworkPolicySpecSchema),
     ),
   });
 export type CreateNetworkingV1NamespacedNetworkPolicyOutput =
@@ -598,6 +256,19 @@ export const CreateNetworkingV1ServiceCIDRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(() => io_k8s_api_networking_v1_ServiceCIDRSpecSchema),
+    ),
+    status: Schema.optional(
+      Schema.suspend(() => io_k8s_api_networking_v1_ServiceCIDRStatusSchema),
+    ),
   }).pipe(
     T.Http({ method: "POST", path: "/apis/networking.k8s.io/v1/servicecidrs" }),
   );
@@ -610,69 +281,15 @@ export const CreateNetworkingV1ServiceCIDROutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        cidrs: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_ServiceCIDRSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_ServiceCIDRStatusSchema),
     ),
   });
 export type CreateNetworkingV1ServiceCIDROutput =
@@ -696,6 +313,16 @@ export const CreateNetworkingV1beta1IPAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(
+      () => io_k8s_api_networking_v1beta1_IPAddressSpecSchema,
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -711,57 +338,13 @@ export const CreateNetworkingV1beta1IPAddressOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      parentRef: Schema.Struct({
-        group: Schema.optional(Schema.String),
-        name: Schema.String,
-        namespace: Schema.optional(Schema.String),
-        resource: Schema.String,
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_networking_v1beta1_IPAddressSpecSchema,
+    ),
   });
 export type CreateNetworkingV1beta1IPAddressOutput =
   typeof CreateNetworkingV1beta1IPAddressOutput.Type;
@@ -784,6 +367,21 @@ export const CreateNetworkingV1beta1ServiceCIDRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(() => io_k8s_api_networking_v1beta1_ServiceCIDRSpecSchema),
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_networking_v1beta1_ServiceCIDRStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -799,69 +397,17 @@ export const CreateNetworkingV1beta1ServiceCIDROutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        cidrs: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1beta1_ServiceCIDRSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_networking_v1beta1_ServiceCIDRStatusSchema,
+      ),
     ),
   });
 export type CreateNetworkingV1beta1ServiceCIDROutput =
@@ -899,37 +445,14 @@ export const DeleteNetworkingV1CollectionIPAddressOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -967,37 +490,14 @@ export const DeleteNetworkingV1CollectionIngressClassOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1035,37 +535,14 @@ export const DeleteNetworkingV1CollectionNamespacedIngressOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1103,37 +580,14 @@ export const DeleteNetworkingV1CollectionNamespacedNetworkPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1171,37 +625,14 @@ export const DeleteNetworkingV1CollectionServiceCIDROutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1239,37 +670,14 @@ export const DeleteNetworkingV1IPAddressOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1309,37 +717,14 @@ export const DeleteNetworkingV1IngressClassOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1378,37 +763,14 @@ export const DeleteNetworkingV1NamespacedIngressOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1447,37 +809,14 @@ export const DeleteNetworkingV1NamespacedNetworkPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1516,37 +855,14 @@ export const DeleteNetworkingV1ServiceCIDROutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1585,37 +901,14 @@ export const DeleteNetworkingV1beta1CollectionIPAddressOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1653,37 +946,14 @@ export const DeleteNetworkingV1beta1CollectionServiceCIDROutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1721,37 +991,14 @@ export const DeleteNetworkingV1beta1IPAddressOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1790,37 +1037,14 @@ export const DeleteNetworkingV1beta1ServiceCIDROutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1854,24 +1078,24 @@ export const GetNetworkingAPIGroupOutput =
     kind: Schema.optional(Schema.String),
     name: Schema.String,
     preferredVersion: Schema.optional(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
     serverAddressByClientCIDRs: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
+        Schema.suspend(
+          () =>
+            io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+        ),
       ),
     ),
     versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
   });
 export type GetNetworkingAPIGroupOutput =
@@ -1902,18 +1126,9 @@ export const GetNetworkingV1APIResourcesOutput =
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
     resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+      ),
     ),
   });
 export type GetNetworkingV1APIResourcesOutput =
@@ -1944,18 +1159,9 @@ export const GetNetworkingV1beta1APIResourcesOutput =
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
     resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+      ),
     ),
   });
 export type GetNetworkingV1beta1APIResourcesOutput =
@@ -1983,78 +1189,11 @@ export const ListNetworkingV1IPAddressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.Struct({
-          parentRef: Schema.Struct({
-            group: Schema.optional(Schema.String),
-            name: Schema.String,
-            namespace: Schema.optional(Schema.String),
-            resource: Schema.String,
-          }),
-        }),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_IPAddressSchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListNetworkingV1IPAddressOutput =
@@ -2086,84 +1225,11 @@ export const ListNetworkingV1IngressClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            controller: Schema.optional(Schema.String),
-            parameters: Schema.optional(
-              Schema.Struct({
-                apiGroup: Schema.optional(Schema.String),
-                kind: Schema.String,
-                name: Schema.String,
-                namespace: Schema.optional(Schema.String),
-                scope: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressClassSchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListNetworkingV1IngressClassOutput =
@@ -2191,167 +1257,11 @@ export const ListNetworkingV1IngressForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            defaultBackend: Schema.optional(
-              Schema.Struct({
-                resource: Schema.optional(
-                  Schema.Struct({
-                    apiGroup: Schema.optional(Schema.String),
-                    kind: Schema.String,
-                    name: Schema.String,
-                  }),
-                ),
-                service: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.String,
-                    port: Schema.optional(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        number: Schema.optional(Schema.Number),
-                      }),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            ingressClassName: Schema.optional(Schema.String),
-            rules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  host: Schema.optional(Schema.String),
-                  http: Schema.optional(
-                    Schema.Struct({
-                      paths: Schema.Array(
-                        Schema.Struct({
-                          backend: Schema.Struct({
-                            resource: Schema.optional(
-                              Schema.Struct({
-                                apiGroup: Schema.optional(Schema.String),
-                                kind: Schema.String,
-                                name: Schema.String,
-                              }),
-                            ),
-                            service: Schema.optional(
-                              Schema.Struct({
-                                name: Schema.String,
-                                port: Schema.optional(
-                                  Schema.Struct({
-                                    name: Schema.optional(Schema.String),
-                                    number: Schema.optional(Schema.Number),
-                                  }),
-                                ),
-                              }),
-                            ),
-                          }),
-                          path: Schema.optional(Schema.String),
-                          pathType: Schema.String,
-                        }),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-            tls: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  hosts: Schema.optional(Schema.Array(Schema.String)),
-                  secretName: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        status: Schema.optional(
-          Schema.Struct({
-            loadBalancer: Schema.optional(
-              Schema.Struct({
-                ingress: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      hostname: Schema.optional(Schema.String),
-                      ip: Schema.optional(Schema.String),
-                      ports: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            error: Schema.optional(Schema.String),
-                            port: Schema.Number,
-                            protocol: Schema.String,
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressSchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListNetworkingV1IngressForAllNamespacesOutput =
@@ -2382,167 +1292,11 @@ export const ListNetworkingV1NamespacedIngressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            defaultBackend: Schema.optional(
-              Schema.Struct({
-                resource: Schema.optional(
-                  Schema.Struct({
-                    apiGroup: Schema.optional(Schema.String),
-                    kind: Schema.String,
-                    name: Schema.String,
-                  }),
-                ),
-                service: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.String,
-                    port: Schema.optional(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        number: Schema.optional(Schema.Number),
-                      }),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            ingressClassName: Schema.optional(Schema.String),
-            rules: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  host: Schema.optional(Schema.String),
-                  http: Schema.optional(
-                    Schema.Struct({
-                      paths: Schema.Array(
-                        Schema.Struct({
-                          backend: Schema.Struct({
-                            resource: Schema.optional(
-                              Schema.Struct({
-                                apiGroup: Schema.optional(Schema.String),
-                                kind: Schema.String,
-                                name: Schema.String,
-                              }),
-                            ),
-                            service: Schema.optional(
-                              Schema.Struct({
-                                name: Schema.String,
-                                port: Schema.optional(
-                                  Schema.Struct({
-                                    name: Schema.optional(Schema.String),
-                                    number: Schema.optional(Schema.Number),
-                                  }),
-                                ),
-                              }),
-                            ),
-                          }),
-                          path: Schema.optional(Schema.String),
-                          pathType: Schema.String,
-                        }),
-                      ),
-                    }),
-                  ),
-                }),
-              ),
-            ),
-            tls: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  hosts: Schema.optional(Schema.Array(Schema.String)),
-                  secretName: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-        status: Schema.optional(
-          Schema.Struct({
-            loadBalancer: Schema.optional(
-              Schema.Struct({
-                ingress: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      hostname: Schema.optional(Schema.String),
-                      ip: Schema.optional(Schema.String),
-                      ports: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            error: Schema.optional(Schema.String),
-                            port: Schema.Number,
-                            protocol: Schema.String,
-                          }),
-                        ),
-                      ),
-                    }),
-                  ),
-                ),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressSchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListNetworkingV1NamespacedIngressOutput =
@@ -2573,221 +1327,11 @@ export const ListNetworkingV1NamespacedNetworkPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            egress: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  ports: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        endPort: Schema.optional(Schema.Number),
-                        port: Schema.optional(Schema.String),
-                        protocol: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  to: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        ipBlock: Schema.optional(
-                          Schema.Struct({
-                            cidr: Schema.String,
-                            except: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                        namespaceSelector: Schema.optional(
-                          Schema.Struct({
-                            matchExpressions: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  operator: Schema.String,
-                                  values: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                }),
-                              ),
-                            ),
-                            matchLabels: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        podSelector: Schema.optional(
-                          Schema.Struct({
-                            matchExpressions: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  operator: Schema.String,
-                                  values: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                }),
-                              ),
-                            ),
-                            matchLabels: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            ingress: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  from: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        ipBlock: Schema.optional(
-                          Schema.Struct({
-                            cidr: Schema.String,
-                            except: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                        namespaceSelector: Schema.optional(
-                          Schema.Struct({
-                            matchExpressions: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  operator: Schema.String,
-                                  values: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                }),
-                              ),
-                            ),
-                            matchLabels: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        podSelector: Schema.optional(
-                          Schema.Struct({
-                            matchExpressions: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  operator: Schema.String,
-                                  values: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                }),
-                              ),
-                            ),
-                            matchLabels: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                      }),
-                    ),
-                  ),
-                  ports: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        endPort: Schema.optional(Schema.Number),
-                        port: Schema.optional(Schema.String),
-                        protocol: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            podSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            policyTypes: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_NetworkPolicySchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListNetworkingV1NamespacedNetworkPolicyOutput =
@@ -2818,221 +1362,11 @@ export const ListNetworkingV1NetworkPolicyForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            egress: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  ports: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        endPort: Schema.optional(Schema.Number),
-                        port: Schema.optional(Schema.String),
-                        protocol: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  to: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        ipBlock: Schema.optional(
-                          Schema.Struct({
-                            cidr: Schema.String,
-                            except: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                        namespaceSelector: Schema.optional(
-                          Schema.Struct({
-                            matchExpressions: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  operator: Schema.String,
-                                  values: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                }),
-                              ),
-                            ),
-                            matchLabels: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        podSelector: Schema.optional(
-                          Schema.Struct({
-                            matchExpressions: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  operator: Schema.String,
-                                  values: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                }),
-                              ),
-                            ),
-                            matchLabels: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            ingress: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  from: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        ipBlock: Schema.optional(
-                          Schema.Struct({
-                            cidr: Schema.String,
-                            except: Schema.optional(
-                              Schema.Array(Schema.String),
-                            ),
-                          }),
-                        ),
-                        namespaceSelector: Schema.optional(
-                          Schema.Struct({
-                            matchExpressions: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  operator: Schema.String,
-                                  values: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                }),
-                              ),
-                            ),
-                            matchLabels: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                        podSelector: Schema.optional(
-                          Schema.Struct({
-                            matchExpressions: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  operator: Schema.String,
-                                  values: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                }),
-                              ),
-                            ),
-                            matchLabels: Schema.optional(
-                              Schema.Record(Schema.String, Schema.String),
-                            ),
-                          }),
-                        ),
-                      }),
-                    ),
-                  ),
-                  ports: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        endPort: Schema.optional(Schema.Number),
-                        port: Schema.optional(Schema.String),
-                        protocol: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-            podSelector: Schema.optional(
-              Schema.Struct({
-                matchExpressions: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      key: Schema.String,
-                      operator: Schema.String,
-                      values: Schema.optional(Schema.Array(Schema.String)),
-                    }),
-                  ),
-                ),
-                matchLabels: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-              }),
-            ),
-            policyTypes: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_NetworkPolicySchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListNetworkingV1NetworkPolicyForAllNamespacesOutput =
@@ -3060,91 +1394,11 @@ export const ListNetworkingV1ServiceCIDROutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            cidrs: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        status: Schema.optional(
-          Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  lastTransitionTime: Schema.String,
-                  message: Schema.String,
-                  observedGeneration: Schema.optional(Schema.Number),
-                  reason: Schema.String,
-                  status: Schema.String,
-                  type: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_ServiceCIDRSchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListNetworkingV1ServiceCIDROutput =
@@ -3176,78 +1430,11 @@ export const ListNetworkingV1beta1IPAddressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.Struct({
-          parentRef: Schema.Struct({
-            group: Schema.optional(Schema.String),
-            name: Schema.String,
-            namespace: Schema.optional(Schema.String),
-            resource: Schema.String,
-          }),
-        }),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1beta1_IPAddressSchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListNetworkingV1beta1IPAddressOutput =
@@ -3278,91 +1465,11 @@ export const ListNetworkingV1beta1ServiceCIDROutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.optional(
-          Schema.Struct({
-            cidrs: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-        status: Schema.optional(
-          Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  lastTransitionTime: Schema.String,
-                  message: Schema.String,
-                  observedGeneration: Schema.optional(Schema.Number),
-                  reason: Schema.String,
-                  status: Schema.String,
-                  type: Schema.String,
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1beta1_ServiceCIDRSchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListNetworkingV1beta1ServiceCIDROutput =
@@ -3397,57 +1504,11 @@ export const PatchNetworkingV1IPAddressOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      parentRef: Schema.Struct({
-        group: Schema.optional(Schema.String),
-        name: Schema.String,
-        namespace: Schema.optional(Schema.String),
-        resource: Schema.String,
-      }),
-    }),
+    spec: Schema.suspend(() => io_k8s_api_networking_v1_IPAddressSpecSchema),
   });
 export type PatchNetworkingV1IPAddressOutput =
   typeof PatchNetworkingV1IPAddressOutput.Type;
@@ -3486,62 +1547,12 @@ export const PatchNetworkingV1IngressClassOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        controller: Schema.optional(Schema.String),
-        parameters: Schema.optional(
-          Schema.Struct({
-            apiGroup: Schema.optional(Schema.String),
-            kind: Schema.String,
-            name: Schema.String,
-            namespace: Schema.optional(Schema.String),
-            scope: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressClassSpecSchema),
     ),
   });
 export type PatchNetworkingV1IngressClassOutput =
@@ -3580,145 +1591,15 @@ export const PatchNetworkingV1NamespacedIngressOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        defaultBackend: Schema.optional(
-          Schema.Struct({
-            resource: Schema.optional(
-              Schema.Struct({
-                apiGroup: Schema.optional(Schema.String),
-                kind: Schema.String,
-                name: Schema.String,
-              }),
-            ),
-            service: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                port: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    number: Schema.optional(Schema.Number),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        ingressClassName: Schema.optional(Schema.String),
-        rules: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              host: Schema.optional(Schema.String),
-              http: Schema.optional(
-                Schema.Struct({
-                  paths: Schema.Array(
-                    Schema.Struct({
-                      backend: Schema.Struct({
-                        resource: Schema.optional(
-                          Schema.Struct({
-                            apiGroup: Schema.optional(Schema.String),
-                            kind: Schema.String,
-                            name: Schema.String,
-                          }),
-                        ),
-                        service: Schema.optional(
-                          Schema.Struct({
-                            name: Schema.String,
-                            port: Schema.optional(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                                number: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          }),
-                        ),
-                      }),
-                      path: Schema.optional(Schema.String),
-                      pathType: Schema.String,
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-        tls: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              hosts: Schema.optional(Schema.Array(Schema.String)),
-              secretName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        loadBalancer: Schema.optional(
-          Schema.Struct({
-            ingress: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  hostname: Schema.optional(Schema.String),
-                  ip: Schema.optional(Schema.String),
-                  ports: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        error: Schema.optional(Schema.String),
-                        port: Schema.Number,
-                        protocol: Schema.String,
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressStatusSchema),
     ),
   });
 export type PatchNetworkingV1NamespacedIngressOutput =
@@ -3757,145 +1638,15 @@ export const PatchNetworkingV1NamespacedIngressStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        defaultBackend: Schema.optional(
-          Schema.Struct({
-            resource: Schema.optional(
-              Schema.Struct({
-                apiGroup: Schema.optional(Schema.String),
-                kind: Schema.String,
-                name: Schema.String,
-              }),
-            ),
-            service: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                port: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    number: Schema.optional(Schema.Number),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        ingressClassName: Schema.optional(Schema.String),
-        rules: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              host: Schema.optional(Schema.String),
-              http: Schema.optional(
-                Schema.Struct({
-                  paths: Schema.Array(
-                    Schema.Struct({
-                      backend: Schema.Struct({
-                        resource: Schema.optional(
-                          Schema.Struct({
-                            apiGroup: Schema.optional(Schema.String),
-                            kind: Schema.String,
-                            name: Schema.String,
-                          }),
-                        ),
-                        service: Schema.optional(
-                          Schema.Struct({
-                            name: Schema.String,
-                            port: Schema.optional(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                                number: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          }),
-                        ),
-                      }),
-                      path: Schema.optional(Schema.String),
-                      pathType: Schema.String,
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-        tls: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              hosts: Schema.optional(Schema.Array(Schema.String)),
-              secretName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        loadBalancer: Schema.optional(
-          Schema.Struct({
-            ingress: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  hostname: Schema.optional(Schema.String),
-                  ip: Schema.optional(Schema.String),
-                  ports: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        error: Schema.optional(Schema.String),
-                        port: Schema.Number,
-                        protocol: Schema.String,
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressStatusSchema),
     ),
   });
 export type PatchNetworkingV1NamespacedIngressStatusOutput =
@@ -3934,195 +1685,12 @@ export const PatchNetworkingV1NamespacedNetworkPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        egress: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ports: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    endPort: Schema.optional(Schema.Number),
-                    port: Schema.optional(Schema.String),
-                    protocol: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              to: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    ipBlock: Schema.optional(
-                      Schema.Struct({
-                        cidr: Schema.String,
-                        except: Schema.optional(Schema.Array(Schema.String)),
-                      }),
-                    ),
-                    namespaceSelector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    podSelector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        ingress: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              from: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    ipBlock: Schema.optional(
-                      Schema.Struct({
-                        cidr: Schema.String,
-                        except: Schema.optional(Schema.Array(Schema.String)),
-                      }),
-                    ),
-                    namespaceSelector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    podSelector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              ),
-              ports: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    endPort: Schema.optional(Schema.Number),
-                    port: Schema.optional(Schema.String),
-                    protocol: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        podSelector: Schema.optional(
-          Schema.Struct({
-            matchExpressions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  key: Schema.String,
-                  operator: Schema.String,
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            matchLabels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-          }),
-        ),
-        policyTypes: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_NetworkPolicySpecSchema),
     ),
   });
 export type PatchNetworkingV1NamespacedNetworkPolicyOutput =
@@ -4161,69 +1729,15 @@ export const PatchNetworkingV1ServiceCIDROutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        cidrs: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_ServiceCIDRSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_ServiceCIDRStatusSchema),
     ),
   });
 export type PatchNetworkingV1ServiceCIDROutput =
@@ -4262,69 +1776,15 @@ export const PatchNetworkingV1ServiceCIDRStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        cidrs: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_ServiceCIDRSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_ServiceCIDRStatusSchema),
     ),
   });
 export type PatchNetworkingV1ServiceCIDRStatusOutput =
@@ -4363,57 +1823,13 @@ export const PatchNetworkingV1beta1IPAddressOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      parentRef: Schema.Struct({
-        group: Schema.optional(Schema.String),
-        name: Schema.String,
-        namespace: Schema.optional(Schema.String),
-        resource: Schema.String,
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_networking_v1beta1_IPAddressSpecSchema,
+    ),
   });
 export type PatchNetworkingV1beta1IPAddressOutput =
   typeof PatchNetworkingV1beta1IPAddressOutput.Type;
@@ -4451,69 +1867,17 @@ export const PatchNetworkingV1beta1ServiceCIDROutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        cidrs: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1beta1_ServiceCIDRSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_networking_v1beta1_ServiceCIDRStatusSchema,
+      ),
     ),
   });
 export type PatchNetworkingV1beta1ServiceCIDROutput =
@@ -4552,69 +1916,17 @@ export const PatchNetworkingV1beta1ServiceCIDRStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        cidrs: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1beta1_ServiceCIDRSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_networking_v1beta1_ServiceCIDRStatusSchema,
+      ),
     ),
   });
 export type PatchNetworkingV1beta1ServiceCIDRStatusOutput =
@@ -4650,57 +1962,11 @@ export const ReadNetworkingV1IPAddressOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      parentRef: Schema.Struct({
-        group: Schema.optional(Schema.String),
-        name: Schema.String,
-        namespace: Schema.optional(Schema.String),
-        resource: Schema.String,
-      }),
-    }),
+    spec: Schema.suspend(() => io_k8s_api_networking_v1_IPAddressSpecSchema),
   });
 export type ReadNetworkingV1IPAddressOutput =
   typeof ReadNetworkingV1IPAddressOutput.Type;
@@ -4733,62 +1999,12 @@ export const ReadNetworkingV1IngressClassOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        controller: Schema.optional(Schema.String),
-        parameters: Schema.optional(
-          Schema.Struct({
-            apiGroup: Schema.optional(Schema.String),
-            kind: Schema.String,
-            name: Schema.String,
-            namespace: Schema.optional(Schema.String),
-            scope: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressClassSpecSchema),
     ),
   });
 export type ReadNetworkingV1IngressClassOutput =
@@ -4821,145 +2037,15 @@ export const ReadNetworkingV1NamespacedIngressOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        defaultBackend: Schema.optional(
-          Schema.Struct({
-            resource: Schema.optional(
-              Schema.Struct({
-                apiGroup: Schema.optional(Schema.String),
-                kind: Schema.String,
-                name: Schema.String,
-              }),
-            ),
-            service: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                port: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    number: Schema.optional(Schema.Number),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        ingressClassName: Schema.optional(Schema.String),
-        rules: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              host: Schema.optional(Schema.String),
-              http: Schema.optional(
-                Schema.Struct({
-                  paths: Schema.Array(
-                    Schema.Struct({
-                      backend: Schema.Struct({
-                        resource: Schema.optional(
-                          Schema.Struct({
-                            apiGroup: Schema.optional(Schema.String),
-                            kind: Schema.String,
-                            name: Schema.String,
-                          }),
-                        ),
-                        service: Schema.optional(
-                          Schema.Struct({
-                            name: Schema.String,
-                            port: Schema.optional(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                                number: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          }),
-                        ),
-                      }),
-                      path: Schema.optional(Schema.String),
-                      pathType: Schema.String,
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-        tls: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              hosts: Schema.optional(Schema.Array(Schema.String)),
-              secretName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        loadBalancer: Schema.optional(
-          Schema.Struct({
-            ingress: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  hostname: Schema.optional(Schema.String),
-                  ip: Schema.optional(Schema.String),
-                  ports: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        error: Schema.optional(Schema.String),
-                        port: Schema.Number,
-                        protocol: Schema.String,
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressStatusSchema),
     ),
   });
 export type ReadNetworkingV1NamespacedIngressOutput =
@@ -4992,145 +2078,15 @@ export const ReadNetworkingV1NamespacedIngressStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        defaultBackend: Schema.optional(
-          Schema.Struct({
-            resource: Schema.optional(
-              Schema.Struct({
-                apiGroup: Schema.optional(Schema.String),
-                kind: Schema.String,
-                name: Schema.String,
-              }),
-            ),
-            service: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                port: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    number: Schema.optional(Schema.Number),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        ingressClassName: Schema.optional(Schema.String),
-        rules: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              host: Schema.optional(Schema.String),
-              http: Schema.optional(
-                Schema.Struct({
-                  paths: Schema.Array(
-                    Schema.Struct({
-                      backend: Schema.Struct({
-                        resource: Schema.optional(
-                          Schema.Struct({
-                            apiGroup: Schema.optional(Schema.String),
-                            kind: Schema.String,
-                            name: Schema.String,
-                          }),
-                        ),
-                        service: Schema.optional(
-                          Schema.Struct({
-                            name: Schema.String,
-                            port: Schema.optional(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                                number: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          }),
-                        ),
-                      }),
-                      path: Schema.optional(Schema.String),
-                      pathType: Schema.String,
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-        tls: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              hosts: Schema.optional(Schema.Array(Schema.String)),
-              secretName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        loadBalancer: Schema.optional(
-          Schema.Struct({
-            ingress: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  hostname: Schema.optional(Schema.String),
-                  ip: Schema.optional(Schema.String),
-                  ports: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        error: Schema.optional(Schema.String),
-                        port: Schema.Number,
-                        protocol: Schema.String,
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressStatusSchema),
     ),
   });
 export type ReadNetworkingV1NamespacedIngressStatusOutput =
@@ -5163,195 +2119,12 @@ export const ReadNetworkingV1NamespacedNetworkPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        egress: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ports: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    endPort: Schema.optional(Schema.Number),
-                    port: Schema.optional(Schema.String),
-                    protocol: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              to: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    ipBlock: Schema.optional(
-                      Schema.Struct({
-                        cidr: Schema.String,
-                        except: Schema.optional(Schema.Array(Schema.String)),
-                      }),
-                    ),
-                    namespaceSelector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    podSelector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        ingress: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              from: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    ipBlock: Schema.optional(
-                      Schema.Struct({
-                        cidr: Schema.String,
-                        except: Schema.optional(Schema.Array(Schema.String)),
-                      }),
-                    ),
-                    namespaceSelector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    podSelector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              ),
-              ports: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    endPort: Schema.optional(Schema.Number),
-                    port: Schema.optional(Schema.String),
-                    protocol: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        podSelector: Schema.optional(
-          Schema.Struct({
-            matchExpressions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  key: Schema.String,
-                  operator: Schema.String,
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            matchLabels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-          }),
-        ),
-        policyTypes: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_NetworkPolicySpecSchema),
     ),
   });
 export type ReadNetworkingV1NamespacedNetworkPolicyOutput =
@@ -5384,69 +2157,15 @@ export const ReadNetworkingV1ServiceCIDROutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        cidrs: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_ServiceCIDRSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_ServiceCIDRStatusSchema),
     ),
   });
 export type ReadNetworkingV1ServiceCIDROutput =
@@ -5480,69 +2199,15 @@ export const ReadNetworkingV1ServiceCIDRStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        cidrs: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_ServiceCIDRSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_ServiceCIDRStatusSchema),
     ),
   });
 export type ReadNetworkingV1ServiceCIDRStatusOutput =
@@ -5575,57 +2240,13 @@ export const ReadNetworkingV1beta1IPAddressOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      parentRef: Schema.Struct({
-        group: Schema.optional(Schema.String),
-        name: Schema.String,
-        namespace: Schema.optional(Schema.String),
-        resource: Schema.String,
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_networking_v1beta1_IPAddressSpecSchema,
+    ),
   });
 export type ReadNetworkingV1beta1IPAddressOutput =
   typeof ReadNetworkingV1beta1IPAddressOutput.Type;
@@ -5657,69 +2278,17 @@ export const ReadNetworkingV1beta1ServiceCIDROutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        cidrs: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1beta1_ServiceCIDRSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_networking_v1beta1_ServiceCIDRStatusSchema,
+      ),
     ),
   });
 export type ReadNetworkingV1beta1ServiceCIDROutput =
@@ -5752,69 +2321,17 @@ export const ReadNetworkingV1beta1ServiceCIDRStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        cidrs: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1beta1_ServiceCIDRSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_networking_v1beta1_ServiceCIDRStatusSchema,
+      ),
     ),
   });
 export type ReadNetworkingV1beta1ServiceCIDRStatusOutput =
@@ -5835,6 +2352,14 @@ export const ReplaceNetworkingV1IPAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(() => io_k8s_api_networking_v1_IPAddressSpecSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -5850,57 +2375,11 @@ export const ReplaceNetworkingV1IPAddressOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      parentRef: Schema.Struct({
-        group: Schema.optional(Schema.String),
-        name: Schema.String,
-        namespace: Schema.optional(Schema.String),
-        resource: Schema.String,
-      }),
-    }),
+    spec: Schema.suspend(() => io_k8s_api_networking_v1_IPAddressSpecSchema),
   });
 export type ReplaceNetworkingV1IPAddressOutput =
   typeof ReplaceNetworkingV1IPAddressOutput.Type;
@@ -5923,6 +2402,16 @@ export const ReplaceNetworkingV1IngressClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressClassSpecSchema),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -5938,62 +2427,12 @@ export const ReplaceNetworkingV1IngressClassOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        controller: Schema.optional(Schema.String),
-        parameters: Schema.optional(
-          Schema.Struct({
-            apiGroup: Schema.optional(Schema.String),
-            kind: Schema.String,
-            name: Schema.String,
-            namespace: Schema.optional(Schema.String),
-            scope: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressClassSpecSchema),
     ),
   });
 export type ReplaceNetworkingV1IngressClassOutput =
@@ -6017,6 +2456,19 @@ export const ReplaceNetworkingV1NamespacedIngressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressSpecSchema),
+    ),
+    status: Schema.optional(
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressStatusSchema),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6032,145 +2484,15 @@ export const ReplaceNetworkingV1NamespacedIngressOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        defaultBackend: Schema.optional(
-          Schema.Struct({
-            resource: Schema.optional(
-              Schema.Struct({
-                apiGroup: Schema.optional(Schema.String),
-                kind: Schema.String,
-                name: Schema.String,
-              }),
-            ),
-            service: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                port: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    number: Schema.optional(Schema.Number),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        ingressClassName: Schema.optional(Schema.String),
-        rules: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              host: Schema.optional(Schema.String),
-              http: Schema.optional(
-                Schema.Struct({
-                  paths: Schema.Array(
-                    Schema.Struct({
-                      backend: Schema.Struct({
-                        resource: Schema.optional(
-                          Schema.Struct({
-                            apiGroup: Schema.optional(Schema.String),
-                            kind: Schema.String,
-                            name: Schema.String,
-                          }),
-                        ),
-                        service: Schema.optional(
-                          Schema.Struct({
-                            name: Schema.String,
-                            port: Schema.optional(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                                number: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          }),
-                        ),
-                      }),
-                      path: Schema.optional(Schema.String),
-                      pathType: Schema.String,
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-        tls: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              hosts: Schema.optional(Schema.Array(Schema.String)),
-              secretName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        loadBalancer: Schema.optional(
-          Schema.Struct({
-            ingress: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  hostname: Schema.optional(Schema.String),
-                  ip: Schema.optional(Schema.String),
-                  ports: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        error: Schema.optional(Schema.String),
-                        port: Schema.Number,
-                        protocol: Schema.String,
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressStatusSchema),
     ),
   });
 export type ReplaceNetworkingV1NamespacedIngressOutput =
@@ -6194,6 +2516,19 @@ export const ReplaceNetworkingV1NamespacedIngressStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressSpecSchema),
+    ),
+    status: Schema.optional(
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressStatusSchema),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6209,145 +2544,15 @@ export const ReplaceNetworkingV1NamespacedIngressStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        defaultBackend: Schema.optional(
-          Schema.Struct({
-            resource: Schema.optional(
-              Schema.Struct({
-                apiGroup: Schema.optional(Schema.String),
-                kind: Schema.String,
-                name: Schema.String,
-              }),
-            ),
-            service: Schema.optional(
-              Schema.Struct({
-                name: Schema.String,
-                port: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    number: Schema.optional(Schema.Number),
-                  }),
-                ),
-              }),
-            ),
-          }),
-        ),
-        ingressClassName: Schema.optional(Schema.String),
-        rules: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              host: Schema.optional(Schema.String),
-              http: Schema.optional(
-                Schema.Struct({
-                  paths: Schema.Array(
-                    Schema.Struct({
-                      backend: Schema.Struct({
-                        resource: Schema.optional(
-                          Schema.Struct({
-                            apiGroup: Schema.optional(Schema.String),
-                            kind: Schema.String,
-                            name: Schema.String,
-                          }),
-                        ),
-                        service: Schema.optional(
-                          Schema.Struct({
-                            name: Schema.String,
-                            port: Schema.optional(
-                              Schema.Struct({
-                                name: Schema.optional(Schema.String),
-                                number: Schema.optional(Schema.Number),
-                              }),
-                            ),
-                          }),
-                        ),
-                      }),
-                      path: Schema.optional(Schema.String),
-                      pathType: Schema.String,
-                    }),
-                  ),
-                }),
-              ),
-            }),
-          ),
-        ),
-        tls: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              hosts: Schema.optional(Schema.Array(Schema.String)),
-              secretName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        loadBalancer: Schema.optional(
-          Schema.Struct({
-            ingress: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  hostname: Schema.optional(Schema.String),
-                  ip: Schema.optional(Schema.String),
-                  ports: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        error: Schema.optional(Schema.String),
-                        port: Schema.Number,
-                        protocol: Schema.String,
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_IngressStatusSchema),
     ),
   });
 export type ReplaceNetworkingV1NamespacedIngressStatusOutput =
@@ -6371,6 +2576,16 @@ export const ReplaceNetworkingV1NamespacedNetworkPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(() => io_k8s_api_networking_v1_NetworkPolicySpecSchema),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6386,195 +2601,12 @@ export const ReplaceNetworkingV1NamespacedNetworkPolicyOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        egress: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              ports: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    endPort: Schema.optional(Schema.Number),
-                    port: Schema.optional(Schema.String),
-                    protocol: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              to: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    ipBlock: Schema.optional(
-                      Schema.Struct({
-                        cidr: Schema.String,
-                        except: Schema.optional(Schema.Array(Schema.String)),
-                      }),
-                    ),
-                    namespaceSelector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    podSelector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        ingress: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              from: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    ipBlock: Schema.optional(
-                      Schema.Struct({
-                        cidr: Schema.String,
-                        except: Schema.optional(Schema.Array(Schema.String)),
-                      }),
-                    ),
-                    namespaceSelector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                    podSelector: Schema.optional(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchLabels: Schema.optional(
-                          Schema.Record(Schema.String, Schema.String),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              ),
-              ports: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    endPort: Schema.optional(Schema.Number),
-                    port: Schema.optional(Schema.String),
-                    protocol: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        podSelector: Schema.optional(
-          Schema.Struct({
-            matchExpressions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  key: Schema.String,
-                  operator: Schema.String,
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            matchLabels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-          }),
-        ),
-        policyTypes: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_NetworkPolicySpecSchema),
     ),
   });
 export type ReplaceNetworkingV1NamespacedNetworkPolicyOutput =
@@ -6598,6 +2630,19 @@ export const ReplaceNetworkingV1ServiceCIDRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(() => io_k8s_api_networking_v1_ServiceCIDRSpecSchema),
+    ),
+    status: Schema.optional(
+      Schema.suspend(() => io_k8s_api_networking_v1_ServiceCIDRStatusSchema),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6613,69 +2658,15 @@ export const ReplaceNetworkingV1ServiceCIDROutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        cidrs: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_ServiceCIDRSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_ServiceCIDRStatusSchema),
     ),
   });
 export type ReplaceNetworkingV1ServiceCIDROutput =
@@ -6699,6 +2690,19 @@ export const ReplaceNetworkingV1ServiceCIDRStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(() => io_k8s_api_networking_v1_ServiceCIDRSpecSchema),
+    ),
+    status: Schema.optional(
+      Schema.suspend(() => io_k8s_api_networking_v1_ServiceCIDRStatusSchema),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6714,69 +2718,15 @@ export const ReplaceNetworkingV1ServiceCIDRStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        cidrs: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_ServiceCIDRSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1_ServiceCIDRStatusSchema),
     ),
   });
 export type ReplaceNetworkingV1ServiceCIDRStatusOutput =
@@ -6800,6 +2750,16 @@ export const ReplaceNetworkingV1beta1IPAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(
+      () => io_k8s_api_networking_v1beta1_IPAddressSpecSchema,
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6815,57 +2775,13 @@ export const ReplaceNetworkingV1beta1IPAddressOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      parentRef: Schema.Struct({
-        group: Schema.optional(Schema.String),
-        name: Schema.String,
-        namespace: Schema.optional(Schema.String),
-        resource: Schema.String,
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_networking_v1beta1_IPAddressSpecSchema,
+    ),
   });
 export type ReplaceNetworkingV1beta1IPAddressOutput =
   typeof ReplaceNetworkingV1beta1IPAddressOutput.Type;
@@ -6888,6 +2804,21 @@ export const ReplaceNetworkingV1beta1ServiceCIDRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(() => io_k8s_api_networking_v1beta1_ServiceCIDRSpecSchema),
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_networking_v1beta1_ServiceCIDRStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6903,69 +2834,17 @@ export const ReplaceNetworkingV1beta1ServiceCIDROutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        cidrs: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1beta1_ServiceCIDRSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_networking_v1beta1_ServiceCIDRStatusSchema,
+      ),
     ),
   });
 export type ReplaceNetworkingV1beta1ServiceCIDROutput =
@@ -6989,6 +2868,21 @@ export const ReplaceNetworkingV1beta1ServiceCIDRStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.optional(
+      Schema.suspend(() => io_k8s_api_networking_v1beta1_ServiceCIDRSpecSchema),
+    ),
+    status: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_api_networking_v1beta1_ServiceCIDRStatusSchema,
+      ),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -7004,69 +2898,17 @@ export const ReplaceNetworkingV1beta1ServiceCIDRStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     spec: Schema.optional(
-      Schema.Struct({
-        cidrs: Schema.optional(Schema.Array(Schema.String)),
-      }),
+      Schema.suspend(() => io_k8s_api_networking_v1beta1_ServiceCIDRSpecSchema),
     ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_networking_v1beta1_ServiceCIDRStatusSchema,
+      ),
     ),
   });
 export type ReplaceNetworkingV1beta1ServiceCIDRStatusOutput =
@@ -7099,7 +2941,9 @@ export type WatchNetworkingV1IPAddressInput =
 // Output Schema
 export const WatchNetworkingV1IPAddressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchNetworkingV1IPAddressOutput =
@@ -7129,7 +2973,9 @@ export type WatchNetworkingV1IPAddressListInput =
 // Output Schema
 export const WatchNetworkingV1IPAddressListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchNetworkingV1IPAddressListOutput =
@@ -7158,7 +3004,9 @@ export type WatchNetworkingV1IngressClassInput =
 // Output Schema
 export const WatchNetworkingV1IngressClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchNetworkingV1IngressClassOutput =
@@ -7187,7 +3035,9 @@ export type WatchNetworkingV1IngressClassListInput =
 // Output Schema
 export const WatchNetworkingV1IngressClassListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchNetworkingV1IngressClassListOutput =
@@ -7216,7 +3066,9 @@ export type WatchNetworkingV1IngressListForAllNamespacesInput =
 // Output Schema
 export const WatchNetworkingV1IngressListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchNetworkingV1IngressListForAllNamespacesOutput =
@@ -7245,7 +3097,9 @@ export type WatchNetworkingV1NamespacedIngressInput =
 // Output Schema
 export const WatchNetworkingV1NamespacedIngressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchNetworkingV1NamespacedIngressOutput =
@@ -7274,7 +3128,9 @@ export type WatchNetworkingV1NamespacedIngressListInput =
 // Output Schema
 export const WatchNetworkingV1NamespacedIngressListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchNetworkingV1NamespacedIngressListOutput =
@@ -7303,7 +3159,9 @@ export type WatchNetworkingV1NamespacedNetworkPolicyInput =
 // Output Schema
 export const WatchNetworkingV1NamespacedNetworkPolicyOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchNetworkingV1NamespacedNetworkPolicyOutput =
@@ -7332,7 +3190,9 @@ export type WatchNetworkingV1NamespacedNetworkPolicyListInput =
 // Output Schema
 export const WatchNetworkingV1NamespacedNetworkPolicyListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchNetworkingV1NamespacedNetworkPolicyListOutput =
@@ -7361,7 +3221,9 @@ export type WatchNetworkingV1NetworkPolicyListForAllNamespacesInput =
 // Output Schema
 export const WatchNetworkingV1NetworkPolicyListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchNetworkingV1NetworkPolicyListForAllNamespacesOutput =
@@ -7390,7 +3252,9 @@ export type WatchNetworkingV1ServiceCIDRInput =
 // Output Schema
 export const WatchNetworkingV1ServiceCIDROutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchNetworkingV1ServiceCIDROutput =
@@ -7419,7 +3283,9 @@ export type WatchNetworkingV1ServiceCIDRListInput =
 // Output Schema
 export const WatchNetworkingV1ServiceCIDRListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchNetworkingV1ServiceCIDRListOutput =
@@ -7448,7 +3314,9 @@ export type WatchNetworkingV1beta1IPAddressInput =
 // Output Schema
 export const WatchNetworkingV1beta1IPAddressOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchNetworkingV1beta1IPAddressOutput =
@@ -7477,7 +3345,9 @@ export type WatchNetworkingV1beta1IPAddressListInput =
 // Output Schema
 export const WatchNetworkingV1beta1IPAddressListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchNetworkingV1beta1IPAddressListOutput =
@@ -7506,7 +3376,9 @@ export type WatchNetworkingV1beta1ServiceCIDRInput =
 // Output Schema
 export const WatchNetworkingV1beta1ServiceCIDROutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchNetworkingV1beta1ServiceCIDROutput =
@@ -7535,7 +3407,9 @@ export type WatchNetworkingV1beta1ServiceCIDRListInput =
 // Output Schema
 export const WatchNetworkingV1beta1ServiceCIDRListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchNetworkingV1beta1ServiceCIDRListOutput =

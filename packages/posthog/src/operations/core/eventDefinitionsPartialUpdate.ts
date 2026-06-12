@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { EnforcementModeEnumSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -53,7 +54,9 @@ export const EventDefinitionsPartialUpdateInput =
       ),
     ),
     hidden: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    enforcement_mode: Schema.optional(Schema.Literals(["allow", "reject"])),
+    enforcement_mode: Schema.optional(
+      Schema.suspend(() => EnforcementModeEnumSchema),
+    ),
     is_action: Schema.optional(Schema.Boolean),
     action_id: Schema.optional(Schema.Number),
     is_calculating: Schema.optional(Schema.Boolean),
@@ -136,7 +139,9 @@ export const EventDefinitionsPartialUpdateOutput =
       ),
     ),
     hidden: Schema.optional(Schema.NullOr(Schema.Boolean)),
-    enforcement_mode: Schema.optional(Schema.Literals(["allow", "reject"])),
+    enforcement_mode: Schema.optional(
+      Schema.suspend(() => EnforcementModeEnumSchema),
+    ),
     is_action: Schema.optional(Schema.Boolean),
     action_id: Schema.optional(Schema.Number),
     is_calculating: Schema.optional(Schema.Boolean),

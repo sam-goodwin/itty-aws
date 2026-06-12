@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { OnchainDataTableSchemaSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -12,23 +13,7 @@ export type GetSQLSchemaInput = typeof GetSQLSchemaInput.Type;
 // Output Schema
 export const GetSQLSchemaOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   tables: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        database: Schema.optional(Schema.String),
-        table: Schema.optional(Schema.String),
-        columns: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.String),
-              type: Schema.optional(Schema.String),
-              nullable: Schema.optional(Schema.Boolean),
-              description: Schema.optional(Schema.String),
-              indexOrder: Schema.optional(Schema.Number),
-            }),
-          ),
-        ),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => OnchainDataTableSchemaSchema)),
   ),
 });
 export type GetSQLSchemaOutput = typeof GetSQLSchemaOutput.Type;

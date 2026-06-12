@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { FlagValueItemSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -21,11 +22,7 @@ export type FlagValueValuesRetrieveInput =
 export const FlagValueValuesRetrieveOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          name: Schema.optional(Schema.Unknown),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => FlagValueItemSchema)),
     ),
     refreshing: Schema.optional(Schema.Boolean),
   });

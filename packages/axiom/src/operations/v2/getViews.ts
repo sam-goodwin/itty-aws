@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ViewSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 
@@ -10,14 +11,7 @@ export type GetViewsInput = typeof GetViewsInput.Type;
 
 // Output Schema
 export const GetViewsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    aplQuery: Schema.String,
-    datasets: Schema.optional(Schema.Array(Schema.String)),
-    description: Schema.optional(Schema.String),
-    name: Schema.String,
-    sharedByOrg: Schema.optional(Schema.String),
-    sharedByOrgName: Schema.optional(Schema.String),
-  }),
+  Schema.suspend(() => ViewSchema),
 );
 export type GetViewsOutput = typeof GetViewsOutput.Type;
 

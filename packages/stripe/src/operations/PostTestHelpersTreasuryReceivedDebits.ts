@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  treasury_received_debits_resource_linked_flowsSchema,
+  treasury_shared_resource_initiating_payment_method_details_initiating_payment_method_detailsSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -53,51 +57,14 @@ export const PostTestHelpersTreasuryReceivedDebitsOutput =
     hosted_regulatory_receipt_url: Schema.NullOr(Schema.String),
     id: Schema.String,
     initiating_payment_method_details: Schema.optional(
-      Schema.Struct({
-        balance: Schema.optional(Schema.Literals(["payments"])),
-        billing_details: Schema.Struct({
-          address: Schema.Struct({
-            city: Schema.NullOr(Schema.String),
-            country: Schema.NullOr(Schema.String),
-            line1: Schema.NullOr(Schema.String),
-            line2: Schema.NullOr(Schema.String),
-            postal_code: Schema.NullOr(Schema.String),
-            state: Schema.NullOr(Schema.String),
-          }),
-          email: Schema.NullOr(Schema.String),
-          name: Schema.NullOr(Schema.String),
-        }),
-        financial_account: Schema.optional(
-          Schema.Struct({
-            id: Schema.String,
-            network: Schema.Literals(["stripe"]),
-          }),
-        ),
-        issuing_card: Schema.optional(Schema.String),
-        type: Schema.Literals([
-          "balance",
-          "financial_account",
-          "issuing_card",
-          "stripe",
-          "us_bank_account",
-        ]),
-        us_bank_account: Schema.optional(
-          Schema.Struct({
-            bank_name: Schema.NullOr(Schema.String),
-            last4: Schema.NullOr(Schema.String),
-            routing_number: Schema.NullOr(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(
+        () =>
+          treasury_shared_resource_initiating_payment_method_details_initiating_payment_method_detailsSchema,
+      ),
     ),
-    linked_flows: Schema.Struct({
-      debit_reversal: Schema.NullOr(Schema.String),
-      inbound_transfer: Schema.NullOr(Schema.String),
-      issuing_authorization: Schema.NullOr(Schema.String),
-      issuing_transaction: Schema.NullOr(Schema.String),
-      payout: Schema.NullOr(Schema.String),
-      topup: Schema.NullOr(Schema.String),
-    }),
+    linked_flows: Schema.suspend(
+      () => treasury_received_debits_resource_linked_flowsSchema,
+    ),
     livemode: Schema.Boolean,
     network: Schema.Literals(["ach", "card", "stripe"]),
     object: Schema.Literals(["treasury.received_debit"]),

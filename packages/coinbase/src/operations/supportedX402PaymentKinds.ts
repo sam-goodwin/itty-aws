@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { x402SupportedPaymentKindSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -13,25 +14,7 @@ export type SupportedX402PaymentKindsInput =
 // Output Schema
 export const SupportedX402PaymentKindsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    kinds: Schema.Array(
-      Schema.Struct({
-        x402Version: Schema.Literals([1, 2]),
-        scheme: Schema.Literals(["exact", "upto"]),
-        network: Schema.Literals([
-          "base-sepolia",
-          "base",
-          "solana-devnet",
-          "solana",
-          "polygon",
-          "eip155:8453",
-          "eip155:84532",
-          "eip155:137",
-          "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp",
-          "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
-        ]),
-        extra: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      }),
-    ),
+    kinds: Schema.Array(Schema.suspend(() => x402SupportedPaymentKindSchema)),
     extensions: Schema.Array(Schema.String),
     signers: Schema.Record(Schema.String, Schema.Array(Schema.String)),
   });

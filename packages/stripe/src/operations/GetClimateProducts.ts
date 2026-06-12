@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { climate_productSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -21,49 +22,7 @@ export type GetClimateProductsInput = typeof GetClimateProductsInput.Type;
 // Output Schema
 export const GetClimateProductsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        created: Schema.Number,
-        current_prices_per_metric_ton: Schema.Record(
-          Schema.String,
-          Schema.Struct({
-            amount_fees: Schema.Number,
-            amount_subtotal: Schema.Number,
-            amount_total: Schema.Number,
-          }),
-        ),
-        delivery_year: Schema.NullOr(Schema.Number),
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        metric_tons_available: Schema.String,
-        name: Schema.String,
-        object: Schema.Literals(["climate.product"]),
-        suppliers: Schema.Array(
-          Schema.Struct({
-            id: Schema.String,
-            info_url: Schema.String,
-            livemode: Schema.Boolean,
-            locations: Schema.Array(
-              Schema.Struct({
-                city: Schema.NullOr(Schema.String),
-                country: Schema.String,
-                latitude: Schema.NullOr(Schema.Number),
-                longitude: Schema.NullOr(Schema.Number),
-                region: Schema.NullOr(Schema.String),
-              }),
-            ),
-            name: Schema.String,
-            object: Schema.Literals(["climate.supplier"]),
-            removal_pathway: Schema.Literals([
-              "biomass_carbon_removal_and_storage",
-              "direct_air_capture",
-              "enhanced_weathering",
-              "marine_carbon_removal",
-            ]),
-          }),
-        ),
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => climate_productSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

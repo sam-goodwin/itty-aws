@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { LLMProviderEnumSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -26,14 +27,7 @@ export const EvaluationsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
       Schema.NullOr(
         Schema.Struct({
           provider: Schema.optional(
-            Schema.Literals([
-              "openai",
-              "anthropic",
-              "gemini",
-              "openrouter",
-              "fireworks",
-              "azure_openai",
-            ]),
+            Schema.suspend(() => LLMProviderEnumSchema),
           ),
           model: Schema.optional(Schema.String),
           provider_key_id: Schema.optional(Schema.NullOr(Schema.String)),
@@ -92,14 +86,7 @@ export const EvaluationsCreateOutput =
       Schema.NullOr(
         Schema.Struct({
           provider: Schema.optional(
-            Schema.Literals([
-              "openai",
-              "anthropic",
-              "gemini",
-              "openrouter",
-              "fireworks",
-              "azure_openai",
-            ]),
+            Schema.suspend(() => LLMProviderEnumSchema),
           ),
           model: Schema.optional(Schema.String),
           provider_key_id: Schema.optional(Schema.NullOr(Schema.String)),

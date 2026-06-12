@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { GroupSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
@@ -24,19 +25,7 @@ export type OrganizationMembershipGroupsControllerListGroupsInput =
 export const OrganizationMembershipGroupsControllerListGroupsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
-    data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          object: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          organization_id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.NullOr(Schema.String)),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    data: Schema.optional(Schema.Array(Schema.suspend(() => GroupSchema))),
     list_metadata: Schema.optional(
       Schema.Struct({
         before: Schema.NullOr(Schema.String),

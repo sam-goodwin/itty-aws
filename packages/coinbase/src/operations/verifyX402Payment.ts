@@ -1,13 +1,19 @@
 import * as Schema from "effect/Schema";
+import {
+  X402VersionSchema,
+  x402PaymentPayloadSchema,
+  x402PaymentRequirementsSchema,
+  x402VerifyInvalidReasonSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
 export const VerifyX402PaymentInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
-    x402Version: Schema.Literals([1, 2]),
-    paymentPayload: Schema.Unknown,
-    paymentRequirements: Schema.Unknown,
+    x402Version: Schema.suspend(() => X402VersionSchema),
+    paymentPayload: Schema.suspend(() => x402PaymentPayloadSchema),
+    paymentRequirements: Schema.suspend(() => x402PaymentRequirementsSchema),
   },
 ).pipe(T.Http({ method: "POST", path: "/v2/x402/verify" }));
 export type VerifyX402PaymentInput = typeof VerifyX402PaymentInput.Type;
@@ -17,51 +23,7 @@ export const VerifyX402PaymentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     isValid: Schema.Boolean,
     invalidReason: Schema.optional(
-      Schema.Literals([
-        "insufficient_funds",
-        "invalid_scheme",
-        "invalid_network",
-        "invalid_x402_version",
-        "invalid_payment_requirements",
-        "invalid_payload",
-        "invalid_exact_evm_payload_authorization_value",
-        "invalid_exact_evm_payload_authorization_value_too_low",
-        "invalid_exact_evm_payload_authorization_valid_after",
-        "invalid_exact_evm_payload_authorization_valid_before",
-        "invalid_exact_evm_payload_authorization_typed_data_message",
-        "invalid_exact_evm_payload_authorization_from_address_kyt",
-        "invalid_exact_evm_payload_authorization_to_address_kyt",
-        "invalid_exact_evm_payload_signature",
-        "invalid_exact_evm_payload_signature_address",
-        "invalid_exact_evm_permit2_payload_allowance_required",
-        "invalid_exact_evm_permit2_payload_signature",
-        "invalid_exact_evm_permit2_payload_deadline",
-        "invalid_exact_evm_permit2_payload_valid_after",
-        "invalid_exact_evm_permit2_payload_spender",
-        "invalid_exact_evm_permit2_payload_recipient",
-        "invalid_exact_evm_permit2_payload_amount",
-        "invalid_exact_svm_payload_transaction",
-        "invalid_exact_svm_payload_transaction_amount_mismatch",
-        "invalid_exact_svm_payload_transaction_create_ata_instruction",
-        "invalid_exact_svm_payload_transaction_create_ata_instruction_incorrect_payee",
-        "invalid_exact_svm_payload_transaction_create_ata_instruction_incorrect_asset",
-        "invalid_exact_svm_payload_transaction_instructions",
-        "invalid_exact_svm_payload_transaction_instructions_length",
-        "invalid_exact_svm_payload_transaction_instructions_compute_limit_instruction",
-        "invalid_exact_svm_payload_transaction_instructions_compute_price_instruction",
-        "invalid_exact_svm_payload_transaction_instructions_compute_price_instruction_too_high",
-        "invalid_exact_svm_payload_transaction_instruction_not_spl_token_transfer_checked",
-        "invalid_exact_svm_payload_transaction_instruction_not_token_2022_transfer_checked",
-        "invalid_exact_svm_payload_transaction_not_a_transfer_instruction",
-        "invalid_exact_svm_payload_transaction_cannot_derive_receiver_ata",
-        "invalid_exact_svm_payload_transaction_receiver_ata_not_found",
-        "invalid_exact_svm_payload_transaction_sender_ata_not_found",
-        "invalid_exact_svm_payload_transaction_simulation_failed",
-        "invalid_exact_svm_payload_transaction_transfer_to_incorrect_ata",
-        "invalid_exact_svm_payload_transaction_fee_payer_included_in_instruction_accounts",
-        "invalid_exact_svm_payload_transaction_fee_payer_transferring_funds",
-        "unknown_error",
-      ]),
+      Schema.suspend(() => x402VerifyInvalidReasonSchema),
     ),
     invalidMessage: Schema.optional(Schema.String),
     payer: Schema.String,

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ActionStepJSONSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -14,23 +15,7 @@ export const ActionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   post_to_slack: Schema.optional(Schema.Boolean),
   slack_message_format: Schema.optional(Schema.String),
   steps: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        event: Schema.optional(Schema.NullOr(Schema.String)),
-        properties: Schema.optional(
-          Schema.NullOr(Schema.Array(Schema.Unknown)),
-        ),
-        selector: Schema.optional(Schema.NullOr(Schema.String)),
-        selector_regex: Schema.optional(Schema.NullOr(Schema.String)),
-        tag_name: Schema.optional(Schema.NullOr(Schema.String)),
-        text: Schema.optional(Schema.NullOr(Schema.String)),
-        text_matching: Schema.optional(Schema.Unknown),
-        href: Schema.optional(Schema.NullOr(Schema.String)),
-        href_matching: Schema.optional(Schema.Unknown),
-        url: Schema.optional(Schema.NullOr(Schema.String)),
-        url_matching: Schema.optional(Schema.Unknown),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => ActionStepJSONSchema)),
   ),
   created_at: Schema.optional(Schema.String),
   created_by: Schema.optional(
@@ -74,23 +59,7 @@ export const ActionsUpdateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   post_to_slack: Schema.optional(Schema.Boolean),
   slack_message_format: Schema.optional(Schema.String),
   steps: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        event: Schema.optional(Schema.NullOr(Schema.String)),
-        properties: Schema.optional(
-          Schema.NullOr(Schema.Array(Schema.Unknown)),
-        ),
-        selector: Schema.optional(Schema.NullOr(Schema.String)),
-        selector_regex: Schema.optional(Schema.NullOr(Schema.String)),
-        tag_name: Schema.optional(Schema.NullOr(Schema.String)),
-        text: Schema.optional(Schema.NullOr(Schema.String)),
-        text_matching: Schema.optional(Schema.Unknown),
-        href: Schema.optional(Schema.NullOr(Schema.String)),
-        href_matching: Schema.optional(Schema.Unknown),
-        url: Schema.optional(Schema.NullOr(Schema.String)),
-        url_matching: Schema.optional(Schema.Unknown),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => ActionStepJSONSchema)),
   ),
   created_at: Schema.optional(Schema.String),
   created_by: Schema.optional(

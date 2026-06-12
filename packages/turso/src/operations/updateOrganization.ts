@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { OrganizationSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -15,19 +16,7 @@ export type UpdateOrganizationInput = typeof UpdateOrganizationInput.Type;
 // Output Schema
 export const UpdateOrganizationOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    organization: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        slug: Schema.optional(Schema.String),
-        type: Schema.optional(Schema.Literals(["personal", "team"])),
-        overages: Schema.optional(Schema.Boolean),
-        blocked_reads: Schema.optional(Schema.Boolean),
-        blocked_writes: Schema.optional(Schema.Boolean),
-        plan_id: Schema.optional(Schema.String),
-        plan_timeline: Schema.optional(Schema.String),
-        platform: Schema.optional(Schema.String),
-      }),
-    ),
+    organization: Schema.optional(Schema.suspend(() => OrganizationSchema)),
   });
 export type UpdateOrganizationOutput = typeof UpdateOrganizationOutput.Type;
 

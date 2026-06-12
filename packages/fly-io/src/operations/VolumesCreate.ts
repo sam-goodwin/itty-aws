@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { fly_MachineGuestSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../errors.ts";
@@ -7,21 +8,7 @@ import { BadRequest, Forbidden, NotFound } from "../errors.ts";
 export const VolumesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   app_name: Schema.String.pipe(T.PathParam()),
   auto_backup_enabled: Schema.optional(Schema.Boolean),
-  compute: Schema.optional(
-    Schema.Struct({
-      cpu_kind: Schema.optional(Schema.String),
-      cpus: Schema.optional(Schema.Number),
-      gpu_kind: Schema.optional(Schema.String),
-      gpus: Schema.optional(Schema.Number),
-      host_dedication_id: Schema.optional(Schema.String),
-      kernel_args: Schema.optional(Schema.Array(Schema.String)),
-      max_memory_mb: Schema.optional(Schema.Number),
-      memory_mb: Schema.optional(Schema.Number),
-      persist_rootfs: Schema.optional(
-        Schema.Literals(["never", "always", "restart"]),
-      ),
-    }),
-  ),
+  compute: Schema.optional(Schema.suspend(() => fly_MachineGuestSchema)),
   compute_image: Schema.optional(Schema.String),
   encrypted: Schema.optional(Schema.Boolean),
   fstype: Schema.optional(Schema.String),

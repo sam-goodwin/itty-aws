@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { treasury_transactions_resource_balance_impactSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -20,11 +21,9 @@ export type GetTreasuryTransactionEntriesIdInput =
 // Output Schema
 export const GetTreasuryTransactionEntriesIdOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    balance_impact: Schema.Struct({
-      cash: Schema.Number,
-      inbound_pending: Schema.Number,
-      outbound_pending: Schema.Number,
-    }),
+    balance_impact: Schema.suspend(
+      () => treasury_transactions_resource_balance_impactSchema,
+    ),
     created: Schema.Number,
     currency: Schema.String,
     effective_at: Schema.Number,

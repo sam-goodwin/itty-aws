@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { V1ServiceHealthResponseSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
@@ -15,22 +16,7 @@ export type V1GetServicesHealthInput = typeof V1GetServicesHealthInput.Type;
 // Output Schema
 export const V1GetServicesHealthOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      name: Schema.Literals([
-        "auth",
-        "db",
-        "db_postgres_user",
-        "pooler",
-        "realtime",
-        "rest",
-        "storage",
-        "pg_bouncer",
-      ]),
-      healthy: Schema.Boolean,
-      status: Schema.Literals(["COMING_UP", "ACTIVE_HEALTHY", "UNHEALTHY"]),
-      info: Schema.optional(Schema.Unknown),
-      error: Schema.optional(Schema.String),
-    }),
+    Schema.suspend(() => V1ServiceHealthResponseSchema),
   );
 export type V1GetServicesHealthOutput = typeof V1GetServicesHealthOutput.Type;
 

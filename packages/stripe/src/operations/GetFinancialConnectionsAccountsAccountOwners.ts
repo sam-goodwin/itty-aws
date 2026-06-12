@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { financial_connections_account_ownerSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -25,16 +26,7 @@ export type GetFinancialConnectionsAccountsAccountOwnersInput =
 export const GetFinancialConnectionsAccountsAccountOwnersOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     data: Schema.Array(
-      Schema.Struct({
-        email: Schema.NullOr(Schema.String),
-        id: Schema.String,
-        name: Schema.String,
-        object: Schema.Literals(["financial_connections.account_owner"]),
-        ownership: Schema.String,
-        phone: Schema.NullOr(Schema.String),
-        raw_address: Schema.NullOr(Schema.String),
-        refreshed_at: Schema.NullOr(Schema.Number),
-      }),
+      Schema.suspend(() => financial_connections_account_ownerSchema),
     ),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),

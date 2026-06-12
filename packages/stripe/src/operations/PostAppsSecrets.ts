@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { secret_service_resource_scopeSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -31,10 +32,7 @@ export const PostAppsSecretsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   name: Schema.String,
   object: Schema.Literals(["apps.secret"]),
   payload: Schema.optional(Schema.NullOr(Schema.String)),
-  scope: Schema.Struct({
-    type: Schema.Literals(["account", "user"]),
-    user: Schema.optional(Schema.String),
-  }),
+  scope: Schema.suspend(() => secret_service_resource_scopeSchema),
 });
 export type PostAppsSecretsOutput = typeof PostAppsSecretsOutput.Type;
 

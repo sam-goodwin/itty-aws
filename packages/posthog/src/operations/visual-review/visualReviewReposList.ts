@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { RepoSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -23,21 +24,7 @@ export const VisualReviewReposListOutput =
     count: Schema.optional(Schema.Number),
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
-    results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          team_id: Schema.optional(Schema.Number),
-          repo_external_id: Schema.optional(Schema.Number),
-          repo_full_name: Schema.optional(Schema.String),
-          baseline_file_paths: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-          enable_pr_comments: Schema.optional(Schema.Boolean),
-          created_at: Schema.optional(Schema.String),
-        }),
-      ),
-    ),
+    results: Schema.optional(Schema.Array(Schema.suspend(() => RepoSchema))),
   });
 export type VisualReviewReposListOutput =
   typeof VisualReviewReposListOutput.Type;

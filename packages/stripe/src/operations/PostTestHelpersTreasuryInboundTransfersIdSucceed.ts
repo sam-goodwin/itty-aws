@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  treasury_inbound_transfers_resource_inbound_transfer_resource_linked_flowsSchema,
+  treasury_inbound_transfers_resource_inbound_transfer_resource_status_transitionsSchema,
+} from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -29,9 +33,10 @@ export const PostTestHelpersTreasuryInboundTransfersIdSucceedOutput =
     financial_account: Schema.String,
     hosted_regulatory_receipt_url: Schema.NullOr(Schema.String),
     id: Schema.String,
-    linked_flows: Schema.Struct({
-      received_debit: Schema.NullOr(Schema.String),
-    }),
+    linked_flows: Schema.suspend(
+      () =>
+        treasury_inbound_transfers_resource_inbound_transfer_resource_linked_flowsSchema,
+    ),
     livemode: Schema.Boolean,
     metadata: Schema.Record(Schema.String, Schema.String),
     object: Schema.Literals(["treasury.inbound_transfer"]),
@@ -40,11 +45,10 @@ export const PostTestHelpersTreasuryInboundTransfersIdSucceedOutput =
     returned: Schema.NullOr(Schema.Boolean),
     statement_descriptor: Schema.String,
     status: Schema.Literals(["canceled", "failed", "processing", "succeeded"]),
-    status_transitions: Schema.Struct({
-      canceled_at: Schema.optional(Schema.NullOr(Schema.Number)),
-      failed_at: Schema.NullOr(Schema.Number),
-      succeeded_at: Schema.NullOr(Schema.Number),
-    }),
+    status_transitions: Schema.suspend(
+      () =>
+        treasury_inbound_transfers_resource_inbound_transfer_resource_status_transitionsSchema,
+    ),
     transaction: Schema.Unknown,
   });
 export type PostTestHelpersTreasuryInboundTransfersIdSucceedOutput =

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ConnectApplicationSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound, UnprocessableEntity } from "../errors.ts";
@@ -31,16 +32,7 @@ export const AuthorizedApplicationsControllerListOutput =
           id: Schema.String,
           granted_scopes: Schema.Array(Schema.String),
           oauth_resource: Schema.optional(Schema.String),
-          application: Schema.Struct({
-            object: Schema.String,
-            id: Schema.String,
-            client_id: Schema.String,
-            description: Schema.NullOr(Schema.String),
-            name: Schema.String,
-            scopes: Schema.Array(Schema.String),
-            created_at: Schema.String,
-            updated_at: Schema.String,
-          }),
+          application: Schema.suspend(() => ConnectApplicationSchema),
         }),
       ),
     ),

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { EventSchemaSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, UnprocessableEntity } from "../errors.ts";
@@ -22,18 +23,7 @@ export const EventsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          object: Schema.String,
-          id: Schema.String,
-          event: Schema.String,
-          data: Schema.Record(Schema.String, Schema.Unknown),
-          created_at: Schema.String,
-          context: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => EventSchemaSchema)),
     ),
     list_metadata: Schema.optional(
       Schema.Struct({

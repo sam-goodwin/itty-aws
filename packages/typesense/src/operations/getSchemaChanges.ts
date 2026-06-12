@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { SchemaChangeStatusSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -10,11 +11,7 @@ export type GetSchemaChangesInput = typeof GetSchemaChangesInput.Type;
 
 // Output Schema
 export const GetSchemaChangesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    collection: Schema.optional(Schema.String),
-    validated_docs: Schema.optional(Schema.Number),
-    altered_docs: Schema.optional(Schema.Number),
-  }),
+  Schema.suspend(() => SchemaChangeStatusSchema),
 );
 export type GetSchemaChangesOutput = typeof GetSchemaChangesOutput.Type;
 

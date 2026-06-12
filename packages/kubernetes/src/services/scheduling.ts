@@ -8,12 +8,38 @@ import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
+import {
+  io_k8s_api_scheduling_v1_PriorityClassSchema,
+  io_k8s_api_scheduling_v1alpha2_PodGroupSchema,
+  io_k8s_api_scheduling_v1alpha2_PodGroupSpecSchema,
+  io_k8s_api_scheduling_v1alpha2_PodGroupStatusSchema,
+  io_k8s_api_scheduling_v1alpha2_WorkloadSchema,
+  io_k8s_api_scheduling_v1alpha2_WorkloadSpecSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+  io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+} from "./_schemas.ts";
 
 // Input Schema
 export const CreateSchedulingV1PriorityClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    globalDefault: Schema.optional(Schema.Boolean),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    preemptionPolicy: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "POST",
@@ -31,48 +57,9 @@ export const CreateSchedulingV1PriorityClassOutput =
     globalDefault: Schema.optional(Schema.Boolean),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     preemptionPolicy: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
@@ -98,6 +85,19 @@ export const CreateSchedulingV1alpha2NamespacedPodGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(
+      () => io_k8s_api_scheduling_v1alpha2_PodGroupSpecSchema,
+    ),
+    status: Schema.optional(
+      Schema.suspend(() => io_k8s_api_scheduling_v1alpha2_PodGroupStatusSchema),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -113,115 +113,15 @@ export const CreateSchedulingV1alpha2NamespacedPodGroupOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      disruptionMode: Schema.optional(Schema.String),
-      podGroupTemplateRef: Schema.optional(
-        Schema.Struct({
-          workload: Schema.optional(
-            Schema.Struct({
-              podGroupTemplateName: Schema.String,
-              workloadName: Schema.String,
-            }),
-          ),
-        }),
-      ),
-      priority: Schema.optional(Schema.Number),
-      priorityClassName: Schema.optional(Schema.String),
-      resourceClaims: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            resourceClaimName: Schema.optional(Schema.String),
-            resourceClaimTemplateName: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      schedulingConstraints: Schema.optional(
-        Schema.Struct({
-          topology: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.String,
-              }),
-            ),
-          ),
-        }),
-      ),
-      schedulingPolicy: Schema.Struct({
-        basic: Schema.optional(Schema.Unknown),
-        gang: Schema.optional(
-          Schema.Struct({
-            minCount: Schema.Number,
-          }),
-        ),
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_scheduling_v1alpha2_PodGroupSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        resourceClaimStatuses: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              resourceClaimName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_scheduling_v1alpha2_PodGroupStatusSchema),
     ),
   });
 export type CreateSchedulingV1alpha2NamespacedPodGroupOutput =
@@ -245,6 +145,16 @@ export const CreateSchedulingV1alpha2NamespacedWorkloadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(
+      () => io_k8s_api_scheduling_v1alpha2_WorkloadSpecSchema,
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -260,94 +170,13 @@ export const CreateSchedulingV1alpha2NamespacedWorkloadOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      controllerRef: Schema.optional(
-        Schema.Struct({
-          apiGroup: Schema.optional(Schema.String),
-          kind: Schema.String,
-          name: Schema.String,
-        }),
-      ),
-      podGroupTemplates: Schema.Array(
-        Schema.Struct({
-          disruptionMode: Schema.optional(Schema.String),
-          name: Schema.String,
-          priority: Schema.optional(Schema.Number),
-          priorityClassName: Schema.optional(Schema.String),
-          resourceClaims: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                resourceClaimName: Schema.optional(Schema.String),
-                resourceClaimTemplateName: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          schedulingConstraints: Schema.optional(
-            Schema.Struct({
-              topology: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                  }),
-                ),
-              ),
-            }),
-          ),
-          schedulingPolicy: Schema.Struct({
-            basic: Schema.optional(Schema.Unknown),
-            gang: Schema.optional(
-              Schema.Struct({
-                minCount: Schema.Number,
-              }),
-            ),
-          }),
-        }),
-      ),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_scheduling_v1alpha2_WorkloadSpecSchema,
+    ),
   });
 export type CreateSchedulingV1alpha2NamespacedWorkloadOutput =
   typeof CreateSchedulingV1alpha2NamespacedWorkloadOutput.Type;
@@ -384,37 +213,14 @@ export const DeleteSchedulingV1CollectionPriorityClassOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -452,37 +258,14 @@ export const DeleteSchedulingV1PriorityClassOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -521,37 +304,14 @@ export const DeleteSchedulingV1alpha2CollectionNamespacedPodGroupOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -589,37 +349,14 @@ export const DeleteSchedulingV1alpha2CollectionNamespacedWorkloadOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -657,37 +394,14 @@ export const DeleteSchedulingV1alpha2NamespacedPodGroupOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -726,37 +440,14 @@ export const DeleteSchedulingV1alpha2NamespacedWorkloadOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -790,24 +481,24 @@ export const GetSchedulingAPIGroupOutput =
     kind: Schema.optional(Schema.String),
     name: Schema.String,
     preferredVersion: Schema.optional(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
     serverAddressByClientCIDRs: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
+        Schema.suspend(
+          () =>
+            io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+        ),
       ),
     ),
     versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
   });
 export type GetSchedulingAPIGroupOutput =
@@ -838,18 +529,9 @@ export const GetSchedulingV1APIResourcesOutput =
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
     resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+      ),
     ),
   });
 export type GetSchedulingV1APIResourcesOutput =
@@ -880,18 +562,9 @@ export const GetSchedulingV1alpha2APIResourcesOutput =
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
     resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+      ),
     ),
   });
 export type GetSchedulingV1alpha2APIResourcesOutput =
@@ -922,74 +595,11 @@ export const ListSchedulingV1PriorityClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        description: Schema.optional(Schema.String),
-        globalDefault: Schema.optional(Schema.Boolean),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        preemptionPolicy: Schema.optional(Schema.String),
-        value: Schema.optional(Schema.Number),
-      }),
+      Schema.suspend(() => io_k8s_api_scheduling_v1_PriorityClassSchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListSchedulingV1PriorityClassOutput =
@@ -1020,137 +630,11 @@ export const ListSchedulingV1alpha2NamespacedPodGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.Struct({
-          disruptionMode: Schema.optional(Schema.String),
-          podGroupTemplateRef: Schema.optional(
-            Schema.Struct({
-              workload: Schema.optional(
-                Schema.Struct({
-                  podGroupTemplateName: Schema.String,
-                  workloadName: Schema.String,
-                }),
-              ),
-            }),
-          ),
-          priority: Schema.optional(Schema.Number),
-          priorityClassName: Schema.optional(Schema.String),
-          resourceClaims: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                resourceClaimName: Schema.optional(Schema.String),
-                resourceClaimTemplateName: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          schedulingConstraints: Schema.optional(
-            Schema.Struct({
-              topology: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                  }),
-                ),
-              ),
-            }),
-          ),
-          schedulingPolicy: Schema.Struct({
-            basic: Schema.optional(Schema.Unknown),
-            gang: Schema.optional(
-              Schema.Struct({
-                minCount: Schema.Number,
-              }),
-            ),
-          }),
-        }),
-        status: Schema.optional(
-          Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  lastTransitionTime: Schema.String,
-                  message: Schema.String,
-                  observedGeneration: Schema.optional(Schema.Number),
-                  reason: Schema.String,
-                  status: Schema.String,
-                  type: Schema.String,
-                }),
-              ),
-            ),
-            resourceClaimStatuses: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  resourceClaimName: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_scheduling_v1alpha2_PodGroupSchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListSchedulingV1alpha2NamespacedPodGroupOutput =
@@ -1181,115 +665,11 @@ export const ListSchedulingV1alpha2NamespacedWorkloadOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.Struct({
-          controllerRef: Schema.optional(
-            Schema.Struct({
-              apiGroup: Schema.optional(Schema.String),
-              kind: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-          podGroupTemplates: Schema.Array(
-            Schema.Struct({
-              disruptionMode: Schema.optional(Schema.String),
-              name: Schema.String,
-              priority: Schema.optional(Schema.Number),
-              priorityClassName: Schema.optional(Schema.String),
-              resourceClaims: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.String,
-                    resourceClaimName: Schema.optional(Schema.String),
-                    resourceClaimTemplateName: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              schedulingConstraints: Schema.optional(
-                Schema.Struct({
-                  topology: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        key: Schema.String,
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-              schedulingPolicy: Schema.Struct({
-                basic: Schema.optional(Schema.Unknown),
-                gang: Schema.optional(
-                  Schema.Struct({
-                    minCount: Schema.Number,
-                  }),
-                ),
-              }),
-            }),
-          ),
-        }),
-      }),
+      Schema.suspend(() => io_k8s_api_scheduling_v1alpha2_WorkloadSchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListSchedulingV1alpha2NamespacedWorkloadOutput =
@@ -1320,137 +700,11 @@ export const ListSchedulingV1alpha2PodGroupForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.Struct({
-          disruptionMode: Schema.optional(Schema.String),
-          podGroupTemplateRef: Schema.optional(
-            Schema.Struct({
-              workload: Schema.optional(
-                Schema.Struct({
-                  podGroupTemplateName: Schema.String,
-                  workloadName: Schema.String,
-                }),
-              ),
-            }),
-          ),
-          priority: Schema.optional(Schema.Number),
-          priorityClassName: Schema.optional(Schema.String),
-          resourceClaims: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                resourceClaimName: Schema.optional(Schema.String),
-                resourceClaimTemplateName: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          schedulingConstraints: Schema.optional(
-            Schema.Struct({
-              topology: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                  }),
-                ),
-              ),
-            }),
-          ),
-          schedulingPolicy: Schema.Struct({
-            basic: Schema.optional(Schema.Unknown),
-            gang: Schema.optional(
-              Schema.Struct({
-                minCount: Schema.Number,
-              }),
-            ),
-          }),
-        }),
-        status: Schema.optional(
-          Schema.Struct({
-            conditions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  lastTransitionTime: Schema.String,
-                  message: Schema.String,
-                  observedGeneration: Schema.optional(Schema.Number),
-                  reason: Schema.String,
-                  status: Schema.String,
-                  type: Schema.String,
-                }),
-              ),
-            ),
-            resourceClaimStatuses: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  name: Schema.String,
-                  resourceClaimName: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_scheduling_v1alpha2_PodGroupSchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListSchedulingV1alpha2PodGroupForAllNamespacesOutput =
@@ -1481,115 +735,11 @@ export const ListSchedulingV1alpha2WorkloadForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.Struct({
-          controllerRef: Schema.optional(
-            Schema.Struct({
-              apiGroup: Schema.optional(Schema.String),
-              kind: Schema.String,
-              name: Schema.String,
-            }),
-          ),
-          podGroupTemplates: Schema.Array(
-            Schema.Struct({
-              disruptionMode: Schema.optional(Schema.String),
-              name: Schema.String,
-              priority: Schema.optional(Schema.Number),
-              priorityClassName: Schema.optional(Schema.String),
-              resourceClaims: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    name: Schema.String,
-                    resourceClaimName: Schema.optional(Schema.String),
-                    resourceClaimTemplateName: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-              schedulingConstraints: Schema.optional(
-                Schema.Struct({
-                  topology: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        key: Schema.String,
-                      }),
-                    ),
-                  ),
-                }),
-              ),
-              schedulingPolicy: Schema.Struct({
-                basic: Schema.optional(Schema.Unknown),
-                gang: Schema.optional(
-                  Schema.Struct({
-                    minCount: Schema.Number,
-                  }),
-                ),
-              }),
-            }),
-          ),
-        }),
-      }),
+      Schema.suspend(() => io_k8s_api_scheduling_v1alpha2_WorkloadSchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListSchedulingV1alpha2WorkloadForAllNamespacesOutput =
@@ -1626,48 +776,9 @@ export const PatchSchedulingV1PriorityClassOutput =
     globalDefault: Schema.optional(Schema.Boolean),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     preemptionPolicy: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
@@ -1708,115 +819,15 @@ export const PatchSchedulingV1alpha2NamespacedPodGroupOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      disruptionMode: Schema.optional(Schema.String),
-      podGroupTemplateRef: Schema.optional(
-        Schema.Struct({
-          workload: Schema.optional(
-            Schema.Struct({
-              podGroupTemplateName: Schema.String,
-              workloadName: Schema.String,
-            }),
-          ),
-        }),
-      ),
-      priority: Schema.optional(Schema.Number),
-      priorityClassName: Schema.optional(Schema.String),
-      resourceClaims: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            resourceClaimName: Schema.optional(Schema.String),
-            resourceClaimTemplateName: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      schedulingConstraints: Schema.optional(
-        Schema.Struct({
-          topology: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.String,
-              }),
-            ),
-          ),
-        }),
-      ),
-      schedulingPolicy: Schema.Struct({
-        basic: Schema.optional(Schema.Unknown),
-        gang: Schema.optional(
-          Schema.Struct({
-            minCount: Schema.Number,
-          }),
-        ),
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_scheduling_v1alpha2_PodGroupSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        resourceClaimStatuses: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              resourceClaimName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_scheduling_v1alpha2_PodGroupStatusSchema),
     ),
   });
 export type PatchSchedulingV1alpha2NamespacedPodGroupOutput =
@@ -1855,115 +866,15 @@ export const PatchSchedulingV1alpha2NamespacedPodGroupStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      disruptionMode: Schema.optional(Schema.String),
-      podGroupTemplateRef: Schema.optional(
-        Schema.Struct({
-          workload: Schema.optional(
-            Schema.Struct({
-              podGroupTemplateName: Schema.String,
-              workloadName: Schema.String,
-            }),
-          ),
-        }),
-      ),
-      priority: Schema.optional(Schema.Number),
-      priorityClassName: Schema.optional(Schema.String),
-      resourceClaims: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            resourceClaimName: Schema.optional(Schema.String),
-            resourceClaimTemplateName: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      schedulingConstraints: Schema.optional(
-        Schema.Struct({
-          topology: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.String,
-              }),
-            ),
-          ),
-        }),
-      ),
-      schedulingPolicy: Schema.Struct({
-        basic: Schema.optional(Schema.Unknown),
-        gang: Schema.optional(
-          Schema.Struct({
-            minCount: Schema.Number,
-          }),
-        ),
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_scheduling_v1alpha2_PodGroupSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        resourceClaimStatuses: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              resourceClaimName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_scheduling_v1alpha2_PodGroupStatusSchema),
     ),
   });
 export type PatchSchedulingV1alpha2NamespacedPodGroupStatusOutput =
@@ -2002,94 +913,13 @@ export const PatchSchedulingV1alpha2NamespacedWorkloadOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      controllerRef: Schema.optional(
-        Schema.Struct({
-          apiGroup: Schema.optional(Schema.String),
-          kind: Schema.String,
-          name: Schema.String,
-        }),
-      ),
-      podGroupTemplates: Schema.Array(
-        Schema.Struct({
-          disruptionMode: Schema.optional(Schema.String),
-          name: Schema.String,
-          priority: Schema.optional(Schema.Number),
-          priorityClassName: Schema.optional(Schema.String),
-          resourceClaims: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                resourceClaimName: Schema.optional(Schema.String),
-                resourceClaimTemplateName: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          schedulingConstraints: Schema.optional(
-            Schema.Struct({
-              topology: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                  }),
-                ),
-              ),
-            }),
-          ),
-          schedulingPolicy: Schema.Struct({
-            basic: Schema.optional(Schema.Unknown),
-            gang: Schema.optional(
-              Schema.Struct({
-                minCount: Schema.Number,
-              }),
-            ),
-          }),
-        }),
-      ),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_scheduling_v1alpha2_WorkloadSpecSchema,
+    ),
   });
 export type PatchSchedulingV1alpha2NamespacedWorkloadOutput =
   typeof PatchSchedulingV1alpha2NamespacedWorkloadOutput.Type;
@@ -2126,48 +956,9 @@ export const ReadSchedulingV1PriorityClassOutput =
     globalDefault: Schema.optional(Schema.Boolean),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     preemptionPolicy: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
@@ -2202,115 +993,15 @@ export const ReadSchedulingV1alpha2NamespacedPodGroupOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      disruptionMode: Schema.optional(Schema.String),
-      podGroupTemplateRef: Schema.optional(
-        Schema.Struct({
-          workload: Schema.optional(
-            Schema.Struct({
-              podGroupTemplateName: Schema.String,
-              workloadName: Schema.String,
-            }),
-          ),
-        }),
-      ),
-      priority: Schema.optional(Schema.Number),
-      priorityClassName: Schema.optional(Schema.String),
-      resourceClaims: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            resourceClaimName: Schema.optional(Schema.String),
-            resourceClaimTemplateName: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      schedulingConstraints: Schema.optional(
-        Schema.Struct({
-          topology: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.String,
-              }),
-            ),
-          ),
-        }),
-      ),
-      schedulingPolicy: Schema.Struct({
-        basic: Schema.optional(Schema.Unknown),
-        gang: Schema.optional(
-          Schema.Struct({
-            minCount: Schema.Number,
-          }),
-        ),
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_scheduling_v1alpha2_PodGroupSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        resourceClaimStatuses: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              resourceClaimName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_scheduling_v1alpha2_PodGroupStatusSchema),
     ),
   });
 export type ReadSchedulingV1alpha2NamespacedPodGroupOutput =
@@ -2343,115 +1034,15 @@ export const ReadSchedulingV1alpha2NamespacedPodGroupStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      disruptionMode: Schema.optional(Schema.String),
-      podGroupTemplateRef: Schema.optional(
-        Schema.Struct({
-          workload: Schema.optional(
-            Schema.Struct({
-              podGroupTemplateName: Schema.String,
-              workloadName: Schema.String,
-            }),
-          ),
-        }),
-      ),
-      priority: Schema.optional(Schema.Number),
-      priorityClassName: Schema.optional(Schema.String),
-      resourceClaims: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            resourceClaimName: Schema.optional(Schema.String),
-            resourceClaimTemplateName: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      schedulingConstraints: Schema.optional(
-        Schema.Struct({
-          topology: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.String,
-              }),
-            ),
-          ),
-        }),
-      ),
-      schedulingPolicy: Schema.Struct({
-        basic: Schema.optional(Schema.Unknown),
-        gang: Schema.optional(
-          Schema.Struct({
-            minCount: Schema.Number,
-          }),
-        ),
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_scheduling_v1alpha2_PodGroupSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        resourceClaimStatuses: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              resourceClaimName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_scheduling_v1alpha2_PodGroupStatusSchema),
     ),
   });
 export type ReadSchedulingV1alpha2NamespacedPodGroupStatusOutput =
@@ -2484,94 +1075,13 @@ export const ReadSchedulingV1alpha2NamespacedWorkloadOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      controllerRef: Schema.optional(
-        Schema.Struct({
-          apiGroup: Schema.optional(Schema.String),
-          kind: Schema.String,
-          name: Schema.String,
-        }),
-      ),
-      podGroupTemplates: Schema.Array(
-        Schema.Struct({
-          disruptionMode: Schema.optional(Schema.String),
-          name: Schema.String,
-          priority: Schema.optional(Schema.Number),
-          priorityClassName: Schema.optional(Schema.String),
-          resourceClaims: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                resourceClaimName: Schema.optional(Schema.String),
-                resourceClaimTemplateName: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          schedulingConstraints: Schema.optional(
-            Schema.Struct({
-              topology: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                  }),
-                ),
-              ),
-            }),
-          ),
-          schedulingPolicy: Schema.Struct({
-            basic: Schema.optional(Schema.Unknown),
-            gang: Schema.optional(
-              Schema.Struct({
-                minCount: Schema.Number,
-              }),
-            ),
-          }),
-        }),
-      ),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_scheduling_v1alpha2_WorkloadSpecSchema,
+    ),
   });
 export type ReadSchedulingV1alpha2NamespacedWorkloadOutput =
   typeof ReadSchedulingV1alpha2NamespacedWorkloadOutput.Type;
@@ -2591,6 +1101,17 @@ export const ReplaceSchedulingV1PriorityClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    globalDefault: Schema.optional(Schema.Boolean),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    preemptionPolicy: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Number),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2608,48 +1129,9 @@ export const ReplaceSchedulingV1PriorityClassOutput =
     globalDefault: Schema.optional(Schema.Boolean),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     preemptionPolicy: Schema.optional(Schema.String),
     value: Schema.optional(Schema.Number),
@@ -2675,6 +1157,19 @@ export const ReplaceSchedulingV1alpha2NamespacedPodGroupInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(
+      () => io_k8s_api_scheduling_v1alpha2_PodGroupSpecSchema,
+    ),
+    status: Schema.optional(
+      Schema.suspend(() => io_k8s_api_scheduling_v1alpha2_PodGroupStatusSchema),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2690,115 +1185,15 @@ export const ReplaceSchedulingV1alpha2NamespacedPodGroupOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      disruptionMode: Schema.optional(Schema.String),
-      podGroupTemplateRef: Schema.optional(
-        Schema.Struct({
-          workload: Schema.optional(
-            Schema.Struct({
-              podGroupTemplateName: Schema.String,
-              workloadName: Schema.String,
-            }),
-          ),
-        }),
-      ),
-      priority: Schema.optional(Schema.Number),
-      priorityClassName: Schema.optional(Schema.String),
-      resourceClaims: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            resourceClaimName: Schema.optional(Schema.String),
-            resourceClaimTemplateName: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      schedulingConstraints: Schema.optional(
-        Schema.Struct({
-          topology: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.String,
-              }),
-            ),
-          ),
-        }),
-      ),
-      schedulingPolicy: Schema.Struct({
-        basic: Schema.optional(Schema.Unknown),
-        gang: Schema.optional(
-          Schema.Struct({
-            minCount: Schema.Number,
-          }),
-        ),
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_scheduling_v1alpha2_PodGroupSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        resourceClaimStatuses: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              resourceClaimName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_scheduling_v1alpha2_PodGroupStatusSchema),
     ),
   });
 export type ReplaceSchedulingV1alpha2NamespacedPodGroupOutput =
@@ -2822,6 +1217,19 @@ export const ReplaceSchedulingV1alpha2NamespacedPodGroupStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(
+      () => io_k8s_api_scheduling_v1alpha2_PodGroupSpecSchema,
+    ),
+    status: Schema.optional(
+      Schema.suspend(() => io_k8s_api_scheduling_v1alpha2_PodGroupStatusSchema),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2837,115 +1245,15 @@ export const ReplaceSchedulingV1alpha2NamespacedPodGroupStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      disruptionMode: Schema.optional(Schema.String),
-      podGroupTemplateRef: Schema.optional(
-        Schema.Struct({
-          workload: Schema.optional(
-            Schema.Struct({
-              podGroupTemplateName: Schema.String,
-              workloadName: Schema.String,
-            }),
-          ),
-        }),
-      ),
-      priority: Schema.optional(Schema.Number),
-      priorityClassName: Schema.optional(Schema.String),
-      resourceClaims: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            resourceClaimName: Schema.optional(Schema.String),
-            resourceClaimTemplateName: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      schedulingConstraints: Schema.optional(
-        Schema.Struct({
-          topology: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.String,
-              }),
-            ),
-          ),
-        }),
-      ),
-      schedulingPolicy: Schema.Struct({
-        basic: Schema.optional(Schema.Unknown),
-        gang: Schema.optional(
-          Schema.Struct({
-            minCount: Schema.Number,
-          }),
-        ),
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_scheduling_v1alpha2_PodGroupSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        conditions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              lastTransitionTime: Schema.String,
-              message: Schema.String,
-              observedGeneration: Schema.optional(Schema.Number),
-              reason: Schema.String,
-              status: Schema.String,
-              type: Schema.String,
-            }),
-          ),
-        ),
-        resourceClaimStatuses: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              resourceClaimName: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_scheduling_v1alpha2_PodGroupStatusSchema),
     ),
   });
 export type ReplaceSchedulingV1alpha2NamespacedPodGroupStatusOutput =
@@ -2969,6 +1277,16 @@ export const ReplaceSchedulingV1alpha2NamespacedWorkloadInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(
+      () => io_k8s_api_scheduling_v1alpha2_WorkloadSpecSchema,
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2984,94 +1302,13 @@ export const ReplaceSchedulingV1alpha2NamespacedWorkloadOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      controllerRef: Schema.optional(
-        Schema.Struct({
-          apiGroup: Schema.optional(Schema.String),
-          kind: Schema.String,
-          name: Schema.String,
-        }),
-      ),
-      podGroupTemplates: Schema.Array(
-        Schema.Struct({
-          disruptionMode: Schema.optional(Schema.String),
-          name: Schema.String,
-          priority: Schema.optional(Schema.Number),
-          priorityClassName: Schema.optional(Schema.String),
-          resourceClaims: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                resourceClaimName: Schema.optional(Schema.String),
-                resourceClaimTemplateName: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          schedulingConstraints: Schema.optional(
-            Schema.Struct({
-              topology: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                  }),
-                ),
-              ),
-            }),
-          ),
-          schedulingPolicy: Schema.Struct({
-            basic: Schema.optional(Schema.Unknown),
-            gang: Schema.optional(
-              Schema.Struct({
-                minCount: Schema.Number,
-              }),
-            ),
-          }),
-        }),
-      ),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_scheduling_v1alpha2_WorkloadSpecSchema,
+    ),
   });
 export type ReplaceSchedulingV1alpha2NamespacedWorkloadOutput =
   typeof ReplaceSchedulingV1alpha2NamespacedWorkloadOutput.Type;
@@ -3103,7 +1340,9 @@ export type WatchSchedulingV1PriorityClassInput =
 // Output Schema
 export const WatchSchedulingV1PriorityClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchSchedulingV1PriorityClassOutput =
@@ -3132,7 +1371,9 @@ export type WatchSchedulingV1PriorityClassListInput =
 // Output Schema
 export const WatchSchedulingV1PriorityClassListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchSchedulingV1PriorityClassListOutput =
@@ -3161,7 +1402,9 @@ export type WatchSchedulingV1alpha2NamespacedPodGroupInput =
 // Output Schema
 export const WatchSchedulingV1alpha2NamespacedPodGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchSchedulingV1alpha2NamespacedPodGroupOutput =
@@ -3190,7 +1433,9 @@ export type WatchSchedulingV1alpha2NamespacedPodGroupListInput =
 // Output Schema
 export const WatchSchedulingV1alpha2NamespacedPodGroupListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchSchedulingV1alpha2NamespacedPodGroupListOutput =
@@ -3219,7 +1464,9 @@ export type WatchSchedulingV1alpha2NamespacedWorkloadInput =
 // Output Schema
 export const WatchSchedulingV1alpha2NamespacedWorkloadOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchSchedulingV1alpha2NamespacedWorkloadOutput =
@@ -3248,7 +1495,9 @@ export type WatchSchedulingV1alpha2NamespacedWorkloadListInput =
 // Output Schema
 export const WatchSchedulingV1alpha2NamespacedWorkloadListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchSchedulingV1alpha2NamespacedWorkloadListOutput =
@@ -3277,7 +1526,9 @@ export type WatchSchedulingV1alpha2PodGroupListForAllNamespacesInput =
 // Output Schema
 export const WatchSchedulingV1alpha2PodGroupListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchSchedulingV1alpha2PodGroupListForAllNamespacesOutput =
@@ -3306,7 +1557,9 @@ export type WatchSchedulingV1alpha2WorkloadListForAllNamespacesInput =
 // Output Schema
 export const WatchSchedulingV1alpha2WorkloadListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchSchedulingV1alpha2WorkloadListForAllNamespacesOutput =

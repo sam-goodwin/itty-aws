@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { WebExperimentsAPISchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -24,15 +25,7 @@ export const WebExperimentsListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Number),
-          name: Schema.optional(Schema.String),
-          created_at: Schema.optional(Schema.String),
-          feature_flag_key: Schema.optional(Schema.String),
-          variants: Schema.optional(Schema.Unknown),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => WebExperimentsAPISchema)),
     ),
   });
 export type WebExperimentsListOutput = typeof WebExperimentsListOutput.Type;

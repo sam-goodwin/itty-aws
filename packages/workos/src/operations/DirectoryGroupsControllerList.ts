@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { DirectoryGroupSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden, NotFound, UnprocessableEntity } from "../errors.ts";
@@ -21,21 +22,7 @@ export const DirectoryGroupsControllerListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     object: Schema.optional(Schema.String),
     data: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          object: Schema.optional(Schema.String),
-          id: Schema.optional(Schema.String),
-          idp_id: Schema.optional(Schema.String),
-          directory_id: Schema.optional(Schema.String),
-          organization_id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          raw_attributes: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DirectoryGroupSchema)),
     ),
     list_metadata: Schema.optional(
       Schema.Struct({

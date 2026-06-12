@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { CachedSummarySchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -23,13 +24,7 @@ export type LlmAnalyticsSummarizationBatchCheckCreateInput =
 export const LlmAnalyticsSummarizationBatchCheckCreateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     summaries: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          trace_id: Schema.optional(Schema.String),
-          title: Schema.optional(Schema.String),
-          cached: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => CachedSummarySchema)),
     ),
   });
 export type LlmAnalyticsSummarizationBatchCheckCreateOutput =

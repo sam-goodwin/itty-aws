@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { DashboardTileBasicSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -16,13 +17,7 @@ export const InsightsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   deleted: Schema.optional(Schema.Boolean),
   dashboards: Schema.optional(Schema.Array(Schema.Number)),
   dashboard_tiles: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Number),
-        dashboard_id: Schema.optional(Schema.Number),
-        deleted: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => DashboardTileBasicSchema)),
   ),
   last_refresh: Schema.optional(Schema.NullOr(Schema.String)),
   cache_target_age: Schema.optional(Schema.NullOr(Schema.String)),
@@ -106,13 +101,7 @@ export const InsightsCreateOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   deleted: Schema.optional(Schema.Boolean),
   dashboards: Schema.optional(Schema.Array(Schema.Number)),
   dashboard_tiles: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Number),
-        dashboard_id: Schema.optional(Schema.Number),
-        deleted: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      }),
-    ),
+    Schema.Array(Schema.suspend(() => DashboardTileBasicSchema)),
   ),
   last_refresh: Schema.optional(Schema.NullOr(Schema.String)),
   cache_target_age: Schema.optional(Schema.NullOr(Schema.String)),

@@ -2,7 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveOutputString } from "../sensitive.ts";
 
 // Input Schema
 export const V1CreateLoginRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -17,7 +17,7 @@ export type V1CreateLoginRoleInput = typeof V1CreateLoginRoleInput.Type;
 export const V1CreateLoginRoleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     role: Schema.String,
-    password: SensitiveString,
+    password: SensitiveOutputString,
     ttl_seconds: Schema.Number,
   });
 export type V1CreateLoginRoleOutput = typeof V1CreateLoginRoleOutput.Type;

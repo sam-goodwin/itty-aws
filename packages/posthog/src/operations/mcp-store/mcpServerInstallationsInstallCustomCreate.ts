@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { InstallCustomAuthTypeEnumSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -10,7 +11,9 @@ export const McpServerInstallationsInstallCustomCreateInput =
     project_id: Schema.String.pipe(T.PathParam()),
     name: Schema.optional(Schema.String),
     url: Schema.optional(Schema.String),
-    auth_type: Schema.optional(Schema.Literals(["api_key", "oauth"])),
+    auth_type: Schema.optional(
+      Schema.suspend(() => InstallCustomAuthTypeEnumSchema),
+    ),
     api_key: Schema.optional(SensitiveString),
     description: Schema.optional(Schema.String),
     client_id: Schema.optional(Schema.String),

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { credit_balanceSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -22,18 +23,7 @@ export type GetBillingCreditBalanceSummaryInput =
 // Output Schema
 export const GetBillingCreditBalanceSummaryOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    balances: Schema.Array(
-      Schema.Struct({
-        available_balance: Schema.Struct({
-          monetary: Schema.Unknown,
-          type: Schema.Literals(["monetary"]),
-        }),
-        ledger_balance: Schema.Struct({
-          monetary: Schema.Unknown,
-          type: Schema.Literals(["monetary"]),
-        }),
-      }),
-    ),
+    balances: Schema.Array(Schema.suspend(() => credit_balanceSchema)),
     customer: Schema.Unknown,
     customer_account: Schema.NullOr(Schema.String),
     livemode: Schema.Boolean,

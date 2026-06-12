@@ -8,12 +8,43 @@ import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
+import {
+  io_k8s_api_core_v1_TopologySelectorTermSchema,
+  io_k8s_api_storage_v1_CSIDriverSchema,
+  io_k8s_api_storage_v1_CSIDriverSpecSchema,
+  io_k8s_api_storage_v1_CSINodeSchema,
+  io_k8s_api_storage_v1_CSINodeSpecSchema,
+  io_k8s_api_storage_v1_CSIStorageCapacitySchema,
+  io_k8s_api_storage_v1_StorageClassSchema,
+  io_k8s_api_storage_v1_VolumeAttachmentSchema,
+  io_k8s_api_storage_v1_VolumeAttachmentSpecSchema,
+  io_k8s_api_storage_v1_VolumeAttachmentStatusSchema,
+  io_k8s_api_storage_v1_VolumeAttributesClassSchema,
+  io_k8s_api_storage_v1beta1_VolumeAttributesClassSchema,
+  io_k8s_apimachinery_pkg_api_resource_QuantitySchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_LabelSelectorSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+  io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+} from "./_schemas.ts";
 
 // Input Schema
 export const CreateStorageV1CSIDriverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(() => io_k8s_api_storage_v1_CSIDriverSpecSchema),
   }).pipe(
     T.Http({ method: "POST", path: "/apis/storage.k8s.io/v1/csidrivers" }),
   );
@@ -26,69 +57,11 @@ export const CreateStorageV1CSIDriverOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      attachRequired: Schema.optional(Schema.Boolean),
-      fsGroupPolicy: Schema.optional(Schema.String),
-      nodeAllocatableUpdatePeriodSeconds: Schema.optional(Schema.Number),
-      podInfoOnMount: Schema.optional(Schema.Boolean),
-      preventPodSchedulingIfMissing: Schema.optional(Schema.Boolean),
-      requiresRepublish: Schema.optional(Schema.Boolean),
-      seLinuxMount: Schema.optional(Schema.Boolean),
-      serviceAccountTokenInSecrets: Schema.optional(Schema.Boolean),
-      storageCapacity: Schema.optional(Schema.Boolean),
-      tokenRequests: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            audience: Schema.String,
-            expirationSeconds: Schema.optional(Schema.Number),
-          }),
-        ),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
       ),
-      volumeLifecycleModes: Schema.optional(Schema.Array(Schema.String)),
-    }),
+    ),
+    spec: Schema.suspend(() => io_k8s_api_storage_v1_CSIDriverSpecSchema),
   });
 export type CreateStorageV1CSIDriverOutput =
   typeof CreateStorageV1CSIDriverOutput.Type;
@@ -112,6 +85,14 @@ export const CreateStorageV1CSINodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(() => io_k8s_api_storage_v1_CSINodeSpecSchema),
   }).pipe(T.Http({ method: "POST", path: "/apis/storage.k8s.io/v1/csinodes" }));
 export type CreateStorageV1CSINodeInput =
   typeof CreateStorageV1CSINodeInput.Type;
@@ -122,63 +103,11 @@ export const CreateStorageV1CSINodeOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      drivers: Schema.Array(
-        Schema.Struct({
-          allocatable: Schema.optional(
-            Schema.Struct({
-              count: Schema.optional(Schema.Number),
-            }),
-          ),
-          name: Schema.String,
-          nodeID: Schema.String,
-          topologyKeys: Schema.optional(Schema.Array(Schema.String)),
-        }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
       ),
-    }),
+    ),
+    spec: Schema.suspend(() => io_k8s_api_storage_v1_CSINodeSpecSchema),
   });
 export type CreateStorageV1CSINodeOutput =
   typeof CreateStorageV1CSINodeOutput.Type;
@@ -202,6 +131,25 @@ export const CreateStorageV1NamespacedCSIStorageCapacityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    capacity: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_api_resource_QuantitySchema),
+    ),
+    kind: Schema.optional(Schema.String),
+    maximumVolumeSize: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_api_resource_QuantitySchema),
+    ),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    nodeTopology: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_LabelSelectorSchema,
+      ),
+    ),
+    storageClassName: Schema.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -215,68 +163,22 @@ export type CreateStorageV1NamespacedCSIStorageCapacityInput =
 export const CreateStorageV1NamespacedCSIStorageCapacityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
-    capacity: Schema.optional(Schema.String),
+    capacity: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_api_resource_QuantitySchema),
+    ),
     kind: Schema.optional(Schema.String),
-    maximumVolumeSize: Schema.optional(Schema.String),
+    maximumVolumeSize: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_api_resource_QuantitySchema),
+    ),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     nodeTopology: Schema.optional(
-      Schema.Struct({
-        matchExpressions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              key: Schema.String,
-              operator: Schema.String,
-              values: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-        matchLabels: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_LabelSelectorSchema,
+      ),
     ),
     storageClassName: Schema.String,
   });
@@ -301,6 +203,24 @@ export const CreateStorageV1StorageClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    allowVolumeExpansion: Schema.optional(Schema.Boolean),
+    allowedTopologies: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => io_k8s_api_core_v1_TopologySelectorTermSchema),
+      ),
+    ),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    mountOptions: Schema.optional(Schema.Array(Schema.String)),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    provisioner: Schema.String,
+    reclaimPolicy: Schema.optional(Schema.String),
+    volumeBindingMode: Schema.optional(Schema.String),
   }).pipe(
     T.Http({ method: "POST", path: "/apis/storage.k8s.io/v1/storageclasses" }),
   );
@@ -313,63 +233,15 @@ export const CreateStorageV1StorageClassOutput =
     allowVolumeExpansion: Schema.optional(Schema.Boolean),
     allowedTopologies: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          matchLabelExpressions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.String,
-                values: Schema.Array(Schema.String),
-              }),
-            ),
-          ),
-        }),
+        Schema.suspend(() => io_k8s_api_core_v1_TopologySelectorTermSchema),
       ),
     ),
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     mountOptions: Schema.optional(Schema.Array(Schema.String)),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -399,6 +271,19 @@ export const CreateStorageV1VolumeAttachmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(
+      () => io_k8s_api_storage_v1_VolumeAttachmentSpecSchema,
+    ),
+    status: Schema.optional(
+      Schema.suspend(() => io_k8s_api_storage_v1_VolumeAttachmentStatusSchema),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -414,400 +299,15 @@ export const CreateStorageV1VolumeAttachmentOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      attacher: Schema.String,
-      nodeName: Schema.String,
-      source: Schema.Struct({
-        inlineVolumeSpec: Schema.optional(
-          Schema.Struct({
-            accessModes: Schema.optional(Schema.Array(Schema.String)),
-            awsElasticBlockStore: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                partition: Schema.optional(Schema.Number),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeID: Schema.String,
-              }),
-            ),
-            azureDisk: Schema.optional(
-              Schema.Struct({
-                cachingMode: Schema.optional(Schema.String),
-                diskName: Schema.String,
-                diskURI: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            azureFile: Schema.optional(
-              Schema.Struct({
-                readOnly: Schema.optional(Schema.Boolean),
-                secretName: Schema.String,
-                secretNamespace: Schema.optional(Schema.String),
-                shareName: Schema.String,
-              }),
-            ),
-            capacity: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            cephfs: Schema.optional(
-              Schema.Struct({
-                monitors: Schema.Array(Schema.String),
-                path: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretFile: Schema.optional(Schema.String),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                user: Schema.optional(Schema.String),
-              }),
-            ),
-            cinder: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                volumeID: Schema.String,
-              }),
-            ),
-            claimRef: Schema.optional(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldPath: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                namespace: Schema.optional(Schema.String),
-                resourceVersion: Schema.optional(Schema.String),
-                uid: Schema.optional(Schema.String),
-              }),
-            ),
-            csi: Schema.optional(
-              Schema.Struct({
-                controllerExpandSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                controllerPublishSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                driver: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                nodeExpandSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                nodePublishSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                nodeStageSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeAttributes: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                volumeHandle: Schema.String,
-              }),
-            ),
-            fc: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                lun: Schema.optional(Schema.Number),
-                readOnly: Schema.optional(Schema.Boolean),
-                targetWWNs: Schema.optional(Schema.Array(Schema.String)),
-                wwids: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-            flexVolume: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                options: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            flocker: Schema.optional(
-              Schema.Struct({
-                datasetName: Schema.optional(Schema.String),
-                datasetUUID: Schema.optional(Schema.String),
-              }),
-            ),
-            gcePersistentDisk: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                partition: Schema.optional(Schema.Number),
-                pdName: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            glusterfs: Schema.optional(
-              Schema.Struct({
-                endpoints: Schema.String,
-                endpointsNamespace: Schema.optional(Schema.String),
-                path: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            hostPath: Schema.optional(
-              Schema.Struct({
-                path: Schema.String,
-                type: Schema.optional(Schema.String),
-              }),
-            ),
-            iscsi: Schema.optional(
-              Schema.Struct({
-                chapAuthDiscovery: Schema.optional(Schema.Boolean),
-                chapAuthSession: Schema.optional(Schema.Boolean),
-                fsType: Schema.optional(Schema.String),
-                initiatorName: Schema.optional(Schema.String),
-                iqn: Schema.String,
-                iscsiInterface: Schema.optional(Schema.String),
-                lun: Schema.Number,
-                portals: Schema.optional(Schema.Array(Schema.String)),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                targetPortal: Schema.String,
-              }),
-            ),
-            local: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                path: Schema.String,
-              }),
-            ),
-            mountOptions: Schema.optional(Schema.Array(Schema.String)),
-            nfs: Schema.optional(
-              Schema.Struct({
-                path: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-                server: Schema.String,
-              }),
-            ),
-            nodeAffinity: Schema.optional(
-              Schema.Struct({
-                required: Schema.optional(
-                  Schema.Struct({
-                    nodeSelectorTerms: Schema.Array(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchFields: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            persistentVolumeReclaimPolicy: Schema.optional(Schema.String),
-            photonPersistentDisk: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                pdID: Schema.String,
-              }),
-            ),
-            portworxVolume: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeID: Schema.String,
-              }),
-            ),
-            quobyte: Schema.optional(
-              Schema.Struct({
-                group: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                registry: Schema.String,
-                tenant: Schema.optional(Schema.String),
-                user: Schema.optional(Schema.String),
-                volume: Schema.String,
-              }),
-            ),
-            rbd: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                image: Schema.String,
-                keyring: Schema.optional(Schema.String),
-                monitors: Schema.Array(Schema.String),
-                pool: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                user: Schema.optional(Schema.String),
-              }),
-            ),
-            scaleIO: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                gateway: Schema.String,
-                protectionDomain: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  namespace: Schema.optional(Schema.String),
-                }),
-                sslEnabled: Schema.optional(Schema.Boolean),
-                storageMode: Schema.optional(Schema.String),
-                storagePool: Schema.optional(Schema.String),
-                system: Schema.String,
-                volumeName: Schema.optional(Schema.String),
-              }),
-            ),
-            storageClassName: Schema.optional(Schema.String),
-            storageos: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    fieldPath: Schema.optional(Schema.String),
-                    kind: Schema.optional(Schema.String),
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                    resourceVersion: Schema.optional(Schema.String),
-                    uid: Schema.optional(Schema.String),
-                  }),
-                ),
-                volumeName: Schema.optional(Schema.String),
-                volumeNamespace: Schema.optional(Schema.String),
-              }),
-            ),
-            volumeAttributesClassName: Schema.optional(Schema.String),
-            volumeMode: Schema.optional(Schema.String),
-            vsphereVolume: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                storagePolicyID: Schema.optional(Schema.String),
-                storagePolicyName: Schema.optional(Schema.String),
-                volumePath: Schema.String,
-              }),
-            ),
-          }),
-        ),
-        persistentVolumeName: Schema.optional(Schema.String),
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_storage_v1_VolumeAttachmentSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        attachError: Schema.optional(
-          Schema.Struct({
-            errorCode: Schema.optional(Schema.Number),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-        attached: Schema.Boolean,
-        attachmentMetadata: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        detachError: Schema.optional(
-          Schema.Struct({
-            errorCode: Schema.optional(Schema.Number),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_storage_v1_VolumeAttachmentStatusSchema),
     ),
   });
 export type CreateStorageV1VolumeAttachmentOutput =
@@ -831,6 +331,15 @@ export const CreateStorageV1VolumeAttributesClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    driverName: Schema.String,
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -847,48 +356,9 @@ export const CreateStorageV1VolumeAttributesClassOutput =
     driverName: Schema.String,
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   });
@@ -913,6 +383,15 @@ export const CreateStorageV1beta1VolumeAttributesClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    driverName: Schema.String,
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -929,48 +408,9 @@ export const CreateStorageV1beta1VolumeAttributesClassOutput =
     driverName: Schema.String,
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   });
@@ -1009,69 +449,11 @@ export const DeleteStorageV1CSIDriverOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      attachRequired: Schema.optional(Schema.Boolean),
-      fsGroupPolicy: Schema.optional(Schema.String),
-      nodeAllocatableUpdatePeriodSeconds: Schema.optional(Schema.Number),
-      podInfoOnMount: Schema.optional(Schema.Boolean),
-      preventPodSchedulingIfMissing: Schema.optional(Schema.Boolean),
-      requiresRepublish: Schema.optional(Schema.Boolean),
-      seLinuxMount: Schema.optional(Schema.Boolean),
-      serviceAccountTokenInSecrets: Schema.optional(Schema.Boolean),
-      storageCapacity: Schema.optional(Schema.Boolean),
-      tokenRequests: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            audience: Schema.String,
-            expirationSeconds: Schema.optional(Schema.Number),
-          }),
-        ),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
       ),
-      volumeLifecycleModes: Schema.optional(Schema.Array(Schema.String)),
-    }),
+    ),
+    spec: Schema.suspend(() => io_k8s_api_storage_v1_CSIDriverSpecSchema),
   });
 export type DeleteStorageV1CSIDriverOutput =
   typeof DeleteStorageV1CSIDriverOutput.Type;
@@ -1108,63 +490,11 @@ export const DeleteStorageV1CSINodeOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      drivers: Schema.Array(
-        Schema.Struct({
-          allocatable: Schema.optional(
-            Schema.Struct({
-              count: Schema.optional(Schema.Number),
-            }),
-          ),
-          name: Schema.String,
-          nodeID: Schema.String,
-          topologyKeys: Schema.optional(Schema.Array(Schema.String)),
-        }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
       ),
-    }),
+    ),
+    spec: Schema.suspend(() => io_k8s_api_storage_v1_CSINodeSpecSchema),
   });
 export type DeleteStorageV1CSINodeOutput =
   typeof DeleteStorageV1CSINodeOutput.Type;
@@ -1198,37 +528,14 @@ export const DeleteStorageV1CollectionCSIDriverOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1263,37 +570,14 @@ export const DeleteStorageV1CollectionCSINodeOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1331,37 +615,14 @@ export const DeleteStorageV1CollectionNamespacedCSIStorageCapacityOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1399,37 +660,14 @@ export const DeleteStorageV1CollectionStorageClassOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1467,37 +705,14 @@ export const DeleteStorageV1CollectionVolumeAttachmentOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1535,37 +750,14 @@ export const DeleteStorageV1CollectionVolumeAttributesClassOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1603,37 +795,14 @@ export const DeleteStorageV1NamespacedCSIStorageCapacityOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -1672,63 +841,15 @@ export const DeleteStorageV1StorageClassOutput =
     allowVolumeExpansion: Schema.optional(Schema.Boolean),
     allowedTopologies: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          matchLabelExpressions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.String,
-                values: Schema.Array(Schema.String),
-              }),
-            ),
-          ),
-        }),
+        Schema.suspend(() => io_k8s_api_core_v1_TopologySelectorTermSchema),
       ),
     ),
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     mountOptions: Schema.optional(Schema.Array(Schema.String)),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -1771,400 +892,15 @@ export const DeleteStorageV1VolumeAttachmentOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      attacher: Schema.String,
-      nodeName: Schema.String,
-      source: Schema.Struct({
-        inlineVolumeSpec: Schema.optional(
-          Schema.Struct({
-            accessModes: Schema.optional(Schema.Array(Schema.String)),
-            awsElasticBlockStore: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                partition: Schema.optional(Schema.Number),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeID: Schema.String,
-              }),
-            ),
-            azureDisk: Schema.optional(
-              Schema.Struct({
-                cachingMode: Schema.optional(Schema.String),
-                diskName: Schema.String,
-                diskURI: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            azureFile: Schema.optional(
-              Schema.Struct({
-                readOnly: Schema.optional(Schema.Boolean),
-                secretName: Schema.String,
-                secretNamespace: Schema.optional(Schema.String),
-                shareName: Schema.String,
-              }),
-            ),
-            capacity: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            cephfs: Schema.optional(
-              Schema.Struct({
-                monitors: Schema.Array(Schema.String),
-                path: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretFile: Schema.optional(Schema.String),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                user: Schema.optional(Schema.String),
-              }),
-            ),
-            cinder: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                volumeID: Schema.String,
-              }),
-            ),
-            claimRef: Schema.optional(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldPath: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                namespace: Schema.optional(Schema.String),
-                resourceVersion: Schema.optional(Schema.String),
-                uid: Schema.optional(Schema.String),
-              }),
-            ),
-            csi: Schema.optional(
-              Schema.Struct({
-                controllerExpandSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                controllerPublishSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                driver: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                nodeExpandSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                nodePublishSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                nodeStageSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeAttributes: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                volumeHandle: Schema.String,
-              }),
-            ),
-            fc: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                lun: Schema.optional(Schema.Number),
-                readOnly: Schema.optional(Schema.Boolean),
-                targetWWNs: Schema.optional(Schema.Array(Schema.String)),
-                wwids: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-            flexVolume: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                options: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            flocker: Schema.optional(
-              Schema.Struct({
-                datasetName: Schema.optional(Schema.String),
-                datasetUUID: Schema.optional(Schema.String),
-              }),
-            ),
-            gcePersistentDisk: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                partition: Schema.optional(Schema.Number),
-                pdName: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            glusterfs: Schema.optional(
-              Schema.Struct({
-                endpoints: Schema.String,
-                endpointsNamespace: Schema.optional(Schema.String),
-                path: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            hostPath: Schema.optional(
-              Schema.Struct({
-                path: Schema.String,
-                type: Schema.optional(Schema.String),
-              }),
-            ),
-            iscsi: Schema.optional(
-              Schema.Struct({
-                chapAuthDiscovery: Schema.optional(Schema.Boolean),
-                chapAuthSession: Schema.optional(Schema.Boolean),
-                fsType: Schema.optional(Schema.String),
-                initiatorName: Schema.optional(Schema.String),
-                iqn: Schema.String,
-                iscsiInterface: Schema.optional(Schema.String),
-                lun: Schema.Number,
-                portals: Schema.optional(Schema.Array(Schema.String)),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                targetPortal: Schema.String,
-              }),
-            ),
-            local: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                path: Schema.String,
-              }),
-            ),
-            mountOptions: Schema.optional(Schema.Array(Schema.String)),
-            nfs: Schema.optional(
-              Schema.Struct({
-                path: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-                server: Schema.String,
-              }),
-            ),
-            nodeAffinity: Schema.optional(
-              Schema.Struct({
-                required: Schema.optional(
-                  Schema.Struct({
-                    nodeSelectorTerms: Schema.Array(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchFields: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            persistentVolumeReclaimPolicy: Schema.optional(Schema.String),
-            photonPersistentDisk: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                pdID: Schema.String,
-              }),
-            ),
-            portworxVolume: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeID: Schema.String,
-              }),
-            ),
-            quobyte: Schema.optional(
-              Schema.Struct({
-                group: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                registry: Schema.String,
-                tenant: Schema.optional(Schema.String),
-                user: Schema.optional(Schema.String),
-                volume: Schema.String,
-              }),
-            ),
-            rbd: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                image: Schema.String,
-                keyring: Schema.optional(Schema.String),
-                monitors: Schema.Array(Schema.String),
-                pool: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                user: Schema.optional(Schema.String),
-              }),
-            ),
-            scaleIO: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                gateway: Schema.String,
-                protectionDomain: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  namespace: Schema.optional(Schema.String),
-                }),
-                sslEnabled: Schema.optional(Schema.Boolean),
-                storageMode: Schema.optional(Schema.String),
-                storagePool: Schema.optional(Schema.String),
-                system: Schema.String,
-                volumeName: Schema.optional(Schema.String),
-              }),
-            ),
-            storageClassName: Schema.optional(Schema.String),
-            storageos: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    fieldPath: Schema.optional(Schema.String),
-                    kind: Schema.optional(Schema.String),
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                    resourceVersion: Schema.optional(Schema.String),
-                    uid: Schema.optional(Schema.String),
-                  }),
-                ),
-                volumeName: Schema.optional(Schema.String),
-                volumeNamespace: Schema.optional(Schema.String),
-              }),
-            ),
-            volumeAttributesClassName: Schema.optional(Schema.String),
-            volumeMode: Schema.optional(Schema.String),
-            vsphereVolume: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                storagePolicyID: Schema.optional(Schema.String),
-                storagePolicyName: Schema.optional(Schema.String),
-                volumePath: Schema.String,
-              }),
-            ),
-          }),
-        ),
-        persistentVolumeName: Schema.optional(Schema.String),
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_storage_v1_VolumeAttachmentSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        attachError: Schema.optional(
-          Schema.Struct({
-            errorCode: Schema.optional(Schema.Number),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-        attached: Schema.Boolean,
-        attachmentMetadata: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        detachError: Schema.optional(
-          Schema.Struct({
-            errorCode: Schema.optional(Schema.Number),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_storage_v1_VolumeAttachmentStatusSchema),
     ),
   });
 export type DeleteStorageV1VolumeAttachmentOutput =
@@ -2202,48 +938,9 @@ export const DeleteStorageV1VolumeAttributesClassOutput =
     driverName: Schema.String,
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   });
@@ -2281,37 +978,14 @@ export const DeleteStorageV1beta1CollectionVolumeAttributesClassOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -2350,48 +1024,9 @@ export const DeleteStorageV1beta1VolumeAttributesClassOutput =
     driverName: Schema.String,
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   });
@@ -2424,24 +1059,24 @@ export const GetStorageAPIGroupOutput =
     kind: Schema.optional(Schema.String),
     name: Schema.String,
     preferredVersion: Schema.optional(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
     serverAddressByClientCIDRs: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
+        Schema.suspend(
+          () =>
+            io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+        ),
       ),
     ),
     versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
   });
 export type GetStorageAPIGroupOutput = typeof GetStorageAPIGroupOutput.Type;
@@ -2469,18 +1104,9 @@ export const GetStorageV1APIResourcesOutput =
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
     resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+      ),
     ),
   });
 export type GetStorageV1APIResourcesOutput =
@@ -2511,18 +1137,9 @@ export const GetStorageV1beta1APIResourcesOutput =
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
     resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+      ),
     ),
   });
 export type GetStorageV1beta1APIResourcesOutput =
@@ -2550,90 +1167,11 @@ export const ListStorageV1CSIDriverOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.Struct({
-          attachRequired: Schema.optional(Schema.Boolean),
-          fsGroupPolicy: Schema.optional(Schema.String),
-          nodeAllocatableUpdatePeriodSeconds: Schema.optional(Schema.Number),
-          podInfoOnMount: Schema.optional(Schema.Boolean),
-          preventPodSchedulingIfMissing: Schema.optional(Schema.Boolean),
-          requiresRepublish: Schema.optional(Schema.Boolean),
-          seLinuxMount: Schema.optional(Schema.Boolean),
-          serviceAccountTokenInSecrets: Schema.optional(Schema.Boolean),
-          storageCapacity: Schema.optional(Schema.Boolean),
-          tokenRequests: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                audience: Schema.String,
-                expirationSeconds: Schema.optional(Schema.Number),
-              }),
-            ),
-          ),
-          volumeLifecycleModes: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      }),
+      Schema.suspend(() => io_k8s_api_storage_v1_CSIDriverSchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListStorageV1CSIDriverOutput =
@@ -2661,84 +1199,11 @@ export const ListStorageV1CSINodeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.Struct({
-          drivers: Schema.Array(
-            Schema.Struct({
-              allocatable: Schema.optional(
-                Schema.Struct({
-                  count: Schema.optional(Schema.Number),
-                }),
-              ),
-              name: Schema.String,
-              nodeID: Schema.String,
-              topologyKeys: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        }),
-      }),
+      Schema.suspend(() => io_k8s_api_storage_v1_CSINodeSchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListStorageV1CSINodeOutput = typeof ListStorageV1CSINodeOutput.Type;
@@ -2769,89 +1234,11 @@ export const ListStorageV1CSIStorageCapacityForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        maximumVolumeSize: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        nodeTopology: Schema.optional(
-          Schema.Struct({
-            matchExpressions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  key: Schema.String,
-                  operator: Schema.String,
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            matchLabels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-          }),
-        ),
-        storageClassName: Schema.String,
-      }),
+      Schema.suspend(() => io_k8s_api_storage_v1_CSIStorageCapacitySchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListStorageV1CSIStorageCapacityForAllNamespacesOutput =
@@ -2882,89 +1269,11 @@ export const ListStorageV1NamespacedCSIStorageCapacityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        capacity: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        maximumVolumeSize: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        nodeTopology: Schema.optional(
-          Schema.Struct({
-            matchExpressions: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  key: Schema.String,
-                  operator: Schema.String,
-                  values: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-            matchLabels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-          }),
-        ),
-        storageClassName: Schema.String,
-      }),
+      Schema.suspend(() => io_k8s_api_storage_v1_CSIStorageCapacitySchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListStorageV1NamespacedCSIStorageCapacityOutput =
@@ -2992,92 +1301,11 @@ export const ListStorageV1StorageClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        allowVolumeExpansion: Schema.optional(Schema.Boolean),
-        allowedTopologies: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              matchLabelExpressions: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    key: Schema.String,
-                    values: Schema.Array(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        mountOptions: Schema.optional(Schema.Array(Schema.String)),
-        parameters: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        provisioner: Schema.String,
-        reclaimPolicy: Schema.optional(Schema.String),
-        volumeBindingMode: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => io_k8s_api_storage_v1_StorageClassSchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListStorageV1StorageClassOutput =
@@ -3109,422 +1337,11 @@ export const ListStorageV1VolumeAttachmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        spec: Schema.Struct({
-          attacher: Schema.String,
-          nodeName: Schema.String,
-          source: Schema.Struct({
-            inlineVolumeSpec: Schema.optional(
-              Schema.Struct({
-                accessModes: Schema.optional(Schema.Array(Schema.String)),
-                awsElasticBlockStore: Schema.optional(
-                  Schema.Struct({
-                    fsType: Schema.optional(Schema.String),
-                    partition: Schema.optional(Schema.Number),
-                    readOnly: Schema.optional(Schema.Boolean),
-                    volumeID: Schema.String,
-                  }),
-                ),
-                azureDisk: Schema.optional(
-                  Schema.Struct({
-                    cachingMode: Schema.optional(Schema.String),
-                    diskName: Schema.String,
-                    diskURI: Schema.String,
-                    fsType: Schema.optional(Schema.String),
-                    kind: Schema.optional(Schema.String),
-                    readOnly: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-                azureFile: Schema.optional(
-                  Schema.Struct({
-                    readOnly: Schema.optional(Schema.Boolean),
-                    secretName: Schema.String,
-                    secretNamespace: Schema.optional(Schema.String),
-                    shareName: Schema.String,
-                  }),
-                ),
-                capacity: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                cephfs: Schema.optional(
-                  Schema.Struct({
-                    monitors: Schema.Array(Schema.String),
-                    path: Schema.optional(Schema.String),
-                    readOnly: Schema.optional(Schema.Boolean),
-                    secretFile: Schema.optional(Schema.String),
-                    secretRef: Schema.optional(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        namespace: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    user: Schema.optional(Schema.String),
-                  }),
-                ),
-                cinder: Schema.optional(
-                  Schema.Struct({
-                    fsType: Schema.optional(Schema.String),
-                    readOnly: Schema.optional(Schema.Boolean),
-                    secretRef: Schema.optional(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        namespace: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    volumeID: Schema.String,
-                  }),
-                ),
-                claimRef: Schema.optional(
-                  Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    fieldPath: Schema.optional(Schema.String),
-                    kind: Schema.optional(Schema.String),
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                    resourceVersion: Schema.optional(Schema.String),
-                    uid: Schema.optional(Schema.String),
-                  }),
-                ),
-                csi: Schema.optional(
-                  Schema.Struct({
-                    controllerExpandSecretRef: Schema.optional(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        namespace: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    controllerPublishSecretRef: Schema.optional(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        namespace: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    driver: Schema.String,
-                    fsType: Schema.optional(Schema.String),
-                    nodeExpandSecretRef: Schema.optional(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        namespace: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    nodePublishSecretRef: Schema.optional(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        namespace: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    nodeStageSecretRef: Schema.optional(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        namespace: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    readOnly: Schema.optional(Schema.Boolean),
-                    volumeAttributes: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                    volumeHandle: Schema.String,
-                  }),
-                ),
-                fc: Schema.optional(
-                  Schema.Struct({
-                    fsType: Schema.optional(Schema.String),
-                    lun: Schema.optional(Schema.Number),
-                    readOnly: Schema.optional(Schema.Boolean),
-                    targetWWNs: Schema.optional(Schema.Array(Schema.String)),
-                    wwids: Schema.optional(Schema.Array(Schema.String)),
-                  }),
-                ),
-                flexVolume: Schema.optional(
-                  Schema.Struct({
-                    driver: Schema.String,
-                    fsType: Schema.optional(Schema.String),
-                    options: Schema.optional(
-                      Schema.Record(Schema.String, Schema.String),
-                    ),
-                    readOnly: Schema.optional(Schema.Boolean),
-                    secretRef: Schema.optional(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        namespace: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  }),
-                ),
-                flocker: Schema.optional(
-                  Schema.Struct({
-                    datasetName: Schema.optional(Schema.String),
-                    datasetUUID: Schema.optional(Schema.String),
-                  }),
-                ),
-                gcePersistentDisk: Schema.optional(
-                  Schema.Struct({
-                    fsType: Schema.optional(Schema.String),
-                    partition: Schema.optional(Schema.Number),
-                    pdName: Schema.String,
-                    readOnly: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-                glusterfs: Schema.optional(
-                  Schema.Struct({
-                    endpoints: Schema.String,
-                    endpointsNamespace: Schema.optional(Schema.String),
-                    path: Schema.String,
-                    readOnly: Schema.optional(Schema.Boolean),
-                  }),
-                ),
-                hostPath: Schema.optional(
-                  Schema.Struct({
-                    path: Schema.String,
-                    type: Schema.optional(Schema.String),
-                  }),
-                ),
-                iscsi: Schema.optional(
-                  Schema.Struct({
-                    chapAuthDiscovery: Schema.optional(Schema.Boolean),
-                    chapAuthSession: Schema.optional(Schema.Boolean),
-                    fsType: Schema.optional(Schema.String),
-                    initiatorName: Schema.optional(Schema.String),
-                    iqn: Schema.String,
-                    iscsiInterface: Schema.optional(Schema.String),
-                    lun: Schema.Number,
-                    portals: Schema.optional(Schema.Array(Schema.String)),
-                    readOnly: Schema.optional(Schema.Boolean),
-                    secretRef: Schema.optional(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        namespace: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    targetPortal: Schema.String,
-                  }),
-                ),
-                local: Schema.optional(
-                  Schema.Struct({
-                    fsType: Schema.optional(Schema.String),
-                    path: Schema.String,
-                  }),
-                ),
-                mountOptions: Schema.optional(Schema.Array(Schema.String)),
-                nfs: Schema.optional(
-                  Schema.Struct({
-                    path: Schema.String,
-                    readOnly: Schema.optional(Schema.Boolean),
-                    server: Schema.String,
-                  }),
-                ),
-                nodeAffinity: Schema.optional(
-                  Schema.Struct({
-                    required: Schema.optional(
-                      Schema.Struct({
-                        nodeSelectorTerms: Schema.Array(
-                          Schema.Struct({
-                            matchExpressions: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  operator: Schema.String,
-                                  values: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                }),
-                              ),
-                            ),
-                            matchFields: Schema.optional(
-                              Schema.Array(
-                                Schema.Struct({
-                                  key: Schema.String,
-                                  operator: Schema.String,
-                                  values: Schema.optional(
-                                    Schema.Array(Schema.String),
-                                  ),
-                                }),
-                              ),
-                            ),
-                          }),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-                persistentVolumeReclaimPolicy: Schema.optional(Schema.String),
-                photonPersistentDisk: Schema.optional(
-                  Schema.Struct({
-                    fsType: Schema.optional(Schema.String),
-                    pdID: Schema.String,
-                  }),
-                ),
-                portworxVolume: Schema.optional(
-                  Schema.Struct({
-                    fsType: Schema.optional(Schema.String),
-                    readOnly: Schema.optional(Schema.Boolean),
-                    volumeID: Schema.String,
-                  }),
-                ),
-                quobyte: Schema.optional(
-                  Schema.Struct({
-                    group: Schema.optional(Schema.String),
-                    readOnly: Schema.optional(Schema.Boolean),
-                    registry: Schema.String,
-                    tenant: Schema.optional(Schema.String),
-                    user: Schema.optional(Schema.String),
-                    volume: Schema.String,
-                  }),
-                ),
-                rbd: Schema.optional(
-                  Schema.Struct({
-                    fsType: Schema.optional(Schema.String),
-                    image: Schema.String,
-                    keyring: Schema.optional(Schema.String),
-                    monitors: Schema.Array(Schema.String),
-                    pool: Schema.optional(Schema.String),
-                    readOnly: Schema.optional(Schema.Boolean),
-                    secretRef: Schema.optional(
-                      Schema.Struct({
-                        name: Schema.optional(Schema.String),
-                        namespace: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    user: Schema.optional(Schema.String),
-                  }),
-                ),
-                scaleIO: Schema.optional(
-                  Schema.Struct({
-                    fsType: Schema.optional(Schema.String),
-                    gateway: Schema.String,
-                    protectionDomain: Schema.optional(Schema.String),
-                    readOnly: Schema.optional(Schema.Boolean),
-                    secretRef: Schema.Struct({
-                      name: Schema.optional(Schema.String),
-                      namespace: Schema.optional(Schema.String),
-                    }),
-                    sslEnabled: Schema.optional(Schema.Boolean),
-                    storageMode: Schema.optional(Schema.String),
-                    storagePool: Schema.optional(Schema.String),
-                    system: Schema.String,
-                    volumeName: Schema.optional(Schema.String),
-                  }),
-                ),
-                storageClassName: Schema.optional(Schema.String),
-                storageos: Schema.optional(
-                  Schema.Struct({
-                    fsType: Schema.optional(Schema.String),
-                    readOnly: Schema.optional(Schema.Boolean),
-                    secretRef: Schema.optional(
-                      Schema.Struct({
-                        apiVersion: Schema.optional(Schema.String),
-                        fieldPath: Schema.optional(Schema.String),
-                        kind: Schema.optional(Schema.String),
-                        name: Schema.optional(Schema.String),
-                        namespace: Schema.optional(Schema.String),
-                        resourceVersion: Schema.optional(Schema.String),
-                        uid: Schema.optional(Schema.String),
-                      }),
-                    ),
-                    volumeName: Schema.optional(Schema.String),
-                    volumeNamespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                volumeAttributesClassName: Schema.optional(Schema.String),
-                volumeMode: Schema.optional(Schema.String),
-                vsphereVolume: Schema.optional(
-                  Schema.Struct({
-                    fsType: Schema.optional(Schema.String),
-                    storagePolicyID: Schema.optional(Schema.String),
-                    storagePolicyName: Schema.optional(Schema.String),
-                    volumePath: Schema.String,
-                  }),
-                ),
-              }),
-            ),
-            persistentVolumeName: Schema.optional(Schema.String),
-          }),
-        }),
-        status: Schema.optional(
-          Schema.Struct({
-            attachError: Schema.optional(
-              Schema.Struct({
-                errorCode: Schema.optional(Schema.Number),
-                message: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-            attached: Schema.Boolean,
-            attachmentMetadata: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            detachError: Schema.optional(
-              Schema.Struct({
-                errorCode: Schema.optional(Schema.Number),
-                message: Schema.optional(Schema.String),
-                time: Schema.optional(Schema.String),
-              }),
-            ),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_storage_v1_VolumeAttachmentSchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListStorageV1VolumeAttachmentOutput =
@@ -3555,74 +1372,11 @@ export const ListStorageV1VolumeAttributesClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        driverName: Schema.String,
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        parameters: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_storage_v1_VolumeAttributesClassSchema),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListStorageV1VolumeAttributesClassOutput =
@@ -3653,74 +1407,13 @@ export const ListStorageV1beta1VolumeAttributesClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
     items: Schema.Array(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        driverName: Schema.String,
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        parameters: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_api_storage_v1beta1_VolumeAttributesClassSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListStorageV1beta1VolumeAttributesClassOutput =
@@ -3755,69 +1448,11 @@ export const PatchStorageV1CSIDriverOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      attachRequired: Schema.optional(Schema.Boolean),
-      fsGroupPolicy: Schema.optional(Schema.String),
-      nodeAllocatableUpdatePeriodSeconds: Schema.optional(Schema.Number),
-      podInfoOnMount: Schema.optional(Schema.Boolean),
-      preventPodSchedulingIfMissing: Schema.optional(Schema.Boolean),
-      requiresRepublish: Schema.optional(Schema.Boolean),
-      seLinuxMount: Schema.optional(Schema.Boolean),
-      serviceAccountTokenInSecrets: Schema.optional(Schema.Boolean),
-      storageCapacity: Schema.optional(Schema.Boolean),
-      tokenRequests: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            audience: Schema.String,
-            expirationSeconds: Schema.optional(Schema.Number),
-          }),
-        ),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
       ),
-      volumeLifecycleModes: Schema.optional(Schema.Array(Schema.String)),
-    }),
+    ),
+    spec: Schema.suspend(() => io_k8s_api_storage_v1_CSIDriverSpecSchema),
   });
 export type PatchStorageV1CSIDriverOutput =
   typeof PatchStorageV1CSIDriverOutput.Type;
@@ -3855,63 +1490,11 @@ export const PatchStorageV1CSINodeOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      drivers: Schema.Array(
-        Schema.Struct({
-          allocatable: Schema.optional(
-            Schema.Struct({
-              count: Schema.optional(Schema.Number),
-            }),
-          ),
-          name: Schema.String,
-          nodeID: Schema.String,
-          topologyKeys: Schema.optional(Schema.Array(Schema.String)),
-        }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
       ),
-    }),
+    ),
+    spec: Schema.suspend(() => io_k8s_api_storage_v1_CSINodeSpecSchema),
   });
 export type PatchStorageV1CSINodeOutput =
   typeof PatchStorageV1CSINodeOutput.Type;
@@ -3948,68 +1531,22 @@ export type PatchStorageV1NamespacedCSIStorageCapacityInput =
 export const PatchStorageV1NamespacedCSIStorageCapacityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
-    capacity: Schema.optional(Schema.String),
+    capacity: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_api_resource_QuantitySchema),
+    ),
     kind: Schema.optional(Schema.String),
-    maximumVolumeSize: Schema.optional(Schema.String),
+    maximumVolumeSize: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_api_resource_QuantitySchema),
+    ),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     nodeTopology: Schema.optional(
-      Schema.Struct({
-        matchExpressions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              key: Schema.String,
-              operator: Schema.String,
-              values: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-        matchLabels: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_LabelSelectorSchema,
+      ),
     ),
     storageClassName: Schema.String,
   });
@@ -4049,63 +1586,15 @@ export const PatchStorageV1StorageClassOutput =
     allowVolumeExpansion: Schema.optional(Schema.Boolean),
     allowedTopologies: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          matchLabelExpressions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.String,
-                values: Schema.Array(Schema.String),
-              }),
-            ),
-          ),
-        }),
+        Schema.suspend(() => io_k8s_api_core_v1_TopologySelectorTermSchema),
       ),
     ),
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     mountOptions: Schema.optional(Schema.Array(Schema.String)),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -4150,400 +1639,15 @@ export const PatchStorageV1VolumeAttachmentOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      attacher: Schema.String,
-      nodeName: Schema.String,
-      source: Schema.Struct({
-        inlineVolumeSpec: Schema.optional(
-          Schema.Struct({
-            accessModes: Schema.optional(Schema.Array(Schema.String)),
-            awsElasticBlockStore: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                partition: Schema.optional(Schema.Number),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeID: Schema.String,
-              }),
-            ),
-            azureDisk: Schema.optional(
-              Schema.Struct({
-                cachingMode: Schema.optional(Schema.String),
-                diskName: Schema.String,
-                diskURI: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            azureFile: Schema.optional(
-              Schema.Struct({
-                readOnly: Schema.optional(Schema.Boolean),
-                secretName: Schema.String,
-                secretNamespace: Schema.optional(Schema.String),
-                shareName: Schema.String,
-              }),
-            ),
-            capacity: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            cephfs: Schema.optional(
-              Schema.Struct({
-                monitors: Schema.Array(Schema.String),
-                path: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretFile: Schema.optional(Schema.String),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                user: Schema.optional(Schema.String),
-              }),
-            ),
-            cinder: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                volumeID: Schema.String,
-              }),
-            ),
-            claimRef: Schema.optional(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldPath: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                namespace: Schema.optional(Schema.String),
-                resourceVersion: Schema.optional(Schema.String),
-                uid: Schema.optional(Schema.String),
-              }),
-            ),
-            csi: Schema.optional(
-              Schema.Struct({
-                controllerExpandSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                controllerPublishSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                driver: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                nodeExpandSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                nodePublishSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                nodeStageSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeAttributes: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                volumeHandle: Schema.String,
-              }),
-            ),
-            fc: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                lun: Schema.optional(Schema.Number),
-                readOnly: Schema.optional(Schema.Boolean),
-                targetWWNs: Schema.optional(Schema.Array(Schema.String)),
-                wwids: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-            flexVolume: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                options: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            flocker: Schema.optional(
-              Schema.Struct({
-                datasetName: Schema.optional(Schema.String),
-                datasetUUID: Schema.optional(Schema.String),
-              }),
-            ),
-            gcePersistentDisk: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                partition: Schema.optional(Schema.Number),
-                pdName: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            glusterfs: Schema.optional(
-              Schema.Struct({
-                endpoints: Schema.String,
-                endpointsNamespace: Schema.optional(Schema.String),
-                path: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            hostPath: Schema.optional(
-              Schema.Struct({
-                path: Schema.String,
-                type: Schema.optional(Schema.String),
-              }),
-            ),
-            iscsi: Schema.optional(
-              Schema.Struct({
-                chapAuthDiscovery: Schema.optional(Schema.Boolean),
-                chapAuthSession: Schema.optional(Schema.Boolean),
-                fsType: Schema.optional(Schema.String),
-                initiatorName: Schema.optional(Schema.String),
-                iqn: Schema.String,
-                iscsiInterface: Schema.optional(Schema.String),
-                lun: Schema.Number,
-                portals: Schema.optional(Schema.Array(Schema.String)),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                targetPortal: Schema.String,
-              }),
-            ),
-            local: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                path: Schema.String,
-              }),
-            ),
-            mountOptions: Schema.optional(Schema.Array(Schema.String)),
-            nfs: Schema.optional(
-              Schema.Struct({
-                path: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-                server: Schema.String,
-              }),
-            ),
-            nodeAffinity: Schema.optional(
-              Schema.Struct({
-                required: Schema.optional(
-                  Schema.Struct({
-                    nodeSelectorTerms: Schema.Array(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchFields: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            persistentVolumeReclaimPolicy: Schema.optional(Schema.String),
-            photonPersistentDisk: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                pdID: Schema.String,
-              }),
-            ),
-            portworxVolume: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeID: Schema.String,
-              }),
-            ),
-            quobyte: Schema.optional(
-              Schema.Struct({
-                group: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                registry: Schema.String,
-                tenant: Schema.optional(Schema.String),
-                user: Schema.optional(Schema.String),
-                volume: Schema.String,
-              }),
-            ),
-            rbd: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                image: Schema.String,
-                keyring: Schema.optional(Schema.String),
-                monitors: Schema.Array(Schema.String),
-                pool: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                user: Schema.optional(Schema.String),
-              }),
-            ),
-            scaleIO: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                gateway: Schema.String,
-                protectionDomain: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  namespace: Schema.optional(Schema.String),
-                }),
-                sslEnabled: Schema.optional(Schema.Boolean),
-                storageMode: Schema.optional(Schema.String),
-                storagePool: Schema.optional(Schema.String),
-                system: Schema.String,
-                volumeName: Schema.optional(Schema.String),
-              }),
-            ),
-            storageClassName: Schema.optional(Schema.String),
-            storageos: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    fieldPath: Schema.optional(Schema.String),
-                    kind: Schema.optional(Schema.String),
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                    resourceVersion: Schema.optional(Schema.String),
-                    uid: Schema.optional(Schema.String),
-                  }),
-                ),
-                volumeName: Schema.optional(Schema.String),
-                volumeNamespace: Schema.optional(Schema.String),
-              }),
-            ),
-            volumeAttributesClassName: Schema.optional(Schema.String),
-            volumeMode: Schema.optional(Schema.String),
-            vsphereVolume: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                storagePolicyID: Schema.optional(Schema.String),
-                storagePolicyName: Schema.optional(Schema.String),
-                volumePath: Schema.String,
-              }),
-            ),
-          }),
-        ),
-        persistentVolumeName: Schema.optional(Schema.String),
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_storage_v1_VolumeAttachmentSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        attachError: Schema.optional(
-          Schema.Struct({
-            errorCode: Schema.optional(Schema.Number),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-        attached: Schema.Boolean,
-        attachmentMetadata: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        detachError: Schema.optional(
-          Schema.Struct({
-            errorCode: Schema.optional(Schema.Number),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_storage_v1_VolumeAttachmentStatusSchema),
     ),
   });
 export type PatchStorageV1VolumeAttachmentOutput =
@@ -4582,400 +1686,15 @@ export const PatchStorageV1VolumeAttachmentStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      attacher: Schema.String,
-      nodeName: Schema.String,
-      source: Schema.Struct({
-        inlineVolumeSpec: Schema.optional(
-          Schema.Struct({
-            accessModes: Schema.optional(Schema.Array(Schema.String)),
-            awsElasticBlockStore: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                partition: Schema.optional(Schema.Number),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeID: Schema.String,
-              }),
-            ),
-            azureDisk: Schema.optional(
-              Schema.Struct({
-                cachingMode: Schema.optional(Schema.String),
-                diskName: Schema.String,
-                diskURI: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            azureFile: Schema.optional(
-              Schema.Struct({
-                readOnly: Schema.optional(Schema.Boolean),
-                secretName: Schema.String,
-                secretNamespace: Schema.optional(Schema.String),
-                shareName: Schema.String,
-              }),
-            ),
-            capacity: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            cephfs: Schema.optional(
-              Schema.Struct({
-                monitors: Schema.Array(Schema.String),
-                path: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretFile: Schema.optional(Schema.String),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                user: Schema.optional(Schema.String),
-              }),
-            ),
-            cinder: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                volumeID: Schema.String,
-              }),
-            ),
-            claimRef: Schema.optional(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldPath: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                namespace: Schema.optional(Schema.String),
-                resourceVersion: Schema.optional(Schema.String),
-                uid: Schema.optional(Schema.String),
-              }),
-            ),
-            csi: Schema.optional(
-              Schema.Struct({
-                controllerExpandSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                controllerPublishSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                driver: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                nodeExpandSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                nodePublishSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                nodeStageSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeAttributes: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                volumeHandle: Schema.String,
-              }),
-            ),
-            fc: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                lun: Schema.optional(Schema.Number),
-                readOnly: Schema.optional(Schema.Boolean),
-                targetWWNs: Schema.optional(Schema.Array(Schema.String)),
-                wwids: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-            flexVolume: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                options: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            flocker: Schema.optional(
-              Schema.Struct({
-                datasetName: Schema.optional(Schema.String),
-                datasetUUID: Schema.optional(Schema.String),
-              }),
-            ),
-            gcePersistentDisk: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                partition: Schema.optional(Schema.Number),
-                pdName: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            glusterfs: Schema.optional(
-              Schema.Struct({
-                endpoints: Schema.String,
-                endpointsNamespace: Schema.optional(Schema.String),
-                path: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            hostPath: Schema.optional(
-              Schema.Struct({
-                path: Schema.String,
-                type: Schema.optional(Schema.String),
-              }),
-            ),
-            iscsi: Schema.optional(
-              Schema.Struct({
-                chapAuthDiscovery: Schema.optional(Schema.Boolean),
-                chapAuthSession: Schema.optional(Schema.Boolean),
-                fsType: Schema.optional(Schema.String),
-                initiatorName: Schema.optional(Schema.String),
-                iqn: Schema.String,
-                iscsiInterface: Schema.optional(Schema.String),
-                lun: Schema.Number,
-                portals: Schema.optional(Schema.Array(Schema.String)),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                targetPortal: Schema.String,
-              }),
-            ),
-            local: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                path: Schema.String,
-              }),
-            ),
-            mountOptions: Schema.optional(Schema.Array(Schema.String)),
-            nfs: Schema.optional(
-              Schema.Struct({
-                path: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-                server: Schema.String,
-              }),
-            ),
-            nodeAffinity: Schema.optional(
-              Schema.Struct({
-                required: Schema.optional(
-                  Schema.Struct({
-                    nodeSelectorTerms: Schema.Array(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchFields: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            persistentVolumeReclaimPolicy: Schema.optional(Schema.String),
-            photonPersistentDisk: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                pdID: Schema.String,
-              }),
-            ),
-            portworxVolume: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeID: Schema.String,
-              }),
-            ),
-            quobyte: Schema.optional(
-              Schema.Struct({
-                group: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                registry: Schema.String,
-                tenant: Schema.optional(Schema.String),
-                user: Schema.optional(Schema.String),
-                volume: Schema.String,
-              }),
-            ),
-            rbd: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                image: Schema.String,
-                keyring: Schema.optional(Schema.String),
-                monitors: Schema.Array(Schema.String),
-                pool: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                user: Schema.optional(Schema.String),
-              }),
-            ),
-            scaleIO: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                gateway: Schema.String,
-                protectionDomain: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  namespace: Schema.optional(Schema.String),
-                }),
-                sslEnabled: Schema.optional(Schema.Boolean),
-                storageMode: Schema.optional(Schema.String),
-                storagePool: Schema.optional(Schema.String),
-                system: Schema.String,
-                volumeName: Schema.optional(Schema.String),
-              }),
-            ),
-            storageClassName: Schema.optional(Schema.String),
-            storageos: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    fieldPath: Schema.optional(Schema.String),
-                    kind: Schema.optional(Schema.String),
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                    resourceVersion: Schema.optional(Schema.String),
-                    uid: Schema.optional(Schema.String),
-                  }),
-                ),
-                volumeName: Schema.optional(Schema.String),
-                volumeNamespace: Schema.optional(Schema.String),
-              }),
-            ),
-            volumeAttributesClassName: Schema.optional(Schema.String),
-            volumeMode: Schema.optional(Schema.String),
-            vsphereVolume: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                storagePolicyID: Schema.optional(Schema.String),
-                storagePolicyName: Schema.optional(Schema.String),
-                volumePath: Schema.String,
-              }),
-            ),
-          }),
-        ),
-        persistentVolumeName: Schema.optional(Schema.String),
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_storage_v1_VolumeAttachmentSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        attachError: Schema.optional(
-          Schema.Struct({
-            errorCode: Schema.optional(Schema.Number),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-        attached: Schema.Boolean,
-        attachmentMetadata: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        detachError: Schema.optional(
-          Schema.Struct({
-            errorCode: Schema.optional(Schema.Number),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_storage_v1_VolumeAttachmentStatusSchema),
     ),
   });
 export type PatchStorageV1VolumeAttachmentStatusOutput =
@@ -5015,48 +1734,9 @@ export const PatchStorageV1VolumeAttributesClassOutput =
     driverName: Schema.String,
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   });
@@ -5097,48 +1777,9 @@ export const PatchStorageV1beta1VolumeAttributesClassOutput =
     driverName: Schema.String,
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   });
@@ -5175,69 +1816,11 @@ export const ReadStorageV1CSIDriverOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      attachRequired: Schema.optional(Schema.Boolean),
-      fsGroupPolicy: Schema.optional(Schema.String),
-      nodeAllocatableUpdatePeriodSeconds: Schema.optional(Schema.Number),
-      podInfoOnMount: Schema.optional(Schema.Boolean),
-      preventPodSchedulingIfMissing: Schema.optional(Schema.Boolean),
-      requiresRepublish: Schema.optional(Schema.Boolean),
-      seLinuxMount: Schema.optional(Schema.Boolean),
-      serviceAccountTokenInSecrets: Schema.optional(Schema.Boolean),
-      storageCapacity: Schema.optional(Schema.Boolean),
-      tokenRequests: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            audience: Schema.String,
-            expirationSeconds: Schema.optional(Schema.Number),
-          }),
-        ),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
       ),
-      volumeLifecycleModes: Schema.optional(Schema.Array(Schema.String)),
-    }),
+    ),
+    spec: Schema.suspend(() => io_k8s_api_storage_v1_CSIDriverSpecSchema),
   });
 export type ReadStorageV1CSIDriverOutput =
   typeof ReadStorageV1CSIDriverOutput.Type;
@@ -5266,63 +1849,11 @@ export const ReadStorageV1CSINodeOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      drivers: Schema.Array(
-        Schema.Struct({
-          allocatable: Schema.optional(
-            Schema.Struct({
-              count: Schema.optional(Schema.Number),
-            }),
-          ),
-          name: Schema.String,
-          nodeID: Schema.String,
-          topologyKeys: Schema.optional(Schema.Array(Schema.String)),
-        }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
       ),
-    }),
+    ),
+    spec: Schema.suspend(() => io_k8s_api_storage_v1_CSINodeSpecSchema),
   });
 export type ReadStorageV1CSINodeOutput = typeof ReadStorageV1CSINodeOutput.Type;
 
@@ -5352,68 +1883,22 @@ export type ReadStorageV1NamespacedCSIStorageCapacityInput =
 export const ReadStorageV1NamespacedCSIStorageCapacityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
-    capacity: Schema.optional(Schema.String),
+    capacity: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_api_resource_QuantitySchema),
+    ),
     kind: Schema.optional(Schema.String),
-    maximumVolumeSize: Schema.optional(Schema.String),
+    maximumVolumeSize: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_api_resource_QuantitySchema),
+    ),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     nodeTopology: Schema.optional(
-      Schema.Struct({
-        matchExpressions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              key: Schema.String,
-              operator: Schema.String,
-              values: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-        matchLabels: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_LabelSelectorSchema,
+      ),
     ),
     storageClassName: Schema.String,
   });
@@ -5447,63 +1932,15 @@ export const ReadStorageV1StorageClassOutput =
     allowVolumeExpansion: Schema.optional(Schema.Boolean),
     allowedTopologies: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          matchLabelExpressions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.String,
-                values: Schema.Array(Schema.String),
-              }),
-            ),
-          ),
-        }),
+        Schema.suspend(() => io_k8s_api_core_v1_TopologySelectorTermSchema),
       ),
     ),
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     mountOptions: Schema.optional(Schema.Array(Schema.String)),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -5542,400 +1979,15 @@ export const ReadStorageV1VolumeAttachmentOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      attacher: Schema.String,
-      nodeName: Schema.String,
-      source: Schema.Struct({
-        inlineVolumeSpec: Schema.optional(
-          Schema.Struct({
-            accessModes: Schema.optional(Schema.Array(Schema.String)),
-            awsElasticBlockStore: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                partition: Schema.optional(Schema.Number),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeID: Schema.String,
-              }),
-            ),
-            azureDisk: Schema.optional(
-              Schema.Struct({
-                cachingMode: Schema.optional(Schema.String),
-                diskName: Schema.String,
-                diskURI: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            azureFile: Schema.optional(
-              Schema.Struct({
-                readOnly: Schema.optional(Schema.Boolean),
-                secretName: Schema.String,
-                secretNamespace: Schema.optional(Schema.String),
-                shareName: Schema.String,
-              }),
-            ),
-            capacity: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            cephfs: Schema.optional(
-              Schema.Struct({
-                monitors: Schema.Array(Schema.String),
-                path: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretFile: Schema.optional(Schema.String),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                user: Schema.optional(Schema.String),
-              }),
-            ),
-            cinder: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                volumeID: Schema.String,
-              }),
-            ),
-            claimRef: Schema.optional(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldPath: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                namespace: Schema.optional(Schema.String),
-                resourceVersion: Schema.optional(Schema.String),
-                uid: Schema.optional(Schema.String),
-              }),
-            ),
-            csi: Schema.optional(
-              Schema.Struct({
-                controllerExpandSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                controllerPublishSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                driver: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                nodeExpandSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                nodePublishSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                nodeStageSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeAttributes: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                volumeHandle: Schema.String,
-              }),
-            ),
-            fc: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                lun: Schema.optional(Schema.Number),
-                readOnly: Schema.optional(Schema.Boolean),
-                targetWWNs: Schema.optional(Schema.Array(Schema.String)),
-                wwids: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-            flexVolume: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                options: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            flocker: Schema.optional(
-              Schema.Struct({
-                datasetName: Schema.optional(Schema.String),
-                datasetUUID: Schema.optional(Schema.String),
-              }),
-            ),
-            gcePersistentDisk: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                partition: Schema.optional(Schema.Number),
-                pdName: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            glusterfs: Schema.optional(
-              Schema.Struct({
-                endpoints: Schema.String,
-                endpointsNamespace: Schema.optional(Schema.String),
-                path: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            hostPath: Schema.optional(
-              Schema.Struct({
-                path: Schema.String,
-                type: Schema.optional(Schema.String),
-              }),
-            ),
-            iscsi: Schema.optional(
-              Schema.Struct({
-                chapAuthDiscovery: Schema.optional(Schema.Boolean),
-                chapAuthSession: Schema.optional(Schema.Boolean),
-                fsType: Schema.optional(Schema.String),
-                initiatorName: Schema.optional(Schema.String),
-                iqn: Schema.String,
-                iscsiInterface: Schema.optional(Schema.String),
-                lun: Schema.Number,
-                portals: Schema.optional(Schema.Array(Schema.String)),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                targetPortal: Schema.String,
-              }),
-            ),
-            local: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                path: Schema.String,
-              }),
-            ),
-            mountOptions: Schema.optional(Schema.Array(Schema.String)),
-            nfs: Schema.optional(
-              Schema.Struct({
-                path: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-                server: Schema.String,
-              }),
-            ),
-            nodeAffinity: Schema.optional(
-              Schema.Struct({
-                required: Schema.optional(
-                  Schema.Struct({
-                    nodeSelectorTerms: Schema.Array(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchFields: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            persistentVolumeReclaimPolicy: Schema.optional(Schema.String),
-            photonPersistentDisk: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                pdID: Schema.String,
-              }),
-            ),
-            portworxVolume: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeID: Schema.String,
-              }),
-            ),
-            quobyte: Schema.optional(
-              Schema.Struct({
-                group: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                registry: Schema.String,
-                tenant: Schema.optional(Schema.String),
-                user: Schema.optional(Schema.String),
-                volume: Schema.String,
-              }),
-            ),
-            rbd: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                image: Schema.String,
-                keyring: Schema.optional(Schema.String),
-                monitors: Schema.Array(Schema.String),
-                pool: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                user: Schema.optional(Schema.String),
-              }),
-            ),
-            scaleIO: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                gateway: Schema.String,
-                protectionDomain: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  namespace: Schema.optional(Schema.String),
-                }),
-                sslEnabled: Schema.optional(Schema.Boolean),
-                storageMode: Schema.optional(Schema.String),
-                storagePool: Schema.optional(Schema.String),
-                system: Schema.String,
-                volumeName: Schema.optional(Schema.String),
-              }),
-            ),
-            storageClassName: Schema.optional(Schema.String),
-            storageos: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    fieldPath: Schema.optional(Schema.String),
-                    kind: Schema.optional(Schema.String),
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                    resourceVersion: Schema.optional(Schema.String),
-                    uid: Schema.optional(Schema.String),
-                  }),
-                ),
-                volumeName: Schema.optional(Schema.String),
-                volumeNamespace: Schema.optional(Schema.String),
-              }),
-            ),
-            volumeAttributesClassName: Schema.optional(Schema.String),
-            volumeMode: Schema.optional(Schema.String),
-            vsphereVolume: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                storagePolicyID: Schema.optional(Schema.String),
-                storagePolicyName: Schema.optional(Schema.String),
-                volumePath: Schema.String,
-              }),
-            ),
-          }),
-        ),
-        persistentVolumeName: Schema.optional(Schema.String),
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_storage_v1_VolumeAttachmentSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        attachError: Schema.optional(
-          Schema.Struct({
-            errorCode: Schema.optional(Schema.Number),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-        attached: Schema.Boolean,
-        attachmentMetadata: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        detachError: Schema.optional(
-          Schema.Struct({
-            errorCode: Schema.optional(Schema.Number),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_storage_v1_VolumeAttachmentStatusSchema),
     ),
   });
 export type ReadStorageV1VolumeAttachmentOutput =
@@ -5968,400 +2020,15 @@ export const ReadStorageV1VolumeAttachmentStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      attacher: Schema.String,
-      nodeName: Schema.String,
-      source: Schema.Struct({
-        inlineVolumeSpec: Schema.optional(
-          Schema.Struct({
-            accessModes: Schema.optional(Schema.Array(Schema.String)),
-            awsElasticBlockStore: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                partition: Schema.optional(Schema.Number),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeID: Schema.String,
-              }),
-            ),
-            azureDisk: Schema.optional(
-              Schema.Struct({
-                cachingMode: Schema.optional(Schema.String),
-                diskName: Schema.String,
-                diskURI: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            azureFile: Schema.optional(
-              Schema.Struct({
-                readOnly: Schema.optional(Schema.Boolean),
-                secretName: Schema.String,
-                secretNamespace: Schema.optional(Schema.String),
-                shareName: Schema.String,
-              }),
-            ),
-            capacity: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            cephfs: Schema.optional(
-              Schema.Struct({
-                monitors: Schema.Array(Schema.String),
-                path: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretFile: Schema.optional(Schema.String),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                user: Schema.optional(Schema.String),
-              }),
-            ),
-            cinder: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                volumeID: Schema.String,
-              }),
-            ),
-            claimRef: Schema.optional(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldPath: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                namespace: Schema.optional(Schema.String),
-                resourceVersion: Schema.optional(Schema.String),
-                uid: Schema.optional(Schema.String),
-              }),
-            ),
-            csi: Schema.optional(
-              Schema.Struct({
-                controllerExpandSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                controllerPublishSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                driver: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                nodeExpandSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                nodePublishSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                nodeStageSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeAttributes: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                volumeHandle: Schema.String,
-              }),
-            ),
-            fc: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                lun: Schema.optional(Schema.Number),
-                readOnly: Schema.optional(Schema.Boolean),
-                targetWWNs: Schema.optional(Schema.Array(Schema.String)),
-                wwids: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-            flexVolume: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                options: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            flocker: Schema.optional(
-              Schema.Struct({
-                datasetName: Schema.optional(Schema.String),
-                datasetUUID: Schema.optional(Schema.String),
-              }),
-            ),
-            gcePersistentDisk: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                partition: Schema.optional(Schema.Number),
-                pdName: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            glusterfs: Schema.optional(
-              Schema.Struct({
-                endpoints: Schema.String,
-                endpointsNamespace: Schema.optional(Schema.String),
-                path: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            hostPath: Schema.optional(
-              Schema.Struct({
-                path: Schema.String,
-                type: Schema.optional(Schema.String),
-              }),
-            ),
-            iscsi: Schema.optional(
-              Schema.Struct({
-                chapAuthDiscovery: Schema.optional(Schema.Boolean),
-                chapAuthSession: Schema.optional(Schema.Boolean),
-                fsType: Schema.optional(Schema.String),
-                initiatorName: Schema.optional(Schema.String),
-                iqn: Schema.String,
-                iscsiInterface: Schema.optional(Schema.String),
-                lun: Schema.Number,
-                portals: Schema.optional(Schema.Array(Schema.String)),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                targetPortal: Schema.String,
-              }),
-            ),
-            local: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                path: Schema.String,
-              }),
-            ),
-            mountOptions: Schema.optional(Schema.Array(Schema.String)),
-            nfs: Schema.optional(
-              Schema.Struct({
-                path: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-                server: Schema.String,
-              }),
-            ),
-            nodeAffinity: Schema.optional(
-              Schema.Struct({
-                required: Schema.optional(
-                  Schema.Struct({
-                    nodeSelectorTerms: Schema.Array(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchFields: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            persistentVolumeReclaimPolicy: Schema.optional(Schema.String),
-            photonPersistentDisk: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                pdID: Schema.String,
-              }),
-            ),
-            portworxVolume: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeID: Schema.String,
-              }),
-            ),
-            quobyte: Schema.optional(
-              Schema.Struct({
-                group: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                registry: Schema.String,
-                tenant: Schema.optional(Schema.String),
-                user: Schema.optional(Schema.String),
-                volume: Schema.String,
-              }),
-            ),
-            rbd: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                image: Schema.String,
-                keyring: Schema.optional(Schema.String),
-                monitors: Schema.Array(Schema.String),
-                pool: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                user: Schema.optional(Schema.String),
-              }),
-            ),
-            scaleIO: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                gateway: Schema.String,
-                protectionDomain: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  namespace: Schema.optional(Schema.String),
-                }),
-                sslEnabled: Schema.optional(Schema.Boolean),
-                storageMode: Schema.optional(Schema.String),
-                storagePool: Schema.optional(Schema.String),
-                system: Schema.String,
-                volumeName: Schema.optional(Schema.String),
-              }),
-            ),
-            storageClassName: Schema.optional(Schema.String),
-            storageos: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    fieldPath: Schema.optional(Schema.String),
-                    kind: Schema.optional(Schema.String),
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                    resourceVersion: Schema.optional(Schema.String),
-                    uid: Schema.optional(Schema.String),
-                  }),
-                ),
-                volumeName: Schema.optional(Schema.String),
-                volumeNamespace: Schema.optional(Schema.String),
-              }),
-            ),
-            volumeAttributesClassName: Schema.optional(Schema.String),
-            volumeMode: Schema.optional(Schema.String),
-            vsphereVolume: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                storagePolicyID: Schema.optional(Schema.String),
-                storagePolicyName: Schema.optional(Schema.String),
-                volumePath: Schema.String,
-              }),
-            ),
-          }),
-        ),
-        persistentVolumeName: Schema.optional(Schema.String),
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_storage_v1_VolumeAttachmentSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        attachError: Schema.optional(
-          Schema.Struct({
-            errorCode: Schema.optional(Schema.Number),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-        attached: Schema.Boolean,
-        attachmentMetadata: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        detachError: Schema.optional(
-          Schema.Struct({
-            errorCode: Schema.optional(Schema.Number),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_storage_v1_VolumeAttachmentStatusSchema),
     ),
   });
 export type ReadStorageV1VolumeAttachmentStatusOutput =
@@ -6395,48 +2062,9 @@ export const ReadStorageV1VolumeAttributesClassOutput =
     driverName: Schema.String,
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   });
@@ -6471,48 +2099,9 @@ export const ReadStorageV1beta1VolumeAttributesClassOutput =
     driverName: Schema.String,
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   });
@@ -6534,6 +2123,14 @@ export const ReplaceStorageV1CSIDriverInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(() => io_k8s_api_storage_v1_CSIDriverSpecSchema),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6549,69 +2146,11 @@ export const ReplaceStorageV1CSIDriverOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      attachRequired: Schema.optional(Schema.Boolean),
-      fsGroupPolicy: Schema.optional(Schema.String),
-      nodeAllocatableUpdatePeriodSeconds: Schema.optional(Schema.Number),
-      podInfoOnMount: Schema.optional(Schema.Boolean),
-      preventPodSchedulingIfMissing: Schema.optional(Schema.Boolean),
-      requiresRepublish: Schema.optional(Schema.Boolean),
-      seLinuxMount: Schema.optional(Schema.Boolean),
-      serviceAccountTokenInSecrets: Schema.optional(Schema.Boolean),
-      storageCapacity: Schema.optional(Schema.Boolean),
-      tokenRequests: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            audience: Schema.String,
-            expirationSeconds: Schema.optional(Schema.Number),
-          }),
-        ),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
       ),
-      volumeLifecycleModes: Schema.optional(Schema.Array(Schema.String)),
-    }),
+    ),
+    spec: Schema.suspend(() => io_k8s_api_storage_v1_CSIDriverSpecSchema),
   });
 export type ReplaceStorageV1CSIDriverOutput =
   typeof ReplaceStorageV1CSIDriverOutput.Type;
@@ -6635,6 +2174,14 @@ export const ReplaceStorageV1CSINodeInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(() => io_k8s_api_storage_v1_CSINodeSpecSchema),
   }).pipe(
     T.Http({ method: "PUT", path: "/apis/storage.k8s.io/v1/csinodes/{name}" }),
   );
@@ -6647,63 +2194,11 @@ export const ReplaceStorageV1CSINodeOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
-    ),
-    spec: Schema.Struct({
-      drivers: Schema.Array(
-        Schema.Struct({
-          allocatable: Schema.optional(
-            Schema.Struct({
-              count: Schema.optional(Schema.Number),
-            }),
-          ),
-          name: Schema.String,
-          nodeID: Schema.String,
-          topologyKeys: Schema.optional(Schema.Array(Schema.String)),
-        }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
       ),
-    }),
+    ),
+    spec: Schema.suspend(() => io_k8s_api_storage_v1_CSINodeSpecSchema),
   });
 export type ReplaceStorageV1CSINodeOutput =
   typeof ReplaceStorageV1CSINodeOutput.Type;
@@ -6727,6 +2222,25 @@ export const ReplaceStorageV1NamespacedCSIStorageCapacityInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    capacity: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_api_resource_QuantitySchema),
+    ),
+    kind: Schema.optional(Schema.String),
+    maximumVolumeSize: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_api_resource_QuantitySchema),
+    ),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    nodeTopology: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_LabelSelectorSchema,
+      ),
+    ),
+    storageClassName: Schema.String,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6740,68 +2254,22 @@ export type ReplaceStorageV1NamespacedCSIStorageCapacityInput =
 export const ReplaceStorageV1NamespacedCSIStorageCapacityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
-    capacity: Schema.optional(Schema.String),
+    capacity: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_api_resource_QuantitySchema),
+    ),
     kind: Schema.optional(Schema.String),
-    maximumVolumeSize: Schema.optional(Schema.String),
+    maximumVolumeSize: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_api_resource_QuantitySchema),
+    ),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     nodeTopology: Schema.optional(
-      Schema.Struct({
-        matchExpressions: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              key: Schema.String,
-              operator: Schema.String,
-              values: Schema.optional(Schema.Array(Schema.String)),
-            }),
-          ),
-        ),
-        matchLabels: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_LabelSelectorSchema,
+      ),
     ),
     storageClassName: Schema.String,
   });
@@ -6826,6 +2294,24 @@ export const ReplaceStorageV1StorageClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    allowVolumeExpansion: Schema.optional(Schema.Boolean),
+    allowedTopologies: Schema.optional(
+      Schema.Array(
+        Schema.suspend(() => io_k8s_api_core_v1_TopologySelectorTermSchema),
+      ),
+    ),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    mountOptions: Schema.optional(Schema.Array(Schema.String)),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    provisioner: Schema.String,
+    reclaimPolicy: Schema.optional(Schema.String),
+    volumeBindingMode: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6841,63 +2327,15 @@ export const ReplaceStorageV1StorageClassOutput =
     allowVolumeExpansion: Schema.optional(Schema.Boolean),
     allowedTopologies: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          matchLabelExpressions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                key: Schema.String,
-                values: Schema.Array(Schema.String),
-              }),
-            ),
-          ),
-        }),
+        Schema.suspend(() => io_k8s_api_core_v1_TopologySelectorTermSchema),
       ),
     ),
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     mountOptions: Schema.optional(Schema.Array(Schema.String)),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
@@ -6926,6 +2364,19 @@ export const ReplaceStorageV1VolumeAttachmentInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(
+      () => io_k8s_api_storage_v1_VolumeAttachmentSpecSchema,
+    ),
+    status: Schema.optional(
+      Schema.suspend(() => io_k8s_api_storage_v1_VolumeAttachmentStatusSchema),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6941,400 +2392,15 @@ export const ReplaceStorageV1VolumeAttachmentOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      attacher: Schema.String,
-      nodeName: Schema.String,
-      source: Schema.Struct({
-        inlineVolumeSpec: Schema.optional(
-          Schema.Struct({
-            accessModes: Schema.optional(Schema.Array(Schema.String)),
-            awsElasticBlockStore: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                partition: Schema.optional(Schema.Number),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeID: Schema.String,
-              }),
-            ),
-            azureDisk: Schema.optional(
-              Schema.Struct({
-                cachingMode: Schema.optional(Schema.String),
-                diskName: Schema.String,
-                diskURI: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            azureFile: Schema.optional(
-              Schema.Struct({
-                readOnly: Schema.optional(Schema.Boolean),
-                secretName: Schema.String,
-                secretNamespace: Schema.optional(Schema.String),
-                shareName: Schema.String,
-              }),
-            ),
-            capacity: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            cephfs: Schema.optional(
-              Schema.Struct({
-                monitors: Schema.Array(Schema.String),
-                path: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretFile: Schema.optional(Schema.String),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                user: Schema.optional(Schema.String),
-              }),
-            ),
-            cinder: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                volumeID: Schema.String,
-              }),
-            ),
-            claimRef: Schema.optional(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldPath: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                namespace: Schema.optional(Schema.String),
-                resourceVersion: Schema.optional(Schema.String),
-                uid: Schema.optional(Schema.String),
-              }),
-            ),
-            csi: Schema.optional(
-              Schema.Struct({
-                controllerExpandSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                controllerPublishSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                driver: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                nodeExpandSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                nodePublishSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                nodeStageSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeAttributes: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                volumeHandle: Schema.String,
-              }),
-            ),
-            fc: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                lun: Schema.optional(Schema.Number),
-                readOnly: Schema.optional(Schema.Boolean),
-                targetWWNs: Schema.optional(Schema.Array(Schema.String)),
-                wwids: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-            flexVolume: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                options: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            flocker: Schema.optional(
-              Schema.Struct({
-                datasetName: Schema.optional(Schema.String),
-                datasetUUID: Schema.optional(Schema.String),
-              }),
-            ),
-            gcePersistentDisk: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                partition: Schema.optional(Schema.Number),
-                pdName: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            glusterfs: Schema.optional(
-              Schema.Struct({
-                endpoints: Schema.String,
-                endpointsNamespace: Schema.optional(Schema.String),
-                path: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            hostPath: Schema.optional(
-              Schema.Struct({
-                path: Schema.String,
-                type: Schema.optional(Schema.String),
-              }),
-            ),
-            iscsi: Schema.optional(
-              Schema.Struct({
-                chapAuthDiscovery: Schema.optional(Schema.Boolean),
-                chapAuthSession: Schema.optional(Schema.Boolean),
-                fsType: Schema.optional(Schema.String),
-                initiatorName: Schema.optional(Schema.String),
-                iqn: Schema.String,
-                iscsiInterface: Schema.optional(Schema.String),
-                lun: Schema.Number,
-                portals: Schema.optional(Schema.Array(Schema.String)),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                targetPortal: Schema.String,
-              }),
-            ),
-            local: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                path: Schema.String,
-              }),
-            ),
-            mountOptions: Schema.optional(Schema.Array(Schema.String)),
-            nfs: Schema.optional(
-              Schema.Struct({
-                path: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-                server: Schema.String,
-              }),
-            ),
-            nodeAffinity: Schema.optional(
-              Schema.Struct({
-                required: Schema.optional(
-                  Schema.Struct({
-                    nodeSelectorTerms: Schema.Array(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchFields: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            persistentVolumeReclaimPolicy: Schema.optional(Schema.String),
-            photonPersistentDisk: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                pdID: Schema.String,
-              }),
-            ),
-            portworxVolume: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeID: Schema.String,
-              }),
-            ),
-            quobyte: Schema.optional(
-              Schema.Struct({
-                group: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                registry: Schema.String,
-                tenant: Schema.optional(Schema.String),
-                user: Schema.optional(Schema.String),
-                volume: Schema.String,
-              }),
-            ),
-            rbd: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                image: Schema.String,
-                keyring: Schema.optional(Schema.String),
-                monitors: Schema.Array(Schema.String),
-                pool: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                user: Schema.optional(Schema.String),
-              }),
-            ),
-            scaleIO: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                gateway: Schema.String,
-                protectionDomain: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  namespace: Schema.optional(Schema.String),
-                }),
-                sslEnabled: Schema.optional(Schema.Boolean),
-                storageMode: Schema.optional(Schema.String),
-                storagePool: Schema.optional(Schema.String),
-                system: Schema.String,
-                volumeName: Schema.optional(Schema.String),
-              }),
-            ),
-            storageClassName: Schema.optional(Schema.String),
-            storageos: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    fieldPath: Schema.optional(Schema.String),
-                    kind: Schema.optional(Schema.String),
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                    resourceVersion: Schema.optional(Schema.String),
-                    uid: Schema.optional(Schema.String),
-                  }),
-                ),
-                volumeName: Schema.optional(Schema.String),
-                volumeNamespace: Schema.optional(Schema.String),
-              }),
-            ),
-            volumeAttributesClassName: Schema.optional(Schema.String),
-            volumeMode: Schema.optional(Schema.String),
-            vsphereVolume: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                storagePolicyID: Schema.optional(Schema.String),
-                storagePolicyName: Schema.optional(Schema.String),
-                volumePath: Schema.String,
-              }),
-            ),
-          }),
-        ),
-        persistentVolumeName: Schema.optional(Schema.String),
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_storage_v1_VolumeAttachmentSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        attachError: Schema.optional(
-          Schema.Struct({
-            errorCode: Schema.optional(Schema.Number),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-        attached: Schema.Boolean,
-        attachmentMetadata: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        detachError: Schema.optional(
-          Schema.Struct({
-            errorCode: Schema.optional(Schema.Number),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_storage_v1_VolumeAttachmentStatusSchema),
     ),
   });
 export type ReplaceStorageV1VolumeAttachmentOutput =
@@ -7358,6 +2424,19 @@ export const ReplaceStorageV1VolumeAttachmentStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    spec: Schema.suspend(
+      () => io_k8s_api_storage_v1_VolumeAttachmentSpecSchema,
+    ),
+    status: Schema.optional(
+      Schema.suspend(() => io_k8s_api_storage_v1_VolumeAttachmentStatusSchema),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -7373,400 +2452,15 @@ export const ReplaceStorageV1VolumeAttachmentStatusOutput =
     apiVersion: Schema.optional(Schema.String),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
-    spec: Schema.Struct({
-      attacher: Schema.String,
-      nodeName: Schema.String,
-      source: Schema.Struct({
-        inlineVolumeSpec: Schema.optional(
-          Schema.Struct({
-            accessModes: Schema.optional(Schema.Array(Schema.String)),
-            awsElasticBlockStore: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                partition: Schema.optional(Schema.Number),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeID: Schema.String,
-              }),
-            ),
-            azureDisk: Schema.optional(
-              Schema.Struct({
-                cachingMode: Schema.optional(Schema.String),
-                diskName: Schema.String,
-                diskURI: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            azureFile: Schema.optional(
-              Schema.Struct({
-                readOnly: Schema.optional(Schema.Boolean),
-                secretName: Schema.String,
-                secretNamespace: Schema.optional(Schema.String),
-                shareName: Schema.String,
-              }),
-            ),
-            capacity: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            cephfs: Schema.optional(
-              Schema.Struct({
-                monitors: Schema.Array(Schema.String),
-                path: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretFile: Schema.optional(Schema.String),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                user: Schema.optional(Schema.String),
-              }),
-            ),
-            cinder: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                volumeID: Schema.String,
-              }),
-            ),
-            claimRef: Schema.optional(
-              Schema.Struct({
-                apiVersion: Schema.optional(Schema.String),
-                fieldPath: Schema.optional(Schema.String),
-                kind: Schema.optional(Schema.String),
-                name: Schema.optional(Schema.String),
-                namespace: Schema.optional(Schema.String),
-                resourceVersion: Schema.optional(Schema.String),
-                uid: Schema.optional(Schema.String),
-              }),
-            ),
-            csi: Schema.optional(
-              Schema.Struct({
-                controllerExpandSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                controllerPublishSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                driver: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                nodeExpandSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                nodePublishSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                nodeStageSecretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeAttributes: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                volumeHandle: Schema.String,
-              }),
-            ),
-            fc: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                lun: Schema.optional(Schema.Number),
-                readOnly: Schema.optional(Schema.Boolean),
-                targetWWNs: Schema.optional(Schema.Array(Schema.String)),
-                wwids: Schema.optional(Schema.Array(Schema.String)),
-              }),
-            ),
-            flexVolume: Schema.optional(
-              Schema.Struct({
-                driver: Schema.String,
-                fsType: Schema.optional(Schema.String),
-                options: Schema.optional(
-                  Schema.Record(Schema.String, Schema.String),
-                ),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-              }),
-            ),
-            flocker: Schema.optional(
-              Schema.Struct({
-                datasetName: Schema.optional(Schema.String),
-                datasetUUID: Schema.optional(Schema.String),
-              }),
-            ),
-            gcePersistentDisk: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                partition: Schema.optional(Schema.Number),
-                pdName: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            glusterfs: Schema.optional(
-              Schema.Struct({
-                endpoints: Schema.String,
-                endpointsNamespace: Schema.optional(Schema.String),
-                path: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-              }),
-            ),
-            hostPath: Schema.optional(
-              Schema.Struct({
-                path: Schema.String,
-                type: Schema.optional(Schema.String),
-              }),
-            ),
-            iscsi: Schema.optional(
-              Schema.Struct({
-                chapAuthDiscovery: Schema.optional(Schema.Boolean),
-                chapAuthSession: Schema.optional(Schema.Boolean),
-                fsType: Schema.optional(Schema.String),
-                initiatorName: Schema.optional(Schema.String),
-                iqn: Schema.String,
-                iscsiInterface: Schema.optional(Schema.String),
-                lun: Schema.Number,
-                portals: Schema.optional(Schema.Array(Schema.String)),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                targetPortal: Schema.String,
-              }),
-            ),
-            local: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                path: Schema.String,
-              }),
-            ),
-            mountOptions: Schema.optional(Schema.Array(Schema.String)),
-            nfs: Schema.optional(
-              Schema.Struct({
-                path: Schema.String,
-                readOnly: Schema.optional(Schema.Boolean),
-                server: Schema.String,
-              }),
-            ),
-            nodeAffinity: Schema.optional(
-              Schema.Struct({
-                required: Schema.optional(
-                  Schema.Struct({
-                    nodeSelectorTerms: Schema.Array(
-                      Schema.Struct({
-                        matchExpressions: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                        matchFields: Schema.optional(
-                          Schema.Array(
-                            Schema.Struct({
-                              key: Schema.String,
-                              operator: Schema.String,
-                              values: Schema.optional(
-                                Schema.Array(Schema.String),
-                              ),
-                            }),
-                          ),
-                        ),
-                      }),
-                    ),
-                  }),
-                ),
-              }),
-            ),
-            persistentVolumeReclaimPolicy: Schema.optional(Schema.String),
-            photonPersistentDisk: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                pdID: Schema.String,
-              }),
-            ),
-            portworxVolume: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                volumeID: Schema.String,
-              }),
-            ),
-            quobyte: Schema.optional(
-              Schema.Struct({
-                group: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                registry: Schema.String,
-                tenant: Schema.optional(Schema.String),
-                user: Schema.optional(Schema.String),
-                volume: Schema.String,
-              }),
-            ),
-            rbd: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                image: Schema.String,
-                keyring: Schema.optional(Schema.String),
-                monitors: Schema.Array(Schema.String),
-                pool: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                  }),
-                ),
-                user: Schema.optional(Schema.String),
-              }),
-            ),
-            scaleIO: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                gateway: Schema.String,
-                protectionDomain: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.Struct({
-                  name: Schema.optional(Schema.String),
-                  namespace: Schema.optional(Schema.String),
-                }),
-                sslEnabled: Schema.optional(Schema.Boolean),
-                storageMode: Schema.optional(Schema.String),
-                storagePool: Schema.optional(Schema.String),
-                system: Schema.String,
-                volumeName: Schema.optional(Schema.String),
-              }),
-            ),
-            storageClassName: Schema.optional(Schema.String),
-            storageos: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                readOnly: Schema.optional(Schema.Boolean),
-                secretRef: Schema.optional(
-                  Schema.Struct({
-                    apiVersion: Schema.optional(Schema.String),
-                    fieldPath: Schema.optional(Schema.String),
-                    kind: Schema.optional(Schema.String),
-                    name: Schema.optional(Schema.String),
-                    namespace: Schema.optional(Schema.String),
-                    resourceVersion: Schema.optional(Schema.String),
-                    uid: Schema.optional(Schema.String),
-                  }),
-                ),
-                volumeName: Schema.optional(Schema.String),
-                volumeNamespace: Schema.optional(Schema.String),
-              }),
-            ),
-            volumeAttributesClassName: Schema.optional(Schema.String),
-            volumeMode: Schema.optional(Schema.String),
-            vsphereVolume: Schema.optional(
-              Schema.Struct({
-                fsType: Schema.optional(Schema.String),
-                storagePolicyID: Schema.optional(Schema.String),
-                storagePolicyName: Schema.optional(Schema.String),
-                volumePath: Schema.String,
-              }),
-            ),
-          }),
-        ),
-        persistentVolumeName: Schema.optional(Schema.String),
-      }),
-    }),
+    spec: Schema.suspend(
+      () => io_k8s_api_storage_v1_VolumeAttachmentSpecSchema,
+    ),
     status: Schema.optional(
-      Schema.Struct({
-        attachError: Schema.optional(
-          Schema.Struct({
-            errorCode: Schema.optional(Schema.Number),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-        attached: Schema.Boolean,
-        attachmentMetadata: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        detachError: Schema.optional(
-          Schema.Struct({
-            errorCode: Schema.optional(Schema.Number),
-            message: Schema.optional(Schema.String),
-            time: Schema.optional(Schema.String),
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_api_storage_v1_VolumeAttachmentStatusSchema),
     ),
   });
 export type ReplaceStorageV1VolumeAttachmentStatusOutput =
@@ -7790,6 +2484,15 @@ export const ReplaceStorageV1VolumeAttributesClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    driverName: Schema.String,
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -7806,48 +2509,9 @@ export const ReplaceStorageV1VolumeAttributesClassOutput =
     driverName: Schema.String,
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   });
@@ -7872,6 +2536,15 @@ export const ReplaceStorageV1beta1VolumeAttributesClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    driverName: Schema.String,
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -7888,48 +2561,9 @@ export const ReplaceStorageV1beta1VolumeAttributesClassOutput =
     driverName: Schema.String,
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   });
@@ -7963,7 +2597,9 @@ export type WatchStorageV1CSIDriverInput =
 // Output Schema
 export const WatchStorageV1CSIDriverOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchStorageV1CSIDriverOutput =
@@ -7990,7 +2626,9 @@ export type WatchStorageV1CSIDriverListInput =
 // Output Schema
 export const WatchStorageV1CSIDriverListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchStorageV1CSIDriverListOutput =
@@ -8019,7 +2657,9 @@ export type WatchStorageV1CSINodeInput = typeof WatchStorageV1CSINodeInput.Type;
 // Output Schema
 export const WatchStorageV1CSINodeOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchStorageV1CSINodeOutput =
@@ -8046,7 +2686,9 @@ export type WatchStorageV1CSINodeListInput =
 // Output Schema
 export const WatchStorageV1CSINodeListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchStorageV1CSINodeListOutput =
@@ -8076,7 +2718,9 @@ export type WatchStorageV1CSIStorageCapacityListForAllNamespacesInput =
 // Output Schema
 export const WatchStorageV1CSIStorageCapacityListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchStorageV1CSIStorageCapacityListForAllNamespacesOutput =
@@ -8105,7 +2749,9 @@ export type WatchStorageV1NamespacedCSIStorageCapacityInput =
 // Output Schema
 export const WatchStorageV1NamespacedCSIStorageCapacityOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchStorageV1NamespacedCSIStorageCapacityOutput =
@@ -8134,7 +2780,9 @@ export type WatchStorageV1NamespacedCSIStorageCapacityListInput =
 // Output Schema
 export const WatchStorageV1NamespacedCSIStorageCapacityListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchStorageV1NamespacedCSIStorageCapacityListOutput =
@@ -8163,7 +2811,9 @@ export type WatchStorageV1StorageClassInput =
 // Output Schema
 export const WatchStorageV1StorageClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchStorageV1StorageClassOutput =
@@ -8193,7 +2843,9 @@ export type WatchStorageV1StorageClassListInput =
 // Output Schema
 export const WatchStorageV1StorageClassListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchStorageV1StorageClassListOutput =
@@ -8222,7 +2874,9 @@ export type WatchStorageV1VolumeAttachmentInput =
 // Output Schema
 export const WatchStorageV1VolumeAttachmentOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchStorageV1VolumeAttachmentOutput =
@@ -8251,7 +2905,9 @@ export type WatchStorageV1VolumeAttachmentListInput =
 // Output Schema
 export const WatchStorageV1VolumeAttachmentListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchStorageV1VolumeAttachmentListOutput =
@@ -8280,7 +2936,9 @@ export type WatchStorageV1VolumeAttributesClassInput =
 // Output Schema
 export const WatchStorageV1VolumeAttributesClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchStorageV1VolumeAttributesClassOutput =
@@ -8309,7 +2967,9 @@ export type WatchStorageV1VolumeAttributesClassListInput =
 // Output Schema
 export const WatchStorageV1VolumeAttributesClassListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchStorageV1VolumeAttributesClassListOutput =
@@ -8338,7 +2998,9 @@ export type WatchStorageV1beta1VolumeAttributesClassInput =
 // Output Schema
 export const WatchStorageV1beta1VolumeAttributesClassOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchStorageV1beta1VolumeAttributesClassOutput =
@@ -8367,7 +3029,9 @@ export type WatchStorageV1beta1VolumeAttributesClassListInput =
 // Output Schema
 export const WatchStorageV1beta1VolumeAttributesClassListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchStorageV1beta1VolumeAttributesClassListOutput =

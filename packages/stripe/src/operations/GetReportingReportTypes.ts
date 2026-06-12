@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { reporting_report_typeSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -19,19 +20,7 @@ export type GetReportingReportTypesInput =
 // Output Schema
 export const GetReportingReportTypesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        data_available_end: Schema.Number,
-        data_available_start: Schema.Number,
-        default_columns: Schema.NullOr(Schema.Array(Schema.String)),
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        name: Schema.String,
-        object: Schema.Literals(["reporting.report_type"]),
-        updated: Schema.Number,
-        version: Schema.Number,
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => reporting_report_typeSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

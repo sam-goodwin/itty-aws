@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { BreakdownSimulationResultSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -34,21 +35,7 @@ export const AlertsSimulateCreateOutput =
       Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
     ),
     breakdown_results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          label: Schema.optional(Schema.String),
-          data: Schema.optional(Schema.Array(Schema.Number)),
-          dates: Schema.optional(Schema.Array(Schema.String)),
-          scores: Schema.optional(Schema.Array(Schema.NullOr(Schema.Number))),
-          triggered_indices: Schema.optional(Schema.Array(Schema.Number)),
-          triggered_dates: Schema.optional(Schema.Array(Schema.String)),
-          total_points: Schema.optional(Schema.Number),
-          anomaly_count: Schema.optional(Schema.Number),
-          sub_detector_scores: Schema.optional(
-            Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-          ),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => BreakdownSimulationResultSchema)),
     ),
   });
 export type AlertsSimulateCreateOutput = typeof AlertsSimulateCreateOutput.Type;

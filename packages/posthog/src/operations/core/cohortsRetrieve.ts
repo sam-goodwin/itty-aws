@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { CohortFilterGroupSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
@@ -23,10 +24,7 @@ export const CohortsRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     Schema.NullOr(
       Schema.Struct({
         properties: Schema.optional(
-          Schema.Struct({
-            type: Schema.optional(Schema.Literals(["AND", "OR"])),
-            values: Schema.optional(Schema.Array(Schema.Unknown)),
-          }),
+          Schema.suspend(() => CohortFilterGroupSchema),
         ),
       }),
     ),

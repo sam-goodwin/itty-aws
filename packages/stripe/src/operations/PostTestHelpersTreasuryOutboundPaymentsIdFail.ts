@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { treasury_outbound_payments_resource_outbound_payment_resource_status_transitionsSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -45,12 +46,10 @@ export const PostTestHelpersTreasuryOutboundPaymentsIdFailOutput =
       "processing",
       "returned",
     ]),
-    status_transitions: Schema.Struct({
-      canceled_at: Schema.NullOr(Schema.Number),
-      failed_at: Schema.NullOr(Schema.Number),
-      posted_at: Schema.NullOr(Schema.Number),
-      returned_at: Schema.NullOr(Schema.Number),
-    }),
+    status_transitions: Schema.suspend(
+      () =>
+        treasury_outbound_payments_resource_outbound_payment_resource_status_transitionsSchema,
+    ),
     tracking_details: Schema.Unknown,
     transaction: Schema.Unknown,
   });

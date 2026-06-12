@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { HeatmapScreenshotResponseTypeEnumSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
@@ -23,7 +24,9 @@ export const SavedRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   url: Schema.optional(Schema.String),
   data_url: Schema.optional(Schema.NullOr(Schema.String)),
   target_widths: Schema.optional(Schema.Unknown),
-  type: Schema.optional(Schema.Literals(["screenshot", "iframe", "recording"])),
+  type: Schema.optional(
+    Schema.suspend(() => HeatmapScreenshotResponseTypeEnumSchema),
+  ),
   status: Schema.optional(
     Schema.Literals(["processing", "completed", "failed"]),
   ),

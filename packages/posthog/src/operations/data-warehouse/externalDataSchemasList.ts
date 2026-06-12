@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { ExternalDataSchemaSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -26,31 +27,7 @@ export const ExternalDataSchemasListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          label: Schema.optional(Schema.NullOr(Schema.String)),
-          table: Schema.optional(
-            Schema.NullOr(Schema.Record(Schema.String, Schema.Unknown)),
-          ),
-          should_sync: Schema.optional(Schema.Boolean),
-          last_synced_at: Schema.optional(Schema.NullOr(Schema.String)),
-          latest_error: Schema.optional(Schema.NullOr(Schema.String)),
-          incremental: Schema.optional(Schema.Boolean),
-          status: Schema.optional(Schema.NullOr(Schema.String)),
-          sync_type: Schema.optional(Schema.Unknown),
-          incremental_field: Schema.optional(Schema.NullOr(Schema.String)),
-          incremental_field_type: Schema.optional(Schema.Unknown),
-          sync_frequency: Schema.optional(Schema.Unknown),
-          sync_time_of_day: Schema.optional(Schema.NullOr(Schema.String)),
-          description: Schema.optional(Schema.NullOr(Schema.String)),
-          primary_key_columns: Schema.optional(
-            Schema.NullOr(Schema.Array(Schema.String)),
-          ),
-          cdc_table_mode: Schema.optional(Schema.Unknown),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => ExternalDataSchemaSchema)),
     ),
   });
 export type ExternalDataSchemasListOutput =

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { CollectionAliasSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -10,12 +11,7 @@ export type GetAliasesInput = typeof GetAliasesInput.Type;
 
 // Output Schema
 export const GetAliasesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  aliases: Schema.Array(
-    Schema.Struct({
-      name: Schema.String,
-      collection_name: Schema.String,
-    }),
-  ),
+  aliases: Schema.Array(Schema.suspend(() => CollectionAliasSchema)),
 });
 export type GetAliasesOutput = typeof GetAliasesOutput.Type;
 

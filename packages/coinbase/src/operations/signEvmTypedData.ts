@@ -1,18 +1,13 @@
 import * as Schema from "effect/Schema";
+import { EIP712DomainSchema, EIP712TypesSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 // Input Schema
 export const SignEvmTypedDataInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   address: Schema.String.pipe(T.PathParam()),
-  domain: Schema.Struct({
-    name: Schema.optional(Schema.String),
-    version: Schema.optional(Schema.String),
-    chainId: Schema.optional(Schema.Number),
-    verifyingContract: Schema.optional(Schema.String),
-    salt: Schema.optional(Schema.String),
-  }),
-  types: Schema.Unknown,
+  domain: Schema.suspend(() => EIP712DomainSchema),
+  types: Schema.suspend(() => EIP712TypesSchema),
   primaryType: Schema.String,
   message: Schema.Unknown,
 }).pipe(

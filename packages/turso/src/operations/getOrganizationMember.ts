@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { MemberSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
@@ -19,15 +20,7 @@ export type GetOrganizationMemberInput = typeof GetOrganizationMemberInput.Type;
 // Output Schema
 export const GetOrganizationMemberOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    member: Schema.optional(
-      Schema.Struct({
-        username: Schema.optional(Schema.String),
-        role: Schema.optional(
-          Schema.Literals(["owner", "admin", "member", "viewer"]),
-        ),
-        email: Schema.optional(Schema.String),
-      }),
-    ),
+    member: Schema.optional(Schema.suspend(() => MemberSchema)),
   });
 export type GetOrganizationMemberOutput =
   typeof GetOrganizationMemberOutput.Type;

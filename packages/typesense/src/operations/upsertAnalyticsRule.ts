@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { AnalyticsRuleTypeSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest } from "../errors.ts";
@@ -27,12 +28,7 @@ export type UpsertAnalyticsRuleInput = typeof UpsertAnalyticsRuleInput.Type;
 export const UpsertAnalyticsRuleOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     name: Schema.String,
-    type: Schema.Literals([
-      "popular_queries",
-      "nohits_queries",
-      "counter",
-      "log",
-    ]),
+    type: Schema.suspend(() => AnalyticsRuleTypeSchema),
     collection: Schema.String,
     event_type: Schema.String,
     rule_tag: Schema.optional(Schema.String),

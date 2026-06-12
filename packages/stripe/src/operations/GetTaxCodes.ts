@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { tax_codeSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -19,14 +20,7 @@ export type GetTaxCodesInput = typeof GetTaxCodesInput.Type;
 
 // Output Schema
 export const GetTaxCodesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  data: Schema.Array(
-    Schema.Struct({
-      description: Schema.String,
-      id: Schema.String,
-      name: Schema.String,
-      object: Schema.Literals(["tax_code"]),
-    }),
-  ),
+  data: Schema.Array(Schema.suspend(() => tax_codeSchema)),
   has_more: Schema.Boolean,
   object: Schema.Literals(["list"]),
   url: Schema.String,

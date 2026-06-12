@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { PersistedFolderTypeEnumSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -8,9 +9,7 @@ export const PersistedFolderPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.String.pipe(T.PathParam()),
     project_id: Schema.String.pipe(T.PathParam()),
-    type: Schema.optional(
-      Schema.Literals(["home", "pinned", "custom_products"]),
-    ),
+    type: Schema.optional(Schema.suspend(() => PersistedFolderTypeEnumSchema)),
     protocol: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),
@@ -28,9 +27,7 @@ export type PersistedFolderPartialUpdateInput =
 export const PersistedFolderPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     id: Schema.optional(Schema.String),
-    type: Schema.optional(
-      Schema.Literals(["home", "pinned", "custom_products"]),
-    ),
+    type: Schema.optional(Schema.suspend(() => PersistedFolderTypeEnumSchema)),
     protocol: Schema.optional(Schema.String),
     path: Schema.optional(Schema.String),
     created_at: Schema.optional(Schema.String),

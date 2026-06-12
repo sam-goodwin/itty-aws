@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { climate_removals_locationSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -24,13 +25,7 @@ export const GetClimateSuppliersSupplierOutput =
     info_url: Schema.String,
     livemode: Schema.Boolean,
     locations: Schema.Array(
-      Schema.Struct({
-        city: Schema.NullOr(Schema.String),
-        country: Schema.String,
-        latitude: Schema.NullOr(Schema.Number),
-        longitude: Schema.NullOr(Schema.Number),
-        region: Schema.NullOr(Schema.String),
-      }),
+      Schema.suspend(() => climate_removals_locationSchema),
     ),
     name: Schema.String,
     object: Schema.Literals(["climate.supplier"]),

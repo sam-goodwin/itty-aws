@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { PinnedSceneTabSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -8,21 +9,7 @@ export const UserHomeSettingsPartialUpdateInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     uuid: Schema.String.pipe(T.PathParam()),
     tabs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          pathname: Schema.optional(Schema.String),
-          search: Schema.optional(Schema.String),
-          hash: Schema.optional(Schema.String),
-          title: Schema.optional(Schema.String),
-          customTitle: Schema.optional(Schema.NullOr(Schema.String)),
-          iconType: Schema.optional(Schema.String),
-          sceneId: Schema.optional(Schema.NullOr(Schema.String)),
-          sceneKey: Schema.optional(Schema.NullOr(Schema.String)),
-          sceneParams: Schema.optional(Schema.Unknown),
-          pinned: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PinnedSceneTabSchema)),
     ),
     homepage: Schema.optional(
       Schema.NullOr(
@@ -49,21 +36,7 @@ export type UserHomeSettingsPartialUpdateInput =
 export const UserHomeSettingsPartialUpdateOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     tabs: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          pathname: Schema.optional(Schema.String),
-          search: Schema.optional(Schema.String),
-          hash: Schema.optional(Schema.String),
-          title: Schema.optional(Schema.String),
-          customTitle: Schema.optional(Schema.NullOr(Schema.String)),
-          iconType: Schema.optional(Schema.String),
-          sceneId: Schema.optional(Schema.NullOr(Schema.String)),
-          sceneKey: Schema.optional(Schema.NullOr(Schema.String)),
-          sceneParams: Schema.optional(Schema.Unknown),
-          pinned: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => PinnedSceneTabSchema)),
     ),
     homepage: Schema.optional(
       Schema.NullOr(

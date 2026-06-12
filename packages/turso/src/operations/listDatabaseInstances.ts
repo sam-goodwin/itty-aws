@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { InstanceSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
@@ -20,15 +21,7 @@ export type ListDatabaseInstancesInput = typeof ListDatabaseInstancesInput.Type;
 export const ListDatabaseInstancesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     instances: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          uuid: Schema.optional(Schema.String),
-          name: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.Literals(["primary", "replica"])),
-          region: Schema.optional(Schema.String),
-          hostname: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => InstanceSchema)),
     ),
   });
 export type ListDatabaseInstancesOutput =

@@ -7,7 +7,10 @@ import {
   NotFound,
   UnprocessableEntity,
 } from "../errors.ts";
-import { SensitiveString, SensitiveNullableString } from "../sensitive.ts";
+import {
+  SensitiveOutputString,
+  SensitiveOutputNullableString,
+} from "../sensitive.ts";
 
 // Input Schema
 export const PostV1ProjectsByProjectIdDatabasesInput =
@@ -64,21 +67,21 @@ export const PostV1ProjectsByProjectIdDatabasesOutput =
               Schema.Struct({
                 host: Schema.String,
                 port: Schema.Number,
-                connectionString: Schema.optional(SensitiveString),
+                connectionString: Schema.optional(SensitiveOutputString),
               }),
             ),
             pooled: Schema.optional(
               Schema.Struct({
                 host: Schema.String,
                 port: Schema.Number,
-                connectionString: Schema.optional(SensitiveString),
+                connectionString: Schema.optional(SensitiveOutputString),
               }),
             ),
             accelerate: Schema.optional(
               Schema.Struct({
                 host: Schema.String,
                 port: Schema.Number,
-                connectionString: Schema.optional(SensitiveString),
+                connectionString: Schema.optional(SensitiveOutputString),
               }),
             ),
           }),
@@ -136,7 +139,7 @@ export const PostV1ProjectsByProjectIdDatabasesOutput =
               }),
             ),
           }),
-          connectionString: SensitiveString,
+          connectionString: SensitiveOutputString,
           directConnection: Schema.optional(
             Schema.NullOr(
               Schema.Struct({
@@ -148,7 +151,7 @@ export const PostV1ProjectsByProjectIdDatabasesOutput =
           ),
         }),
       ),
-      connectionString: SensitiveNullableString,
+      connectionString: SensitiveOutputNullableString,
       directConnection: Schema.NullOr(
         Schema.Struct({
           host: Schema.String,

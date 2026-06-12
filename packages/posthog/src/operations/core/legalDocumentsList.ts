@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { LegalDocumentDTOSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -24,24 +25,7 @@ export const LegalDocumentsListOutput =
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          document_type: Schema.optional(Schema.String),
-          company_name: Schema.optional(Schema.String),
-          representative_email: Schema.optional(Schema.String),
-          status: Schema.optional(Schema.String),
-          created_by: Schema.optional(
-            Schema.NullOr(
-              Schema.Struct({
-                first_name: Schema.optional(Schema.String),
-                email: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          created_at: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => LegalDocumentDTOSchema)),
     ),
   });
 export type LegalDocumentsListOutput = typeof LegalDocumentsListOutput.Type;

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { SynonymItemSchemaSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { NotFound } from "../errors.ts";
@@ -13,15 +14,7 @@ export type RetrieveSynonymSetInput = typeof RetrieveSynonymSetInput.Type;
 // Output Schema
 export const RetrieveSynonymSetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    items: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        synonyms: Schema.Array(Schema.String),
-        root: Schema.optional(Schema.String),
-        locale: Schema.optional(Schema.String),
-        symbols_to_index: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
+    items: Schema.Array(Schema.suspend(() => SynonymItemSchemaSchema)),
     name: Schema.String,
   });
 export type RetrieveSynonymSetOutput = typeof RetrieveSynonymSetOutput.Type;

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { PresetSchemaSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -12,12 +13,7 @@ export type RetrieveAllPresetsInput = typeof RetrieveAllPresetsInput.Type;
 // Output Schema
 export const RetrieveAllPresetsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    presets: Schema.Array(
-      Schema.Struct({
-        value: Schema.Unknown,
-        name: Schema.String,
-      }),
-    ),
+    presets: Schema.Array(Schema.suspend(() => PresetSchemaSchema)),
   });
 export type RetrieveAllPresetsOutput = typeof RetrieveAllPresetsOutput.Type;
 

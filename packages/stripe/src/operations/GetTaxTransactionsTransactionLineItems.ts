@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { tax_transaction_line_itemSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -23,23 +24,7 @@ export type GetTaxTransactionsTransactionLineItemsInput =
 // Output Schema
 export const GetTaxTransactionsTransactionLineItemsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        amount: Schema.Number,
-        amount_tax: Schema.Number,
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-        object: Schema.Literals(["tax.transaction_line_item"]),
-        product: Schema.NullOr(Schema.String),
-        quantity: Schema.Number,
-        reference: Schema.String,
-        reversal: Schema.Unknown,
-        tax_behavior: Schema.Literals(["exclusive", "inclusive"]),
-        tax_code: Schema.String,
-        type: Schema.Literals(["reversal", "transaction"]),
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => tax_transaction_line_itemSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { line_itemSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -23,77 +24,7 @@ export type GetInvoicesInvoiceLinesInput =
 // Output Schema
 export const GetInvoicesInvoiceLinesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        amount: Schema.Number,
-        currency: Schema.String,
-        description: Schema.NullOr(Schema.String),
-        discount_amounts: Schema.NullOr(
-          Schema.Array(
-            Schema.Struct({
-              amount: Schema.Number,
-              discount: Schema.Unknown,
-            }),
-          ),
-        ),
-        discountable: Schema.Boolean,
-        discounts: Schema.Array(Schema.Unknown),
-        id: Schema.String,
-        invoice: Schema.NullOr(Schema.String),
-        livemode: Schema.Boolean,
-        metadata: Schema.Record(Schema.String, Schema.String),
-        object: Schema.Literals(["line_item"]),
-        parent: Schema.Unknown,
-        period: Schema.Struct({
-          end: Schema.Number,
-          start: Schema.Number,
-        }),
-        pretax_credit_amounts: Schema.NullOr(
-          Schema.Array(
-            Schema.Struct({
-              amount: Schema.Number,
-              credit_balance_transaction: Schema.optional(Schema.Unknown),
-              discount: Schema.optional(Schema.Unknown),
-              type: Schema.Literals(["credit_balance_transaction", "discount"]),
-            }),
-          ),
-        ),
-        pricing: Schema.Unknown,
-        quantity: Schema.NullOr(Schema.Number),
-        quantity_decimal: Schema.NullOr(Schema.String),
-        subscription: Schema.Unknown,
-        subtotal: Schema.Number,
-        taxes: Schema.NullOr(
-          Schema.Array(
-            Schema.Struct({
-              amount: Schema.Number,
-              tax_behavior: Schema.Literals(["exclusive", "inclusive"]),
-              tax_rate_details: Schema.Unknown,
-              taxability_reason: Schema.Literals([
-                "customer_exempt",
-                "not_available",
-                "not_collecting",
-                "not_subject_to_tax",
-                "not_supported",
-                "portion_product_exempt",
-                "portion_reduced_rated",
-                "portion_standard_rated",
-                "product_exempt",
-                "product_exempt_holiday",
-                "proportionally_rated",
-                "reduced_rated",
-                "reverse_charge",
-                "standard_rated",
-                "taxable_basis_reduced",
-                "zero_rated",
-              ]),
-              taxable_amount: Schema.NullOr(Schema.Number),
-              type: Schema.Literals(["tax_rate_details"]),
-            }),
-          ),
-        ),
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => line_itemSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

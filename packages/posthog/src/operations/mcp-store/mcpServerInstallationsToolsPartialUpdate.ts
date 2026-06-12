@@ -1,4 +1,8 @@
 import * as Schema from "effect/Schema";
+import {
+  MCPServerInstallationToolApprovalStateEnumSchema,
+  ToolApprovalUpdateApprovalStateEnumSchema,
+} from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -10,7 +14,7 @@ export const McpServerInstallationsToolsPartialUpdateInput =
     project_id: Schema.String.pipe(T.PathParam()),
     tool_name: Schema.String.pipe(T.PathParam()),
     approval_state: Schema.optional(
-      Schema.Literals(["approved", "needs_approval", "do_not_use"]),
+      Schema.suspend(() => ToolApprovalUpdateApprovalStateEnumSchema),
     ),
   }).pipe(
     T.Http({
@@ -30,7 +34,7 @@ export const McpServerInstallationsToolsPartialUpdateOutput =
     description: Schema.optional(Schema.String),
     input_schema: Schema.optional(Schema.Unknown),
     approval_state: Schema.optional(
-      Schema.Literals(["approved", "needs_approval", "do_not_use"]),
+      Schema.suspend(() => MCPServerInstallationToolApprovalStateEnumSchema),
     ),
     last_seen_at: Schema.optional(Schema.String),
     removed_at: Schema.optional(Schema.NullOr(Schema.String)),

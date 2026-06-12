@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { GroupSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, NotFound } from "../errors.ts";
@@ -21,16 +22,7 @@ export type RemoveLocationFromGroupInput =
 // Output Schema
 export const RemoveLocationFromGroupOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    group: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-        version: Schema.optional(Schema.String),
-        uuid: Schema.optional(Schema.String),
-        locations: Schema.optional(Schema.Array(Schema.String)),
-        primary: Schema.optional(Schema.String),
-        delete_protection: Schema.optional(Schema.Boolean),
-      }),
-    ),
+    group: Schema.optional(Schema.suspend(() => GroupSchema)),
   });
 export type RemoveLocationFromGroupOutput =
   typeof RemoveLocationFromGroupOutput.Type;

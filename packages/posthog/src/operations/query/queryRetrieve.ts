@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { QueryStatusSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
@@ -14,34 +15,7 @@ export type QueryRetrieveInput = typeof QueryRetrieveInput.Type;
 
 // Output Schema
 export const QueryRetrieveOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  query_status: Schema.optional(
-    Schema.Struct({
-      complete: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      dashboard_id: Schema.optional(Schema.NullOr(Schema.Number)),
-      end_time: Schema.optional(Schema.NullOr(Schema.String)),
-      error: Schema.optional(Schema.NullOr(Schema.Boolean)),
-      error_message: Schema.optional(Schema.NullOr(Schema.String)),
-      expiration_time: Schema.optional(Schema.NullOr(Schema.String)),
-      id: Schema.optional(Schema.String),
-      insight_id: Schema.optional(Schema.NullOr(Schema.Number)),
-      labels: Schema.optional(Schema.NullOr(Schema.Array(Schema.String))),
-      pickup_time: Schema.optional(Schema.NullOr(Schema.String)),
-      query_async: Schema.optional(Schema.Literals(["true"])),
-      query_progress: Schema.optional(
-        Schema.Struct({
-          active_cpu_time: Schema.optional(Schema.Number),
-          bytes_read: Schema.optional(Schema.Number),
-          estimated_rows_total: Schema.optional(Schema.Number),
-          rows_read: Schema.optional(Schema.Number),
-          time_elapsed: Schema.optional(Schema.Number),
-        }),
-      ),
-      results: Schema.optional(Schema.NullOr(Schema.Unknown)),
-      start_time: Schema.optional(Schema.NullOr(Schema.String)),
-      task_id: Schema.optional(Schema.NullOr(Schema.String)),
-      team_id: Schema.optional(Schema.Number),
-    }),
-  ),
+  query_status: Schema.optional(Schema.suspend(() => QueryStatusSchema)),
 });
 export type QueryRetrieveOutput = typeof QueryRetrieveOutput.Type;
 

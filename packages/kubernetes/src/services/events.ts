@@ -8,12 +8,62 @@ import * as Schema from "effect/Schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
+import {
+  io_k8s_api_core_v1_EventSourceSchema,
+  io_k8s_api_core_v1_ObjectReferenceSchema,
+  io_k8s_api_events_v1_EventSchema,
+  io_k8s_api_events_v1_EventSeriesSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_MicroTimeSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+  io_k8s_apimachinery_pkg_apis_meta_v1_TimeSchema,
+  io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+} from "./_schemas.ts";
 
 // Input Schema
 export const CreateEventsV1NamespacedEventInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    deprecatedCount: Schema.optional(Schema.Number),
+    deprecatedFirstTimestamp: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_TimeSchema),
+    ),
+    deprecatedLastTimestamp: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_TimeSchema),
+    ),
+    deprecatedSource: Schema.optional(
+      Schema.suspend(() => io_k8s_api_core_v1_EventSourceSchema),
+    ),
+    eventTime: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_apis_meta_v1_MicroTimeSchema,
+    ),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    note: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    regarding: Schema.optional(
+      Schema.suspend(() => io_k8s_api_core_v1_ObjectReferenceSchema),
+    ),
+    related: Schema.optional(
+      Schema.suspend(() => io_k8s_api_core_v1_ObjectReferenceSchema),
+    ),
+    reportingController: Schema.optional(Schema.String),
+    reportingInstance: Schema.optional(Schema.String),
+    series: Schema.optional(
+      Schema.suspend(() => io_k8s_api_events_v1_EventSeriesSchema),
+    ),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -29,91 +79,36 @@ export const CreateEventsV1NamespacedEventOutput =
     action: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
     deprecatedCount: Schema.optional(Schema.Number),
-    deprecatedFirstTimestamp: Schema.optional(Schema.String),
-    deprecatedLastTimestamp: Schema.optional(Schema.String),
-    deprecatedSource: Schema.optional(
-      Schema.Struct({
-        component: Schema.optional(Schema.String),
-        host: Schema.optional(Schema.String),
-      }),
+    deprecatedFirstTimestamp: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_TimeSchema),
     ),
-    eventTime: Schema.String,
+    deprecatedLastTimestamp: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_TimeSchema),
+    ),
+    deprecatedSource: Schema.optional(
+      Schema.suspend(() => io_k8s_api_core_v1_EventSourceSchema),
+    ),
+    eventTime: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_apis_meta_v1_MicroTimeSchema,
+    ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     note: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
     regarding: Schema.optional(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        fieldPath: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        resourceVersion: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => io_k8s_api_core_v1_ObjectReferenceSchema),
     ),
     related: Schema.optional(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        fieldPath: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        resourceVersion: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => io_k8s_api_core_v1_ObjectReferenceSchema),
     ),
     reportingController: Schema.optional(Schema.String),
     reportingInstance: Schema.optional(Schema.String),
     series: Schema.optional(
-      Schema.Struct({
-        count: Schema.Number,
-        lastObservedTime: Schema.String,
-      }),
+      Schema.suspend(() => io_k8s_api_events_v1_EventSeriesSchema),
     ),
     type: Schema.optional(Schema.String),
   });
@@ -152,37 +147,14 @@ export const DeleteEventsV1CollectionNamespacedEventOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -220,37 +192,14 @@ export const DeleteEventsV1NamespacedEventOutput =
     apiVersion: Schema.optional(Schema.String),
     code: Schema.optional(Schema.Number),
     details: Schema.optional(
-      Schema.Struct({
-        causes: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              field: Schema.optional(Schema.String),
-              message: Schema.optional(Schema.String),
-              reason: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        group: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        retryAfterSeconds: Schema.optional(Schema.Number),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_StatusDetailsSchema,
+      ),
     ),
     kind: Schema.optional(Schema.String),
     message: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
     reason: Schema.optional(Schema.String),
     status: Schema.optional(Schema.String),
@@ -283,24 +232,24 @@ export const GetEventsAPIGroupOutput =
     kind: Schema.optional(Schema.String),
     name: Schema.String,
     preferredVersion: Schema.optional(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
     serverAddressByClientCIDRs: Schema.optional(
       Schema.Array(
-        Schema.Struct({
-          clientCIDR: Schema.String,
-          serverAddress: Schema.String,
-        }),
+        Schema.suspend(
+          () =>
+            io_k8s_apimachinery_pkg_apis_meta_v1_ServerAddressByClientCIDRSchema,
+        ),
       ),
     ),
     versions: Schema.Array(
-      Schema.Struct({
-        groupVersion: Schema.String,
-        version: Schema.String,
-      }),
+      Schema.suspend(
+        () =>
+          io_k8s_apimachinery_pkg_apis_meta_v1_GroupVersionForDiscoverySchema,
+      ),
     ),
   });
 export type GetEventsAPIGroupOutput = typeof GetEventsAPIGroupOutput.Type;
@@ -328,18 +277,9 @@ export const GetEventsV1APIResourcesOutput =
     groupVersion: Schema.String,
     kind: Schema.optional(Schema.String),
     resources: Schema.Array(
-      Schema.Struct({
-        categories: Schema.optional(Schema.Array(Schema.String)),
-        group: Schema.optional(Schema.String),
-        kind: Schema.String,
-        name: Schema.String,
-        namespaced: Schema.Boolean,
-        shortNames: Schema.optional(Schema.Array(Schema.String)),
-        singularName: Schema.String,
-        storageVersionHash: Schema.optional(Schema.String),
-        verbs: Schema.Array(Schema.String),
-        version: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_APIResourceSchema,
+      ),
     ),
   });
 export type GetEventsV1APIResourcesOutput =
@@ -367,115 +307,10 @@ export type ListEventsV1EventForAllNamespacesInput =
 export const ListEventsV1EventForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
-    items: Schema.Array(
-      Schema.Struct({
-        action: Schema.optional(Schema.String),
-        apiVersion: Schema.optional(Schema.String),
-        deprecatedCount: Schema.optional(Schema.Number),
-        deprecatedFirstTimestamp: Schema.optional(Schema.String),
-        deprecatedLastTimestamp: Schema.optional(Schema.String),
-        deprecatedSource: Schema.optional(
-          Schema.Struct({
-            component: Schema.optional(Schema.String),
-            host: Schema.optional(Schema.String),
-          }),
-        ),
-        eventTime: Schema.String,
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        note: Schema.optional(Schema.String),
-        reason: Schema.optional(Schema.String),
-        regarding: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            fieldPath: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            resourceVersion: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        related: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            fieldPath: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            resourceVersion: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        reportingController: Schema.optional(Schema.String),
-        reportingInstance: Schema.optional(Schema.String),
-        series: Schema.optional(
-          Schema.Struct({
-            count: Schema.Number,
-            lastObservedTime: Schema.String,
-          }),
-        ),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    items: Schema.Array(Schema.suspend(() => io_k8s_api_events_v1_EventSchema)),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListEventsV1EventForAllNamespacesOutput =
@@ -505,115 +340,10 @@ export type ListEventsV1NamespacedEventInput =
 export const ListEventsV1NamespacedEventOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     apiVersion: Schema.optional(Schema.String),
-    items: Schema.Array(
-      Schema.Struct({
-        action: Schema.optional(Schema.String),
-        apiVersion: Schema.optional(Schema.String),
-        deprecatedCount: Schema.optional(Schema.Number),
-        deprecatedFirstTimestamp: Schema.optional(Schema.String),
-        deprecatedLastTimestamp: Schema.optional(Schema.String),
-        deprecatedSource: Schema.optional(
-          Schema.Struct({
-            component: Schema.optional(Schema.String),
-            host: Schema.optional(Schema.String),
-          }),
-        ),
-        eventTime: Schema.String,
-        kind: Schema.optional(Schema.String),
-        metadata: Schema.optional(
-          Schema.Struct({
-            annotations: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            creationTimestamp: Schema.optional(Schema.String),
-            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-            deletionTimestamp: Schema.optional(Schema.String),
-            finalizers: Schema.optional(Schema.Array(Schema.String)),
-            generateName: Schema.optional(Schema.String),
-            generation: Schema.optional(Schema.Number),
-            labels: Schema.optional(
-              Schema.Record(Schema.String, Schema.String),
-            ),
-            managedFields: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.optional(Schema.String),
-                  fieldsType: Schema.optional(Schema.String),
-                  fieldsV1: Schema.optional(Schema.Unknown),
-                  manager: Schema.optional(Schema.String),
-                  operation: Schema.optional(Schema.String),
-                  subresource: Schema.optional(Schema.String),
-                  time: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            ownerReferences: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  apiVersion: Schema.String,
-                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
-                  controller: Schema.optional(Schema.Boolean),
-                  kind: Schema.String,
-                  name: Schema.String,
-                  uid: Schema.String,
-                }),
-              ),
-            ),
-            resourceVersion: Schema.optional(Schema.String),
-            selfLink: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        note: Schema.optional(Schema.String),
-        reason: Schema.optional(Schema.String),
-        regarding: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            fieldPath: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            resourceVersion: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        related: Schema.optional(
-          Schema.Struct({
-            apiVersion: Schema.optional(Schema.String),
-            fieldPath: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            namespace: Schema.optional(Schema.String),
-            resourceVersion: Schema.optional(Schema.String),
-            uid: Schema.optional(Schema.String),
-          }),
-        ),
-        reportingController: Schema.optional(Schema.String),
-        reportingInstance: Schema.optional(Schema.String),
-        series: Schema.optional(
-          Schema.Struct({
-            count: Schema.Number,
-            lastObservedTime: Schema.String,
-          }),
-        ),
-        type: Schema.optional(Schema.String),
-      }),
-    ),
+    items: Schema.Array(Schema.suspend(() => io_k8s_api_events_v1_EventSchema)),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        continue: Schema.optional(Schema.String),
-        remainingItemCount: Schema.optional(Schema.Number),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        shardInfo: Schema.optional(
-          Schema.Struct({
-            selector: Schema.String,
-          }),
-        ),
-      }),
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_ListMetaSchema),
     ),
   });
 export type ListEventsV1NamespacedEventOutput =
@@ -649,91 +379,36 @@ export const PatchEventsV1NamespacedEventOutput =
     action: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
     deprecatedCount: Schema.optional(Schema.Number),
-    deprecatedFirstTimestamp: Schema.optional(Schema.String),
-    deprecatedLastTimestamp: Schema.optional(Schema.String),
-    deprecatedSource: Schema.optional(
-      Schema.Struct({
-        component: Schema.optional(Schema.String),
-        host: Schema.optional(Schema.String),
-      }),
+    deprecatedFirstTimestamp: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_TimeSchema),
     ),
-    eventTime: Schema.String,
+    deprecatedLastTimestamp: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_TimeSchema),
+    ),
+    deprecatedSource: Schema.optional(
+      Schema.suspend(() => io_k8s_api_core_v1_EventSourceSchema),
+    ),
+    eventTime: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_apis_meta_v1_MicroTimeSchema,
+    ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     note: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
     regarding: Schema.optional(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        fieldPath: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        resourceVersion: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => io_k8s_api_core_v1_ObjectReferenceSchema),
     ),
     related: Schema.optional(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        fieldPath: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        resourceVersion: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => io_k8s_api_core_v1_ObjectReferenceSchema),
     ),
     reportingController: Schema.optional(Schema.String),
     reportingInstance: Schema.optional(Schema.String),
     series: Schema.optional(
-      Schema.Struct({
-        count: Schema.Number,
-        lastObservedTime: Schema.String,
-      }),
+      Schema.suspend(() => io_k8s_api_events_v1_EventSeriesSchema),
     ),
     type: Schema.optional(Schema.String),
   });
@@ -770,91 +445,36 @@ export const ReadEventsV1NamespacedEventOutput =
     action: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
     deprecatedCount: Schema.optional(Schema.Number),
-    deprecatedFirstTimestamp: Schema.optional(Schema.String),
-    deprecatedLastTimestamp: Schema.optional(Schema.String),
-    deprecatedSource: Schema.optional(
-      Schema.Struct({
-        component: Schema.optional(Schema.String),
-        host: Schema.optional(Schema.String),
-      }),
+    deprecatedFirstTimestamp: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_TimeSchema),
     ),
-    eventTime: Schema.String,
+    deprecatedLastTimestamp: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_TimeSchema),
+    ),
+    deprecatedSource: Schema.optional(
+      Schema.suspend(() => io_k8s_api_core_v1_EventSourceSchema),
+    ),
+    eventTime: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_apis_meta_v1_MicroTimeSchema,
+    ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     note: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
     regarding: Schema.optional(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        fieldPath: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        resourceVersion: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => io_k8s_api_core_v1_ObjectReferenceSchema),
     ),
     related: Schema.optional(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        fieldPath: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        resourceVersion: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => io_k8s_api_core_v1_ObjectReferenceSchema),
     ),
     reportingController: Schema.optional(Schema.String),
     reportingInstance: Schema.optional(Schema.String),
     series: Schema.optional(
-      Schema.Struct({
-        count: Schema.Number,
-        lastObservedTime: Schema.String,
-      }),
+      Schema.suspend(() => io_k8s_api_events_v1_EventSeriesSchema),
     ),
     type: Schema.optional(Schema.String),
   });
@@ -877,6 +497,41 @@ export const ReplaceEventsV1NamespacedEventInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     dryRun: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    deprecatedCount: Schema.optional(Schema.Number),
+    deprecatedFirstTimestamp: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_TimeSchema),
+    ),
+    deprecatedLastTimestamp: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_TimeSchema),
+    ),
+    deprecatedSource: Schema.optional(
+      Schema.suspend(() => io_k8s_api_core_v1_EventSourceSchema),
+    ),
+    eventTime: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_apis_meta_v1_MicroTimeSchema,
+    ),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
+    ),
+    note: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    regarding: Schema.optional(
+      Schema.suspend(() => io_k8s_api_core_v1_ObjectReferenceSchema),
+    ),
+    related: Schema.optional(
+      Schema.suspend(() => io_k8s_api_core_v1_ObjectReferenceSchema),
+    ),
+    reportingController: Schema.optional(Schema.String),
+    reportingInstance: Schema.optional(Schema.String),
+    series: Schema.optional(
+      Schema.suspend(() => io_k8s_api_events_v1_EventSeriesSchema),
+    ),
+    type: Schema.optional(Schema.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -892,91 +547,36 @@ export const ReplaceEventsV1NamespacedEventOutput =
     action: Schema.optional(Schema.String),
     apiVersion: Schema.optional(Schema.String),
     deprecatedCount: Schema.optional(Schema.Number),
-    deprecatedFirstTimestamp: Schema.optional(Schema.String),
-    deprecatedLastTimestamp: Schema.optional(Schema.String),
-    deprecatedSource: Schema.optional(
-      Schema.Struct({
-        component: Schema.optional(Schema.String),
-        host: Schema.optional(Schema.String),
-      }),
+    deprecatedFirstTimestamp: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_TimeSchema),
     ),
-    eventTime: Schema.String,
+    deprecatedLastTimestamp: Schema.optional(
+      Schema.suspend(() => io_k8s_apimachinery_pkg_apis_meta_v1_TimeSchema),
+    ),
+    deprecatedSource: Schema.optional(
+      Schema.suspend(() => io_k8s_api_core_v1_EventSourceSchema),
+    ),
+    eventTime: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_apis_meta_v1_MicroTimeSchema,
+    ),
     kind: Schema.optional(Schema.String),
     metadata: Schema.optional(
-      Schema.Struct({
-        annotations: Schema.optional(
-          Schema.Record(Schema.String, Schema.String),
-        ),
-        creationTimestamp: Schema.optional(Schema.String),
-        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
-        deletionTimestamp: Schema.optional(Schema.String),
-        finalizers: Schema.optional(Schema.Array(Schema.String)),
-        generateName: Schema.optional(Schema.String),
-        generation: Schema.optional(Schema.Number),
-        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        managedFields: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.optional(Schema.String),
-              fieldsType: Schema.optional(Schema.String),
-              fieldsV1: Schema.optional(Schema.Unknown),
-              manager: Schema.optional(Schema.String),
-              operation: Schema.optional(Schema.String),
-              subresource: Schema.optional(Schema.String),
-              time: Schema.optional(Schema.String),
-            }),
-          ),
-        ),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        ownerReferences: Schema.optional(
-          Schema.Array(
-            Schema.Struct({
-              apiVersion: Schema.String,
-              blockOwnerDeletion: Schema.optional(Schema.Boolean),
-              controller: Schema.optional(Schema.Boolean),
-              kind: Schema.String,
-              name: Schema.String,
-              uid: Schema.String,
-            }),
-          ),
-        ),
-        resourceVersion: Schema.optional(Schema.String),
-        selfLink: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(
+        () => io_k8s_apimachinery_pkg_apis_meta_v1_ObjectMetaSchema,
+      ),
     ),
     note: Schema.optional(Schema.String),
     reason: Schema.optional(Schema.String),
     regarding: Schema.optional(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        fieldPath: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        resourceVersion: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => io_k8s_api_core_v1_ObjectReferenceSchema),
     ),
     related: Schema.optional(
-      Schema.Struct({
-        apiVersion: Schema.optional(Schema.String),
-        fieldPath: Schema.optional(Schema.String),
-        kind: Schema.optional(Schema.String),
-        name: Schema.optional(Schema.String),
-        namespace: Schema.optional(Schema.String),
-        resourceVersion: Schema.optional(Schema.String),
-        uid: Schema.optional(Schema.String),
-      }),
+      Schema.suspend(() => io_k8s_api_core_v1_ObjectReferenceSchema),
     ),
     reportingController: Schema.optional(Schema.String),
     reportingInstance: Schema.optional(Schema.String),
     series: Schema.optional(
-      Schema.Struct({
-        count: Schema.Number,
-        lastObservedTime: Schema.String,
-      }),
+      Schema.suspend(() => io_k8s_api_events_v1_EventSeriesSchema),
     ),
     type: Schema.optional(Schema.String),
   });
@@ -1007,7 +607,9 @@ export type WatchEventsV1EventListForAllNamespacesInput =
 // Output Schema
 export const WatchEventsV1EventListForAllNamespacesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchEventsV1EventListForAllNamespacesOutput =
@@ -1036,7 +638,9 @@ export type WatchEventsV1NamespacedEventInput =
 // Output Schema
 export const WatchEventsV1NamespacedEventOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchEventsV1NamespacedEventOutput =
@@ -1065,7 +669,9 @@ export type WatchEventsV1NamespacedEventListInput =
 // Output Schema
 export const WatchEventsV1NamespacedEventListOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    object: Schema.Unknown,
+    object: Schema.suspend(
+      () => io_k8s_apimachinery_pkg_runtime_RawExtensionSchema,
+    ),
     type: Schema.String,
   });
 export type WatchEventsV1NamespacedEventListOutput =

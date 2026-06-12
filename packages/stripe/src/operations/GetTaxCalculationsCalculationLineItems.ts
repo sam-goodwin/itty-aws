@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { tax_calculation_line_itemSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -23,62 +24,7 @@ export type GetTaxCalculationsCalculationLineItemsInput =
 // Output Schema
 export const GetTaxCalculationsCalculationLineItemsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        amount: Schema.Number,
-        amount_tax: Schema.Number,
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        metadata: Schema.NullOr(Schema.Record(Schema.String, Schema.String)),
-        object: Schema.Literals(["tax.calculation_line_item"]),
-        product: Schema.NullOr(Schema.String),
-        quantity: Schema.Number,
-        reference: Schema.String,
-        tax_behavior: Schema.Literals(["exclusive", "inclusive"]),
-        tax_breakdown: Schema.optional(
-          Schema.NullOr(
-            Schema.Array(
-              Schema.Struct({
-                amount: Schema.Number,
-                jurisdiction: Schema.Struct({
-                  country: Schema.String,
-                  display_name: Schema.String,
-                  level: Schema.Literals([
-                    "city",
-                    "country",
-                    "county",
-                    "district",
-                    "state",
-                  ]),
-                  state: Schema.NullOr(Schema.String),
-                }),
-                sourcing: Schema.Literals(["destination", "origin"]),
-                tax_rate_details: Schema.Unknown,
-                taxability_reason: Schema.Literals([
-                  "customer_exempt",
-                  "not_collecting",
-                  "not_subject_to_tax",
-                  "not_supported",
-                  "portion_product_exempt",
-                  "portion_reduced_rated",
-                  "portion_standard_rated",
-                  "product_exempt",
-                  "product_exempt_holiday",
-                  "proportionally_rated",
-                  "reduced_rated",
-                  "reverse_charge",
-                  "standard_rated",
-                  "taxable_basis_reduced",
-                  "zero_rated",
-                ]),
-                taxable_amount: Schema.Number,
-              }),
-            ),
-          ),
-        ),
-        tax_code: Schema.String,
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => tax_calculation_line_itemSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

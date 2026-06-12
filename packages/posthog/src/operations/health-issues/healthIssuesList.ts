@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { HealthIssueSchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -23,21 +24,7 @@ export const HealthIssuesListOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     next: Schema.optional(Schema.NullOr(Schema.String)),
     previous: Schema.optional(Schema.NullOr(Schema.String)),
     results: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          kind: Schema.optional(Schema.String),
-          severity: Schema.optional(
-            Schema.Literals(["critical", "warning", "info"]),
-          ),
-          status: Schema.optional(Schema.Literals(["active", "resolved"])),
-          dismissed: Schema.optional(Schema.Boolean),
-          payload: Schema.optional(Schema.Unknown),
-          created_at: Schema.optional(Schema.String),
-          updated_at: Schema.optional(Schema.String),
-          resolved_at: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => HealthIssueSchema)),
     ),
   },
 );

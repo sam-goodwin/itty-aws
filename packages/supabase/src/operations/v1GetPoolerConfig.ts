@@ -1,8 +1,8 @@
 import * as Schema from "effect/Schema";
+import { SupavisorConfigResponseSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { BadRequest, Forbidden } from "../errors.ts";
-import { SensitiveString } from "../sensitive.ts";
 
 // Input Schema
 export const V1GetPoolerConfigInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
@@ -16,20 +16,7 @@ export type V1GetPoolerConfigInput = typeof V1GetPoolerConfigInput.Type;
 
 // Output Schema
 export const V1GetPoolerConfigOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    identifier: Schema.String,
-    database_type: Schema.Literals(["PRIMARY", "READ_REPLICA"]),
-    is_using_scram_auth: Schema.Boolean,
-    db_user: Schema.String,
-    db_host: Schema.String,
-    db_port: Schema.Number,
-    db_name: Schema.String,
-    connection_string: SensitiveString,
-    connectionString: SensitiveString,
-    default_pool_size: Schema.NullOr(Schema.Number),
-    max_client_conn: Schema.NullOr(Schema.Number),
-    pool_mode: Schema.Literals(["transaction", "session"]),
-  }),
+  Schema.suspend(() => SupavisorConfigResponseSchema),
 );
 export type V1GetPoolerConfigOutput = typeof V1GetPoolerConfigOutput.Type;
 

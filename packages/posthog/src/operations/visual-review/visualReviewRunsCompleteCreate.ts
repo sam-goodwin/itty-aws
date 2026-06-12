@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { RunSummarySchema } from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { Forbidden, NotFound } from "../../errors.ts";
@@ -38,17 +39,7 @@ export const VisualReviewRunsCompleteCreateOutput =
     pr_number: Schema.optional(Schema.NullOr(Schema.Number)),
     approved: Schema.optional(Schema.Boolean),
     approved_at: Schema.optional(Schema.NullOr(Schema.String)),
-    summary: Schema.optional(
-      Schema.Struct({
-        total: Schema.optional(Schema.Number),
-        changed: Schema.optional(Schema.Number),
-        new: Schema.optional(Schema.Number),
-        removed: Schema.optional(Schema.Number),
-        unchanged: Schema.optional(Schema.Number),
-        unresolved: Schema.optional(Schema.Number),
-        tolerated_matched: Schema.optional(Schema.Number),
-      }),
-    ),
+    summary: Schema.optional(Schema.suspend(() => RunSummarySchema)),
     error_message: Schema.optional(Schema.NullOr(Schema.String)),
     created_at: Schema.optional(Schema.String),
     completed_at: Schema.optional(Schema.NullOr(Schema.String)),

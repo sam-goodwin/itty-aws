@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { main_tokenInfoSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 import { Forbidden } from "../errors.ts";
@@ -13,17 +14,7 @@ export type CurrentTokenShowInput = typeof CurrentTokenShowInput.Type;
 export const CurrentTokenShowOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
   {
     tokens: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          apps: Schema.optional(Schema.Array(Schema.String)),
-          org_slug: Schema.optional(Schema.String),
-          organization: Schema.optional(Schema.String),
-          restricted_to_machine: Schema.optional(Schema.String),
-          source_machine_id: Schema.optional(Schema.String),
-          token_id: Schema.optional(Schema.String),
-          user: Schema.optional(Schema.String),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => main_tokenInfoSchema)),
     ),
   },
 );

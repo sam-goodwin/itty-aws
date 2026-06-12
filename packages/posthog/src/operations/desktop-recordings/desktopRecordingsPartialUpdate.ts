@@ -1,4 +1,10 @@
 import * as Schema from "effect/Schema";
+import {
+  DesktopRecordingStatusEnumSchema,
+  DesktopRecordingTaskSchema,
+  MeetingPlatformEnumSchema,
+  TranscriptSegmentSchema,
+} from "./_schemas.ts";
 import { API } from "../../client.ts";
 import * as T from "../../traits.ts";
 import { BadRequest, Forbidden, NotFound } from "../../errors.ts";
@@ -12,20 +18,12 @@ export const DesktopRecordingsPartialUpdateInput =
     created_by: Schema.optional(Schema.NullOr(Schema.Number)),
     sdk_upload_id: Schema.optional(Schema.String),
     recall_recording_id: Schema.optional(Schema.NullOr(Schema.String)),
-    platform: Schema.optional(
-      Schema.Literals(["zoom", "teams", "meet", "desktop_audio", "slack"]),
-    ),
+    platform: Schema.optional(Schema.suspend(() => MeetingPlatformEnumSchema)),
     meeting_title: Schema.optional(Schema.NullOr(Schema.String)),
     meeting_url: Schema.optional(Schema.NullOr(Schema.String)),
     duration_seconds: Schema.optional(Schema.NullOr(Schema.Number)),
     status: Schema.optional(
-      Schema.Literals([
-        "recording",
-        "uploading",
-        "processing",
-        "ready",
-        "error",
-      ]),
+      Schema.suspend(() => DesktopRecordingStatusEnumSchema),
     ),
     notes: Schema.optional(Schema.NullOr(Schema.String)),
     error_message: Schema.optional(Schema.NullOr(Schema.String)),
@@ -34,25 +32,11 @@ export const DesktopRecordingsPartialUpdateInput =
     participants: Schema.optional(Schema.Array(Schema.String)),
     transcript_text: Schema.optional(Schema.String),
     transcript_segments: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          timestamp: Schema.optional(Schema.NullOr(Schema.Number)),
-          speaker: Schema.optional(Schema.NullOr(Schema.String)),
-          text: Schema.optional(Schema.String),
-          confidence: Schema.optional(Schema.NullOr(Schema.Number)),
-          is_final: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TranscriptSegmentSchema)),
     ),
     summary: Schema.optional(Schema.NullOr(Schema.String)),
     extracted_tasks: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          title: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          assignee: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DesktopRecordingTaskSchema)),
     ),
     tasks_generated_at: Schema.optional(Schema.NullOr(Schema.String)),
     summary_generated_at: Schema.optional(Schema.NullOr(Schema.String)),
@@ -77,20 +61,12 @@ export const DesktopRecordingsPartialUpdateOutput =
     created_by: Schema.optional(Schema.NullOr(Schema.Number)),
     sdk_upload_id: Schema.optional(Schema.String),
     recall_recording_id: Schema.optional(Schema.NullOr(Schema.String)),
-    platform: Schema.optional(
-      Schema.Literals(["zoom", "teams", "meet", "desktop_audio", "slack"]),
-    ),
+    platform: Schema.optional(Schema.suspend(() => MeetingPlatformEnumSchema)),
     meeting_title: Schema.optional(Schema.NullOr(Schema.String)),
     meeting_url: Schema.optional(Schema.NullOr(Schema.String)),
     duration_seconds: Schema.optional(Schema.NullOr(Schema.Number)),
     status: Schema.optional(
-      Schema.Literals([
-        "recording",
-        "uploading",
-        "processing",
-        "ready",
-        "error",
-      ]),
+      Schema.suspend(() => DesktopRecordingStatusEnumSchema),
     ),
     notes: Schema.optional(Schema.NullOr(Schema.String)),
     error_message: Schema.optional(Schema.NullOr(Schema.String)),
@@ -99,25 +75,11 @@ export const DesktopRecordingsPartialUpdateOutput =
     participants: Schema.optional(Schema.Array(Schema.String)),
     transcript_text: Schema.optional(Schema.String),
     transcript_segments: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          timestamp: Schema.optional(Schema.NullOr(Schema.Number)),
-          speaker: Schema.optional(Schema.NullOr(Schema.String)),
-          text: Schema.optional(Schema.String),
-          confidence: Schema.optional(Schema.NullOr(Schema.Number)),
-          is_final: Schema.optional(Schema.NullOr(Schema.Boolean)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => TranscriptSegmentSchema)),
     ),
     summary: Schema.optional(Schema.NullOr(Schema.String)),
     extracted_tasks: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          title: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          assignee: Schema.optional(Schema.NullOr(Schema.String)),
-        }),
-      ),
+      Schema.Array(Schema.suspend(() => DesktopRecordingTaskSchema)),
     ),
     tasks_generated_at: Schema.optional(Schema.NullOr(Schema.String)),
     summary_generated_at: Schema.optional(Schema.NullOr(Schema.String)),

@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { EvmEip7702DelegationNetworkSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -27,15 +28,7 @@ export const GetEvmEip7702DelegationOperationByIdOutput =
       "FAILED",
     ]),
     transactionHash: Schema.optional(Schema.String),
-    network: Schema.Literals([
-      "base-sepolia",
-      "base",
-      "arbitrum",
-      "optimism",
-      "polygon",
-      "ethereum",
-      "ethereum-sepolia",
-    ]),
+    network: Schema.suspend(() => EvmEip7702DelegationNetworkSchema),
     delegateAddress: Schema.optional(Schema.String),
   });
 export type GetEvmEip7702DelegationOperationByIdOutput =

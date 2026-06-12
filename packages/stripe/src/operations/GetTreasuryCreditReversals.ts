@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { treasury_credit_reversalSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -27,26 +28,7 @@ export type GetTreasuryCreditReversalsInput =
 // Output Schema
 export const GetTreasuryCreditReversalsOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(
-      Schema.Struct({
-        amount: Schema.Number,
-        created: Schema.Number,
-        currency: Schema.String,
-        financial_account: Schema.String,
-        hosted_regulatory_receipt_url: Schema.NullOr(Schema.String),
-        id: Schema.String,
-        livemode: Schema.Boolean,
-        metadata: Schema.Record(Schema.String, Schema.String),
-        network: Schema.Literals(["ach", "stripe"]),
-        object: Schema.Literals(["treasury.credit_reversal"]),
-        received_credit: Schema.String,
-        status: Schema.Literals(["canceled", "posted", "processing"]),
-        status_transitions: Schema.Struct({
-          posted_at: Schema.NullOr(Schema.Number),
-        }),
-        transaction: Schema.Unknown,
-      }),
-    ),
+    data: Schema.Array(Schema.suspend(() => treasury_credit_reversalSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,

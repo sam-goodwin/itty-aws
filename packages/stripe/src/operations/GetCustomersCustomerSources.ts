@@ -1,4 +1,5 @@
 import * as Schema from "effect/Schema";
+import { payment_sourceSchema } from "./_schemas.ts";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
@@ -24,7 +25,7 @@ export type GetCustomersCustomerSourcesInput =
 // Output Schema
 export const GetCustomersCustomerSourcesOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    data: Schema.Array(Schema.Unknown),
+    data: Schema.Array(Schema.suspend(() => payment_sourceSchema)),
     has_more: Schema.Boolean,
     object: Schema.Literals(["list"]),
     url: Schema.String,
