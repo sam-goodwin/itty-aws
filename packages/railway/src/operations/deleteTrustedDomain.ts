@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation trustedDomainDelete($id: String!) {\n  trustedDomainDelete(id: $id) {\n    __typename\n  }\n}";
+  "mutation trustedDomainDelete($id: String!) {\n  trustedDomainDelete(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const DeleteTrustedDomainInput = Schema.Struct({

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation passkeyDelete($id: String!) {\n  passkeyDelete(id: $id) {\n    __typename\n  }\n}";
+  "mutation passkeyDelete($id: String!) {\n  passkeyDelete(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const DeletePasskeyInput = Schema.Struct({

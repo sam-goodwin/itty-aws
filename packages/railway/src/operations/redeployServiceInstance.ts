@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation serviceInstanceRedeploy($environmentId: String!, $serviceId: String!) {\n  serviceInstanceRedeploy(environmentId: $environmentId, serviceId: $serviceId) {\n    __typename\n  }\n}";
+  "mutation serviceInstanceRedeploy($environmentId: String!, $serviceId: String!) {\n  serviceInstanceRedeploy(environmentId: $environmentId, serviceId: $serviceId)\n}";
 
 // Input Schema (GraphQL variables)
 export const RedeployServiceInstanceInput = Schema.Struct({

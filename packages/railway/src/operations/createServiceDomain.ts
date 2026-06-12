@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { NotAuthorized } from "./errors.ts";
 
 const __document =
   "mutation serviceDomainCreate($input: ServiceDomainCreateInput!) {\n  serviceDomainCreate(input: $input) {\n    cdnMode\n    createdAt\n    deletedAt\n    domain\n    edgeId\n    environmentId\n    id\n    newDomainName\n    newHostLabel\n    projectId\n    serviceId\n    suffix\n    syncStatus\n    targetPort\n    updatedAt\n  }\n}";
@@ -55,4 +56,5 @@ export type CreateServiceDomainOutput = typeof CreateServiceDomainOutput.Type;
 export const createServiceDomain = API.make(() => ({
   inputSchema: CreateServiceDomainInput,
   outputSchema: CreateServiceDomainOutput,
+  errors: [NotAuthorized],
 }));

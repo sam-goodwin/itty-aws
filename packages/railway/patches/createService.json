@@ -1,0 +1,19 @@
+{
+  "errors": {
+    "NotAuthorized": {
+      "category": "auth",
+      "description": "The token is not authorized to perform this operation (Railway also returns this for resources that do not exist or are not visible to the token).",
+      "matchers": [{ "message": "Not Authorized" }]
+    },
+    "ServiceNameConflict": {
+      "category": "alreadyExists",
+      "description": "A service with the requested name already exists in the project.",
+      "matchers": [{ "message": { "includes": "already exists in this project" } }]
+    },
+    "ServiceNameInvalid": {
+      "category": "badRequest",
+      "description": "The service name is invalid (documented max length is 32 characters; the live API currently accepts up to 48).",
+      "matchers": [{ "message": { "includes": "Invalid service name" } }]
+    }
+  }
+}

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation emailChangeInitiate($newEmail: String!) {\n  emailChangeInitiate(newEmail: $newEmail) {\n    __typename\n  }\n}";
+  "mutation emailChangeInitiate($newEmail: String!) {\n  emailChangeInitiate(newEmail: $newEmail)\n}";
 
 // Input Schema (GraphQL variables)
 export const InitiateEmailChangeInput = Schema.Struct({

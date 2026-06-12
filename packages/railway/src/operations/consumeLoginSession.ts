@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation loginSessionConsume($code: String!) {\n  loginSessionConsume(code: $code) {\n    __typename\n  }\n}";
+  "mutation loginSessionConsume($code: String!) {\n  loginSessionConsume(code: $code)\n}";
 
 // Input Schema (GraphQL variables)
 export const ConsumeLoginSessionInput = Schema.Struct({

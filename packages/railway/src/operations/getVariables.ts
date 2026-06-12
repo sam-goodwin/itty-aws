@@ -1,9 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { NotAuthorized } from "./errors.ts";
 
 const __document =
-  "query variables($environmentId: String!, $projectId: String!, $serviceId: String, $unrendered: Boolean) {\n  variables(environmentId: $environmentId, projectId: $projectId, serviceId: $serviceId, unrendered: $unrendered) {\n    __typename\n  }\n}";
+  "query variables($environmentId: String!, $projectId: String!, $serviceId: String, $unrendered: Boolean) {\n  variables(environmentId: $environmentId, projectId: $projectId, serviceId: $serviceId, unrendered: $unrendered)\n}";
 
 // Input Schema (GraphQL variables)
 export const GetVariablesInput = Schema.Struct({
@@ -33,4 +34,5 @@ export type GetVariablesOutput = typeof GetVariablesOutput.Type;
 export const getVariables = API.make(() => ({
   inputSchema: GetVariablesInput,
   outputSchema: GetVariablesOutput,
+  errors: [NotAuthorized],
 }));

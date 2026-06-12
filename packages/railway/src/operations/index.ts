@@ -249,6 +249,7 @@ export * from "./trackSetupAgentEvent.ts";
 export * from "./configureSharedVariable.ts";
 export * from "./createSshPublicKey.ts";
 export * from "./deleteSshPublicKey.ts";
+export * from "./createTcpProxy.ts";
 export * from "./deleteTcpProxy.ts";
 export * from "./cloneTemplate.ts";
 export * from "./deleteTemplate.ts";

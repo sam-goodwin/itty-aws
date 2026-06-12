@@ -1,9 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { NotAuthorized } from "./errors.ts";
 
 const __document =
-  "mutation serviceInstanceDeployV2($commitSha: String, $environmentId: String!, $serviceId: String!) {\n  serviceInstanceDeployV2(commitSha: $commitSha, environmentId: $environmentId, serviceId: $serviceId) {\n    __typename\n  }\n}";
+  "mutation serviceInstanceDeployV2($commitSha: String, $environmentId: String!, $serviceId: String!) {\n  serviceInstanceDeployV2(commitSha: $commitSha, environmentId: $environmentId, serviceId: $serviceId)\n}";
 
 // Input Schema (GraphQL variables)
 export const DeployServiceInstanceV2Input = Schema.Struct({
@@ -34,4 +35,5 @@ export type DeployServiceInstanceV2Output =
 export const deployServiceInstanceV2 = API.make(() => ({
   inputSchema: DeployServiceInstanceV2Input,
   outputSchema: DeployServiceInstanceV2Output,
+  errors: [NotAuthorized],
 }));

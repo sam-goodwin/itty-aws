@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation featureFlagRemove($input: FeatureFlagToggleInput!) {\n  featureFlagRemove(input: $input) {\n    __typename\n  }\n}";
+  "mutation featureFlagRemove($input: FeatureFlagToggleInput!) {\n  featureFlagRemove(input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const RemoveFeatureFlagInput = Schema.Struct({

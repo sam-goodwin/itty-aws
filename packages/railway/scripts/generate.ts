@@ -58,6 +58,7 @@ interface PatchedError {
     | "conflict"
     | "alreadyExists"
     | "throttling"
+    | "quota"
     | "server";
   /** Matchers tested against the observed GraphQL error (OR semantics). */
   matchers: ErrorMatcher[];
@@ -115,6 +116,10 @@ const CATEGORY_PIPE: Record<PatchedError["category"], string> = {
     "Category.withCategory(Category.ConflictError, Category.AlreadyExistsError)",
   throttling:
     "Category.withThrottlingError, Category.withRetryable({ throttling: true })",
+  // Rate limits that penalize failed attempts (e.g. Railway's project-create
+  // limiter) must NOT be auto-retried by the SDK's burst policy — callers
+  // retry deliberately with a wide spacing.
+  quota: "Category.withQuotaError",
   server: "Category.withServerError, Category.withRetryable()",
 };
 
@@ -274,6 +279,11 @@ generateFromGraphQL({
   clientImport: "../client",
   traitsImport: "../traits",
   skipDeprecated: true,
+  // tcpProxyCreate is deprecated in favor of staged environment changes,
+  // but it remains the only direct API for creating TCP proxies — the
+  // deprecation caveat (service must be redeployed afterwards) is handled
+  // by the IaC engine, which controls deploys anyway.
+  includeDeprecated: ["tcpProxyCreate"],
   // Railway declares a number of custom scalars; map them to sensible Effect
   // Schema primitives so generated operations don't dissolve into
   // Schema.Unknown.
@@ -302,6 +312,12 @@ generateFromGraphQL({
     TemplateServiceConfig: "Schema.Unknown",
     TemplateVolume: "Schema.Unknown",
   },
+  // Railway's API fails resolving `Deployment.sockets` with a generic
+  // "Problem processing request" (observed live on deployments created via
+  // the `up` endpoint), poisoning every query that selects it
+  // (deployment, serviceInstance, ...). Exclude it from selection sets.
+  skipField: (parentTypeName, fieldName) =>
+    parentTypeName === "Deployment" && fieldName === "sockets",
   renameOperation: verbFirst,
   operationErrors: (operationName) => {
     const names = operationErrors.get(operationName);

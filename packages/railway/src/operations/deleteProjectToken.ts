@@ -1,9 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { NotAuthorized } from "./errors.ts";
 
 const __document =
-  "mutation projectTokenDelete($id: String!) {\n  projectTokenDelete(id: $id) {\n    __typename\n  }\n}";
+  "mutation projectTokenDelete($id: String!) {\n  projectTokenDelete(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const DeleteProjectTokenInput = Schema.Struct({
@@ -30,4 +31,5 @@ export type DeleteProjectTokenOutput = typeof DeleteProjectTokenOutput.Type;
 export const deleteProjectToken = API.make(() => ({
   inputSchema: DeleteProjectTokenInput,
   outputSchema: DeleteProjectTokenOutput,
+  errors: [NotAuthorized],
 }));

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation setupAgentEventTrack($input: SetupAgentEventTrackInput!) {\n  setupAgentEventTrack(input: $input) {\n    __typename\n  }\n}";
+  "mutation setupAgentEventTrack($input: SetupAgentEventTrackInput!) {\n  setupAgentEventTrack(input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const TrackSetupAgentEventInput = Schema.Struct({

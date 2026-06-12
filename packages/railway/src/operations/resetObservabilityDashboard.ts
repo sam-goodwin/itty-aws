@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation observabilityDashboardReset($id: String!) {\n  observabilityDashboardReset(id: $id) {\n    __typename\n  }\n}";
+  "mutation observabilityDashboardReset($id: String!) {\n  observabilityDashboardReset(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const ResetObservabilityDashboardInput = Schema.Struct({

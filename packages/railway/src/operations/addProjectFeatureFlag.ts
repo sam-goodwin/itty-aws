@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation projectFeatureFlagAdd($input: ProjectFeatureFlagToggleInput!) {\n  projectFeatureFlagAdd(input: $input) {\n    __typename\n  }\n}";
+  "mutation projectFeatureFlagAdd($input: ProjectFeatureFlagToggleInput!) {\n  projectFeatureFlagAdd(input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const AddProjectFeatureFlagInput = Schema.Struct({

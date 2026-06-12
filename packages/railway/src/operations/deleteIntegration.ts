@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation integrationDelete($id: String!) {\n  integrationDelete(id: $id) {\n    __typename\n  }\n}";
+  "mutation integrationDelete($id: String!) {\n  integrationDelete(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const DeleteIntegrationInput = Schema.Struct({

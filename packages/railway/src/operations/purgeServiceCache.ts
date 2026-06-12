@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation purgeServiceCache($input: PurgeServiceCacheInput!) {\n  purgeServiceCache(input: $input) {\n    __typename\n  }\n}";
+  "mutation purgeServiceCache($input: PurgeServiceCacheInput!) {\n  purgeServiceCache(input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const PurgeServiceCacheInput = Schema.Struct({

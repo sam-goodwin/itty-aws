@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation disableServiceCdn($input: DisableServiceCdnInput!) {\n  disableServiceCdn(input: $input) {\n    __typename\n  }\n}";
+  "mutation disableServiceCdn($input: DisableServiceCdnInput!) {\n  disableServiceCdn(input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const DisableServiceCdnInput = Schema.Struct({

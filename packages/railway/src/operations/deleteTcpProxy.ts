@@ -1,9 +1,14 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import {
+  NotAuthorized,
+  ProblemProcessingRequest,
+  TcpProxyOperationInProgress,
+} from "./errors.ts";
 
 const __document =
-  "mutation tcpProxyDelete($id: String!) {\n  tcpProxyDelete(id: $id) {\n    __typename\n  }\n}";
+  "mutation tcpProxyDelete($id: String!) {\n  tcpProxyDelete(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const DeleteTcpProxyInput = Schema.Struct({
@@ -30,4 +35,9 @@ export type DeleteTcpProxyOutput = typeof DeleteTcpProxyOutput.Type;
 export const deleteTcpProxy = API.make(() => ({
   inputSchema: DeleteTcpProxyInput,
   outputSchema: DeleteTcpProxyOutput,
+  errors: [
+    NotAuthorized,
+    ProblemProcessingRequest,
+    TcpProxyOperationInProgress,
+  ],
 }));

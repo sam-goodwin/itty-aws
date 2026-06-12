@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { NotAuthorized } from "./errors.ts";
 
 const __document =
   "query environment($id: String!, $projectId: String) {\n  environment(id: $id, projectId: $projectId) {\n    canAccess\n    createdAt\n    deletedAt\n    id\n    isEphemeral\n    meta {\n      baseBranch\n      branch\n      latestSuccessfulGitHubDeploymentId\n      prCommentId\n      prNumber\n      prRepo\n      prTitle\n      skippedResourceIds\n    }\n    name\n    projectId\n    unmergedChangesCount\n    updatedAt\n  }\n}";
@@ -51,4 +52,5 @@ export type GetEnvironmentOutput = typeof GetEnvironmentOutput.Type;
 export const getEnvironment = API.make(() => ({
   inputSchema: GetEnvironmentInput,
   outputSchema: GetEnvironmentOutput,
+  errors: [NotAuthorized],
 }));

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation userProfileUpdate($input: UserProfileUpdateInput!) {\n  userProfileUpdate(input: $input) {\n    __typename\n  }\n}";
+  "mutation userProfileUpdate($input: UserProfileUpdateInput!) {\n  userProfileUpdate(input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const UpdateUserProfileInput = Schema.Struct({

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query serviceInstanceIsUpdatable($environmentId: String!, $serviceId: String!) {\n  serviceInstanceIsUpdatable(environmentId: $environmentId, serviceId: $serviceId) {\n    __typename\n  }\n}";
+  "query serviceInstanceIsUpdatable($environmentId: String!, $serviceId: String!) {\n  serviceInstanceIsUpdatable(environmentId: $environmentId, serviceId: $serviceId)\n}";
 
 // Input Schema (GraphQL variables)
 export const GetServiceInstanceIsUpdatableInput = Schema.Struct({

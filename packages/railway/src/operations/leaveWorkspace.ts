@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation workspaceLeave($id: String!) {\n  workspaceLeave(id: $id) {\n    __typename\n  }\n}";
+  "mutation workspaceLeave($id: String!) {\n  workspaceLeave(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const LeaveWorkspaceInput = Schema.Struct({

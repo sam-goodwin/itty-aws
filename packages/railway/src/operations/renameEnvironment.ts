@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { EnvironmentNameConflict, NotAuthorized } from "./errors.ts";
 
 const __document =
   "mutation environmentRename($id: String!, $input: EnvironmentRenameInput!) {\n  environmentRename(id: $id, input: $input) {\n    canAccess\n    createdAt\n    deletedAt\n    id\n    isEphemeral\n    meta {\n      baseBranch\n      branch\n      latestSuccessfulGitHubDeploymentId\n      prCommentId\n      prNumber\n      prRepo\n      prTitle\n      skippedResourceIds\n    }\n    name\n    projectId\n    unmergedChangesCount\n    updatedAt\n  }\n}";
@@ -53,4 +54,5 @@ export type RenameEnvironmentOutput = typeof RenameEnvironmentOutput.Type;
 export const renameEnvironment = API.make(() => ({
   inputSchema: RenameEnvironmentInput,
   outputSchema: RenameEnvironmentOutput,
+  errors: [EnvironmentNameConflict, NotAuthorized],
 }));

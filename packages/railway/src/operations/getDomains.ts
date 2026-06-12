@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { NotAuthorized } from "./errors.ts";
 
 const __document =
   "query domains($environmentId: String!, $projectId: String!, $serviceId: String!) {\n  domains(environmentId: $environmentId, projectId: $projectId, serviceId: $serviceId) {\n    customDomains {\n      cdnMode\n      cnameCheck {\n        link\n        message\n        status\n      }\n      createdAt\n      deletedAt\n      domain\n      edgeId\n      environmentId\n      id\n      projectId\n      serviceId\n      status {\n        cdnProvider\n        certificateErrorMessage\n        certificateErrorType\n        certificateRetryable\n        certificateStatus\n        certificateStatusDetailed\n        verificationDnsHost\n        verificationToken\n        verified\n      }\n      syncStatus\n      targetPort\n      updatedAt\n    }\n    serviceDomains {\n      cdnMode\n      createdAt\n      deletedAt\n      domain\n      edgeId\n      environmentId\n      id\n      newDomainName\n      newHostLabel\n      projectId\n      serviceId\n      suffix\n      syncStatus\n      targetPort\n      updatedAt\n    }\n  }\n}";
@@ -142,4 +143,5 @@ export type GetDomainsOutput = typeof GetDomainsOutput.Type;
 export const getDomains = API.make(() => ({
   inputSchema: GetDomainsInput,
   outputSchema: GetDomainsOutput,
+  errors: [NotAuthorized],
 }));

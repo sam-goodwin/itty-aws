@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { NotAuthorized, ProblemProcessingRequest } from "./errors.ts";
 
 const __document =
   "mutation notificationRuleUpdate($id: String!, $input: UpdateNotificationRuleInput!) {\n  notificationRuleUpdate(id: $id, input: $input) {\n    channels {\n      config\n      createdAt\n      id\n      updatedAt\n      workspaceId\n    }\n    createdAt\n    environmentId\n    ephemeralEnvironments\n    eventTypes\n    id\n    projectId\n    serviceId\n    severities\n    updatedAt\n    workspaceId\n  }\n}";
@@ -66,4 +67,5 @@ export type UpdateNotificationRuleOutput =
 export const updateNotificationRule = API.make(() => ({
   inputSchema: UpdateNotificationRuleInput,
   outputSchema: UpdateNotificationRuleOutput,
+  errors: [NotAuthorized, ProblemProcessingRequest],
 }));

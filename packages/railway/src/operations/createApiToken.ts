@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation apiTokenCreate($input: ApiTokenCreateInput!) {\n  apiTokenCreate(input: $input) {\n    __typename\n  }\n}";
+  "mutation apiTokenCreate($input: ApiTokenCreateInput!) {\n  apiTokenCreate(input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const CreateApiTokenInput = Schema.Struct({

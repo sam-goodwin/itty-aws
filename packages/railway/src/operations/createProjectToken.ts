@@ -1,9 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { NotAuthorized } from "./errors.ts";
 
 const __document =
-  "mutation projectTokenCreate($input: ProjectTokenCreateInput!) {\n  projectTokenCreate(input: $input) {\n    __typename\n  }\n}";
+  "mutation projectTokenCreate($input: ProjectTokenCreateInput!) {\n  projectTokenCreate(input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const CreateProjectTokenInput = Schema.Struct({
@@ -34,4 +35,5 @@ export type CreateProjectTokenOutput = typeof CreateProjectTokenOutput.Type;
 export const createProjectToken = API.make(() => ({
   inputSchema: CreateProjectTokenInput,
   outputSchema: CreateProjectTokenOutput,
+  errors: [NotAuthorized],
 }));

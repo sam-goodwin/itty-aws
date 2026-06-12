@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation workspacePermissionChange($input: WorkspacePermissionChangeInput!) {\n  workspacePermissionChange(input: $input) {\n    __typename\n  }\n}";
+  "mutation workspacePermissionChange($input: WorkspacePermissionChangeInput!) {\n  workspacePermissionChange(input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const ChangeWorkspacePermissionInput = Schema.Struct({

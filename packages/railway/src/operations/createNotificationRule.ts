@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { NotAuthorized, ProblemProcessingRequest } from "./errors.ts";
 
 const __document =
   "mutation notificationRuleCreate($input: CreateNotificationRuleInput!) {\n  notificationRuleCreate(input: $input) {\n    channels {\n      config\n      createdAt\n      id\n      updatedAt\n      workspaceId\n    }\n    createdAt\n    environmentId\n    ephemeralEnvironments\n    eventTypes\n    id\n    projectId\n    serviceId\n    severities\n    updatedAt\n    workspaceId\n  }\n}";
@@ -65,4 +66,5 @@ export type CreateNotificationRuleOutput =
 export const createNotificationRule = API.make(() => ({
   inputSchema: CreateNotificationRuleInput,
   outputSchema: CreateNotificationRuleOutput,
+  errors: [NotAuthorized, ProblemProcessingRequest],
 }));

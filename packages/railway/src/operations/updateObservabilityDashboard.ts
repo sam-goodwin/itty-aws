@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation observabilityDashboardUpdate($id: String!, $input: [ObservabilityDashboardUpdateInput!]!) {\n  observabilityDashboardUpdate(id: $id, input: $input) {\n    __typename\n  }\n}";
+  "mutation observabilityDashboardUpdate($id: String!, $input: [ObservabilityDashboardUpdateInput!]!) {\n  observabilityDashboardUpdate(id: $id, input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const UpdateObservabilityDashboardInput = Schema.Struct({

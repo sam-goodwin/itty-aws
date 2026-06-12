@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation userFlagsSet($input: UserFlagsSetInput!) {\n  userFlagsSet(input: $input) {\n    __typename\n  }\n}";
+  "mutation userFlagsSet($input: UserFlagsSetInput!) {\n  userFlagsSet(input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const SetUserFlagsInput = Schema.Struct({

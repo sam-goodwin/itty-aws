@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation deploymentRollback($id: String!) {\n  deploymentRollback(id: $id) {\n    __typename\n  }\n}";
+  "mutation deploymentRollback($id: String!) {\n  deploymentRollback(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const RollbackDeploymentInput = Schema.Struct({

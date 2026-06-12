@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { NotAuthorized } from "./errors.ts";
 
 const __document =
   "query projectTokens($after: String, $before: String, $first: Int, $last: Int, $projectId: String!) {\n  projectTokens(after: $after, before: $before, first: $first, last: $last, projectId: $projectId) {\n    edges {\n      cursor\n      node {\n        createdAt\n        displayToken\n        environmentId\n        id\n        name\n        projectId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}";
@@ -52,4 +53,5 @@ export type GetProjectTokensOutput = typeof GetProjectTokensOutput.Type;
 export const getProjectTokens = API.make(() => ({
   inputSchema: GetProjectTokensInput,
   outputSchema: GetProjectTokensOutput,
+  errors: [NotAuthorized],
 }));

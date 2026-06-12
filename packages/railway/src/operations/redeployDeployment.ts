@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation deploymentRedeploy($id: String!, $usePreviousImageTag: Boolean) {\n  deploymentRedeploy(id: $id, usePreviousImageTag: $usePreviousImageTag) {\n    canRedeploy\n    canRollback\n    createdAt\n    creator {\n      avatar\n      email\n      id\n      name\n    }\n    deploymentStopped\n    diagnosis\n    environment {\n      canAccess\n      createdAt\n      deletedAt\n      id\n      isEphemeral\n      meta {\n        baseBranch\n        branch\n        latestSuccessfulGitHubDeploymentId\n        prCommentId\n        prNumber\n        prRepo\n        prTitle\n        skippedResourceIds\n      }\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    environmentId\n    id\n    instances {\n      id\n      status\n    }\n    meta\n    projectId\n    service {\n      createdAt\n      deletedAt\n      featureFlags\n      hasHiddenRegistryCredentialsFromTemplate\n      icon\n      id\n      name\n      project {\n        baseEnvironmentId\n        botPrEnvironments\n        createdAt\n        deletedAt\n        description\n        expiredAt\n        featureFlags\n        focusedPrEnvironments\n        id\n        isPublic\n        isTempProject\n        name\n        prDeploys\n        primaryEnvironmentId\n        subscriptionPlanLimit\n        subscriptionType\n        teamId\n        updatedAt\n        workspaceId\n      }\n      projectId\n      templateId\n      templateServiceId\n      templateThreadSlug\n      updatedAt\n    }\n    serviceId\n    snapshotId\n    sockets {\n      ipv6\n      port\n      processName\n      updatedAt\n    }\n    staticUrl\n    status\n    statusUpdatedAt\n    suggestAddServiceDomain\n    updatedAt\n    url\n  }\n}";
+  "mutation deploymentRedeploy($id: String!, $usePreviousImageTag: Boolean) {\n  deploymentRedeploy(id: $id, usePreviousImageTag: $usePreviousImageTag) {\n    canRedeploy\n    canRollback\n    createdAt\n    creator {\n      avatar\n      email\n      id\n      name\n    }\n    deploymentStopped\n    diagnosis\n    environment {\n      canAccess\n      createdAt\n      deletedAt\n      id\n      isEphemeral\n      meta {\n        baseBranch\n        branch\n        latestSuccessfulGitHubDeploymentId\n        prCommentId\n        prNumber\n        prRepo\n        prTitle\n        skippedResourceIds\n      }\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    environmentId\n    id\n    instances {\n      id\n      status\n    }\n    meta\n    projectId\n    service {\n      createdAt\n      deletedAt\n      featureFlags\n      hasHiddenRegistryCredentialsFromTemplate\n      icon\n      id\n      name\n      project {\n        baseEnvironmentId\n        botPrEnvironments\n        createdAt\n        deletedAt\n        description\n        expiredAt\n        featureFlags\n        focusedPrEnvironments\n        id\n        isPublic\n        isTempProject\n        name\n        prDeploys\n        primaryEnvironmentId\n        subscriptionPlanLimit\n        subscriptionType\n        teamId\n        updatedAt\n        workspaceId\n      }\n      projectId\n      templateId\n      templateServiceId\n      templateThreadSlug\n      updatedAt\n    }\n    serviceId\n    snapshotId\n    staticUrl\n    status\n    statusUpdatedAt\n    suggestAddServiceDomain\n    updatedAt\n    url\n  }\n}";
 
 // Input Schema (GraphQL variables)
 export const RedeployDeploymentInput = Schema.Struct({
@@ -125,14 +125,6 @@ export const RedeployDeploymentOutput = Schema.Struct({
   }),
   serviceId: Schema.NullOr(Schema.String),
   snapshotId: Schema.NullOr(Schema.String),
-  sockets: Schema.Array(
-    Schema.Struct({
-      ipv6: Schema.Boolean,
-      port: Schema.Number,
-      processName: Schema.String,
-      updatedAt: Schema.Number,
-    }),
-  ),
   staticUrl: Schema.NullOr(Schema.String),
   status: Schema.Literals([
     "BUILDING",

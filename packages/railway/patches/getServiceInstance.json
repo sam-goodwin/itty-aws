@@ -1,0 +1,14 @@
+{
+  "errors": {
+    "ProblemProcessingRequest": {
+      "category": "badRequest",
+      "description": "Railway could not process the request — typically a malformed or non-existent identifier.",
+      "matchers": [{ "message": "Problem processing request" }]
+    },
+    "NotAuthorized": {
+      "category": "auth",
+      "description": "The token is not authorized to perform this operation (Railway also returns this for resources that do not exist or are not visible to the token).",
+      "matchers": [{ "message": "Not Authorized" }]
+    }
+  }
+}

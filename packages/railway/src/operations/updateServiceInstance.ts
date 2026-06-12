@@ -1,9 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { NotAuthorized } from "./errors.ts";
 
 const __document =
-  "mutation serviceInstanceUpdate($environmentId: String, $input: ServiceInstanceUpdateInput!, $serviceId: String!) {\n  serviceInstanceUpdate(environmentId: $environmentId, input: $input, serviceId: $serviceId) {\n    __typename\n  }\n}";
+  "mutation serviceInstanceUpdate($environmentId: String, $input: ServiceInstanceUpdateInput!, $serviceId: String!) {\n  serviceInstanceUpdate(environmentId: $environmentId, input: $input, serviceId: $serviceId)\n}";
 
 // Input Schema (GraphQL variables)
 export const UpdateServiceInstanceInput = Schema.Struct({
@@ -79,4 +80,5 @@ export type UpdateServiceInstanceOutput =
 export const updateServiceInstance = API.make(() => ({
   inputSchema: UpdateServiceInstanceInput,
   outputSchema: UpdateServiceInstanceOutput,
+  errors: [NotAuthorized],
 }));

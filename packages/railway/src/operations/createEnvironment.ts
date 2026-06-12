@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { EnvironmentNameConflict, NotAuthorized } from "./errors.ts";
 
 const __document =
   "mutation environmentCreate($input: EnvironmentCreateInput!) {\n  environmentCreate(input: $input) {\n    canAccess\n    createdAt\n    deletedAt\n    id\n    isEphemeral\n    meta {\n      baseBranch\n      branch\n      latestSuccessfulGitHubDeploymentId\n      prCommentId\n      prNumber\n      prRepo\n      prTitle\n      skippedResourceIds\n    }\n    name\n    projectId\n    unmergedChangesCount\n    updatedAt\n  }\n}";
@@ -58,4 +59,5 @@ export type CreateEnvironmentOutput = typeof CreateEnvironmentOutput.Type;
 export const createEnvironment = API.make(() => ({
   inputSchema: CreateEnvironmentInput,
   outputSchema: CreateEnvironmentOutput,
+  errors: [EnvironmentNameConflict, NotAuthorized],
 }));

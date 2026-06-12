@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation projectLeave($id: String!) {\n  projectLeave(id: $id) {\n    __typename\n  }\n}";
+  "mutation projectLeave($id: String!) {\n  projectLeave(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const LeaveProjectInput = Schema.Struct({

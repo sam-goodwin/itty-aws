@@ -1,0 +1,16 @@
+{
+  "errors": {
+    "NotAuthorized": {
+      "category": "auth",
+      "description": "The token is not authorized to perform this operation (Railway also returns this for resources that do not exist or are not visible to the token).",
+      "matchers": [{ "message": "Not Authorized" }]
+    },
+    "EnvironmentNameConflict": {
+      "category": "alreadyExists",
+      "description": "An environment with the requested name already exists in the project.",
+      "matchers": [
+        { "message": { "includes": "environment with that name already exists" } }
+      ]
+    }
+  }
+}

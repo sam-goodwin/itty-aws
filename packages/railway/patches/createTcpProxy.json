@@ -1,0 +1,16 @@
+{
+  "errors": {
+    "NotAuthorized": {
+      "category": "auth",
+      "description": "The token is not authorized to perform this operation (Railway also returns this for resources that do not exist or are not visible to the token).",
+      "matchers": [{ "message": "Not Authorized" }]
+    },
+    "TcpProxyLimitExceeded": {
+      "category": "conflict",
+      "description": "Railway allows only a single TCP proxy per service instance.",
+      "matchers": [
+        { "message": { "includes": "single TCP proxy is allowed per service instance" } }
+      ]
+    }
+  }
+}

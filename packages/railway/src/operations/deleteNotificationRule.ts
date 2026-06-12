@@ -1,9 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { NotAuthorized, ProblemProcessingRequest } from "./errors.ts";
 
 const __document =
-  "mutation notificationRuleDelete($id: String!) {\n  notificationRuleDelete(id: $id) {\n    __typename\n  }\n}";
+  "mutation notificationRuleDelete($id: String!) {\n  notificationRuleDelete(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const DeleteNotificationRuleInput = Schema.Struct({
@@ -32,4 +33,5 @@ export type DeleteNotificationRuleOutput =
 export const deleteNotificationRule = API.make(() => ({
   inputSchema: DeleteNotificationRuleInput,
   outputSchema: DeleteNotificationRuleOutput,
+  errors: [NotAuthorized, ProblemProcessingRequest],
 }));

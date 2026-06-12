@@ -1,0 +1,24 @@
+{
+  "errors": {
+    "ProjectCreateRateLimited": {
+      "category": "quota",
+      "description": "Workspace allows a limited rate of project creation (e.g. 1 project per 30 seconds).",
+      "matchers": [
+        {
+          "message": {
+            "includes": "creating projects too quickly"
+          }
+        }
+      ]
+    },
+    "NotAuthorized": {
+      "category": "auth",
+      "description": "The token is not authorized to perform this operation (Railway also returns this for resources that do not exist or are not visible to the token).",
+      "matchers": [
+        {
+          "message": "Not Authorized"
+        }
+      ]
+    }
+  }
+}

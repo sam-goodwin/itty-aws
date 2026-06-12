@@ -1,9 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { NotAuthorized } from "./errors.ts";
 
 const __document =
-  "mutation environmentDelete($id: String!) {\n  environmentDelete(id: $id) {\n    __typename\n  }\n}";
+  "mutation environmentDelete($id: String!) {\n  environmentDelete(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const DeleteEnvironmentInput = Schema.Struct({
@@ -30,4 +31,5 @@ export type DeleteEnvironmentOutput = typeof DeleteEnvironmentOutput.Type;
 export const deleteEnvironment = API.make(() => ({
   inputSchema: DeleteEnvironmentInput,
   outputSchema: DeleteEnvironmentOutput,
+  errors: [NotAuthorized],
 }));

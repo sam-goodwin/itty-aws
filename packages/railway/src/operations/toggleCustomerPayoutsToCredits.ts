@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation customerTogglePayoutsToCredits($customerId: String!, $input: customerTogglePayoutsToCreditsInput!) {\n  customerTogglePayoutsToCredits(customerId: $customerId, input: $input) {\n    __typename\n  }\n}";
+  "mutation customerTogglePayoutsToCredits($customerId: String!, $input: customerTogglePayoutsToCreditsInput!) {\n  customerTogglePayoutsToCredits(customerId: $customerId, input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const ToggleCustomerPayoutsToCreditsInput = Schema.Struct({

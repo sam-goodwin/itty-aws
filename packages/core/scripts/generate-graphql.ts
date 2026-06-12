@@ -124,10 +124,23 @@ export interface GraphQLGeneratorConfig {
   traitsImport?: string;
   /** Skip a query field by name (return true to skip) */
   skipQuery?: (fieldName: string) => boolean;
+  /**
+   * Skip a field inside a generated selection set (return true to skip).
+   * Receives the parent object/interface type name and the field name.
+   * Useful when an API errors on resolving specific fields (e.g. Railway's
+   * `Deployment.sockets` fails with "Problem processing request").
+   */
+  skipField?: (parentTypeName: string, fieldName: string) => boolean;
   /** Skip a mutation field by name (return true to skip) */
   skipMutation?: (fieldName: string) => boolean;
   /** Skip deprecated fields. Default: true */
   skipDeprecated?: boolean;
+  /**
+   * Root field names to generate even when deprecated (overrides
+   * `skipDeprecated` for those fields). Useful when the deprecated
+   * operation is still the only public API for a capability.
+   */
+  includeDeprecated?: string[];
   /** Custom scalar name → Effect Schema expression (e.g. { DateTime: "Schema.String" }) */
   customScalars?: Record<string, string>;
   /**
@@ -303,6 +316,7 @@ export async function introspectEndpoint(
 interface SchemaCtx {
   typeMap: Map<string, IntrospectionType>;
   customScalars: Record<string, string>;
+  skipField?: (parentTypeName: string, fieldName: string) => boolean;
 }
 
 function scalarToEffect(name: string, ctx: SchemaCtx): string {
@@ -472,6 +486,9 @@ function expandSelection(
     // Skip fields that themselves require args — without user input we can't
     // safely populate them, so we just don't select them.
     if (field.args && field.args.length > 0) continue;
+    // Skip fields the config explicitly excludes (e.g. fields the API
+    // errors on when resolving).
+    if (ctx.skipField?.(type.name, field.name)) continue;
 
     const { type: fieldType } = unwrapNonNull(field.type);
     let actualType = fieldType;
@@ -678,6 +695,7 @@ function buildPathDocument(
   path: OperationStep[],
   selection: SelectionField[] | undefined,
   argRenames: Map<string, string>,
+  leafSelectable = true,
 ): string {
   // Build the variable definitions list — one entry per (step, arg) pair
   // using the renamed variable names so they're unique across the path.
@@ -711,14 +729,17 @@ function buildPathDocument(
     return `${indent}${call} {\n${inner}\n${indent}}`;
   };
 
-  // Innermost selection set (or empty if none).
-  let body: string;
+  // Innermost selection set. Scalar/enum leaves (e.g. `projectDelete:
+  // Boolean!`) must NOT carry a selection set — GraphQL rejects
+  // `projectDelete(id: $id) { __typename }` with "must not have a selection
+  // since type Boolean! has no subfields".
+  let body: string | undefined;
   const innerIndent = "  ".repeat(path.length + 1);
   if (selection && selection.length > 0) {
     body = renderSelectionSet(selection, innerIndent);
-  } else {
-    // No selectable subfields — fall back to __typename so the document is
-    // always valid syntactically.
+  } else if (leafSelectable) {
+    // Object/interface with no selectable subfields — fall back to
+    // __typename so the document is always valid syntactically.
     body = `${innerIndent}__typename`;
   }
 
@@ -726,7 +747,19 @@ function buildPathDocument(
   let nested = body;
   for (let i = path.length - 1; i >= 0; i--) {
     const indent = "  ".repeat(i + 1);
-    nested = renderStep(path[i], nested, indent);
+    if (nested === undefined) {
+      // Scalar leaf — render the call without a selection block.
+      const step = path[i];
+      const argList = step.args
+        .map((arg) => {
+          const varName = argRenames.get(`${step.name}.${arg.name}`) ?? arg.name;
+          return `${arg.name}: $${varName}`;
+        })
+        .join(", ");
+      nested = `${indent}${argList ? `${step.name}(${argList})` : step.name}`;
+    } else {
+      nested = renderStep(path[i], nested, indent);
+    }
   }
 
   return `${header} {\n${nested}\n}`;
@@ -795,12 +828,23 @@ function generateOperation(
   );
 
   // ---- GraphQL document ----
+  // Determine whether the leaf return type can carry a selection set at all
+  // (object/interface/union) or is a bare scalar/enum (Boolean, ID, ...).
+  let leafNamed = unwrapNonNull(leaf.returnType).type;
+  while (leafNamed.kind === "LIST" && leafNamed.ofType) {
+    leafNamed = unwrapNonNull(leafNamed.ofType).type;
+  }
+  const leafSelectable =
+    leafNamed.kind === "OBJECT" ||
+    leafNamed.kind === "INTERFACE" ||
+    leafNamed.kind === "UNION";
   const document = buildPathDocument(
     type,
     operationName,
     path,
     selection,
     argRenames,
+    leafSelectable,
   );
 
   // ---- File contents ----
@@ -890,6 +934,7 @@ export function generateFromGraphQL(config: GraphQLGeneratorConfig): void {
   const ctx: SchemaCtx = {
     typeMap,
     customScalars: config.customScalars ?? {},
+    skipField: config.skipField,
   };
 
   // Ensure output dir exists
@@ -907,7 +952,13 @@ export function generateFromGraphQL(config: GraphQLGeneratorConfig): void {
     type: "query" | "mutation",
     skip: ((name: string) => boolean) | undefined,
   ) => {
-    if (skipDeprecated && rootField.isDeprecated) return;
+    if (
+      skipDeprecated &&
+      rootField.isDeprecated &&
+      !config.includeDeprecated?.includes(rootField.name)
+    ) {
+      return;
+    }
     if (skip?.(rootField.name)) return;
     const paths = collectOperationPaths(
       rootField,

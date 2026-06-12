@@ -2,8 +2,7 @@ import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
-const __document =
-  "query templatesCount {\n  templatesCount {\n    __typename\n  }\n}";
+const __document = "query templatesCount {\n  templatesCount\n}";
 
 // Input Schema (GraphQL variables)
 export const GetTemplatesCountInput = Schema.Struct({}).pipe(

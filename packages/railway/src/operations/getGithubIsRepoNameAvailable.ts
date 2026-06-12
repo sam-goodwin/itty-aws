@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "query githubIsRepoNameAvailable($fullRepoName: String!) {\n  githubIsRepoNameAvailable(fullRepoName: $fullRepoName) {\n    __typename\n  }\n}";
+  "query githubIsRepoNameAvailable($fullRepoName: String!) {\n  githubIsRepoNameAvailable(fullRepoName: $fullRepoName)\n}";
 
 // Input Schema (GraphQL variables)
 export const GetGithubIsRepoNameAvailableInput = Schema.Struct({

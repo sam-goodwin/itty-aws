@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation environmentUnskipService($environmentId: String!, $serviceId: String!) {\n  environmentUnskipService(environmentId: $environmentId, serviceId: $serviceId) {\n    __typename\n  }\n}";
+  "mutation environmentUnskipService($environmentId: String!, $serviceId: String!) {\n  environmentUnskipService(environmentId: $environmentId, serviceId: $serviceId)\n}";
 
 // Input Schema (GraphQL variables)
 export const UnskipEnvironmentServiceInput = Schema.Struct({

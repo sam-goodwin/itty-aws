@@ -1,9 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { NotAuthorized } from "./errors.ts";
 
 const __document =
-  "mutation variableDelete($input: VariableDeleteInput!) {\n  variableDelete(input: $input) {\n    __typename\n  }\n}";
+  "mutation variableDelete($input: VariableDeleteInput!) {\n  variableDelete(input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const DeleteVariableInput = Schema.Struct({
@@ -35,4 +36,5 @@ export type DeleteVariableOutput = typeof DeleteVariableOutput.Type;
 export const deleteVariable = API.make(() => ({
   inputSchema: DeleteVariableInput,
   outputSchema: DeleteVariableOutput,
+  errors: [NotAuthorized],
 }));

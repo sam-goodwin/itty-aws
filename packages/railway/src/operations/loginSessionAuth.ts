@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation loginSessionAuth($input: LoginSessionAuthInput!) {\n  loginSessionAuth(input: $input) {\n    __typename\n  }\n}";
+  "mutation loginSessionAuth($input: LoginSessionAuthInput!) {\n  loginSessionAuth(input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const LoginSessionAuthInput = Schema.Struct({

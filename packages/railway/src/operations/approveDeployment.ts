@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation deploymentApprove($id: String!) {\n  deploymentApprove(id: $id) {\n    __typename\n  }\n}";
+  "mutation deploymentApprove($id: String!) {\n  deploymentApprove(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const ApproveDeploymentInput = Schema.Struct({

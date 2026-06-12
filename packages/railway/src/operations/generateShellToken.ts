@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation generateShellToken($input: ShellTokenInput!) {\n  generateShellToken(input: $input) {\n    __typename\n  }\n}";
+  "mutation generateShellToken($input: ShellTokenInput!) {\n  generateShellToken(input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const GenerateShellTokenInput = Schema.Struct({

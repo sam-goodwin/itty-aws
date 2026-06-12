@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation jobApplicationCreate($input: JobApplicationCreateInput!, $resume: Upload!) {\n  jobApplicationCreate(input: $input, resume: $resume) {\n    __typename\n  }\n}";
+  "mutation jobApplicationCreate($input: JobApplicationCreateInput!, $resume: Upload!) {\n  jobApplicationCreate(input: $input, resume: $resume)\n}";
 
 // Input Schema (GraphQL variables)
 export const CreateJobApplicationInput = Schema.Struct({

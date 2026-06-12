@@ -1,6 +1,11 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import {
+  NotAuthorized,
+  ServiceNameConflict,
+  ServiceNameInvalid,
+} from "./errors.ts";
 
 const __document =
   "mutation serviceUpdate($id: String!, $input: ServiceUpdateInput!) {\n  serviceUpdate(id: $id, input: $input) {\n    createdAt\n    deletedAt\n    featureFlags\n    hasHiddenRegistryCredentialsFromTemplate\n    icon\n    id\n    name\n    project {\n      baseEnvironment {\n        canAccess\n        createdAt\n        deletedAt\n        id\n        isEphemeral\n        name\n        projectId\n        unmergedChangesCount\n        updatedAt\n      }\n      baseEnvironmentId\n      botPrEnvironments\n      createdAt\n      deletedAt\n      description\n      expiredAt\n      featureFlags\n      focusedPrEnvironments\n      id\n      isPublic\n      isTempProject\n      members {\n        avatar\n        email\n        id\n        name\n        role\n      }\n      name\n      prDeploys\n      primaryEnvironmentId\n      subscriptionPlanLimit\n      subscriptionType\n      team {\n        adoptionLevel\n        avatar\n        createdAt\n        id\n        name\n        preferredRegion\n        slackChannelId\n        supportTierOverride\n        updatedAt\n      }\n      teamId\n      updatedAt\n      workspace {\n        adoptionLevel\n        allowDeprecatedRegions\n        avatar\n        banReason\n        createdAt\n        discordRole\n        has2FAEnforcement\n        hasAutomaticDiagnosis\n        hasGuardrailsAccess\n        hasSAML\n        id\n        name\n        plan\n        preferredRegion\n        redactedDueTo2FAPending\n        slackChannelId\n        subscriptionModel\n        subscriptionPlanLimit\n        supportTierOverride\n        updatedAt\n        usersWithout2FA\n      }\n      workspaceId\n    }\n    projectId\n    templateId\n    templateServiceId\n    templateThreadSlug\n    updatedAt\n  }\n}";
@@ -140,4 +145,5 @@ export type UpdateServiceOutput = typeof UpdateServiceOutput.Type;
 export const updateService = API.make(() => ({
   inputSchema: UpdateServiceInput,
   outputSchema: UpdateServiceOutput,
+  errors: [NotAuthorized, ServiceNameConflict, ServiceNameInvalid],
 }));

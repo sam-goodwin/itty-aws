@@ -1,9 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { NotAuthorized } from "./errors.ts";
 
 const __document =
-  "mutation volumeDelete($volumeId: String!) {\n  volumeDelete(volumeId: $volumeId) {\n    __typename\n  }\n}";
+  "mutation volumeDelete($volumeId: String!) {\n  volumeDelete(volumeId: $volumeId)\n}";
 
 // Input Schema (GraphQL variables)
 export const DeleteVolumeInput = Schema.Struct({
@@ -30,4 +31,5 @@ export type DeleteVolumeOutput = typeof DeleteVolumeOutput.Type;
 export const deleteVolume = API.make(() => ({
   inputSchema: DeleteVolumeInput,
   outputSchema: DeleteVolumeOutput,
+  errors: [NotAuthorized],
 }));

@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation workspaceTwoFactorEnforcementUpdate($enabled: Boolean!, $workspaceId: String!) {\n  workspaceTwoFactorEnforcementUpdate(enabled: $enabled, workspaceId: $workspaceId) {\n    __typename\n  }\n}";
+  "mutation workspaceTwoFactorEnforcementUpdate($enabled: Boolean!, $workspaceId: String!) {\n  workspaceTwoFactorEnforcementUpdate(enabled: $enabled, workspaceId: $workspaceId)\n}";
 
 // Input Schema (GraphQL variables)
 export const UpdateWorkspaceTwoFactorEnforcementInput = Schema.Struct({

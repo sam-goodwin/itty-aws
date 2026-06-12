@@ -1,9 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { NotAuthorized } from "./errors.ts";
 
 const __document =
-  "mutation variableCollectionUpsert($input: VariableCollectionUpsertInput!) {\n  variableCollectionUpsert(input: $input) {\n    __typename\n  }\n}";
+  "mutation variableCollectionUpsert($input: VariableCollectionUpsertInput!) {\n  variableCollectionUpsert(input: $input)\n}";
 
 // Input Schema (GraphQL variables)
 export const UpsertVariableCollectionInput = Schema.Struct({
@@ -39,4 +40,5 @@ export type UpsertVariableCollectionOutput =
 export const upsertVariableCollection = API.make(() => ({
   inputSchema: UpsertVariableCollectionInput,
   outputSchema: UpsertVariableCollectionOutput,
+  errors: [NotAuthorized],
 }));

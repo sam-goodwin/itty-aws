@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation workspaceInviteCodeCreate($input: WorkspaceInviteCodeCreateInput!, $workspaceId: String!) {\n  workspaceInviteCodeCreate(input: $input, workspaceId: $workspaceId) {\n    __typename\n  }\n}";
+  "mutation workspaceInviteCodeCreate($input: WorkspaceInviteCodeCreateInput!, $workspaceId: String!) {\n  workspaceInviteCodeCreate(input: $input, workspaceId: $workspaceId)\n}";
 
 // Input Schema (GraphQL variables)
 export const CreateWorkspaceInviteCodeInput = Schema.Struct({

@@ -1,6 +1,7 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { NotAuthorized } from "./errors.ts";
 
 const __document =
   "query tcpProxies($environmentId: String!, $serviceId: String!) {\n  tcpProxies(environmentId: $environmentId, serviceId: $serviceId) {\n    applicationPort\n    createdAt\n    deletedAt\n    domain\n    environmentId\n    id\n    proxyPort\n    serviceId\n    syncStatus\n    updatedAt\n  }\n}";
@@ -49,4 +50,5 @@ export type GetTcpProxiesOutput = typeof GetTcpProxiesOutput.Type;
 export const getTcpProxies = API.make(() => ({
   inputSchema: GetTcpProxiesInput,
   outputSchema: GetTcpProxiesOutput,
+  errors: [NotAuthorized],
 }));

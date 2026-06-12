@@ -1,9 +1,10 @@
 import * as Schema from "effect/Schema";
 import { API } from "../client.ts";
 import * as T from "../traits.ts";
+import { NotAuthorized, ProblemProcessingRequest } from "./errors.ts";
 
 const __document =
-  "mutation serviceDomainDelete($id: String!) {\n  serviceDomainDelete(id: $id) {\n    __typename\n  }\n}";
+  "mutation serviceDomainDelete($id: String!) {\n  serviceDomainDelete(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const DeleteServiceDomainInput = Schema.Struct({
@@ -30,4 +31,5 @@ export type DeleteServiceDomainOutput = typeof DeleteServiceDomainOutput.Type;
 export const deleteServiceDomain = API.make(() => ({
   inputSchema: DeleteServiceDomainInput,
   outputSchema: DeleteServiceDomainOutput,
+  errors: [NotAuthorized, ProblemProcessingRequest],
 }));

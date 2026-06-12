@@ -1,0 +1,14 @@
+{
+  "errors": {
+    "NotAuthorized": {
+      "category": "auth",
+      "description": "The token is not authorized to perform this operation (Railway also returns this for resources that do not exist or are not visible to the token).",
+      "matchers": [{ "message": "Not Authorized" }]
+    },
+    "VolumeNameInvalid": {
+      "category": "badRequest",
+      "description": "The volume name is invalid (Railway enforces a max name length similar to services).",
+      "matchers": [{ "message": { "includes": "Invalid volume name" } }]
+    }
+  }
+}

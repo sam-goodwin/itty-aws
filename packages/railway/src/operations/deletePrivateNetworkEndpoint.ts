@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation privateNetworkEndpointDelete($id: String!) {\n  privateNetworkEndpointDelete(id: $id) {\n    __typename\n  }\n}";
+  "mutation privateNetworkEndpointDelete($id: String!) {\n  privateNetworkEndpointDelete(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const DeletePrivateNetworkEndpointInput = Schema.Struct({

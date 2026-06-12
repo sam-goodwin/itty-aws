@@ -3,7 +3,7 @@ import { API } from "../client.ts";
 import * as T from "../traits.ts";
 
 const __document =
-  "mutation providerAuthRemove($id: String!) {\n  providerAuthRemove(id: $id) {\n    __typename\n  }\n}";
+  "mutation providerAuthRemove($id: String!) {\n  providerAuthRemove(id: $id)\n}";
 
 // Input Schema (GraphQL variables)
 export const RemoveProviderAuthInput = Schema.Struct({
