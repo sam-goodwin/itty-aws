@@ -176,10 +176,11 @@ const ensureSucceeded = (
  *     surfaces as `AzureLongRunningOperationFailed`.
  *   - **location** (`Location`): poll the URL until it stops returning `202`.
  *
- * The provisioned resource is then resolved per `finalStateVia`: `location`
- * yields the terminal monitor body directly, otherwise the resource is fetched
- * from the original request URI (carrying the original query so `api-version`
- * is preserved).
+ * The provisioned resource is then resolved per ARM's rules (mirroring
+ * `@azure/core-lro`'s `findResourceLocation`): a `PUT`/`PATCH` resource — and
+ * any `original-uri` operation — lives at the original request URI and is
+ * fetched there (the `Location` body for a create is only a stub); otherwise
+ * the terminal poll body is the result.
  */
 export const pollLongRunning = (args: {
   response: HttpClientResponse.HttpClientResponse;
@@ -189,25 +190,29 @@ export const pollLongRunning = (args: {
   authHeaders: Record<string, string>;
   finalStateVia?: string;
 }): Effect.Effect<unknown, unknown> => {
-  const { response, request, client, authHeaders, finalStateVia } = args;
+  const { response, request, client, method, authHeaders, finalStateVia } =
+    args;
 
   const http = makeArmClient(client, authHeaders);
 
   const pollUntil = (url: string, until: (response: JsonResponse) => boolean) =>
     http.get(url).pipe(Effect.repeat({ schedule: pollSchedule, until }));
 
+  // GET the original request URI for the full resource (carry the original
+  // query so `api-version` is preserved).
+  const fetchResource = () =>
+    http.get(request.url, request.urlParams).pipe(Effect.map((r) => r.body));
+
   const resolveFinal = (
     terminal: JsonResponse,
   ): Effect.Effect<unknown, unknown> =>
-    Match.value(finalStateVia).pipe(
-      // `final-state-via: location` → the terminal response carries the resource.
-      Match.when("location", () => Effect.succeed(terminal.body)),
-      // Otherwise the provisioned resource lives at the original request URI.
-      Match.orElse(() =>
-        http
-          .get(request.url, request.urlParams)
-          .pipe(Effect.map((final) => final.body)),
-      ),
+    Match.value({ method, finalStateVia }).pipe(
+      // PUT/PATCH create/modify a resource that lives at the request URI.
+      Match.when({ method: "PUT" }, fetchResource),
+      Match.when({ method: "PATCH" }, fetchResource),
+      Match.when({ finalStateVia: "original-uri" }, fetchResource),
+      // POST/DELETE (location / async-operation): the terminal poll body is it.
+      Match.orElse(() => Effect.succeed(terminal.body)),
     );
 
   return Strategy.$match(strategyOf(response.headers), {
