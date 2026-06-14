@@ -59,6 +59,10 @@ interface PathItem2 {
   put?: Operation2;
   patch?: Operation2;
   delete?: Operation2;
+  // Path-level parameters shared by every operation on this path (Swagger 2.0
+  // allows these, and Kubernetes puts `namespace`/`name`/`pretty` here as
+  // `$ref`s). They must be merged into each operation's own parameters.
+  parameters?: Parameter2[];
 }
 
 interface Operation2 {
@@ -72,6 +76,10 @@ interface Operation2 {
 }
 
 interface Parameter2 {
+  // A parameter may be a `$ref` into the spec's top-level `#/parameters`
+  // dictionary instead of an inline definition (in which case `name`/`in` are
+  // absent until resolved). Kubernetes uses this heavily.
+  $ref?: string;
   name: string;
   in: "path" | "query" | "body" | "header";
   type?: string;
@@ -289,6 +297,35 @@ function resolveResponseRef(spec: any, ref: string): ResponseObject3 {
   const response = spec.components?.responses?.[refPath];
   if (!response) throw new Error(`Could not resolve response ref: ${ref}`);
   return response;
+}
+
+/**
+ * Merge a Swagger 2.0 path's path-level parameters with an operation's own
+ * parameters, resolving any `$ref` entries (e.g. `#/parameters/namespace-…`)
+ * to their inline definitions via the generic JSON-pointer resolver.
+ *
+ * Without this, `$ref` parameters — which carry no `in`/`name` until resolved —
+ * are silently dropped by the downstream `p.in === "path"|"query"` filters, so
+ * generated inputs omit path params (`namespace`/`name`) and ref'd query params
+ * (`fieldManager`/`force`/`pretty`). Mirrors {@link resolveParameters3} for the
+ * 2.0 codepath.
+ */
+function resolveParameters2(
+  spec: Swagger2Spec,
+  pathParams: Parameter2[] | undefined,
+  operationParams: Parameter2[] | undefined,
+): Parameter2[] {
+  const params: Parameter2[] = [];
+  const add = (param: Parameter2) => {
+    params.push(
+      param.$ref
+        ? (resolveRef(spec as any, param.$ref) as unknown as Parameter2)
+        : param,
+    );
+  };
+  if (pathParams) for (const param of pathParams) add(param);
+  if (operationParams) for (const param of operationParams) add(param);
+  return params;
 }
 
 function isNullable(prop: SchemaObject): boolean {
@@ -1276,7 +1313,13 @@ export function generateFromOpenAPI(config: GeneratorConfig): void {
 
         try {
           const functionName = operationIdToFunctionName(operation.operationId);
-          const parameters = operation.parameters || [];
+          // Merge path-level params and resolve `$ref`s before filtering by
+          // `in` — otherwise ref'd path/query params are dropped.
+          const parameters = resolveParameters2(
+            swagger,
+            pathItem.parameters,
+            operation.parameters,
+          );
 
           const jsDoc = generateJsDoc(
             operation.summary,
