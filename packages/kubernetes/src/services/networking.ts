@@ -12,8 +12,64 @@ import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const CreateNetworkingV1IPAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.Struct({
+      parentRef: Schema.Struct({
+        group: Schema.optional(Schema.String),
+        name: Schema.String,
+        namespace: Schema.optional(Schema.String),
+        resource: Schema.String,
+      }),
+    }),
   }).pipe(
     T.Http({ method: "POST", path: "/apis/networking.k8s.io/v1/ipaddresses" }),
   );
@@ -85,7 +141,9 @@ export type CreateNetworkingV1IPAddressOutput =
 /**
  * create an IPAddress
  *
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -98,8 +156,70 @@ export const createNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const CreateNetworkingV1IngressClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.optional(
+      Schema.Struct({
+        controller: Schema.optional(Schema.String),
+        parameters: Schema.optional(
+          Schema.Struct({
+            apiGroup: Schema.optional(Schema.String),
+            kind: Schema.String,
+            name: Schema.String,
+            namespace: Schema.optional(Schema.String),
+            scope: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -180,7 +300,9 @@ export type CreateNetworkingV1IngressClassOutput =
 /**
  * create an IngressClass
  *
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createNetworkingV1IngressClass =
@@ -192,8 +314,154 @@ export const createNetworkingV1IngressClass =
 // Input Schema
 export const CreateNetworkingV1NamespacedIngressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.optional(
+      Schema.Struct({
+        defaultBackend: Schema.optional(
+          Schema.Struct({
+            resource: Schema.optional(
+              Schema.Struct({
+                apiGroup: Schema.optional(Schema.String),
+                kind: Schema.String,
+                name: Schema.String,
+              }),
+            ),
+            service: Schema.optional(
+              Schema.Struct({
+                name: Schema.String,
+                port: Schema.optional(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                    number: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        ingressClassName: Schema.optional(Schema.String),
+        rules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              host: Schema.optional(Schema.String),
+              http: Schema.optional(
+                Schema.Struct({
+                  paths: Schema.Array(
+                    Schema.Struct({
+                      backend: Schema.Struct({
+                        resource: Schema.optional(
+                          Schema.Struct({
+                            apiGroup: Schema.optional(Schema.String),
+                            kind: Schema.String,
+                            name: Schema.String,
+                          }),
+                        ),
+                        service: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.String,
+                            port: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                number: Schema.optional(Schema.Number),
+                              }),
+                            ),
+                          }),
+                        ),
+                      }),
+                      path: Schema.optional(Schema.String),
+                      pathType: Schema.String,
+                    }),
+                  ),
+                }),
+              ),
+            }),
+          ),
+        ),
+        tls: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              hosts: Schema.optional(Schema.Array(Schema.String)),
+              secretName: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    status: Schema.optional(
+      Schema.Struct({
+        loadBalancer: Schema.optional(
+          Schema.Struct({
+            ingress: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  hostname: Schema.optional(Schema.String),
+                  ip: Schema.optional(Schema.String),
+                  ports: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        error: Schema.optional(Schema.String),
+                        port: Schema.Number,
+                        protocol: Schema.String,
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -357,7 +625,10 @@ export type CreateNetworkingV1NamespacedIngressOutput =
 /**
  * create an Ingress
  *
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createNetworkingV1NamespacedIngress =
@@ -369,8 +640,204 @@ export const createNetworkingV1NamespacedIngress =
 // Input Schema
 export const CreateNetworkingV1NamespacedNetworkPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.optional(
+      Schema.Struct({
+        egress: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ports: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    endPort: Schema.optional(Schema.Number),
+                    port: Schema.optional(Schema.String),
+                    protocol: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              to: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    ipBlock: Schema.optional(
+                      Schema.Struct({
+                        cidr: Schema.String,
+                        except: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                    namespaceSelector: Schema.optional(
+                      Schema.Struct({
+                        matchExpressions: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              key: Schema.String,
+                              operator: Schema.String,
+                              values: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                        ),
+                        matchLabels: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                      }),
+                    ),
+                    podSelector: Schema.optional(
+                      Schema.Struct({
+                        matchExpressions: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              key: Schema.String,
+                              operator: Schema.String,
+                              values: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                        ),
+                        matchLabels: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        ingress: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              from: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    ipBlock: Schema.optional(
+                      Schema.Struct({
+                        cidr: Schema.String,
+                        except: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                    namespaceSelector: Schema.optional(
+                      Schema.Struct({
+                        matchExpressions: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              key: Schema.String,
+                              operator: Schema.String,
+                              values: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                        ),
+                        matchLabels: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                      }),
+                    ),
+                    podSelector: Schema.optional(
+                      Schema.Struct({
+                        matchExpressions: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              key: Schema.String,
+                              operator: Schema.String,
+                              values: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                        ),
+                        matchLabels: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
+              ),
+              ports: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    endPort: Schema.optional(Schema.Number),
+                    port: Schema.optional(Schema.String),
+                    protocol: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        podSelector: Schema.optional(
+          Schema.Struct({
+            matchExpressions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.String,
+                  operator: Schema.String,
+                  values: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            matchLabels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+          }),
+        ),
+        policyTypes: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -584,7 +1051,10 @@ export type CreateNetworkingV1NamespacedNetworkPolicyOutput =
 /**
  * create a NetworkPolicy
  *
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createNetworkingV1NamespacedNetworkPolicy =
@@ -596,8 +1066,77 @@ export const createNetworkingV1NamespacedNetworkPolicy =
 // Input Schema
 export const CreateNetworkingV1ServiceCIDRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.optional(
+      Schema.Struct({
+        cidrs: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    status: Schema.optional(
+      Schema.Struct({
+        conditions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              lastTransitionTime: Schema.String,
+              message: Schema.String,
+              observedGeneration: Schema.optional(Schema.Number),
+              reason: Schema.String,
+              status: Schema.String,
+              type: Schema.String,
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({ method: "POST", path: "/apis/networking.k8s.io/v1/servicecidrs" }),
   );
@@ -682,7 +1221,9 @@ export type CreateNetworkingV1ServiceCIDROutput =
 /**
  * create a ServiceCIDR
  *
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createNetworkingV1ServiceCIDR =
@@ -694,8 +1235,64 @@ export const createNetworkingV1ServiceCIDR =
 // Input Schema
 export const CreateNetworkingV1beta1IPAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.Struct({
+      parentRef: Schema.Struct({
+        group: Schema.optional(Schema.String),
+        name: Schema.String,
+        namespace: Schema.optional(Schema.String),
+        resource: Schema.String,
+      }),
+    }),
   }).pipe(
     T.Http({
       method: "POST",
@@ -770,7 +1367,9 @@ export type CreateNetworkingV1beta1IPAddressOutput =
 /**
  * create an IPAddress
  *
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createNetworkingV1beta1IPAddress =
@@ -782,8 +1381,77 @@ export const createNetworkingV1beta1IPAddress =
 // Input Schema
 export const CreateNetworkingV1beta1ServiceCIDRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.optional(
+      Schema.Struct({
+        cidrs: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    status: Schema.optional(
+      Schema.Struct({
+        conditions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              lastTransitionTime: Schema.String,
+              message: Schema.String,
+              observedGeneration: Schema.optional(Schema.Number),
+              reason: Schema.String,
+              status: Schema.String,
+              type: Schema.String,
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -871,7 +1539,9 @@ export type CreateNetworkingV1beta1ServiceCIDROutput =
 /**
  * create a ServiceCIDR
  *
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createNetworkingV1beta1ServiceCIDR =
@@ -883,7 +1553,31 @@ export const createNetworkingV1beta1ServiceCIDR =
 // Input Schema
 export const DeleteNetworkingV1CollectionIPAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pretty: Schema.optional(Schema.String),
+    continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    gracePeriodSeconds: Schema.optional(Schema.Number),
+    ignoreStoreReadErrorWithClusterBreakingPotential: Schema.optional(
+      Schema.Boolean,
+    ),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    orphanDependents: Schema.optional(Schema.Boolean),
+    propagationPolicy: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    preconditions: Schema.optional(
+      Schema.Struct({
+        resourceVersion: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -941,7 +1635,62 @@ export type DeleteNetworkingV1CollectionIPAddressOutput =
 /**
  * delete collection of IPAddress
  *
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param gracePeriodSeconds - The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.
+ * @param ignoreStoreReadErrorWithClusterBreakingPotential - if set to true, it will trigger an unsafe deletion of the resource in case the normal deletion flow fails with a corrupt object error. A resource is considered corrupt if it can not be retrieved from the underlying storage successfully because of a) its data can not be transformed e.g. decryption failure, or b) it fails to decode into an object. NOTE: unsafe deletion ignores finalizer constraints, skips precondition checks, and removes the object from the storage. WARNING: This may potentially break the cluster if the workload associated with the resource being unsafe-deleted relies on normal deletion flow. Use only if you REALLY know what you are doing. The default value is false, and the user must opt in to enable it
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
+ * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteNetworkingV1CollectionIPAddress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -951,7 +1700,31 @@ export const deleteNetworkingV1CollectionIPAddress =
 // Input Schema
 export const DeleteNetworkingV1CollectionIngressClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pretty: Schema.optional(Schema.String),
+    continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    gracePeriodSeconds: Schema.optional(Schema.Number),
+    ignoreStoreReadErrorWithClusterBreakingPotential: Schema.optional(
+      Schema.Boolean,
+    ),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    orphanDependents: Schema.optional(Schema.Boolean),
+    propagationPolicy: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    preconditions: Schema.optional(
+      Schema.Struct({
+        resourceVersion: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1009,7 +1782,62 @@ export type DeleteNetworkingV1CollectionIngressClassOutput =
 /**
  * delete collection of IngressClass
  *
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param gracePeriodSeconds - The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.
+ * @param ignoreStoreReadErrorWithClusterBreakingPotential - if set to true, it will trigger an unsafe deletion of the resource in case the normal deletion flow fails with a corrupt object error. A resource is considered corrupt if it can not be retrieved from the underlying storage successfully because of a) its data can not be transformed e.g. decryption failure, or b) it fails to decode into an object. NOTE: unsafe deletion ignores finalizer constraints, skips precondition checks, and removes the object from the storage. WARNING: This may potentially break the cluster if the workload associated with the resource being unsafe-deleted relies on normal deletion flow. Use only if you REALLY know what you are doing. The default value is false, and the user must opt in to enable it
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
+ * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteNetworkingV1CollectionIngressClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1019,7 +1847,32 @@ export const deleteNetworkingV1CollectionIngressClass =
 // Input Schema
 export const DeleteNetworkingV1CollectionNamespacedIngressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
+    continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    gracePeriodSeconds: Schema.optional(Schema.Number),
+    ignoreStoreReadErrorWithClusterBreakingPotential: Schema.optional(
+      Schema.Boolean,
+    ),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    orphanDependents: Schema.optional(Schema.Boolean),
+    propagationPolicy: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    preconditions: Schema.optional(
+      Schema.Struct({
+        resourceVersion: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1077,7 +1930,63 @@ export type DeleteNetworkingV1CollectionNamespacedIngressOutput =
 /**
  * delete collection of Ingress
  *
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param gracePeriodSeconds - The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.
+ * @param ignoreStoreReadErrorWithClusterBreakingPotential - if set to true, it will trigger an unsafe deletion of the resource in case the normal deletion flow fails with a corrupt object error. A resource is considered corrupt if it can not be retrieved from the underlying storage successfully because of a) its data can not be transformed e.g. decryption failure, or b) it fails to decode into an object. NOTE: unsafe deletion ignores finalizer constraints, skips precondition checks, and removes the object from the storage. WARNING: This may potentially break the cluster if the workload associated with the resource being unsafe-deleted relies on normal deletion flow. Use only if you REALLY know what you are doing. The default value is false, and the user must opt in to enable it
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
+ * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteNetworkingV1CollectionNamespacedIngress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1087,7 +1996,32 @@ export const deleteNetworkingV1CollectionNamespacedIngress =
 // Input Schema
 export const DeleteNetworkingV1CollectionNamespacedNetworkPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
+    continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    gracePeriodSeconds: Schema.optional(Schema.Number),
+    ignoreStoreReadErrorWithClusterBreakingPotential: Schema.optional(
+      Schema.Boolean,
+    ),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    orphanDependents: Schema.optional(Schema.Boolean),
+    propagationPolicy: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    preconditions: Schema.optional(
+      Schema.Struct({
+        resourceVersion: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1145,7 +2079,63 @@ export type DeleteNetworkingV1CollectionNamespacedNetworkPolicyOutput =
 /**
  * delete collection of NetworkPolicy
  *
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param gracePeriodSeconds - The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.
+ * @param ignoreStoreReadErrorWithClusterBreakingPotential - if set to true, it will trigger an unsafe deletion of the resource in case the normal deletion flow fails with a corrupt object error. A resource is considered corrupt if it can not be retrieved from the underlying storage successfully because of a) its data can not be transformed e.g. decryption failure, or b) it fails to decode into an object. NOTE: unsafe deletion ignores finalizer constraints, skips precondition checks, and removes the object from the storage. WARNING: This may potentially break the cluster if the workload associated with the resource being unsafe-deleted relies on normal deletion flow. Use only if you REALLY know what you are doing. The default value is false, and the user must opt in to enable it
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
+ * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteNetworkingV1CollectionNamespacedNetworkPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1155,7 +2145,31 @@ export const deleteNetworkingV1CollectionNamespacedNetworkPolicy =
 // Input Schema
 export const DeleteNetworkingV1CollectionServiceCIDRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pretty: Schema.optional(Schema.String),
+    continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    gracePeriodSeconds: Schema.optional(Schema.Number),
+    ignoreStoreReadErrorWithClusterBreakingPotential: Schema.optional(
+      Schema.Boolean,
+    ),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    orphanDependents: Schema.optional(Schema.Boolean),
+    propagationPolicy: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    preconditions: Schema.optional(
+      Schema.Struct({
+        resourceVersion: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1213,7 +2227,62 @@ export type DeleteNetworkingV1CollectionServiceCIDROutput =
 /**
  * delete collection of ServiceCIDR
  *
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param gracePeriodSeconds - The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.
+ * @param ignoreStoreReadErrorWithClusterBreakingPotential - if set to true, it will trigger an unsafe deletion of the resource in case the normal deletion flow fails with a corrupt object error. A resource is considered corrupt if it can not be retrieved from the underlying storage successfully because of a) its data can not be transformed e.g. decryption failure, or b) it fails to decode into an object. NOTE: unsafe deletion ignores finalizer constraints, skips precondition checks, and removes the object from the storage. WARNING: This may potentially break the cluster if the workload associated with the resource being unsafe-deleted relies on normal deletion flow. Use only if you REALLY know what you are doing. The default value is false, and the user must opt in to enable it
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
+ * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteNetworkingV1CollectionServiceCIDR =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1223,7 +2292,23 @@ export const deleteNetworkingV1CollectionServiceCIDR =
 // Input Schema
 export const DeleteNetworkingV1IPAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    gracePeriodSeconds: Schema.optional(Schema.Number),
+    ignoreStoreReadErrorWithClusterBreakingPotential: Schema.optional(
+      Schema.Boolean,
+    ),
+    orphanDependents: Schema.optional(Schema.Boolean),
+    propagationPolicy: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    preconditions: Schema.optional(
+      Schema.Struct({
+        resourceVersion: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1281,7 +2366,13 @@ export type DeleteNetworkingV1IPAddressOutput =
 /**
  * delete an IPAddress
  *
+ * @param name - name of the IPAddress
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param gracePeriodSeconds - The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.
+ * @param ignoreStoreReadErrorWithClusterBreakingPotential - if set to true, it will trigger an unsafe deletion of the resource in case the normal deletion flow fails with a corrupt object error. A resource is considered corrupt if it can not be retrieved from the underlying storage successfully because of a) its data can not be transformed e.g. decryption failure, or b) it fails to decode into an object. NOTE: unsafe deletion ignores finalizer constraints, skips precondition checks, and removes the object from the storage. WARNING: This may potentially break the cluster if the workload associated with the resource being unsafe-deleted relies on normal deletion flow. Use only if you REALLY know what you are doing. The default value is false, and the user must opt in to enable it
+ * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
+ * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -1293,7 +2384,23 @@ export const deleteNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DeleteNetworkingV1IngressClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    gracePeriodSeconds: Schema.optional(Schema.Number),
+    ignoreStoreReadErrorWithClusterBreakingPotential: Schema.optional(
+      Schema.Boolean,
+    ),
+    orphanDependents: Schema.optional(Schema.Boolean),
+    propagationPolicy: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    preconditions: Schema.optional(
+      Schema.Struct({
+        resourceVersion: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1351,7 +2458,13 @@ export type DeleteNetworkingV1IngressClassOutput =
 /**
  * delete an IngressClass
  *
+ * @param name - name of the IngressClass
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param gracePeriodSeconds - The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.
+ * @param ignoreStoreReadErrorWithClusterBreakingPotential - if set to true, it will trigger an unsafe deletion of the resource in case the normal deletion flow fails with a corrupt object error. A resource is considered corrupt if it can not be retrieved from the underlying storage successfully because of a) its data can not be transformed e.g. decryption failure, or b) it fails to decode into an object. NOTE: unsafe deletion ignores finalizer constraints, skips precondition checks, and removes the object from the storage. WARNING: This may potentially break the cluster if the workload associated with the resource being unsafe-deleted relies on normal deletion flow. Use only if you REALLY know what you are doing. The default value is false, and the user must opt in to enable it
+ * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
+ * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteNetworkingV1IngressClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1362,7 +2475,24 @@ export const deleteNetworkingV1IngressClass =
 // Input Schema
 export const DeleteNetworkingV1NamespacedIngressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    gracePeriodSeconds: Schema.optional(Schema.Number),
+    ignoreStoreReadErrorWithClusterBreakingPotential: Schema.optional(
+      Schema.Boolean,
+    ),
+    orphanDependents: Schema.optional(Schema.Boolean),
+    propagationPolicy: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    preconditions: Schema.optional(
+      Schema.Struct({
+        resourceVersion: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1420,7 +2550,14 @@ export type DeleteNetworkingV1NamespacedIngressOutput =
 /**
  * delete an Ingress
  *
+ * @param name - name of the Ingress
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param gracePeriodSeconds - The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.
+ * @param ignoreStoreReadErrorWithClusterBreakingPotential - if set to true, it will trigger an unsafe deletion of the resource in case the normal deletion flow fails with a corrupt object error. A resource is considered corrupt if it can not be retrieved from the underlying storage successfully because of a) its data can not be transformed e.g. decryption failure, or b) it fails to decode into an object. NOTE: unsafe deletion ignores finalizer constraints, skips precondition checks, and removes the object from the storage. WARNING: This may potentially break the cluster if the workload associated with the resource being unsafe-deleted relies on normal deletion flow. Use only if you REALLY know what you are doing. The default value is false, and the user must opt in to enable it
+ * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
+ * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteNetworkingV1NamespacedIngress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1431,7 +2568,24 @@ export const deleteNetworkingV1NamespacedIngress =
 // Input Schema
 export const DeleteNetworkingV1NamespacedNetworkPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    gracePeriodSeconds: Schema.optional(Schema.Number),
+    ignoreStoreReadErrorWithClusterBreakingPotential: Schema.optional(
+      Schema.Boolean,
+    ),
+    orphanDependents: Schema.optional(Schema.Boolean),
+    propagationPolicy: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    preconditions: Schema.optional(
+      Schema.Struct({
+        resourceVersion: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1489,7 +2643,14 @@ export type DeleteNetworkingV1NamespacedNetworkPolicyOutput =
 /**
  * delete a NetworkPolicy
  *
+ * @param name - name of the NetworkPolicy
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param gracePeriodSeconds - The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.
+ * @param ignoreStoreReadErrorWithClusterBreakingPotential - if set to true, it will trigger an unsafe deletion of the resource in case the normal deletion flow fails with a corrupt object error. A resource is considered corrupt if it can not be retrieved from the underlying storage successfully because of a) its data can not be transformed e.g. decryption failure, or b) it fails to decode into an object. NOTE: unsafe deletion ignores finalizer constraints, skips precondition checks, and removes the object from the storage. WARNING: This may potentially break the cluster if the workload associated with the resource being unsafe-deleted relies on normal deletion flow. Use only if you REALLY know what you are doing. The default value is false, and the user must opt in to enable it
+ * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
+ * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteNetworkingV1NamespacedNetworkPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1500,7 +2661,23 @@ export const deleteNetworkingV1NamespacedNetworkPolicy =
 // Input Schema
 export const DeleteNetworkingV1ServiceCIDRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    gracePeriodSeconds: Schema.optional(Schema.Number),
+    ignoreStoreReadErrorWithClusterBreakingPotential: Schema.optional(
+      Schema.Boolean,
+    ),
+    orphanDependents: Schema.optional(Schema.Boolean),
+    propagationPolicy: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    preconditions: Schema.optional(
+      Schema.Struct({
+        resourceVersion: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1558,7 +2735,13 @@ export type DeleteNetworkingV1ServiceCIDROutput =
 /**
  * delete a ServiceCIDR
  *
+ * @param name - name of the ServiceCIDR
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param gracePeriodSeconds - The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.
+ * @param ignoreStoreReadErrorWithClusterBreakingPotential - if set to true, it will trigger an unsafe deletion of the resource in case the normal deletion flow fails with a corrupt object error. A resource is considered corrupt if it can not be retrieved from the underlying storage successfully because of a) its data can not be transformed e.g. decryption failure, or b) it fails to decode into an object. NOTE: unsafe deletion ignores finalizer constraints, skips precondition checks, and removes the object from the storage. WARNING: This may potentially break the cluster if the workload associated with the resource being unsafe-deleted relies on normal deletion flow. Use only if you REALLY know what you are doing. The default value is false, and the user must opt in to enable it
+ * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
+ * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteNetworkingV1ServiceCIDR =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1569,7 +2752,31 @@ export const deleteNetworkingV1ServiceCIDR =
 // Input Schema
 export const DeleteNetworkingV1beta1CollectionIPAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pretty: Schema.optional(Schema.String),
+    continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    gracePeriodSeconds: Schema.optional(Schema.Number),
+    ignoreStoreReadErrorWithClusterBreakingPotential: Schema.optional(
+      Schema.Boolean,
+    ),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    orphanDependents: Schema.optional(Schema.Boolean),
+    propagationPolicy: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    preconditions: Schema.optional(
+      Schema.Struct({
+        resourceVersion: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1627,7 +2834,62 @@ export type DeleteNetworkingV1beta1CollectionIPAddressOutput =
 /**
  * delete collection of IPAddress
  *
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param gracePeriodSeconds - The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.
+ * @param ignoreStoreReadErrorWithClusterBreakingPotential - if set to true, it will trigger an unsafe deletion of the resource in case the normal deletion flow fails with a corrupt object error. A resource is considered corrupt if it can not be retrieved from the underlying storage successfully because of a) its data can not be transformed e.g. decryption failure, or b) it fails to decode into an object. NOTE: unsafe deletion ignores finalizer constraints, skips precondition checks, and removes the object from the storage. WARNING: This may potentially break the cluster if the workload associated with the resource being unsafe-deleted relies on normal deletion flow. Use only if you REALLY know what you are doing. The default value is false, and the user must opt in to enable it
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
+ * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteNetworkingV1beta1CollectionIPAddress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1637,7 +2899,31 @@ export const deleteNetworkingV1beta1CollectionIPAddress =
 // Input Schema
 export const DeleteNetworkingV1beta1CollectionServiceCIDRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pretty: Schema.optional(Schema.String),
+    continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    gracePeriodSeconds: Schema.optional(Schema.Number),
+    ignoreStoreReadErrorWithClusterBreakingPotential: Schema.optional(
+      Schema.Boolean,
+    ),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    orphanDependents: Schema.optional(Schema.Boolean),
+    propagationPolicy: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    preconditions: Schema.optional(
+      Schema.Struct({
+        resourceVersion: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1695,7 +2981,62 @@ export type DeleteNetworkingV1beta1CollectionServiceCIDROutput =
 /**
  * delete collection of ServiceCIDR
  *
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param gracePeriodSeconds - The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.
+ * @param ignoreStoreReadErrorWithClusterBreakingPotential - if set to true, it will trigger an unsafe deletion of the resource in case the normal deletion flow fails with a corrupt object error. A resource is considered corrupt if it can not be retrieved from the underlying storage successfully because of a) its data can not be transformed e.g. decryption failure, or b) it fails to decode into an object. NOTE: unsafe deletion ignores finalizer constraints, skips precondition checks, and removes the object from the storage. WARNING: This may potentially break the cluster if the workload associated with the resource being unsafe-deleted relies on normal deletion flow. Use only if you REALLY know what you are doing. The default value is false, and the user must opt in to enable it
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
+ * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteNetworkingV1beta1CollectionServiceCIDR =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1705,7 +3046,23 @@ export const deleteNetworkingV1beta1CollectionServiceCIDR =
 // Input Schema
 export const DeleteNetworkingV1beta1IPAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    gracePeriodSeconds: Schema.optional(Schema.Number),
+    ignoreStoreReadErrorWithClusterBreakingPotential: Schema.optional(
+      Schema.Boolean,
+    ),
+    orphanDependents: Schema.optional(Schema.Boolean),
+    propagationPolicy: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    preconditions: Schema.optional(
+      Schema.Struct({
+        resourceVersion: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1763,7 +3120,13 @@ export type DeleteNetworkingV1beta1IPAddressOutput =
 /**
  * delete an IPAddress
  *
+ * @param name - name of the IPAddress
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param gracePeriodSeconds - The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.
+ * @param ignoreStoreReadErrorWithClusterBreakingPotential - if set to true, it will trigger an unsafe deletion of the resource in case the normal deletion flow fails with a corrupt object error. A resource is considered corrupt if it can not be retrieved from the underlying storage successfully because of a) its data can not be transformed e.g. decryption failure, or b) it fails to decode into an object. NOTE: unsafe deletion ignores finalizer constraints, skips precondition checks, and removes the object from the storage. WARNING: This may potentially break the cluster if the workload associated with the resource being unsafe-deleted relies on normal deletion flow. Use only if you REALLY know what you are doing. The default value is false, and the user must opt in to enable it
+ * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
+ * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteNetworkingV1beta1IPAddress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1774,7 +3137,23 @@ export const deleteNetworkingV1beta1IPAddress =
 // Input Schema
 export const DeleteNetworkingV1beta1ServiceCIDRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    gracePeriodSeconds: Schema.optional(Schema.Number),
+    ignoreStoreReadErrorWithClusterBreakingPotential: Schema.optional(
+      Schema.Boolean,
+    ),
+    orphanDependents: Schema.optional(Schema.Boolean),
+    propagationPolicy: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    preconditions: Schema.optional(
+      Schema.Struct({
+        resourceVersion: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1832,7 +3211,13 @@ export type DeleteNetworkingV1beta1ServiceCIDROutput =
 /**
  * delete a ServiceCIDR
  *
+ * @param name - name of the ServiceCIDR
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param gracePeriodSeconds - The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.
+ * @param ignoreStoreReadErrorWithClusterBreakingPotential - if set to true, it will trigger an unsafe deletion of the resource in case the normal deletion flow fails with a corrupt object error. A resource is considered corrupt if it can not be retrieved from the underlying storage successfully because of a) its data can not be transformed e.g. decryption failure, or b) it fails to decode into an object. NOTE: unsafe deletion ignores finalizer constraints, skips precondition checks, and removes the object from the storage. WARNING: This may potentially break the cluster if the workload associated with the resource being unsafe-deleted relies on normal deletion flow. Use only if you REALLY know what you are doing. The default value is false, and the user must opt in to enable it
+ * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
+ * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteNetworkingV1beta1ServiceCIDR =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -1972,7 +3357,20 @@ export const getNetworkingV1beta1APIResources =
   }));
 // Input Schema
 export const ListNetworkingV1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pretty: Schema.optional(Schema.String),
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({ method: "GET", path: "/apis/networking.k8s.io/v1/ipaddresses" }),
   );
 export type ListNetworkingV1IPAddressInput =
@@ -2063,6 +3461,60 @@ export type ListNetworkingV1IPAddressOutput =
 // The operation
 /**
  * list or watch objects of kind IPAddress
+ *
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -2072,7 +3524,20 @@ export const listNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ListNetworkingV1IngressClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pretty: Schema.optional(Schema.String),
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/ingressclasses",
@@ -2172,6 +3637,60 @@ export type ListNetworkingV1IngressClassOutput =
 // The operation
 /**
  * list or watch objects of kind IngressClass
+ *
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listNetworkingV1IngressClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2180,7 +3699,20 @@ export const listNetworkingV1IngressClass =
   }));
 // Input Schema
 export const ListNetworkingV1IngressForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({ method: "GET", path: "/apis/networking.k8s.io/v1/ingresses" }),
   );
 export type ListNetworkingV1IngressForAllNamespacesInput =
@@ -2360,6 +3892,60 @@ export type ListNetworkingV1IngressForAllNamespacesOutput =
 // The operation
 /**
  * list or watch objects of kind Ingress
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listNetworkingV1IngressForAllNamespaces =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2368,7 +3954,21 @@ export const listNetworkingV1IngressForAllNamespaces =
   }));
 // Input Schema
 export const ListNetworkingV1NamespacedIngressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses",
@@ -2551,6 +4151,61 @@ export type ListNetworkingV1NamespacedIngressOutput =
 // The operation
 /**
  * list or watch objects of kind Ingress
+ *
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listNetworkingV1NamespacedIngress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2559,7 +4214,21 @@ export const listNetworkingV1NamespacedIngress =
   }));
 // Input Schema
 export const ListNetworkingV1NamespacedNetworkPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies",
@@ -2796,6 +4465,61 @@ export type ListNetworkingV1NamespacedNetworkPolicyOutput =
 // The operation
 /**
  * list or watch objects of kind NetworkPolicy
+ *
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listNetworkingV1NamespacedNetworkPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -2804,7 +4528,20 @@ export const listNetworkingV1NamespacedNetworkPolicy =
   }));
 // Input Schema
 export const ListNetworkingV1NetworkPolicyForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/networkpolicies",
@@ -3041,6 +4778,60 @@ export type ListNetworkingV1NetworkPolicyForAllNamespacesOutput =
 // The operation
 /**
  * list or watch objects of kind NetworkPolicy
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listNetworkingV1NetworkPolicyForAllNamespaces =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3049,7 +4840,20 @@ export const listNetworkingV1NetworkPolicyForAllNamespaces =
   }));
 // Input Schema
 export const ListNetworkingV1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pretty: Schema.optional(Schema.String),
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({ method: "GET", path: "/apis/networking.k8s.io/v1/servicecidrs" }),
   );
 export type ListNetworkingV1ServiceCIDRInput =
@@ -3153,6 +4957,60 @@ export type ListNetworkingV1ServiceCIDROutput =
 // The operation
 /**
  * list or watch objects of kind ServiceCIDR
+ *
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listNetworkingV1ServiceCIDR = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3162,7 +5020,20 @@ export const listNetworkingV1ServiceCIDR = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ListNetworkingV1beta1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pretty: Schema.optional(Schema.String),
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1beta1/ipaddresses",
@@ -3256,6 +5127,60 @@ export type ListNetworkingV1beta1IPAddressOutput =
 // The operation
 /**
  * list or watch objects of kind IPAddress
+ *
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listNetworkingV1beta1IPAddress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3264,7 +5189,20 @@ export const listNetworkingV1beta1IPAddress =
   }));
 // Input Schema
 export const ListNetworkingV1beta1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pretty: Schema.optional(Schema.String),
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1beta1/servicecidrs",
@@ -3371,6 +5309,60 @@ export type ListNetworkingV1beta1ServiceCIDROutput =
 // The operation
 /**
  * list or watch objects of kind ServiceCIDR
+ *
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listNetworkingV1beta1ServiceCIDR =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3380,8 +5372,12 @@ export const listNetworkingV1beta1ServiceCIDR =
 // Input Schema
 export const PatchNetworkingV1IPAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3456,8 +5452,12 @@ export type PatchNetworkingV1IPAddressOutput =
 /**
  * partially update the specified IPAddress
  *
+ * @param name - name of the IPAddress
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. This field is required for apply requests (application/apply-patch) but optional for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+ * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -3469,8 +5469,12 @@ export const patchNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PatchNetworkingV1IngressClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3551,8 +5555,12 @@ export type PatchNetworkingV1IngressClassOutput =
 /**
  * partially update the specified IngressClass
  *
+ * @param name - name of the IngressClass
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. This field is required for apply requests (application/apply-patch) but optional for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+ * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchNetworkingV1IngressClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3563,8 +5571,13 @@ export const patchNetworkingV1IngressClass =
 // Input Schema
 export const PatchNetworkingV1NamespacedIngressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3728,8 +5741,13 @@ export type PatchNetworkingV1NamespacedIngressOutput =
 /**
  * partially update the specified Ingress
  *
+ * @param name - name of the Ingress
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. This field is required for apply requests (application/apply-patch) but optional for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+ * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchNetworkingV1NamespacedIngress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3740,8 +5758,13 @@ export const patchNetworkingV1NamespacedIngress =
 // Input Schema
 export const PatchNetworkingV1NamespacedIngressStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3905,8 +5928,13 @@ export type PatchNetworkingV1NamespacedIngressStatusOutput =
 /**
  * partially update status of the specified Ingress
  *
+ * @param name - name of the Ingress
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. This field is required for apply requests (application/apply-patch) but optional for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+ * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchNetworkingV1NamespacedIngressStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -3917,8 +5945,13 @@ export const patchNetworkingV1NamespacedIngressStatus =
 // Input Schema
 export const PatchNetworkingV1NamespacedNetworkPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4132,8 +6165,13 @@ export type PatchNetworkingV1NamespacedNetworkPolicyOutput =
 /**
  * partially update the specified NetworkPolicy
  *
+ * @param name - name of the NetworkPolicy
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. This field is required for apply requests (application/apply-patch) but optional for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+ * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchNetworkingV1NamespacedNetworkPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4144,8 +6182,12 @@ export const patchNetworkingV1NamespacedNetworkPolicy =
 // Input Schema
 export const PatchNetworkingV1ServiceCIDRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4233,8 +6275,12 @@ export type PatchNetworkingV1ServiceCIDROutput =
 /**
  * partially update the specified ServiceCIDR
  *
+ * @param name - name of the ServiceCIDR
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. This field is required for apply requests (application/apply-patch) but optional for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+ * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchNetworkingV1ServiceCIDR =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4245,8 +6291,12 @@ export const patchNetworkingV1ServiceCIDR =
 // Input Schema
 export const PatchNetworkingV1ServiceCIDRStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4334,8 +6384,12 @@ export type PatchNetworkingV1ServiceCIDRStatusOutput =
 /**
  * partially update status of the specified ServiceCIDR
  *
+ * @param name - name of the ServiceCIDR
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. This field is required for apply requests (application/apply-patch) but optional for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+ * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchNetworkingV1ServiceCIDRStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4346,8 +6400,12 @@ export const patchNetworkingV1ServiceCIDRStatus =
 // Input Schema
 export const PatchNetworkingV1beta1IPAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4422,8 +6480,12 @@ export type PatchNetworkingV1beta1IPAddressOutput =
 /**
  * partially update the specified IPAddress
  *
+ * @param name - name of the IPAddress
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. This field is required for apply requests (application/apply-patch) but optional for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+ * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchNetworkingV1beta1IPAddress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4434,8 +6496,12 @@ export const patchNetworkingV1beta1IPAddress =
 // Input Schema
 export const PatchNetworkingV1beta1ServiceCIDRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4523,8 +6589,12 @@ export type PatchNetworkingV1beta1ServiceCIDROutput =
 /**
  * partially update the specified ServiceCIDR
  *
+ * @param name - name of the ServiceCIDR
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. This field is required for apply requests (application/apply-patch) but optional for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+ * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchNetworkingV1beta1ServiceCIDR =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4535,8 +6605,12 @@ export const patchNetworkingV1beta1ServiceCIDR =
 // Input Schema
 export const PatchNetworkingV1beta1ServiceCIDRStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4624,8 +6698,12 @@ export type PatchNetworkingV1beta1ServiceCIDRStatusOutput =
 /**
  * partially update status of the specified ServiceCIDR
  *
+ * @param name - name of the ServiceCIDR
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. This field is required for apply requests (application/apply-patch) but optional for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+ * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchNetworkingV1beta1ServiceCIDRStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4635,7 +6713,10 @@ export const patchNetworkingV1beta1ServiceCIDRStatus =
   }));
 // Input Schema
 export const ReadNetworkingV1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/ipaddresses/{name}",
@@ -4708,6 +6789,9 @@ export type ReadNetworkingV1IPAddressOutput =
 // The operation
 /**
  * read the specified IPAddress
+ *
+ * @param name - name of the IPAddress
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -4718,7 +6802,10 @@ export const readNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ReadNetworkingV1IngressClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/ingressclasses/{name}",
@@ -4797,6 +6884,9 @@ export type ReadNetworkingV1IngressClassOutput =
 // The operation
 /**
  * read the specified IngressClass
+ *
+ * @param name - name of the IngressClass
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readNetworkingV1IngressClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4806,7 +6896,11 @@ export const readNetworkingV1IngressClass =
   }));
 // Input Schema
 export const ReadNetworkingV1NamespacedIngressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}",
@@ -4968,6 +7062,10 @@ export type ReadNetworkingV1NamespacedIngressOutput =
 // The operation
 /**
  * read the specified Ingress
+ *
+ * @param name - name of the Ingress
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readNetworkingV1NamespacedIngress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -4977,7 +7075,11 @@ export const readNetworkingV1NamespacedIngress =
   }));
 // Input Schema
 export const ReadNetworkingV1NamespacedIngressStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status",
@@ -5139,6 +7241,10 @@ export type ReadNetworkingV1NamespacedIngressStatusOutput =
 // The operation
 /**
  * read status of the specified Ingress
+ *
+ * @param name - name of the Ingress
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readNetworkingV1NamespacedIngressStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5148,7 +7254,11 @@ export const readNetworkingV1NamespacedIngressStatus =
   }));
 // Input Schema
 export const ReadNetworkingV1NamespacedNetworkPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}",
@@ -5360,6 +7470,10 @@ export type ReadNetworkingV1NamespacedNetworkPolicyOutput =
 // The operation
 /**
  * read the specified NetworkPolicy
+ *
+ * @param name - name of the NetworkPolicy
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readNetworkingV1NamespacedNetworkPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5369,7 +7483,10 @@ export const readNetworkingV1NamespacedNetworkPolicy =
   }));
 // Input Schema
 export const ReadNetworkingV1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/servicecidrs/{name}",
@@ -5455,6 +7572,9 @@ export type ReadNetworkingV1ServiceCIDROutput =
 // The operation
 /**
  * read the specified ServiceCIDR
+ *
+ * @param name - name of the ServiceCIDR
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readNetworkingV1ServiceCIDR = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5465,7 +7585,10 @@ export const readNetworkingV1ServiceCIDR = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ReadNetworkingV1ServiceCIDRStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/servicecidrs/{name}/status",
@@ -5551,6 +7674,9 @@ export type ReadNetworkingV1ServiceCIDRStatusOutput =
 // The operation
 /**
  * read status of the specified ServiceCIDR
+ *
+ * @param name - name of the ServiceCIDR
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readNetworkingV1ServiceCIDRStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5560,7 +7686,10 @@ export const readNetworkingV1ServiceCIDRStatus =
   }));
 // Input Schema
 export const ReadNetworkingV1beta1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1beta1/ipaddresses/{name}",
@@ -5633,6 +7762,9 @@ export type ReadNetworkingV1beta1IPAddressOutput =
 // The operation
 /**
  * read the specified IPAddress
+ *
+ * @param name - name of the IPAddress
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readNetworkingV1beta1IPAddress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5642,7 +7774,10 @@ export const readNetworkingV1beta1IPAddress =
   }));
 // Input Schema
 export const ReadNetworkingV1beta1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1beta1/servicecidrs/{name}",
@@ -5728,6 +7863,9 @@ export type ReadNetworkingV1beta1ServiceCIDROutput =
 // The operation
 /**
  * read the specified ServiceCIDR
+ *
+ * @param name - name of the ServiceCIDR
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readNetworkingV1beta1ServiceCIDR =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5737,7 +7875,10 @@ export const readNetworkingV1beta1ServiceCIDR =
   }));
 // Input Schema
 export const ReadNetworkingV1beta1ServiceCIDRStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1beta1/servicecidrs/{name}/status",
@@ -5823,6 +7964,9 @@ export type ReadNetworkingV1beta1ServiceCIDRStatusOutput =
 // The operation
 /**
  * read status of the specified ServiceCIDR
+ *
+ * @param name - name of the ServiceCIDR
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readNetworkingV1beta1ServiceCIDRStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5833,8 +7977,65 @@ export const readNetworkingV1beta1ServiceCIDRStatus =
 // Input Schema
 export const ReplaceNetworkingV1IPAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.Struct({
+      parentRef: Schema.Struct({
+        group: Schema.optional(Schema.String),
+        name: Schema.String,
+        namespace: Schema.optional(Schema.String),
+        resource: Schema.String,
+      }),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -5909,7 +8110,10 @@ export type ReplaceNetworkingV1IPAddressOutput =
 /**
  * replace the specified IPAddress
  *
+ * @param name - name of the IPAddress
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceNetworkingV1IPAddress =
@@ -5921,8 +8125,71 @@ export const replaceNetworkingV1IPAddress =
 // Input Schema
 export const ReplaceNetworkingV1IngressClassInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.optional(
+      Schema.Struct({
+        controller: Schema.optional(Schema.String),
+        parameters: Schema.optional(
+          Schema.Struct({
+            apiGroup: Schema.optional(Schema.String),
+            kind: Schema.String,
+            name: Schema.String,
+            namespace: Schema.optional(Schema.String),
+            scope: Schema.optional(Schema.String),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6003,7 +8270,10 @@ export type ReplaceNetworkingV1IngressClassOutput =
 /**
  * replace the specified IngressClass
  *
+ * @param name - name of the IngressClass
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceNetworkingV1IngressClass =
@@ -6015,8 +8285,155 @@ export const replaceNetworkingV1IngressClass =
 // Input Schema
 export const ReplaceNetworkingV1NamespacedIngressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.optional(
+      Schema.Struct({
+        defaultBackend: Schema.optional(
+          Schema.Struct({
+            resource: Schema.optional(
+              Schema.Struct({
+                apiGroup: Schema.optional(Schema.String),
+                kind: Schema.String,
+                name: Schema.String,
+              }),
+            ),
+            service: Schema.optional(
+              Schema.Struct({
+                name: Schema.String,
+                port: Schema.optional(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                    number: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        ingressClassName: Schema.optional(Schema.String),
+        rules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              host: Schema.optional(Schema.String),
+              http: Schema.optional(
+                Schema.Struct({
+                  paths: Schema.Array(
+                    Schema.Struct({
+                      backend: Schema.Struct({
+                        resource: Schema.optional(
+                          Schema.Struct({
+                            apiGroup: Schema.optional(Schema.String),
+                            kind: Schema.String,
+                            name: Schema.String,
+                          }),
+                        ),
+                        service: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.String,
+                            port: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                number: Schema.optional(Schema.Number),
+                              }),
+                            ),
+                          }),
+                        ),
+                      }),
+                      path: Schema.optional(Schema.String),
+                      pathType: Schema.String,
+                    }),
+                  ),
+                }),
+              ),
+            }),
+          ),
+        ),
+        tls: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              hosts: Schema.optional(Schema.Array(Schema.String)),
+              secretName: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    status: Schema.optional(
+      Schema.Struct({
+        loadBalancer: Schema.optional(
+          Schema.Struct({
+            ingress: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  hostname: Schema.optional(Schema.String),
+                  ip: Schema.optional(Schema.String),
+                  ports: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        error: Schema.optional(Schema.String),
+                        port: Schema.Number,
+                        protocol: Schema.String,
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6180,7 +8597,11 @@ export type ReplaceNetworkingV1NamespacedIngressOutput =
 /**
  * replace the specified Ingress
  *
+ * @param name - name of the Ingress
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceNetworkingV1NamespacedIngress =
@@ -6192,8 +8613,155 @@ export const replaceNetworkingV1NamespacedIngress =
 // Input Schema
 export const ReplaceNetworkingV1NamespacedIngressStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.optional(
+      Schema.Struct({
+        defaultBackend: Schema.optional(
+          Schema.Struct({
+            resource: Schema.optional(
+              Schema.Struct({
+                apiGroup: Schema.optional(Schema.String),
+                kind: Schema.String,
+                name: Schema.String,
+              }),
+            ),
+            service: Schema.optional(
+              Schema.Struct({
+                name: Schema.String,
+                port: Schema.optional(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                    number: Schema.optional(Schema.Number),
+                  }),
+                ),
+              }),
+            ),
+          }),
+        ),
+        ingressClassName: Schema.optional(Schema.String),
+        rules: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              host: Schema.optional(Schema.String),
+              http: Schema.optional(
+                Schema.Struct({
+                  paths: Schema.Array(
+                    Schema.Struct({
+                      backend: Schema.Struct({
+                        resource: Schema.optional(
+                          Schema.Struct({
+                            apiGroup: Schema.optional(Schema.String),
+                            kind: Schema.String,
+                            name: Schema.String,
+                          }),
+                        ),
+                        service: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.String,
+                            port: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                number: Schema.optional(Schema.Number),
+                              }),
+                            ),
+                          }),
+                        ),
+                      }),
+                      path: Schema.optional(Schema.String),
+                      pathType: Schema.String,
+                    }),
+                  ),
+                }),
+              ),
+            }),
+          ),
+        ),
+        tls: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              hosts: Schema.optional(Schema.Array(Schema.String)),
+              secretName: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+    status: Schema.optional(
+      Schema.Struct({
+        loadBalancer: Schema.optional(
+          Schema.Struct({
+            ingress: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  hostname: Schema.optional(Schema.String),
+                  ip: Schema.optional(Schema.String),
+                  ports: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        error: Schema.optional(Schema.String),
+                        port: Schema.Number,
+                        protocol: Schema.String,
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            ),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6357,7 +8925,11 @@ export type ReplaceNetworkingV1NamespacedIngressStatusOutput =
 /**
  * replace status of the specified Ingress
  *
+ * @param name - name of the Ingress
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceNetworkingV1NamespacedIngressStatus =
@@ -6369,8 +8941,205 @@ export const replaceNetworkingV1NamespacedIngressStatus =
 // Input Schema
 export const ReplaceNetworkingV1NamespacedNetworkPolicyInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.optional(
+      Schema.Struct({
+        egress: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              ports: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    endPort: Schema.optional(Schema.Number),
+                    port: Schema.optional(Schema.String),
+                    protocol: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              to: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    ipBlock: Schema.optional(
+                      Schema.Struct({
+                        cidr: Schema.String,
+                        except: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                    namespaceSelector: Schema.optional(
+                      Schema.Struct({
+                        matchExpressions: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              key: Schema.String,
+                              operator: Schema.String,
+                              values: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                        ),
+                        matchLabels: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                      }),
+                    ),
+                    podSelector: Schema.optional(
+                      Schema.Struct({
+                        matchExpressions: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              key: Schema.String,
+                              operator: Schema.String,
+                              values: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                        ),
+                        matchLabels: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        ingress: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              from: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    ipBlock: Schema.optional(
+                      Schema.Struct({
+                        cidr: Schema.String,
+                        except: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                    namespaceSelector: Schema.optional(
+                      Schema.Struct({
+                        matchExpressions: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              key: Schema.String,
+                              operator: Schema.String,
+                              values: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                        ),
+                        matchLabels: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                      }),
+                    ),
+                    podSelector: Schema.optional(
+                      Schema.Struct({
+                        matchExpressions: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              key: Schema.String,
+                              operator: Schema.String,
+                              values: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                        ),
+                        matchLabels: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                      }),
+                    ),
+                  }),
+                ),
+              ),
+              ports: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    endPort: Schema.optional(Schema.Number),
+                    port: Schema.optional(Schema.String),
+                    protocol: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        ),
+        podSelector: Schema.optional(
+          Schema.Struct({
+            matchExpressions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.String,
+                  operator: Schema.String,
+                  values: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            matchLabels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+          }),
+        ),
+        policyTypes: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6584,7 +9353,11 @@ export type ReplaceNetworkingV1NamespacedNetworkPolicyOutput =
 /**
  * replace the specified NetworkPolicy
  *
+ * @param name - name of the NetworkPolicy
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceNetworkingV1NamespacedNetworkPolicy =
@@ -6596,8 +9369,78 @@ export const replaceNetworkingV1NamespacedNetworkPolicy =
 // Input Schema
 export const ReplaceNetworkingV1ServiceCIDRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.optional(
+      Schema.Struct({
+        cidrs: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    status: Schema.optional(
+      Schema.Struct({
+        conditions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              lastTransitionTime: Schema.String,
+              message: Schema.String,
+              observedGeneration: Schema.optional(Schema.Number),
+              reason: Schema.String,
+              status: Schema.String,
+              type: Schema.String,
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6685,7 +9528,10 @@ export type ReplaceNetworkingV1ServiceCIDROutput =
 /**
  * replace the specified ServiceCIDR
  *
+ * @param name - name of the ServiceCIDR
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceNetworkingV1ServiceCIDR =
@@ -6697,8 +9543,78 @@ export const replaceNetworkingV1ServiceCIDR =
 // Input Schema
 export const ReplaceNetworkingV1ServiceCIDRStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.optional(
+      Schema.Struct({
+        cidrs: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    status: Schema.optional(
+      Schema.Struct({
+        conditions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              lastTransitionTime: Schema.String,
+              message: Schema.String,
+              observedGeneration: Schema.optional(Schema.Number),
+              reason: Schema.String,
+              status: Schema.String,
+              type: Schema.String,
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6786,7 +9702,10 @@ export type ReplaceNetworkingV1ServiceCIDRStatusOutput =
 /**
  * replace status of the specified ServiceCIDR
  *
+ * @param name - name of the ServiceCIDR
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceNetworkingV1ServiceCIDRStatus =
@@ -6798,8 +9717,65 @@ export const replaceNetworkingV1ServiceCIDRStatus =
 // Input Schema
 export const ReplaceNetworkingV1beta1IPAddressInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.Struct({
+      parentRef: Schema.Struct({
+        group: Schema.optional(Schema.String),
+        name: Schema.String,
+        namespace: Schema.optional(Schema.String),
+        resource: Schema.String,
+      }),
+    }),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6874,7 +9850,10 @@ export type ReplaceNetworkingV1beta1IPAddressOutput =
 /**
  * replace the specified IPAddress
  *
+ * @param name - name of the IPAddress
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceNetworkingV1beta1IPAddress =
@@ -6886,8 +9865,78 @@ export const replaceNetworkingV1beta1IPAddress =
 // Input Schema
 export const ReplaceNetworkingV1beta1ServiceCIDRInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.optional(
+      Schema.Struct({
+        cidrs: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    status: Schema.optional(
+      Schema.Struct({
+        conditions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              lastTransitionTime: Schema.String,
+              message: Schema.String,
+              observedGeneration: Schema.optional(Schema.Number),
+              reason: Schema.String,
+              status: Schema.String,
+              type: Schema.String,
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6975,7 +10024,10 @@ export type ReplaceNetworkingV1beta1ServiceCIDROutput =
 /**
  * replace the specified ServiceCIDR
  *
+ * @param name - name of the ServiceCIDR
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceNetworkingV1beta1ServiceCIDR =
@@ -6987,8 +10039,78 @@ export const replaceNetworkingV1beta1ServiceCIDR =
 // Input Schema
 export const ReplaceNetworkingV1beta1ServiceCIDRStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.optional(
+      Schema.Struct({
+        cidrs: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+    status: Schema.optional(
+      Schema.Struct({
+        conditions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              lastTransitionTime: Schema.String,
+              message: Schema.String,
+              observedGeneration: Schema.optional(Schema.Number),
+              reason: Schema.String,
+              status: Schema.String,
+              type: Schema.String,
+            }),
+          ),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -7076,7 +10198,10 @@ export type ReplaceNetworkingV1beta1ServiceCIDRStatusOutput =
 /**
  * replace status of the specified ServiceCIDR
  *
+ * @param name - name of the ServiceCIDR
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceNetworkingV1beta1ServiceCIDRStatus =
@@ -7087,7 +10212,21 @@ export const replaceNetworkingV1beta1ServiceCIDRStatus =
   }));
 // Input Schema
 export const WatchNetworkingV1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/ipaddresses/{name}",
@@ -7108,6 +10247,61 @@ export type WatchNetworkingV1IPAddressOutput =
 // The operation
 /**
  * watch changes to an object of kind IPAddress. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param name - name of the IPAddress
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -7117,7 +10311,20 @@ export const watchNetworkingV1IPAddress = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const WatchNetworkingV1IPAddressListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/ipaddresses",
@@ -7138,6 +10345,60 @@ export type WatchNetworkingV1IPAddressListOutput =
 // The operation
 /**
  * watch individual changes to a list of IPAddress. deprecated: use the 'watch' parameter with a list operation instead.
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1IPAddressList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7146,7 +10407,21 @@ export const watchNetworkingV1IPAddressList =
   }));
 // Input Schema
 export const WatchNetworkingV1IngressClassInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/ingressclasses/{name}",
@@ -7167,6 +10442,61 @@ export type WatchNetworkingV1IngressClassOutput =
 // The operation
 /**
  * watch changes to an object of kind IngressClass. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param name - name of the IngressClass
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1IngressClass =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7175,7 +10505,20 @@ export const watchNetworkingV1IngressClass =
   }));
 // Input Schema
 export const WatchNetworkingV1IngressClassListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/ingressclasses",
@@ -7196,6 +10539,60 @@ export type WatchNetworkingV1IngressClassListOutput =
 // The operation
 /**
  * watch individual changes to a list of IngressClass. deprecated: use the 'watch' parameter with a list operation instead.
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1IngressClassList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7204,7 +10601,20 @@ export const watchNetworkingV1IngressClassList =
   }));
 // Input Schema
 export const WatchNetworkingV1IngressListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/ingresses",
@@ -7225,6 +10635,60 @@ export type WatchNetworkingV1IngressListForAllNamespacesOutput =
 // The operation
 /**
  * watch individual changes to a list of Ingress. deprecated: use the 'watch' parameter with a list operation instead.
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1IngressListForAllNamespaces =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7233,7 +10697,22 @@ export const watchNetworkingV1IngressListForAllNamespaces =
   }));
 // Input Schema
 export const WatchNetworkingV1NamespacedIngressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}",
@@ -7254,6 +10733,62 @@ export type WatchNetworkingV1NamespacedIngressOutput =
 // The operation
 /**
  * watch changes to an object of kind Ingress. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param name - name of the Ingress
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1NamespacedIngress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7262,7 +10797,21 @@ export const watchNetworkingV1NamespacedIngress =
   }));
 // Input Schema
 export const WatchNetworkingV1NamespacedIngressListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespace: Schema.String.pipe(T.PathParam()),
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses",
@@ -7283,6 +10832,61 @@ export type WatchNetworkingV1NamespacedIngressListOutput =
 // The operation
 /**
  * watch individual changes to a list of Ingress. deprecated: use the 'watch' parameter with a list operation instead.
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1NamespacedIngressList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7291,7 +10895,22 @@ export const watchNetworkingV1NamespacedIngressList =
   }));
 // Input Schema
 export const WatchNetworkingV1NamespacedNetworkPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}",
@@ -7312,6 +10931,62 @@ export type WatchNetworkingV1NamespacedNetworkPolicyOutput =
 // The operation
 /**
  * watch changes to an object of kind NetworkPolicy. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param name - name of the NetworkPolicy
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1NamespacedNetworkPolicy =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7320,7 +10995,21 @@ export const watchNetworkingV1NamespacedNetworkPolicy =
   }));
 // Input Schema
 export const WatchNetworkingV1NamespacedNetworkPolicyListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespace: Schema.String.pipe(T.PathParam()),
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies",
@@ -7341,6 +11030,61 @@ export type WatchNetworkingV1NamespacedNetworkPolicyListOutput =
 // The operation
 /**
  * watch individual changes to a list of NetworkPolicy. deprecated: use the 'watch' parameter with a list operation instead.
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1NamespacedNetworkPolicyList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7349,7 +11093,20 @@ export const watchNetworkingV1NamespacedNetworkPolicyList =
   }));
 // Input Schema
 export const WatchNetworkingV1NetworkPolicyListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/networkpolicies",
@@ -7370,6 +11127,60 @@ export type WatchNetworkingV1NetworkPolicyListForAllNamespacesOutput =
 // The operation
 /**
  * watch individual changes to a list of NetworkPolicy. deprecated: use the 'watch' parameter with a list operation instead.
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1NetworkPolicyListForAllNamespaces =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7378,7 +11189,21 @@ export const watchNetworkingV1NetworkPolicyListForAllNamespaces =
   }));
 // Input Schema
 export const WatchNetworkingV1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/servicecidrs/{name}",
@@ -7399,6 +11224,61 @@ export type WatchNetworkingV1ServiceCIDROutput =
 // The operation
 /**
  * watch changes to an object of kind ServiceCIDR. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param name - name of the ServiceCIDR
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1ServiceCIDR =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7407,7 +11287,20 @@ export const watchNetworkingV1ServiceCIDR =
   }));
 // Input Schema
 export const WatchNetworkingV1ServiceCIDRListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1/watch/servicecidrs",
@@ -7428,6 +11321,60 @@ export type WatchNetworkingV1ServiceCIDRListOutput =
 // The operation
 /**
  * watch individual changes to a list of ServiceCIDR. deprecated: use the 'watch' parameter with a list operation instead.
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1ServiceCIDRList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7436,7 +11383,21 @@ export const watchNetworkingV1ServiceCIDRList =
   }));
 // Input Schema
 export const WatchNetworkingV1beta1IPAddressInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1beta1/watch/ipaddresses/{name}",
@@ -7457,6 +11418,61 @@ export type WatchNetworkingV1beta1IPAddressOutput =
 // The operation
 /**
  * watch changes to an object of kind IPAddress. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param name - name of the IPAddress
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1beta1IPAddress =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7465,7 +11481,20 @@ export const watchNetworkingV1beta1IPAddress =
   }));
 // Input Schema
 export const WatchNetworkingV1beta1IPAddressListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1beta1/watch/ipaddresses",
@@ -7486,6 +11515,60 @@ export type WatchNetworkingV1beta1IPAddressListOutput =
 // The operation
 /**
  * watch individual changes to a list of IPAddress. deprecated: use the 'watch' parameter with a list operation instead.
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1beta1IPAddressList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7494,7 +11577,21 @@ export const watchNetworkingV1beta1IPAddressList =
   }));
 // Input Schema
 export const WatchNetworkingV1beta1ServiceCIDRInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1beta1/watch/servicecidrs/{name}",
@@ -7515,6 +11612,61 @@ export type WatchNetworkingV1beta1ServiceCIDROutput =
 // The operation
 /**
  * watch changes to an object of kind ServiceCIDR. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param name - name of the ServiceCIDR
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1beta1ServiceCIDR =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -7523,7 +11675,20 @@ export const watchNetworkingV1beta1ServiceCIDR =
   }));
 // Input Schema
 export const WatchNetworkingV1beta1ServiceCIDRListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/networking.k8s.io/v1beta1/watch/servicecidrs",
@@ -7544,6 +11709,60 @@ export type WatchNetworkingV1beta1ServiceCIDRListOutput =
 // The operation
 /**
  * watch individual changes to a list of ServiceCIDR. deprecated: use the 'watch' parameter with a list operation instead.
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchNetworkingV1beta1ServiceCIDRList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({

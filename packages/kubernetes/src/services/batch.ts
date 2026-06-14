@@ -12,8 +12,2716 @@ import { Conflict, NotFound, UnprocessableEntity } from "../errors.ts";
 // Input Schema
 export const CreateBatchV1NamespacedCronJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.Struct({
+      concurrencyPolicy: Schema.optional(Schema.String),
+      failedJobsHistoryLimit: Schema.optional(Schema.Number),
+      jobTemplate: Schema.Struct({
+        metadata: Schema.optional(
+          Schema.Struct({
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
+                }),
+              ),
+            ),
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            activeDeadlineSeconds: Schema.optional(Schema.Number),
+            backoffLimit: Schema.optional(Schema.Number),
+            backoffLimitPerIndex: Schema.optional(Schema.Number),
+            completionMode: Schema.optional(Schema.String),
+            completions: Schema.optional(Schema.Number),
+            managedBy: Schema.optional(Schema.String),
+            manualSelector: Schema.optional(Schema.Boolean),
+            maxFailedIndexes: Schema.optional(Schema.Number),
+            parallelism: Schema.optional(Schema.Number),
+            podFailurePolicy: Schema.optional(
+              Schema.Struct({
+                rules: Schema.Array(
+                  Schema.Struct({
+                    action: Schema.String,
+                    onExitCodes: Schema.optional(
+                      Schema.Struct({
+                        containerName: Schema.optional(Schema.String),
+                        operator: Schema.String,
+                        values: Schema.Array(Schema.Number),
+                      }),
+                    ),
+                    onPodConditions: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          status: Schema.optional(Schema.String),
+                          type: Schema.String,
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            podReplacementPolicy: Schema.optional(Schema.String),
+            selector: Schema.optional(
+              Schema.Struct({
+                matchExpressions: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      key: Schema.String,
+                      operator: Schema.String,
+                      values: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                matchLabels: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+              }),
+            ),
+            successPolicy: Schema.optional(
+              Schema.Struct({
+                rules: Schema.Array(
+                  Schema.Struct({
+                    succeededCount: Schema.optional(Schema.Number),
+                    succeededIndexes: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            suspend: Schema.optional(Schema.Boolean),
+            template: Schema.Struct({
+              metadata: Schema.optional(
+                Schema.Struct({
+                  annotations: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  creationTimestamp: Schema.optional(Schema.String),
+                  deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+                  deletionTimestamp: Schema.optional(Schema.String),
+                  finalizers: Schema.optional(Schema.Array(Schema.String)),
+                  generateName: Schema.optional(Schema.String),
+                  generation: Schema.optional(Schema.Number),
+                  labels: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  managedFields: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        apiVersion: Schema.optional(Schema.String),
+                        fieldsType: Schema.optional(Schema.String),
+                        fieldsV1: Schema.optional(Schema.Unknown),
+                        manager: Schema.optional(Schema.String),
+                        operation: Schema.optional(Schema.String),
+                        subresource: Schema.optional(Schema.String),
+                        time: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  name: Schema.optional(Schema.String),
+                  namespace: Schema.optional(Schema.String),
+                  ownerReferences: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        apiVersion: Schema.String,
+                        blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                        controller: Schema.optional(Schema.Boolean),
+                        kind: Schema.String,
+                        name: Schema.String,
+                        uid: Schema.String,
+                      }),
+                    ),
+                  ),
+                  resourceVersion: Schema.optional(Schema.String),
+                  selfLink: Schema.optional(Schema.String),
+                  uid: Schema.optional(Schema.String),
+                }),
+              ),
+              spec: Schema.optional(
+                Schema.Struct({
+                  activeDeadlineSeconds: Schema.optional(Schema.Number),
+                  affinity: Schema.optional(
+                    Schema.Struct({
+                      nodeAffinity: Schema.optional(
+                        Schema.Struct({
+                          preferredDuringSchedulingIgnoredDuringExecution:
+                            Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  preference: Schema.Struct({
+                                    matchExpressions: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                    matchFields: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                  }),
+                                  weight: Schema.Number,
+                                }),
+                              ),
+                            ),
+                          requiredDuringSchedulingIgnoredDuringExecution:
+                            Schema.optional(
+                              Schema.Struct({
+                                nodeSelectorTerms: Schema.Array(
+                                  Schema.Struct({
+                                    matchExpressions: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                    matchFields: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                  }),
+                                ),
+                              }),
+                            ),
+                        }),
+                      ),
+                      podAffinity: Schema.optional(
+                        Schema.Struct({
+                          preferredDuringSchedulingIgnoredDuringExecution:
+                            Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  podAffinityTerm: Schema.Struct({
+                                    labelSelector: Schema.optional(
+                                      Schema.Struct({
+                                        matchExpressions: Schema.optional(
+                                          Schema.Array(
+                                            Schema.Struct({
+                                              key: Schema.String,
+                                              operator: Schema.String,
+                                              values: Schema.optional(
+                                                Schema.Array(Schema.String),
+                                              ),
+                                            }),
+                                          ),
+                                        ),
+                                        matchLabels: Schema.optional(
+                                          Schema.Record(
+                                            Schema.String,
+                                            Schema.String,
+                                          ),
+                                        ),
+                                      }),
+                                    ),
+                                    matchLabelKeys: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                    mismatchLabelKeys: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                    namespaceSelector: Schema.optional(
+                                      Schema.Struct({
+                                        matchExpressions: Schema.optional(
+                                          Schema.Array(
+                                            Schema.Struct({
+                                              key: Schema.String,
+                                              operator: Schema.String,
+                                              values: Schema.optional(
+                                                Schema.Array(Schema.String),
+                                              ),
+                                            }),
+                                          ),
+                                        ),
+                                        matchLabels: Schema.optional(
+                                          Schema.Record(
+                                            Schema.String,
+                                            Schema.String,
+                                          ),
+                                        ),
+                                      }),
+                                    ),
+                                    namespaces: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                    topologyKey: Schema.String,
+                                  }),
+                                  weight: Schema.Number,
+                                }),
+                              ),
+                            ),
+                          requiredDuringSchedulingIgnoredDuringExecution:
+                            Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  labelSelector: Schema.optional(
+                                    Schema.Struct({
+                                      matchExpressions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            operator: Schema.String,
+                                            values: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      matchLabels: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  matchLabelKeys: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  mismatchLabelKeys: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  namespaceSelector: Schema.optional(
+                                    Schema.Struct({
+                                      matchExpressions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            operator: Schema.String,
+                                            values: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      matchLabels: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  namespaces: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  topologyKey: Schema.String,
+                                }),
+                              ),
+                            ),
+                        }),
+                      ),
+                      podAntiAffinity: Schema.optional(
+                        Schema.Struct({
+                          preferredDuringSchedulingIgnoredDuringExecution:
+                            Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  podAffinityTerm: Schema.Struct({
+                                    labelSelector: Schema.optional(
+                                      Schema.Struct({
+                                        matchExpressions: Schema.optional(
+                                          Schema.Array(
+                                            Schema.Struct({
+                                              key: Schema.String,
+                                              operator: Schema.String,
+                                              values: Schema.optional(
+                                                Schema.Array(Schema.String),
+                                              ),
+                                            }),
+                                          ),
+                                        ),
+                                        matchLabels: Schema.optional(
+                                          Schema.Record(
+                                            Schema.String,
+                                            Schema.String,
+                                          ),
+                                        ),
+                                      }),
+                                    ),
+                                    matchLabelKeys: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                    mismatchLabelKeys: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                    namespaceSelector: Schema.optional(
+                                      Schema.Struct({
+                                        matchExpressions: Schema.optional(
+                                          Schema.Array(
+                                            Schema.Struct({
+                                              key: Schema.String,
+                                              operator: Schema.String,
+                                              values: Schema.optional(
+                                                Schema.Array(Schema.String),
+                                              ),
+                                            }),
+                                          ),
+                                        ),
+                                        matchLabels: Schema.optional(
+                                          Schema.Record(
+                                            Schema.String,
+                                            Schema.String,
+                                          ),
+                                        ),
+                                      }),
+                                    ),
+                                    namespaces: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                    topologyKey: Schema.String,
+                                  }),
+                                  weight: Schema.Number,
+                                }),
+                              ),
+                            ),
+                          requiredDuringSchedulingIgnoredDuringExecution:
+                            Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  labelSelector: Schema.optional(
+                                    Schema.Struct({
+                                      matchExpressions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            operator: Schema.String,
+                                            values: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      matchLabels: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  matchLabelKeys: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  mismatchLabelKeys: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  namespaceSelector: Schema.optional(
+                                    Schema.Struct({
+                                      matchExpressions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            operator: Schema.String,
+                                            values: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      matchLabels: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  namespaces: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  topologyKey: Schema.String,
+                                }),
+                              ),
+                            ),
+                        }),
+                      ),
+                    }),
+                  ),
+                  automountServiceAccountToken: Schema.optional(Schema.Boolean),
+                  containers: Schema.Array(
+                    Schema.Struct({
+                      args: Schema.optional(Schema.Array(Schema.String)),
+                      command: Schema.optional(Schema.Array(Schema.String)),
+                      env: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.String,
+                            value: Schema.optional(Schema.String),
+                            valueFrom: Schema.optional(
+                              Schema.Struct({
+                                configMapKeyRef: Schema.optional(
+                                  Schema.Struct({
+                                    key: Schema.String,
+                                    name: Schema.optional(Schema.String),
+                                    optional: Schema.optional(Schema.Boolean),
+                                  }),
+                                ),
+                                fieldRef: Schema.optional(
+                                  Schema.Struct({
+                                    apiVersion: Schema.optional(Schema.String),
+                                    fieldPath: Schema.String,
+                                  }),
+                                ),
+                                fileKeyRef: Schema.optional(
+                                  Schema.Struct({
+                                    key: Schema.String,
+                                    optional: Schema.optional(Schema.Boolean),
+                                    path: Schema.String,
+                                    volumeName: Schema.String,
+                                  }),
+                                ),
+                                resourceFieldRef: Schema.optional(
+                                  Schema.Struct({
+                                    containerName: Schema.optional(
+                                      Schema.String,
+                                    ),
+                                    divisor: Schema.optional(Schema.String),
+                                    resource: Schema.String,
+                                  }),
+                                ),
+                                secretKeyRef: Schema.optional(
+                                  Schema.Struct({
+                                    key: Schema.String,
+                                    name: Schema.optional(Schema.String),
+                                    optional: Schema.optional(Schema.Boolean),
+                                  }),
+                                ),
+                              }),
+                            ),
+                          }),
+                        ),
+                      ),
+                      envFrom: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            configMapRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                optional: Schema.optional(Schema.Boolean),
+                              }),
+                            ),
+                            prefix: Schema.optional(Schema.String),
+                            secretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                optional: Schema.optional(Schema.Boolean),
+                              }),
+                            ),
+                          }),
+                        ),
+                      ),
+                      image: Schema.optional(Schema.String),
+                      imagePullPolicy: Schema.optional(Schema.String),
+                      lifecycle: Schema.optional(
+                        Schema.Struct({
+                          postStart: Schema.optional(
+                            Schema.Struct({
+                              exec: Schema.optional(
+                                Schema.Struct({
+                                  command: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                }),
+                              ),
+                              httpGet: Schema.optional(
+                                Schema.Struct({
+                                  host: Schema.optional(Schema.String),
+                                  httpHeaders: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        name: Schema.String,
+                                        value: Schema.String,
+                                      }),
+                                    ),
+                                  ),
+                                  path: Schema.optional(Schema.String),
+                                  port: Schema.String,
+                                  scheme: Schema.optional(Schema.String),
+                                }),
+                              ),
+                              sleep: Schema.optional(
+                                Schema.Struct({
+                                  seconds: Schema.Number,
+                                }),
+                              ),
+                              tcpSocket: Schema.optional(
+                                Schema.Struct({
+                                  host: Schema.optional(Schema.String),
+                                  port: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                          preStop: Schema.optional(
+                            Schema.Struct({
+                              exec: Schema.optional(
+                                Schema.Struct({
+                                  command: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                }),
+                              ),
+                              httpGet: Schema.optional(
+                                Schema.Struct({
+                                  host: Schema.optional(Schema.String),
+                                  httpHeaders: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        name: Schema.String,
+                                        value: Schema.String,
+                                      }),
+                                    ),
+                                  ),
+                                  path: Schema.optional(Schema.String),
+                                  port: Schema.String,
+                                  scheme: Schema.optional(Schema.String),
+                                }),
+                              ),
+                              sleep: Schema.optional(
+                                Schema.Struct({
+                                  seconds: Schema.Number,
+                                }),
+                              ),
+                              tcpSocket: Schema.optional(
+                                Schema.Struct({
+                                  host: Schema.optional(Schema.String),
+                                  port: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                          stopSignal: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      livenessProbe: Schema.optional(
+                        Schema.Struct({
+                          exec: Schema.optional(
+                            Schema.Struct({
+                              command: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          failureThreshold: Schema.optional(Schema.Number),
+                          grpc: Schema.optional(
+                            Schema.Struct({
+                              port: Schema.Number,
+                              service: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          httpGet: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              httpHeaders: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.String,
+                                    value: Schema.String,
+                                  }),
+                                ),
+                              ),
+                              path: Schema.optional(Schema.String),
+                              port: Schema.String,
+                              scheme: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          initialDelaySeconds: Schema.optional(Schema.Number),
+                          periodSeconds: Schema.optional(Schema.Number),
+                          successThreshold: Schema.optional(Schema.Number),
+                          tcpSocket: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              port: Schema.String,
+                            }),
+                          ),
+                          terminationGracePeriodSeconds: Schema.optional(
+                            Schema.Number,
+                          ),
+                          timeoutSeconds: Schema.optional(Schema.Number),
+                        }),
+                      ),
+                      name: Schema.String,
+                      ports: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            containerPort: Schema.Number,
+                            hostIP: Schema.optional(Schema.String),
+                            hostPort: Schema.optional(Schema.Number),
+                            name: Schema.optional(Schema.String),
+                            protocol: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                      readinessProbe: Schema.optional(
+                        Schema.Struct({
+                          exec: Schema.optional(
+                            Schema.Struct({
+                              command: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          failureThreshold: Schema.optional(Schema.Number),
+                          grpc: Schema.optional(
+                            Schema.Struct({
+                              port: Schema.Number,
+                              service: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          httpGet: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              httpHeaders: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.String,
+                                    value: Schema.String,
+                                  }),
+                                ),
+                              ),
+                              path: Schema.optional(Schema.String),
+                              port: Schema.String,
+                              scheme: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          initialDelaySeconds: Schema.optional(Schema.Number),
+                          periodSeconds: Schema.optional(Schema.Number),
+                          successThreshold: Schema.optional(Schema.Number),
+                          tcpSocket: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              port: Schema.String,
+                            }),
+                          ),
+                          terminationGracePeriodSeconds: Schema.optional(
+                            Schema.Number,
+                          ),
+                          timeoutSeconds: Schema.optional(Schema.Number),
+                        }),
+                      ),
+                      resizePolicy: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            resourceName: Schema.String,
+                            restartPolicy: Schema.String,
+                          }),
+                        ),
+                      ),
+                      resources: Schema.optional(
+                        Schema.Struct({
+                          claims: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.String,
+                                request: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                          limits: Schema.optional(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                          requests: Schema.optional(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                        }),
+                      ),
+                      restartPolicy: Schema.optional(Schema.String),
+                      restartPolicyRules: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            exitCodes: Schema.optional(
+                              Schema.Struct({
+                                operator: Schema.String,
+                                values: Schema.optional(
+                                  Schema.Array(Schema.Number),
+                                ),
+                              }),
+                            ),
+                          }),
+                        ),
+                      ),
+                      securityContext: Schema.optional(
+                        Schema.Struct({
+                          allowPrivilegeEscalation: Schema.optional(
+                            Schema.Boolean,
+                          ),
+                          appArmorProfile: Schema.optional(
+                            Schema.Struct({
+                              localhostProfile: Schema.optional(Schema.String),
+                              type: Schema.String,
+                            }),
+                          ),
+                          capabilities: Schema.optional(
+                            Schema.Struct({
+                              add: Schema.optional(Schema.Array(Schema.String)),
+                              drop: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          privileged: Schema.optional(Schema.Boolean),
+                          procMount: Schema.optional(Schema.String),
+                          readOnlyRootFilesystem: Schema.optional(
+                            Schema.Boolean,
+                          ),
+                          runAsGroup: Schema.optional(Schema.Number),
+                          runAsNonRoot: Schema.optional(Schema.Boolean),
+                          runAsUser: Schema.optional(Schema.Number),
+                          seLinuxOptions: Schema.optional(
+                            Schema.Struct({
+                              level: Schema.optional(Schema.String),
+                              role: Schema.optional(Schema.String),
+                              type: Schema.optional(Schema.String),
+                              user: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          seccompProfile: Schema.optional(
+                            Schema.Struct({
+                              localhostProfile: Schema.optional(Schema.String),
+                              type: Schema.String,
+                            }),
+                          ),
+                          windowsOptions: Schema.optional(
+                            Schema.Struct({
+                              gmsaCredentialSpec: Schema.optional(
+                                Schema.String,
+                              ),
+                              gmsaCredentialSpecName: Schema.optional(
+                                Schema.String,
+                              ),
+                              hostProcess: Schema.optional(Schema.Boolean),
+                              runAsUserName: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        }),
+                      ),
+                      startupProbe: Schema.optional(
+                        Schema.Struct({
+                          exec: Schema.optional(
+                            Schema.Struct({
+                              command: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          failureThreshold: Schema.optional(Schema.Number),
+                          grpc: Schema.optional(
+                            Schema.Struct({
+                              port: Schema.Number,
+                              service: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          httpGet: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              httpHeaders: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.String,
+                                    value: Schema.String,
+                                  }),
+                                ),
+                              ),
+                              path: Schema.optional(Schema.String),
+                              port: Schema.String,
+                              scheme: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          initialDelaySeconds: Schema.optional(Schema.Number),
+                          periodSeconds: Schema.optional(Schema.Number),
+                          successThreshold: Schema.optional(Schema.Number),
+                          tcpSocket: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              port: Schema.String,
+                            }),
+                          ),
+                          terminationGracePeriodSeconds: Schema.optional(
+                            Schema.Number,
+                          ),
+                          timeoutSeconds: Schema.optional(Schema.Number),
+                        }),
+                      ),
+                      stdin: Schema.optional(Schema.Boolean),
+                      stdinOnce: Schema.optional(Schema.Boolean),
+                      terminationMessagePath: Schema.optional(Schema.String),
+                      terminationMessagePolicy: Schema.optional(Schema.String),
+                      tty: Schema.optional(Schema.Boolean),
+                      volumeDevices: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            devicePath: Schema.String,
+                            name: Schema.String,
+                          }),
+                        ),
+                      ),
+                      volumeMounts: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            mountPath: Schema.String,
+                            mountPropagation: Schema.optional(Schema.String),
+                            name: Schema.String,
+                            readOnly: Schema.optional(Schema.Boolean),
+                            recursiveReadOnly: Schema.optional(Schema.String),
+                            subPath: Schema.optional(Schema.String),
+                            subPathExpr: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                      workingDir: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  dnsConfig: Schema.optional(
+                    Schema.Struct({
+                      nameservers: Schema.optional(Schema.Array(Schema.String)),
+                      options: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                            value: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                      searches: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                  dnsPolicy: Schema.optional(Schema.String),
+                  enableServiceLinks: Schema.optional(Schema.Boolean),
+                  ephemeralContainers: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        args: Schema.optional(Schema.Array(Schema.String)),
+                        command: Schema.optional(Schema.Array(Schema.String)),
+                        env: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              name: Schema.String,
+                              value: Schema.optional(Schema.String),
+                              valueFrom: Schema.optional(
+                                Schema.Struct({
+                                  configMapKeyRef: Schema.optional(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      name: Schema.optional(Schema.String),
+                                      optional: Schema.optional(Schema.Boolean),
+                                    }),
+                                  ),
+                                  fieldRef: Schema.optional(
+                                    Schema.Struct({
+                                      apiVersion: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      fieldPath: Schema.String,
+                                    }),
+                                  ),
+                                  fileKeyRef: Schema.optional(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      optional: Schema.optional(Schema.Boolean),
+                                      path: Schema.String,
+                                      volumeName: Schema.String,
+                                    }),
+                                  ),
+                                  resourceFieldRef: Schema.optional(
+                                    Schema.Struct({
+                                      containerName: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      divisor: Schema.optional(Schema.String),
+                                      resource: Schema.String,
+                                    }),
+                                  ),
+                                  secretKeyRef: Schema.optional(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      name: Schema.optional(Schema.String),
+                                      optional: Schema.optional(Schema.Boolean),
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        envFrom: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              configMapRef: Schema.optional(
+                                Schema.Struct({
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                              prefix: Schema.optional(Schema.String),
+                              secretRef: Schema.optional(
+                                Schema.Struct({
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        image: Schema.optional(Schema.String),
+                        imagePullPolicy: Schema.optional(Schema.String),
+                        lifecycle: Schema.optional(
+                          Schema.Struct({
+                            postStart: Schema.optional(
+                              Schema.Struct({
+                                exec: Schema.optional(
+                                  Schema.Struct({
+                                    command: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                  }),
+                                ),
+                                httpGet: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    httpHeaders: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          name: Schema.String,
+                                          value: Schema.String,
+                                        }),
+                                      ),
+                                    ),
+                                    path: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                    scheme: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                                sleep: Schema.optional(
+                                  Schema.Struct({
+                                    seconds: Schema.Number,
+                                  }),
+                                ),
+                                tcpSocket: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
+                            preStop: Schema.optional(
+                              Schema.Struct({
+                                exec: Schema.optional(
+                                  Schema.Struct({
+                                    command: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                  }),
+                                ),
+                                httpGet: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    httpHeaders: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          name: Schema.String,
+                                          value: Schema.String,
+                                        }),
+                                      ),
+                                    ),
+                                    path: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                    scheme: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                                sleep: Schema.optional(
+                                  Schema.Struct({
+                                    seconds: Schema.Number,
+                                  }),
+                                ),
+                                tcpSocket: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
+                            stopSignal: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        livenessProbe: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            failureThreshold: Schema.optional(Schema.Number),
+                            grpc: Schema.optional(
+                              Schema.Struct({
+                                port: Schema.Number,
+                                service: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            initialDelaySeconds: Schema.optional(Schema.Number),
+                            periodSeconds: Schema.optional(Schema.Number),
+                            successThreshold: Schema.optional(Schema.Number),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                            terminationGracePeriodSeconds: Schema.optional(
+                              Schema.Number,
+                            ),
+                            timeoutSeconds: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                        name: Schema.String,
+                        ports: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              containerPort: Schema.Number,
+                              hostIP: Schema.optional(Schema.String),
+                              hostPort: Schema.optional(Schema.Number),
+                              name: Schema.optional(Schema.String),
+                              protocol: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        readinessProbe: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            failureThreshold: Schema.optional(Schema.Number),
+                            grpc: Schema.optional(
+                              Schema.Struct({
+                                port: Schema.Number,
+                                service: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            initialDelaySeconds: Schema.optional(Schema.Number),
+                            periodSeconds: Schema.optional(Schema.Number),
+                            successThreshold: Schema.optional(Schema.Number),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                            terminationGracePeriodSeconds: Schema.optional(
+                              Schema.Number,
+                            ),
+                            timeoutSeconds: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                        resizePolicy: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              resourceName: Schema.String,
+                              restartPolicy: Schema.String,
+                            }),
+                          ),
+                        ),
+                        resources: Schema.optional(
+                          Schema.Struct({
+                            claims: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  request: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                            limits: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        restartPolicy: Schema.optional(Schema.String),
+                        restartPolicyRules: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              action: Schema.String,
+                              exitCodes: Schema.optional(
+                                Schema.Struct({
+                                  operator: Schema.String,
+                                  values: Schema.optional(
+                                    Schema.Array(Schema.Number),
+                                  ),
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        securityContext: Schema.optional(
+                          Schema.Struct({
+                            allowPrivilegeEscalation: Schema.optional(
+                              Schema.Boolean,
+                            ),
+                            appArmorProfile: Schema.optional(
+                              Schema.Struct({
+                                localhostProfile: Schema.optional(
+                                  Schema.String,
+                                ),
+                                type: Schema.String,
+                              }),
+                            ),
+                            capabilities: Schema.optional(
+                              Schema.Struct({
+                                add: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                drop: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            privileged: Schema.optional(Schema.Boolean),
+                            procMount: Schema.optional(Schema.String),
+                            readOnlyRootFilesystem: Schema.optional(
+                              Schema.Boolean,
+                            ),
+                            runAsGroup: Schema.optional(Schema.Number),
+                            runAsNonRoot: Schema.optional(Schema.Boolean),
+                            runAsUser: Schema.optional(Schema.Number),
+                            seLinuxOptions: Schema.optional(
+                              Schema.Struct({
+                                level: Schema.optional(Schema.String),
+                                role: Schema.optional(Schema.String),
+                                type: Schema.optional(Schema.String),
+                                user: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            seccompProfile: Schema.optional(
+                              Schema.Struct({
+                                localhostProfile: Schema.optional(
+                                  Schema.String,
+                                ),
+                                type: Schema.String,
+                              }),
+                            ),
+                            windowsOptions: Schema.optional(
+                              Schema.Struct({
+                                gmsaCredentialSpec: Schema.optional(
+                                  Schema.String,
+                                ),
+                                gmsaCredentialSpecName: Schema.optional(
+                                  Schema.String,
+                                ),
+                                hostProcess: Schema.optional(Schema.Boolean),
+                                runAsUserName: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          }),
+                        ),
+                        startupProbe: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            failureThreshold: Schema.optional(Schema.Number),
+                            grpc: Schema.optional(
+                              Schema.Struct({
+                                port: Schema.Number,
+                                service: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            initialDelaySeconds: Schema.optional(Schema.Number),
+                            periodSeconds: Schema.optional(Schema.Number),
+                            successThreshold: Schema.optional(Schema.Number),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                            terminationGracePeriodSeconds: Schema.optional(
+                              Schema.Number,
+                            ),
+                            timeoutSeconds: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                        stdin: Schema.optional(Schema.Boolean),
+                        stdinOnce: Schema.optional(Schema.Boolean),
+                        targetContainerName: Schema.optional(Schema.String),
+                        terminationMessagePath: Schema.optional(Schema.String),
+                        terminationMessagePolicy: Schema.optional(
+                          Schema.String,
+                        ),
+                        tty: Schema.optional(Schema.Boolean),
+                        volumeDevices: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              devicePath: Schema.String,
+                              name: Schema.String,
+                            }),
+                          ),
+                        ),
+                        volumeMounts: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              mountPath: Schema.String,
+                              mountPropagation: Schema.optional(Schema.String),
+                              name: Schema.String,
+                              readOnly: Schema.optional(Schema.Boolean),
+                              recursiveReadOnly: Schema.optional(Schema.String),
+                              subPath: Schema.optional(Schema.String),
+                              subPathExpr: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        workingDir: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  hostAliases: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        hostnames: Schema.optional(Schema.Array(Schema.String)),
+                        ip: Schema.String,
+                      }),
+                    ),
+                  ),
+                  hostIPC: Schema.optional(Schema.Boolean),
+                  hostNetwork: Schema.optional(Schema.Boolean),
+                  hostPID: Schema.optional(Schema.Boolean),
+                  hostUsers: Schema.optional(Schema.Boolean),
+                  hostname: Schema.optional(Schema.String),
+                  hostnameOverride: Schema.optional(Schema.String),
+                  imagePullSecrets: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  initContainers: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        args: Schema.optional(Schema.Array(Schema.String)),
+                        command: Schema.optional(Schema.Array(Schema.String)),
+                        env: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              name: Schema.String,
+                              value: Schema.optional(Schema.String),
+                              valueFrom: Schema.optional(
+                                Schema.Struct({
+                                  configMapKeyRef: Schema.optional(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      name: Schema.optional(Schema.String),
+                                      optional: Schema.optional(Schema.Boolean),
+                                    }),
+                                  ),
+                                  fieldRef: Schema.optional(
+                                    Schema.Struct({
+                                      apiVersion: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      fieldPath: Schema.String,
+                                    }),
+                                  ),
+                                  fileKeyRef: Schema.optional(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      optional: Schema.optional(Schema.Boolean),
+                                      path: Schema.String,
+                                      volumeName: Schema.String,
+                                    }),
+                                  ),
+                                  resourceFieldRef: Schema.optional(
+                                    Schema.Struct({
+                                      containerName: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      divisor: Schema.optional(Schema.String),
+                                      resource: Schema.String,
+                                    }),
+                                  ),
+                                  secretKeyRef: Schema.optional(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      name: Schema.optional(Schema.String),
+                                      optional: Schema.optional(Schema.Boolean),
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        envFrom: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              configMapRef: Schema.optional(
+                                Schema.Struct({
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                              prefix: Schema.optional(Schema.String),
+                              secretRef: Schema.optional(
+                                Schema.Struct({
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        image: Schema.optional(Schema.String),
+                        imagePullPolicy: Schema.optional(Schema.String),
+                        lifecycle: Schema.optional(
+                          Schema.Struct({
+                            postStart: Schema.optional(
+                              Schema.Struct({
+                                exec: Schema.optional(
+                                  Schema.Struct({
+                                    command: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                  }),
+                                ),
+                                httpGet: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    httpHeaders: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          name: Schema.String,
+                                          value: Schema.String,
+                                        }),
+                                      ),
+                                    ),
+                                    path: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                    scheme: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                                sleep: Schema.optional(
+                                  Schema.Struct({
+                                    seconds: Schema.Number,
+                                  }),
+                                ),
+                                tcpSocket: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
+                            preStop: Schema.optional(
+                              Schema.Struct({
+                                exec: Schema.optional(
+                                  Schema.Struct({
+                                    command: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                  }),
+                                ),
+                                httpGet: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    httpHeaders: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          name: Schema.String,
+                                          value: Schema.String,
+                                        }),
+                                      ),
+                                    ),
+                                    path: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                    scheme: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                                sleep: Schema.optional(
+                                  Schema.Struct({
+                                    seconds: Schema.Number,
+                                  }),
+                                ),
+                                tcpSocket: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
+                            stopSignal: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        livenessProbe: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            failureThreshold: Schema.optional(Schema.Number),
+                            grpc: Schema.optional(
+                              Schema.Struct({
+                                port: Schema.Number,
+                                service: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            initialDelaySeconds: Schema.optional(Schema.Number),
+                            periodSeconds: Schema.optional(Schema.Number),
+                            successThreshold: Schema.optional(Schema.Number),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                            terminationGracePeriodSeconds: Schema.optional(
+                              Schema.Number,
+                            ),
+                            timeoutSeconds: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                        name: Schema.String,
+                        ports: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              containerPort: Schema.Number,
+                              hostIP: Schema.optional(Schema.String),
+                              hostPort: Schema.optional(Schema.Number),
+                              name: Schema.optional(Schema.String),
+                              protocol: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        readinessProbe: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            failureThreshold: Schema.optional(Schema.Number),
+                            grpc: Schema.optional(
+                              Schema.Struct({
+                                port: Schema.Number,
+                                service: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            initialDelaySeconds: Schema.optional(Schema.Number),
+                            periodSeconds: Schema.optional(Schema.Number),
+                            successThreshold: Schema.optional(Schema.Number),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                            terminationGracePeriodSeconds: Schema.optional(
+                              Schema.Number,
+                            ),
+                            timeoutSeconds: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                        resizePolicy: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              resourceName: Schema.String,
+                              restartPolicy: Schema.String,
+                            }),
+                          ),
+                        ),
+                        resources: Schema.optional(
+                          Schema.Struct({
+                            claims: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  request: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                            limits: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        restartPolicy: Schema.optional(Schema.String),
+                        restartPolicyRules: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              action: Schema.String,
+                              exitCodes: Schema.optional(
+                                Schema.Struct({
+                                  operator: Schema.String,
+                                  values: Schema.optional(
+                                    Schema.Array(Schema.Number),
+                                  ),
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        securityContext: Schema.optional(
+                          Schema.Struct({
+                            allowPrivilegeEscalation: Schema.optional(
+                              Schema.Boolean,
+                            ),
+                            appArmorProfile: Schema.optional(
+                              Schema.Struct({
+                                localhostProfile: Schema.optional(
+                                  Schema.String,
+                                ),
+                                type: Schema.String,
+                              }),
+                            ),
+                            capabilities: Schema.optional(
+                              Schema.Struct({
+                                add: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                drop: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            privileged: Schema.optional(Schema.Boolean),
+                            procMount: Schema.optional(Schema.String),
+                            readOnlyRootFilesystem: Schema.optional(
+                              Schema.Boolean,
+                            ),
+                            runAsGroup: Schema.optional(Schema.Number),
+                            runAsNonRoot: Schema.optional(Schema.Boolean),
+                            runAsUser: Schema.optional(Schema.Number),
+                            seLinuxOptions: Schema.optional(
+                              Schema.Struct({
+                                level: Schema.optional(Schema.String),
+                                role: Schema.optional(Schema.String),
+                                type: Schema.optional(Schema.String),
+                                user: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            seccompProfile: Schema.optional(
+                              Schema.Struct({
+                                localhostProfile: Schema.optional(
+                                  Schema.String,
+                                ),
+                                type: Schema.String,
+                              }),
+                            ),
+                            windowsOptions: Schema.optional(
+                              Schema.Struct({
+                                gmsaCredentialSpec: Schema.optional(
+                                  Schema.String,
+                                ),
+                                gmsaCredentialSpecName: Schema.optional(
+                                  Schema.String,
+                                ),
+                                hostProcess: Schema.optional(Schema.Boolean),
+                                runAsUserName: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          }),
+                        ),
+                        startupProbe: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            failureThreshold: Schema.optional(Schema.Number),
+                            grpc: Schema.optional(
+                              Schema.Struct({
+                                port: Schema.Number,
+                                service: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            initialDelaySeconds: Schema.optional(Schema.Number),
+                            periodSeconds: Schema.optional(Schema.Number),
+                            successThreshold: Schema.optional(Schema.Number),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                            terminationGracePeriodSeconds: Schema.optional(
+                              Schema.Number,
+                            ),
+                            timeoutSeconds: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                        stdin: Schema.optional(Schema.Boolean),
+                        stdinOnce: Schema.optional(Schema.Boolean),
+                        terminationMessagePath: Schema.optional(Schema.String),
+                        terminationMessagePolicy: Schema.optional(
+                          Schema.String,
+                        ),
+                        tty: Schema.optional(Schema.Boolean),
+                        volumeDevices: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              devicePath: Schema.String,
+                              name: Schema.String,
+                            }),
+                          ),
+                        ),
+                        volumeMounts: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              mountPath: Schema.String,
+                              mountPropagation: Schema.optional(Schema.String),
+                              name: Schema.String,
+                              readOnly: Schema.optional(Schema.Boolean),
+                              recursiveReadOnly: Schema.optional(Schema.String),
+                              subPath: Schema.optional(Schema.String),
+                              subPathExpr: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        workingDir: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  nodeName: Schema.optional(Schema.String),
+                  nodeSelector: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  os: Schema.optional(
+                    Schema.Struct({
+                      name: Schema.String,
+                    }),
+                  ),
+                  overhead: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  preemptionPolicy: Schema.optional(Schema.String),
+                  priority: Schema.optional(Schema.Number),
+                  priorityClassName: Schema.optional(Schema.String),
+                  readinessGates: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        conditionType: Schema.String,
+                      }),
+                    ),
+                  ),
+                  resourceClaims: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.String,
+                        resourceClaimName: Schema.optional(Schema.String),
+                        resourceClaimTemplateName: Schema.optional(
+                          Schema.String,
+                        ),
+                      }),
+                    ),
+                  ),
+                  resources: Schema.optional(
+                    Schema.Struct({
+                      claims: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.String,
+                            request: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                      limits: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                      requests: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                    }),
+                  ),
+                  restartPolicy: Schema.optional(Schema.String),
+                  runtimeClassName: Schema.optional(Schema.String),
+                  schedulerName: Schema.optional(Schema.String),
+                  schedulingGates: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.String,
+                      }),
+                    ),
+                  ),
+                  schedulingGroup: Schema.optional(
+                    Schema.Struct({
+                      podGroupName: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  securityContext: Schema.optional(
+                    Schema.Struct({
+                      appArmorProfile: Schema.optional(
+                        Schema.Struct({
+                          localhostProfile: Schema.optional(Schema.String),
+                          type: Schema.String,
+                        }),
+                      ),
+                      fsGroup: Schema.optional(Schema.Number),
+                      fsGroupChangePolicy: Schema.optional(Schema.String),
+                      runAsGroup: Schema.optional(Schema.Number),
+                      runAsNonRoot: Schema.optional(Schema.Boolean),
+                      runAsUser: Schema.optional(Schema.Number),
+                      seLinuxChangePolicy: Schema.optional(Schema.String),
+                      seLinuxOptions: Schema.optional(
+                        Schema.Struct({
+                          level: Schema.optional(Schema.String),
+                          role: Schema.optional(Schema.String),
+                          type: Schema.optional(Schema.String),
+                          user: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      seccompProfile: Schema.optional(
+                        Schema.Struct({
+                          localhostProfile: Schema.optional(Schema.String),
+                          type: Schema.String,
+                        }),
+                      ),
+                      supplementalGroups: Schema.optional(
+                        Schema.Array(Schema.Number),
+                      ),
+                      supplementalGroupsPolicy: Schema.optional(Schema.String),
+                      sysctls: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.String,
+                            value: Schema.String,
+                          }),
+                        ),
+                      ),
+                      windowsOptions: Schema.optional(
+                        Schema.Struct({
+                          gmsaCredentialSpec: Schema.optional(Schema.String),
+                          gmsaCredentialSpecName: Schema.optional(
+                            Schema.String,
+                          ),
+                          hostProcess: Schema.optional(Schema.Boolean),
+                          runAsUserName: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    }),
+                  ),
+                  serviceAccount: Schema.optional(Schema.String),
+                  serviceAccountName: Schema.optional(Schema.String),
+                  setHostnameAsFQDN: Schema.optional(Schema.Boolean),
+                  shareProcessNamespace: Schema.optional(Schema.Boolean),
+                  subdomain: Schema.optional(Schema.String),
+                  terminationGracePeriodSeconds: Schema.optional(Schema.Number),
+                  tolerations: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        effect: Schema.optional(Schema.String),
+                        key: Schema.optional(Schema.String),
+                        operator: Schema.optional(Schema.String),
+                        tolerationSeconds: Schema.optional(Schema.Number),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  topologySpreadConstraints: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        labelSelector: Schema.optional(
+                          Schema.Struct({
+                            matchExpressions: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  operator: Schema.String,
+                                  values: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            matchLabels: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        matchLabelKeys: Schema.optional(
+                          Schema.Array(Schema.String),
+                        ),
+                        maxSkew: Schema.Number,
+                        minDomains: Schema.optional(Schema.Number),
+                        nodeAffinityPolicy: Schema.optional(Schema.String),
+                        nodeTaintsPolicy: Schema.optional(Schema.String),
+                        topologyKey: Schema.String,
+                        whenUnsatisfiable: Schema.String,
+                      }),
+                    ),
+                  ),
+                  volumes: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        awsElasticBlockStore: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            partition: Schema.optional(Schema.Number),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            volumeID: Schema.String,
+                          }),
+                        ),
+                        azureDisk: Schema.optional(
+                          Schema.Struct({
+                            cachingMode: Schema.optional(Schema.String),
+                            diskName: Schema.String,
+                            diskURI: Schema.String,
+                            fsType: Schema.optional(Schema.String),
+                            kind: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                        azureFile: Schema.optional(
+                          Schema.Struct({
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretName: Schema.String,
+                            shareName: Schema.String,
+                          }),
+                        ),
+                        cephfs: Schema.optional(
+                          Schema.Struct({
+                            monitors: Schema.Array(Schema.String),
+                            path: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretFile: Schema.optional(Schema.String),
+                            secretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            user: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        cinder: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            volumeID: Schema.String,
+                          }),
+                        ),
+                        configMap: Schema.optional(
+                          Schema.Struct({
+                            defaultMode: Schema.optional(Schema.Number),
+                            items: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  mode: Schema.optional(Schema.Number),
+                                  path: Schema.String,
+                                }),
+                              ),
+                            ),
+                            name: Schema.optional(Schema.String),
+                            optional: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                        csi: Schema.optional(
+                          Schema.Struct({
+                            driver: Schema.String,
+                            fsType: Schema.optional(Schema.String),
+                            nodePublishSecretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            volumeAttributes: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        downwardAPI: Schema.optional(
+                          Schema.Struct({
+                            defaultMode: Schema.optional(Schema.Number),
+                            items: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  fieldRef: Schema.optional(
+                                    Schema.Struct({
+                                      apiVersion: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      fieldPath: Schema.String,
+                                    }),
+                                  ),
+                                  mode: Schema.optional(Schema.Number),
+                                  path: Schema.String,
+                                  resourceFieldRef: Schema.optional(
+                                    Schema.Struct({
+                                      containerName: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      divisor: Schema.optional(Schema.String),
+                                      resource: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                          }),
+                        ),
+                        emptyDir: Schema.optional(
+                          Schema.Struct({
+                            medium: Schema.optional(Schema.String),
+                            sizeLimit: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        ephemeral: Schema.optional(
+                          Schema.Struct({
+                            volumeClaimTemplate: Schema.optional(
+                              Schema.Struct({
+                                metadata: Schema.optional(
+                                  Schema.Struct({
+                                    annotations: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                    creationTimestamp: Schema.optional(
+                                      Schema.String,
+                                    ),
+                                    deletionGracePeriodSeconds: Schema.optional(
+                                      Schema.Number,
+                                    ),
+                                    deletionTimestamp: Schema.optional(
+                                      Schema.String,
+                                    ),
+                                    finalizers: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                    generateName: Schema.optional(
+                                      Schema.String,
+                                    ),
+                                    generation: Schema.optional(Schema.Number),
+                                    labels: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                    managedFields: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          apiVersion: Schema.optional(
+                                            Schema.String,
+                                          ),
+                                          fieldsType: Schema.optional(
+                                            Schema.String,
+                                          ),
+                                          fieldsV1: Schema.optional(
+                                            Schema.Unknown,
+                                          ),
+                                          manager: Schema.optional(
+                                            Schema.String,
+                                          ),
+                                          operation: Schema.optional(
+                                            Schema.String,
+                                          ),
+                                          subresource: Schema.optional(
+                                            Schema.String,
+                                          ),
+                                          time: Schema.optional(Schema.String),
+                                        }),
+                                      ),
+                                    ),
+                                    name: Schema.optional(Schema.String),
+                                    namespace: Schema.optional(Schema.String),
+                                    ownerReferences: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          apiVersion: Schema.String,
+                                          blockOwnerDeletion: Schema.optional(
+                                            Schema.Boolean,
+                                          ),
+                                          controller: Schema.optional(
+                                            Schema.Boolean,
+                                          ),
+                                          kind: Schema.String,
+                                          name: Schema.String,
+                                          uid: Schema.String,
+                                        }),
+                                      ),
+                                    ),
+                                    resourceVersion: Schema.optional(
+                                      Schema.String,
+                                    ),
+                                    selfLink: Schema.optional(Schema.String),
+                                    uid: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                                spec: Schema.Struct({
+                                  accessModes: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  dataSource: Schema.optional(
+                                    Schema.Struct({
+                                      apiGroup: Schema.optional(Schema.String),
+                                      kind: Schema.String,
+                                      name: Schema.String,
+                                    }),
+                                  ),
+                                  dataSourceRef: Schema.optional(
+                                    Schema.Struct({
+                                      apiGroup: Schema.optional(Schema.String),
+                                      kind: Schema.String,
+                                      name: Schema.String,
+                                      namespace: Schema.optional(Schema.String),
+                                    }),
+                                  ),
+                                  resources: Schema.optional(
+                                    Schema.Struct({
+                                      limits: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                      requests: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  selector: Schema.optional(
+                                    Schema.Struct({
+                                      matchExpressions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            operator: Schema.String,
+                                            values: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      matchLabels: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  storageClassName: Schema.optional(
+                                    Schema.String,
+                                  ),
+                                  volumeAttributesClassName: Schema.optional(
+                                    Schema.String,
+                                  ),
+                                  volumeMode: Schema.optional(Schema.String),
+                                  volumeName: Schema.optional(Schema.String),
+                                }),
+                              }),
+                            ),
+                          }),
+                        ),
+                        fc: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            lun: Schema.optional(Schema.Number),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            targetWWNs: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                            wwids: Schema.optional(Schema.Array(Schema.String)),
+                          }),
+                        ),
+                        flexVolume: Schema.optional(
+                          Schema.Struct({
+                            driver: Schema.String,
+                            fsType: Schema.optional(Schema.String),
+                            options: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          }),
+                        ),
+                        flocker: Schema.optional(
+                          Schema.Struct({
+                            datasetName: Schema.optional(Schema.String),
+                            datasetUUID: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        gcePersistentDisk: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            partition: Schema.optional(Schema.Number),
+                            pdName: Schema.String,
+                            readOnly: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                        gitRepo: Schema.optional(
+                          Schema.Struct({
+                            directory: Schema.optional(Schema.String),
+                            repository: Schema.String,
+                            revision: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        glusterfs: Schema.optional(
+                          Schema.Struct({
+                            endpoints: Schema.String,
+                            path: Schema.String,
+                            readOnly: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                        hostPath: Schema.optional(
+                          Schema.Struct({
+                            path: Schema.String,
+                            type: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        image: Schema.optional(
+                          Schema.Struct({
+                            pullPolicy: Schema.optional(Schema.String),
+                            reference: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        iscsi: Schema.optional(
+                          Schema.Struct({
+                            chapAuthDiscovery: Schema.optional(Schema.Boolean),
+                            chapAuthSession: Schema.optional(Schema.Boolean),
+                            fsType: Schema.optional(Schema.String),
+                            initiatorName: Schema.optional(Schema.String),
+                            iqn: Schema.String,
+                            iscsiInterface: Schema.optional(Schema.String),
+                            lun: Schema.Number,
+                            portals: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            targetPortal: Schema.String,
+                          }),
+                        ),
+                        name: Schema.String,
+                        nfs: Schema.optional(
+                          Schema.Struct({
+                            path: Schema.String,
+                            readOnly: Schema.optional(Schema.Boolean),
+                            server: Schema.String,
+                          }),
+                        ),
+                        persistentVolumeClaim: Schema.optional(
+                          Schema.Struct({
+                            claimName: Schema.String,
+                            readOnly: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                        photonPersistentDisk: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            pdID: Schema.String,
+                          }),
+                        ),
+                        portworxVolume: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            volumeID: Schema.String,
+                          }),
+                        ),
+                        projected: Schema.optional(
+                          Schema.Struct({
+                            defaultMode: Schema.optional(Schema.Number),
+                            sources: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  clusterTrustBundle: Schema.optional(
+                                    Schema.Struct({
+                                      labelSelector: Schema.optional(
+                                        Schema.Struct({
+                                          matchExpressions: Schema.optional(
+                                            Schema.Array(
+                                              Schema.Struct({
+                                                key: Schema.String,
+                                                operator: Schema.String,
+                                                values: Schema.optional(
+                                                  Schema.Array(Schema.String),
+                                                ),
+                                              }),
+                                            ),
+                                          ),
+                                          matchLabels: Schema.optional(
+                                            Schema.Record(
+                                              Schema.String,
+                                              Schema.String,
+                                            ),
+                                          ),
+                                        }),
+                                      ),
+                                      name: Schema.optional(Schema.String),
+                                      optional: Schema.optional(Schema.Boolean),
+                                      path: Schema.String,
+                                      signerName: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                    }),
+                                  ),
+                                  configMap: Schema.optional(
+                                    Schema.Struct({
+                                      items: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            mode: Schema.optional(
+                                              Schema.Number,
+                                            ),
+                                            path: Schema.String,
+                                          }),
+                                        ),
+                                      ),
+                                      name: Schema.optional(Schema.String),
+                                      optional: Schema.optional(Schema.Boolean),
+                                    }),
+                                  ),
+                                  downwardAPI: Schema.optional(
+                                    Schema.Struct({
+                                      items: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            fieldRef: Schema.optional(
+                                              Schema.Struct({
+                                                apiVersion: Schema.optional(
+                                                  Schema.String,
+                                                ),
+                                                fieldPath: Schema.String,
+                                              }),
+                                            ),
+                                            mode: Schema.optional(
+                                              Schema.Number,
+                                            ),
+                                            path: Schema.String,
+                                            resourceFieldRef: Schema.optional(
+                                              Schema.Struct({
+                                                containerName: Schema.optional(
+                                                  Schema.String,
+                                                ),
+                                                divisor: Schema.optional(
+                                                  Schema.String,
+                                                ),
+                                                resource: Schema.String,
+                                              }),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  podCertificate: Schema.optional(
+                                    Schema.Struct({
+                                      certificateChainPath: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      credentialBundlePath: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      keyPath: Schema.optional(Schema.String),
+                                      keyType: Schema.String,
+                                      maxExpirationSeconds: Schema.optional(
+                                        Schema.Number,
+                                      ),
+                                      signerName: Schema.String,
+                                      userAnnotations: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  secret: Schema.optional(
+                                    Schema.Struct({
+                                      items: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            mode: Schema.optional(
+                                              Schema.Number,
+                                            ),
+                                            path: Schema.String,
+                                          }),
+                                        ),
+                                      ),
+                                      name: Schema.optional(Schema.String),
+                                      optional: Schema.optional(Schema.Boolean),
+                                    }),
+                                  ),
+                                  serviceAccountToken: Schema.optional(
+                                    Schema.Struct({
+                                      audience: Schema.optional(Schema.String),
+                                      expirationSeconds: Schema.optional(
+                                        Schema.Number,
+                                      ),
+                                      path: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                          }),
+                        ),
+                        quobyte: Schema.optional(
+                          Schema.Struct({
+                            group: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            registry: Schema.String,
+                            tenant: Schema.optional(Schema.String),
+                            user: Schema.optional(Schema.String),
+                            volume: Schema.String,
+                          }),
+                        ),
+                        rbd: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            image: Schema.String,
+                            keyring: Schema.optional(Schema.String),
+                            monitors: Schema.Array(Schema.String),
+                            pool: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            user: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        scaleIO: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            gateway: Schema.String,
+                            protectionDomain: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretRef: Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                            }),
+                            sslEnabled: Schema.optional(Schema.Boolean),
+                            storageMode: Schema.optional(Schema.String),
+                            storagePool: Schema.optional(Schema.String),
+                            system: Schema.String,
+                            volumeName: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        secret: Schema.optional(
+                          Schema.Struct({
+                            defaultMode: Schema.optional(Schema.Number),
+                            items: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  mode: Schema.optional(Schema.Number),
+                                  path: Schema.String,
+                                }),
+                              ),
+                            ),
+                            optional: Schema.optional(Schema.Boolean),
+                            secretName: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        storageos: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            volumeName: Schema.optional(Schema.String),
+                            volumeNamespace: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        vsphereVolume: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            storagePolicyID: Schema.optional(Schema.String),
+                            storagePolicyName: Schema.optional(Schema.String),
+                            volumePath: Schema.String,
+                          }),
+                        ),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            }),
+            ttlSecondsAfterFinished: Schema.optional(Schema.Number),
+          }),
+        ),
+      }),
+      schedule: Schema.String,
+      startingDeadlineSeconds: Schema.optional(Schema.Number),
+      successfulJobsHistoryLimit: Schema.optional(Schema.Number),
+      suspend: Schema.optional(Schema.Boolean),
+      timeZone: Schema.optional(Schema.String),
+    }),
+    status: Schema.optional(
+      Schema.Struct({
+        active: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldPath: Schema.optional(Schema.String),
+              kind: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              namespace: Schema.optional(Schema.String),
+              resourceVersion: Schema.optional(Schema.String),
+              uid: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        lastScheduleTime: Schema.optional(Schema.String),
+        lastSuccessfulTime: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2739,7 +5447,10 @@ export type CreateBatchV1NamespacedCronJobOutput =
 /**
  * create a CronJob
  *
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createBatchV1NamespacedCronJob =
@@ -2751,8 +5462,2559 @@ export const createBatchV1NamespacedCronJob =
 // Input Schema
 export const CreateBatchV1NamespacedJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.optional(
+      Schema.Struct({
+        activeDeadlineSeconds: Schema.optional(Schema.Number),
+        backoffLimit: Schema.optional(Schema.Number),
+        backoffLimitPerIndex: Schema.optional(Schema.Number),
+        completionMode: Schema.optional(Schema.String),
+        completions: Schema.optional(Schema.Number),
+        managedBy: Schema.optional(Schema.String),
+        manualSelector: Schema.optional(Schema.Boolean),
+        maxFailedIndexes: Schema.optional(Schema.Number),
+        parallelism: Schema.optional(Schema.Number),
+        podFailurePolicy: Schema.optional(
+          Schema.Struct({
+            rules: Schema.Array(
+              Schema.Struct({
+                action: Schema.String,
+                onExitCodes: Schema.optional(
+                  Schema.Struct({
+                    containerName: Schema.optional(Schema.String),
+                    operator: Schema.String,
+                    values: Schema.Array(Schema.Number),
+                  }),
+                ),
+                onPodConditions: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      status: Schema.optional(Schema.String),
+                      type: Schema.String,
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+        podReplacementPolicy: Schema.optional(Schema.String),
+        selector: Schema.optional(
+          Schema.Struct({
+            matchExpressions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.String,
+                  operator: Schema.String,
+                  values: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            matchLabels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+          }),
+        ),
+        successPolicy: Schema.optional(
+          Schema.Struct({
+            rules: Schema.Array(
+              Schema.Struct({
+                succeededCount: Schema.optional(Schema.Number),
+                succeededIndexes: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        suspend: Schema.optional(Schema.Boolean),
+        template: Schema.Struct({
+          metadata: Schema.optional(
+            Schema.Struct({
+              annotations: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              creationTimestamp: Schema.optional(Schema.String),
+              deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+              deletionTimestamp: Schema.optional(Schema.String),
+              finalizers: Schema.optional(Schema.Array(Schema.String)),
+              generateName: Schema.optional(Schema.String),
+              generation: Schema.optional(Schema.Number),
+              labels: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              managedFields: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    apiVersion: Schema.optional(Schema.String),
+                    fieldsType: Schema.optional(Schema.String),
+                    fieldsV1: Schema.optional(Schema.Unknown),
+                    manager: Schema.optional(Schema.String),
+                    operation: Schema.optional(Schema.String),
+                    subresource: Schema.optional(Schema.String),
+                    time: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              name: Schema.optional(Schema.String),
+              namespace: Schema.optional(Schema.String),
+              ownerReferences: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    apiVersion: Schema.String,
+                    blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                    controller: Schema.optional(Schema.Boolean),
+                    kind: Schema.String,
+                    name: Schema.String,
+                    uid: Schema.String,
+                  }),
+                ),
+              ),
+              resourceVersion: Schema.optional(Schema.String),
+              selfLink: Schema.optional(Schema.String),
+              uid: Schema.optional(Schema.String),
+            }),
+          ),
+          spec: Schema.optional(
+            Schema.Struct({
+              activeDeadlineSeconds: Schema.optional(Schema.Number),
+              affinity: Schema.optional(
+                Schema.Struct({
+                  nodeAffinity: Schema.optional(
+                    Schema.Struct({
+                      preferredDuringSchedulingIgnoredDuringExecution:
+                        Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              preference: Schema.Struct({
+                                matchExpressions: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      operator: Schema.String,
+                                      values: Schema.optional(
+                                        Schema.Array(Schema.String),
+                                      ),
+                                    }),
+                                  ),
+                                ),
+                                matchFields: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      operator: Schema.String,
+                                      values: Schema.optional(
+                                        Schema.Array(Schema.String),
+                                      ),
+                                    }),
+                                  ),
+                                ),
+                              }),
+                              weight: Schema.Number,
+                            }),
+                          ),
+                        ),
+                      requiredDuringSchedulingIgnoredDuringExecution:
+                        Schema.optional(
+                          Schema.Struct({
+                            nodeSelectorTerms: Schema.Array(
+                              Schema.Struct({
+                                matchExpressions: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      operator: Schema.String,
+                                      values: Schema.optional(
+                                        Schema.Array(Schema.String),
+                                      ),
+                                    }),
+                                  ),
+                                ),
+                                matchFields: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      operator: Schema.String,
+                                      values: Schema.optional(
+                                        Schema.Array(Schema.String),
+                                      ),
+                                    }),
+                                  ),
+                                ),
+                              }),
+                            ),
+                          }),
+                        ),
+                    }),
+                  ),
+                  podAffinity: Schema.optional(
+                    Schema.Struct({
+                      preferredDuringSchedulingIgnoredDuringExecution:
+                        Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              podAffinityTerm: Schema.Struct({
+                                labelSelector: Schema.optional(
+                                  Schema.Struct({
+                                    matchExpressions: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                    matchLabels: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                  }),
+                                ),
+                                matchLabelKeys: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                mismatchLabelKeys: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                namespaceSelector: Schema.optional(
+                                  Schema.Struct({
+                                    matchExpressions: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                    matchLabels: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                  }),
+                                ),
+                                namespaces: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                topologyKey: Schema.String,
+                              }),
+                              weight: Schema.Number,
+                            }),
+                          ),
+                        ),
+                      requiredDuringSchedulingIgnoredDuringExecution:
+                        Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              labelSelector: Schema.optional(
+                                Schema.Struct({
+                                  matchExpressions: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                  matchLabels: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              matchLabelKeys: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              mismatchLabelKeys: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              namespaceSelector: Schema.optional(
+                                Schema.Struct({
+                                  matchExpressions: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                  matchLabels: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              namespaces: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              topologyKey: Schema.String,
+                            }),
+                          ),
+                        ),
+                    }),
+                  ),
+                  podAntiAffinity: Schema.optional(
+                    Schema.Struct({
+                      preferredDuringSchedulingIgnoredDuringExecution:
+                        Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              podAffinityTerm: Schema.Struct({
+                                labelSelector: Schema.optional(
+                                  Schema.Struct({
+                                    matchExpressions: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                    matchLabels: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                  }),
+                                ),
+                                matchLabelKeys: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                mismatchLabelKeys: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                namespaceSelector: Schema.optional(
+                                  Schema.Struct({
+                                    matchExpressions: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                    matchLabels: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                  }),
+                                ),
+                                namespaces: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                topologyKey: Schema.String,
+                              }),
+                              weight: Schema.Number,
+                            }),
+                          ),
+                        ),
+                      requiredDuringSchedulingIgnoredDuringExecution:
+                        Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              labelSelector: Schema.optional(
+                                Schema.Struct({
+                                  matchExpressions: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                  matchLabels: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              matchLabelKeys: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              mismatchLabelKeys: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              namespaceSelector: Schema.optional(
+                                Schema.Struct({
+                                  matchExpressions: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                  matchLabels: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              namespaces: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              topologyKey: Schema.String,
+                            }),
+                          ),
+                        ),
+                    }),
+                  ),
+                }),
+              ),
+              automountServiceAccountToken: Schema.optional(Schema.Boolean),
+              containers: Schema.Array(
+                Schema.Struct({
+                  args: Schema.optional(Schema.Array(Schema.String)),
+                  command: Schema.optional(Schema.Array(Schema.String)),
+                  env: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.String,
+                        value: Schema.optional(Schema.String),
+                        valueFrom: Schema.optional(
+                          Schema.Struct({
+                            configMapKeyRef: Schema.optional(
+                              Schema.Struct({
+                                key: Schema.String,
+                                name: Schema.optional(Schema.String),
+                                optional: Schema.optional(Schema.Boolean),
+                              }),
+                            ),
+                            fieldRef: Schema.optional(
+                              Schema.Struct({
+                                apiVersion: Schema.optional(Schema.String),
+                                fieldPath: Schema.String,
+                              }),
+                            ),
+                            fileKeyRef: Schema.optional(
+                              Schema.Struct({
+                                key: Schema.String,
+                                optional: Schema.optional(Schema.Boolean),
+                                path: Schema.String,
+                                volumeName: Schema.String,
+                              }),
+                            ),
+                            resourceFieldRef: Schema.optional(
+                              Schema.Struct({
+                                containerName: Schema.optional(Schema.String),
+                                divisor: Schema.optional(Schema.String),
+                                resource: Schema.String,
+                              }),
+                            ),
+                            secretKeyRef: Schema.optional(
+                              Schema.Struct({
+                                key: Schema.String,
+                                name: Schema.optional(Schema.String),
+                                optional: Schema.optional(Schema.Boolean),
+                              }),
+                            ),
+                          }),
+                        ),
+                      }),
+                    ),
+                  ),
+                  envFrom: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        configMapRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                            optional: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                        prefix: Schema.optional(Schema.String),
+                        secretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                            optional: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                      }),
+                    ),
+                  ),
+                  image: Schema.optional(Schema.String),
+                  imagePullPolicy: Schema.optional(Schema.String),
+                  lifecycle: Schema.optional(
+                    Schema.Struct({
+                      postStart: Schema.optional(
+                        Schema.Struct({
+                          exec: Schema.optional(
+                            Schema.Struct({
+                              command: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          httpGet: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              httpHeaders: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.String,
+                                    value: Schema.String,
+                                  }),
+                                ),
+                              ),
+                              path: Schema.optional(Schema.String),
+                              port: Schema.String,
+                              scheme: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          sleep: Schema.optional(
+                            Schema.Struct({
+                              seconds: Schema.Number,
+                            }),
+                          ),
+                          tcpSocket: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              port: Schema.String,
+                            }),
+                          ),
+                        }),
+                      ),
+                      preStop: Schema.optional(
+                        Schema.Struct({
+                          exec: Schema.optional(
+                            Schema.Struct({
+                              command: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          httpGet: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              httpHeaders: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.String,
+                                    value: Schema.String,
+                                  }),
+                                ),
+                              ),
+                              path: Schema.optional(Schema.String),
+                              port: Schema.String,
+                              scheme: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          sleep: Schema.optional(
+                            Schema.Struct({
+                              seconds: Schema.Number,
+                            }),
+                          ),
+                          tcpSocket: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              port: Schema.String,
+                            }),
+                          ),
+                        }),
+                      ),
+                      stopSignal: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  livenessProbe: Schema.optional(
+                    Schema.Struct({
+                      exec: Schema.optional(
+                        Schema.Struct({
+                          command: Schema.optional(Schema.Array(Schema.String)),
+                        }),
+                      ),
+                      failureThreshold: Schema.optional(Schema.Number),
+                      grpc: Schema.optional(
+                        Schema.Struct({
+                          port: Schema.Number,
+                          service: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      httpGet: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          httpHeaders: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.String,
+                                value: Schema.String,
+                              }),
+                            ),
+                          ),
+                          path: Schema.optional(Schema.String),
+                          port: Schema.String,
+                          scheme: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      initialDelaySeconds: Schema.optional(Schema.Number),
+                      periodSeconds: Schema.optional(Schema.Number),
+                      successThreshold: Schema.optional(Schema.Number),
+                      tcpSocket: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          port: Schema.String,
+                        }),
+                      ),
+                      terminationGracePeriodSeconds: Schema.optional(
+                        Schema.Number,
+                      ),
+                      timeoutSeconds: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                  name: Schema.String,
+                  ports: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        containerPort: Schema.Number,
+                        hostIP: Schema.optional(Schema.String),
+                        hostPort: Schema.optional(Schema.Number),
+                        name: Schema.optional(Schema.String),
+                        protocol: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  readinessProbe: Schema.optional(
+                    Schema.Struct({
+                      exec: Schema.optional(
+                        Schema.Struct({
+                          command: Schema.optional(Schema.Array(Schema.String)),
+                        }),
+                      ),
+                      failureThreshold: Schema.optional(Schema.Number),
+                      grpc: Schema.optional(
+                        Schema.Struct({
+                          port: Schema.Number,
+                          service: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      httpGet: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          httpHeaders: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.String,
+                                value: Schema.String,
+                              }),
+                            ),
+                          ),
+                          path: Schema.optional(Schema.String),
+                          port: Schema.String,
+                          scheme: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      initialDelaySeconds: Schema.optional(Schema.Number),
+                      periodSeconds: Schema.optional(Schema.Number),
+                      successThreshold: Schema.optional(Schema.Number),
+                      tcpSocket: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          port: Schema.String,
+                        }),
+                      ),
+                      terminationGracePeriodSeconds: Schema.optional(
+                        Schema.Number,
+                      ),
+                      timeoutSeconds: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                  resizePolicy: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        resourceName: Schema.String,
+                        restartPolicy: Schema.String,
+                      }),
+                    ),
+                  ),
+                  resources: Schema.optional(
+                    Schema.Struct({
+                      claims: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.String,
+                            request: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                      limits: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                      requests: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                    }),
+                  ),
+                  restartPolicy: Schema.optional(Schema.String),
+                  restartPolicyRules: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        action: Schema.String,
+                        exitCodes: Schema.optional(
+                          Schema.Struct({
+                            operator: Schema.String,
+                            values: Schema.optional(
+                              Schema.Array(Schema.Number),
+                            ),
+                          }),
+                        ),
+                      }),
+                    ),
+                  ),
+                  securityContext: Schema.optional(
+                    Schema.Struct({
+                      allowPrivilegeEscalation: Schema.optional(Schema.Boolean),
+                      appArmorProfile: Schema.optional(
+                        Schema.Struct({
+                          localhostProfile: Schema.optional(Schema.String),
+                          type: Schema.String,
+                        }),
+                      ),
+                      capabilities: Schema.optional(
+                        Schema.Struct({
+                          add: Schema.optional(Schema.Array(Schema.String)),
+                          drop: Schema.optional(Schema.Array(Schema.String)),
+                        }),
+                      ),
+                      privileged: Schema.optional(Schema.Boolean),
+                      procMount: Schema.optional(Schema.String),
+                      readOnlyRootFilesystem: Schema.optional(Schema.Boolean),
+                      runAsGroup: Schema.optional(Schema.Number),
+                      runAsNonRoot: Schema.optional(Schema.Boolean),
+                      runAsUser: Schema.optional(Schema.Number),
+                      seLinuxOptions: Schema.optional(
+                        Schema.Struct({
+                          level: Schema.optional(Schema.String),
+                          role: Schema.optional(Schema.String),
+                          type: Schema.optional(Schema.String),
+                          user: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      seccompProfile: Schema.optional(
+                        Schema.Struct({
+                          localhostProfile: Schema.optional(Schema.String),
+                          type: Schema.String,
+                        }),
+                      ),
+                      windowsOptions: Schema.optional(
+                        Schema.Struct({
+                          gmsaCredentialSpec: Schema.optional(Schema.String),
+                          gmsaCredentialSpecName: Schema.optional(
+                            Schema.String,
+                          ),
+                          hostProcess: Schema.optional(Schema.Boolean),
+                          runAsUserName: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    }),
+                  ),
+                  startupProbe: Schema.optional(
+                    Schema.Struct({
+                      exec: Schema.optional(
+                        Schema.Struct({
+                          command: Schema.optional(Schema.Array(Schema.String)),
+                        }),
+                      ),
+                      failureThreshold: Schema.optional(Schema.Number),
+                      grpc: Schema.optional(
+                        Schema.Struct({
+                          port: Schema.Number,
+                          service: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      httpGet: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          httpHeaders: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.String,
+                                value: Schema.String,
+                              }),
+                            ),
+                          ),
+                          path: Schema.optional(Schema.String),
+                          port: Schema.String,
+                          scheme: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      initialDelaySeconds: Schema.optional(Schema.Number),
+                      periodSeconds: Schema.optional(Schema.Number),
+                      successThreshold: Schema.optional(Schema.Number),
+                      tcpSocket: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          port: Schema.String,
+                        }),
+                      ),
+                      terminationGracePeriodSeconds: Schema.optional(
+                        Schema.Number,
+                      ),
+                      timeoutSeconds: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                  stdin: Schema.optional(Schema.Boolean),
+                  stdinOnce: Schema.optional(Schema.Boolean),
+                  terminationMessagePath: Schema.optional(Schema.String),
+                  terminationMessagePolicy: Schema.optional(Schema.String),
+                  tty: Schema.optional(Schema.Boolean),
+                  volumeDevices: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        devicePath: Schema.String,
+                        name: Schema.String,
+                      }),
+                    ),
+                  ),
+                  volumeMounts: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        mountPath: Schema.String,
+                        mountPropagation: Schema.optional(Schema.String),
+                        name: Schema.String,
+                        readOnly: Schema.optional(Schema.Boolean),
+                        recursiveReadOnly: Schema.optional(Schema.String),
+                        subPath: Schema.optional(Schema.String),
+                        subPathExpr: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  workingDir: Schema.optional(Schema.String),
+                }),
+              ),
+              dnsConfig: Schema.optional(
+                Schema.Struct({
+                  nameservers: Schema.optional(Schema.Array(Schema.String)),
+                  options: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.optional(Schema.String),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  searches: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+              dnsPolicy: Schema.optional(Schema.String),
+              enableServiceLinks: Schema.optional(Schema.Boolean),
+              ephemeralContainers: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    args: Schema.optional(Schema.Array(Schema.String)),
+                    command: Schema.optional(Schema.Array(Schema.String)),
+                    env: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.String,
+                          value: Schema.optional(Schema.String),
+                          valueFrom: Schema.optional(
+                            Schema.Struct({
+                              configMapKeyRef: Schema.optional(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                              fieldRef: Schema.optional(
+                                Schema.Struct({
+                                  apiVersion: Schema.optional(Schema.String),
+                                  fieldPath: Schema.String,
+                                }),
+                              ),
+                              fileKeyRef: Schema.optional(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  optional: Schema.optional(Schema.Boolean),
+                                  path: Schema.String,
+                                  volumeName: Schema.String,
+                                }),
+                              ),
+                              resourceFieldRef: Schema.optional(
+                                Schema.Struct({
+                                  containerName: Schema.optional(Schema.String),
+                                  divisor: Schema.optional(Schema.String),
+                                  resource: Schema.String,
+                                }),
+                              ),
+                              secretKeyRef: Schema.optional(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                    envFrom: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          configMapRef: Schema.optional(
+                            Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                              optional: Schema.optional(Schema.Boolean),
+                            }),
+                          ),
+                          prefix: Schema.optional(Schema.String),
+                          secretRef: Schema.optional(
+                            Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                              optional: Schema.optional(Schema.Boolean),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                    image: Schema.optional(Schema.String),
+                    imagePullPolicy: Schema.optional(Schema.String),
+                    lifecycle: Schema.optional(
+                      Schema.Struct({
+                        postStart: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            sleep: Schema.optional(
+                              Schema.Struct({
+                                seconds: Schema.Number,
+                              }),
+                            ),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                          }),
+                        ),
+                        preStop: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            sleep: Schema.optional(
+                              Schema.Struct({
+                                seconds: Schema.Number,
+                              }),
+                            ),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                          }),
+                        ),
+                        stopSignal: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    livenessProbe: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        failureThreshold: Schema.optional(Schema.Number),
+                        grpc: Schema.optional(
+                          Schema.Struct({
+                            port: Schema.Number,
+                            service: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        initialDelaySeconds: Schema.optional(Schema.Number),
+                        periodSeconds: Schema.optional(Schema.Number),
+                        successThreshold: Schema.optional(Schema.Number),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                        terminationGracePeriodSeconds: Schema.optional(
+                          Schema.Number,
+                        ),
+                        timeoutSeconds: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    name: Schema.String,
+                    ports: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          containerPort: Schema.Number,
+                          hostIP: Schema.optional(Schema.String),
+                          hostPort: Schema.optional(Schema.Number),
+                          name: Schema.optional(Schema.String),
+                          protocol: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    readinessProbe: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        failureThreshold: Schema.optional(Schema.Number),
+                        grpc: Schema.optional(
+                          Schema.Struct({
+                            port: Schema.Number,
+                            service: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        initialDelaySeconds: Schema.optional(Schema.Number),
+                        periodSeconds: Schema.optional(Schema.Number),
+                        successThreshold: Schema.optional(Schema.Number),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                        terminationGracePeriodSeconds: Schema.optional(
+                          Schema.Number,
+                        ),
+                        timeoutSeconds: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    resizePolicy: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          resourceName: Schema.String,
+                          restartPolicy: Schema.String,
+                        }),
+                      ),
+                    ),
+                    resources: Schema.optional(
+                      Schema.Struct({
+                        claims: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              name: Schema.String,
+                              request: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        limits: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                        requests: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                      }),
+                    ),
+                    restartPolicy: Schema.optional(Schema.String),
+                    restartPolicyRules: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          action: Schema.String,
+                          exitCodes: Schema.optional(
+                            Schema.Struct({
+                              operator: Schema.String,
+                              values: Schema.optional(
+                                Schema.Array(Schema.Number),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                    securityContext: Schema.optional(
+                      Schema.Struct({
+                        allowPrivilegeEscalation: Schema.optional(
+                          Schema.Boolean,
+                        ),
+                        appArmorProfile: Schema.optional(
+                          Schema.Struct({
+                            localhostProfile: Schema.optional(Schema.String),
+                            type: Schema.String,
+                          }),
+                        ),
+                        capabilities: Schema.optional(
+                          Schema.Struct({
+                            add: Schema.optional(Schema.Array(Schema.String)),
+                            drop: Schema.optional(Schema.Array(Schema.String)),
+                          }),
+                        ),
+                        privileged: Schema.optional(Schema.Boolean),
+                        procMount: Schema.optional(Schema.String),
+                        readOnlyRootFilesystem: Schema.optional(Schema.Boolean),
+                        runAsGroup: Schema.optional(Schema.Number),
+                        runAsNonRoot: Schema.optional(Schema.Boolean),
+                        runAsUser: Schema.optional(Schema.Number),
+                        seLinuxOptions: Schema.optional(
+                          Schema.Struct({
+                            level: Schema.optional(Schema.String),
+                            role: Schema.optional(Schema.String),
+                            type: Schema.optional(Schema.String),
+                            user: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        seccompProfile: Schema.optional(
+                          Schema.Struct({
+                            localhostProfile: Schema.optional(Schema.String),
+                            type: Schema.String,
+                          }),
+                        ),
+                        windowsOptions: Schema.optional(
+                          Schema.Struct({
+                            gmsaCredentialSpec: Schema.optional(Schema.String),
+                            gmsaCredentialSpecName: Schema.optional(
+                              Schema.String,
+                            ),
+                            hostProcess: Schema.optional(Schema.Boolean),
+                            runAsUserName: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      }),
+                    ),
+                    startupProbe: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        failureThreshold: Schema.optional(Schema.Number),
+                        grpc: Schema.optional(
+                          Schema.Struct({
+                            port: Schema.Number,
+                            service: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        initialDelaySeconds: Schema.optional(Schema.Number),
+                        periodSeconds: Schema.optional(Schema.Number),
+                        successThreshold: Schema.optional(Schema.Number),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                        terminationGracePeriodSeconds: Schema.optional(
+                          Schema.Number,
+                        ),
+                        timeoutSeconds: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    stdin: Schema.optional(Schema.Boolean),
+                    stdinOnce: Schema.optional(Schema.Boolean),
+                    targetContainerName: Schema.optional(Schema.String),
+                    terminationMessagePath: Schema.optional(Schema.String),
+                    terminationMessagePolicy: Schema.optional(Schema.String),
+                    tty: Schema.optional(Schema.Boolean),
+                    volumeDevices: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          devicePath: Schema.String,
+                          name: Schema.String,
+                        }),
+                      ),
+                    ),
+                    volumeMounts: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          mountPath: Schema.String,
+                          mountPropagation: Schema.optional(Schema.String),
+                          name: Schema.String,
+                          readOnly: Schema.optional(Schema.Boolean),
+                          recursiveReadOnly: Schema.optional(Schema.String),
+                          subPath: Schema.optional(Schema.String),
+                          subPathExpr: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    workingDir: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              hostAliases: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    hostnames: Schema.optional(Schema.Array(Schema.String)),
+                    ip: Schema.String,
+                  }),
+                ),
+              ),
+              hostIPC: Schema.optional(Schema.Boolean),
+              hostNetwork: Schema.optional(Schema.Boolean),
+              hostPID: Schema.optional(Schema.Boolean),
+              hostUsers: Schema.optional(Schema.Boolean),
+              hostname: Schema.optional(Schema.String),
+              hostnameOverride: Schema.optional(Schema.String),
+              imagePullSecrets: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              initContainers: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    args: Schema.optional(Schema.Array(Schema.String)),
+                    command: Schema.optional(Schema.Array(Schema.String)),
+                    env: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.String,
+                          value: Schema.optional(Schema.String),
+                          valueFrom: Schema.optional(
+                            Schema.Struct({
+                              configMapKeyRef: Schema.optional(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                              fieldRef: Schema.optional(
+                                Schema.Struct({
+                                  apiVersion: Schema.optional(Schema.String),
+                                  fieldPath: Schema.String,
+                                }),
+                              ),
+                              fileKeyRef: Schema.optional(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  optional: Schema.optional(Schema.Boolean),
+                                  path: Schema.String,
+                                  volumeName: Schema.String,
+                                }),
+                              ),
+                              resourceFieldRef: Schema.optional(
+                                Schema.Struct({
+                                  containerName: Schema.optional(Schema.String),
+                                  divisor: Schema.optional(Schema.String),
+                                  resource: Schema.String,
+                                }),
+                              ),
+                              secretKeyRef: Schema.optional(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                    envFrom: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          configMapRef: Schema.optional(
+                            Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                              optional: Schema.optional(Schema.Boolean),
+                            }),
+                          ),
+                          prefix: Schema.optional(Schema.String),
+                          secretRef: Schema.optional(
+                            Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                              optional: Schema.optional(Schema.Boolean),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                    image: Schema.optional(Schema.String),
+                    imagePullPolicy: Schema.optional(Schema.String),
+                    lifecycle: Schema.optional(
+                      Schema.Struct({
+                        postStart: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            sleep: Schema.optional(
+                              Schema.Struct({
+                                seconds: Schema.Number,
+                              }),
+                            ),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                          }),
+                        ),
+                        preStop: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            sleep: Schema.optional(
+                              Schema.Struct({
+                                seconds: Schema.Number,
+                              }),
+                            ),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                          }),
+                        ),
+                        stopSignal: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    livenessProbe: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        failureThreshold: Schema.optional(Schema.Number),
+                        grpc: Schema.optional(
+                          Schema.Struct({
+                            port: Schema.Number,
+                            service: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        initialDelaySeconds: Schema.optional(Schema.Number),
+                        periodSeconds: Schema.optional(Schema.Number),
+                        successThreshold: Schema.optional(Schema.Number),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                        terminationGracePeriodSeconds: Schema.optional(
+                          Schema.Number,
+                        ),
+                        timeoutSeconds: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    name: Schema.String,
+                    ports: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          containerPort: Schema.Number,
+                          hostIP: Schema.optional(Schema.String),
+                          hostPort: Schema.optional(Schema.Number),
+                          name: Schema.optional(Schema.String),
+                          protocol: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    readinessProbe: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        failureThreshold: Schema.optional(Schema.Number),
+                        grpc: Schema.optional(
+                          Schema.Struct({
+                            port: Schema.Number,
+                            service: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        initialDelaySeconds: Schema.optional(Schema.Number),
+                        periodSeconds: Schema.optional(Schema.Number),
+                        successThreshold: Schema.optional(Schema.Number),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                        terminationGracePeriodSeconds: Schema.optional(
+                          Schema.Number,
+                        ),
+                        timeoutSeconds: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    resizePolicy: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          resourceName: Schema.String,
+                          restartPolicy: Schema.String,
+                        }),
+                      ),
+                    ),
+                    resources: Schema.optional(
+                      Schema.Struct({
+                        claims: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              name: Schema.String,
+                              request: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        limits: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                        requests: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                      }),
+                    ),
+                    restartPolicy: Schema.optional(Schema.String),
+                    restartPolicyRules: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          action: Schema.String,
+                          exitCodes: Schema.optional(
+                            Schema.Struct({
+                              operator: Schema.String,
+                              values: Schema.optional(
+                                Schema.Array(Schema.Number),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                    securityContext: Schema.optional(
+                      Schema.Struct({
+                        allowPrivilegeEscalation: Schema.optional(
+                          Schema.Boolean,
+                        ),
+                        appArmorProfile: Schema.optional(
+                          Schema.Struct({
+                            localhostProfile: Schema.optional(Schema.String),
+                            type: Schema.String,
+                          }),
+                        ),
+                        capabilities: Schema.optional(
+                          Schema.Struct({
+                            add: Schema.optional(Schema.Array(Schema.String)),
+                            drop: Schema.optional(Schema.Array(Schema.String)),
+                          }),
+                        ),
+                        privileged: Schema.optional(Schema.Boolean),
+                        procMount: Schema.optional(Schema.String),
+                        readOnlyRootFilesystem: Schema.optional(Schema.Boolean),
+                        runAsGroup: Schema.optional(Schema.Number),
+                        runAsNonRoot: Schema.optional(Schema.Boolean),
+                        runAsUser: Schema.optional(Schema.Number),
+                        seLinuxOptions: Schema.optional(
+                          Schema.Struct({
+                            level: Schema.optional(Schema.String),
+                            role: Schema.optional(Schema.String),
+                            type: Schema.optional(Schema.String),
+                            user: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        seccompProfile: Schema.optional(
+                          Schema.Struct({
+                            localhostProfile: Schema.optional(Schema.String),
+                            type: Schema.String,
+                          }),
+                        ),
+                        windowsOptions: Schema.optional(
+                          Schema.Struct({
+                            gmsaCredentialSpec: Schema.optional(Schema.String),
+                            gmsaCredentialSpecName: Schema.optional(
+                              Schema.String,
+                            ),
+                            hostProcess: Schema.optional(Schema.Boolean),
+                            runAsUserName: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      }),
+                    ),
+                    startupProbe: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        failureThreshold: Schema.optional(Schema.Number),
+                        grpc: Schema.optional(
+                          Schema.Struct({
+                            port: Schema.Number,
+                            service: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        initialDelaySeconds: Schema.optional(Schema.Number),
+                        periodSeconds: Schema.optional(Schema.Number),
+                        successThreshold: Schema.optional(Schema.Number),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                        terminationGracePeriodSeconds: Schema.optional(
+                          Schema.Number,
+                        ),
+                        timeoutSeconds: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    stdin: Schema.optional(Schema.Boolean),
+                    stdinOnce: Schema.optional(Schema.Boolean),
+                    terminationMessagePath: Schema.optional(Schema.String),
+                    terminationMessagePolicy: Schema.optional(Schema.String),
+                    tty: Schema.optional(Schema.Boolean),
+                    volumeDevices: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          devicePath: Schema.String,
+                          name: Schema.String,
+                        }),
+                      ),
+                    ),
+                    volumeMounts: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          mountPath: Schema.String,
+                          mountPropagation: Schema.optional(Schema.String),
+                          name: Schema.String,
+                          readOnly: Schema.optional(Schema.Boolean),
+                          recursiveReadOnly: Schema.optional(Schema.String),
+                          subPath: Schema.optional(Schema.String),
+                          subPathExpr: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    workingDir: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              nodeName: Schema.optional(Schema.String),
+              nodeSelector: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              os: Schema.optional(
+                Schema.Struct({
+                  name: Schema.String,
+                }),
+              ),
+              overhead: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              preemptionPolicy: Schema.optional(Schema.String),
+              priority: Schema.optional(Schema.Number),
+              priorityClassName: Schema.optional(Schema.String),
+              readinessGates: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    conditionType: Schema.String,
+                  }),
+                ),
+              ),
+              resourceClaims: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                    resourceClaimName: Schema.optional(Schema.String),
+                    resourceClaimTemplateName: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              resources: Schema.optional(
+                Schema.Struct({
+                  claims: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.String,
+                        request: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  limits: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  requests: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                }),
+              ),
+              restartPolicy: Schema.optional(Schema.String),
+              runtimeClassName: Schema.optional(Schema.String),
+              schedulerName: Schema.optional(Schema.String),
+              schedulingGates: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                  }),
+                ),
+              ),
+              schedulingGroup: Schema.optional(
+                Schema.Struct({
+                  podGroupName: Schema.optional(Schema.String),
+                }),
+              ),
+              securityContext: Schema.optional(
+                Schema.Struct({
+                  appArmorProfile: Schema.optional(
+                    Schema.Struct({
+                      localhostProfile: Schema.optional(Schema.String),
+                      type: Schema.String,
+                    }),
+                  ),
+                  fsGroup: Schema.optional(Schema.Number),
+                  fsGroupChangePolicy: Schema.optional(Schema.String),
+                  runAsGroup: Schema.optional(Schema.Number),
+                  runAsNonRoot: Schema.optional(Schema.Boolean),
+                  runAsUser: Schema.optional(Schema.Number),
+                  seLinuxChangePolicy: Schema.optional(Schema.String),
+                  seLinuxOptions: Schema.optional(
+                    Schema.Struct({
+                      level: Schema.optional(Schema.String),
+                      role: Schema.optional(Schema.String),
+                      type: Schema.optional(Schema.String),
+                      user: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  seccompProfile: Schema.optional(
+                    Schema.Struct({
+                      localhostProfile: Schema.optional(Schema.String),
+                      type: Schema.String,
+                    }),
+                  ),
+                  supplementalGroups: Schema.optional(
+                    Schema.Array(Schema.Number),
+                  ),
+                  supplementalGroupsPolicy: Schema.optional(Schema.String),
+                  sysctls: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.String,
+                        value: Schema.String,
+                      }),
+                    ),
+                  ),
+                  windowsOptions: Schema.optional(
+                    Schema.Struct({
+                      gmsaCredentialSpec: Schema.optional(Schema.String),
+                      gmsaCredentialSpecName: Schema.optional(Schema.String),
+                      hostProcess: Schema.optional(Schema.Boolean),
+                      runAsUserName: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+              serviceAccount: Schema.optional(Schema.String),
+              serviceAccountName: Schema.optional(Schema.String),
+              setHostnameAsFQDN: Schema.optional(Schema.Boolean),
+              shareProcessNamespace: Schema.optional(Schema.Boolean),
+              subdomain: Schema.optional(Schema.String),
+              terminationGracePeriodSeconds: Schema.optional(Schema.Number),
+              tolerations: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    effect: Schema.optional(Schema.String),
+                    key: Schema.optional(Schema.String),
+                    operator: Schema.optional(Schema.String),
+                    tolerationSeconds: Schema.optional(Schema.Number),
+                    value: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              topologySpreadConstraints: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    labelSelector: Schema.optional(
+                      Schema.Struct({
+                        matchExpressions: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              key: Schema.String,
+                              operator: Schema.String,
+                              values: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                        ),
+                        matchLabels: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                      }),
+                    ),
+                    matchLabelKeys: Schema.optional(
+                      Schema.Array(Schema.String),
+                    ),
+                    maxSkew: Schema.Number,
+                    minDomains: Schema.optional(Schema.Number),
+                    nodeAffinityPolicy: Schema.optional(Schema.String),
+                    nodeTaintsPolicy: Schema.optional(Schema.String),
+                    topologyKey: Schema.String,
+                    whenUnsatisfiable: Schema.String,
+                  }),
+                ),
+              ),
+              volumes: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    awsElasticBlockStore: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        partition: Schema.optional(Schema.Number),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        volumeID: Schema.String,
+                      }),
+                    ),
+                    azureDisk: Schema.optional(
+                      Schema.Struct({
+                        cachingMode: Schema.optional(Schema.String),
+                        diskName: Schema.String,
+                        diskURI: Schema.String,
+                        fsType: Schema.optional(Schema.String),
+                        kind: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                    azureFile: Schema.optional(
+                      Schema.Struct({
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretName: Schema.String,
+                        shareName: Schema.String,
+                      }),
+                    ),
+                    cephfs: Schema.optional(
+                      Schema.Struct({
+                        monitors: Schema.Array(Schema.String),
+                        path: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretFile: Schema.optional(Schema.String),
+                        secretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        user: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    cinder: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        volumeID: Schema.String,
+                      }),
+                    ),
+                    configMap: Schema.optional(
+                      Schema.Struct({
+                        defaultMode: Schema.optional(Schema.Number),
+                        items: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              key: Schema.String,
+                              mode: Schema.optional(Schema.Number),
+                              path: Schema.String,
+                            }),
+                          ),
+                        ),
+                        name: Schema.optional(Schema.String),
+                        optional: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                    csi: Schema.optional(
+                      Schema.Struct({
+                        driver: Schema.String,
+                        fsType: Schema.optional(Schema.String),
+                        nodePublishSecretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        volumeAttributes: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                      }),
+                    ),
+                    downwardAPI: Schema.optional(
+                      Schema.Struct({
+                        defaultMode: Schema.optional(Schema.Number),
+                        items: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              fieldRef: Schema.optional(
+                                Schema.Struct({
+                                  apiVersion: Schema.optional(Schema.String),
+                                  fieldPath: Schema.String,
+                                }),
+                              ),
+                              mode: Schema.optional(Schema.Number),
+                              path: Schema.String,
+                              resourceFieldRef: Schema.optional(
+                                Schema.Struct({
+                                  containerName: Schema.optional(Schema.String),
+                                  divisor: Schema.optional(Schema.String),
+                                  resource: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                    emptyDir: Schema.optional(
+                      Schema.Struct({
+                        medium: Schema.optional(Schema.String),
+                        sizeLimit: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    ephemeral: Schema.optional(
+                      Schema.Struct({
+                        volumeClaimTemplate: Schema.optional(
+                          Schema.Struct({
+                            metadata: Schema.optional(
+                              Schema.Struct({
+                                annotations: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                                creationTimestamp: Schema.optional(
+                                  Schema.String,
+                                ),
+                                deletionGracePeriodSeconds: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                deletionTimestamp: Schema.optional(
+                                  Schema.String,
+                                ),
+                                finalizers: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                generateName: Schema.optional(Schema.String),
+                                generation: Schema.optional(Schema.Number),
+                                labels: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                                managedFields: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      apiVersion: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      fieldsType: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      fieldsV1: Schema.optional(Schema.Unknown),
+                                      manager: Schema.optional(Schema.String),
+                                      operation: Schema.optional(Schema.String),
+                                      subresource: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      time: Schema.optional(Schema.String),
+                                    }),
+                                  ),
+                                ),
+                                name: Schema.optional(Schema.String),
+                                namespace: Schema.optional(Schema.String),
+                                ownerReferences: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      apiVersion: Schema.String,
+                                      blockOwnerDeletion: Schema.optional(
+                                        Schema.Boolean,
+                                      ),
+                                      controller: Schema.optional(
+                                        Schema.Boolean,
+                                      ),
+                                      kind: Schema.String,
+                                      name: Schema.String,
+                                      uid: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                resourceVersion: Schema.optional(Schema.String),
+                                selfLink: Schema.optional(Schema.String),
+                                uid: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            spec: Schema.Struct({
+                              accessModes: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              dataSource: Schema.optional(
+                                Schema.Struct({
+                                  apiGroup: Schema.optional(Schema.String),
+                                  kind: Schema.String,
+                                  name: Schema.String,
+                                }),
+                              ),
+                              dataSourceRef: Schema.optional(
+                                Schema.Struct({
+                                  apiGroup: Schema.optional(Schema.String),
+                                  kind: Schema.String,
+                                  name: Schema.String,
+                                  namespace: Schema.optional(Schema.String),
+                                }),
+                              ),
+                              resources: Schema.optional(
+                                Schema.Struct({
+                                  limits: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                  requests: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              selector: Schema.optional(
+                                Schema.Struct({
+                                  matchExpressions: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                  matchLabels: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              storageClassName: Schema.optional(Schema.String),
+                              volumeAttributesClassName: Schema.optional(
+                                Schema.String,
+                              ),
+                              volumeMode: Schema.optional(Schema.String),
+                              volumeName: Schema.optional(Schema.String),
+                            }),
+                          }),
+                        ),
+                      }),
+                    ),
+                    fc: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        lun: Schema.optional(Schema.Number),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        targetWWNs: Schema.optional(
+                          Schema.Array(Schema.String),
+                        ),
+                        wwids: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                    flexVolume: Schema.optional(
+                      Schema.Struct({
+                        driver: Schema.String,
+                        fsType: Schema.optional(Schema.String),
+                        options: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      }),
+                    ),
+                    flocker: Schema.optional(
+                      Schema.Struct({
+                        datasetName: Schema.optional(Schema.String),
+                        datasetUUID: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    gcePersistentDisk: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        partition: Schema.optional(Schema.Number),
+                        pdName: Schema.String,
+                        readOnly: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                    gitRepo: Schema.optional(
+                      Schema.Struct({
+                        directory: Schema.optional(Schema.String),
+                        repository: Schema.String,
+                        revision: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    glusterfs: Schema.optional(
+                      Schema.Struct({
+                        endpoints: Schema.String,
+                        path: Schema.String,
+                        readOnly: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                    hostPath: Schema.optional(
+                      Schema.Struct({
+                        path: Schema.String,
+                        type: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    image: Schema.optional(
+                      Schema.Struct({
+                        pullPolicy: Schema.optional(Schema.String),
+                        reference: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    iscsi: Schema.optional(
+                      Schema.Struct({
+                        chapAuthDiscovery: Schema.optional(Schema.Boolean),
+                        chapAuthSession: Schema.optional(Schema.Boolean),
+                        fsType: Schema.optional(Schema.String),
+                        initiatorName: Schema.optional(Schema.String),
+                        iqn: Schema.String,
+                        iscsiInterface: Schema.optional(Schema.String),
+                        lun: Schema.Number,
+                        portals: Schema.optional(Schema.Array(Schema.String)),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        targetPortal: Schema.String,
+                      }),
+                    ),
+                    name: Schema.String,
+                    nfs: Schema.optional(
+                      Schema.Struct({
+                        path: Schema.String,
+                        readOnly: Schema.optional(Schema.Boolean),
+                        server: Schema.String,
+                      }),
+                    ),
+                    persistentVolumeClaim: Schema.optional(
+                      Schema.Struct({
+                        claimName: Schema.String,
+                        readOnly: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                    photonPersistentDisk: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        pdID: Schema.String,
+                      }),
+                    ),
+                    portworxVolume: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        volumeID: Schema.String,
+                      }),
+                    ),
+                    projected: Schema.optional(
+                      Schema.Struct({
+                        defaultMode: Schema.optional(Schema.Number),
+                        sources: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              clusterTrustBundle: Schema.optional(
+                                Schema.Struct({
+                                  labelSelector: Schema.optional(
+                                    Schema.Struct({
+                                      matchExpressions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            operator: Schema.String,
+                                            values: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      matchLabels: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                  path: Schema.String,
+                                  signerName: Schema.optional(Schema.String),
+                                }),
+                              ),
+                              configMap: Schema.optional(
+                                Schema.Struct({
+                                  items: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        mode: Schema.optional(Schema.Number),
+                                        path: Schema.String,
+                                      }),
+                                    ),
+                                  ),
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                              downwardAPI: Schema.optional(
+                                Schema.Struct({
+                                  items: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        fieldRef: Schema.optional(
+                                          Schema.Struct({
+                                            apiVersion: Schema.optional(
+                                              Schema.String,
+                                            ),
+                                            fieldPath: Schema.String,
+                                          }),
+                                        ),
+                                        mode: Schema.optional(Schema.Number),
+                                        path: Schema.String,
+                                        resourceFieldRef: Schema.optional(
+                                          Schema.Struct({
+                                            containerName: Schema.optional(
+                                              Schema.String,
+                                            ),
+                                            divisor: Schema.optional(
+                                              Schema.String,
+                                            ),
+                                            resource: Schema.String,
+                                          }),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                }),
+                              ),
+                              podCertificate: Schema.optional(
+                                Schema.Struct({
+                                  certificateChainPath: Schema.optional(
+                                    Schema.String,
+                                  ),
+                                  credentialBundlePath: Schema.optional(
+                                    Schema.String,
+                                  ),
+                                  keyPath: Schema.optional(Schema.String),
+                                  keyType: Schema.String,
+                                  maxExpirationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  signerName: Schema.String,
+                                  userAnnotations: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              secret: Schema.optional(
+                                Schema.Struct({
+                                  items: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        mode: Schema.optional(Schema.Number),
+                                        path: Schema.String,
+                                      }),
+                                    ),
+                                  ),
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                              serviceAccountToken: Schema.optional(
+                                Schema.Struct({
+                                  audience: Schema.optional(Schema.String),
+                                  expirationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  path: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                    quobyte: Schema.optional(
+                      Schema.Struct({
+                        group: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        registry: Schema.String,
+                        tenant: Schema.optional(Schema.String),
+                        user: Schema.optional(Schema.String),
+                        volume: Schema.String,
+                      }),
+                    ),
+                    rbd: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        image: Schema.String,
+                        keyring: Schema.optional(Schema.String),
+                        monitors: Schema.Array(Schema.String),
+                        pool: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        user: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    scaleIO: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        gateway: Schema.String,
+                        protectionDomain: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretRef: Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                        }),
+                        sslEnabled: Schema.optional(Schema.Boolean),
+                        storageMode: Schema.optional(Schema.String),
+                        storagePool: Schema.optional(Schema.String),
+                        system: Schema.String,
+                        volumeName: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    secret: Schema.optional(
+                      Schema.Struct({
+                        defaultMode: Schema.optional(Schema.Number),
+                        items: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              key: Schema.String,
+                              mode: Schema.optional(Schema.Number),
+                              path: Schema.String,
+                            }),
+                          ),
+                        ),
+                        optional: Schema.optional(Schema.Boolean),
+                        secretName: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    storageos: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        volumeName: Schema.optional(Schema.String),
+                        volumeNamespace: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    vsphereVolume: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        storagePolicyID: Schema.optional(Schema.String),
+                        storagePolicyName: Schema.optional(Schema.String),
+                        volumePath: Schema.String,
+                      }),
+                    ),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+        ttlSecondsAfterFinished: Schema.optional(Schema.Number),
+      }),
+    ),
+    status: Schema.optional(
+      Schema.Struct({
+        active: Schema.optional(Schema.Number),
+        completedIndexes: Schema.optional(Schema.String),
+        completionTime: Schema.optional(Schema.String),
+        conditions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              lastProbeTime: Schema.optional(Schema.String),
+              lastTransitionTime: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              reason: Schema.optional(Schema.String),
+              status: Schema.String,
+              type: Schema.String,
+            }),
+          ),
+        ),
+        failed: Schema.optional(Schema.Number),
+        failedIndexes: Schema.optional(Schema.String),
+        ready: Schema.optional(Schema.Number),
+        startTime: Schema.optional(Schema.String),
+        succeeded: Schema.optional(Schema.Number),
+        terminating: Schema.optional(Schema.Number),
+        uncountedTerminatedPods: Schema.optional(
+          Schema.Struct({
+            failed: Schema.optional(Schema.Array(Schema.String)),
+            succeeded: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -5321,7 +10583,10 @@ export type CreateBatchV1NamespacedJobOutput =
 /**
  * create a Job
  *
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const createBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -5334,7 +10599,32 @@ export const createBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const DeleteBatchV1CollectionNamespacedCronJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
+    continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    gracePeriodSeconds: Schema.optional(Schema.Number),
+    ignoreStoreReadErrorWithClusterBreakingPotential: Schema.optional(
+      Schema.Boolean,
+    ),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    orphanDependents: Schema.optional(Schema.Boolean),
+    propagationPolicy: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    preconditions: Schema.optional(
+      Schema.Struct({
+        resourceVersion: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -5392,7 +10682,63 @@ export type DeleteBatchV1CollectionNamespacedCronJobOutput =
 /**
  * delete collection of CronJob
  *
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param gracePeriodSeconds - The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.
+ * @param ignoreStoreReadErrorWithClusterBreakingPotential - if set to true, it will trigger an unsafe deletion of the resource in case the normal deletion flow fails with a corrupt object error. A resource is considered corrupt if it can not be retrieved from the underlying storage successfully because of a) its data can not be transformed e.g. decryption failure, or b) it fails to decode into an object. NOTE: unsafe deletion ignores finalizer constraints, skips precondition checks, and removes the object from the storage. WARNING: This may potentially break the cluster if the workload associated with the resource being unsafe-deleted relies on normal deletion flow. Use only if you REALLY know what you are doing. The default value is false, and the user must opt in to enable it
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
+ * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteBatchV1CollectionNamespacedCronJob =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5402,7 +10748,32 @@ export const deleteBatchV1CollectionNamespacedCronJob =
 // Input Schema
 export const DeleteBatchV1CollectionNamespacedJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
+    continue: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    gracePeriodSeconds: Schema.optional(Schema.Number),
+    ignoreStoreReadErrorWithClusterBreakingPotential: Schema.optional(
+      Schema.Boolean,
+    ),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    orphanDependents: Schema.optional(Schema.Boolean),
+    propagationPolicy: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    preconditions: Schema.optional(
+      Schema.Struct({
+        resourceVersion: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -5460,7 +10831,63 @@ export type DeleteBatchV1CollectionNamespacedJobOutput =
 /**
  * delete collection of Job
  *
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param gracePeriodSeconds - The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.
+ * @param ignoreStoreReadErrorWithClusterBreakingPotential - if set to true, it will trigger an unsafe deletion of the resource in case the normal deletion flow fails with a corrupt object error. A resource is considered corrupt if it can not be retrieved from the underlying storage successfully because of a) its data can not be transformed e.g. decryption failure, or b) it fails to decode into an object. NOTE: unsafe deletion ignores finalizer constraints, skips precondition checks, and removes the object from the storage. WARNING: This may potentially break the cluster if the workload associated with the resource being unsafe-deleted relies on normal deletion flow. Use only if you REALLY know what you are doing. The default value is false, and the user must opt in to enable it
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
+ * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
  */
 export const deleteBatchV1CollectionNamespacedJob =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5470,7 +10897,24 @@ export const deleteBatchV1CollectionNamespacedJob =
 // Input Schema
 export const DeleteBatchV1NamespacedCronJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    gracePeriodSeconds: Schema.optional(Schema.Number),
+    ignoreStoreReadErrorWithClusterBreakingPotential: Schema.optional(
+      Schema.Boolean,
+    ),
+    orphanDependents: Schema.optional(Schema.Boolean),
+    propagationPolicy: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    preconditions: Schema.optional(
+      Schema.Struct({
+        resourceVersion: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -5528,7 +10972,14 @@ export type DeleteBatchV1NamespacedCronJobOutput =
 /**
  * delete a CronJob
  *
+ * @param name - name of the CronJob
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param gracePeriodSeconds - The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.
+ * @param ignoreStoreReadErrorWithClusterBreakingPotential - if set to true, it will trigger an unsafe deletion of the resource in case the normal deletion flow fails with a corrupt object error. A resource is considered corrupt if it can not be retrieved from the underlying storage successfully because of a) its data can not be transformed e.g. decryption failure, or b) it fails to decode into an object. NOTE: unsafe deletion ignores finalizer constraints, skips precondition checks, and removes the object from the storage. WARNING: This may potentially break the cluster if the workload associated with the resource being unsafe-deleted relies on normal deletion flow. Use only if you REALLY know what you are doing. The default value is false, and the user must opt in to enable it
+ * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
+ * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteBatchV1NamespacedCronJob =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -5539,7 +10990,24 @@ export const deleteBatchV1NamespacedCronJob =
 // Input Schema
 export const DeleteBatchV1NamespacedJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    gracePeriodSeconds: Schema.optional(Schema.Number),
+    ignoreStoreReadErrorWithClusterBreakingPotential: Schema.optional(
+      Schema.Boolean,
+    ),
+    orphanDependents: Schema.optional(Schema.Boolean),
+    propagationPolicy: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    preconditions: Schema.optional(
+      Schema.Struct({
+        resourceVersion: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -5597,7 +11065,14 @@ export type DeleteBatchV1NamespacedJobOutput =
 /**
  * delete a Job
  *
+ * @param name - name of the Job
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param gracePeriodSeconds - The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.
+ * @param ignoreStoreReadErrorWithClusterBreakingPotential - if set to true, it will trigger an unsafe deletion of the resource in case the normal deletion flow fails with a corrupt object error. A resource is considered corrupt if it can not be retrieved from the underlying storage successfully because of a) its data can not be transformed e.g. decryption failure, or b) it fails to decode into an object. NOTE: unsafe deletion ignores finalizer constraints, skips precondition checks, and removes the object from the storage. WARNING: This may potentially break the cluster if the workload associated with the resource being unsafe-deleted relies on normal deletion flow. Use only if you REALLY know what you are doing. The default value is false, and the user must opt in to enable it
+ * @param orphanDependents - Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
+ * @param propagationPolicy - Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
  */
 export const deleteBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -5694,9 +11169,20 @@ export const getBatchV1APIResources = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ListBatchV1CronJobForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/batch/v1/cronjobs" }),
-  );
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(T.Http({ method: "GET", path: "/apis/batch/v1/cronjobs" }));
 export type ListBatchV1CronJobForAllNamespacesInput =
   typeof ListBatchV1CronJobForAllNamespacesInput.Type;
 
@@ -8597,6 +14083,60 @@ export type ListBatchV1CronJobForAllNamespacesOutput =
 // The operation
 /**
  * list or watch objects of kind CronJob
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listBatchV1CronJobForAllNamespaces =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -8605,9 +14145,20 @@ export const listBatchV1CronJobForAllNamespaces =
   }));
 // Input Schema
 export const ListBatchV1JobForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/batch/v1/jobs" }),
-  );
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(T.Http({ method: "GET", path: "/apis/batch/v1/jobs" }));
 export type ListBatchV1JobForAllNamespacesInput =
   typeof ListBatchV1JobForAllNamespacesInput.Type;
 
@@ -11302,6 +16853,60 @@ export type ListBatchV1JobForAllNamespacesOutput =
 // The operation
 /**
  * list or watch objects of kind Job
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listBatchV1JobForAllNamespaces =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -11310,7 +16915,21 @@ export const listBatchV1JobForAllNamespaces =
   }));
 // Input Schema
 export const ListBatchV1NamespacedCronJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/batch/v1/namespaces/{namespace}/cronjobs",
@@ -14216,6 +19835,61 @@ export type ListBatchV1NamespacedCronJobOutput =
 // The operation
 /**
  * list or watch objects of kind CronJob
+ *
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listBatchV1NamespacedCronJob =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -14224,7 +19898,21 @@ export const listBatchV1NamespacedCronJob =
   }));
 // Input Schema
 export const ListBatchV1NamespacedJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/batch/v1/namespaces/{namespace}/jobs",
@@ -16924,6 +22612,61 @@ export type ListBatchV1NamespacedJobOutput =
 // The operation
 /**
  * list or watch objects of kind Job
+ *
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const listBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -16934,8 +22677,13 @@ export const listBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PatchBatchV1NamespacedCronJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -19661,8 +25409,13 @@ export type PatchBatchV1NamespacedCronJobOutput =
 /**
  * partially update the specified CronJob
  *
+ * @param name - name of the CronJob
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. This field is required for apply requests (application/apply-patch) but optional for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+ * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchBatchV1NamespacedCronJob =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -19673,8 +25426,13 @@ export const patchBatchV1NamespacedCronJob =
 // Input Schema
 export const PatchBatchV1NamespacedCronJobStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -22400,8 +28158,13 @@ export type PatchBatchV1NamespacedCronJobStatusOutput =
 /**
  * partially update status of the specified CronJob
  *
+ * @param name - name of the CronJob
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. This field is required for apply requests (application/apply-patch) but optional for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+ * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchBatchV1NamespacedCronJobStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -22412,8 +28175,13 @@ export const patchBatchV1NamespacedCronJobStatus =
 // Input Schema
 export const PatchBatchV1NamespacedJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -24982,8 +30750,13 @@ export type PatchBatchV1NamespacedJobOutput =
 /**
  * partially update the specified Job
  *
+ * @param name - name of the Job
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. This field is required for apply requests (application/apply-patch) but optional for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+ * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -24995,8 +30768,13 @@ export const patchBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const PatchBatchV1NamespacedJobStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -27565,8 +33343,13 @@ export type PatchBatchV1NamespacedJobStatusOutput =
 /**
  * partially update status of the specified Job
  *
+ * @param name - name of the Job
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. This field is required for apply requests (application/apply-patch) but optional for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch).
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
+ * @param force - Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests.
  */
 export const patchBatchV1NamespacedJobStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -27576,7 +33359,11 @@ export const patchBatchV1NamespacedJobStatus =
   }));
 // Input Schema
 export const ReadBatchV1NamespacedCronJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}",
@@ -30300,6 +36087,10 @@ export type ReadBatchV1NamespacedCronJobOutput =
 // The operation
 /**
  * read the specified CronJob
+ *
+ * @param name - name of the CronJob
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readBatchV1NamespacedCronJob =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -30309,7 +36100,11 @@ export const readBatchV1NamespacedCronJob =
   }));
 // Input Schema
 export const ReadBatchV1NamespacedCronJobStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status",
@@ -33033,6 +38828,10 @@ export type ReadBatchV1NamespacedCronJobStatusOutput =
 // The operation
 /**
  * read status of the specified CronJob
+ *
+ * @param name - name of the CronJob
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readBatchV1NamespacedCronJobStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -33042,7 +38841,11 @@ export const readBatchV1NamespacedCronJobStatus =
   }));
 // Input Schema
 export const ReadBatchV1NamespacedJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/batch/v1/namespaces/{namespace}/jobs/{name}",
@@ -35609,6 +41412,10 @@ export type ReadBatchV1NamespacedJobOutput =
 // The operation
 /**
  * read the specified Job
+ *
+ * @param name - name of the Job
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -35619,7 +41426,11 @@ export const readBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const ReadBatchV1NamespacedJobStatusInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/batch/v1/namespaces/{namespace}/jobs/{name}/status",
@@ -38186,6 +43997,10 @@ export type ReadBatchV1NamespacedJobStatusOutput =
 // The operation
 /**
  * read status of the specified Job
+ *
+ * @param name - name of the Job
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  */
 export const readBatchV1NamespacedJobStatus =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -38196,8 +44011,2717 @@ export const readBatchV1NamespacedJobStatus =
 // Input Schema
 export const ReplaceBatchV1NamespacedCronJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.Struct({
+      concurrencyPolicy: Schema.optional(Schema.String),
+      failedJobsHistoryLimit: Schema.optional(Schema.Number),
+      jobTemplate: Schema.Struct({
+        metadata: Schema.optional(
+          Schema.Struct({
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
+                }),
+              ),
+            ),
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            activeDeadlineSeconds: Schema.optional(Schema.Number),
+            backoffLimit: Schema.optional(Schema.Number),
+            backoffLimitPerIndex: Schema.optional(Schema.Number),
+            completionMode: Schema.optional(Schema.String),
+            completions: Schema.optional(Schema.Number),
+            managedBy: Schema.optional(Schema.String),
+            manualSelector: Schema.optional(Schema.Boolean),
+            maxFailedIndexes: Schema.optional(Schema.Number),
+            parallelism: Schema.optional(Schema.Number),
+            podFailurePolicy: Schema.optional(
+              Schema.Struct({
+                rules: Schema.Array(
+                  Schema.Struct({
+                    action: Schema.String,
+                    onExitCodes: Schema.optional(
+                      Schema.Struct({
+                        containerName: Schema.optional(Schema.String),
+                        operator: Schema.String,
+                        values: Schema.Array(Schema.Number),
+                      }),
+                    ),
+                    onPodConditions: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          status: Schema.optional(Schema.String),
+                          type: Schema.String,
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            podReplacementPolicy: Schema.optional(Schema.String),
+            selector: Schema.optional(
+              Schema.Struct({
+                matchExpressions: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      key: Schema.String,
+                      operator: Schema.String,
+                      values: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                matchLabels: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+              }),
+            ),
+            successPolicy: Schema.optional(
+              Schema.Struct({
+                rules: Schema.Array(
+                  Schema.Struct({
+                    succeededCount: Schema.optional(Schema.Number),
+                    succeededIndexes: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            suspend: Schema.optional(Schema.Boolean),
+            template: Schema.Struct({
+              metadata: Schema.optional(
+                Schema.Struct({
+                  annotations: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  creationTimestamp: Schema.optional(Schema.String),
+                  deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+                  deletionTimestamp: Schema.optional(Schema.String),
+                  finalizers: Schema.optional(Schema.Array(Schema.String)),
+                  generateName: Schema.optional(Schema.String),
+                  generation: Schema.optional(Schema.Number),
+                  labels: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  managedFields: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        apiVersion: Schema.optional(Schema.String),
+                        fieldsType: Schema.optional(Schema.String),
+                        fieldsV1: Schema.optional(Schema.Unknown),
+                        manager: Schema.optional(Schema.String),
+                        operation: Schema.optional(Schema.String),
+                        subresource: Schema.optional(Schema.String),
+                        time: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  name: Schema.optional(Schema.String),
+                  namespace: Schema.optional(Schema.String),
+                  ownerReferences: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        apiVersion: Schema.String,
+                        blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                        controller: Schema.optional(Schema.Boolean),
+                        kind: Schema.String,
+                        name: Schema.String,
+                        uid: Schema.String,
+                      }),
+                    ),
+                  ),
+                  resourceVersion: Schema.optional(Schema.String),
+                  selfLink: Schema.optional(Schema.String),
+                  uid: Schema.optional(Schema.String),
+                }),
+              ),
+              spec: Schema.optional(
+                Schema.Struct({
+                  activeDeadlineSeconds: Schema.optional(Schema.Number),
+                  affinity: Schema.optional(
+                    Schema.Struct({
+                      nodeAffinity: Schema.optional(
+                        Schema.Struct({
+                          preferredDuringSchedulingIgnoredDuringExecution:
+                            Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  preference: Schema.Struct({
+                                    matchExpressions: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                    matchFields: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                  }),
+                                  weight: Schema.Number,
+                                }),
+                              ),
+                            ),
+                          requiredDuringSchedulingIgnoredDuringExecution:
+                            Schema.optional(
+                              Schema.Struct({
+                                nodeSelectorTerms: Schema.Array(
+                                  Schema.Struct({
+                                    matchExpressions: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                    matchFields: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                  }),
+                                ),
+                              }),
+                            ),
+                        }),
+                      ),
+                      podAffinity: Schema.optional(
+                        Schema.Struct({
+                          preferredDuringSchedulingIgnoredDuringExecution:
+                            Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  podAffinityTerm: Schema.Struct({
+                                    labelSelector: Schema.optional(
+                                      Schema.Struct({
+                                        matchExpressions: Schema.optional(
+                                          Schema.Array(
+                                            Schema.Struct({
+                                              key: Schema.String,
+                                              operator: Schema.String,
+                                              values: Schema.optional(
+                                                Schema.Array(Schema.String),
+                                              ),
+                                            }),
+                                          ),
+                                        ),
+                                        matchLabels: Schema.optional(
+                                          Schema.Record(
+                                            Schema.String,
+                                            Schema.String,
+                                          ),
+                                        ),
+                                      }),
+                                    ),
+                                    matchLabelKeys: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                    mismatchLabelKeys: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                    namespaceSelector: Schema.optional(
+                                      Schema.Struct({
+                                        matchExpressions: Schema.optional(
+                                          Schema.Array(
+                                            Schema.Struct({
+                                              key: Schema.String,
+                                              operator: Schema.String,
+                                              values: Schema.optional(
+                                                Schema.Array(Schema.String),
+                                              ),
+                                            }),
+                                          ),
+                                        ),
+                                        matchLabels: Schema.optional(
+                                          Schema.Record(
+                                            Schema.String,
+                                            Schema.String,
+                                          ),
+                                        ),
+                                      }),
+                                    ),
+                                    namespaces: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                    topologyKey: Schema.String,
+                                  }),
+                                  weight: Schema.Number,
+                                }),
+                              ),
+                            ),
+                          requiredDuringSchedulingIgnoredDuringExecution:
+                            Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  labelSelector: Schema.optional(
+                                    Schema.Struct({
+                                      matchExpressions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            operator: Schema.String,
+                                            values: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      matchLabels: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  matchLabelKeys: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  mismatchLabelKeys: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  namespaceSelector: Schema.optional(
+                                    Schema.Struct({
+                                      matchExpressions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            operator: Schema.String,
+                                            values: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      matchLabels: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  namespaces: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  topologyKey: Schema.String,
+                                }),
+                              ),
+                            ),
+                        }),
+                      ),
+                      podAntiAffinity: Schema.optional(
+                        Schema.Struct({
+                          preferredDuringSchedulingIgnoredDuringExecution:
+                            Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  podAffinityTerm: Schema.Struct({
+                                    labelSelector: Schema.optional(
+                                      Schema.Struct({
+                                        matchExpressions: Schema.optional(
+                                          Schema.Array(
+                                            Schema.Struct({
+                                              key: Schema.String,
+                                              operator: Schema.String,
+                                              values: Schema.optional(
+                                                Schema.Array(Schema.String),
+                                              ),
+                                            }),
+                                          ),
+                                        ),
+                                        matchLabels: Schema.optional(
+                                          Schema.Record(
+                                            Schema.String,
+                                            Schema.String,
+                                          ),
+                                        ),
+                                      }),
+                                    ),
+                                    matchLabelKeys: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                    mismatchLabelKeys: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                    namespaceSelector: Schema.optional(
+                                      Schema.Struct({
+                                        matchExpressions: Schema.optional(
+                                          Schema.Array(
+                                            Schema.Struct({
+                                              key: Schema.String,
+                                              operator: Schema.String,
+                                              values: Schema.optional(
+                                                Schema.Array(Schema.String),
+                                              ),
+                                            }),
+                                          ),
+                                        ),
+                                        matchLabels: Schema.optional(
+                                          Schema.Record(
+                                            Schema.String,
+                                            Schema.String,
+                                          ),
+                                        ),
+                                      }),
+                                    ),
+                                    namespaces: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                    topologyKey: Schema.String,
+                                  }),
+                                  weight: Schema.Number,
+                                }),
+                              ),
+                            ),
+                          requiredDuringSchedulingIgnoredDuringExecution:
+                            Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  labelSelector: Schema.optional(
+                                    Schema.Struct({
+                                      matchExpressions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            operator: Schema.String,
+                                            values: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      matchLabels: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  matchLabelKeys: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  mismatchLabelKeys: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  namespaceSelector: Schema.optional(
+                                    Schema.Struct({
+                                      matchExpressions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            operator: Schema.String,
+                                            values: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      matchLabels: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  namespaces: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  topologyKey: Schema.String,
+                                }),
+                              ),
+                            ),
+                        }),
+                      ),
+                    }),
+                  ),
+                  automountServiceAccountToken: Schema.optional(Schema.Boolean),
+                  containers: Schema.Array(
+                    Schema.Struct({
+                      args: Schema.optional(Schema.Array(Schema.String)),
+                      command: Schema.optional(Schema.Array(Schema.String)),
+                      env: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.String,
+                            value: Schema.optional(Schema.String),
+                            valueFrom: Schema.optional(
+                              Schema.Struct({
+                                configMapKeyRef: Schema.optional(
+                                  Schema.Struct({
+                                    key: Schema.String,
+                                    name: Schema.optional(Schema.String),
+                                    optional: Schema.optional(Schema.Boolean),
+                                  }),
+                                ),
+                                fieldRef: Schema.optional(
+                                  Schema.Struct({
+                                    apiVersion: Schema.optional(Schema.String),
+                                    fieldPath: Schema.String,
+                                  }),
+                                ),
+                                fileKeyRef: Schema.optional(
+                                  Schema.Struct({
+                                    key: Schema.String,
+                                    optional: Schema.optional(Schema.Boolean),
+                                    path: Schema.String,
+                                    volumeName: Schema.String,
+                                  }),
+                                ),
+                                resourceFieldRef: Schema.optional(
+                                  Schema.Struct({
+                                    containerName: Schema.optional(
+                                      Schema.String,
+                                    ),
+                                    divisor: Schema.optional(Schema.String),
+                                    resource: Schema.String,
+                                  }),
+                                ),
+                                secretKeyRef: Schema.optional(
+                                  Schema.Struct({
+                                    key: Schema.String,
+                                    name: Schema.optional(Schema.String),
+                                    optional: Schema.optional(Schema.Boolean),
+                                  }),
+                                ),
+                              }),
+                            ),
+                          }),
+                        ),
+                      ),
+                      envFrom: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            configMapRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                optional: Schema.optional(Schema.Boolean),
+                              }),
+                            ),
+                            prefix: Schema.optional(Schema.String),
+                            secretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                optional: Schema.optional(Schema.Boolean),
+                              }),
+                            ),
+                          }),
+                        ),
+                      ),
+                      image: Schema.optional(Schema.String),
+                      imagePullPolicy: Schema.optional(Schema.String),
+                      lifecycle: Schema.optional(
+                        Schema.Struct({
+                          postStart: Schema.optional(
+                            Schema.Struct({
+                              exec: Schema.optional(
+                                Schema.Struct({
+                                  command: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                }),
+                              ),
+                              httpGet: Schema.optional(
+                                Schema.Struct({
+                                  host: Schema.optional(Schema.String),
+                                  httpHeaders: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        name: Schema.String,
+                                        value: Schema.String,
+                                      }),
+                                    ),
+                                  ),
+                                  path: Schema.optional(Schema.String),
+                                  port: Schema.String,
+                                  scheme: Schema.optional(Schema.String),
+                                }),
+                              ),
+                              sleep: Schema.optional(
+                                Schema.Struct({
+                                  seconds: Schema.Number,
+                                }),
+                              ),
+                              tcpSocket: Schema.optional(
+                                Schema.Struct({
+                                  host: Schema.optional(Schema.String),
+                                  port: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                          preStop: Schema.optional(
+                            Schema.Struct({
+                              exec: Schema.optional(
+                                Schema.Struct({
+                                  command: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                }),
+                              ),
+                              httpGet: Schema.optional(
+                                Schema.Struct({
+                                  host: Schema.optional(Schema.String),
+                                  httpHeaders: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        name: Schema.String,
+                                        value: Schema.String,
+                                      }),
+                                    ),
+                                  ),
+                                  path: Schema.optional(Schema.String),
+                                  port: Schema.String,
+                                  scheme: Schema.optional(Schema.String),
+                                }),
+                              ),
+                              sleep: Schema.optional(
+                                Schema.Struct({
+                                  seconds: Schema.Number,
+                                }),
+                              ),
+                              tcpSocket: Schema.optional(
+                                Schema.Struct({
+                                  host: Schema.optional(Schema.String),
+                                  port: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                          stopSignal: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      livenessProbe: Schema.optional(
+                        Schema.Struct({
+                          exec: Schema.optional(
+                            Schema.Struct({
+                              command: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          failureThreshold: Schema.optional(Schema.Number),
+                          grpc: Schema.optional(
+                            Schema.Struct({
+                              port: Schema.Number,
+                              service: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          httpGet: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              httpHeaders: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.String,
+                                    value: Schema.String,
+                                  }),
+                                ),
+                              ),
+                              path: Schema.optional(Schema.String),
+                              port: Schema.String,
+                              scheme: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          initialDelaySeconds: Schema.optional(Schema.Number),
+                          periodSeconds: Schema.optional(Schema.Number),
+                          successThreshold: Schema.optional(Schema.Number),
+                          tcpSocket: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              port: Schema.String,
+                            }),
+                          ),
+                          terminationGracePeriodSeconds: Schema.optional(
+                            Schema.Number,
+                          ),
+                          timeoutSeconds: Schema.optional(Schema.Number),
+                        }),
+                      ),
+                      name: Schema.String,
+                      ports: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            containerPort: Schema.Number,
+                            hostIP: Schema.optional(Schema.String),
+                            hostPort: Schema.optional(Schema.Number),
+                            name: Schema.optional(Schema.String),
+                            protocol: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                      readinessProbe: Schema.optional(
+                        Schema.Struct({
+                          exec: Schema.optional(
+                            Schema.Struct({
+                              command: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          failureThreshold: Schema.optional(Schema.Number),
+                          grpc: Schema.optional(
+                            Schema.Struct({
+                              port: Schema.Number,
+                              service: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          httpGet: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              httpHeaders: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.String,
+                                    value: Schema.String,
+                                  }),
+                                ),
+                              ),
+                              path: Schema.optional(Schema.String),
+                              port: Schema.String,
+                              scheme: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          initialDelaySeconds: Schema.optional(Schema.Number),
+                          periodSeconds: Schema.optional(Schema.Number),
+                          successThreshold: Schema.optional(Schema.Number),
+                          tcpSocket: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              port: Schema.String,
+                            }),
+                          ),
+                          terminationGracePeriodSeconds: Schema.optional(
+                            Schema.Number,
+                          ),
+                          timeoutSeconds: Schema.optional(Schema.Number),
+                        }),
+                      ),
+                      resizePolicy: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            resourceName: Schema.String,
+                            restartPolicy: Schema.String,
+                          }),
+                        ),
+                      ),
+                      resources: Schema.optional(
+                        Schema.Struct({
+                          claims: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.String,
+                                request: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                          limits: Schema.optional(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                          requests: Schema.optional(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                        }),
+                      ),
+                      restartPolicy: Schema.optional(Schema.String),
+                      restartPolicyRules: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            exitCodes: Schema.optional(
+                              Schema.Struct({
+                                operator: Schema.String,
+                                values: Schema.optional(
+                                  Schema.Array(Schema.Number),
+                                ),
+                              }),
+                            ),
+                          }),
+                        ),
+                      ),
+                      securityContext: Schema.optional(
+                        Schema.Struct({
+                          allowPrivilegeEscalation: Schema.optional(
+                            Schema.Boolean,
+                          ),
+                          appArmorProfile: Schema.optional(
+                            Schema.Struct({
+                              localhostProfile: Schema.optional(Schema.String),
+                              type: Schema.String,
+                            }),
+                          ),
+                          capabilities: Schema.optional(
+                            Schema.Struct({
+                              add: Schema.optional(Schema.Array(Schema.String)),
+                              drop: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          privileged: Schema.optional(Schema.Boolean),
+                          procMount: Schema.optional(Schema.String),
+                          readOnlyRootFilesystem: Schema.optional(
+                            Schema.Boolean,
+                          ),
+                          runAsGroup: Schema.optional(Schema.Number),
+                          runAsNonRoot: Schema.optional(Schema.Boolean),
+                          runAsUser: Schema.optional(Schema.Number),
+                          seLinuxOptions: Schema.optional(
+                            Schema.Struct({
+                              level: Schema.optional(Schema.String),
+                              role: Schema.optional(Schema.String),
+                              type: Schema.optional(Schema.String),
+                              user: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          seccompProfile: Schema.optional(
+                            Schema.Struct({
+                              localhostProfile: Schema.optional(Schema.String),
+                              type: Schema.String,
+                            }),
+                          ),
+                          windowsOptions: Schema.optional(
+                            Schema.Struct({
+                              gmsaCredentialSpec: Schema.optional(
+                                Schema.String,
+                              ),
+                              gmsaCredentialSpecName: Schema.optional(
+                                Schema.String,
+                              ),
+                              hostProcess: Schema.optional(Schema.Boolean),
+                              runAsUserName: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        }),
+                      ),
+                      startupProbe: Schema.optional(
+                        Schema.Struct({
+                          exec: Schema.optional(
+                            Schema.Struct({
+                              command: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          failureThreshold: Schema.optional(Schema.Number),
+                          grpc: Schema.optional(
+                            Schema.Struct({
+                              port: Schema.Number,
+                              service: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          httpGet: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              httpHeaders: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.String,
+                                    value: Schema.String,
+                                  }),
+                                ),
+                              ),
+                              path: Schema.optional(Schema.String),
+                              port: Schema.String,
+                              scheme: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          initialDelaySeconds: Schema.optional(Schema.Number),
+                          periodSeconds: Schema.optional(Schema.Number),
+                          successThreshold: Schema.optional(Schema.Number),
+                          tcpSocket: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              port: Schema.String,
+                            }),
+                          ),
+                          terminationGracePeriodSeconds: Schema.optional(
+                            Schema.Number,
+                          ),
+                          timeoutSeconds: Schema.optional(Schema.Number),
+                        }),
+                      ),
+                      stdin: Schema.optional(Schema.Boolean),
+                      stdinOnce: Schema.optional(Schema.Boolean),
+                      terminationMessagePath: Schema.optional(Schema.String),
+                      terminationMessagePolicy: Schema.optional(Schema.String),
+                      tty: Schema.optional(Schema.Boolean),
+                      volumeDevices: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            devicePath: Schema.String,
+                            name: Schema.String,
+                          }),
+                        ),
+                      ),
+                      volumeMounts: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            mountPath: Schema.String,
+                            mountPropagation: Schema.optional(Schema.String),
+                            name: Schema.String,
+                            readOnly: Schema.optional(Schema.Boolean),
+                            recursiveReadOnly: Schema.optional(Schema.String),
+                            subPath: Schema.optional(Schema.String),
+                            subPathExpr: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                      workingDir: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  dnsConfig: Schema.optional(
+                    Schema.Struct({
+                      nameservers: Schema.optional(Schema.Array(Schema.String)),
+                      options: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                            value: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                      searches: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                  dnsPolicy: Schema.optional(Schema.String),
+                  enableServiceLinks: Schema.optional(Schema.Boolean),
+                  ephemeralContainers: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        args: Schema.optional(Schema.Array(Schema.String)),
+                        command: Schema.optional(Schema.Array(Schema.String)),
+                        env: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              name: Schema.String,
+                              value: Schema.optional(Schema.String),
+                              valueFrom: Schema.optional(
+                                Schema.Struct({
+                                  configMapKeyRef: Schema.optional(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      name: Schema.optional(Schema.String),
+                                      optional: Schema.optional(Schema.Boolean),
+                                    }),
+                                  ),
+                                  fieldRef: Schema.optional(
+                                    Schema.Struct({
+                                      apiVersion: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      fieldPath: Schema.String,
+                                    }),
+                                  ),
+                                  fileKeyRef: Schema.optional(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      optional: Schema.optional(Schema.Boolean),
+                                      path: Schema.String,
+                                      volumeName: Schema.String,
+                                    }),
+                                  ),
+                                  resourceFieldRef: Schema.optional(
+                                    Schema.Struct({
+                                      containerName: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      divisor: Schema.optional(Schema.String),
+                                      resource: Schema.String,
+                                    }),
+                                  ),
+                                  secretKeyRef: Schema.optional(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      name: Schema.optional(Schema.String),
+                                      optional: Schema.optional(Schema.Boolean),
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        envFrom: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              configMapRef: Schema.optional(
+                                Schema.Struct({
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                              prefix: Schema.optional(Schema.String),
+                              secretRef: Schema.optional(
+                                Schema.Struct({
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        image: Schema.optional(Schema.String),
+                        imagePullPolicy: Schema.optional(Schema.String),
+                        lifecycle: Schema.optional(
+                          Schema.Struct({
+                            postStart: Schema.optional(
+                              Schema.Struct({
+                                exec: Schema.optional(
+                                  Schema.Struct({
+                                    command: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                  }),
+                                ),
+                                httpGet: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    httpHeaders: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          name: Schema.String,
+                                          value: Schema.String,
+                                        }),
+                                      ),
+                                    ),
+                                    path: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                    scheme: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                                sleep: Schema.optional(
+                                  Schema.Struct({
+                                    seconds: Schema.Number,
+                                  }),
+                                ),
+                                tcpSocket: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
+                            preStop: Schema.optional(
+                              Schema.Struct({
+                                exec: Schema.optional(
+                                  Schema.Struct({
+                                    command: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                  }),
+                                ),
+                                httpGet: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    httpHeaders: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          name: Schema.String,
+                                          value: Schema.String,
+                                        }),
+                                      ),
+                                    ),
+                                    path: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                    scheme: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                                sleep: Schema.optional(
+                                  Schema.Struct({
+                                    seconds: Schema.Number,
+                                  }),
+                                ),
+                                tcpSocket: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
+                            stopSignal: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        livenessProbe: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            failureThreshold: Schema.optional(Schema.Number),
+                            grpc: Schema.optional(
+                              Schema.Struct({
+                                port: Schema.Number,
+                                service: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            initialDelaySeconds: Schema.optional(Schema.Number),
+                            periodSeconds: Schema.optional(Schema.Number),
+                            successThreshold: Schema.optional(Schema.Number),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                            terminationGracePeriodSeconds: Schema.optional(
+                              Schema.Number,
+                            ),
+                            timeoutSeconds: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                        name: Schema.String,
+                        ports: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              containerPort: Schema.Number,
+                              hostIP: Schema.optional(Schema.String),
+                              hostPort: Schema.optional(Schema.Number),
+                              name: Schema.optional(Schema.String),
+                              protocol: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        readinessProbe: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            failureThreshold: Schema.optional(Schema.Number),
+                            grpc: Schema.optional(
+                              Schema.Struct({
+                                port: Schema.Number,
+                                service: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            initialDelaySeconds: Schema.optional(Schema.Number),
+                            periodSeconds: Schema.optional(Schema.Number),
+                            successThreshold: Schema.optional(Schema.Number),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                            terminationGracePeriodSeconds: Schema.optional(
+                              Schema.Number,
+                            ),
+                            timeoutSeconds: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                        resizePolicy: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              resourceName: Schema.String,
+                              restartPolicy: Schema.String,
+                            }),
+                          ),
+                        ),
+                        resources: Schema.optional(
+                          Schema.Struct({
+                            claims: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  request: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                            limits: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        restartPolicy: Schema.optional(Schema.String),
+                        restartPolicyRules: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              action: Schema.String,
+                              exitCodes: Schema.optional(
+                                Schema.Struct({
+                                  operator: Schema.String,
+                                  values: Schema.optional(
+                                    Schema.Array(Schema.Number),
+                                  ),
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        securityContext: Schema.optional(
+                          Schema.Struct({
+                            allowPrivilegeEscalation: Schema.optional(
+                              Schema.Boolean,
+                            ),
+                            appArmorProfile: Schema.optional(
+                              Schema.Struct({
+                                localhostProfile: Schema.optional(
+                                  Schema.String,
+                                ),
+                                type: Schema.String,
+                              }),
+                            ),
+                            capabilities: Schema.optional(
+                              Schema.Struct({
+                                add: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                drop: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            privileged: Schema.optional(Schema.Boolean),
+                            procMount: Schema.optional(Schema.String),
+                            readOnlyRootFilesystem: Schema.optional(
+                              Schema.Boolean,
+                            ),
+                            runAsGroup: Schema.optional(Schema.Number),
+                            runAsNonRoot: Schema.optional(Schema.Boolean),
+                            runAsUser: Schema.optional(Schema.Number),
+                            seLinuxOptions: Schema.optional(
+                              Schema.Struct({
+                                level: Schema.optional(Schema.String),
+                                role: Schema.optional(Schema.String),
+                                type: Schema.optional(Schema.String),
+                                user: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            seccompProfile: Schema.optional(
+                              Schema.Struct({
+                                localhostProfile: Schema.optional(
+                                  Schema.String,
+                                ),
+                                type: Schema.String,
+                              }),
+                            ),
+                            windowsOptions: Schema.optional(
+                              Schema.Struct({
+                                gmsaCredentialSpec: Schema.optional(
+                                  Schema.String,
+                                ),
+                                gmsaCredentialSpecName: Schema.optional(
+                                  Schema.String,
+                                ),
+                                hostProcess: Schema.optional(Schema.Boolean),
+                                runAsUserName: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          }),
+                        ),
+                        startupProbe: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            failureThreshold: Schema.optional(Schema.Number),
+                            grpc: Schema.optional(
+                              Schema.Struct({
+                                port: Schema.Number,
+                                service: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            initialDelaySeconds: Schema.optional(Schema.Number),
+                            periodSeconds: Schema.optional(Schema.Number),
+                            successThreshold: Schema.optional(Schema.Number),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                            terminationGracePeriodSeconds: Schema.optional(
+                              Schema.Number,
+                            ),
+                            timeoutSeconds: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                        stdin: Schema.optional(Schema.Boolean),
+                        stdinOnce: Schema.optional(Schema.Boolean),
+                        targetContainerName: Schema.optional(Schema.String),
+                        terminationMessagePath: Schema.optional(Schema.String),
+                        terminationMessagePolicy: Schema.optional(
+                          Schema.String,
+                        ),
+                        tty: Schema.optional(Schema.Boolean),
+                        volumeDevices: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              devicePath: Schema.String,
+                              name: Schema.String,
+                            }),
+                          ),
+                        ),
+                        volumeMounts: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              mountPath: Schema.String,
+                              mountPropagation: Schema.optional(Schema.String),
+                              name: Schema.String,
+                              readOnly: Schema.optional(Schema.Boolean),
+                              recursiveReadOnly: Schema.optional(Schema.String),
+                              subPath: Schema.optional(Schema.String),
+                              subPathExpr: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        workingDir: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  hostAliases: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        hostnames: Schema.optional(Schema.Array(Schema.String)),
+                        ip: Schema.String,
+                      }),
+                    ),
+                  ),
+                  hostIPC: Schema.optional(Schema.Boolean),
+                  hostNetwork: Schema.optional(Schema.Boolean),
+                  hostPID: Schema.optional(Schema.Boolean),
+                  hostUsers: Schema.optional(Schema.Boolean),
+                  hostname: Schema.optional(Schema.String),
+                  hostnameOverride: Schema.optional(Schema.String),
+                  imagePullSecrets: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  initContainers: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        args: Schema.optional(Schema.Array(Schema.String)),
+                        command: Schema.optional(Schema.Array(Schema.String)),
+                        env: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              name: Schema.String,
+                              value: Schema.optional(Schema.String),
+                              valueFrom: Schema.optional(
+                                Schema.Struct({
+                                  configMapKeyRef: Schema.optional(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      name: Schema.optional(Schema.String),
+                                      optional: Schema.optional(Schema.Boolean),
+                                    }),
+                                  ),
+                                  fieldRef: Schema.optional(
+                                    Schema.Struct({
+                                      apiVersion: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      fieldPath: Schema.String,
+                                    }),
+                                  ),
+                                  fileKeyRef: Schema.optional(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      optional: Schema.optional(Schema.Boolean),
+                                      path: Schema.String,
+                                      volumeName: Schema.String,
+                                    }),
+                                  ),
+                                  resourceFieldRef: Schema.optional(
+                                    Schema.Struct({
+                                      containerName: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      divisor: Schema.optional(Schema.String),
+                                      resource: Schema.String,
+                                    }),
+                                  ),
+                                  secretKeyRef: Schema.optional(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      name: Schema.optional(Schema.String),
+                                      optional: Schema.optional(Schema.Boolean),
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        envFrom: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              configMapRef: Schema.optional(
+                                Schema.Struct({
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                              prefix: Schema.optional(Schema.String),
+                              secretRef: Schema.optional(
+                                Schema.Struct({
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        image: Schema.optional(Schema.String),
+                        imagePullPolicy: Schema.optional(Schema.String),
+                        lifecycle: Schema.optional(
+                          Schema.Struct({
+                            postStart: Schema.optional(
+                              Schema.Struct({
+                                exec: Schema.optional(
+                                  Schema.Struct({
+                                    command: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                  }),
+                                ),
+                                httpGet: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    httpHeaders: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          name: Schema.String,
+                                          value: Schema.String,
+                                        }),
+                                      ),
+                                    ),
+                                    path: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                    scheme: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                                sleep: Schema.optional(
+                                  Schema.Struct({
+                                    seconds: Schema.Number,
+                                  }),
+                                ),
+                                tcpSocket: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
+                            preStop: Schema.optional(
+                              Schema.Struct({
+                                exec: Schema.optional(
+                                  Schema.Struct({
+                                    command: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                  }),
+                                ),
+                                httpGet: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    httpHeaders: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          name: Schema.String,
+                                          value: Schema.String,
+                                        }),
+                                      ),
+                                    ),
+                                    path: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                    scheme: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                                sleep: Schema.optional(
+                                  Schema.Struct({
+                                    seconds: Schema.Number,
+                                  }),
+                                ),
+                                tcpSocket: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
+                            stopSignal: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        livenessProbe: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            failureThreshold: Schema.optional(Schema.Number),
+                            grpc: Schema.optional(
+                              Schema.Struct({
+                                port: Schema.Number,
+                                service: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            initialDelaySeconds: Schema.optional(Schema.Number),
+                            periodSeconds: Schema.optional(Schema.Number),
+                            successThreshold: Schema.optional(Schema.Number),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                            terminationGracePeriodSeconds: Schema.optional(
+                              Schema.Number,
+                            ),
+                            timeoutSeconds: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                        name: Schema.String,
+                        ports: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              containerPort: Schema.Number,
+                              hostIP: Schema.optional(Schema.String),
+                              hostPort: Schema.optional(Schema.Number),
+                              name: Schema.optional(Schema.String),
+                              protocol: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        readinessProbe: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            failureThreshold: Schema.optional(Schema.Number),
+                            grpc: Schema.optional(
+                              Schema.Struct({
+                                port: Schema.Number,
+                                service: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            initialDelaySeconds: Schema.optional(Schema.Number),
+                            periodSeconds: Schema.optional(Schema.Number),
+                            successThreshold: Schema.optional(Schema.Number),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                            terminationGracePeriodSeconds: Schema.optional(
+                              Schema.Number,
+                            ),
+                            timeoutSeconds: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                        resizePolicy: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              resourceName: Schema.String,
+                              restartPolicy: Schema.String,
+                            }),
+                          ),
+                        ),
+                        resources: Schema.optional(
+                          Schema.Struct({
+                            claims: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  request: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                            limits: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        restartPolicy: Schema.optional(Schema.String),
+                        restartPolicyRules: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              action: Schema.String,
+                              exitCodes: Schema.optional(
+                                Schema.Struct({
+                                  operator: Schema.String,
+                                  values: Schema.optional(
+                                    Schema.Array(Schema.Number),
+                                  ),
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        securityContext: Schema.optional(
+                          Schema.Struct({
+                            allowPrivilegeEscalation: Schema.optional(
+                              Schema.Boolean,
+                            ),
+                            appArmorProfile: Schema.optional(
+                              Schema.Struct({
+                                localhostProfile: Schema.optional(
+                                  Schema.String,
+                                ),
+                                type: Schema.String,
+                              }),
+                            ),
+                            capabilities: Schema.optional(
+                              Schema.Struct({
+                                add: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                drop: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            privileged: Schema.optional(Schema.Boolean),
+                            procMount: Schema.optional(Schema.String),
+                            readOnlyRootFilesystem: Schema.optional(
+                              Schema.Boolean,
+                            ),
+                            runAsGroup: Schema.optional(Schema.Number),
+                            runAsNonRoot: Schema.optional(Schema.Boolean),
+                            runAsUser: Schema.optional(Schema.Number),
+                            seLinuxOptions: Schema.optional(
+                              Schema.Struct({
+                                level: Schema.optional(Schema.String),
+                                role: Schema.optional(Schema.String),
+                                type: Schema.optional(Schema.String),
+                                user: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            seccompProfile: Schema.optional(
+                              Schema.Struct({
+                                localhostProfile: Schema.optional(
+                                  Schema.String,
+                                ),
+                                type: Schema.String,
+                              }),
+                            ),
+                            windowsOptions: Schema.optional(
+                              Schema.Struct({
+                                gmsaCredentialSpec: Schema.optional(
+                                  Schema.String,
+                                ),
+                                gmsaCredentialSpecName: Schema.optional(
+                                  Schema.String,
+                                ),
+                                hostProcess: Schema.optional(Schema.Boolean),
+                                runAsUserName: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          }),
+                        ),
+                        startupProbe: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            failureThreshold: Schema.optional(Schema.Number),
+                            grpc: Schema.optional(
+                              Schema.Struct({
+                                port: Schema.Number,
+                                service: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            initialDelaySeconds: Schema.optional(Schema.Number),
+                            periodSeconds: Schema.optional(Schema.Number),
+                            successThreshold: Schema.optional(Schema.Number),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                            terminationGracePeriodSeconds: Schema.optional(
+                              Schema.Number,
+                            ),
+                            timeoutSeconds: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                        stdin: Schema.optional(Schema.Boolean),
+                        stdinOnce: Schema.optional(Schema.Boolean),
+                        terminationMessagePath: Schema.optional(Schema.String),
+                        terminationMessagePolicy: Schema.optional(
+                          Schema.String,
+                        ),
+                        tty: Schema.optional(Schema.Boolean),
+                        volumeDevices: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              devicePath: Schema.String,
+                              name: Schema.String,
+                            }),
+                          ),
+                        ),
+                        volumeMounts: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              mountPath: Schema.String,
+                              mountPropagation: Schema.optional(Schema.String),
+                              name: Schema.String,
+                              readOnly: Schema.optional(Schema.Boolean),
+                              recursiveReadOnly: Schema.optional(Schema.String),
+                              subPath: Schema.optional(Schema.String),
+                              subPathExpr: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        workingDir: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  nodeName: Schema.optional(Schema.String),
+                  nodeSelector: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  os: Schema.optional(
+                    Schema.Struct({
+                      name: Schema.String,
+                    }),
+                  ),
+                  overhead: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  preemptionPolicy: Schema.optional(Schema.String),
+                  priority: Schema.optional(Schema.Number),
+                  priorityClassName: Schema.optional(Schema.String),
+                  readinessGates: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        conditionType: Schema.String,
+                      }),
+                    ),
+                  ),
+                  resourceClaims: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.String,
+                        resourceClaimName: Schema.optional(Schema.String),
+                        resourceClaimTemplateName: Schema.optional(
+                          Schema.String,
+                        ),
+                      }),
+                    ),
+                  ),
+                  resources: Schema.optional(
+                    Schema.Struct({
+                      claims: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.String,
+                            request: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                      limits: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                      requests: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                    }),
+                  ),
+                  restartPolicy: Schema.optional(Schema.String),
+                  runtimeClassName: Schema.optional(Schema.String),
+                  schedulerName: Schema.optional(Schema.String),
+                  schedulingGates: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.String,
+                      }),
+                    ),
+                  ),
+                  schedulingGroup: Schema.optional(
+                    Schema.Struct({
+                      podGroupName: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  securityContext: Schema.optional(
+                    Schema.Struct({
+                      appArmorProfile: Schema.optional(
+                        Schema.Struct({
+                          localhostProfile: Schema.optional(Schema.String),
+                          type: Schema.String,
+                        }),
+                      ),
+                      fsGroup: Schema.optional(Schema.Number),
+                      fsGroupChangePolicy: Schema.optional(Schema.String),
+                      runAsGroup: Schema.optional(Schema.Number),
+                      runAsNonRoot: Schema.optional(Schema.Boolean),
+                      runAsUser: Schema.optional(Schema.Number),
+                      seLinuxChangePolicy: Schema.optional(Schema.String),
+                      seLinuxOptions: Schema.optional(
+                        Schema.Struct({
+                          level: Schema.optional(Schema.String),
+                          role: Schema.optional(Schema.String),
+                          type: Schema.optional(Schema.String),
+                          user: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      seccompProfile: Schema.optional(
+                        Schema.Struct({
+                          localhostProfile: Schema.optional(Schema.String),
+                          type: Schema.String,
+                        }),
+                      ),
+                      supplementalGroups: Schema.optional(
+                        Schema.Array(Schema.Number),
+                      ),
+                      supplementalGroupsPolicy: Schema.optional(Schema.String),
+                      sysctls: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.String,
+                            value: Schema.String,
+                          }),
+                        ),
+                      ),
+                      windowsOptions: Schema.optional(
+                        Schema.Struct({
+                          gmsaCredentialSpec: Schema.optional(Schema.String),
+                          gmsaCredentialSpecName: Schema.optional(
+                            Schema.String,
+                          ),
+                          hostProcess: Schema.optional(Schema.Boolean),
+                          runAsUserName: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    }),
+                  ),
+                  serviceAccount: Schema.optional(Schema.String),
+                  serviceAccountName: Schema.optional(Schema.String),
+                  setHostnameAsFQDN: Schema.optional(Schema.Boolean),
+                  shareProcessNamespace: Schema.optional(Schema.Boolean),
+                  subdomain: Schema.optional(Schema.String),
+                  terminationGracePeriodSeconds: Schema.optional(Schema.Number),
+                  tolerations: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        effect: Schema.optional(Schema.String),
+                        key: Schema.optional(Schema.String),
+                        operator: Schema.optional(Schema.String),
+                        tolerationSeconds: Schema.optional(Schema.Number),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  topologySpreadConstraints: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        labelSelector: Schema.optional(
+                          Schema.Struct({
+                            matchExpressions: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  operator: Schema.String,
+                                  values: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            matchLabels: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        matchLabelKeys: Schema.optional(
+                          Schema.Array(Schema.String),
+                        ),
+                        maxSkew: Schema.Number,
+                        minDomains: Schema.optional(Schema.Number),
+                        nodeAffinityPolicy: Schema.optional(Schema.String),
+                        nodeTaintsPolicy: Schema.optional(Schema.String),
+                        topologyKey: Schema.String,
+                        whenUnsatisfiable: Schema.String,
+                      }),
+                    ),
+                  ),
+                  volumes: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        awsElasticBlockStore: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            partition: Schema.optional(Schema.Number),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            volumeID: Schema.String,
+                          }),
+                        ),
+                        azureDisk: Schema.optional(
+                          Schema.Struct({
+                            cachingMode: Schema.optional(Schema.String),
+                            diskName: Schema.String,
+                            diskURI: Schema.String,
+                            fsType: Schema.optional(Schema.String),
+                            kind: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                        azureFile: Schema.optional(
+                          Schema.Struct({
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretName: Schema.String,
+                            shareName: Schema.String,
+                          }),
+                        ),
+                        cephfs: Schema.optional(
+                          Schema.Struct({
+                            monitors: Schema.Array(Schema.String),
+                            path: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretFile: Schema.optional(Schema.String),
+                            secretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            user: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        cinder: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            volumeID: Schema.String,
+                          }),
+                        ),
+                        configMap: Schema.optional(
+                          Schema.Struct({
+                            defaultMode: Schema.optional(Schema.Number),
+                            items: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  mode: Schema.optional(Schema.Number),
+                                  path: Schema.String,
+                                }),
+                              ),
+                            ),
+                            name: Schema.optional(Schema.String),
+                            optional: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                        csi: Schema.optional(
+                          Schema.Struct({
+                            driver: Schema.String,
+                            fsType: Schema.optional(Schema.String),
+                            nodePublishSecretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            volumeAttributes: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        downwardAPI: Schema.optional(
+                          Schema.Struct({
+                            defaultMode: Schema.optional(Schema.Number),
+                            items: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  fieldRef: Schema.optional(
+                                    Schema.Struct({
+                                      apiVersion: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      fieldPath: Schema.String,
+                                    }),
+                                  ),
+                                  mode: Schema.optional(Schema.Number),
+                                  path: Schema.String,
+                                  resourceFieldRef: Schema.optional(
+                                    Schema.Struct({
+                                      containerName: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      divisor: Schema.optional(Schema.String),
+                                      resource: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                          }),
+                        ),
+                        emptyDir: Schema.optional(
+                          Schema.Struct({
+                            medium: Schema.optional(Schema.String),
+                            sizeLimit: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        ephemeral: Schema.optional(
+                          Schema.Struct({
+                            volumeClaimTemplate: Schema.optional(
+                              Schema.Struct({
+                                metadata: Schema.optional(
+                                  Schema.Struct({
+                                    annotations: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                    creationTimestamp: Schema.optional(
+                                      Schema.String,
+                                    ),
+                                    deletionGracePeriodSeconds: Schema.optional(
+                                      Schema.Number,
+                                    ),
+                                    deletionTimestamp: Schema.optional(
+                                      Schema.String,
+                                    ),
+                                    finalizers: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                    generateName: Schema.optional(
+                                      Schema.String,
+                                    ),
+                                    generation: Schema.optional(Schema.Number),
+                                    labels: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                    managedFields: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          apiVersion: Schema.optional(
+                                            Schema.String,
+                                          ),
+                                          fieldsType: Schema.optional(
+                                            Schema.String,
+                                          ),
+                                          fieldsV1: Schema.optional(
+                                            Schema.Unknown,
+                                          ),
+                                          manager: Schema.optional(
+                                            Schema.String,
+                                          ),
+                                          operation: Schema.optional(
+                                            Schema.String,
+                                          ),
+                                          subresource: Schema.optional(
+                                            Schema.String,
+                                          ),
+                                          time: Schema.optional(Schema.String),
+                                        }),
+                                      ),
+                                    ),
+                                    name: Schema.optional(Schema.String),
+                                    namespace: Schema.optional(Schema.String),
+                                    ownerReferences: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          apiVersion: Schema.String,
+                                          blockOwnerDeletion: Schema.optional(
+                                            Schema.Boolean,
+                                          ),
+                                          controller: Schema.optional(
+                                            Schema.Boolean,
+                                          ),
+                                          kind: Schema.String,
+                                          name: Schema.String,
+                                          uid: Schema.String,
+                                        }),
+                                      ),
+                                    ),
+                                    resourceVersion: Schema.optional(
+                                      Schema.String,
+                                    ),
+                                    selfLink: Schema.optional(Schema.String),
+                                    uid: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                                spec: Schema.Struct({
+                                  accessModes: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  dataSource: Schema.optional(
+                                    Schema.Struct({
+                                      apiGroup: Schema.optional(Schema.String),
+                                      kind: Schema.String,
+                                      name: Schema.String,
+                                    }),
+                                  ),
+                                  dataSourceRef: Schema.optional(
+                                    Schema.Struct({
+                                      apiGroup: Schema.optional(Schema.String),
+                                      kind: Schema.String,
+                                      name: Schema.String,
+                                      namespace: Schema.optional(Schema.String),
+                                    }),
+                                  ),
+                                  resources: Schema.optional(
+                                    Schema.Struct({
+                                      limits: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                      requests: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  selector: Schema.optional(
+                                    Schema.Struct({
+                                      matchExpressions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            operator: Schema.String,
+                                            values: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      matchLabels: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  storageClassName: Schema.optional(
+                                    Schema.String,
+                                  ),
+                                  volumeAttributesClassName: Schema.optional(
+                                    Schema.String,
+                                  ),
+                                  volumeMode: Schema.optional(Schema.String),
+                                  volumeName: Schema.optional(Schema.String),
+                                }),
+                              }),
+                            ),
+                          }),
+                        ),
+                        fc: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            lun: Schema.optional(Schema.Number),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            targetWWNs: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                            wwids: Schema.optional(Schema.Array(Schema.String)),
+                          }),
+                        ),
+                        flexVolume: Schema.optional(
+                          Schema.Struct({
+                            driver: Schema.String,
+                            fsType: Schema.optional(Schema.String),
+                            options: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          }),
+                        ),
+                        flocker: Schema.optional(
+                          Schema.Struct({
+                            datasetName: Schema.optional(Schema.String),
+                            datasetUUID: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        gcePersistentDisk: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            partition: Schema.optional(Schema.Number),
+                            pdName: Schema.String,
+                            readOnly: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                        gitRepo: Schema.optional(
+                          Schema.Struct({
+                            directory: Schema.optional(Schema.String),
+                            repository: Schema.String,
+                            revision: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        glusterfs: Schema.optional(
+                          Schema.Struct({
+                            endpoints: Schema.String,
+                            path: Schema.String,
+                            readOnly: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                        hostPath: Schema.optional(
+                          Schema.Struct({
+                            path: Schema.String,
+                            type: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        image: Schema.optional(
+                          Schema.Struct({
+                            pullPolicy: Schema.optional(Schema.String),
+                            reference: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        iscsi: Schema.optional(
+                          Schema.Struct({
+                            chapAuthDiscovery: Schema.optional(Schema.Boolean),
+                            chapAuthSession: Schema.optional(Schema.Boolean),
+                            fsType: Schema.optional(Schema.String),
+                            initiatorName: Schema.optional(Schema.String),
+                            iqn: Schema.String,
+                            iscsiInterface: Schema.optional(Schema.String),
+                            lun: Schema.Number,
+                            portals: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            targetPortal: Schema.String,
+                          }),
+                        ),
+                        name: Schema.String,
+                        nfs: Schema.optional(
+                          Schema.Struct({
+                            path: Schema.String,
+                            readOnly: Schema.optional(Schema.Boolean),
+                            server: Schema.String,
+                          }),
+                        ),
+                        persistentVolumeClaim: Schema.optional(
+                          Schema.Struct({
+                            claimName: Schema.String,
+                            readOnly: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                        photonPersistentDisk: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            pdID: Schema.String,
+                          }),
+                        ),
+                        portworxVolume: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            volumeID: Schema.String,
+                          }),
+                        ),
+                        projected: Schema.optional(
+                          Schema.Struct({
+                            defaultMode: Schema.optional(Schema.Number),
+                            sources: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  clusterTrustBundle: Schema.optional(
+                                    Schema.Struct({
+                                      labelSelector: Schema.optional(
+                                        Schema.Struct({
+                                          matchExpressions: Schema.optional(
+                                            Schema.Array(
+                                              Schema.Struct({
+                                                key: Schema.String,
+                                                operator: Schema.String,
+                                                values: Schema.optional(
+                                                  Schema.Array(Schema.String),
+                                                ),
+                                              }),
+                                            ),
+                                          ),
+                                          matchLabels: Schema.optional(
+                                            Schema.Record(
+                                              Schema.String,
+                                              Schema.String,
+                                            ),
+                                          ),
+                                        }),
+                                      ),
+                                      name: Schema.optional(Schema.String),
+                                      optional: Schema.optional(Schema.Boolean),
+                                      path: Schema.String,
+                                      signerName: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                    }),
+                                  ),
+                                  configMap: Schema.optional(
+                                    Schema.Struct({
+                                      items: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            mode: Schema.optional(
+                                              Schema.Number,
+                                            ),
+                                            path: Schema.String,
+                                          }),
+                                        ),
+                                      ),
+                                      name: Schema.optional(Schema.String),
+                                      optional: Schema.optional(Schema.Boolean),
+                                    }),
+                                  ),
+                                  downwardAPI: Schema.optional(
+                                    Schema.Struct({
+                                      items: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            fieldRef: Schema.optional(
+                                              Schema.Struct({
+                                                apiVersion: Schema.optional(
+                                                  Schema.String,
+                                                ),
+                                                fieldPath: Schema.String,
+                                              }),
+                                            ),
+                                            mode: Schema.optional(
+                                              Schema.Number,
+                                            ),
+                                            path: Schema.String,
+                                            resourceFieldRef: Schema.optional(
+                                              Schema.Struct({
+                                                containerName: Schema.optional(
+                                                  Schema.String,
+                                                ),
+                                                divisor: Schema.optional(
+                                                  Schema.String,
+                                                ),
+                                                resource: Schema.String,
+                                              }),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  podCertificate: Schema.optional(
+                                    Schema.Struct({
+                                      certificateChainPath: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      credentialBundlePath: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      keyPath: Schema.optional(Schema.String),
+                                      keyType: Schema.String,
+                                      maxExpirationSeconds: Schema.optional(
+                                        Schema.Number,
+                                      ),
+                                      signerName: Schema.String,
+                                      userAnnotations: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  secret: Schema.optional(
+                                    Schema.Struct({
+                                      items: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            mode: Schema.optional(
+                                              Schema.Number,
+                                            ),
+                                            path: Schema.String,
+                                          }),
+                                        ),
+                                      ),
+                                      name: Schema.optional(Schema.String),
+                                      optional: Schema.optional(Schema.Boolean),
+                                    }),
+                                  ),
+                                  serviceAccountToken: Schema.optional(
+                                    Schema.Struct({
+                                      audience: Schema.optional(Schema.String),
+                                      expirationSeconds: Schema.optional(
+                                        Schema.Number,
+                                      ),
+                                      path: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                          }),
+                        ),
+                        quobyte: Schema.optional(
+                          Schema.Struct({
+                            group: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            registry: Schema.String,
+                            tenant: Schema.optional(Schema.String),
+                            user: Schema.optional(Schema.String),
+                            volume: Schema.String,
+                          }),
+                        ),
+                        rbd: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            image: Schema.String,
+                            keyring: Schema.optional(Schema.String),
+                            monitors: Schema.Array(Schema.String),
+                            pool: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            user: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        scaleIO: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            gateway: Schema.String,
+                            protectionDomain: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretRef: Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                            }),
+                            sslEnabled: Schema.optional(Schema.Boolean),
+                            storageMode: Schema.optional(Schema.String),
+                            storagePool: Schema.optional(Schema.String),
+                            system: Schema.String,
+                            volumeName: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        secret: Schema.optional(
+                          Schema.Struct({
+                            defaultMode: Schema.optional(Schema.Number),
+                            items: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  mode: Schema.optional(Schema.Number),
+                                  path: Schema.String,
+                                }),
+                              ),
+                            ),
+                            optional: Schema.optional(Schema.Boolean),
+                            secretName: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        storageos: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            volumeName: Schema.optional(Schema.String),
+                            volumeNamespace: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        vsphereVolume: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            storagePolicyID: Schema.optional(Schema.String),
+                            storagePolicyName: Schema.optional(Schema.String),
+                            volumePath: Schema.String,
+                          }),
+                        ),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            }),
+            ttlSecondsAfterFinished: Schema.optional(Schema.Number),
+          }),
+        ),
+      }),
+      schedule: Schema.String,
+      startingDeadlineSeconds: Schema.optional(Schema.Number),
+      successfulJobsHistoryLimit: Schema.optional(Schema.Number),
+      suspend: Schema.optional(Schema.Boolean),
+      timeZone: Schema.optional(Schema.String),
+    }),
+    status: Schema.optional(
+      Schema.Struct({
+        active: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldPath: Schema.optional(Schema.String),
+              kind: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              namespace: Schema.optional(Schema.String),
+              resourceVersion: Schema.optional(Schema.String),
+              uid: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        lastScheduleTime: Schema.optional(Schema.String),
+        lastSuccessfulTime: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -40923,7 +49447,11 @@ export type ReplaceBatchV1NamespacedCronJobOutput =
 /**
  * replace the specified CronJob
  *
+ * @param name - name of the CronJob
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceBatchV1NamespacedCronJob =
@@ -40935,8 +49463,2717 @@ export const replaceBatchV1NamespacedCronJob =
 // Input Schema
 export const ReplaceBatchV1NamespacedCronJobStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.Struct({
+      concurrencyPolicy: Schema.optional(Schema.String),
+      failedJobsHistoryLimit: Schema.optional(Schema.Number),
+      jobTemplate: Schema.Struct({
+        metadata: Schema.optional(
+          Schema.Struct({
+            annotations: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            creationTimestamp: Schema.optional(Schema.String),
+            deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+            deletionTimestamp: Schema.optional(Schema.String),
+            finalizers: Schema.optional(Schema.Array(Schema.String)),
+            generateName: Schema.optional(Schema.String),
+            generation: Schema.optional(Schema.Number),
+            labels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+            managedFields: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  apiVersion: Schema.optional(Schema.String),
+                  fieldsType: Schema.optional(Schema.String),
+                  fieldsV1: Schema.optional(Schema.Unknown),
+                  manager: Schema.optional(Schema.String),
+                  operation: Schema.optional(Schema.String),
+                  subresource: Schema.optional(Schema.String),
+                  time: Schema.optional(Schema.String),
+                }),
+              ),
+            ),
+            name: Schema.optional(Schema.String),
+            namespace: Schema.optional(Schema.String),
+            ownerReferences: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  apiVersion: Schema.String,
+                  blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                  controller: Schema.optional(Schema.Boolean),
+                  kind: Schema.String,
+                  name: Schema.String,
+                  uid: Schema.String,
+                }),
+              ),
+            ),
+            resourceVersion: Schema.optional(Schema.String),
+            selfLink: Schema.optional(Schema.String),
+            uid: Schema.optional(Schema.String),
+          }),
+        ),
+        spec: Schema.optional(
+          Schema.Struct({
+            activeDeadlineSeconds: Schema.optional(Schema.Number),
+            backoffLimit: Schema.optional(Schema.Number),
+            backoffLimitPerIndex: Schema.optional(Schema.Number),
+            completionMode: Schema.optional(Schema.String),
+            completions: Schema.optional(Schema.Number),
+            managedBy: Schema.optional(Schema.String),
+            manualSelector: Schema.optional(Schema.Boolean),
+            maxFailedIndexes: Schema.optional(Schema.Number),
+            parallelism: Schema.optional(Schema.Number),
+            podFailurePolicy: Schema.optional(
+              Schema.Struct({
+                rules: Schema.Array(
+                  Schema.Struct({
+                    action: Schema.String,
+                    onExitCodes: Schema.optional(
+                      Schema.Struct({
+                        containerName: Schema.optional(Schema.String),
+                        operator: Schema.String,
+                        values: Schema.Array(Schema.Number),
+                      }),
+                    ),
+                    onPodConditions: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          status: Schema.optional(Schema.String),
+                          type: Schema.String,
+                        }),
+                      ),
+                    ),
+                  }),
+                ),
+              }),
+            ),
+            podReplacementPolicy: Schema.optional(Schema.String),
+            selector: Schema.optional(
+              Schema.Struct({
+                matchExpressions: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      key: Schema.String,
+                      operator: Schema.String,
+                      values: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                ),
+                matchLabels: Schema.optional(
+                  Schema.Record(Schema.String, Schema.String),
+                ),
+              }),
+            ),
+            successPolicy: Schema.optional(
+              Schema.Struct({
+                rules: Schema.Array(
+                  Schema.Struct({
+                    succeededCount: Schema.optional(Schema.Number),
+                    succeededIndexes: Schema.optional(Schema.String),
+                  }),
+                ),
+              }),
+            ),
+            suspend: Schema.optional(Schema.Boolean),
+            template: Schema.Struct({
+              metadata: Schema.optional(
+                Schema.Struct({
+                  annotations: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  creationTimestamp: Schema.optional(Schema.String),
+                  deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+                  deletionTimestamp: Schema.optional(Schema.String),
+                  finalizers: Schema.optional(Schema.Array(Schema.String)),
+                  generateName: Schema.optional(Schema.String),
+                  generation: Schema.optional(Schema.Number),
+                  labels: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  managedFields: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        apiVersion: Schema.optional(Schema.String),
+                        fieldsType: Schema.optional(Schema.String),
+                        fieldsV1: Schema.optional(Schema.Unknown),
+                        manager: Schema.optional(Schema.String),
+                        operation: Schema.optional(Schema.String),
+                        subresource: Schema.optional(Schema.String),
+                        time: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  name: Schema.optional(Schema.String),
+                  namespace: Schema.optional(Schema.String),
+                  ownerReferences: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        apiVersion: Schema.String,
+                        blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                        controller: Schema.optional(Schema.Boolean),
+                        kind: Schema.String,
+                        name: Schema.String,
+                        uid: Schema.String,
+                      }),
+                    ),
+                  ),
+                  resourceVersion: Schema.optional(Schema.String),
+                  selfLink: Schema.optional(Schema.String),
+                  uid: Schema.optional(Schema.String),
+                }),
+              ),
+              spec: Schema.optional(
+                Schema.Struct({
+                  activeDeadlineSeconds: Schema.optional(Schema.Number),
+                  affinity: Schema.optional(
+                    Schema.Struct({
+                      nodeAffinity: Schema.optional(
+                        Schema.Struct({
+                          preferredDuringSchedulingIgnoredDuringExecution:
+                            Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  preference: Schema.Struct({
+                                    matchExpressions: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                    matchFields: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                  }),
+                                  weight: Schema.Number,
+                                }),
+                              ),
+                            ),
+                          requiredDuringSchedulingIgnoredDuringExecution:
+                            Schema.optional(
+                              Schema.Struct({
+                                nodeSelectorTerms: Schema.Array(
+                                  Schema.Struct({
+                                    matchExpressions: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                    matchFields: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                  }),
+                                ),
+                              }),
+                            ),
+                        }),
+                      ),
+                      podAffinity: Schema.optional(
+                        Schema.Struct({
+                          preferredDuringSchedulingIgnoredDuringExecution:
+                            Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  podAffinityTerm: Schema.Struct({
+                                    labelSelector: Schema.optional(
+                                      Schema.Struct({
+                                        matchExpressions: Schema.optional(
+                                          Schema.Array(
+                                            Schema.Struct({
+                                              key: Schema.String,
+                                              operator: Schema.String,
+                                              values: Schema.optional(
+                                                Schema.Array(Schema.String),
+                                              ),
+                                            }),
+                                          ),
+                                        ),
+                                        matchLabels: Schema.optional(
+                                          Schema.Record(
+                                            Schema.String,
+                                            Schema.String,
+                                          ),
+                                        ),
+                                      }),
+                                    ),
+                                    matchLabelKeys: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                    mismatchLabelKeys: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                    namespaceSelector: Schema.optional(
+                                      Schema.Struct({
+                                        matchExpressions: Schema.optional(
+                                          Schema.Array(
+                                            Schema.Struct({
+                                              key: Schema.String,
+                                              operator: Schema.String,
+                                              values: Schema.optional(
+                                                Schema.Array(Schema.String),
+                                              ),
+                                            }),
+                                          ),
+                                        ),
+                                        matchLabels: Schema.optional(
+                                          Schema.Record(
+                                            Schema.String,
+                                            Schema.String,
+                                          ),
+                                        ),
+                                      }),
+                                    ),
+                                    namespaces: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                    topologyKey: Schema.String,
+                                  }),
+                                  weight: Schema.Number,
+                                }),
+                              ),
+                            ),
+                          requiredDuringSchedulingIgnoredDuringExecution:
+                            Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  labelSelector: Schema.optional(
+                                    Schema.Struct({
+                                      matchExpressions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            operator: Schema.String,
+                                            values: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      matchLabels: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  matchLabelKeys: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  mismatchLabelKeys: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  namespaceSelector: Schema.optional(
+                                    Schema.Struct({
+                                      matchExpressions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            operator: Schema.String,
+                                            values: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      matchLabels: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  namespaces: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  topologyKey: Schema.String,
+                                }),
+                              ),
+                            ),
+                        }),
+                      ),
+                      podAntiAffinity: Schema.optional(
+                        Schema.Struct({
+                          preferredDuringSchedulingIgnoredDuringExecution:
+                            Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  podAffinityTerm: Schema.Struct({
+                                    labelSelector: Schema.optional(
+                                      Schema.Struct({
+                                        matchExpressions: Schema.optional(
+                                          Schema.Array(
+                                            Schema.Struct({
+                                              key: Schema.String,
+                                              operator: Schema.String,
+                                              values: Schema.optional(
+                                                Schema.Array(Schema.String),
+                                              ),
+                                            }),
+                                          ),
+                                        ),
+                                        matchLabels: Schema.optional(
+                                          Schema.Record(
+                                            Schema.String,
+                                            Schema.String,
+                                          ),
+                                        ),
+                                      }),
+                                    ),
+                                    matchLabelKeys: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                    mismatchLabelKeys: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                    namespaceSelector: Schema.optional(
+                                      Schema.Struct({
+                                        matchExpressions: Schema.optional(
+                                          Schema.Array(
+                                            Schema.Struct({
+                                              key: Schema.String,
+                                              operator: Schema.String,
+                                              values: Schema.optional(
+                                                Schema.Array(Schema.String),
+                                              ),
+                                            }),
+                                          ),
+                                        ),
+                                        matchLabels: Schema.optional(
+                                          Schema.Record(
+                                            Schema.String,
+                                            Schema.String,
+                                          ),
+                                        ),
+                                      }),
+                                    ),
+                                    namespaces: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                    topologyKey: Schema.String,
+                                  }),
+                                  weight: Schema.Number,
+                                }),
+                              ),
+                            ),
+                          requiredDuringSchedulingIgnoredDuringExecution:
+                            Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  labelSelector: Schema.optional(
+                                    Schema.Struct({
+                                      matchExpressions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            operator: Schema.String,
+                                            values: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      matchLabels: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  matchLabelKeys: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  mismatchLabelKeys: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  namespaceSelector: Schema.optional(
+                                    Schema.Struct({
+                                      matchExpressions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            operator: Schema.String,
+                                            values: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      matchLabels: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  namespaces: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  topologyKey: Schema.String,
+                                }),
+                              ),
+                            ),
+                        }),
+                      ),
+                    }),
+                  ),
+                  automountServiceAccountToken: Schema.optional(Schema.Boolean),
+                  containers: Schema.Array(
+                    Schema.Struct({
+                      args: Schema.optional(Schema.Array(Schema.String)),
+                      command: Schema.optional(Schema.Array(Schema.String)),
+                      env: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.String,
+                            value: Schema.optional(Schema.String),
+                            valueFrom: Schema.optional(
+                              Schema.Struct({
+                                configMapKeyRef: Schema.optional(
+                                  Schema.Struct({
+                                    key: Schema.String,
+                                    name: Schema.optional(Schema.String),
+                                    optional: Schema.optional(Schema.Boolean),
+                                  }),
+                                ),
+                                fieldRef: Schema.optional(
+                                  Schema.Struct({
+                                    apiVersion: Schema.optional(Schema.String),
+                                    fieldPath: Schema.String,
+                                  }),
+                                ),
+                                fileKeyRef: Schema.optional(
+                                  Schema.Struct({
+                                    key: Schema.String,
+                                    optional: Schema.optional(Schema.Boolean),
+                                    path: Schema.String,
+                                    volumeName: Schema.String,
+                                  }),
+                                ),
+                                resourceFieldRef: Schema.optional(
+                                  Schema.Struct({
+                                    containerName: Schema.optional(
+                                      Schema.String,
+                                    ),
+                                    divisor: Schema.optional(Schema.String),
+                                    resource: Schema.String,
+                                  }),
+                                ),
+                                secretKeyRef: Schema.optional(
+                                  Schema.Struct({
+                                    key: Schema.String,
+                                    name: Schema.optional(Schema.String),
+                                    optional: Schema.optional(Schema.Boolean),
+                                  }),
+                                ),
+                              }),
+                            ),
+                          }),
+                        ),
+                      ),
+                      envFrom: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            configMapRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                optional: Schema.optional(Schema.Boolean),
+                              }),
+                            ),
+                            prefix: Schema.optional(Schema.String),
+                            secretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                                optional: Schema.optional(Schema.Boolean),
+                              }),
+                            ),
+                          }),
+                        ),
+                      ),
+                      image: Schema.optional(Schema.String),
+                      imagePullPolicy: Schema.optional(Schema.String),
+                      lifecycle: Schema.optional(
+                        Schema.Struct({
+                          postStart: Schema.optional(
+                            Schema.Struct({
+                              exec: Schema.optional(
+                                Schema.Struct({
+                                  command: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                }),
+                              ),
+                              httpGet: Schema.optional(
+                                Schema.Struct({
+                                  host: Schema.optional(Schema.String),
+                                  httpHeaders: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        name: Schema.String,
+                                        value: Schema.String,
+                                      }),
+                                    ),
+                                  ),
+                                  path: Schema.optional(Schema.String),
+                                  port: Schema.String,
+                                  scheme: Schema.optional(Schema.String),
+                                }),
+                              ),
+                              sleep: Schema.optional(
+                                Schema.Struct({
+                                  seconds: Schema.Number,
+                                }),
+                              ),
+                              tcpSocket: Schema.optional(
+                                Schema.Struct({
+                                  host: Schema.optional(Schema.String),
+                                  port: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                          preStop: Schema.optional(
+                            Schema.Struct({
+                              exec: Schema.optional(
+                                Schema.Struct({
+                                  command: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                }),
+                              ),
+                              httpGet: Schema.optional(
+                                Schema.Struct({
+                                  host: Schema.optional(Schema.String),
+                                  httpHeaders: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        name: Schema.String,
+                                        value: Schema.String,
+                                      }),
+                                    ),
+                                  ),
+                                  path: Schema.optional(Schema.String),
+                                  port: Schema.String,
+                                  scheme: Schema.optional(Schema.String),
+                                }),
+                              ),
+                              sleep: Schema.optional(
+                                Schema.Struct({
+                                  seconds: Schema.Number,
+                                }),
+                              ),
+                              tcpSocket: Schema.optional(
+                                Schema.Struct({
+                                  host: Schema.optional(Schema.String),
+                                  port: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                          stopSignal: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      livenessProbe: Schema.optional(
+                        Schema.Struct({
+                          exec: Schema.optional(
+                            Schema.Struct({
+                              command: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          failureThreshold: Schema.optional(Schema.Number),
+                          grpc: Schema.optional(
+                            Schema.Struct({
+                              port: Schema.Number,
+                              service: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          httpGet: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              httpHeaders: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.String,
+                                    value: Schema.String,
+                                  }),
+                                ),
+                              ),
+                              path: Schema.optional(Schema.String),
+                              port: Schema.String,
+                              scheme: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          initialDelaySeconds: Schema.optional(Schema.Number),
+                          periodSeconds: Schema.optional(Schema.Number),
+                          successThreshold: Schema.optional(Schema.Number),
+                          tcpSocket: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              port: Schema.String,
+                            }),
+                          ),
+                          terminationGracePeriodSeconds: Schema.optional(
+                            Schema.Number,
+                          ),
+                          timeoutSeconds: Schema.optional(Schema.Number),
+                        }),
+                      ),
+                      name: Schema.String,
+                      ports: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            containerPort: Schema.Number,
+                            hostIP: Schema.optional(Schema.String),
+                            hostPort: Schema.optional(Schema.Number),
+                            name: Schema.optional(Schema.String),
+                            protocol: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                      readinessProbe: Schema.optional(
+                        Schema.Struct({
+                          exec: Schema.optional(
+                            Schema.Struct({
+                              command: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          failureThreshold: Schema.optional(Schema.Number),
+                          grpc: Schema.optional(
+                            Schema.Struct({
+                              port: Schema.Number,
+                              service: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          httpGet: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              httpHeaders: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.String,
+                                    value: Schema.String,
+                                  }),
+                                ),
+                              ),
+                              path: Schema.optional(Schema.String),
+                              port: Schema.String,
+                              scheme: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          initialDelaySeconds: Schema.optional(Schema.Number),
+                          periodSeconds: Schema.optional(Schema.Number),
+                          successThreshold: Schema.optional(Schema.Number),
+                          tcpSocket: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              port: Schema.String,
+                            }),
+                          ),
+                          terminationGracePeriodSeconds: Schema.optional(
+                            Schema.Number,
+                          ),
+                          timeoutSeconds: Schema.optional(Schema.Number),
+                        }),
+                      ),
+                      resizePolicy: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            resourceName: Schema.String,
+                            restartPolicy: Schema.String,
+                          }),
+                        ),
+                      ),
+                      resources: Schema.optional(
+                        Schema.Struct({
+                          claims: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.String,
+                                request: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          ),
+                          limits: Schema.optional(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                          requests: Schema.optional(
+                            Schema.Record(Schema.String, Schema.String),
+                          ),
+                        }),
+                      ),
+                      restartPolicy: Schema.optional(Schema.String),
+                      restartPolicyRules: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            exitCodes: Schema.optional(
+                              Schema.Struct({
+                                operator: Schema.String,
+                                values: Schema.optional(
+                                  Schema.Array(Schema.Number),
+                                ),
+                              }),
+                            ),
+                          }),
+                        ),
+                      ),
+                      securityContext: Schema.optional(
+                        Schema.Struct({
+                          allowPrivilegeEscalation: Schema.optional(
+                            Schema.Boolean,
+                          ),
+                          appArmorProfile: Schema.optional(
+                            Schema.Struct({
+                              localhostProfile: Schema.optional(Schema.String),
+                              type: Schema.String,
+                            }),
+                          ),
+                          capabilities: Schema.optional(
+                            Schema.Struct({
+                              add: Schema.optional(Schema.Array(Schema.String)),
+                              drop: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          privileged: Schema.optional(Schema.Boolean),
+                          procMount: Schema.optional(Schema.String),
+                          readOnlyRootFilesystem: Schema.optional(
+                            Schema.Boolean,
+                          ),
+                          runAsGroup: Schema.optional(Schema.Number),
+                          runAsNonRoot: Schema.optional(Schema.Boolean),
+                          runAsUser: Schema.optional(Schema.Number),
+                          seLinuxOptions: Schema.optional(
+                            Schema.Struct({
+                              level: Schema.optional(Schema.String),
+                              role: Schema.optional(Schema.String),
+                              type: Schema.optional(Schema.String),
+                              user: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          seccompProfile: Schema.optional(
+                            Schema.Struct({
+                              localhostProfile: Schema.optional(Schema.String),
+                              type: Schema.String,
+                            }),
+                          ),
+                          windowsOptions: Schema.optional(
+                            Schema.Struct({
+                              gmsaCredentialSpec: Schema.optional(
+                                Schema.String,
+                              ),
+                              gmsaCredentialSpecName: Schema.optional(
+                                Schema.String,
+                              ),
+                              hostProcess: Schema.optional(Schema.Boolean),
+                              runAsUserName: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        }),
+                      ),
+                      startupProbe: Schema.optional(
+                        Schema.Struct({
+                          exec: Schema.optional(
+                            Schema.Struct({
+                              command: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          failureThreshold: Schema.optional(Schema.Number),
+                          grpc: Schema.optional(
+                            Schema.Struct({
+                              port: Schema.Number,
+                              service: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          httpGet: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              httpHeaders: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.String,
+                                    value: Schema.String,
+                                  }),
+                                ),
+                              ),
+                              path: Schema.optional(Schema.String),
+                              port: Schema.String,
+                              scheme: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          initialDelaySeconds: Schema.optional(Schema.Number),
+                          periodSeconds: Schema.optional(Schema.Number),
+                          successThreshold: Schema.optional(Schema.Number),
+                          tcpSocket: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              port: Schema.String,
+                            }),
+                          ),
+                          terminationGracePeriodSeconds: Schema.optional(
+                            Schema.Number,
+                          ),
+                          timeoutSeconds: Schema.optional(Schema.Number),
+                        }),
+                      ),
+                      stdin: Schema.optional(Schema.Boolean),
+                      stdinOnce: Schema.optional(Schema.Boolean),
+                      terminationMessagePath: Schema.optional(Schema.String),
+                      terminationMessagePolicy: Schema.optional(Schema.String),
+                      tty: Schema.optional(Schema.Boolean),
+                      volumeDevices: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            devicePath: Schema.String,
+                            name: Schema.String,
+                          }),
+                        ),
+                      ),
+                      volumeMounts: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            mountPath: Schema.String,
+                            mountPropagation: Schema.optional(Schema.String),
+                            name: Schema.String,
+                            readOnly: Schema.optional(Schema.Boolean),
+                            recursiveReadOnly: Schema.optional(Schema.String),
+                            subPath: Schema.optional(Schema.String),
+                            subPathExpr: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                      workingDir: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  dnsConfig: Schema.optional(
+                    Schema.Struct({
+                      nameservers: Schema.optional(Schema.Array(Schema.String)),
+                      options: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                            value: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                      searches: Schema.optional(Schema.Array(Schema.String)),
+                    }),
+                  ),
+                  dnsPolicy: Schema.optional(Schema.String),
+                  enableServiceLinks: Schema.optional(Schema.Boolean),
+                  ephemeralContainers: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        args: Schema.optional(Schema.Array(Schema.String)),
+                        command: Schema.optional(Schema.Array(Schema.String)),
+                        env: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              name: Schema.String,
+                              value: Schema.optional(Schema.String),
+                              valueFrom: Schema.optional(
+                                Schema.Struct({
+                                  configMapKeyRef: Schema.optional(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      name: Schema.optional(Schema.String),
+                                      optional: Schema.optional(Schema.Boolean),
+                                    }),
+                                  ),
+                                  fieldRef: Schema.optional(
+                                    Schema.Struct({
+                                      apiVersion: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      fieldPath: Schema.String,
+                                    }),
+                                  ),
+                                  fileKeyRef: Schema.optional(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      optional: Schema.optional(Schema.Boolean),
+                                      path: Schema.String,
+                                      volumeName: Schema.String,
+                                    }),
+                                  ),
+                                  resourceFieldRef: Schema.optional(
+                                    Schema.Struct({
+                                      containerName: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      divisor: Schema.optional(Schema.String),
+                                      resource: Schema.String,
+                                    }),
+                                  ),
+                                  secretKeyRef: Schema.optional(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      name: Schema.optional(Schema.String),
+                                      optional: Schema.optional(Schema.Boolean),
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        envFrom: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              configMapRef: Schema.optional(
+                                Schema.Struct({
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                              prefix: Schema.optional(Schema.String),
+                              secretRef: Schema.optional(
+                                Schema.Struct({
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        image: Schema.optional(Schema.String),
+                        imagePullPolicy: Schema.optional(Schema.String),
+                        lifecycle: Schema.optional(
+                          Schema.Struct({
+                            postStart: Schema.optional(
+                              Schema.Struct({
+                                exec: Schema.optional(
+                                  Schema.Struct({
+                                    command: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                  }),
+                                ),
+                                httpGet: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    httpHeaders: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          name: Schema.String,
+                                          value: Schema.String,
+                                        }),
+                                      ),
+                                    ),
+                                    path: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                    scheme: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                                sleep: Schema.optional(
+                                  Schema.Struct({
+                                    seconds: Schema.Number,
+                                  }),
+                                ),
+                                tcpSocket: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
+                            preStop: Schema.optional(
+                              Schema.Struct({
+                                exec: Schema.optional(
+                                  Schema.Struct({
+                                    command: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                  }),
+                                ),
+                                httpGet: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    httpHeaders: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          name: Schema.String,
+                                          value: Schema.String,
+                                        }),
+                                      ),
+                                    ),
+                                    path: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                    scheme: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                                sleep: Schema.optional(
+                                  Schema.Struct({
+                                    seconds: Schema.Number,
+                                  }),
+                                ),
+                                tcpSocket: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
+                            stopSignal: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        livenessProbe: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            failureThreshold: Schema.optional(Schema.Number),
+                            grpc: Schema.optional(
+                              Schema.Struct({
+                                port: Schema.Number,
+                                service: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            initialDelaySeconds: Schema.optional(Schema.Number),
+                            periodSeconds: Schema.optional(Schema.Number),
+                            successThreshold: Schema.optional(Schema.Number),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                            terminationGracePeriodSeconds: Schema.optional(
+                              Schema.Number,
+                            ),
+                            timeoutSeconds: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                        name: Schema.String,
+                        ports: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              containerPort: Schema.Number,
+                              hostIP: Schema.optional(Schema.String),
+                              hostPort: Schema.optional(Schema.Number),
+                              name: Schema.optional(Schema.String),
+                              protocol: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        readinessProbe: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            failureThreshold: Schema.optional(Schema.Number),
+                            grpc: Schema.optional(
+                              Schema.Struct({
+                                port: Schema.Number,
+                                service: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            initialDelaySeconds: Schema.optional(Schema.Number),
+                            periodSeconds: Schema.optional(Schema.Number),
+                            successThreshold: Schema.optional(Schema.Number),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                            terminationGracePeriodSeconds: Schema.optional(
+                              Schema.Number,
+                            ),
+                            timeoutSeconds: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                        resizePolicy: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              resourceName: Schema.String,
+                              restartPolicy: Schema.String,
+                            }),
+                          ),
+                        ),
+                        resources: Schema.optional(
+                          Schema.Struct({
+                            claims: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  request: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                            limits: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        restartPolicy: Schema.optional(Schema.String),
+                        restartPolicyRules: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              action: Schema.String,
+                              exitCodes: Schema.optional(
+                                Schema.Struct({
+                                  operator: Schema.String,
+                                  values: Schema.optional(
+                                    Schema.Array(Schema.Number),
+                                  ),
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        securityContext: Schema.optional(
+                          Schema.Struct({
+                            allowPrivilegeEscalation: Schema.optional(
+                              Schema.Boolean,
+                            ),
+                            appArmorProfile: Schema.optional(
+                              Schema.Struct({
+                                localhostProfile: Schema.optional(
+                                  Schema.String,
+                                ),
+                                type: Schema.String,
+                              }),
+                            ),
+                            capabilities: Schema.optional(
+                              Schema.Struct({
+                                add: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                drop: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            privileged: Schema.optional(Schema.Boolean),
+                            procMount: Schema.optional(Schema.String),
+                            readOnlyRootFilesystem: Schema.optional(
+                              Schema.Boolean,
+                            ),
+                            runAsGroup: Schema.optional(Schema.Number),
+                            runAsNonRoot: Schema.optional(Schema.Boolean),
+                            runAsUser: Schema.optional(Schema.Number),
+                            seLinuxOptions: Schema.optional(
+                              Schema.Struct({
+                                level: Schema.optional(Schema.String),
+                                role: Schema.optional(Schema.String),
+                                type: Schema.optional(Schema.String),
+                                user: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            seccompProfile: Schema.optional(
+                              Schema.Struct({
+                                localhostProfile: Schema.optional(
+                                  Schema.String,
+                                ),
+                                type: Schema.String,
+                              }),
+                            ),
+                            windowsOptions: Schema.optional(
+                              Schema.Struct({
+                                gmsaCredentialSpec: Schema.optional(
+                                  Schema.String,
+                                ),
+                                gmsaCredentialSpecName: Schema.optional(
+                                  Schema.String,
+                                ),
+                                hostProcess: Schema.optional(Schema.Boolean),
+                                runAsUserName: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          }),
+                        ),
+                        startupProbe: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            failureThreshold: Schema.optional(Schema.Number),
+                            grpc: Schema.optional(
+                              Schema.Struct({
+                                port: Schema.Number,
+                                service: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            initialDelaySeconds: Schema.optional(Schema.Number),
+                            periodSeconds: Schema.optional(Schema.Number),
+                            successThreshold: Schema.optional(Schema.Number),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                            terminationGracePeriodSeconds: Schema.optional(
+                              Schema.Number,
+                            ),
+                            timeoutSeconds: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                        stdin: Schema.optional(Schema.Boolean),
+                        stdinOnce: Schema.optional(Schema.Boolean),
+                        targetContainerName: Schema.optional(Schema.String),
+                        terminationMessagePath: Schema.optional(Schema.String),
+                        terminationMessagePolicy: Schema.optional(
+                          Schema.String,
+                        ),
+                        tty: Schema.optional(Schema.Boolean),
+                        volumeDevices: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              devicePath: Schema.String,
+                              name: Schema.String,
+                            }),
+                          ),
+                        ),
+                        volumeMounts: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              mountPath: Schema.String,
+                              mountPropagation: Schema.optional(Schema.String),
+                              name: Schema.String,
+                              readOnly: Schema.optional(Schema.Boolean),
+                              recursiveReadOnly: Schema.optional(Schema.String),
+                              subPath: Schema.optional(Schema.String),
+                              subPathExpr: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        workingDir: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  hostAliases: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        hostnames: Schema.optional(Schema.Array(Schema.String)),
+                        ip: Schema.String,
+                      }),
+                    ),
+                  ),
+                  hostIPC: Schema.optional(Schema.Boolean),
+                  hostNetwork: Schema.optional(Schema.Boolean),
+                  hostPID: Schema.optional(Schema.Boolean),
+                  hostUsers: Schema.optional(Schema.Boolean),
+                  hostname: Schema.optional(Schema.String),
+                  hostnameOverride: Schema.optional(Schema.String),
+                  imagePullSecrets: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  initContainers: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        args: Schema.optional(Schema.Array(Schema.String)),
+                        command: Schema.optional(Schema.Array(Schema.String)),
+                        env: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              name: Schema.String,
+                              value: Schema.optional(Schema.String),
+                              valueFrom: Schema.optional(
+                                Schema.Struct({
+                                  configMapKeyRef: Schema.optional(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      name: Schema.optional(Schema.String),
+                                      optional: Schema.optional(Schema.Boolean),
+                                    }),
+                                  ),
+                                  fieldRef: Schema.optional(
+                                    Schema.Struct({
+                                      apiVersion: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      fieldPath: Schema.String,
+                                    }),
+                                  ),
+                                  fileKeyRef: Schema.optional(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      optional: Schema.optional(Schema.Boolean),
+                                      path: Schema.String,
+                                      volumeName: Schema.String,
+                                    }),
+                                  ),
+                                  resourceFieldRef: Schema.optional(
+                                    Schema.Struct({
+                                      containerName: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      divisor: Schema.optional(Schema.String),
+                                      resource: Schema.String,
+                                    }),
+                                  ),
+                                  secretKeyRef: Schema.optional(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      name: Schema.optional(Schema.String),
+                                      optional: Schema.optional(Schema.Boolean),
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        envFrom: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              configMapRef: Schema.optional(
+                                Schema.Struct({
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                              prefix: Schema.optional(Schema.String),
+                              secretRef: Schema.optional(
+                                Schema.Struct({
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        image: Schema.optional(Schema.String),
+                        imagePullPolicy: Schema.optional(Schema.String),
+                        lifecycle: Schema.optional(
+                          Schema.Struct({
+                            postStart: Schema.optional(
+                              Schema.Struct({
+                                exec: Schema.optional(
+                                  Schema.Struct({
+                                    command: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                  }),
+                                ),
+                                httpGet: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    httpHeaders: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          name: Schema.String,
+                                          value: Schema.String,
+                                        }),
+                                      ),
+                                    ),
+                                    path: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                    scheme: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                                sleep: Schema.optional(
+                                  Schema.Struct({
+                                    seconds: Schema.Number,
+                                  }),
+                                ),
+                                tcpSocket: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
+                            preStop: Schema.optional(
+                              Schema.Struct({
+                                exec: Schema.optional(
+                                  Schema.Struct({
+                                    command: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                  }),
+                                ),
+                                httpGet: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    httpHeaders: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          name: Schema.String,
+                                          value: Schema.String,
+                                        }),
+                                      ),
+                                    ),
+                                    path: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                    scheme: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                                sleep: Schema.optional(
+                                  Schema.Struct({
+                                    seconds: Schema.Number,
+                                  }),
+                                ),
+                                tcpSocket: Schema.optional(
+                                  Schema.Struct({
+                                    host: Schema.optional(Schema.String),
+                                    port: Schema.String,
+                                  }),
+                                ),
+                              }),
+                            ),
+                            stopSignal: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        livenessProbe: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            failureThreshold: Schema.optional(Schema.Number),
+                            grpc: Schema.optional(
+                              Schema.Struct({
+                                port: Schema.Number,
+                                service: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            initialDelaySeconds: Schema.optional(Schema.Number),
+                            periodSeconds: Schema.optional(Schema.Number),
+                            successThreshold: Schema.optional(Schema.Number),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                            terminationGracePeriodSeconds: Schema.optional(
+                              Schema.Number,
+                            ),
+                            timeoutSeconds: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                        name: Schema.String,
+                        ports: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              containerPort: Schema.Number,
+                              hostIP: Schema.optional(Schema.String),
+                              hostPort: Schema.optional(Schema.Number),
+                              name: Schema.optional(Schema.String),
+                              protocol: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        readinessProbe: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            failureThreshold: Schema.optional(Schema.Number),
+                            grpc: Schema.optional(
+                              Schema.Struct({
+                                port: Schema.Number,
+                                service: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            initialDelaySeconds: Schema.optional(Schema.Number),
+                            periodSeconds: Schema.optional(Schema.Number),
+                            successThreshold: Schema.optional(Schema.Number),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                            terminationGracePeriodSeconds: Schema.optional(
+                              Schema.Number,
+                            ),
+                            timeoutSeconds: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                        resizePolicy: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              resourceName: Schema.String,
+                              restartPolicy: Schema.String,
+                            }),
+                          ),
+                        ),
+                        resources: Schema.optional(
+                          Schema.Struct({
+                            claims: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  request: Schema.optional(Schema.String),
+                                }),
+                              ),
+                            ),
+                            limits: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                            requests: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        restartPolicy: Schema.optional(Schema.String),
+                        restartPolicyRules: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              action: Schema.String,
+                              exitCodes: Schema.optional(
+                                Schema.Struct({
+                                  operator: Schema.String,
+                                  values: Schema.optional(
+                                    Schema.Array(Schema.Number),
+                                  ),
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                        securityContext: Schema.optional(
+                          Schema.Struct({
+                            allowPrivilegeEscalation: Schema.optional(
+                              Schema.Boolean,
+                            ),
+                            appArmorProfile: Schema.optional(
+                              Schema.Struct({
+                                localhostProfile: Schema.optional(
+                                  Schema.String,
+                                ),
+                                type: Schema.String,
+                              }),
+                            ),
+                            capabilities: Schema.optional(
+                              Schema.Struct({
+                                add: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                drop: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            privileged: Schema.optional(Schema.Boolean),
+                            procMount: Schema.optional(Schema.String),
+                            readOnlyRootFilesystem: Schema.optional(
+                              Schema.Boolean,
+                            ),
+                            runAsGroup: Schema.optional(Schema.Number),
+                            runAsNonRoot: Schema.optional(Schema.Boolean),
+                            runAsUser: Schema.optional(Schema.Number),
+                            seLinuxOptions: Schema.optional(
+                              Schema.Struct({
+                                level: Schema.optional(Schema.String),
+                                role: Schema.optional(Schema.String),
+                                type: Schema.optional(Schema.String),
+                                user: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            seccompProfile: Schema.optional(
+                              Schema.Struct({
+                                localhostProfile: Schema.optional(
+                                  Schema.String,
+                                ),
+                                type: Schema.String,
+                              }),
+                            ),
+                            windowsOptions: Schema.optional(
+                              Schema.Struct({
+                                gmsaCredentialSpec: Schema.optional(
+                                  Schema.String,
+                                ),
+                                gmsaCredentialSpecName: Schema.optional(
+                                  Schema.String,
+                                ),
+                                hostProcess: Schema.optional(Schema.Boolean),
+                                runAsUserName: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          }),
+                        ),
+                        startupProbe: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            failureThreshold: Schema.optional(Schema.Number),
+                            grpc: Schema.optional(
+                              Schema.Struct({
+                                port: Schema.Number,
+                                service: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            initialDelaySeconds: Schema.optional(Schema.Number),
+                            periodSeconds: Schema.optional(Schema.Number),
+                            successThreshold: Schema.optional(Schema.Number),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                            terminationGracePeriodSeconds: Schema.optional(
+                              Schema.Number,
+                            ),
+                            timeoutSeconds: Schema.optional(Schema.Number),
+                          }),
+                        ),
+                        stdin: Schema.optional(Schema.Boolean),
+                        stdinOnce: Schema.optional(Schema.Boolean),
+                        terminationMessagePath: Schema.optional(Schema.String),
+                        terminationMessagePolicy: Schema.optional(
+                          Schema.String,
+                        ),
+                        tty: Schema.optional(Schema.Boolean),
+                        volumeDevices: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              devicePath: Schema.String,
+                              name: Schema.String,
+                            }),
+                          ),
+                        ),
+                        volumeMounts: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              mountPath: Schema.String,
+                              mountPropagation: Schema.optional(Schema.String),
+                              name: Schema.String,
+                              readOnly: Schema.optional(Schema.Boolean),
+                              recursiveReadOnly: Schema.optional(Schema.String),
+                              subPath: Schema.optional(Schema.String),
+                              subPathExpr: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        workingDir: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  nodeName: Schema.optional(Schema.String),
+                  nodeSelector: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  os: Schema.optional(
+                    Schema.Struct({
+                      name: Schema.String,
+                    }),
+                  ),
+                  overhead: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  preemptionPolicy: Schema.optional(Schema.String),
+                  priority: Schema.optional(Schema.Number),
+                  priorityClassName: Schema.optional(Schema.String),
+                  readinessGates: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        conditionType: Schema.String,
+                      }),
+                    ),
+                  ),
+                  resourceClaims: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.String,
+                        resourceClaimName: Schema.optional(Schema.String),
+                        resourceClaimTemplateName: Schema.optional(
+                          Schema.String,
+                        ),
+                      }),
+                    ),
+                  ),
+                  resources: Schema.optional(
+                    Schema.Struct({
+                      claims: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.String,
+                            request: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                      limits: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                      requests: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                    }),
+                  ),
+                  restartPolicy: Schema.optional(Schema.String),
+                  runtimeClassName: Schema.optional(Schema.String),
+                  schedulerName: Schema.optional(Schema.String),
+                  schedulingGates: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.String,
+                      }),
+                    ),
+                  ),
+                  schedulingGroup: Schema.optional(
+                    Schema.Struct({
+                      podGroupName: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  securityContext: Schema.optional(
+                    Schema.Struct({
+                      appArmorProfile: Schema.optional(
+                        Schema.Struct({
+                          localhostProfile: Schema.optional(Schema.String),
+                          type: Schema.String,
+                        }),
+                      ),
+                      fsGroup: Schema.optional(Schema.Number),
+                      fsGroupChangePolicy: Schema.optional(Schema.String),
+                      runAsGroup: Schema.optional(Schema.Number),
+                      runAsNonRoot: Schema.optional(Schema.Boolean),
+                      runAsUser: Schema.optional(Schema.Number),
+                      seLinuxChangePolicy: Schema.optional(Schema.String),
+                      seLinuxOptions: Schema.optional(
+                        Schema.Struct({
+                          level: Schema.optional(Schema.String),
+                          role: Schema.optional(Schema.String),
+                          type: Schema.optional(Schema.String),
+                          user: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      seccompProfile: Schema.optional(
+                        Schema.Struct({
+                          localhostProfile: Schema.optional(Schema.String),
+                          type: Schema.String,
+                        }),
+                      ),
+                      supplementalGroups: Schema.optional(
+                        Schema.Array(Schema.Number),
+                      ),
+                      supplementalGroupsPolicy: Schema.optional(Schema.String),
+                      sysctls: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.String,
+                            value: Schema.String,
+                          }),
+                        ),
+                      ),
+                      windowsOptions: Schema.optional(
+                        Schema.Struct({
+                          gmsaCredentialSpec: Schema.optional(Schema.String),
+                          gmsaCredentialSpecName: Schema.optional(
+                            Schema.String,
+                          ),
+                          hostProcess: Schema.optional(Schema.Boolean),
+                          runAsUserName: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    }),
+                  ),
+                  serviceAccount: Schema.optional(Schema.String),
+                  serviceAccountName: Schema.optional(Schema.String),
+                  setHostnameAsFQDN: Schema.optional(Schema.Boolean),
+                  shareProcessNamespace: Schema.optional(Schema.Boolean),
+                  subdomain: Schema.optional(Schema.String),
+                  terminationGracePeriodSeconds: Schema.optional(Schema.Number),
+                  tolerations: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        effect: Schema.optional(Schema.String),
+                        key: Schema.optional(Schema.String),
+                        operator: Schema.optional(Schema.String),
+                        tolerationSeconds: Schema.optional(Schema.Number),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  topologySpreadConstraints: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        labelSelector: Schema.optional(
+                          Schema.Struct({
+                            matchExpressions: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  operator: Schema.String,
+                                  values: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                }),
+                              ),
+                            ),
+                            matchLabels: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        matchLabelKeys: Schema.optional(
+                          Schema.Array(Schema.String),
+                        ),
+                        maxSkew: Schema.Number,
+                        minDomains: Schema.optional(Schema.Number),
+                        nodeAffinityPolicy: Schema.optional(Schema.String),
+                        nodeTaintsPolicy: Schema.optional(Schema.String),
+                        topologyKey: Schema.String,
+                        whenUnsatisfiable: Schema.String,
+                      }),
+                    ),
+                  ),
+                  volumes: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        awsElasticBlockStore: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            partition: Schema.optional(Schema.Number),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            volumeID: Schema.String,
+                          }),
+                        ),
+                        azureDisk: Schema.optional(
+                          Schema.Struct({
+                            cachingMode: Schema.optional(Schema.String),
+                            diskName: Schema.String,
+                            diskURI: Schema.String,
+                            fsType: Schema.optional(Schema.String),
+                            kind: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                        azureFile: Schema.optional(
+                          Schema.Struct({
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretName: Schema.String,
+                            shareName: Schema.String,
+                          }),
+                        ),
+                        cephfs: Schema.optional(
+                          Schema.Struct({
+                            monitors: Schema.Array(Schema.String),
+                            path: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretFile: Schema.optional(Schema.String),
+                            secretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            user: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        cinder: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            volumeID: Schema.String,
+                          }),
+                        ),
+                        configMap: Schema.optional(
+                          Schema.Struct({
+                            defaultMode: Schema.optional(Schema.Number),
+                            items: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  mode: Schema.optional(Schema.Number),
+                                  path: Schema.String,
+                                }),
+                              ),
+                            ),
+                            name: Schema.optional(Schema.String),
+                            optional: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                        csi: Schema.optional(
+                          Schema.Struct({
+                            driver: Schema.String,
+                            fsType: Schema.optional(Schema.String),
+                            nodePublishSecretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            volumeAttributes: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                          }),
+                        ),
+                        downwardAPI: Schema.optional(
+                          Schema.Struct({
+                            defaultMode: Schema.optional(Schema.Number),
+                            items: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  fieldRef: Schema.optional(
+                                    Schema.Struct({
+                                      apiVersion: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      fieldPath: Schema.String,
+                                    }),
+                                  ),
+                                  mode: Schema.optional(Schema.Number),
+                                  path: Schema.String,
+                                  resourceFieldRef: Schema.optional(
+                                    Schema.Struct({
+                                      containerName: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      divisor: Schema.optional(Schema.String),
+                                      resource: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                          }),
+                        ),
+                        emptyDir: Schema.optional(
+                          Schema.Struct({
+                            medium: Schema.optional(Schema.String),
+                            sizeLimit: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        ephemeral: Schema.optional(
+                          Schema.Struct({
+                            volumeClaimTemplate: Schema.optional(
+                              Schema.Struct({
+                                metadata: Schema.optional(
+                                  Schema.Struct({
+                                    annotations: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                    creationTimestamp: Schema.optional(
+                                      Schema.String,
+                                    ),
+                                    deletionGracePeriodSeconds: Schema.optional(
+                                      Schema.Number,
+                                    ),
+                                    deletionTimestamp: Schema.optional(
+                                      Schema.String,
+                                    ),
+                                    finalizers: Schema.optional(
+                                      Schema.Array(Schema.String),
+                                    ),
+                                    generateName: Schema.optional(
+                                      Schema.String,
+                                    ),
+                                    generation: Schema.optional(Schema.Number),
+                                    labels: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                    managedFields: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          apiVersion: Schema.optional(
+                                            Schema.String,
+                                          ),
+                                          fieldsType: Schema.optional(
+                                            Schema.String,
+                                          ),
+                                          fieldsV1: Schema.optional(
+                                            Schema.Unknown,
+                                          ),
+                                          manager: Schema.optional(
+                                            Schema.String,
+                                          ),
+                                          operation: Schema.optional(
+                                            Schema.String,
+                                          ),
+                                          subresource: Schema.optional(
+                                            Schema.String,
+                                          ),
+                                          time: Schema.optional(Schema.String),
+                                        }),
+                                      ),
+                                    ),
+                                    name: Schema.optional(Schema.String),
+                                    namespace: Schema.optional(Schema.String),
+                                    ownerReferences: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          apiVersion: Schema.String,
+                                          blockOwnerDeletion: Schema.optional(
+                                            Schema.Boolean,
+                                          ),
+                                          controller: Schema.optional(
+                                            Schema.Boolean,
+                                          ),
+                                          kind: Schema.String,
+                                          name: Schema.String,
+                                          uid: Schema.String,
+                                        }),
+                                      ),
+                                    ),
+                                    resourceVersion: Schema.optional(
+                                      Schema.String,
+                                    ),
+                                    selfLink: Schema.optional(Schema.String),
+                                    uid: Schema.optional(Schema.String),
+                                  }),
+                                ),
+                                spec: Schema.Struct({
+                                  accessModes: Schema.optional(
+                                    Schema.Array(Schema.String),
+                                  ),
+                                  dataSource: Schema.optional(
+                                    Schema.Struct({
+                                      apiGroup: Schema.optional(Schema.String),
+                                      kind: Schema.String,
+                                      name: Schema.String,
+                                    }),
+                                  ),
+                                  dataSourceRef: Schema.optional(
+                                    Schema.Struct({
+                                      apiGroup: Schema.optional(Schema.String),
+                                      kind: Schema.String,
+                                      name: Schema.String,
+                                      namespace: Schema.optional(Schema.String),
+                                    }),
+                                  ),
+                                  resources: Schema.optional(
+                                    Schema.Struct({
+                                      limits: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                      requests: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  selector: Schema.optional(
+                                    Schema.Struct({
+                                      matchExpressions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            operator: Schema.String,
+                                            values: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      matchLabels: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  storageClassName: Schema.optional(
+                                    Schema.String,
+                                  ),
+                                  volumeAttributesClassName: Schema.optional(
+                                    Schema.String,
+                                  ),
+                                  volumeMode: Schema.optional(Schema.String),
+                                  volumeName: Schema.optional(Schema.String),
+                                }),
+                              }),
+                            ),
+                          }),
+                        ),
+                        fc: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            lun: Schema.optional(Schema.Number),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            targetWWNs: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                            wwids: Schema.optional(Schema.Array(Schema.String)),
+                          }),
+                        ),
+                        flexVolume: Schema.optional(
+                          Schema.Struct({
+                            driver: Schema.String,
+                            fsType: Schema.optional(Schema.String),
+                            options: Schema.optional(
+                              Schema.Record(Schema.String, Schema.String),
+                            ),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                              }),
+                            ),
+                          }),
+                        ),
+                        flocker: Schema.optional(
+                          Schema.Struct({
+                            datasetName: Schema.optional(Schema.String),
+                            datasetUUID: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        gcePersistentDisk: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            partition: Schema.optional(Schema.Number),
+                            pdName: Schema.String,
+                            readOnly: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                        gitRepo: Schema.optional(
+                          Schema.Struct({
+                            directory: Schema.optional(Schema.String),
+                            repository: Schema.String,
+                            revision: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        glusterfs: Schema.optional(
+                          Schema.Struct({
+                            endpoints: Schema.String,
+                            path: Schema.String,
+                            readOnly: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                        hostPath: Schema.optional(
+                          Schema.Struct({
+                            path: Schema.String,
+                            type: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        image: Schema.optional(
+                          Schema.Struct({
+                            pullPolicy: Schema.optional(Schema.String),
+                            reference: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        iscsi: Schema.optional(
+                          Schema.Struct({
+                            chapAuthDiscovery: Schema.optional(Schema.Boolean),
+                            chapAuthSession: Schema.optional(Schema.Boolean),
+                            fsType: Schema.optional(Schema.String),
+                            initiatorName: Schema.optional(Schema.String),
+                            iqn: Schema.String,
+                            iscsiInterface: Schema.optional(Schema.String),
+                            lun: Schema.Number,
+                            portals: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            targetPortal: Schema.String,
+                          }),
+                        ),
+                        name: Schema.String,
+                        nfs: Schema.optional(
+                          Schema.Struct({
+                            path: Schema.String,
+                            readOnly: Schema.optional(Schema.Boolean),
+                            server: Schema.String,
+                          }),
+                        ),
+                        persistentVolumeClaim: Schema.optional(
+                          Schema.Struct({
+                            claimName: Schema.String,
+                            readOnly: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                        photonPersistentDisk: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            pdID: Schema.String,
+                          }),
+                        ),
+                        portworxVolume: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            volumeID: Schema.String,
+                          }),
+                        ),
+                        projected: Schema.optional(
+                          Schema.Struct({
+                            defaultMode: Schema.optional(Schema.Number),
+                            sources: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  clusterTrustBundle: Schema.optional(
+                                    Schema.Struct({
+                                      labelSelector: Schema.optional(
+                                        Schema.Struct({
+                                          matchExpressions: Schema.optional(
+                                            Schema.Array(
+                                              Schema.Struct({
+                                                key: Schema.String,
+                                                operator: Schema.String,
+                                                values: Schema.optional(
+                                                  Schema.Array(Schema.String),
+                                                ),
+                                              }),
+                                            ),
+                                          ),
+                                          matchLabels: Schema.optional(
+                                            Schema.Record(
+                                              Schema.String,
+                                              Schema.String,
+                                            ),
+                                          ),
+                                        }),
+                                      ),
+                                      name: Schema.optional(Schema.String),
+                                      optional: Schema.optional(Schema.Boolean),
+                                      path: Schema.String,
+                                      signerName: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                    }),
+                                  ),
+                                  configMap: Schema.optional(
+                                    Schema.Struct({
+                                      items: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            mode: Schema.optional(
+                                              Schema.Number,
+                                            ),
+                                            path: Schema.String,
+                                          }),
+                                        ),
+                                      ),
+                                      name: Schema.optional(Schema.String),
+                                      optional: Schema.optional(Schema.Boolean),
+                                    }),
+                                  ),
+                                  downwardAPI: Schema.optional(
+                                    Schema.Struct({
+                                      items: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            fieldRef: Schema.optional(
+                                              Schema.Struct({
+                                                apiVersion: Schema.optional(
+                                                  Schema.String,
+                                                ),
+                                                fieldPath: Schema.String,
+                                              }),
+                                            ),
+                                            mode: Schema.optional(
+                                              Schema.Number,
+                                            ),
+                                            path: Schema.String,
+                                            resourceFieldRef: Schema.optional(
+                                              Schema.Struct({
+                                                containerName: Schema.optional(
+                                                  Schema.String,
+                                                ),
+                                                divisor: Schema.optional(
+                                                  Schema.String,
+                                                ),
+                                                resource: Schema.String,
+                                              }),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  podCertificate: Schema.optional(
+                                    Schema.Struct({
+                                      certificateChainPath: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      credentialBundlePath: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      keyPath: Schema.optional(Schema.String),
+                                      keyType: Schema.String,
+                                      maxExpirationSeconds: Schema.optional(
+                                        Schema.Number,
+                                      ),
+                                      signerName: Schema.String,
+                                      userAnnotations: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  secret: Schema.optional(
+                                    Schema.Struct({
+                                      items: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            mode: Schema.optional(
+                                              Schema.Number,
+                                            ),
+                                            path: Schema.String,
+                                          }),
+                                        ),
+                                      ),
+                                      name: Schema.optional(Schema.String),
+                                      optional: Schema.optional(Schema.Boolean),
+                                    }),
+                                  ),
+                                  serviceAccountToken: Schema.optional(
+                                    Schema.Struct({
+                                      audience: Schema.optional(Schema.String),
+                                      expirationSeconds: Schema.optional(
+                                        Schema.Number,
+                                      ),
+                                      path: Schema.String,
+                                    }),
+                                  ),
+                                }),
+                              ),
+                            ),
+                          }),
+                        ),
+                        quobyte: Schema.optional(
+                          Schema.Struct({
+                            group: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            registry: Schema.String,
+                            tenant: Schema.optional(Schema.String),
+                            user: Schema.optional(Schema.String),
+                            volume: Schema.String,
+                          }),
+                        ),
+                        rbd: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            image: Schema.String,
+                            keyring: Schema.optional(Schema.String),
+                            monitors: Schema.Array(Schema.String),
+                            pool: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            user: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        scaleIO: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            gateway: Schema.String,
+                            protectionDomain: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretRef: Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                            }),
+                            sslEnabled: Schema.optional(Schema.Boolean),
+                            storageMode: Schema.optional(Schema.String),
+                            storagePool: Schema.optional(Schema.String),
+                            system: Schema.String,
+                            volumeName: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        secret: Schema.optional(
+                          Schema.Struct({
+                            defaultMode: Schema.optional(Schema.Number),
+                            items: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  mode: Schema.optional(Schema.Number),
+                                  path: Schema.String,
+                                }),
+                              ),
+                            ),
+                            optional: Schema.optional(Schema.Boolean),
+                            secretName: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        storageos: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            readOnly: Schema.optional(Schema.Boolean),
+                            secretRef: Schema.optional(
+                              Schema.Struct({
+                                name: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            volumeName: Schema.optional(Schema.String),
+                            volumeNamespace: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        vsphereVolume: Schema.optional(
+                          Schema.Struct({
+                            fsType: Schema.optional(Schema.String),
+                            storagePolicyID: Schema.optional(Schema.String),
+                            storagePolicyName: Schema.optional(Schema.String),
+                            volumePath: Schema.String,
+                          }),
+                        ),
+                      }),
+                    ),
+                  ),
+                }),
+              ),
+            }),
+            ttlSecondsAfterFinished: Schema.optional(Schema.Number),
+          }),
+        ),
+      }),
+      schedule: Schema.String,
+      startingDeadlineSeconds: Schema.optional(Schema.Number),
+      successfulJobsHistoryLimit: Schema.optional(Schema.Number),
+      suspend: Schema.optional(Schema.Boolean),
+      timeZone: Schema.optional(Schema.String),
+    }),
+    status: Schema.optional(
+      Schema.Struct({
+        active: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldPath: Schema.optional(Schema.String),
+              kind: Schema.optional(Schema.String),
+              name: Schema.optional(Schema.String),
+              namespace: Schema.optional(Schema.String),
+              resourceVersion: Schema.optional(Schema.String),
+              uid: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        lastScheduleTime: Schema.optional(Schema.String),
+        lastSuccessfulTime: Schema.optional(Schema.String),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -43662,7 +54899,11 @@ export type ReplaceBatchV1NamespacedCronJobStatusOutput =
 /**
  * replace status of the specified CronJob
  *
+ * @param name - name of the CronJob
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceBatchV1NamespacedCronJobStatus =
@@ -43674,8 +54915,2560 @@ export const replaceBatchV1NamespacedCronJobStatus =
 // Input Schema
 export const ReplaceBatchV1NamespacedJobInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.optional(
+      Schema.Struct({
+        activeDeadlineSeconds: Schema.optional(Schema.Number),
+        backoffLimit: Schema.optional(Schema.Number),
+        backoffLimitPerIndex: Schema.optional(Schema.Number),
+        completionMode: Schema.optional(Schema.String),
+        completions: Schema.optional(Schema.Number),
+        managedBy: Schema.optional(Schema.String),
+        manualSelector: Schema.optional(Schema.Boolean),
+        maxFailedIndexes: Schema.optional(Schema.Number),
+        parallelism: Schema.optional(Schema.Number),
+        podFailurePolicy: Schema.optional(
+          Schema.Struct({
+            rules: Schema.Array(
+              Schema.Struct({
+                action: Schema.String,
+                onExitCodes: Schema.optional(
+                  Schema.Struct({
+                    containerName: Schema.optional(Schema.String),
+                    operator: Schema.String,
+                    values: Schema.Array(Schema.Number),
+                  }),
+                ),
+                onPodConditions: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      status: Schema.optional(Schema.String),
+                      type: Schema.String,
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+        podReplacementPolicy: Schema.optional(Schema.String),
+        selector: Schema.optional(
+          Schema.Struct({
+            matchExpressions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.String,
+                  operator: Schema.String,
+                  values: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            matchLabels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+          }),
+        ),
+        successPolicy: Schema.optional(
+          Schema.Struct({
+            rules: Schema.Array(
+              Schema.Struct({
+                succeededCount: Schema.optional(Schema.Number),
+                succeededIndexes: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        suspend: Schema.optional(Schema.Boolean),
+        template: Schema.Struct({
+          metadata: Schema.optional(
+            Schema.Struct({
+              annotations: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              creationTimestamp: Schema.optional(Schema.String),
+              deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+              deletionTimestamp: Schema.optional(Schema.String),
+              finalizers: Schema.optional(Schema.Array(Schema.String)),
+              generateName: Schema.optional(Schema.String),
+              generation: Schema.optional(Schema.Number),
+              labels: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              managedFields: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    apiVersion: Schema.optional(Schema.String),
+                    fieldsType: Schema.optional(Schema.String),
+                    fieldsV1: Schema.optional(Schema.Unknown),
+                    manager: Schema.optional(Schema.String),
+                    operation: Schema.optional(Schema.String),
+                    subresource: Schema.optional(Schema.String),
+                    time: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              name: Schema.optional(Schema.String),
+              namespace: Schema.optional(Schema.String),
+              ownerReferences: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    apiVersion: Schema.String,
+                    blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                    controller: Schema.optional(Schema.Boolean),
+                    kind: Schema.String,
+                    name: Schema.String,
+                    uid: Schema.String,
+                  }),
+                ),
+              ),
+              resourceVersion: Schema.optional(Schema.String),
+              selfLink: Schema.optional(Schema.String),
+              uid: Schema.optional(Schema.String),
+            }),
+          ),
+          spec: Schema.optional(
+            Schema.Struct({
+              activeDeadlineSeconds: Schema.optional(Schema.Number),
+              affinity: Schema.optional(
+                Schema.Struct({
+                  nodeAffinity: Schema.optional(
+                    Schema.Struct({
+                      preferredDuringSchedulingIgnoredDuringExecution:
+                        Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              preference: Schema.Struct({
+                                matchExpressions: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      operator: Schema.String,
+                                      values: Schema.optional(
+                                        Schema.Array(Schema.String),
+                                      ),
+                                    }),
+                                  ),
+                                ),
+                                matchFields: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      operator: Schema.String,
+                                      values: Schema.optional(
+                                        Schema.Array(Schema.String),
+                                      ),
+                                    }),
+                                  ),
+                                ),
+                              }),
+                              weight: Schema.Number,
+                            }),
+                          ),
+                        ),
+                      requiredDuringSchedulingIgnoredDuringExecution:
+                        Schema.optional(
+                          Schema.Struct({
+                            nodeSelectorTerms: Schema.Array(
+                              Schema.Struct({
+                                matchExpressions: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      operator: Schema.String,
+                                      values: Schema.optional(
+                                        Schema.Array(Schema.String),
+                                      ),
+                                    }),
+                                  ),
+                                ),
+                                matchFields: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      operator: Schema.String,
+                                      values: Schema.optional(
+                                        Schema.Array(Schema.String),
+                                      ),
+                                    }),
+                                  ),
+                                ),
+                              }),
+                            ),
+                          }),
+                        ),
+                    }),
+                  ),
+                  podAffinity: Schema.optional(
+                    Schema.Struct({
+                      preferredDuringSchedulingIgnoredDuringExecution:
+                        Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              podAffinityTerm: Schema.Struct({
+                                labelSelector: Schema.optional(
+                                  Schema.Struct({
+                                    matchExpressions: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                    matchLabels: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                  }),
+                                ),
+                                matchLabelKeys: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                mismatchLabelKeys: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                namespaceSelector: Schema.optional(
+                                  Schema.Struct({
+                                    matchExpressions: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                    matchLabels: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                  }),
+                                ),
+                                namespaces: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                topologyKey: Schema.String,
+                              }),
+                              weight: Schema.Number,
+                            }),
+                          ),
+                        ),
+                      requiredDuringSchedulingIgnoredDuringExecution:
+                        Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              labelSelector: Schema.optional(
+                                Schema.Struct({
+                                  matchExpressions: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                  matchLabels: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              matchLabelKeys: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              mismatchLabelKeys: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              namespaceSelector: Schema.optional(
+                                Schema.Struct({
+                                  matchExpressions: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                  matchLabels: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              namespaces: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              topologyKey: Schema.String,
+                            }),
+                          ),
+                        ),
+                    }),
+                  ),
+                  podAntiAffinity: Schema.optional(
+                    Schema.Struct({
+                      preferredDuringSchedulingIgnoredDuringExecution:
+                        Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              podAffinityTerm: Schema.Struct({
+                                labelSelector: Schema.optional(
+                                  Schema.Struct({
+                                    matchExpressions: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                    matchLabels: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                  }),
+                                ),
+                                matchLabelKeys: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                mismatchLabelKeys: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                namespaceSelector: Schema.optional(
+                                  Schema.Struct({
+                                    matchExpressions: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                    matchLabels: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                  }),
+                                ),
+                                namespaces: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                topologyKey: Schema.String,
+                              }),
+                              weight: Schema.Number,
+                            }),
+                          ),
+                        ),
+                      requiredDuringSchedulingIgnoredDuringExecution:
+                        Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              labelSelector: Schema.optional(
+                                Schema.Struct({
+                                  matchExpressions: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                  matchLabels: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              matchLabelKeys: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              mismatchLabelKeys: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              namespaceSelector: Schema.optional(
+                                Schema.Struct({
+                                  matchExpressions: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                  matchLabels: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              namespaces: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              topologyKey: Schema.String,
+                            }),
+                          ),
+                        ),
+                    }),
+                  ),
+                }),
+              ),
+              automountServiceAccountToken: Schema.optional(Schema.Boolean),
+              containers: Schema.Array(
+                Schema.Struct({
+                  args: Schema.optional(Schema.Array(Schema.String)),
+                  command: Schema.optional(Schema.Array(Schema.String)),
+                  env: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.String,
+                        value: Schema.optional(Schema.String),
+                        valueFrom: Schema.optional(
+                          Schema.Struct({
+                            configMapKeyRef: Schema.optional(
+                              Schema.Struct({
+                                key: Schema.String,
+                                name: Schema.optional(Schema.String),
+                                optional: Schema.optional(Schema.Boolean),
+                              }),
+                            ),
+                            fieldRef: Schema.optional(
+                              Schema.Struct({
+                                apiVersion: Schema.optional(Schema.String),
+                                fieldPath: Schema.String,
+                              }),
+                            ),
+                            fileKeyRef: Schema.optional(
+                              Schema.Struct({
+                                key: Schema.String,
+                                optional: Schema.optional(Schema.Boolean),
+                                path: Schema.String,
+                                volumeName: Schema.String,
+                              }),
+                            ),
+                            resourceFieldRef: Schema.optional(
+                              Schema.Struct({
+                                containerName: Schema.optional(Schema.String),
+                                divisor: Schema.optional(Schema.String),
+                                resource: Schema.String,
+                              }),
+                            ),
+                            secretKeyRef: Schema.optional(
+                              Schema.Struct({
+                                key: Schema.String,
+                                name: Schema.optional(Schema.String),
+                                optional: Schema.optional(Schema.Boolean),
+                              }),
+                            ),
+                          }),
+                        ),
+                      }),
+                    ),
+                  ),
+                  envFrom: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        configMapRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                            optional: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                        prefix: Schema.optional(Schema.String),
+                        secretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                            optional: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                      }),
+                    ),
+                  ),
+                  image: Schema.optional(Schema.String),
+                  imagePullPolicy: Schema.optional(Schema.String),
+                  lifecycle: Schema.optional(
+                    Schema.Struct({
+                      postStart: Schema.optional(
+                        Schema.Struct({
+                          exec: Schema.optional(
+                            Schema.Struct({
+                              command: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          httpGet: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              httpHeaders: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.String,
+                                    value: Schema.String,
+                                  }),
+                                ),
+                              ),
+                              path: Schema.optional(Schema.String),
+                              port: Schema.String,
+                              scheme: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          sleep: Schema.optional(
+                            Schema.Struct({
+                              seconds: Schema.Number,
+                            }),
+                          ),
+                          tcpSocket: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              port: Schema.String,
+                            }),
+                          ),
+                        }),
+                      ),
+                      preStop: Schema.optional(
+                        Schema.Struct({
+                          exec: Schema.optional(
+                            Schema.Struct({
+                              command: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          httpGet: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              httpHeaders: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.String,
+                                    value: Schema.String,
+                                  }),
+                                ),
+                              ),
+                              path: Schema.optional(Schema.String),
+                              port: Schema.String,
+                              scheme: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          sleep: Schema.optional(
+                            Schema.Struct({
+                              seconds: Schema.Number,
+                            }),
+                          ),
+                          tcpSocket: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              port: Schema.String,
+                            }),
+                          ),
+                        }),
+                      ),
+                      stopSignal: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  livenessProbe: Schema.optional(
+                    Schema.Struct({
+                      exec: Schema.optional(
+                        Schema.Struct({
+                          command: Schema.optional(Schema.Array(Schema.String)),
+                        }),
+                      ),
+                      failureThreshold: Schema.optional(Schema.Number),
+                      grpc: Schema.optional(
+                        Schema.Struct({
+                          port: Schema.Number,
+                          service: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      httpGet: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          httpHeaders: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.String,
+                                value: Schema.String,
+                              }),
+                            ),
+                          ),
+                          path: Schema.optional(Schema.String),
+                          port: Schema.String,
+                          scheme: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      initialDelaySeconds: Schema.optional(Schema.Number),
+                      periodSeconds: Schema.optional(Schema.Number),
+                      successThreshold: Schema.optional(Schema.Number),
+                      tcpSocket: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          port: Schema.String,
+                        }),
+                      ),
+                      terminationGracePeriodSeconds: Schema.optional(
+                        Schema.Number,
+                      ),
+                      timeoutSeconds: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                  name: Schema.String,
+                  ports: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        containerPort: Schema.Number,
+                        hostIP: Schema.optional(Schema.String),
+                        hostPort: Schema.optional(Schema.Number),
+                        name: Schema.optional(Schema.String),
+                        protocol: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  readinessProbe: Schema.optional(
+                    Schema.Struct({
+                      exec: Schema.optional(
+                        Schema.Struct({
+                          command: Schema.optional(Schema.Array(Schema.String)),
+                        }),
+                      ),
+                      failureThreshold: Schema.optional(Schema.Number),
+                      grpc: Schema.optional(
+                        Schema.Struct({
+                          port: Schema.Number,
+                          service: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      httpGet: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          httpHeaders: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.String,
+                                value: Schema.String,
+                              }),
+                            ),
+                          ),
+                          path: Schema.optional(Schema.String),
+                          port: Schema.String,
+                          scheme: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      initialDelaySeconds: Schema.optional(Schema.Number),
+                      periodSeconds: Schema.optional(Schema.Number),
+                      successThreshold: Schema.optional(Schema.Number),
+                      tcpSocket: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          port: Schema.String,
+                        }),
+                      ),
+                      terminationGracePeriodSeconds: Schema.optional(
+                        Schema.Number,
+                      ),
+                      timeoutSeconds: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                  resizePolicy: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        resourceName: Schema.String,
+                        restartPolicy: Schema.String,
+                      }),
+                    ),
+                  ),
+                  resources: Schema.optional(
+                    Schema.Struct({
+                      claims: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.String,
+                            request: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                      limits: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                      requests: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                    }),
+                  ),
+                  restartPolicy: Schema.optional(Schema.String),
+                  restartPolicyRules: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        action: Schema.String,
+                        exitCodes: Schema.optional(
+                          Schema.Struct({
+                            operator: Schema.String,
+                            values: Schema.optional(
+                              Schema.Array(Schema.Number),
+                            ),
+                          }),
+                        ),
+                      }),
+                    ),
+                  ),
+                  securityContext: Schema.optional(
+                    Schema.Struct({
+                      allowPrivilegeEscalation: Schema.optional(Schema.Boolean),
+                      appArmorProfile: Schema.optional(
+                        Schema.Struct({
+                          localhostProfile: Schema.optional(Schema.String),
+                          type: Schema.String,
+                        }),
+                      ),
+                      capabilities: Schema.optional(
+                        Schema.Struct({
+                          add: Schema.optional(Schema.Array(Schema.String)),
+                          drop: Schema.optional(Schema.Array(Schema.String)),
+                        }),
+                      ),
+                      privileged: Schema.optional(Schema.Boolean),
+                      procMount: Schema.optional(Schema.String),
+                      readOnlyRootFilesystem: Schema.optional(Schema.Boolean),
+                      runAsGroup: Schema.optional(Schema.Number),
+                      runAsNonRoot: Schema.optional(Schema.Boolean),
+                      runAsUser: Schema.optional(Schema.Number),
+                      seLinuxOptions: Schema.optional(
+                        Schema.Struct({
+                          level: Schema.optional(Schema.String),
+                          role: Schema.optional(Schema.String),
+                          type: Schema.optional(Schema.String),
+                          user: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      seccompProfile: Schema.optional(
+                        Schema.Struct({
+                          localhostProfile: Schema.optional(Schema.String),
+                          type: Schema.String,
+                        }),
+                      ),
+                      windowsOptions: Schema.optional(
+                        Schema.Struct({
+                          gmsaCredentialSpec: Schema.optional(Schema.String),
+                          gmsaCredentialSpecName: Schema.optional(
+                            Schema.String,
+                          ),
+                          hostProcess: Schema.optional(Schema.Boolean),
+                          runAsUserName: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    }),
+                  ),
+                  startupProbe: Schema.optional(
+                    Schema.Struct({
+                      exec: Schema.optional(
+                        Schema.Struct({
+                          command: Schema.optional(Schema.Array(Schema.String)),
+                        }),
+                      ),
+                      failureThreshold: Schema.optional(Schema.Number),
+                      grpc: Schema.optional(
+                        Schema.Struct({
+                          port: Schema.Number,
+                          service: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      httpGet: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          httpHeaders: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.String,
+                                value: Schema.String,
+                              }),
+                            ),
+                          ),
+                          path: Schema.optional(Schema.String),
+                          port: Schema.String,
+                          scheme: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      initialDelaySeconds: Schema.optional(Schema.Number),
+                      periodSeconds: Schema.optional(Schema.Number),
+                      successThreshold: Schema.optional(Schema.Number),
+                      tcpSocket: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          port: Schema.String,
+                        }),
+                      ),
+                      terminationGracePeriodSeconds: Schema.optional(
+                        Schema.Number,
+                      ),
+                      timeoutSeconds: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                  stdin: Schema.optional(Schema.Boolean),
+                  stdinOnce: Schema.optional(Schema.Boolean),
+                  terminationMessagePath: Schema.optional(Schema.String),
+                  terminationMessagePolicy: Schema.optional(Schema.String),
+                  tty: Schema.optional(Schema.Boolean),
+                  volumeDevices: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        devicePath: Schema.String,
+                        name: Schema.String,
+                      }),
+                    ),
+                  ),
+                  volumeMounts: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        mountPath: Schema.String,
+                        mountPropagation: Schema.optional(Schema.String),
+                        name: Schema.String,
+                        readOnly: Schema.optional(Schema.Boolean),
+                        recursiveReadOnly: Schema.optional(Schema.String),
+                        subPath: Schema.optional(Schema.String),
+                        subPathExpr: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  workingDir: Schema.optional(Schema.String),
+                }),
+              ),
+              dnsConfig: Schema.optional(
+                Schema.Struct({
+                  nameservers: Schema.optional(Schema.Array(Schema.String)),
+                  options: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.optional(Schema.String),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  searches: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+              dnsPolicy: Schema.optional(Schema.String),
+              enableServiceLinks: Schema.optional(Schema.Boolean),
+              ephemeralContainers: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    args: Schema.optional(Schema.Array(Schema.String)),
+                    command: Schema.optional(Schema.Array(Schema.String)),
+                    env: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.String,
+                          value: Schema.optional(Schema.String),
+                          valueFrom: Schema.optional(
+                            Schema.Struct({
+                              configMapKeyRef: Schema.optional(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                              fieldRef: Schema.optional(
+                                Schema.Struct({
+                                  apiVersion: Schema.optional(Schema.String),
+                                  fieldPath: Schema.String,
+                                }),
+                              ),
+                              fileKeyRef: Schema.optional(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  optional: Schema.optional(Schema.Boolean),
+                                  path: Schema.String,
+                                  volumeName: Schema.String,
+                                }),
+                              ),
+                              resourceFieldRef: Schema.optional(
+                                Schema.Struct({
+                                  containerName: Schema.optional(Schema.String),
+                                  divisor: Schema.optional(Schema.String),
+                                  resource: Schema.String,
+                                }),
+                              ),
+                              secretKeyRef: Schema.optional(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                    envFrom: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          configMapRef: Schema.optional(
+                            Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                              optional: Schema.optional(Schema.Boolean),
+                            }),
+                          ),
+                          prefix: Schema.optional(Schema.String),
+                          secretRef: Schema.optional(
+                            Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                              optional: Schema.optional(Schema.Boolean),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                    image: Schema.optional(Schema.String),
+                    imagePullPolicy: Schema.optional(Schema.String),
+                    lifecycle: Schema.optional(
+                      Schema.Struct({
+                        postStart: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            sleep: Schema.optional(
+                              Schema.Struct({
+                                seconds: Schema.Number,
+                              }),
+                            ),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                          }),
+                        ),
+                        preStop: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            sleep: Schema.optional(
+                              Schema.Struct({
+                                seconds: Schema.Number,
+                              }),
+                            ),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                          }),
+                        ),
+                        stopSignal: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    livenessProbe: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        failureThreshold: Schema.optional(Schema.Number),
+                        grpc: Schema.optional(
+                          Schema.Struct({
+                            port: Schema.Number,
+                            service: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        initialDelaySeconds: Schema.optional(Schema.Number),
+                        periodSeconds: Schema.optional(Schema.Number),
+                        successThreshold: Schema.optional(Schema.Number),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                        terminationGracePeriodSeconds: Schema.optional(
+                          Schema.Number,
+                        ),
+                        timeoutSeconds: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    name: Schema.String,
+                    ports: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          containerPort: Schema.Number,
+                          hostIP: Schema.optional(Schema.String),
+                          hostPort: Schema.optional(Schema.Number),
+                          name: Schema.optional(Schema.String),
+                          protocol: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    readinessProbe: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        failureThreshold: Schema.optional(Schema.Number),
+                        grpc: Schema.optional(
+                          Schema.Struct({
+                            port: Schema.Number,
+                            service: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        initialDelaySeconds: Schema.optional(Schema.Number),
+                        periodSeconds: Schema.optional(Schema.Number),
+                        successThreshold: Schema.optional(Schema.Number),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                        terminationGracePeriodSeconds: Schema.optional(
+                          Schema.Number,
+                        ),
+                        timeoutSeconds: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    resizePolicy: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          resourceName: Schema.String,
+                          restartPolicy: Schema.String,
+                        }),
+                      ),
+                    ),
+                    resources: Schema.optional(
+                      Schema.Struct({
+                        claims: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              name: Schema.String,
+                              request: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        limits: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                        requests: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                      }),
+                    ),
+                    restartPolicy: Schema.optional(Schema.String),
+                    restartPolicyRules: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          action: Schema.String,
+                          exitCodes: Schema.optional(
+                            Schema.Struct({
+                              operator: Schema.String,
+                              values: Schema.optional(
+                                Schema.Array(Schema.Number),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                    securityContext: Schema.optional(
+                      Schema.Struct({
+                        allowPrivilegeEscalation: Schema.optional(
+                          Schema.Boolean,
+                        ),
+                        appArmorProfile: Schema.optional(
+                          Schema.Struct({
+                            localhostProfile: Schema.optional(Schema.String),
+                            type: Schema.String,
+                          }),
+                        ),
+                        capabilities: Schema.optional(
+                          Schema.Struct({
+                            add: Schema.optional(Schema.Array(Schema.String)),
+                            drop: Schema.optional(Schema.Array(Schema.String)),
+                          }),
+                        ),
+                        privileged: Schema.optional(Schema.Boolean),
+                        procMount: Schema.optional(Schema.String),
+                        readOnlyRootFilesystem: Schema.optional(Schema.Boolean),
+                        runAsGroup: Schema.optional(Schema.Number),
+                        runAsNonRoot: Schema.optional(Schema.Boolean),
+                        runAsUser: Schema.optional(Schema.Number),
+                        seLinuxOptions: Schema.optional(
+                          Schema.Struct({
+                            level: Schema.optional(Schema.String),
+                            role: Schema.optional(Schema.String),
+                            type: Schema.optional(Schema.String),
+                            user: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        seccompProfile: Schema.optional(
+                          Schema.Struct({
+                            localhostProfile: Schema.optional(Schema.String),
+                            type: Schema.String,
+                          }),
+                        ),
+                        windowsOptions: Schema.optional(
+                          Schema.Struct({
+                            gmsaCredentialSpec: Schema.optional(Schema.String),
+                            gmsaCredentialSpecName: Schema.optional(
+                              Schema.String,
+                            ),
+                            hostProcess: Schema.optional(Schema.Boolean),
+                            runAsUserName: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      }),
+                    ),
+                    startupProbe: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        failureThreshold: Schema.optional(Schema.Number),
+                        grpc: Schema.optional(
+                          Schema.Struct({
+                            port: Schema.Number,
+                            service: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        initialDelaySeconds: Schema.optional(Schema.Number),
+                        periodSeconds: Schema.optional(Schema.Number),
+                        successThreshold: Schema.optional(Schema.Number),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                        terminationGracePeriodSeconds: Schema.optional(
+                          Schema.Number,
+                        ),
+                        timeoutSeconds: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    stdin: Schema.optional(Schema.Boolean),
+                    stdinOnce: Schema.optional(Schema.Boolean),
+                    targetContainerName: Schema.optional(Schema.String),
+                    terminationMessagePath: Schema.optional(Schema.String),
+                    terminationMessagePolicy: Schema.optional(Schema.String),
+                    tty: Schema.optional(Schema.Boolean),
+                    volumeDevices: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          devicePath: Schema.String,
+                          name: Schema.String,
+                        }),
+                      ),
+                    ),
+                    volumeMounts: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          mountPath: Schema.String,
+                          mountPropagation: Schema.optional(Schema.String),
+                          name: Schema.String,
+                          readOnly: Schema.optional(Schema.Boolean),
+                          recursiveReadOnly: Schema.optional(Schema.String),
+                          subPath: Schema.optional(Schema.String),
+                          subPathExpr: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    workingDir: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              hostAliases: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    hostnames: Schema.optional(Schema.Array(Schema.String)),
+                    ip: Schema.String,
+                  }),
+                ),
+              ),
+              hostIPC: Schema.optional(Schema.Boolean),
+              hostNetwork: Schema.optional(Schema.Boolean),
+              hostPID: Schema.optional(Schema.Boolean),
+              hostUsers: Schema.optional(Schema.Boolean),
+              hostname: Schema.optional(Schema.String),
+              hostnameOverride: Schema.optional(Schema.String),
+              imagePullSecrets: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              initContainers: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    args: Schema.optional(Schema.Array(Schema.String)),
+                    command: Schema.optional(Schema.Array(Schema.String)),
+                    env: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.String,
+                          value: Schema.optional(Schema.String),
+                          valueFrom: Schema.optional(
+                            Schema.Struct({
+                              configMapKeyRef: Schema.optional(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                              fieldRef: Schema.optional(
+                                Schema.Struct({
+                                  apiVersion: Schema.optional(Schema.String),
+                                  fieldPath: Schema.String,
+                                }),
+                              ),
+                              fileKeyRef: Schema.optional(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  optional: Schema.optional(Schema.Boolean),
+                                  path: Schema.String,
+                                  volumeName: Schema.String,
+                                }),
+                              ),
+                              resourceFieldRef: Schema.optional(
+                                Schema.Struct({
+                                  containerName: Schema.optional(Schema.String),
+                                  divisor: Schema.optional(Schema.String),
+                                  resource: Schema.String,
+                                }),
+                              ),
+                              secretKeyRef: Schema.optional(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                    envFrom: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          configMapRef: Schema.optional(
+                            Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                              optional: Schema.optional(Schema.Boolean),
+                            }),
+                          ),
+                          prefix: Schema.optional(Schema.String),
+                          secretRef: Schema.optional(
+                            Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                              optional: Schema.optional(Schema.Boolean),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                    image: Schema.optional(Schema.String),
+                    imagePullPolicy: Schema.optional(Schema.String),
+                    lifecycle: Schema.optional(
+                      Schema.Struct({
+                        postStart: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            sleep: Schema.optional(
+                              Schema.Struct({
+                                seconds: Schema.Number,
+                              }),
+                            ),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                          }),
+                        ),
+                        preStop: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            sleep: Schema.optional(
+                              Schema.Struct({
+                                seconds: Schema.Number,
+                              }),
+                            ),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                          }),
+                        ),
+                        stopSignal: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    livenessProbe: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        failureThreshold: Schema.optional(Schema.Number),
+                        grpc: Schema.optional(
+                          Schema.Struct({
+                            port: Schema.Number,
+                            service: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        initialDelaySeconds: Schema.optional(Schema.Number),
+                        periodSeconds: Schema.optional(Schema.Number),
+                        successThreshold: Schema.optional(Schema.Number),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                        terminationGracePeriodSeconds: Schema.optional(
+                          Schema.Number,
+                        ),
+                        timeoutSeconds: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    name: Schema.String,
+                    ports: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          containerPort: Schema.Number,
+                          hostIP: Schema.optional(Schema.String),
+                          hostPort: Schema.optional(Schema.Number),
+                          name: Schema.optional(Schema.String),
+                          protocol: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    readinessProbe: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        failureThreshold: Schema.optional(Schema.Number),
+                        grpc: Schema.optional(
+                          Schema.Struct({
+                            port: Schema.Number,
+                            service: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        initialDelaySeconds: Schema.optional(Schema.Number),
+                        periodSeconds: Schema.optional(Schema.Number),
+                        successThreshold: Schema.optional(Schema.Number),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                        terminationGracePeriodSeconds: Schema.optional(
+                          Schema.Number,
+                        ),
+                        timeoutSeconds: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    resizePolicy: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          resourceName: Schema.String,
+                          restartPolicy: Schema.String,
+                        }),
+                      ),
+                    ),
+                    resources: Schema.optional(
+                      Schema.Struct({
+                        claims: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              name: Schema.String,
+                              request: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        limits: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                        requests: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                      }),
+                    ),
+                    restartPolicy: Schema.optional(Schema.String),
+                    restartPolicyRules: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          action: Schema.String,
+                          exitCodes: Schema.optional(
+                            Schema.Struct({
+                              operator: Schema.String,
+                              values: Schema.optional(
+                                Schema.Array(Schema.Number),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                    securityContext: Schema.optional(
+                      Schema.Struct({
+                        allowPrivilegeEscalation: Schema.optional(
+                          Schema.Boolean,
+                        ),
+                        appArmorProfile: Schema.optional(
+                          Schema.Struct({
+                            localhostProfile: Schema.optional(Schema.String),
+                            type: Schema.String,
+                          }),
+                        ),
+                        capabilities: Schema.optional(
+                          Schema.Struct({
+                            add: Schema.optional(Schema.Array(Schema.String)),
+                            drop: Schema.optional(Schema.Array(Schema.String)),
+                          }),
+                        ),
+                        privileged: Schema.optional(Schema.Boolean),
+                        procMount: Schema.optional(Schema.String),
+                        readOnlyRootFilesystem: Schema.optional(Schema.Boolean),
+                        runAsGroup: Schema.optional(Schema.Number),
+                        runAsNonRoot: Schema.optional(Schema.Boolean),
+                        runAsUser: Schema.optional(Schema.Number),
+                        seLinuxOptions: Schema.optional(
+                          Schema.Struct({
+                            level: Schema.optional(Schema.String),
+                            role: Schema.optional(Schema.String),
+                            type: Schema.optional(Schema.String),
+                            user: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        seccompProfile: Schema.optional(
+                          Schema.Struct({
+                            localhostProfile: Schema.optional(Schema.String),
+                            type: Schema.String,
+                          }),
+                        ),
+                        windowsOptions: Schema.optional(
+                          Schema.Struct({
+                            gmsaCredentialSpec: Schema.optional(Schema.String),
+                            gmsaCredentialSpecName: Schema.optional(
+                              Schema.String,
+                            ),
+                            hostProcess: Schema.optional(Schema.Boolean),
+                            runAsUserName: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      }),
+                    ),
+                    startupProbe: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        failureThreshold: Schema.optional(Schema.Number),
+                        grpc: Schema.optional(
+                          Schema.Struct({
+                            port: Schema.Number,
+                            service: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        initialDelaySeconds: Schema.optional(Schema.Number),
+                        periodSeconds: Schema.optional(Schema.Number),
+                        successThreshold: Schema.optional(Schema.Number),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                        terminationGracePeriodSeconds: Schema.optional(
+                          Schema.Number,
+                        ),
+                        timeoutSeconds: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    stdin: Schema.optional(Schema.Boolean),
+                    stdinOnce: Schema.optional(Schema.Boolean),
+                    terminationMessagePath: Schema.optional(Schema.String),
+                    terminationMessagePolicy: Schema.optional(Schema.String),
+                    tty: Schema.optional(Schema.Boolean),
+                    volumeDevices: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          devicePath: Schema.String,
+                          name: Schema.String,
+                        }),
+                      ),
+                    ),
+                    volumeMounts: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          mountPath: Schema.String,
+                          mountPropagation: Schema.optional(Schema.String),
+                          name: Schema.String,
+                          readOnly: Schema.optional(Schema.Boolean),
+                          recursiveReadOnly: Schema.optional(Schema.String),
+                          subPath: Schema.optional(Schema.String),
+                          subPathExpr: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    workingDir: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              nodeName: Schema.optional(Schema.String),
+              nodeSelector: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              os: Schema.optional(
+                Schema.Struct({
+                  name: Schema.String,
+                }),
+              ),
+              overhead: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              preemptionPolicy: Schema.optional(Schema.String),
+              priority: Schema.optional(Schema.Number),
+              priorityClassName: Schema.optional(Schema.String),
+              readinessGates: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    conditionType: Schema.String,
+                  }),
+                ),
+              ),
+              resourceClaims: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                    resourceClaimName: Schema.optional(Schema.String),
+                    resourceClaimTemplateName: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              resources: Schema.optional(
+                Schema.Struct({
+                  claims: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.String,
+                        request: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  limits: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  requests: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                }),
+              ),
+              restartPolicy: Schema.optional(Schema.String),
+              runtimeClassName: Schema.optional(Schema.String),
+              schedulerName: Schema.optional(Schema.String),
+              schedulingGates: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                  }),
+                ),
+              ),
+              schedulingGroup: Schema.optional(
+                Schema.Struct({
+                  podGroupName: Schema.optional(Schema.String),
+                }),
+              ),
+              securityContext: Schema.optional(
+                Schema.Struct({
+                  appArmorProfile: Schema.optional(
+                    Schema.Struct({
+                      localhostProfile: Schema.optional(Schema.String),
+                      type: Schema.String,
+                    }),
+                  ),
+                  fsGroup: Schema.optional(Schema.Number),
+                  fsGroupChangePolicy: Schema.optional(Schema.String),
+                  runAsGroup: Schema.optional(Schema.Number),
+                  runAsNonRoot: Schema.optional(Schema.Boolean),
+                  runAsUser: Schema.optional(Schema.Number),
+                  seLinuxChangePolicy: Schema.optional(Schema.String),
+                  seLinuxOptions: Schema.optional(
+                    Schema.Struct({
+                      level: Schema.optional(Schema.String),
+                      role: Schema.optional(Schema.String),
+                      type: Schema.optional(Schema.String),
+                      user: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  seccompProfile: Schema.optional(
+                    Schema.Struct({
+                      localhostProfile: Schema.optional(Schema.String),
+                      type: Schema.String,
+                    }),
+                  ),
+                  supplementalGroups: Schema.optional(
+                    Schema.Array(Schema.Number),
+                  ),
+                  supplementalGroupsPolicy: Schema.optional(Schema.String),
+                  sysctls: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.String,
+                        value: Schema.String,
+                      }),
+                    ),
+                  ),
+                  windowsOptions: Schema.optional(
+                    Schema.Struct({
+                      gmsaCredentialSpec: Schema.optional(Schema.String),
+                      gmsaCredentialSpecName: Schema.optional(Schema.String),
+                      hostProcess: Schema.optional(Schema.Boolean),
+                      runAsUserName: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+              serviceAccount: Schema.optional(Schema.String),
+              serviceAccountName: Schema.optional(Schema.String),
+              setHostnameAsFQDN: Schema.optional(Schema.Boolean),
+              shareProcessNamespace: Schema.optional(Schema.Boolean),
+              subdomain: Schema.optional(Schema.String),
+              terminationGracePeriodSeconds: Schema.optional(Schema.Number),
+              tolerations: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    effect: Schema.optional(Schema.String),
+                    key: Schema.optional(Schema.String),
+                    operator: Schema.optional(Schema.String),
+                    tolerationSeconds: Schema.optional(Schema.Number),
+                    value: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              topologySpreadConstraints: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    labelSelector: Schema.optional(
+                      Schema.Struct({
+                        matchExpressions: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              key: Schema.String,
+                              operator: Schema.String,
+                              values: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                        ),
+                        matchLabels: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                      }),
+                    ),
+                    matchLabelKeys: Schema.optional(
+                      Schema.Array(Schema.String),
+                    ),
+                    maxSkew: Schema.Number,
+                    minDomains: Schema.optional(Schema.Number),
+                    nodeAffinityPolicy: Schema.optional(Schema.String),
+                    nodeTaintsPolicy: Schema.optional(Schema.String),
+                    topologyKey: Schema.String,
+                    whenUnsatisfiable: Schema.String,
+                  }),
+                ),
+              ),
+              volumes: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    awsElasticBlockStore: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        partition: Schema.optional(Schema.Number),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        volumeID: Schema.String,
+                      }),
+                    ),
+                    azureDisk: Schema.optional(
+                      Schema.Struct({
+                        cachingMode: Schema.optional(Schema.String),
+                        diskName: Schema.String,
+                        diskURI: Schema.String,
+                        fsType: Schema.optional(Schema.String),
+                        kind: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                    azureFile: Schema.optional(
+                      Schema.Struct({
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretName: Schema.String,
+                        shareName: Schema.String,
+                      }),
+                    ),
+                    cephfs: Schema.optional(
+                      Schema.Struct({
+                        monitors: Schema.Array(Schema.String),
+                        path: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretFile: Schema.optional(Schema.String),
+                        secretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        user: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    cinder: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        volumeID: Schema.String,
+                      }),
+                    ),
+                    configMap: Schema.optional(
+                      Schema.Struct({
+                        defaultMode: Schema.optional(Schema.Number),
+                        items: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              key: Schema.String,
+                              mode: Schema.optional(Schema.Number),
+                              path: Schema.String,
+                            }),
+                          ),
+                        ),
+                        name: Schema.optional(Schema.String),
+                        optional: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                    csi: Schema.optional(
+                      Schema.Struct({
+                        driver: Schema.String,
+                        fsType: Schema.optional(Schema.String),
+                        nodePublishSecretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        volumeAttributes: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                      }),
+                    ),
+                    downwardAPI: Schema.optional(
+                      Schema.Struct({
+                        defaultMode: Schema.optional(Schema.Number),
+                        items: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              fieldRef: Schema.optional(
+                                Schema.Struct({
+                                  apiVersion: Schema.optional(Schema.String),
+                                  fieldPath: Schema.String,
+                                }),
+                              ),
+                              mode: Schema.optional(Schema.Number),
+                              path: Schema.String,
+                              resourceFieldRef: Schema.optional(
+                                Schema.Struct({
+                                  containerName: Schema.optional(Schema.String),
+                                  divisor: Schema.optional(Schema.String),
+                                  resource: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                    emptyDir: Schema.optional(
+                      Schema.Struct({
+                        medium: Schema.optional(Schema.String),
+                        sizeLimit: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    ephemeral: Schema.optional(
+                      Schema.Struct({
+                        volumeClaimTemplate: Schema.optional(
+                          Schema.Struct({
+                            metadata: Schema.optional(
+                              Schema.Struct({
+                                annotations: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                                creationTimestamp: Schema.optional(
+                                  Schema.String,
+                                ),
+                                deletionGracePeriodSeconds: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                deletionTimestamp: Schema.optional(
+                                  Schema.String,
+                                ),
+                                finalizers: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                generateName: Schema.optional(Schema.String),
+                                generation: Schema.optional(Schema.Number),
+                                labels: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                                managedFields: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      apiVersion: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      fieldsType: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      fieldsV1: Schema.optional(Schema.Unknown),
+                                      manager: Schema.optional(Schema.String),
+                                      operation: Schema.optional(Schema.String),
+                                      subresource: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      time: Schema.optional(Schema.String),
+                                    }),
+                                  ),
+                                ),
+                                name: Schema.optional(Schema.String),
+                                namespace: Schema.optional(Schema.String),
+                                ownerReferences: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      apiVersion: Schema.String,
+                                      blockOwnerDeletion: Schema.optional(
+                                        Schema.Boolean,
+                                      ),
+                                      controller: Schema.optional(
+                                        Schema.Boolean,
+                                      ),
+                                      kind: Schema.String,
+                                      name: Schema.String,
+                                      uid: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                resourceVersion: Schema.optional(Schema.String),
+                                selfLink: Schema.optional(Schema.String),
+                                uid: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            spec: Schema.Struct({
+                              accessModes: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              dataSource: Schema.optional(
+                                Schema.Struct({
+                                  apiGroup: Schema.optional(Schema.String),
+                                  kind: Schema.String,
+                                  name: Schema.String,
+                                }),
+                              ),
+                              dataSourceRef: Schema.optional(
+                                Schema.Struct({
+                                  apiGroup: Schema.optional(Schema.String),
+                                  kind: Schema.String,
+                                  name: Schema.String,
+                                  namespace: Schema.optional(Schema.String),
+                                }),
+                              ),
+                              resources: Schema.optional(
+                                Schema.Struct({
+                                  limits: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                  requests: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              selector: Schema.optional(
+                                Schema.Struct({
+                                  matchExpressions: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                  matchLabels: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              storageClassName: Schema.optional(Schema.String),
+                              volumeAttributesClassName: Schema.optional(
+                                Schema.String,
+                              ),
+                              volumeMode: Schema.optional(Schema.String),
+                              volumeName: Schema.optional(Schema.String),
+                            }),
+                          }),
+                        ),
+                      }),
+                    ),
+                    fc: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        lun: Schema.optional(Schema.Number),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        targetWWNs: Schema.optional(
+                          Schema.Array(Schema.String),
+                        ),
+                        wwids: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                    flexVolume: Schema.optional(
+                      Schema.Struct({
+                        driver: Schema.String,
+                        fsType: Schema.optional(Schema.String),
+                        options: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      }),
+                    ),
+                    flocker: Schema.optional(
+                      Schema.Struct({
+                        datasetName: Schema.optional(Schema.String),
+                        datasetUUID: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    gcePersistentDisk: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        partition: Schema.optional(Schema.Number),
+                        pdName: Schema.String,
+                        readOnly: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                    gitRepo: Schema.optional(
+                      Schema.Struct({
+                        directory: Schema.optional(Schema.String),
+                        repository: Schema.String,
+                        revision: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    glusterfs: Schema.optional(
+                      Schema.Struct({
+                        endpoints: Schema.String,
+                        path: Schema.String,
+                        readOnly: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                    hostPath: Schema.optional(
+                      Schema.Struct({
+                        path: Schema.String,
+                        type: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    image: Schema.optional(
+                      Schema.Struct({
+                        pullPolicy: Schema.optional(Schema.String),
+                        reference: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    iscsi: Schema.optional(
+                      Schema.Struct({
+                        chapAuthDiscovery: Schema.optional(Schema.Boolean),
+                        chapAuthSession: Schema.optional(Schema.Boolean),
+                        fsType: Schema.optional(Schema.String),
+                        initiatorName: Schema.optional(Schema.String),
+                        iqn: Schema.String,
+                        iscsiInterface: Schema.optional(Schema.String),
+                        lun: Schema.Number,
+                        portals: Schema.optional(Schema.Array(Schema.String)),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        targetPortal: Schema.String,
+                      }),
+                    ),
+                    name: Schema.String,
+                    nfs: Schema.optional(
+                      Schema.Struct({
+                        path: Schema.String,
+                        readOnly: Schema.optional(Schema.Boolean),
+                        server: Schema.String,
+                      }),
+                    ),
+                    persistentVolumeClaim: Schema.optional(
+                      Schema.Struct({
+                        claimName: Schema.String,
+                        readOnly: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                    photonPersistentDisk: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        pdID: Schema.String,
+                      }),
+                    ),
+                    portworxVolume: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        volumeID: Schema.String,
+                      }),
+                    ),
+                    projected: Schema.optional(
+                      Schema.Struct({
+                        defaultMode: Schema.optional(Schema.Number),
+                        sources: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              clusterTrustBundle: Schema.optional(
+                                Schema.Struct({
+                                  labelSelector: Schema.optional(
+                                    Schema.Struct({
+                                      matchExpressions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            operator: Schema.String,
+                                            values: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      matchLabels: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                  path: Schema.String,
+                                  signerName: Schema.optional(Schema.String),
+                                }),
+                              ),
+                              configMap: Schema.optional(
+                                Schema.Struct({
+                                  items: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        mode: Schema.optional(Schema.Number),
+                                        path: Schema.String,
+                                      }),
+                                    ),
+                                  ),
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                              downwardAPI: Schema.optional(
+                                Schema.Struct({
+                                  items: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        fieldRef: Schema.optional(
+                                          Schema.Struct({
+                                            apiVersion: Schema.optional(
+                                              Schema.String,
+                                            ),
+                                            fieldPath: Schema.String,
+                                          }),
+                                        ),
+                                        mode: Schema.optional(Schema.Number),
+                                        path: Schema.String,
+                                        resourceFieldRef: Schema.optional(
+                                          Schema.Struct({
+                                            containerName: Schema.optional(
+                                              Schema.String,
+                                            ),
+                                            divisor: Schema.optional(
+                                              Schema.String,
+                                            ),
+                                            resource: Schema.String,
+                                          }),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                }),
+                              ),
+                              podCertificate: Schema.optional(
+                                Schema.Struct({
+                                  certificateChainPath: Schema.optional(
+                                    Schema.String,
+                                  ),
+                                  credentialBundlePath: Schema.optional(
+                                    Schema.String,
+                                  ),
+                                  keyPath: Schema.optional(Schema.String),
+                                  keyType: Schema.String,
+                                  maxExpirationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  signerName: Schema.String,
+                                  userAnnotations: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              secret: Schema.optional(
+                                Schema.Struct({
+                                  items: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        mode: Schema.optional(Schema.Number),
+                                        path: Schema.String,
+                                      }),
+                                    ),
+                                  ),
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                              serviceAccountToken: Schema.optional(
+                                Schema.Struct({
+                                  audience: Schema.optional(Schema.String),
+                                  expirationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  path: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                    quobyte: Schema.optional(
+                      Schema.Struct({
+                        group: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        registry: Schema.String,
+                        tenant: Schema.optional(Schema.String),
+                        user: Schema.optional(Schema.String),
+                        volume: Schema.String,
+                      }),
+                    ),
+                    rbd: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        image: Schema.String,
+                        keyring: Schema.optional(Schema.String),
+                        monitors: Schema.Array(Schema.String),
+                        pool: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        user: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    scaleIO: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        gateway: Schema.String,
+                        protectionDomain: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretRef: Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                        }),
+                        sslEnabled: Schema.optional(Schema.Boolean),
+                        storageMode: Schema.optional(Schema.String),
+                        storagePool: Schema.optional(Schema.String),
+                        system: Schema.String,
+                        volumeName: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    secret: Schema.optional(
+                      Schema.Struct({
+                        defaultMode: Schema.optional(Schema.Number),
+                        items: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              key: Schema.String,
+                              mode: Schema.optional(Schema.Number),
+                              path: Schema.String,
+                            }),
+                          ),
+                        ),
+                        optional: Schema.optional(Schema.Boolean),
+                        secretName: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    storageos: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        volumeName: Schema.optional(Schema.String),
+                        volumeNamespace: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    vsphereVolume: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        storagePolicyID: Schema.optional(Schema.String),
+                        storagePolicyName: Schema.optional(Schema.String),
+                        volumePath: Schema.String,
+                      }),
+                    ),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+        ttlSecondsAfterFinished: Schema.optional(Schema.Number),
+      }),
+    ),
+    status: Schema.optional(
+      Schema.Struct({
+        active: Schema.optional(Schema.Number),
+        completedIndexes: Schema.optional(Schema.String),
+        completionTime: Schema.optional(Schema.String),
+        conditions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              lastProbeTime: Schema.optional(Schema.String),
+              lastTransitionTime: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              reason: Schema.optional(Schema.String),
+              status: Schema.String,
+              type: Schema.String,
+            }),
+          ),
+        ),
+        failed: Schema.optional(Schema.Number),
+        failedIndexes: Schema.optional(Schema.String),
+        ready: Schema.optional(Schema.Number),
+        startTime: Schema.optional(Schema.String),
+        succeeded: Schema.optional(Schema.Number),
+        terminating: Schema.optional(Schema.Number),
+        uncountedTerminatedPods: Schema.optional(
+          Schema.Struct({
+            failed: Schema.optional(Schema.Array(Schema.String)),
+            succeeded: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -46244,7 +60037,11 @@ export type ReplaceBatchV1NamespacedJobOutput =
 /**
  * replace the specified Job
  *
+ * @param name - name of the Job
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
@@ -46257,8 +60054,2560 @@ export const replaceBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
 // Input Schema
 export const ReplaceBatchV1NamespacedJobStatusInput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    pretty: Schema.optional(Schema.String),
     dryRun: Schema.optional(Schema.String),
+    fieldManager: Schema.optional(Schema.String),
     fieldValidation: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      Schema.Struct({
+        annotations: Schema.optional(
+          Schema.Record(Schema.String, Schema.String),
+        ),
+        creationTimestamp: Schema.optional(Schema.String),
+        deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+        deletionTimestamp: Schema.optional(Schema.String),
+        finalizers: Schema.optional(Schema.Array(Schema.String)),
+        generateName: Schema.optional(Schema.String),
+        generation: Schema.optional(Schema.Number),
+        labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+        managedFields: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.optional(Schema.String),
+              fieldsType: Schema.optional(Schema.String),
+              fieldsV1: Schema.optional(Schema.Unknown),
+              manager: Schema.optional(Schema.String),
+              operation: Schema.optional(Schema.String),
+              subresource: Schema.optional(Schema.String),
+              time: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        name: Schema.optional(Schema.String),
+        namespace: Schema.optional(Schema.String),
+        ownerReferences: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              apiVersion: Schema.String,
+              blockOwnerDeletion: Schema.optional(Schema.Boolean),
+              controller: Schema.optional(Schema.Boolean),
+              kind: Schema.String,
+              name: Schema.String,
+              uid: Schema.String,
+            }),
+          ),
+        ),
+        resourceVersion: Schema.optional(Schema.String),
+        selfLink: Schema.optional(Schema.String),
+        uid: Schema.optional(Schema.String),
+      }),
+    ),
+    spec: Schema.optional(
+      Schema.Struct({
+        activeDeadlineSeconds: Schema.optional(Schema.Number),
+        backoffLimit: Schema.optional(Schema.Number),
+        backoffLimitPerIndex: Schema.optional(Schema.Number),
+        completionMode: Schema.optional(Schema.String),
+        completions: Schema.optional(Schema.Number),
+        managedBy: Schema.optional(Schema.String),
+        manualSelector: Schema.optional(Schema.Boolean),
+        maxFailedIndexes: Schema.optional(Schema.Number),
+        parallelism: Schema.optional(Schema.Number),
+        podFailurePolicy: Schema.optional(
+          Schema.Struct({
+            rules: Schema.Array(
+              Schema.Struct({
+                action: Schema.String,
+                onExitCodes: Schema.optional(
+                  Schema.Struct({
+                    containerName: Schema.optional(Schema.String),
+                    operator: Schema.String,
+                    values: Schema.Array(Schema.Number),
+                  }),
+                ),
+                onPodConditions: Schema.optional(
+                  Schema.Array(
+                    Schema.Struct({
+                      status: Schema.optional(Schema.String),
+                      type: Schema.String,
+                    }),
+                  ),
+                ),
+              }),
+            ),
+          }),
+        ),
+        podReplacementPolicy: Schema.optional(Schema.String),
+        selector: Schema.optional(
+          Schema.Struct({
+            matchExpressions: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  key: Schema.String,
+                  operator: Schema.String,
+                  values: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+            ),
+            matchLabels: Schema.optional(
+              Schema.Record(Schema.String, Schema.String),
+            ),
+          }),
+        ),
+        successPolicy: Schema.optional(
+          Schema.Struct({
+            rules: Schema.Array(
+              Schema.Struct({
+                succeededCount: Schema.optional(Schema.Number),
+                succeededIndexes: Schema.optional(Schema.String),
+              }),
+            ),
+          }),
+        ),
+        suspend: Schema.optional(Schema.Boolean),
+        template: Schema.Struct({
+          metadata: Schema.optional(
+            Schema.Struct({
+              annotations: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              creationTimestamp: Schema.optional(Schema.String),
+              deletionGracePeriodSeconds: Schema.optional(Schema.Number),
+              deletionTimestamp: Schema.optional(Schema.String),
+              finalizers: Schema.optional(Schema.Array(Schema.String)),
+              generateName: Schema.optional(Schema.String),
+              generation: Schema.optional(Schema.Number),
+              labels: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              managedFields: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    apiVersion: Schema.optional(Schema.String),
+                    fieldsType: Schema.optional(Schema.String),
+                    fieldsV1: Schema.optional(Schema.Unknown),
+                    manager: Schema.optional(Schema.String),
+                    operation: Schema.optional(Schema.String),
+                    subresource: Schema.optional(Schema.String),
+                    time: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              name: Schema.optional(Schema.String),
+              namespace: Schema.optional(Schema.String),
+              ownerReferences: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    apiVersion: Schema.String,
+                    blockOwnerDeletion: Schema.optional(Schema.Boolean),
+                    controller: Schema.optional(Schema.Boolean),
+                    kind: Schema.String,
+                    name: Schema.String,
+                    uid: Schema.String,
+                  }),
+                ),
+              ),
+              resourceVersion: Schema.optional(Schema.String),
+              selfLink: Schema.optional(Schema.String),
+              uid: Schema.optional(Schema.String),
+            }),
+          ),
+          spec: Schema.optional(
+            Schema.Struct({
+              activeDeadlineSeconds: Schema.optional(Schema.Number),
+              affinity: Schema.optional(
+                Schema.Struct({
+                  nodeAffinity: Schema.optional(
+                    Schema.Struct({
+                      preferredDuringSchedulingIgnoredDuringExecution:
+                        Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              preference: Schema.Struct({
+                                matchExpressions: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      operator: Schema.String,
+                                      values: Schema.optional(
+                                        Schema.Array(Schema.String),
+                                      ),
+                                    }),
+                                  ),
+                                ),
+                                matchFields: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      operator: Schema.String,
+                                      values: Schema.optional(
+                                        Schema.Array(Schema.String),
+                                      ),
+                                    }),
+                                  ),
+                                ),
+                              }),
+                              weight: Schema.Number,
+                            }),
+                          ),
+                        ),
+                      requiredDuringSchedulingIgnoredDuringExecution:
+                        Schema.optional(
+                          Schema.Struct({
+                            nodeSelectorTerms: Schema.Array(
+                              Schema.Struct({
+                                matchExpressions: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      operator: Schema.String,
+                                      values: Schema.optional(
+                                        Schema.Array(Schema.String),
+                                      ),
+                                    }),
+                                  ),
+                                ),
+                                matchFields: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      key: Schema.String,
+                                      operator: Schema.String,
+                                      values: Schema.optional(
+                                        Schema.Array(Schema.String),
+                                      ),
+                                    }),
+                                  ),
+                                ),
+                              }),
+                            ),
+                          }),
+                        ),
+                    }),
+                  ),
+                  podAffinity: Schema.optional(
+                    Schema.Struct({
+                      preferredDuringSchedulingIgnoredDuringExecution:
+                        Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              podAffinityTerm: Schema.Struct({
+                                labelSelector: Schema.optional(
+                                  Schema.Struct({
+                                    matchExpressions: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                    matchLabels: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                  }),
+                                ),
+                                matchLabelKeys: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                mismatchLabelKeys: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                namespaceSelector: Schema.optional(
+                                  Schema.Struct({
+                                    matchExpressions: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                    matchLabels: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                  }),
+                                ),
+                                namespaces: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                topologyKey: Schema.String,
+                              }),
+                              weight: Schema.Number,
+                            }),
+                          ),
+                        ),
+                      requiredDuringSchedulingIgnoredDuringExecution:
+                        Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              labelSelector: Schema.optional(
+                                Schema.Struct({
+                                  matchExpressions: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                  matchLabels: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              matchLabelKeys: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              mismatchLabelKeys: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              namespaceSelector: Schema.optional(
+                                Schema.Struct({
+                                  matchExpressions: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                  matchLabels: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              namespaces: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              topologyKey: Schema.String,
+                            }),
+                          ),
+                        ),
+                    }),
+                  ),
+                  podAntiAffinity: Schema.optional(
+                    Schema.Struct({
+                      preferredDuringSchedulingIgnoredDuringExecution:
+                        Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              podAffinityTerm: Schema.Struct({
+                                labelSelector: Schema.optional(
+                                  Schema.Struct({
+                                    matchExpressions: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                    matchLabels: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                  }),
+                                ),
+                                matchLabelKeys: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                mismatchLabelKeys: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                namespaceSelector: Schema.optional(
+                                  Schema.Struct({
+                                    matchExpressions: Schema.optional(
+                                      Schema.Array(
+                                        Schema.Struct({
+                                          key: Schema.String,
+                                          operator: Schema.String,
+                                          values: Schema.optional(
+                                            Schema.Array(Schema.String),
+                                          ),
+                                        }),
+                                      ),
+                                    ),
+                                    matchLabels: Schema.optional(
+                                      Schema.Record(
+                                        Schema.String,
+                                        Schema.String,
+                                      ),
+                                    ),
+                                  }),
+                                ),
+                                namespaces: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                topologyKey: Schema.String,
+                              }),
+                              weight: Schema.Number,
+                            }),
+                          ),
+                        ),
+                      requiredDuringSchedulingIgnoredDuringExecution:
+                        Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              labelSelector: Schema.optional(
+                                Schema.Struct({
+                                  matchExpressions: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                  matchLabels: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              matchLabelKeys: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              mismatchLabelKeys: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              namespaceSelector: Schema.optional(
+                                Schema.Struct({
+                                  matchExpressions: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                  matchLabels: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              namespaces: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              topologyKey: Schema.String,
+                            }),
+                          ),
+                        ),
+                    }),
+                  ),
+                }),
+              ),
+              automountServiceAccountToken: Schema.optional(Schema.Boolean),
+              containers: Schema.Array(
+                Schema.Struct({
+                  args: Schema.optional(Schema.Array(Schema.String)),
+                  command: Schema.optional(Schema.Array(Schema.String)),
+                  env: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.String,
+                        value: Schema.optional(Schema.String),
+                        valueFrom: Schema.optional(
+                          Schema.Struct({
+                            configMapKeyRef: Schema.optional(
+                              Schema.Struct({
+                                key: Schema.String,
+                                name: Schema.optional(Schema.String),
+                                optional: Schema.optional(Schema.Boolean),
+                              }),
+                            ),
+                            fieldRef: Schema.optional(
+                              Schema.Struct({
+                                apiVersion: Schema.optional(Schema.String),
+                                fieldPath: Schema.String,
+                              }),
+                            ),
+                            fileKeyRef: Schema.optional(
+                              Schema.Struct({
+                                key: Schema.String,
+                                optional: Schema.optional(Schema.Boolean),
+                                path: Schema.String,
+                                volumeName: Schema.String,
+                              }),
+                            ),
+                            resourceFieldRef: Schema.optional(
+                              Schema.Struct({
+                                containerName: Schema.optional(Schema.String),
+                                divisor: Schema.optional(Schema.String),
+                                resource: Schema.String,
+                              }),
+                            ),
+                            secretKeyRef: Schema.optional(
+                              Schema.Struct({
+                                key: Schema.String,
+                                name: Schema.optional(Schema.String),
+                                optional: Schema.optional(Schema.Boolean),
+                              }),
+                            ),
+                          }),
+                        ),
+                      }),
+                    ),
+                  ),
+                  envFrom: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        configMapRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                            optional: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                        prefix: Schema.optional(Schema.String),
+                        secretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                            optional: Schema.optional(Schema.Boolean),
+                          }),
+                        ),
+                      }),
+                    ),
+                  ),
+                  image: Schema.optional(Schema.String),
+                  imagePullPolicy: Schema.optional(Schema.String),
+                  lifecycle: Schema.optional(
+                    Schema.Struct({
+                      postStart: Schema.optional(
+                        Schema.Struct({
+                          exec: Schema.optional(
+                            Schema.Struct({
+                              command: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          httpGet: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              httpHeaders: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.String,
+                                    value: Schema.String,
+                                  }),
+                                ),
+                              ),
+                              path: Schema.optional(Schema.String),
+                              port: Schema.String,
+                              scheme: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          sleep: Schema.optional(
+                            Schema.Struct({
+                              seconds: Schema.Number,
+                            }),
+                          ),
+                          tcpSocket: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              port: Schema.String,
+                            }),
+                          ),
+                        }),
+                      ),
+                      preStop: Schema.optional(
+                        Schema.Struct({
+                          exec: Schema.optional(
+                            Schema.Struct({
+                              command: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                          httpGet: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              httpHeaders: Schema.optional(
+                                Schema.Array(
+                                  Schema.Struct({
+                                    name: Schema.String,
+                                    value: Schema.String,
+                                  }),
+                                ),
+                              ),
+                              path: Schema.optional(Schema.String),
+                              port: Schema.String,
+                              scheme: Schema.optional(Schema.String),
+                            }),
+                          ),
+                          sleep: Schema.optional(
+                            Schema.Struct({
+                              seconds: Schema.Number,
+                            }),
+                          ),
+                          tcpSocket: Schema.optional(
+                            Schema.Struct({
+                              host: Schema.optional(Schema.String),
+                              port: Schema.String,
+                            }),
+                          ),
+                        }),
+                      ),
+                      stopSignal: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  livenessProbe: Schema.optional(
+                    Schema.Struct({
+                      exec: Schema.optional(
+                        Schema.Struct({
+                          command: Schema.optional(Schema.Array(Schema.String)),
+                        }),
+                      ),
+                      failureThreshold: Schema.optional(Schema.Number),
+                      grpc: Schema.optional(
+                        Schema.Struct({
+                          port: Schema.Number,
+                          service: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      httpGet: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          httpHeaders: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.String,
+                                value: Schema.String,
+                              }),
+                            ),
+                          ),
+                          path: Schema.optional(Schema.String),
+                          port: Schema.String,
+                          scheme: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      initialDelaySeconds: Schema.optional(Schema.Number),
+                      periodSeconds: Schema.optional(Schema.Number),
+                      successThreshold: Schema.optional(Schema.Number),
+                      tcpSocket: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          port: Schema.String,
+                        }),
+                      ),
+                      terminationGracePeriodSeconds: Schema.optional(
+                        Schema.Number,
+                      ),
+                      timeoutSeconds: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                  name: Schema.String,
+                  ports: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        containerPort: Schema.Number,
+                        hostIP: Schema.optional(Schema.String),
+                        hostPort: Schema.optional(Schema.Number),
+                        name: Schema.optional(Schema.String),
+                        protocol: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  readinessProbe: Schema.optional(
+                    Schema.Struct({
+                      exec: Schema.optional(
+                        Schema.Struct({
+                          command: Schema.optional(Schema.Array(Schema.String)),
+                        }),
+                      ),
+                      failureThreshold: Schema.optional(Schema.Number),
+                      grpc: Schema.optional(
+                        Schema.Struct({
+                          port: Schema.Number,
+                          service: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      httpGet: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          httpHeaders: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.String,
+                                value: Schema.String,
+                              }),
+                            ),
+                          ),
+                          path: Schema.optional(Schema.String),
+                          port: Schema.String,
+                          scheme: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      initialDelaySeconds: Schema.optional(Schema.Number),
+                      periodSeconds: Schema.optional(Schema.Number),
+                      successThreshold: Schema.optional(Schema.Number),
+                      tcpSocket: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          port: Schema.String,
+                        }),
+                      ),
+                      terminationGracePeriodSeconds: Schema.optional(
+                        Schema.Number,
+                      ),
+                      timeoutSeconds: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                  resizePolicy: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        resourceName: Schema.String,
+                        restartPolicy: Schema.String,
+                      }),
+                    ),
+                  ),
+                  resources: Schema.optional(
+                    Schema.Struct({
+                      claims: Schema.optional(
+                        Schema.Array(
+                          Schema.Struct({
+                            name: Schema.String,
+                            request: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      ),
+                      limits: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                      requests: Schema.optional(
+                        Schema.Record(Schema.String, Schema.String),
+                      ),
+                    }),
+                  ),
+                  restartPolicy: Schema.optional(Schema.String),
+                  restartPolicyRules: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        action: Schema.String,
+                        exitCodes: Schema.optional(
+                          Schema.Struct({
+                            operator: Schema.String,
+                            values: Schema.optional(
+                              Schema.Array(Schema.Number),
+                            ),
+                          }),
+                        ),
+                      }),
+                    ),
+                  ),
+                  securityContext: Schema.optional(
+                    Schema.Struct({
+                      allowPrivilegeEscalation: Schema.optional(Schema.Boolean),
+                      appArmorProfile: Schema.optional(
+                        Schema.Struct({
+                          localhostProfile: Schema.optional(Schema.String),
+                          type: Schema.String,
+                        }),
+                      ),
+                      capabilities: Schema.optional(
+                        Schema.Struct({
+                          add: Schema.optional(Schema.Array(Schema.String)),
+                          drop: Schema.optional(Schema.Array(Schema.String)),
+                        }),
+                      ),
+                      privileged: Schema.optional(Schema.Boolean),
+                      procMount: Schema.optional(Schema.String),
+                      readOnlyRootFilesystem: Schema.optional(Schema.Boolean),
+                      runAsGroup: Schema.optional(Schema.Number),
+                      runAsNonRoot: Schema.optional(Schema.Boolean),
+                      runAsUser: Schema.optional(Schema.Number),
+                      seLinuxOptions: Schema.optional(
+                        Schema.Struct({
+                          level: Schema.optional(Schema.String),
+                          role: Schema.optional(Schema.String),
+                          type: Schema.optional(Schema.String),
+                          user: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      seccompProfile: Schema.optional(
+                        Schema.Struct({
+                          localhostProfile: Schema.optional(Schema.String),
+                          type: Schema.String,
+                        }),
+                      ),
+                      windowsOptions: Schema.optional(
+                        Schema.Struct({
+                          gmsaCredentialSpec: Schema.optional(Schema.String),
+                          gmsaCredentialSpecName: Schema.optional(
+                            Schema.String,
+                          ),
+                          hostProcess: Schema.optional(Schema.Boolean),
+                          runAsUserName: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    }),
+                  ),
+                  startupProbe: Schema.optional(
+                    Schema.Struct({
+                      exec: Schema.optional(
+                        Schema.Struct({
+                          command: Schema.optional(Schema.Array(Schema.String)),
+                        }),
+                      ),
+                      failureThreshold: Schema.optional(Schema.Number),
+                      grpc: Schema.optional(
+                        Schema.Struct({
+                          port: Schema.Number,
+                          service: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      httpGet: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          httpHeaders: Schema.optional(
+                            Schema.Array(
+                              Schema.Struct({
+                                name: Schema.String,
+                                value: Schema.String,
+                              }),
+                            ),
+                          ),
+                          path: Schema.optional(Schema.String),
+                          port: Schema.String,
+                          scheme: Schema.optional(Schema.String),
+                        }),
+                      ),
+                      initialDelaySeconds: Schema.optional(Schema.Number),
+                      periodSeconds: Schema.optional(Schema.Number),
+                      successThreshold: Schema.optional(Schema.Number),
+                      tcpSocket: Schema.optional(
+                        Schema.Struct({
+                          host: Schema.optional(Schema.String),
+                          port: Schema.String,
+                        }),
+                      ),
+                      terminationGracePeriodSeconds: Schema.optional(
+                        Schema.Number,
+                      ),
+                      timeoutSeconds: Schema.optional(Schema.Number),
+                    }),
+                  ),
+                  stdin: Schema.optional(Schema.Boolean),
+                  stdinOnce: Schema.optional(Schema.Boolean),
+                  terminationMessagePath: Schema.optional(Schema.String),
+                  terminationMessagePolicy: Schema.optional(Schema.String),
+                  tty: Schema.optional(Schema.Boolean),
+                  volumeDevices: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        devicePath: Schema.String,
+                        name: Schema.String,
+                      }),
+                    ),
+                  ),
+                  volumeMounts: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        mountPath: Schema.String,
+                        mountPropagation: Schema.optional(Schema.String),
+                        name: Schema.String,
+                        readOnly: Schema.optional(Schema.Boolean),
+                        recursiveReadOnly: Schema.optional(Schema.String),
+                        subPath: Schema.optional(Schema.String),
+                        subPathExpr: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  workingDir: Schema.optional(Schema.String),
+                }),
+              ),
+              dnsConfig: Schema.optional(
+                Schema.Struct({
+                  nameservers: Schema.optional(Schema.Array(Schema.String)),
+                  options: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.optional(Schema.String),
+                        value: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  searches: Schema.optional(Schema.Array(Schema.String)),
+                }),
+              ),
+              dnsPolicy: Schema.optional(Schema.String),
+              enableServiceLinks: Schema.optional(Schema.Boolean),
+              ephemeralContainers: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    args: Schema.optional(Schema.Array(Schema.String)),
+                    command: Schema.optional(Schema.Array(Schema.String)),
+                    env: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.String,
+                          value: Schema.optional(Schema.String),
+                          valueFrom: Schema.optional(
+                            Schema.Struct({
+                              configMapKeyRef: Schema.optional(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                              fieldRef: Schema.optional(
+                                Schema.Struct({
+                                  apiVersion: Schema.optional(Schema.String),
+                                  fieldPath: Schema.String,
+                                }),
+                              ),
+                              fileKeyRef: Schema.optional(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  optional: Schema.optional(Schema.Boolean),
+                                  path: Schema.String,
+                                  volumeName: Schema.String,
+                                }),
+                              ),
+                              resourceFieldRef: Schema.optional(
+                                Schema.Struct({
+                                  containerName: Schema.optional(Schema.String),
+                                  divisor: Schema.optional(Schema.String),
+                                  resource: Schema.String,
+                                }),
+                              ),
+                              secretKeyRef: Schema.optional(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                    envFrom: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          configMapRef: Schema.optional(
+                            Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                              optional: Schema.optional(Schema.Boolean),
+                            }),
+                          ),
+                          prefix: Schema.optional(Schema.String),
+                          secretRef: Schema.optional(
+                            Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                              optional: Schema.optional(Schema.Boolean),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                    image: Schema.optional(Schema.String),
+                    imagePullPolicy: Schema.optional(Schema.String),
+                    lifecycle: Schema.optional(
+                      Schema.Struct({
+                        postStart: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            sleep: Schema.optional(
+                              Schema.Struct({
+                                seconds: Schema.Number,
+                              }),
+                            ),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                          }),
+                        ),
+                        preStop: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            sleep: Schema.optional(
+                              Schema.Struct({
+                                seconds: Schema.Number,
+                              }),
+                            ),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                          }),
+                        ),
+                        stopSignal: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    livenessProbe: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        failureThreshold: Schema.optional(Schema.Number),
+                        grpc: Schema.optional(
+                          Schema.Struct({
+                            port: Schema.Number,
+                            service: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        initialDelaySeconds: Schema.optional(Schema.Number),
+                        periodSeconds: Schema.optional(Schema.Number),
+                        successThreshold: Schema.optional(Schema.Number),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                        terminationGracePeriodSeconds: Schema.optional(
+                          Schema.Number,
+                        ),
+                        timeoutSeconds: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    name: Schema.String,
+                    ports: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          containerPort: Schema.Number,
+                          hostIP: Schema.optional(Schema.String),
+                          hostPort: Schema.optional(Schema.Number),
+                          name: Schema.optional(Schema.String),
+                          protocol: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    readinessProbe: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        failureThreshold: Schema.optional(Schema.Number),
+                        grpc: Schema.optional(
+                          Schema.Struct({
+                            port: Schema.Number,
+                            service: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        initialDelaySeconds: Schema.optional(Schema.Number),
+                        periodSeconds: Schema.optional(Schema.Number),
+                        successThreshold: Schema.optional(Schema.Number),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                        terminationGracePeriodSeconds: Schema.optional(
+                          Schema.Number,
+                        ),
+                        timeoutSeconds: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    resizePolicy: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          resourceName: Schema.String,
+                          restartPolicy: Schema.String,
+                        }),
+                      ),
+                    ),
+                    resources: Schema.optional(
+                      Schema.Struct({
+                        claims: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              name: Schema.String,
+                              request: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        limits: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                        requests: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                      }),
+                    ),
+                    restartPolicy: Schema.optional(Schema.String),
+                    restartPolicyRules: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          action: Schema.String,
+                          exitCodes: Schema.optional(
+                            Schema.Struct({
+                              operator: Schema.String,
+                              values: Schema.optional(
+                                Schema.Array(Schema.Number),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                    securityContext: Schema.optional(
+                      Schema.Struct({
+                        allowPrivilegeEscalation: Schema.optional(
+                          Schema.Boolean,
+                        ),
+                        appArmorProfile: Schema.optional(
+                          Schema.Struct({
+                            localhostProfile: Schema.optional(Schema.String),
+                            type: Schema.String,
+                          }),
+                        ),
+                        capabilities: Schema.optional(
+                          Schema.Struct({
+                            add: Schema.optional(Schema.Array(Schema.String)),
+                            drop: Schema.optional(Schema.Array(Schema.String)),
+                          }),
+                        ),
+                        privileged: Schema.optional(Schema.Boolean),
+                        procMount: Schema.optional(Schema.String),
+                        readOnlyRootFilesystem: Schema.optional(Schema.Boolean),
+                        runAsGroup: Schema.optional(Schema.Number),
+                        runAsNonRoot: Schema.optional(Schema.Boolean),
+                        runAsUser: Schema.optional(Schema.Number),
+                        seLinuxOptions: Schema.optional(
+                          Schema.Struct({
+                            level: Schema.optional(Schema.String),
+                            role: Schema.optional(Schema.String),
+                            type: Schema.optional(Schema.String),
+                            user: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        seccompProfile: Schema.optional(
+                          Schema.Struct({
+                            localhostProfile: Schema.optional(Schema.String),
+                            type: Schema.String,
+                          }),
+                        ),
+                        windowsOptions: Schema.optional(
+                          Schema.Struct({
+                            gmsaCredentialSpec: Schema.optional(Schema.String),
+                            gmsaCredentialSpecName: Schema.optional(
+                              Schema.String,
+                            ),
+                            hostProcess: Schema.optional(Schema.Boolean),
+                            runAsUserName: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      }),
+                    ),
+                    startupProbe: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        failureThreshold: Schema.optional(Schema.Number),
+                        grpc: Schema.optional(
+                          Schema.Struct({
+                            port: Schema.Number,
+                            service: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        initialDelaySeconds: Schema.optional(Schema.Number),
+                        periodSeconds: Schema.optional(Schema.Number),
+                        successThreshold: Schema.optional(Schema.Number),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                        terminationGracePeriodSeconds: Schema.optional(
+                          Schema.Number,
+                        ),
+                        timeoutSeconds: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    stdin: Schema.optional(Schema.Boolean),
+                    stdinOnce: Schema.optional(Schema.Boolean),
+                    targetContainerName: Schema.optional(Schema.String),
+                    terminationMessagePath: Schema.optional(Schema.String),
+                    terminationMessagePolicy: Schema.optional(Schema.String),
+                    tty: Schema.optional(Schema.Boolean),
+                    volumeDevices: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          devicePath: Schema.String,
+                          name: Schema.String,
+                        }),
+                      ),
+                    ),
+                    volumeMounts: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          mountPath: Schema.String,
+                          mountPropagation: Schema.optional(Schema.String),
+                          name: Schema.String,
+                          readOnly: Schema.optional(Schema.Boolean),
+                          recursiveReadOnly: Schema.optional(Schema.String),
+                          subPath: Schema.optional(Schema.String),
+                          subPathExpr: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    workingDir: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              hostAliases: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    hostnames: Schema.optional(Schema.Array(Schema.String)),
+                    ip: Schema.String,
+                  }),
+                ),
+              ),
+              hostIPC: Schema.optional(Schema.Boolean),
+              hostNetwork: Schema.optional(Schema.Boolean),
+              hostPID: Schema.optional(Schema.Boolean),
+              hostUsers: Schema.optional(Schema.Boolean),
+              hostname: Schema.optional(Schema.String),
+              hostnameOverride: Schema.optional(Schema.String),
+              imagePullSecrets: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              initContainers: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    args: Schema.optional(Schema.Array(Schema.String)),
+                    command: Schema.optional(Schema.Array(Schema.String)),
+                    env: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          name: Schema.String,
+                          value: Schema.optional(Schema.String),
+                          valueFrom: Schema.optional(
+                            Schema.Struct({
+                              configMapKeyRef: Schema.optional(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                              fieldRef: Schema.optional(
+                                Schema.Struct({
+                                  apiVersion: Schema.optional(Schema.String),
+                                  fieldPath: Schema.String,
+                                }),
+                              ),
+                              fileKeyRef: Schema.optional(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  optional: Schema.optional(Schema.Boolean),
+                                  path: Schema.String,
+                                  volumeName: Schema.String,
+                                }),
+                              ),
+                              resourceFieldRef: Schema.optional(
+                                Schema.Struct({
+                                  containerName: Schema.optional(Schema.String),
+                                  divisor: Schema.optional(Schema.String),
+                                  resource: Schema.String,
+                                }),
+                              ),
+                              secretKeyRef: Schema.optional(
+                                Schema.Struct({
+                                  key: Schema.String,
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                    envFrom: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          configMapRef: Schema.optional(
+                            Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                              optional: Schema.optional(Schema.Boolean),
+                            }),
+                          ),
+                          prefix: Schema.optional(Schema.String),
+                          secretRef: Schema.optional(
+                            Schema.Struct({
+                              name: Schema.optional(Schema.String),
+                              optional: Schema.optional(Schema.Boolean),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                    image: Schema.optional(Schema.String),
+                    imagePullPolicy: Schema.optional(Schema.String),
+                    lifecycle: Schema.optional(
+                      Schema.Struct({
+                        postStart: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            sleep: Schema.optional(
+                              Schema.Struct({
+                                seconds: Schema.Number,
+                              }),
+                            ),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                          }),
+                        ),
+                        preStop: Schema.optional(
+                          Schema.Struct({
+                            exec: Schema.optional(
+                              Schema.Struct({
+                                command: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                              }),
+                            ),
+                            httpGet: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                httpHeaders: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      name: Schema.String,
+                                      value: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                path: Schema.optional(Schema.String),
+                                port: Schema.String,
+                                scheme: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            sleep: Schema.optional(
+                              Schema.Struct({
+                                seconds: Schema.Number,
+                              }),
+                            ),
+                            tcpSocket: Schema.optional(
+                              Schema.Struct({
+                                host: Schema.optional(Schema.String),
+                                port: Schema.String,
+                              }),
+                            ),
+                          }),
+                        ),
+                        stopSignal: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    livenessProbe: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        failureThreshold: Schema.optional(Schema.Number),
+                        grpc: Schema.optional(
+                          Schema.Struct({
+                            port: Schema.Number,
+                            service: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        initialDelaySeconds: Schema.optional(Schema.Number),
+                        periodSeconds: Schema.optional(Schema.Number),
+                        successThreshold: Schema.optional(Schema.Number),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                        terminationGracePeriodSeconds: Schema.optional(
+                          Schema.Number,
+                        ),
+                        timeoutSeconds: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    name: Schema.String,
+                    ports: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          containerPort: Schema.Number,
+                          hostIP: Schema.optional(Schema.String),
+                          hostPort: Schema.optional(Schema.Number),
+                          name: Schema.optional(Schema.String),
+                          protocol: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    readinessProbe: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        failureThreshold: Schema.optional(Schema.Number),
+                        grpc: Schema.optional(
+                          Schema.Struct({
+                            port: Schema.Number,
+                            service: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        initialDelaySeconds: Schema.optional(Schema.Number),
+                        periodSeconds: Schema.optional(Schema.Number),
+                        successThreshold: Schema.optional(Schema.Number),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                        terminationGracePeriodSeconds: Schema.optional(
+                          Schema.Number,
+                        ),
+                        timeoutSeconds: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    resizePolicy: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          resourceName: Schema.String,
+                          restartPolicy: Schema.String,
+                        }),
+                      ),
+                    ),
+                    resources: Schema.optional(
+                      Schema.Struct({
+                        claims: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              name: Schema.String,
+                              request: Schema.optional(Schema.String),
+                            }),
+                          ),
+                        ),
+                        limits: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                        requests: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                      }),
+                    ),
+                    restartPolicy: Schema.optional(Schema.String),
+                    restartPolicyRules: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          action: Schema.String,
+                          exitCodes: Schema.optional(
+                            Schema.Struct({
+                              operator: Schema.String,
+                              values: Schema.optional(
+                                Schema.Array(Schema.Number),
+                              ),
+                            }),
+                          ),
+                        }),
+                      ),
+                    ),
+                    securityContext: Schema.optional(
+                      Schema.Struct({
+                        allowPrivilegeEscalation: Schema.optional(
+                          Schema.Boolean,
+                        ),
+                        appArmorProfile: Schema.optional(
+                          Schema.Struct({
+                            localhostProfile: Schema.optional(Schema.String),
+                            type: Schema.String,
+                          }),
+                        ),
+                        capabilities: Schema.optional(
+                          Schema.Struct({
+                            add: Schema.optional(Schema.Array(Schema.String)),
+                            drop: Schema.optional(Schema.Array(Schema.String)),
+                          }),
+                        ),
+                        privileged: Schema.optional(Schema.Boolean),
+                        procMount: Schema.optional(Schema.String),
+                        readOnlyRootFilesystem: Schema.optional(Schema.Boolean),
+                        runAsGroup: Schema.optional(Schema.Number),
+                        runAsNonRoot: Schema.optional(Schema.Boolean),
+                        runAsUser: Schema.optional(Schema.Number),
+                        seLinuxOptions: Schema.optional(
+                          Schema.Struct({
+                            level: Schema.optional(Schema.String),
+                            role: Schema.optional(Schema.String),
+                            type: Schema.optional(Schema.String),
+                            user: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        seccompProfile: Schema.optional(
+                          Schema.Struct({
+                            localhostProfile: Schema.optional(Schema.String),
+                            type: Schema.String,
+                          }),
+                        ),
+                        windowsOptions: Schema.optional(
+                          Schema.Struct({
+                            gmsaCredentialSpec: Schema.optional(Schema.String),
+                            gmsaCredentialSpecName: Schema.optional(
+                              Schema.String,
+                            ),
+                            hostProcess: Schema.optional(Schema.Boolean),
+                            runAsUserName: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      }),
+                    ),
+                    startupProbe: Schema.optional(
+                      Schema.Struct({
+                        exec: Schema.optional(
+                          Schema.Struct({
+                            command: Schema.optional(
+                              Schema.Array(Schema.String),
+                            ),
+                          }),
+                        ),
+                        failureThreshold: Schema.optional(Schema.Number),
+                        grpc: Schema.optional(
+                          Schema.Struct({
+                            port: Schema.Number,
+                            service: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        httpGet: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            httpHeaders: Schema.optional(
+                              Schema.Array(
+                                Schema.Struct({
+                                  name: Schema.String,
+                                  value: Schema.String,
+                                }),
+                              ),
+                            ),
+                            path: Schema.optional(Schema.String),
+                            port: Schema.String,
+                            scheme: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        initialDelaySeconds: Schema.optional(Schema.Number),
+                        periodSeconds: Schema.optional(Schema.Number),
+                        successThreshold: Schema.optional(Schema.Number),
+                        tcpSocket: Schema.optional(
+                          Schema.Struct({
+                            host: Schema.optional(Schema.String),
+                            port: Schema.String,
+                          }),
+                        ),
+                        terminationGracePeriodSeconds: Schema.optional(
+                          Schema.Number,
+                        ),
+                        timeoutSeconds: Schema.optional(Schema.Number),
+                      }),
+                    ),
+                    stdin: Schema.optional(Schema.Boolean),
+                    stdinOnce: Schema.optional(Schema.Boolean),
+                    terminationMessagePath: Schema.optional(Schema.String),
+                    terminationMessagePolicy: Schema.optional(Schema.String),
+                    tty: Schema.optional(Schema.Boolean),
+                    volumeDevices: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          devicePath: Schema.String,
+                          name: Schema.String,
+                        }),
+                      ),
+                    ),
+                    volumeMounts: Schema.optional(
+                      Schema.Array(
+                        Schema.Struct({
+                          mountPath: Schema.String,
+                          mountPropagation: Schema.optional(Schema.String),
+                          name: Schema.String,
+                          readOnly: Schema.optional(Schema.Boolean),
+                          recursiveReadOnly: Schema.optional(Schema.String),
+                          subPath: Schema.optional(Schema.String),
+                          subPathExpr: Schema.optional(Schema.String),
+                        }),
+                      ),
+                    ),
+                    workingDir: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              nodeName: Schema.optional(Schema.String),
+              nodeSelector: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              os: Schema.optional(
+                Schema.Struct({
+                  name: Schema.String,
+                }),
+              ),
+              overhead: Schema.optional(
+                Schema.Record(Schema.String, Schema.String),
+              ),
+              preemptionPolicy: Schema.optional(Schema.String),
+              priority: Schema.optional(Schema.Number),
+              priorityClassName: Schema.optional(Schema.String),
+              readinessGates: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    conditionType: Schema.String,
+                  }),
+                ),
+              ),
+              resourceClaims: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                    resourceClaimName: Schema.optional(Schema.String),
+                    resourceClaimTemplateName: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              resources: Schema.optional(
+                Schema.Struct({
+                  claims: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.String,
+                        request: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  limits: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                  requests: Schema.optional(
+                    Schema.Record(Schema.String, Schema.String),
+                  ),
+                }),
+              ),
+              restartPolicy: Schema.optional(Schema.String),
+              runtimeClassName: Schema.optional(Schema.String),
+              schedulerName: Schema.optional(Schema.String),
+              schedulingGates: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    name: Schema.String,
+                  }),
+                ),
+              ),
+              schedulingGroup: Schema.optional(
+                Schema.Struct({
+                  podGroupName: Schema.optional(Schema.String),
+                }),
+              ),
+              securityContext: Schema.optional(
+                Schema.Struct({
+                  appArmorProfile: Schema.optional(
+                    Schema.Struct({
+                      localhostProfile: Schema.optional(Schema.String),
+                      type: Schema.String,
+                    }),
+                  ),
+                  fsGroup: Schema.optional(Schema.Number),
+                  fsGroupChangePolicy: Schema.optional(Schema.String),
+                  runAsGroup: Schema.optional(Schema.Number),
+                  runAsNonRoot: Schema.optional(Schema.Boolean),
+                  runAsUser: Schema.optional(Schema.Number),
+                  seLinuxChangePolicy: Schema.optional(Schema.String),
+                  seLinuxOptions: Schema.optional(
+                    Schema.Struct({
+                      level: Schema.optional(Schema.String),
+                      role: Schema.optional(Schema.String),
+                      type: Schema.optional(Schema.String),
+                      user: Schema.optional(Schema.String),
+                    }),
+                  ),
+                  seccompProfile: Schema.optional(
+                    Schema.Struct({
+                      localhostProfile: Schema.optional(Schema.String),
+                      type: Schema.String,
+                    }),
+                  ),
+                  supplementalGroups: Schema.optional(
+                    Schema.Array(Schema.Number),
+                  ),
+                  supplementalGroupsPolicy: Schema.optional(Schema.String),
+                  sysctls: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        name: Schema.String,
+                        value: Schema.String,
+                      }),
+                    ),
+                  ),
+                  windowsOptions: Schema.optional(
+                    Schema.Struct({
+                      gmsaCredentialSpec: Schema.optional(Schema.String),
+                      gmsaCredentialSpecName: Schema.optional(Schema.String),
+                      hostProcess: Schema.optional(Schema.Boolean),
+                      runAsUserName: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+              serviceAccount: Schema.optional(Schema.String),
+              serviceAccountName: Schema.optional(Schema.String),
+              setHostnameAsFQDN: Schema.optional(Schema.Boolean),
+              shareProcessNamespace: Schema.optional(Schema.Boolean),
+              subdomain: Schema.optional(Schema.String),
+              terminationGracePeriodSeconds: Schema.optional(Schema.Number),
+              tolerations: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    effect: Schema.optional(Schema.String),
+                    key: Schema.optional(Schema.String),
+                    operator: Schema.optional(Schema.String),
+                    tolerationSeconds: Schema.optional(Schema.Number),
+                    value: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              topologySpreadConstraints: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    labelSelector: Schema.optional(
+                      Schema.Struct({
+                        matchExpressions: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              key: Schema.String,
+                              operator: Schema.String,
+                              values: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                            }),
+                          ),
+                        ),
+                        matchLabels: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                      }),
+                    ),
+                    matchLabelKeys: Schema.optional(
+                      Schema.Array(Schema.String),
+                    ),
+                    maxSkew: Schema.Number,
+                    minDomains: Schema.optional(Schema.Number),
+                    nodeAffinityPolicy: Schema.optional(Schema.String),
+                    nodeTaintsPolicy: Schema.optional(Schema.String),
+                    topologyKey: Schema.String,
+                    whenUnsatisfiable: Schema.String,
+                  }),
+                ),
+              ),
+              volumes: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    awsElasticBlockStore: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        partition: Schema.optional(Schema.Number),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        volumeID: Schema.String,
+                      }),
+                    ),
+                    azureDisk: Schema.optional(
+                      Schema.Struct({
+                        cachingMode: Schema.optional(Schema.String),
+                        diskName: Schema.String,
+                        diskURI: Schema.String,
+                        fsType: Schema.optional(Schema.String),
+                        kind: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                    azureFile: Schema.optional(
+                      Schema.Struct({
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretName: Schema.String,
+                        shareName: Schema.String,
+                      }),
+                    ),
+                    cephfs: Schema.optional(
+                      Schema.Struct({
+                        monitors: Schema.Array(Schema.String),
+                        path: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretFile: Schema.optional(Schema.String),
+                        secretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        user: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    cinder: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        volumeID: Schema.String,
+                      }),
+                    ),
+                    configMap: Schema.optional(
+                      Schema.Struct({
+                        defaultMode: Schema.optional(Schema.Number),
+                        items: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              key: Schema.String,
+                              mode: Schema.optional(Schema.Number),
+                              path: Schema.String,
+                            }),
+                          ),
+                        ),
+                        name: Schema.optional(Schema.String),
+                        optional: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                    csi: Schema.optional(
+                      Schema.Struct({
+                        driver: Schema.String,
+                        fsType: Schema.optional(Schema.String),
+                        nodePublishSecretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        volumeAttributes: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                      }),
+                    ),
+                    downwardAPI: Schema.optional(
+                      Schema.Struct({
+                        defaultMode: Schema.optional(Schema.Number),
+                        items: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              fieldRef: Schema.optional(
+                                Schema.Struct({
+                                  apiVersion: Schema.optional(Schema.String),
+                                  fieldPath: Schema.String,
+                                }),
+                              ),
+                              mode: Schema.optional(Schema.Number),
+                              path: Schema.String,
+                              resourceFieldRef: Schema.optional(
+                                Schema.Struct({
+                                  containerName: Schema.optional(Schema.String),
+                                  divisor: Schema.optional(Schema.String),
+                                  resource: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                    emptyDir: Schema.optional(
+                      Schema.Struct({
+                        medium: Schema.optional(Schema.String),
+                        sizeLimit: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    ephemeral: Schema.optional(
+                      Schema.Struct({
+                        volumeClaimTemplate: Schema.optional(
+                          Schema.Struct({
+                            metadata: Schema.optional(
+                              Schema.Struct({
+                                annotations: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                                creationTimestamp: Schema.optional(
+                                  Schema.String,
+                                ),
+                                deletionGracePeriodSeconds: Schema.optional(
+                                  Schema.Number,
+                                ),
+                                deletionTimestamp: Schema.optional(
+                                  Schema.String,
+                                ),
+                                finalizers: Schema.optional(
+                                  Schema.Array(Schema.String),
+                                ),
+                                generateName: Schema.optional(Schema.String),
+                                generation: Schema.optional(Schema.Number),
+                                labels: Schema.optional(
+                                  Schema.Record(Schema.String, Schema.String),
+                                ),
+                                managedFields: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      apiVersion: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      fieldsType: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      fieldsV1: Schema.optional(Schema.Unknown),
+                                      manager: Schema.optional(Schema.String),
+                                      operation: Schema.optional(Schema.String),
+                                      subresource: Schema.optional(
+                                        Schema.String,
+                                      ),
+                                      time: Schema.optional(Schema.String),
+                                    }),
+                                  ),
+                                ),
+                                name: Schema.optional(Schema.String),
+                                namespace: Schema.optional(Schema.String),
+                                ownerReferences: Schema.optional(
+                                  Schema.Array(
+                                    Schema.Struct({
+                                      apiVersion: Schema.String,
+                                      blockOwnerDeletion: Schema.optional(
+                                        Schema.Boolean,
+                                      ),
+                                      controller: Schema.optional(
+                                        Schema.Boolean,
+                                      ),
+                                      kind: Schema.String,
+                                      name: Schema.String,
+                                      uid: Schema.String,
+                                    }),
+                                  ),
+                                ),
+                                resourceVersion: Schema.optional(Schema.String),
+                                selfLink: Schema.optional(Schema.String),
+                                uid: Schema.optional(Schema.String),
+                              }),
+                            ),
+                            spec: Schema.Struct({
+                              accessModes: Schema.optional(
+                                Schema.Array(Schema.String),
+                              ),
+                              dataSource: Schema.optional(
+                                Schema.Struct({
+                                  apiGroup: Schema.optional(Schema.String),
+                                  kind: Schema.String,
+                                  name: Schema.String,
+                                }),
+                              ),
+                              dataSourceRef: Schema.optional(
+                                Schema.Struct({
+                                  apiGroup: Schema.optional(Schema.String),
+                                  kind: Schema.String,
+                                  name: Schema.String,
+                                  namespace: Schema.optional(Schema.String),
+                                }),
+                              ),
+                              resources: Schema.optional(
+                                Schema.Struct({
+                                  limits: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                  requests: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              selector: Schema.optional(
+                                Schema.Struct({
+                                  matchExpressions: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        operator: Schema.String,
+                                        values: Schema.optional(
+                                          Schema.Array(Schema.String),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                  matchLabels: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              storageClassName: Schema.optional(Schema.String),
+                              volumeAttributesClassName: Schema.optional(
+                                Schema.String,
+                              ),
+                              volumeMode: Schema.optional(Schema.String),
+                              volumeName: Schema.optional(Schema.String),
+                            }),
+                          }),
+                        ),
+                      }),
+                    ),
+                    fc: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        lun: Schema.optional(Schema.Number),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        targetWWNs: Schema.optional(
+                          Schema.Array(Schema.String),
+                        ),
+                        wwids: Schema.optional(Schema.Array(Schema.String)),
+                      }),
+                    ),
+                    flexVolume: Schema.optional(
+                      Schema.Struct({
+                        driver: Schema.String,
+                        fsType: Schema.optional(Schema.String),
+                        options: Schema.optional(
+                          Schema.Record(Schema.String, Schema.String),
+                        ),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                          }),
+                        ),
+                      }),
+                    ),
+                    flocker: Schema.optional(
+                      Schema.Struct({
+                        datasetName: Schema.optional(Schema.String),
+                        datasetUUID: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    gcePersistentDisk: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        partition: Schema.optional(Schema.Number),
+                        pdName: Schema.String,
+                        readOnly: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                    gitRepo: Schema.optional(
+                      Schema.Struct({
+                        directory: Schema.optional(Schema.String),
+                        repository: Schema.String,
+                        revision: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    glusterfs: Schema.optional(
+                      Schema.Struct({
+                        endpoints: Schema.String,
+                        path: Schema.String,
+                        readOnly: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                    hostPath: Schema.optional(
+                      Schema.Struct({
+                        path: Schema.String,
+                        type: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    image: Schema.optional(
+                      Schema.Struct({
+                        pullPolicy: Schema.optional(Schema.String),
+                        reference: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    iscsi: Schema.optional(
+                      Schema.Struct({
+                        chapAuthDiscovery: Schema.optional(Schema.Boolean),
+                        chapAuthSession: Schema.optional(Schema.Boolean),
+                        fsType: Schema.optional(Schema.String),
+                        initiatorName: Schema.optional(Schema.String),
+                        iqn: Schema.String,
+                        iscsiInterface: Schema.optional(Schema.String),
+                        lun: Schema.Number,
+                        portals: Schema.optional(Schema.Array(Schema.String)),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        targetPortal: Schema.String,
+                      }),
+                    ),
+                    name: Schema.String,
+                    nfs: Schema.optional(
+                      Schema.Struct({
+                        path: Schema.String,
+                        readOnly: Schema.optional(Schema.Boolean),
+                        server: Schema.String,
+                      }),
+                    ),
+                    persistentVolumeClaim: Schema.optional(
+                      Schema.Struct({
+                        claimName: Schema.String,
+                        readOnly: Schema.optional(Schema.Boolean),
+                      }),
+                    ),
+                    photonPersistentDisk: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        pdID: Schema.String,
+                      }),
+                    ),
+                    portworxVolume: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        volumeID: Schema.String,
+                      }),
+                    ),
+                    projected: Schema.optional(
+                      Schema.Struct({
+                        defaultMode: Schema.optional(Schema.Number),
+                        sources: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              clusterTrustBundle: Schema.optional(
+                                Schema.Struct({
+                                  labelSelector: Schema.optional(
+                                    Schema.Struct({
+                                      matchExpressions: Schema.optional(
+                                        Schema.Array(
+                                          Schema.Struct({
+                                            key: Schema.String,
+                                            operator: Schema.String,
+                                            values: Schema.optional(
+                                              Schema.Array(Schema.String),
+                                            ),
+                                          }),
+                                        ),
+                                      ),
+                                      matchLabels: Schema.optional(
+                                        Schema.Record(
+                                          Schema.String,
+                                          Schema.String,
+                                        ),
+                                      ),
+                                    }),
+                                  ),
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                  path: Schema.String,
+                                  signerName: Schema.optional(Schema.String),
+                                }),
+                              ),
+                              configMap: Schema.optional(
+                                Schema.Struct({
+                                  items: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        mode: Schema.optional(Schema.Number),
+                                        path: Schema.String,
+                                      }),
+                                    ),
+                                  ),
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                              downwardAPI: Schema.optional(
+                                Schema.Struct({
+                                  items: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        fieldRef: Schema.optional(
+                                          Schema.Struct({
+                                            apiVersion: Schema.optional(
+                                              Schema.String,
+                                            ),
+                                            fieldPath: Schema.String,
+                                          }),
+                                        ),
+                                        mode: Schema.optional(Schema.Number),
+                                        path: Schema.String,
+                                        resourceFieldRef: Schema.optional(
+                                          Schema.Struct({
+                                            containerName: Schema.optional(
+                                              Schema.String,
+                                            ),
+                                            divisor: Schema.optional(
+                                              Schema.String,
+                                            ),
+                                            resource: Schema.String,
+                                          }),
+                                        ),
+                                      }),
+                                    ),
+                                  ),
+                                }),
+                              ),
+                              podCertificate: Schema.optional(
+                                Schema.Struct({
+                                  certificateChainPath: Schema.optional(
+                                    Schema.String,
+                                  ),
+                                  credentialBundlePath: Schema.optional(
+                                    Schema.String,
+                                  ),
+                                  keyPath: Schema.optional(Schema.String),
+                                  keyType: Schema.String,
+                                  maxExpirationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  signerName: Schema.String,
+                                  userAnnotations: Schema.optional(
+                                    Schema.Record(Schema.String, Schema.String),
+                                  ),
+                                }),
+                              ),
+                              secret: Schema.optional(
+                                Schema.Struct({
+                                  items: Schema.optional(
+                                    Schema.Array(
+                                      Schema.Struct({
+                                        key: Schema.String,
+                                        mode: Schema.optional(Schema.Number),
+                                        path: Schema.String,
+                                      }),
+                                    ),
+                                  ),
+                                  name: Schema.optional(Schema.String),
+                                  optional: Schema.optional(Schema.Boolean),
+                                }),
+                              ),
+                              serviceAccountToken: Schema.optional(
+                                Schema.Struct({
+                                  audience: Schema.optional(Schema.String),
+                                  expirationSeconds: Schema.optional(
+                                    Schema.Number,
+                                  ),
+                                  path: Schema.String,
+                                }),
+                              ),
+                            }),
+                          ),
+                        ),
+                      }),
+                    ),
+                    quobyte: Schema.optional(
+                      Schema.Struct({
+                        group: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        registry: Schema.String,
+                        tenant: Schema.optional(Schema.String),
+                        user: Schema.optional(Schema.String),
+                        volume: Schema.String,
+                      }),
+                    ),
+                    rbd: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        image: Schema.String,
+                        keyring: Schema.optional(Schema.String),
+                        monitors: Schema.Array(Schema.String),
+                        pool: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        user: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    scaleIO: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        gateway: Schema.String,
+                        protectionDomain: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretRef: Schema.Struct({
+                          name: Schema.optional(Schema.String),
+                        }),
+                        sslEnabled: Schema.optional(Schema.Boolean),
+                        storageMode: Schema.optional(Schema.String),
+                        storagePool: Schema.optional(Schema.String),
+                        system: Schema.String,
+                        volumeName: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    secret: Schema.optional(
+                      Schema.Struct({
+                        defaultMode: Schema.optional(Schema.Number),
+                        items: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              key: Schema.String,
+                              mode: Schema.optional(Schema.Number),
+                              path: Schema.String,
+                            }),
+                          ),
+                        ),
+                        optional: Schema.optional(Schema.Boolean),
+                        secretName: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    storageos: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        readOnly: Schema.optional(Schema.Boolean),
+                        secretRef: Schema.optional(
+                          Schema.Struct({
+                            name: Schema.optional(Schema.String),
+                          }),
+                        ),
+                        volumeName: Schema.optional(Schema.String),
+                        volumeNamespace: Schema.optional(Schema.String),
+                      }),
+                    ),
+                    vsphereVolume: Schema.optional(
+                      Schema.Struct({
+                        fsType: Schema.optional(Schema.String),
+                        storagePolicyID: Schema.optional(Schema.String),
+                        storagePolicyName: Schema.optional(Schema.String),
+                        volumePath: Schema.String,
+                      }),
+                    ),
+                  }),
+                ),
+              ),
+            }),
+          ),
+        }),
+        ttlSecondsAfterFinished: Schema.optional(Schema.Number),
+      }),
+    ),
+    status: Schema.optional(
+      Schema.Struct({
+        active: Schema.optional(Schema.Number),
+        completedIndexes: Schema.optional(Schema.String),
+        completionTime: Schema.optional(Schema.String),
+        conditions: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              lastProbeTime: Schema.optional(Schema.String),
+              lastTransitionTime: Schema.optional(Schema.String),
+              message: Schema.optional(Schema.String),
+              reason: Schema.optional(Schema.String),
+              status: Schema.String,
+              type: Schema.String,
+            }),
+          ),
+        ),
+        failed: Schema.optional(Schema.Number),
+        failedIndexes: Schema.optional(Schema.String),
+        ready: Schema.optional(Schema.Number),
+        startTime: Schema.optional(Schema.String),
+        succeeded: Schema.optional(Schema.Number),
+        terminating: Schema.optional(Schema.Number),
+        uncountedTerminatedPods: Schema.optional(
+          Schema.Struct({
+            failed: Schema.optional(Schema.Array(Schema.String)),
+            succeeded: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+      }),
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -48827,7 +65176,11 @@ export type ReplaceBatchV1NamespacedJobStatusOutput =
 /**
  * replace status of the specified Job
  *
+ * @param name - name of the Job
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
  * @param dryRun - When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed
+ * @param fieldManager - fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint.
  * @param fieldValidation - fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered.
  */
 export const replaceBatchV1NamespacedJobStatus =
@@ -48838,9 +65191,20 @@ export const replaceBatchV1NamespacedJobStatus =
   }));
 // Input Schema
 export const WatchBatchV1CronJobListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/batch/v1/watch/cronjobs" }),
-  );
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(T.Http({ method: "GET", path: "/apis/batch/v1/watch/cronjobs" }));
 export type WatchBatchV1CronJobListForAllNamespacesInput =
   typeof WatchBatchV1CronJobListForAllNamespacesInput.Type;
 
@@ -48856,6 +65220,60 @@ export type WatchBatchV1CronJobListForAllNamespacesOutput =
 // The operation
 /**
  * watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list operation instead.
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchBatchV1CronJobListForAllNamespaces =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -48864,9 +65282,20 @@ export const watchBatchV1CronJobListForAllNamespaces =
   }));
 // Input Schema
 export const WatchBatchV1JobListForAllNamespacesInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
-    T.Http({ method: "GET", path: "/apis/batch/v1/watch/jobs" }),
-  );
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(T.Http({ method: "GET", path: "/apis/batch/v1/watch/jobs" }));
 export type WatchBatchV1JobListForAllNamespacesInput =
   typeof WatchBatchV1JobListForAllNamespacesInput.Type;
 
@@ -48882,6 +65311,60 @@ export type WatchBatchV1JobListForAllNamespacesOutput =
 // The operation
 /**
  * watch individual changes to a list of Job. deprecated: use the 'watch' parameter with a list operation instead.
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchBatchV1JobListForAllNamespaces =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -48890,7 +65373,22 @@ export const watchBatchV1JobListForAllNamespaces =
   }));
 // Input Schema
 export const WatchBatchV1NamespacedCronJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}",
@@ -48911,6 +65409,62 @@ export type WatchBatchV1NamespacedCronJobOutput =
 // The operation
 /**
  * watch changes to an object of kind CronJob. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param name - name of the CronJob
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchBatchV1NamespacedCronJob =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -48919,7 +65473,21 @@ export const watchBatchV1NamespacedCronJob =
   }));
 // Input Schema
 export const WatchBatchV1NamespacedCronJobListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespace: Schema.String.pipe(T.PathParam()),
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/batch/v1/watch/namespaces/{namespace}/cronjobs",
@@ -48940,6 +65508,61 @@ export type WatchBatchV1NamespacedCronJobListOutput =
 // The operation
 /**
  * watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list operation instead.
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchBatchV1NamespacedCronJobList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
@@ -48948,7 +65571,22 @@ export const watchBatchV1NamespacedCronJobList =
   }));
 // Input Schema
 export const WatchBatchV1NamespacedJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.String.pipe(T.PathParam()),
+    namespace: Schema.String.pipe(T.PathParam()),
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}",
@@ -48969,6 +65607,62 @@ export type WatchBatchV1NamespacedJobOutput =
 // The operation
 /**
  * watch changes to an object of kind Job. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param name - name of the Job
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
   () => ({
@@ -48978,7 +65672,21 @@ export const watchBatchV1NamespacedJob = /*@__PURE__*/ /*#__PURE__*/ API.make(
 );
 // Input Schema
 export const WatchBatchV1NamespacedJobListInput =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespace: Schema.String.pipe(T.PathParam()),
+    allowWatchBookmarks: Schema.optional(Schema.Boolean),
+    continue: Schema.optional(Schema.String),
+    fieldSelector: Schema.optional(Schema.String),
+    labelSelector: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.Number),
+    pretty: Schema.optional(Schema.String),
+    resourceVersion: Schema.optional(Schema.String),
+    resourceVersionMatch: Schema.optional(Schema.String),
+    sendInitialEvents: Schema.optional(Schema.Boolean),
+    shardSelector: Schema.optional(Schema.String),
+    timeoutSeconds: Schema.optional(Schema.Number),
+    watch: Schema.optional(Schema.Boolean),
+  }).pipe(
     T.Http({
       method: "GET",
       path: "/apis/batch/v1/watch/namespaces/{namespace}/jobs",
@@ -48999,6 +65707,61 @@ export type WatchBatchV1NamespacedJobListOutput =
 // The operation
 /**
  * watch individual changes to a list of Job. deprecated: use the 'watch' parameter with a list operation instead.
+ *
+ * @param allowWatchBookmarks - allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored.
+ * @param continue - The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the "next key".
+
+This field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications.
+ * @param fieldSelector - A selector to restrict the list of returned objects by their fields. Defaults to everything.
+ * @param labelSelector - A selector to restrict the list of returned objects by their labels. Defaults to everything.
+ * @param limit - limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.
+
+The server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned.
+ * @param namespace - object name and auth scope, such as for teams and projects
+ * @param pretty - If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget).
+ * @param resourceVersion - resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param resourceVersionMatch - resourceVersionMatch determines how resourceVersion is applied to list calls. It is highly recommended that resourceVersionMatch be set for list calls where resourceVersion is set See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.
+
+Defaults to unset
+ * @param sendInitialEvents - `sendInitialEvents=true` may be set together with `watch=true`. In that case, the watch stream will begin with synthetic events to produce the current state of objects in the collection. Once all such events have been sent, a synthetic "Bookmark" event  will be sent. The bookmark will report the ResourceVersion (RV) corresponding to the set of objects, and be marked with `"k8s.io/initial-events-end": "true"` annotation. Afterwards, the watch stream will proceed as usual, sending watch events corresponding to changes (subsequent to the RV) to objects watched.
+
+When `sendInitialEvents` option is set, we require `resourceVersionMatch` option to also be set. The semantic of the watch request is as following: - `resourceVersionMatch` = NotOlderThan
+  is interpreted as "data at least as new as the provided `resourceVersion`"
+  and the bookmark event is send when the state is synced
+  to a `resourceVersion` at least as fresh as the one provided by the ListOptions.
+  If `resourceVersion` is unset, this is interpreted as "consistent read" and the
+  bookmark event is send when the state is synced at least to the moment
+  when request started being processed.
+- `resourceVersionMatch` set to any other value or unset
+  Invalid error is returned.
+
+Defaults to true if `resourceVersion=""` or `resourceVersion="0"` (for backward compatibility reasons) and to false otherwise.
+ * @param shardSelector - shardSelector restricts the list of returned objects using a CEL-based shard selector expression. The format uses the shardRange() function combined with || (logical OR) to specify one or more hash ranges:
+
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000')
+  shardRange(object.metadata.uid, '0x0', '0x8000000000000000') || shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+
+Field paths use CEL-style object-rooted syntax (e.g. "object.metadata.uid"), NOT the fieldSelector format ("metadata.uid"). Currently supported paths:
+  - object.metadata.uid
+  - object.metadata.namespace
+
+hexStart and hexEnd are single-quoted CEL string literals with a '0x' prefix, defining the inclusive lower and exclusive upper bounds over the 64-bit FNV-1a hash space. The full range is [0x0, 0x10000000000000000), where the exclusive upper bound equals 2^64.
+
+Examples:
+  2-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x8000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x8000000000000000', '0x10000000000000000')
+  4-shard split:
+    shard 0: shardRange(object.metadata.uid, '0x0000000000000000', '0x4000000000000000')
+    shard 1: shardRange(object.metadata.uid, '0x4000000000000000', '0x8000000000000000')
+    shard 2: shardRange(object.metadata.uid, '0x8000000000000000', '0xc000000000000000')
+    shard 3: shardRange(object.metadata.uid, '0xc000000000000000', '0x10000000000000000')
+
+This is an alpha field and requires enabling the ShardedListAndWatch feature gate.
+ * @param timeoutSeconds - Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+ * @param watch - Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion.
  */
 export const watchBatchV1NamespacedJobList =
   /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
