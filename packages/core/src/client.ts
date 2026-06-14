@@ -779,6 +779,19 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
               () => response.text.pipe(Effect.map((text) => text as unknown)),
             ),
           );
+
+          // Some endpoints return a success status with an empty body instead
+          // of `204 No Content` — e.g. Cloudflare's Workers custom-domain
+          // DELETE (`DELETE /accounts/{id}/workers/domains/{id}`) replies
+          // `200` with no body. The generated output schema still declares a
+          // JSON envelope, so decoding the empty body fails — and a retrying
+          // caller treats that decode failure as a transient error and retries
+          // with backoff, hanging for a very long time. Treat an empty success
+          // body as "no content", mirroring the 204 handling above.
+          if (rawBody === "" || rawBody === undefined || rawBody === null) {
+            return outputSchema.ast._tag === "Unknown" ? "" : undefined;
+          }
+
           let responseBody = config.transformResponse
             ? config.transformResponse(rawBody)
             : rawBody;
