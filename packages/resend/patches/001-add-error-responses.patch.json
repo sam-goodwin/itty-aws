@@ -1,0 +1,649 @@
+{
+  "description": "Document error responses for Resend operations. The upstream OpenAPI spec only declares 200 responses; this patch annotates the additional status codes that Resend's API actually returns, so the code generator can emit typed error classes per operation. Codes sourced from https://resend.com/docs/api-reference/errors and confirmed against live API probes.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1emails/post/responses/400",
+      "value": {
+        "description": "validation_error / invalid_idempotency_key: malformed request body or idempotency key."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1emails/post/responses/403",
+      "value": {
+        "description": "invalid_api_key, or validation_error when the from domain is not verified or you are sending to non-personal addresses without a verified domain."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1emails/post/responses/405",
+      "value": {
+        "description": "method_not_allowed."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1emails/post/responses/409",
+      "value": {
+        "description": "invalid_idempotent_request when the same Idempotency-Key is reused with a different payload, or concurrent_idempotent_requests when the same key is reused while the original request is still in progress."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1emails/post/responses/422",
+      "value": {
+        "description": "invalid_attachment, invalid_from_address, invalid_parameter, missing_required_field."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1emails/post/responses/451",
+      "value": {
+        "description": "security_error: the request was rejected for security reasons."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1emails~1batch/post/responses/400",
+      "value": {
+        "description": "validation_error / invalid_idempotency_key."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1emails~1batch/post/responses/403",
+      "value": {
+        "description": "invalid_api_key or validation_error (unverified sending domain)."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1emails~1batch/post/responses/409",
+      "value": {
+        "description": "invalid_idempotent_request / concurrent_idempotent_requests."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1emails~1batch/post/responses/422",
+      "value": {
+        "description": "missing_required_field, invalid_attachment, invalid_from_address."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1emails~1batch/post/responses/451",
+      "value": {
+        "description": "security_error."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1emails~1{email_id}/get/responses/403",
+      "value": {
+        "description": "invalid_api_key."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1emails~1{email_id}/get/responses/404",
+      "value": {
+        "description": "not_found: the email id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1emails~1{email_id}/patch/responses/403",
+      "value": {
+        "description": "invalid_api_key."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1emails~1{email_id}/patch/responses/404",
+      "value": {
+        "description": "not_found: the email id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1emails~1{email_id}/patch/responses/422",
+      "value": {
+        "description": "validation_error / invalid_parameter (e.g. malformed scheduled_at)."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1emails~1{email_id}~1cancel/post/responses/403",
+      "value": {
+        "description": "invalid_api_key."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1emails~1{email_id}~1cancel/post/responses/404",
+      "value": {
+        "description": "not_found: email already sent, cancelled, or never existed."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1emails~1{email_id}~1attachments/get/responses/404",
+      "value": {
+        "description": "not_found: email id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1emails~1{email_id}~1attachments~1{attachment_id}/get/responses/404",
+      "value": {
+        "description": "not_found: email or attachment id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1emails~1receiving~1{email_id}/get/responses/404",
+      "value": {
+        "description": "not_found: received email id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1emails~1receiving~1{email_id}~1attachments/get/responses/404",
+      "value": {
+        "description": "not_found: received email id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1emails~1receiving~1{email_id}~1attachments~1{attachment_id}/get/responses/404",
+      "value": {
+        "description": "not_found: received email or attachment id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1domains/post/responses/403",
+      "value": {
+        "description": "validation_error: domain has already been registered in your account."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1domains/post/responses/422",
+      "value": {
+        "description": "invalid_region, missing_required_field."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1domains~1{domain_id}/get/responses/404",
+      "value": {
+        "description": "not_found: domain id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1domains~1{domain_id}/patch/responses/404",
+      "value": {
+        "description": "not_found: domain id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1domains~1{domain_id}/patch/responses/422",
+      "value": {
+        "description": "validation_error / invalid_parameter."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1domains~1{domain_id}/delete/responses/404",
+      "value": {
+        "description": "not_found: domain id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1domains~1{domain_id}~1verify/post/responses/404",
+      "value": {
+        "description": "not_found: domain id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1api-keys/post/responses/422",
+      "value": {
+        "description": "invalid_access (permission is not full_access or sending_access), missing_required_field."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1api-keys~1{api_key_id}/delete/responses/404",
+      "value": {
+        "description": "not_found: api key id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1templates/post/responses/422",
+      "value": {
+        "description": "missing_required_field, invalid_parameter."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1templates~1{id}/get/responses/404",
+      "value": {
+        "description": "not_found: template id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1templates~1{id}/patch/responses/404",
+      "value": {
+        "description": "not_found: template id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1templates~1{id}/patch/responses/422",
+      "value": {
+        "description": "validation_error."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1templates~1{id}/delete/responses/404",
+      "value": {
+        "description": "not_found: template id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1templates~1{id}~1publish/post/responses/404",
+      "value": {
+        "description": "not_found: template id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1templates~1{id}~1duplicate/post/responses/404",
+      "value": {
+        "description": "not_found: template id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1audiences/post/responses/422",
+      "value": {
+        "description": "missing_required_field."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1audiences~1{id}/get/responses/404",
+      "value": {
+        "description": "not_found: audience id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1audiences~1{id}/delete/responses/404",
+      "value": {
+        "description": "not_found: audience id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1contacts/post/responses/404",
+      "value": {
+        "description": "not_found: audience id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1contacts/post/responses/422",
+      "value": {
+        "description": "missing_required_field, validation_error."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1contacts~1imports/post/responses/422",
+      "value": {
+        "description": "validation_error."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1contacts~1imports~1{id}/get/responses/404",
+      "value": {
+        "description": "not_found: import id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1contacts~1{id}/get/responses/404",
+      "value": {
+        "description": "not_found: contact id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1contacts~1{id}/patch/responses/404",
+      "value": {
+        "description": "not_found: contact id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1contacts~1{id}/patch/responses/422",
+      "value": {
+        "description": "validation_error."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1contacts~1{id}/delete/responses/404",
+      "value": {
+        "description": "not_found: contact id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1broadcasts/post/responses/422",
+      "value": {
+        "description": "missing_required_field, validation_error."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1broadcasts~1{id}/get/responses/404",
+      "value": {
+        "description": "not_found: broadcast id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1broadcasts~1{id}/patch/responses/404",
+      "value": {
+        "description": "not_found: broadcast id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1broadcasts~1{id}/patch/responses/422",
+      "value": {
+        "description": "validation_error."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1broadcasts~1{id}/delete/responses/404",
+      "value": {
+        "description": "not_found: broadcast id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1broadcasts~1{id}~1send/post/responses/404",
+      "value": {
+        "description": "not_found: broadcast id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1broadcasts~1{id}~1send/post/responses/422",
+      "value": {
+        "description": "validation_error: broadcast cannot be sent in its current state."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks/post/responses/422",
+      "value": {
+        "description": "missing_required_field, validation_error."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}/get/responses/404",
+      "value": {
+        "description": "not_found: webhook id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}/patch/responses/404",
+      "value": {
+        "description": "not_found: webhook id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}/patch/responses/422",
+      "value": {
+        "description": "validation_error."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1webhooks~1{webhook_id}/delete/responses/404",
+      "value": {
+        "description": "not_found: webhook id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1segments/post/responses/422",
+      "value": {
+        "description": "missing_required_field, validation_error."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1segments~1{id}/get/responses/404",
+      "value": {
+        "description": "not_found: segment id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1segments~1{id}/delete/responses/404",
+      "value": {
+        "description": "not_found: segment id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1topics/post/responses/422",
+      "value": {
+        "description": "missing_required_field, validation_error."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1topics~1{id}/get/responses/404",
+      "value": {
+        "description": "not_found: topic id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1topics~1{id}/patch/responses/404",
+      "value": {
+        "description": "not_found: topic id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1topics~1{id}/patch/responses/422",
+      "value": {
+        "description": "validation_error."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1topics~1{id}/delete/responses/404",
+      "value": {
+        "description": "not_found: topic id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1contact-properties/post/responses/409",
+      "value": {
+        "description": "validation_error: property with that name already exists."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1contact-properties/post/responses/422",
+      "value": {
+        "description": "missing_required_field, validation_error."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1contact-properties~1{id}/get/responses/404",
+      "value": {
+        "description": "not_found: contact property id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1contact-properties~1{id}/patch/responses/404",
+      "value": {
+        "description": "not_found: contact property id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1contact-properties~1{id}/patch/responses/422",
+      "value": {
+        "description": "validation_error."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1contact-properties~1{id}/delete/responses/404",
+      "value": {
+        "description": "not_found: contact property id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1contacts~1{contact_id}~1segments~1{segment_id}/post/responses/404",
+      "value": {
+        "description": "not_found: contact or segment id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1contacts~1{contact_id}~1segments~1{segment_id}/delete/responses/404",
+      "value": {
+        "description": "not_found: contact or segment id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1contacts~1{contact_id}~1topics/patch/responses/404",
+      "value": {
+        "description": "not_found: contact id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1contacts~1{contact_id}~1topics/patch/responses/422",
+      "value": {
+        "description": "validation_error."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1logs~1{log_id}/get/responses/404",
+      "value": {
+        "description": "not_found: log id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1automations/post/responses/422",
+      "value": {
+        "description": "missing_required_field, validation_error."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1automations~1{automation_id}/get/responses/404",
+      "value": {
+        "description": "not_found: automation id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1automations~1{automation_id}/patch/responses/404",
+      "value": {
+        "description": "not_found: automation id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1automations~1{automation_id}/patch/responses/422",
+      "value": {
+        "description": "validation_error."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1automations~1{automation_id}/delete/responses/404",
+      "value": {
+        "description": "not_found: automation id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1automations~1{automation_id}~1stop/post/responses/404",
+      "value": {
+        "description": "not_found: automation id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1automations~1{automation_id}~1runs/get/responses/404",
+      "value": {
+        "description": "not_found: automation id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1automations~1{automation_id}~1runs~1{run_id}/get/responses/404",
+      "value": {
+        "description": "not_found: automation or run id does not exist."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1events/post/responses/422",
+      "value": {
+        "description": "missing_required_field, validation_error."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1events~1send/post/responses/422",
+      "value": {
+        "description": "missing_required_field, validation_error."
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1events~1{identifier}/get/responses/404",
+      "value": {
+        "description": "not_found: event id does not exist."
+      }
+    }
+  ]
+}

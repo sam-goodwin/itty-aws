@@ -70,6 +70,10 @@ on:
         description: "Eas"
         type: boolean
         default: false
+      resend:
+        description: "Resend"
+        type: boolean
+        default: false
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
@@ -98,7 +102,8 @@ jobs:
              && "${{ inputs.stripe }}" != "true" \
              && "${{ inputs.supabase }}" != "true" \
              && "${{ inputs.turso }}" != "true" \
-             && "${{ inputs.workos }}" != "true" ]]; then
+             && "${{ inputs.workos }}" != "true" \
+             && "${{ inputs.resend }}" != "true" ]]; then
             echo "::error::You must select at least one SDK to nuke (or choose 'all')"
             exit 1
           fi
@@ -321,3 +326,22 @@ jobs:
   #   runs-on: ubuntu-latest
   #   steps:
   #     - TODO: no nuke script yet — run `bun run generate-nuke turso`
+
+  # ── Resend ──
+  nuke-resend:
+    needs: gate
+    if: needs.gate.outputs.run == 'true' && (github.event_name == 'merge_group' || inputs.all || inputs.resend)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+        working-directory: packages/core
+      - name: Run nuke script
+        run: bun scripts/nuke.ts
+        working-directory: packages/resend
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
