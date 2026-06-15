@@ -17,6 +17,7 @@ export const ServersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}/start",
     apiVersion: "2020-01-01",
+    longRunning: {},
   }),
 );
 export type ServersStartInput = typeof ServersStartInput.Type;
@@ -46,6 +47,7 @@ export const ServersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}/stop",
     apiVersion: "2020-01-01",
+    longRunning: {},
   }),
 );
 export type ServersStopInput = typeof ServersStopInput.Type;

@@ -175,6 +175,7 @@ export const ManufacturingDataServicesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices/{mdsResourceName}",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ManufacturingDataServicesCreateOrUpdateInput =
@@ -229,6 +230,7 @@ export const ManufacturingDataServicesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices/{mdsResourceName}",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManufacturingDataServicesDeleteInput =
@@ -572,6 +574,7 @@ export const ManufacturingDataServicesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManufacturingPlatform/manufacturingDataServices/{mdsResourceName}",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManufacturingDataServicesUpdateInput =

@@ -40,6 +40,7 @@ export const DnsForwardingRulesetsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DnsForwardingRulesetsCreateOrUpdateInput =
@@ -96,6 +97,7 @@ export const DnsForwardingRulesetsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DnsForwardingRulesetsDeleteInput =
@@ -388,6 +390,7 @@ export const DnsForwardingRulesetsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DnsForwardingRulesetsUpdateInput =
@@ -448,6 +451,7 @@ export const DnsResolverDomainListsBulkInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}/bulk",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DnsResolverDomainListsBulkInput =
@@ -525,6 +529,7 @@ export const DnsResolverDomainListsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DnsResolverDomainListsCreateOrUpdateInput =
@@ -581,6 +586,7 @@ export const DnsResolverDomainListsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DnsResolverDomainListsDeleteInput =
@@ -816,6 +822,7 @@ export const DnsResolverDomainListsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverDomainLists/{dnsResolverDomainListName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DnsResolverDomainListsUpdateInput =
@@ -889,6 +896,7 @@ export const DnsResolverPoliciesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DnsResolverPoliciesCreateOrUpdateInput =
@@ -945,6 +953,7 @@ export const DnsResolverPoliciesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DnsResolverPoliciesDeleteInput =
@@ -1219,6 +1228,7 @@ export const DnsResolverPoliciesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DnsResolverPoliciesUpdateInput =
@@ -1294,6 +1304,7 @@ export const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/virtualNetworkLinks/{dnsResolverPolicyVirtualNetworkLinkName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateInput =
@@ -1352,6 +1363,7 @@ export const DnsResolverPolicyVirtualNetworkLinksDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/virtualNetworkLinks/{dnsResolverPolicyVirtualNetworkLinkName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DnsResolverPolicyVirtualNetworkLinksDeleteInput =
@@ -1519,6 +1531,7 @@ export const DnsResolverPolicyVirtualNetworkLinksUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/virtualNetworkLinks/{dnsResolverPolicyVirtualNetworkLinkName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DnsResolverPolicyVirtualNetworkLinksUpdateInput =
@@ -1597,6 +1610,7 @@ export const DnsResolversCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DnsResolversCreateOrUpdateInput =
@@ -1654,6 +1668,7 @@ export const DnsResolversDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DnsResolversDeleteInput = typeof DnsResolversDeleteInput.Type;
@@ -1915,6 +1930,7 @@ export const DnsResolversUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DnsResolversUpdateInput = typeof DnsResolversUpdateInput.Type;
@@ -1997,6 +2013,7 @@ export const DnsSecurityRulesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DnsSecurityRulesCreateOrUpdateInput =
@@ -2055,6 +2072,7 @@ export const DnsSecurityRulesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DnsSecurityRulesDeleteInput =
@@ -2241,6 +2259,7 @@ export const DnsSecurityRulesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DnsSecurityRulesUpdateInput =
@@ -2641,6 +2660,7 @@ export const InboundEndpointsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InboundEndpointsCreateOrUpdateInput =
@@ -2699,6 +2719,7 @@ export const InboundEndpointsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InboundEndpointsDeleteInput =
@@ -2863,6 +2884,7 @@ export const InboundEndpointsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InboundEndpointsUpdateInput =
@@ -2940,6 +2962,7 @@ export const OutboundEndpointsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OutboundEndpointsCreateOrUpdateInput =
@@ -2998,6 +3021,7 @@ export const OutboundEndpointsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OutboundEndpointsDeleteInput =
@@ -3165,6 +3189,7 @@ export const OutboundEndpointsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OutboundEndpointsUpdateInput =
@@ -3240,6 +3265,7 @@ export const VirtualNetworkLinksCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks/{virtualNetworkLinkName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkLinksCreateOrUpdateInput =
@@ -3298,6 +3324,7 @@ export const VirtualNetworkLinksDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks/{virtualNetworkLinkName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkLinksDeleteInput =
@@ -3472,6 +3499,7 @@ export const VirtualNetworkLinksUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks/{virtualNetworkLinkName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkLinksUpdateInput =

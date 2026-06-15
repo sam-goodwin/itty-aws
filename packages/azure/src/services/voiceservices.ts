@@ -148,6 +148,7 @@ export const CommunicationsGatewaysCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}",
       apiVersion: "2023-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CommunicationsGatewaysCreateOrUpdateInput =
@@ -202,6 +203,7 @@ export const CommunicationsGatewaysDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}",
       apiVersion: "2023-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CommunicationsGatewaysDeleteInput =
@@ -613,6 +615,7 @@ export const TestLinesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}/testLines/{testLineName}",
       apiVersion: "2023-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type TestLinesCreateOrUpdateInput =
@@ -669,6 +672,7 @@ export const TestLinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}/testLines/{testLineName}",
     apiVersion: "2023-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type TestLinesDeleteInput = typeof TestLinesDeleteInput.Type;

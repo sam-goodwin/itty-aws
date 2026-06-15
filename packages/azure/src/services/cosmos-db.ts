@@ -109,6 +109,7 @@ export const CassandraClustersCreateUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type CassandraClustersCreateUpdateInput =
@@ -156,6 +157,7 @@ export const CassandraClustersDeallocateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/deallocate",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type CassandraClustersDeallocateInput =
@@ -191,6 +193,7 @@ export const CassandraClustersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type CassandraClustersDeleteInput =
@@ -277,6 +280,7 @@ export const CassandraClustersInvokeCommandInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/invokeCommand",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type CassandraClustersInvokeCommandInput =
@@ -419,6 +423,7 @@ export const CassandraClustersStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/start",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type CassandraClustersStartInput =
@@ -661,6 +666,7 @@ export const CassandraClustersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type CassandraClustersUpdateInput =
@@ -771,6 +777,7 @@ export const CassandraDataCentersCreateUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type CassandraDataCentersCreateUpdateInput =
@@ -809,6 +816,7 @@ export const CassandraDataCentersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type CassandraDataCentersDeleteInput =
@@ -990,6 +998,7 @@ export const CassandraDataCentersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type CassandraDataCentersUpdateInput =
@@ -1049,6 +1058,7 @@ export const CassandraResourcesCreateUpdateCassandraKeyspaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type CassandraResourcesCreateUpdateCassandraKeyspaceInput =
@@ -1138,6 +1148,7 @@ export const CassandraResourcesCreateUpdateCassandraTableInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type CassandraResourcesCreateUpdateCassandraTableInput =
@@ -1178,6 +1189,7 @@ export const CassandraResourcesDeleteCassandraKeyspaceInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type CassandraResourcesDeleteCassandraKeyspaceInput =
@@ -1212,6 +1224,7 @@ export const CassandraResourcesDeleteCassandraTableInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type CassandraResourcesDeleteCassandraTableInput =
@@ -1498,6 +1511,7 @@ export const CassandraResourcesMigrateCassandraKeyspaceToAutoscaleInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/throughputSettings/default/migrateToAutoscale",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type CassandraResourcesMigrateCassandraKeyspaceToAutoscaleInput =
@@ -1538,6 +1552,7 @@ export const CassandraResourcesMigrateCassandraKeyspaceToManualThroughputInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/throughputSettings/default/migrateToManualThroughput",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type CassandraResourcesMigrateCassandraKeyspaceToManualThroughputInput =
@@ -1580,6 +1595,7 @@ export const CassandraResourcesMigrateCassandraTableToAutoscaleInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}/throughputSettings/default/migrateToAutoscale",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type CassandraResourcesMigrateCassandraTableToAutoscaleInput =
@@ -1620,6 +1636,7 @@ export const CassandraResourcesMigrateCassandraTableToManualThroughputInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}/throughputSettings/default/migrateToManualThroughput",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type CassandraResourcesMigrateCassandraTableToManualThroughputInput =
@@ -1691,6 +1708,7 @@ export const CassandraResourcesUpdateCassandraKeyspaceThroughputInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/throughputSettings/default",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type CassandraResourcesUpdateCassandraKeyspaceThroughputInput =
@@ -1761,6 +1779,7 @@ export const CassandraResourcesUpdateCassandraTableThroughputInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}/throughputSettings/default",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type CassandraResourcesUpdateCassandraTableThroughputInput =
@@ -2554,6 +2573,7 @@ export const DatabaseAccountsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type DatabaseAccountsCreateOrUpdateInput =
@@ -2594,6 +2614,7 @@ export const DatabaseAccountsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type DatabaseAccountsDeleteInput =
@@ -2636,6 +2657,7 @@ export const DatabaseAccountsFailoverPriorityChangeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/failoverPriorityChange",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type DatabaseAccountsFailoverPriorityChangeInput =
@@ -3186,6 +3208,7 @@ export const DatabaseAccountsOfflineRegionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/offlineRegion",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type DatabaseAccountsOfflineRegionInput =
@@ -3221,6 +3244,7 @@ export const DatabaseAccountsOnlineRegionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/onlineRegion",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type DatabaseAccountsOnlineRegionInput =
@@ -3261,6 +3285,7 @@ export const DatabaseAccountsRegenerateKeyInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/regenerateKey",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type DatabaseAccountsRegenerateKeyInput =
@@ -3483,6 +3508,7 @@ export const DatabaseAccountsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type DatabaseAccountsUpdateInput =
@@ -3790,6 +3816,7 @@ export const FleetDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}",
     apiVersion: "2025-10-15",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type FleetDeleteInput = typeof FleetDeleteInput.Type;
@@ -4018,6 +4045,7 @@ export const FleetspaceAccountCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
       apiVersion: "2025-10-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FleetspaceAccountCreateInput =
@@ -4071,6 +4099,7 @@ export const FleetspaceAccountDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
       apiVersion: "2025-10-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FleetspaceAccountDeleteInput =
@@ -4249,6 +4278,7 @@ export const FleetspaceCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
     apiVersion: "2025-10-15",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type FleetspaceCreateInput = typeof FleetspaceCreateInput.Type;
@@ -4298,6 +4328,7 @@ export const FleetspaceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
     apiVersion: "2025-10-15",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type FleetspaceDeleteInput = typeof FleetspaceDeleteInput.Type;
@@ -4462,6 +4493,7 @@ export const FleetspaceUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
     apiVersion: "2025-10-15",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type FleetspaceUpdateInput = typeof FleetspaceUpdateInput.Type;
@@ -4600,6 +4632,7 @@ export const GremlinResourcesCreateUpdateGremlinDatabaseInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type GremlinResourcesCreateUpdateGremlinDatabaseInput =
@@ -4791,6 +4824,7 @@ export const GremlinResourcesCreateUpdateGremlinGraphInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type GremlinResourcesCreateUpdateGremlinGraphInput =
@@ -4831,6 +4865,7 @@ export const GremlinResourcesDeleteGremlinDatabaseInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type GremlinResourcesDeleteGremlinDatabaseInput =
@@ -4865,6 +4900,7 @@ export const GremlinResourcesDeleteGremlinGraphInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type GremlinResourcesDeleteGremlinGraphInput =
@@ -5151,6 +5187,7 @@ export const GremlinResourcesMigrateGremlinDatabaseToAutoscaleInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/throughputSettings/default/migrateToAutoscale",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type GremlinResourcesMigrateGremlinDatabaseToAutoscaleInput =
@@ -5191,6 +5228,7 @@ export const GremlinResourcesMigrateGremlinDatabaseToManualThroughputInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/throughputSettings/default/migrateToManualThroughput",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type GremlinResourcesMigrateGremlinDatabaseToManualThroughputInput =
@@ -5232,6 +5270,7 @@ export const GremlinResourcesMigrateGremlinGraphToAutoscaleInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/throughputSettings/default/migrateToAutoscale",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type GremlinResourcesMigrateGremlinGraphToAutoscaleInput =
@@ -5272,6 +5311,7 @@ export const GremlinResourcesMigrateGremlinGraphToManualThroughputInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/throughputSettings/default/migrateToManualThroughput",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type GremlinResourcesMigrateGremlinGraphToManualThroughputInput =
@@ -5316,6 +5356,7 @@ export const GremlinResourcesRetrieveContinuousBackupInformationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/retrieveContinuousBackupInformation",
       apiVersion: "2025-10-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GremlinResourcesRetrieveContinuousBackupInformationInput =
@@ -5389,6 +5430,7 @@ export const GremlinResourcesUpdateGremlinDatabaseThroughputInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/throughputSettings/default",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type GremlinResourcesUpdateGremlinDatabaseThroughputInput =
@@ -5459,6 +5501,7 @@ export const GremlinResourcesUpdateGremlinGraphThroughputInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}/throughputSettings/default",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type GremlinResourcesUpdateGremlinGraphThroughputInput =
@@ -5614,6 +5657,7 @@ export const MongoDBResourcesCreateUpdateMongoDBCollectionInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type MongoDBResourcesCreateUpdateMongoDBCollectionInput =
@@ -5682,6 +5726,7 @@ export const MongoDBResourcesCreateUpdateMongoDBDatabaseInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type MongoDBResourcesCreateUpdateMongoDBDatabaseInput =
@@ -5751,6 +5796,7 @@ export const MongoDBResourcesCreateUpdateMongoRoleDefinitionInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions/{mongoRoleDefinitionId}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type MongoDBResourcesCreateUpdateMongoRoleDefinitionInput =
@@ -5808,6 +5854,7 @@ export const MongoDBResourcesCreateUpdateMongoUserDefinitionInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions/{mongoUserDefinitionId}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type MongoDBResourcesCreateUpdateMongoUserDefinitionInput =
@@ -5847,6 +5894,7 @@ export const MongoDBResourcesDeleteMongoDBCollectionInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type MongoDBResourcesDeleteMongoDBCollectionInput =
@@ -5881,6 +5929,7 @@ export const MongoDBResourcesDeleteMongoDBDatabaseInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type MongoDBResourcesDeleteMongoDBDatabaseInput =
@@ -5916,6 +5965,7 @@ export const MongoDBResourcesDeleteMongoRoleDefinitionInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions/{mongoRoleDefinitionId}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type MongoDBResourcesDeleteMongoRoleDefinitionInput =
@@ -5952,6 +6002,7 @@ export const MongoDBResourcesDeleteMongoUserDefinitionInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions/{mongoUserDefinitionId}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type MongoDBResourcesDeleteMongoUserDefinitionInput =
@@ -6411,6 +6462,7 @@ export const MongoDBResourcesMigrateMongoDBCollectionToAutoscaleInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/throughputSettings/default/migrateToAutoscale",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type MongoDBResourcesMigrateMongoDBCollectionToAutoscaleInput =
@@ -6451,6 +6503,7 @@ export const MongoDBResourcesMigrateMongoDBCollectionToManualThroughputInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/throughputSettings/default/migrateToManualThroughput",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type MongoDBResourcesMigrateMongoDBCollectionToManualThroughputInput =
@@ -6493,6 +6546,7 @@ export const MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/throughputSettings/default/migrateToAutoscale",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type MongoDBResourcesMigrateMongoDBDatabaseToAutoscaleInput =
@@ -6533,6 +6587,7 @@ export const MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/throughputSettings/default/migrateToManualThroughput",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type MongoDBResourcesMigrateMongoDBDatabaseToManualThroughputInput =
@@ -6578,6 +6633,7 @@ export const MongoDBResourcesRetrieveContinuousBackupInformationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/retrieveContinuousBackupInformation",
       apiVersion: "2025-10-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MongoDBResourcesRetrieveContinuousBackupInformationInput =
@@ -6651,6 +6707,7 @@ export const MongoDBResourcesUpdateMongoDBCollectionThroughputInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}/throughputSettings/default",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type MongoDBResourcesUpdateMongoDBCollectionThroughputInput =
@@ -6721,6 +6778,7 @@ export const MongoDBResourcesUpdateMongoDBDatabaseThroughputInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/throughputSettings/default",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type MongoDBResourcesUpdateMongoDBDatabaseThroughputInput =
@@ -6764,6 +6822,7 @@ export const NotebookWorkspacesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type NotebookWorkspacesCreateOrUpdateInput =
@@ -6802,6 +6861,7 @@ export const NotebookWorkspacesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type NotebookWorkspacesDeleteInput =
@@ -6956,6 +7016,7 @@ export const NotebookWorkspacesRegenerateAuthTokenInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}/regenerateAuthToken",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type NotebookWorkspacesRegenerateAuthTokenInput =
@@ -6990,6 +7051,7 @@ export const NotebookWorkspacesStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/notebookWorkspaces/{notebookWorkspaceName}/start",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type NotebookWorkspacesStartInput =
@@ -7452,6 +7514,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -7490,6 +7553,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -8786,6 +8850,7 @@ export const ServiceCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/services/{serviceName}",
     apiVersion: "2025-10-15",
+    longRunning: {},
   }),
 );
 export type ServiceCreateInput = typeof ServiceCreateInput.Type;
@@ -8819,6 +8884,7 @@ export const ServiceDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/services/{serviceName}",
     apiVersion: "2025-10-15",
+    longRunning: {},
   }),
 );
 export type ServiceDeleteInput = typeof ServiceDeleteInput.Type;
@@ -8936,6 +9002,7 @@ export const SqlResourcesCreateUpdateClientEncryptionKeyInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/clientEncryptionKeys/{clientEncryptionKeyName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type SqlResourcesCreateUpdateClientEncryptionKeyInput =
@@ -9182,6 +9249,7 @@ export const SqlResourcesCreateUpdateSqlContainerInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type SqlResourcesCreateUpdateSqlContainerInput =
@@ -9250,6 +9318,7 @@ export const SqlResourcesCreateUpdateSqlDatabaseInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type SqlResourcesCreateUpdateSqlDatabaseInput =
@@ -9298,6 +9367,7 @@ export const SqlResourcesCreateUpdateSqlRoleAssignmentInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments/{roleAssignmentId}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type SqlResourcesCreateUpdateSqlRoleAssignmentInput =
@@ -9353,6 +9423,7 @@ export const SqlResourcesCreateUpdateSqlRoleDefinitionInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions/{roleDefinitionId}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type SqlResourcesCreateUpdateSqlRoleDefinitionInput =
@@ -9413,6 +9484,7 @@ export const SqlResourcesCreateUpdateSqlStoredProcedureInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/storedProcedures/{storedProcedureName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type SqlResourcesCreateUpdateSqlStoredProcedureInput =
@@ -9478,6 +9550,7 @@ export const SqlResourcesCreateUpdateSqlTriggerInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers/{triggerName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type SqlResourcesCreateUpdateSqlTriggerInput =
@@ -9539,6 +9612,7 @@ export const SqlResourcesCreateUpdateSqlUserDefinedFunctionInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/userDefinedFunctions/{userDefinedFunctionName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type SqlResourcesCreateUpdateSqlUserDefinedFunctionInput =
@@ -9579,6 +9653,7 @@ export const SqlResourcesDeleteSqlContainerInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type SqlResourcesDeleteSqlContainerInput =
@@ -9613,6 +9688,7 @@ export const SqlResourcesDeleteSqlDatabaseInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type SqlResourcesDeleteSqlDatabaseInput =
@@ -9648,6 +9724,7 @@ export const SqlResourcesDeleteSqlRoleAssignmentInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments/{roleAssignmentId}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type SqlResourcesDeleteSqlRoleAssignmentInput =
@@ -9684,6 +9761,7 @@ export const SqlResourcesDeleteSqlRoleDefinitionInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions/{roleDefinitionId}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type SqlResourcesDeleteSqlRoleDefinitionInput =
@@ -9719,6 +9797,7 @@ export const SqlResourcesDeleteSqlStoredProcedureInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/storedProcedures/{storedProcedureName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type SqlResourcesDeleteSqlStoredProcedureInput =
@@ -9753,6 +9832,7 @@ export const SqlResourcesDeleteSqlTriggerInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/triggers/{triggerName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type SqlResourcesDeleteSqlTriggerInput =
@@ -9787,6 +9867,7 @@ export const SqlResourcesDeleteSqlUserDefinedFunctionInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/userDefinedFunctions/{userDefinedFunctionName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type SqlResourcesDeleteSqlUserDefinedFunctionInput =
@@ -10589,6 +10670,7 @@ export const SqlResourcesMigrateSqlContainerToAutoscaleInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/throughputSettings/default/migrateToAutoscale",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type SqlResourcesMigrateSqlContainerToAutoscaleInput =
@@ -10629,6 +10711,7 @@ export const SqlResourcesMigrateSqlContainerToManualThroughputInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/throughputSettings/default/migrateToManualThroughput",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type SqlResourcesMigrateSqlContainerToManualThroughputInput =
@@ -10669,6 +10752,7 @@ export const SqlResourcesMigrateSqlDatabaseToAutoscaleInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/throughputSettings/default/migrateToAutoscale",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type SqlResourcesMigrateSqlDatabaseToAutoscaleInput =
@@ -10709,6 +10793,7 @@ export const SqlResourcesMigrateSqlDatabaseToManualThroughputInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/throughputSettings/default/migrateToManualThroughput",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type SqlResourcesMigrateSqlDatabaseToManualThroughputInput =
@@ -10753,6 +10838,7 @@ export const SqlResourcesRetrieveContinuousBackupInformationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/retrieveContinuousBackupInformation",
       apiVersion: "2025-10-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SqlResourcesRetrieveContinuousBackupInformationInput =
@@ -10826,6 +10912,7 @@ export const SqlResourcesUpdateSqlContainerThroughputInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/containers/{containerName}/throughputSettings/default",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type SqlResourcesUpdateSqlContainerThroughputInput =
@@ -10896,6 +10983,7 @@ export const SqlResourcesUpdateSqlDatabaseThroughputInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/throughputSettings/default",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type SqlResourcesUpdateSqlDatabaseThroughputInput =
@@ -10964,6 +11052,7 @@ export const TableResourcesCreateUpdateTableInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type TableResourcesCreateUpdateTableInput =
@@ -11004,6 +11093,7 @@ export const TableResourcesDeleteTableInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type TableResourcesDeleteTableInput =
@@ -11167,6 +11257,7 @@ export const TableResourcesMigrateTableToAutoscaleInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/throughputSettings/default/migrateToAutoscale",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type TableResourcesMigrateTableToAutoscaleInput =
@@ -11207,6 +11298,7 @@ export const TableResourcesMigrateTableToManualThroughputInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/throughputSettings/default/migrateToManualThroughput",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type TableResourcesMigrateTableToManualThroughputInput =
@@ -11250,6 +11342,7 @@ export const TableResourcesRetrieveContinuousBackupInformationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/retrieveContinuousBackupInformation",
       apiVersion: "2025-10-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type TableResourcesRetrieveContinuousBackupInformationInput =
@@ -11322,6 +11415,7 @@ export const TableResourcesUpdateTableThroughputInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tables/{tableName}/throughputSettings/default",
       apiVersion: "2025-10-15",
+      longRunning: {},
     }),
   );
 export type TableResourcesUpdateTableThroughputInput =

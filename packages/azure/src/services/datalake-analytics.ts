@@ -125,6 +125,7 @@ export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}",
     apiVersion: "2016-11-01",
+    longRunning: {},
   }),
 );
 export type AccountsCreateInput = typeof AccountsCreateInput.Type;
@@ -155,6 +156,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}",
     apiVersion: "2016-11-01",
+    longRunning: {},
   }),
 );
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
@@ -396,6 +398,7 @@ export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeAnalytics/accounts/{accountName}",
     apiVersion: "2016-11-01",
+    longRunning: {},
   }),
 );
 export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;

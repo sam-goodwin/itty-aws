@@ -57,6 +57,7 @@ export const CustomLocationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{resourceName}",
       apiVersion: "2021-08-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CustomLocationsCreateOrUpdateInput =
@@ -97,6 +98,7 @@ export const CustomLocationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{resourceName}",
       apiVersion: "2021-08-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CustomLocationsDeleteInput = typeof CustomLocationsDeleteInput.Type;

@@ -237,6 +237,7 @@ export const PoolsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
       apiVersion: "2025-09-20",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PoolsCreateOrUpdateInput = typeof PoolsCreateOrUpdateInput.Type;
@@ -287,6 +288,7 @@ export const PoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
     apiVersion: "2025-09-20",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type PoolsDeleteInput = typeof PoolsDeleteInput.Type;
@@ -602,6 +604,7 @@ export const PoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevOpsInfrastructure/pools/{poolName}",
     apiVersion: "2025-09-20",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type PoolsUpdateInput = typeof PoolsUpdateInput.Type;

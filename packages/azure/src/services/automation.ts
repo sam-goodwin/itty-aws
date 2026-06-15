@@ -2378,6 +2378,7 @@ export const DscNodeConfigurationCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/nodeConfigurations/{nodeConfigurationName}",
       apiVersion: "2024-10-23",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DscNodeConfigurationCreateOrUpdateInput =
@@ -5394,6 +5395,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-10-23",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -5450,6 +5452,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-10-23",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -6510,6 +6513,7 @@ export const RunbookDraftReplaceContentInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/draft/content",
       apiVersion: "2024-10-23",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RunbookDraftReplaceContentInput =
@@ -6794,6 +6798,7 @@ export const RunbookPublishInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runbooks/{runbookName}/publish",
     apiVersion: "2024-10-23",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type RunbookPublishInput = typeof RunbookPublishInput.Type;

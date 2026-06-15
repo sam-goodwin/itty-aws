@@ -18,6 +18,7 @@ export const FeaturesDisableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features/{featureName}/disable",
     apiVersion: "2026-04-30",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type FeaturesDisableInput = typeof FeaturesDisableInput.Type;
@@ -103,6 +104,7 @@ export const FeaturesEnableInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/features/{featureName}/enable",
     apiVersion: "2026-04-30",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type FeaturesEnableInput = typeof FeaturesEnableInput.Type;

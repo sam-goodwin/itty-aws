@@ -23,6 +23,7 @@ export const MoveCollectionsBulkRemoveInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/bulkRemove",
       apiVersion: "2023-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type MoveCollectionsBulkRemoveInput =
@@ -93,6 +94,7 @@ export const MoveCollectionsCommitInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/commit",
       apiVersion: "2023-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type MoveCollectionsCommitInput = typeof MoveCollectionsCommitInput.Type;
@@ -295,6 +297,7 @@ export const MoveCollectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}",
       apiVersion: "2023-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type MoveCollectionsDeleteInput = typeof MoveCollectionsDeleteInput.Type;
@@ -364,6 +367,7 @@ export const MoveCollectionsDiscardInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/discard",
       apiVersion: "2023-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type MoveCollectionsDiscardInput =
@@ -514,6 +518,7 @@ export const MoveCollectionsInitiateMoveInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/initiateMove",
       apiVersion: "2023-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type MoveCollectionsInitiateMoveInput =
@@ -831,6 +836,7 @@ export const MoveCollectionsPrepareInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/prepare",
       apiVersion: "2023-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type MoveCollectionsPrepareInput =
@@ -895,6 +901,7 @@ export const MoveCollectionsResolveDependenciesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/resolveDependencies",
       apiVersion: "2023-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type MoveCollectionsResolveDependenciesInput =
@@ -1181,6 +1188,7 @@ export const MoveResourcesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}",
       apiVersion: "2023-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type MoveResourcesCreateInput = typeof MoveResourcesCreateInput.Type;
@@ -1334,6 +1342,7 @@ export const MoveResourcesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}",
       apiVersion: "2023-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type MoveResourcesDeleteInput = typeof MoveResourcesDeleteInput.Type;

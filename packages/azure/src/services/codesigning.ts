@@ -77,6 +77,7 @@ export const CertificateProfilesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles/{profileName}",
       apiVersion: "2025-10-13",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CertificateProfilesCreateInput =
@@ -134,6 +135,7 @@ export const CertificateProfilesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles/{profileName}",
       apiVersion: "2025-10-13",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CertificateProfilesDeleteInput =
@@ -403,6 +405,7 @@ export const CodeSigningAccountsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
       apiVersion: "2025-10-13",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CodeSigningAccountsCreateInput =
@@ -458,6 +461,7 @@ export const CodeSigningAccountsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
       apiVersion: "2025-10-13",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CodeSigningAccountsDeleteInput =
@@ -692,6 +696,7 @@ export const CodeSigningAccountsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}",
       apiVersion: "2025-10-13",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CodeSigningAccountsUpdateInput =

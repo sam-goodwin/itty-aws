@@ -69,6 +69,7 @@ export const ReportGenerateReportInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}/reports/{discoveryResourceName}/generateReport",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReportGenerateReportInput = typeof ReportGenerateReportInput.Type;
@@ -608,6 +609,7 @@ export const StorageDiscoveryWorkspacesReportInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageDiscovery/storageDiscoveryWorkspaces/{storageDiscoveryWorkspaceName}/report",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageDiscoveryWorkspacesReportInput =

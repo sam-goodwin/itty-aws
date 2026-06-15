@@ -197,6 +197,7 @@ export const StorageTasksCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type StorageTasksCreateInput = typeof StorageTasksCreateInput.Type;
@@ -248,6 +249,7 @@ export const StorageTasksDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type StorageTasksDeleteInput = typeof StorageTasksDeleteInput.Type;
@@ -673,6 +675,7 @@ export const StorageTasksStopAllAssignmentsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}/stopAllAssignments",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type StorageTasksStopAllAssignmentsInput =
@@ -798,6 +801,7 @@ export const StorageTasksUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageActions/storageTasks/{storageTaskName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type StorageTasksUpdateInput = typeof StorageTasksUpdateInput.Type;

@@ -54,6 +54,7 @@ export const AuthorizedApplicationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications/{applicationId}",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AuthorizedApplicationsCreateOrUpdateInput =
@@ -434,6 +435,7 @@ export const CustomRolloutsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CustomRolloutsCreateOrUpdateInput =
@@ -829,6 +831,7 @@ export const DefaultRolloutsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DefaultRolloutsCreateOrUpdateInput =
@@ -3274,6 +3277,7 @@ export const ProviderMonitorSettingsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProviderMonitorSettingsCreateInput =
@@ -4016,6 +4020,7 @@ export const ProviderRegistrationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProviderRegistrationsCreateOrUpdateInput =
@@ -4285,6 +4290,7 @@ export const ResourceActionsDeleteResourcesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourceActions/{resourceActionName}/deleteResources",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ResourceActionsDeleteResourcesInput =
@@ -5146,6 +5152,7 @@ export const ResourceTypeRegistrationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ResourceTypeRegistrationsCreateOrUpdateInput =
@@ -5200,6 +5207,7 @@ export const ResourceTypeRegistrationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ResourceTypeRegistrationsDeleteInput =

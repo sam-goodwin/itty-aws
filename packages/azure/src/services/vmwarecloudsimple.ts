@@ -274,6 +274,7 @@ export const DedicatedCloudNodesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudNodes/{dedicatedCloudNodeName}",
       apiVersion: "2019-04-01",
+      longRunning: {},
     }),
   );
 export type DedicatedCloudNodesCreateOrUpdateInput =
@@ -762,6 +763,7 @@ export const DedicatedCloudServicesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/dedicatedCloudServices/{dedicatedCloudServiceName}",
       apiVersion: "2019-04-01",
+      longRunning: {},
     }),
   );
 export type DedicatedCloudServicesDeleteInput =
@@ -1858,6 +1860,7 @@ export const VirtualMachinesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines/{virtualMachineName}",
       apiVersion: "2019-04-01",
+      longRunning: {},
     }),
   );
 export type VirtualMachinesCreateOrUpdateInput =
@@ -2021,6 +2024,7 @@ export const VirtualMachinesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines/{virtualMachineName}",
       apiVersion: "2019-04-01",
+      longRunning: {},
     }),
   );
 export type VirtualMachinesDeleteInput = typeof VirtualMachinesDeleteInput.Type;
@@ -2566,6 +2570,7 @@ export const VirtualMachinesStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines/{virtualMachineName}/start",
       apiVersion: "2019-04-01",
+      longRunning: {},
     }),
   );
 export type VirtualMachinesStartInput = typeof VirtualMachinesStartInput.Type;
@@ -2601,6 +2606,7 @@ export const VirtualMachinesStopInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines/{virtualMachineName}/stop",
       apiVersion: "2019-04-01",
+      longRunning: {},
     }),
   );
 export type VirtualMachinesStopInput = typeof VirtualMachinesStopInput.Type;
@@ -2633,6 +2639,7 @@ export const VirtualMachinesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VMwareCloudSimple/virtualMachines/{virtualMachineName}",
       apiVersion: "2019-04-01",
+      longRunning: {},
     }),
   );
 export type VirtualMachinesUpdateInput = typeof VirtualMachinesUpdateInput.Type;

@@ -224,6 +224,7 @@ export const StandbyContainerGroupPoolsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}",
       apiVersion: "2025-10-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type StandbyContainerGroupPoolsCreateOrUpdateInput =
@@ -278,6 +279,7 @@ export const StandbyContainerGroupPoolsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}",
       apiVersion: "2025-10-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StandbyContainerGroupPoolsDeleteInput =
@@ -738,6 +740,7 @@ export const StandbyVirtualMachinePoolsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}",
       apiVersion: "2025-10-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type StandbyVirtualMachinePoolsCreateOrUpdateInput =
@@ -792,6 +795,7 @@ export const StandbyVirtualMachinePoolsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}",
       apiVersion: "2025-10-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StandbyVirtualMachinePoolsDeleteInput =

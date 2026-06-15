@@ -123,6 +123,7 @@ export const AgentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents/{agentName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type AgentsDeleteInput = typeof AgentsDeleteInput.Type;
@@ -413,6 +414,7 @@ export const ConnectionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/connections/{connectionName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ConnectionsDeleteInput = typeof ConnectionsDeleteInput.Type;
@@ -648,6 +650,7 @@ export const EndpointsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/endpoints/{endpointName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type EndpointsDeleteInput = typeof EndpointsDeleteInput.Type;
@@ -1024,6 +1027,7 @@ export const JobDefinitionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type JobDefinitionsDeleteInput = typeof JobDefinitionsDeleteInput.Type;
@@ -1589,6 +1593,7 @@ export const ProjectsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ProjectsDeleteInput = typeof ProjectsDeleteInput.Type;
@@ -1848,6 +1853,7 @@ export const StorageMoversDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StorageMoversDeleteInput = typeof StorageMoversDeleteInput.Type;

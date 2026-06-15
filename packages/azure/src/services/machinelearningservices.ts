@@ -82,6 +82,7 @@ export const BatchDeploymentsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments/{deploymentName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type BatchDeploymentsCreateOrUpdateInput =
@@ -140,6 +141,7 @@ export const BatchDeploymentsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments/{deploymentName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BatchDeploymentsDeleteInput =
@@ -322,6 +324,7 @@ export const BatchDeploymentsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}/deployments/{deploymentName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BatchDeploymentsUpdateInput =
@@ -434,6 +437,7 @@ export const BatchEndpointsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type BatchEndpointsCreateOrUpdateInput =
@@ -492,6 +496,7 @@ export const BatchEndpointsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BatchEndpointsDeleteInput = typeof BatchEndpointsDeleteInput.Type;
@@ -715,6 +720,7 @@ export const BatchEndpointsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/batchEndpoints/{endpointName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BatchEndpointsUpdateInput = typeof BatchEndpointsUpdateInput.Type;
@@ -783,6 +789,7 @@ export const CapabilityHostsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/capabilityHosts/{name}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type CapabilityHostsCreateOrUpdateInput =
@@ -839,6 +846,7 @@ export const CapabilityHostsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/capabilityHosts/{name}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CapabilityHostsDeleteInput = typeof CapabilityHostsDeleteInput.Type;
@@ -1463,6 +1471,7 @@ export const CodeVersionsPublishInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/codes/{name}/versions/{version}/publish",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CodeVersionsPublishInput = typeof CodeVersionsPublishInput.Type;
@@ -1994,6 +2003,7 @@ export const ComponentVersionsPublishInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/components/{name}/versions/{version}/publish",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ComponentVersionsPublishInput =
@@ -2130,6 +2140,7 @@ export const ComputeCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ComputeCreateOrUpdateInput = typeof ComputeCreateOrUpdateInput.Type;
@@ -2186,6 +2197,7 @@ export const ComputeDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ComputeDeleteInput = typeof ComputeDeleteInput.Type;
@@ -2431,6 +2443,7 @@ export const ComputeRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/restart",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ComputeRestartInput = typeof ComputeRestartInput.Type;
@@ -2464,6 +2477,7 @@ export const ComputeStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/start",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ComputeStartInput = typeof ComputeStartInput.Type;
@@ -2497,6 +2511,7 @@ export const ComputeStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}/stop",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ComputeStopInput = typeof ComputeStopInput.Type;
@@ -2545,6 +2560,7 @@ export const ComputeUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ComputeUpdateInput = typeof ComputeUpdateInput.Type;
@@ -3346,6 +3362,7 @@ export const DataVersionsPublishInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/data/{name}/versions/{version}/publish",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DataVersionsPublishInput = typeof DataVersionsPublishInput.Type;
@@ -3880,6 +3897,7 @@ export const EnvironmentVersionsPublishInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/environments/{name}/versions/{version}/publish",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type EnvironmentVersionsPublishInput =
@@ -3933,6 +3951,7 @@ export const FeaturesetContainersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type FeaturesetContainersCreateOrUpdateInput =
@@ -3989,6 +4008,7 @@ export const FeaturesetContainersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FeaturesetContainersDeleteInput =
@@ -4199,6 +4219,7 @@ export const FeaturesetVersionsBackfillInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions/{version}/backfill",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FeaturesetVersionsBackfillInput =
@@ -4255,6 +4276,7 @@ export const FeaturesetVersionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions/{version}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type FeaturesetVersionsCreateOrUpdateInput =
@@ -4313,6 +4335,7 @@ export const FeaturesetVersionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featuresets/{name}/versions/{version}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FeaturesetVersionsDeleteInput =
@@ -4643,6 +4666,7 @@ export const FeaturestoreEntityContainersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type FeaturestoreEntityContainersCreateOrUpdateInput =
@@ -4699,6 +4723,7 @@ export const FeaturestoreEntityContainersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FeaturestoreEntityContainersDeleteInput =
@@ -4892,6 +4917,7 @@ export const FeaturestoreEntityVersionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}/versions/{version}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type FeaturestoreEntityVersionsCreateOrUpdateInput =
@@ -4950,6 +4976,7 @@ export const FeaturestoreEntityVersionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/featurestoreEntities/{name}/versions/{version}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FeaturestoreEntityVersionsDeleteInput =
@@ -5137,6 +5164,7 @@ export const JobsCancelInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs/{id}/cancel",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type JobsCancelInput = typeof JobsCancelInput.Type;
@@ -5240,6 +5268,7 @@ export const JobsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs/{id}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type JobsDeleteInput = typeof JobsDeleteInput.Type;
@@ -5391,6 +5420,7 @@ export const ManagedNetworkProvisionsProvisionManagedNetworkInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/provisionManagedNetwork",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedNetworkProvisionsProvisionManagedNetworkInput =
@@ -5453,6 +5483,7 @@ export const ManagedNetworkSettingsRuleCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/outboundRules/{ruleName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedNetworkSettingsRuleCreateOrUpdateInput =
@@ -5509,6 +5540,7 @@ export const ManagedNetworkSettingsRuleDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/outboundRules/{ruleName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedNetworkSettingsRuleDeleteInput =
@@ -5695,6 +5727,7 @@ export const MarketplaceSubscriptionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/marketplaceSubscriptions/{name}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type MarketplaceSubscriptionsCreateOrUpdateInput =
@@ -5751,6 +5784,7 @@ export const MarketplaceSubscriptionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/marketplaceSubscriptions/{name}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MarketplaceSubscriptionsDeleteInput =
@@ -6410,6 +6444,7 @@ export const ModelVersionsPublishInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/models/{name}/versions/{version}/publish",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ModelVersionsPublishInput = typeof ModelVersionsPublishInput.Type;
@@ -6506,6 +6541,7 @@ export const OnlineDeploymentsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type OnlineDeploymentsCreateOrUpdateInput =
@@ -6564,6 +6600,7 @@ export const OnlineDeploymentsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OnlineDeploymentsDeleteInput =
@@ -6870,6 +6907,7 @@ export const OnlineDeploymentsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/deployments/{deploymentName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OnlineDeploymentsUpdateInput =
@@ -6982,6 +7020,7 @@ export const OnlineEndpointsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type OnlineEndpointsCreateOrUpdateInput =
@@ -7038,6 +7077,7 @@ export const OnlineEndpointsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OnlineEndpointsDeleteInput = typeof OnlineEndpointsDeleteInput.Type;
@@ -7306,6 +7346,7 @@ export const OnlineEndpointsRegenerateKeysInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}/regenerateKeys",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OnlineEndpointsRegenerateKeysInput =
@@ -7362,6 +7403,7 @@ export const OnlineEndpointsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/onlineEndpoints/{endpointName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OnlineEndpointsUpdateInput = typeof OnlineEndpointsUpdateInput.Type;
@@ -8116,6 +8158,7 @@ export const RegistriesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RegistriesCreateOrUpdateInput =
@@ -8170,6 +8213,7 @@ export const RegistriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type RegistriesDeleteInput = typeof RegistriesDeleteInput.Type;
@@ -8540,6 +8584,7 @@ export const RegistriesRemoveRegionsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/removeRegions",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RegistriesRemoveRegionsInput =
@@ -8697,6 +8742,7 @@ export const RegistryCodeContainersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type RegistryCodeContainersCreateOrUpdateInput =
@@ -8753,6 +8799,7 @@ export const RegistryCodeContainersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RegistryCodeContainersDeleteInput =
@@ -8994,6 +9041,7 @@ export const RegistryCodeVersionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}/versions/{version}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type RegistryCodeVersionsCreateOrUpdateInput =
@@ -9052,6 +9100,7 @@ export const RegistryCodeVersionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/codes/{codeName}/versions/{version}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RegistryCodeVersionsDeleteInput =
@@ -9242,6 +9291,7 @@ export const RegistryComponentContainersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type RegistryComponentContainersCreateOrUpdateInput =
@@ -9298,6 +9348,7 @@ export const RegistryComponentContainersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RegistryComponentContainersDeleteInput =
@@ -9477,6 +9528,7 @@ export const RegistryComponentVersionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}/versions/{version}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type RegistryComponentVersionsCreateOrUpdateInput =
@@ -9535,6 +9587,7 @@ export const RegistryComponentVersionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/components/{componentName}/versions/{version}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RegistryComponentVersionsDeleteInput =
@@ -9722,6 +9775,7 @@ export const RegistryDataContainersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type RegistryDataContainersCreateOrUpdateInput =
@@ -9778,6 +9832,7 @@ export const RegistryDataContainersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RegistryDataContainersDeleteInput =
@@ -10082,6 +10137,7 @@ export const RegistryDataVersionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}/versions/{version}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type RegistryDataVersionsCreateOrUpdateInput =
@@ -10140,6 +10196,7 @@ export const RegistryDataVersionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/data/{name}/versions/{version}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RegistryDataVersionsDeleteInput =
@@ -10337,6 +10394,7 @@ export const RegistryEnvironmentContainersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type RegistryEnvironmentContainersCreateOrUpdateInput =
@@ -10393,6 +10451,7 @@ export const RegistryEnvironmentContainersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RegistryEnvironmentContainersDeleteInput =
@@ -10576,6 +10635,7 @@ export const RegistryEnvironmentVersionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}/versions/{version}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type RegistryEnvironmentVersionsCreateOrUpdateInput =
@@ -10634,6 +10694,7 @@ export const RegistryEnvironmentVersionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/environments/{environmentName}/versions/{version}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RegistryEnvironmentVersionsDeleteInput =
@@ -10825,6 +10886,7 @@ export const RegistryModelContainersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type RegistryModelContainersCreateOrUpdateInput =
@@ -10881,6 +10943,7 @@ export const RegistryModelContainersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RegistryModelContainersDeleteInput =
@@ -11126,6 +11189,7 @@ export const RegistryModelVersionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}/versions/{version}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type RegistryModelVersionsCreateOrUpdateInput =
@@ -11184,6 +11248,7 @@ export const RegistryModelVersionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/registries/{registryName}/models/{modelName}/versions/{version}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RegistryModelVersionsDeleteInput =
@@ -11386,6 +11451,7 @@ export const SchedulesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/schedules/{name}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type SchedulesCreateOrUpdateInput =
@@ -11442,6 +11508,7 @@ export const SchedulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/schedules/{name}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SchedulesDeleteInput = typeof SchedulesDeleteInput.Type;
@@ -11671,6 +11738,7 @@ export const ServerlessEndpointsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type ServerlessEndpointsCreateOrUpdateInput =
@@ -11727,6 +11795,7 @@ export const ServerlessEndpointsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerlessEndpointsDeleteInput =
@@ -11939,6 +12008,7 @@ export const ServerlessEndpointsRegenerateKeysInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}/regenerateKeys",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerlessEndpointsRegenerateKeysInput =
@@ -12009,6 +12079,7 @@ export const ServerlessEndpointsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/serverlessEndpoints/{name}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerlessEndpointsUpdateInput =
@@ -13165,6 +13236,7 @@ export const WorkspacesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkspacesCreateOrUpdateInput =
@@ -13220,6 +13292,7 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
@@ -13279,6 +13352,7 @@ export const WorkspacesDiagnoseInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/diagnose",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkspacesDiagnoseInput = typeof WorkspacesDiagnoseInput.Type;
@@ -13849,6 +13923,7 @@ export const WorkspacesPrepareNotebookInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/prepareNotebook",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkspacesPrepareNotebookInput =
@@ -13896,6 +13971,7 @@ export const WorkspacesResyncKeysInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/resyncKeys",
       apiVersion: "2025-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkspacesResyncKeysInput = typeof WorkspacesResyncKeysInput.Type;
@@ -14073,6 +14149,7 @@ export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}",
     apiVersion: "2025-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;

@@ -518,6 +518,7 @@ export const ConnectorsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors/{connectorName}",
       apiVersion: "2017-04-26",
+      longRunning: {},
     }),
   );
 export type ConnectorsCreateOrUpdateInput =
@@ -557,6 +558,7 @@ export const ConnectorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/connectors/{connectorName}",
     apiVersion: "2017-04-26",
+    longRunning: {},
   }),
 );
 export type ConnectorsDeleteInput = typeof ConnectorsDeleteInput.Type;
@@ -717,6 +719,7 @@ export const HubsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}",
     apiVersion: "2017-04-26",
+    longRunning: {},
   }),
 );
 export type HubsDeleteInput = typeof HubsDeleteInput.Type;
@@ -1021,6 +1024,7 @@ export const InteractionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/interactions/{interactionName}",
       apiVersion: "2017-04-26",
+      longRunning: {},
     }),
   );
 export type InteractionsCreateOrUpdateInput =
@@ -1301,6 +1305,7 @@ export const KpiCreateOrUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/kpi/{kpiName}",
     apiVersion: "2017-04-26",
+    longRunning: {},
   }),
 );
 export type KpiCreateOrUpdateInput = typeof KpiCreateOrUpdateInput.Type;
@@ -1336,6 +1341,7 @@ export const KpiDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/kpi/{kpiName}",
     apiVersion: "2017-04-26",
+    longRunning: {},
   }),
 );
 export type KpiDeleteInput = typeof KpiDeleteInput.Type;
@@ -1528,6 +1534,7 @@ export const LinksCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/links/{linkName}",
       apiVersion: "2017-04-26",
+      longRunning: {},
     }),
   );
 export type LinksCreateOrUpdateInput = typeof LinksCreateOrUpdateInput.Type;
@@ -1766,6 +1773,7 @@ export const PredictionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/predictions/{predictionName}",
       apiVersion: "2017-04-26",
+      longRunning: {},
     }),
   );
 export type PredictionsCreateOrUpdateInput =
@@ -1807,6 +1815,7 @@ export const PredictionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/predictions/{predictionName}",
     apiVersion: "2017-04-26",
+    longRunning: {},
   }),
 );
 export type PredictionsDeleteInput = typeof PredictionsDeleteInput.Type;
@@ -2153,6 +2162,7 @@ export const ProfilesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/profiles/{profileName}",
       apiVersion: "2017-04-26",
+      longRunning: {},
     }),
   );
 export type ProfilesCreateOrUpdateInput =
@@ -2193,6 +2203,7 @@ export const ProfilesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/profiles/{profileName}",
     apiVersion: "2017-04-26",
+    longRunning: {},
   }),
 );
 export type ProfilesDeleteInput = typeof ProfilesDeleteInput.Type;
@@ -2479,6 +2490,7 @@ export const RelationshipLinksCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationshipLinks/{relationshipLinkName}",
       apiVersion: "2017-04-26",
+      longRunning: {},
     }),
   );
 export type RelationshipLinksCreateOrUpdateInput =
@@ -2518,6 +2530,7 @@ export const RelationshipLinksDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationshipLinks/{relationshipLinkName}",
       apiVersion: "2017-04-26",
+      longRunning: {},
     }),
   );
 export type RelationshipLinksDeleteInput =
@@ -2735,6 +2748,7 @@ export const RelationshipsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationships/{relationshipName}",
       apiVersion: "2017-04-26",
+      longRunning: {},
     }),
   );
 export type RelationshipsCreateOrUpdateInput =
@@ -2775,6 +2789,7 @@ export const RelationshipsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/relationships/{relationshipName}",
       apiVersion: "2017-04-26",
+      longRunning: {},
     }),
   );
 export type RelationshipsDeleteInput = typeof RelationshipsDeleteInput.Type;
@@ -3008,6 +3023,7 @@ export const RoleAssignmentsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomerInsights/hubs/{hubName}/roleAssignments/{assignmentName}",
       apiVersion: "2017-04-26",
+      longRunning: {},
     }),
   );
 export type RoleAssignmentsCreateOrUpdateInput =

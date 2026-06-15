@@ -15,6 +15,7 @@ export const DiskPoolsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}",
       apiVersion: "2021-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DiskPoolsCreateOrUpdateInput =
@@ -47,6 +48,7 @@ export const DiskPoolsDeallocateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/deallocate",
       apiVersion: "2021-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DiskPoolsDeallocateInput = typeof DiskPoolsDeallocateInput.Type;
@@ -72,6 +74,7 @@ export const DiskPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}",
     apiVersion: "2021-08-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type DiskPoolsDeleteInput = typeof DiskPoolsDeleteInput.Type;
@@ -248,6 +251,7 @@ export const DiskPoolsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/start",
     apiVersion: "2021-08-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type DiskPoolsStartInput = typeof DiskPoolsStartInput.Type;
@@ -272,6 +276,7 @@ export const DiskPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}",
     apiVersion: "2021-08-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type DiskPoolsUpdateInput = typeof DiskPoolsUpdateInput.Type;
@@ -300,6 +305,7 @@ export const DiskPoolsUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/upgrade",
     apiVersion: "2021-08-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type DiskPoolsUpgradeInput = typeof DiskPoolsUpgradeInput.Type;
@@ -364,6 +370,7 @@ export const IscsiTargetsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}",
       apiVersion: "2021-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IscsiTargetsCreateOrUpdateInput =
@@ -396,6 +403,7 @@ export const IscsiTargetsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}",
       apiVersion: "2021-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IscsiTargetsDeleteInput = typeof IscsiTargetsDeleteInput.Type;
@@ -484,6 +492,7 @@ export const IscsiTargetsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/iscsiTargets/{iscsiTargetName}",
       apiVersion: "2021-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IscsiTargetsUpdateInput = typeof IscsiTargetsUpdateInput.Type;

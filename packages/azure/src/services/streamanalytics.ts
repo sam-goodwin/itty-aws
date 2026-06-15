@@ -38,6 +38,7 @@ export const ClustersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}",
       apiVersion: "2020-03-01",
+      longRunning: {},
     }),
   );
 export type ClustersCreateOrUpdateInput =
@@ -78,6 +79,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}",
     apiVersion: "2020-03-01",
+    longRunning: {},
   }),
 );
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
@@ -309,6 +311,7 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}",
     apiVersion: "2020-03-01",
+    longRunning: {},
   }),
 );
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
@@ -606,6 +609,7 @@ export const FunctionsTestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/functions/{functionName}/test",
     apiVersion: "2020-03-01",
+    longRunning: {},
   }),
 );
 export type FunctionsTestInput = typeof FunctionsTestInput.Type;
@@ -936,6 +940,7 @@ export const InputsTestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/inputs/{inputName}/test",
     apiVersion: "2020-03-01",
+    longRunning: {},
   }),
 );
 export type InputsTestInput = typeof InputsTestInput.Type;
@@ -1313,6 +1318,7 @@ export const OutputsTestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/outputs/{outputName}/test",
     apiVersion: "2020-03-01",
+    longRunning: {},
   }),
 );
 export type OutputsTestInput = typeof OutputsTestInput.Type;
@@ -1490,6 +1496,7 @@ export const PrivateEndpointsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}/privateEndpoints/{privateEndpointName}",
       apiVersion: "2020-03-01",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointsDeleteInput =
@@ -1700,6 +1707,7 @@ export const StreamingJobsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}",
       apiVersion: "2020-03-01",
+      longRunning: {},
     }),
   );
 export type StreamingJobsCreateOrReplaceInput =
@@ -1742,6 +1750,7 @@ export const StreamingJobsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}",
       apiVersion: "2020-03-01",
+      longRunning: {},
     }),
   );
 export type StreamingJobsDeleteInput = typeof StreamingJobsDeleteInput.Type;
@@ -1905,6 +1914,7 @@ export const StreamingJobsScaleInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/scale",
       apiVersion: "2020-03-01",
+      longRunning: {},
     }),
   );
 export type StreamingJobsScaleInput = typeof StreamingJobsScaleInput.Type;
@@ -1941,6 +1951,7 @@ export const StreamingJobsStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/start",
       apiVersion: "2020-03-01",
+      longRunning: {},
     }),
   );
 export type StreamingJobsStartInput = typeof StreamingJobsStartInput.Type;
@@ -1974,6 +1985,7 @@ export const StreamingJobsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobName}/stop",
     apiVersion: "2020-03-01",
+    longRunning: {},
   }),
 );
 export type StreamingJobsStopInput = typeof StreamingJobsStopInput.Type;

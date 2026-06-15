@@ -233,6 +233,7 @@ export const AssociatedTenantsCreateOrUpdateInput =
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/associatedTenants/{associatedTenantName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AssociatedTenantsCreateOrUpdateInput =
@@ -285,6 +286,7 @@ export const AssociatedTenantsDeleteInput =
       method: "DELETE",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/associatedTenants/{associatedTenantName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AssociatedTenantsDeleteInput =
@@ -551,6 +553,7 @@ export const BillingAccountsAddPaymentTermsInput =
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/addPaymentTerms",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingAccountsAddPaymentTermsInput =
@@ -601,6 +604,7 @@ export const BillingAccountsCancelPaymentTermsInput =
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/cancelPaymentTerms",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingAccountsCancelPaymentTermsInput =
@@ -1089,6 +1093,7 @@ export const BillingAccountsUpdateInput =
       method: "PATCH",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingAccountsUpdateInput = typeof BillingAccountsUpdateInput.Type;
@@ -1937,6 +1942,7 @@ export const BillingProfilesCreateOrUpdateInput =
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingProfilesCreateOrUpdateInput =
@@ -1989,6 +1995,7 @@ export const BillingProfilesDeleteInput =
       method: "DELETE",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingProfilesDeleteInput = typeof BillingProfilesDeleteInput.Type;
@@ -2661,6 +2668,7 @@ export const BillingRequestsCreateOrUpdateInput =
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingRequests/{billingRequestName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingRequestsCreateOrUpdateInput =
@@ -3206,6 +3214,7 @@ export const BillingRoleAssignmentsCreateByBillingAccountInput =
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/createBillingRoleAssignment",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingRoleAssignmentsCreateByBillingAccountInput =
@@ -3311,6 +3320,7 @@ export const BillingRoleAssignmentsCreateByBillingProfileInput =
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/createBillingRoleAssignment",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingRoleAssignmentsCreateByBillingProfileInput =
@@ -3418,6 +3428,7 @@ export const BillingRoleAssignmentsCreateByCustomerInput =
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/createBillingRoleAssignment",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingRoleAssignmentsCreateByCustomerInput =
@@ -3526,6 +3537,7 @@ export const BillingRoleAssignmentsCreateByInvoiceSectionInput =
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/createBillingRoleAssignment",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingRoleAssignmentsCreateByInvoiceSectionInput =
@@ -3638,6 +3650,7 @@ export const BillingRoleAssignmentsCreateOrUpdateByBillingAccountInput =
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingRoleAssignments/{billingRoleAssignmentName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingRoleAssignmentsCreateOrUpdateByBillingAccountInput =
@@ -3750,6 +3763,7 @@ export const BillingRoleAssignmentsCreateOrUpdateByDepartmentInput =
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/departments/{departmentName}/billingRoleAssignments/{billingRoleAssignmentName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingRoleAssignmentsCreateOrUpdateByDepartmentInput =
@@ -3863,6 +3877,7 @@ export const BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountInput =
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}/billingRoleAssignments/{billingRoleAssignmentName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountInput =
@@ -4889,6 +4904,7 @@ export const BillingRoleAssignmentsResolveByBillingAccountInput =
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/resolveBillingRoleAssignments",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingRoleAssignmentsResolveByBillingAccountInput =
@@ -4959,6 +4975,7 @@ export const BillingRoleAssignmentsResolveByBillingProfileInput =
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/resolveBillingRoleAssignments",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingRoleAssignmentsResolveByBillingProfileInput =
@@ -5031,6 +5048,7 @@ export const BillingRoleAssignmentsResolveByCustomerInput =
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/resolveBillingRoleAssignments",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingRoleAssignmentsResolveByCustomerInput =
@@ -5104,6 +5122,7 @@ export const BillingRoleAssignmentsResolveByInvoiceSectionInput =
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/resolveBillingRoleAssignments",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingRoleAssignmentsResolveByInvoiceSectionInput =
@@ -6061,6 +6080,7 @@ export const BillingSubscriptionsAliasesCreateOrUpdateInput =
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptionAliases/{aliasName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingSubscriptionsAliasesCreateOrUpdateInput =
@@ -6246,6 +6266,7 @@ export const BillingSubscriptionsCancelInput =
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions/{billingSubscriptionName}/cancel",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingSubscriptionsCancelInput =
@@ -6281,6 +6302,7 @@ export const BillingSubscriptionsDeleteInput =
       method: "DELETE",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions/{billingSubscriptionName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingSubscriptionsDeleteInput =
@@ -6947,6 +6969,7 @@ export const BillingSubscriptionsMergeInput =
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions/{billingSubscriptionName}/merge",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingSubscriptionsMergeInput =
@@ -7002,6 +7025,7 @@ export const BillingSubscriptionsMoveInput =
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions/{billingSubscriptionName}/move",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingSubscriptionsMoveInput =
@@ -7060,6 +7084,7 @@ export const BillingSubscriptionsSplitInput =
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions/{billingSubscriptionName}/split",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingSubscriptionsSplitInput =
@@ -7270,6 +7295,7 @@ export const BillingSubscriptionsUpdateInput =
       method: "PATCH",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions/{billingSubscriptionName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BillingSubscriptionsUpdateInput =
@@ -8043,6 +8069,7 @@ export const InvoicesAmendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices/{invoiceName}/amend",
     apiVersion: "2024-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type InvoicesAmendInput = typeof InvoicesAmendInput.Type;
@@ -8074,6 +8101,7 @@ export const InvoicesDownloadByBillingAccountInput =
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices/{invoiceName}/download",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InvoicesDownloadByBillingAccountInput =
@@ -8113,6 +8141,7 @@ export const InvoicesDownloadByBillingSubscriptionInput =
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/{subscriptionId}/invoices/{invoiceName}/download",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InvoicesDownloadByBillingSubscriptionInput =
@@ -8150,6 +8179,7 @@ export const InvoicesDownloadDocumentsByBillingAccountInput =
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/downloadDocuments",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InvoicesDownloadDocumentsByBillingAccountInput =
@@ -8185,6 +8215,7 @@ export const InvoicesDownloadDocumentsByBillingSubscriptionInput =
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/default/billingSubscriptions/{subscriptionId}/downloadDocuments",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InvoicesDownloadDocumentsByBillingSubscriptionInput =
@@ -8221,6 +8252,7 @@ export const InvoicesDownloadSummaryByBillingAccountInput =
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices/{invoiceName}/downloadSummary",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InvoicesDownloadSummaryByBillingAccountInput =
@@ -8303,6 +8335,7 @@ export const InvoiceSectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InvoiceSectionsCreateOrUpdateInput =
@@ -8357,6 +8390,7 @@ export const InvoiceSectionsDeleteInput =
       method: "DELETE",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InvoiceSectionsDeleteInput = typeof InvoiceSectionsDeleteInput.Type;
@@ -9714,6 +9748,7 @@ export const PoliciesCreateOrUpdateByBillingAccountInput =
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/policies/default",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PoliciesCreateOrUpdateByBillingAccountInput =
@@ -9841,6 +9876,7 @@ export const PoliciesCreateOrUpdateByBillingProfileInput =
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/policies/default",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PoliciesCreateOrUpdateByBillingProfileInput =
@@ -9931,6 +9967,7 @@ export const PoliciesCreateOrUpdateByCustomerInput =
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/policies/default",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PoliciesCreateOrUpdateByCustomerInput =
@@ -10021,6 +10058,7 @@ export const PoliciesCreateOrUpdateByCustomerAtBillingAccountInput =
       method: "PUT",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerName}/policies/default",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PoliciesCreateOrUpdateByCustomerAtBillingAccountInput =
@@ -10700,6 +10738,7 @@ export const ProductsMoveInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/products/{productName}/move",
     apiVersion: "2024-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ProductsMoveInput = typeof ProductsMoveInput.Type;
@@ -11739,6 +11778,7 @@ export const ReservationsUpdateByBillingAccountInput =
       method: "PATCH",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/reservationOrders/{reservationOrderId}/reservations/{reservationId}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ReservationsUpdateByBillingAccountInput =
@@ -12184,6 +12224,7 @@ export const SavingsPlansUpdateByBillingAccountInput =
       method: "PATCH",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SavingsPlansUpdateByBillingAccountInput =
@@ -12735,6 +12776,7 @@ export const TransactionsTransactionsDownloadByInvoiceInput =
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices/{invoiceName}/transactionsDownload",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type TransactionsTransactionsDownloadByInvoiceInput =

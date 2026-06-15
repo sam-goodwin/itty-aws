@@ -37,6 +37,7 @@ export const AccessPolicyAssignmentCreateUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicyAssignments/{accessPolicyAssignmentName}",
       apiVersion: "2024-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AccessPolicyAssignmentCreateUpdateInput =
@@ -93,6 +94,7 @@ export const AccessPolicyAssignmentDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicyAssignments/{accessPolicyAssignmentName}",
       apiVersion: "2024-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AccessPolicyAssignmentDeleteInput =
@@ -274,6 +276,7 @@ export const AccessPolicyCreateUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicies/{accessPolicyName}",
       apiVersion: "2024-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AccessPolicyCreateUpdateInput =
@@ -331,6 +334,7 @@ export const AccessPolicyDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/accessPolicies/{accessPolicyName}",
       apiVersion: "2024-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AccessPolicyDeleteInput = typeof AccessPolicyDeleteInput.Type;
@@ -794,6 +798,7 @@ export const LinkedServerCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/linkedServers/{linkedServerName}",
       apiVersion: "2024-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LinkedServerCreateInput = typeof LinkedServerCreateInput.Type;
@@ -847,6 +852,7 @@ export const LinkedServerDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/linkedServers/{linkedServerName}",
       apiVersion: "2024-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type LinkedServerDeleteInput = typeof LinkedServerDeleteInput.Type;
@@ -1475,6 +1481,7 @@ export const PrivateEndpointConnectionsPutInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsPutInput =
@@ -1702,6 +1709,7 @@ export const RedisCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}",
     apiVersion: "2024-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type RedisCreateInput = typeof RedisCreateInput.Type;
@@ -1751,6 +1759,7 @@ export const RedisDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}",
     apiVersion: "2024-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type RedisDeleteInput = typeof RedisDeleteInput.Type;
@@ -1787,6 +1796,7 @@ export const RedisExportDataInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/export",
     apiVersion: "2024-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type RedisExportDataInput = typeof RedisExportDataInput.Type;
@@ -1818,6 +1828,7 @@ export const RedisFlushCacheInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{cacheName}/flush",
     apiVersion: "2024-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type RedisFlushCacheInput = typeof RedisFlushCacheInput.Type;
@@ -1994,6 +2005,7 @@ export const RedisImportDataInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}/import",
     apiVersion: "2024-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type RedisImportDataInput = typeof RedisImportDataInput.Type;
@@ -2349,6 +2361,7 @@ export const RedisUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redis/{name}",
     apiVersion: "2024-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type RedisUpdateInput = typeof RedisUpdateInput.Type;

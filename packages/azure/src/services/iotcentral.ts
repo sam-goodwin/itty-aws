@@ -109,6 +109,7 @@ export const AppsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTCentral/iotApps/{resourceName}",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type AppsCreateOrUpdateInput = typeof AppsCreateOrUpdateInput.Type;
@@ -140,6 +141,7 @@ export const AppsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTCentral/iotApps/{resourceName}",
     apiVersion: "2021-06-01",
+    longRunning: {},
   }),
 );
 export type AppsDeleteInput = typeof AppsDeleteInput.Type;
@@ -343,6 +345,7 @@ export const AppsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTCentral/iotApps/{resourceName}",
     apiVersion: "2021-06-01",
+    longRunning: {},
   }),
 );
 export type AppsUpdateInput = typeof AppsUpdateInput.Type;

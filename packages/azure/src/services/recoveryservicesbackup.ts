@@ -1289,6 +1289,7 @@ export const BMSPrepareDataMoveInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/prepareDataMove",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BMSPrepareDataMoveInput = typeof BMSPrepareDataMoveInput.Type;
@@ -1367,6 +1368,7 @@ export const BMSTriggerDataMoveInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig/triggerDataMove",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BMSTriggerDataMoveInput = typeof BMSTriggerDataMoveInput.Type;
@@ -1592,6 +1594,7 @@ export const FetchTieringCostPostInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTieringCost/default/fetchTieringCost",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FetchTieringCostPostInput = typeof FetchTieringCostPostInput.Type;
@@ -2022,6 +2025,7 @@ export const MoveRecoveryPointInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/move",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type MoveRecoveryPointInput = typeof MoveRecoveryPointInput.Type;
@@ -2172,6 +2176,7 @@ export const PrivateEndpointConnectionDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionDeleteInput =
@@ -2304,6 +2309,7 @@ export const PrivateEndpointConnectionPutInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionPutInput =
@@ -2663,6 +2669,7 @@ export const ProtectedItemsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ProtectedItemsCreateOrUpdateInput =
@@ -3114,6 +3121,7 @@ export const ProtectionContainersRegisterInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ProtectionContainersRegisterInput =
@@ -3553,6 +3561,7 @@ export const ProtectionPoliciesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ProtectionPoliciesDeleteInput =
@@ -4204,6 +4213,7 @@ export const RestoresTriggerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type RestoresTriggerInput = typeof RestoresTriggerInput.Type;
@@ -4461,6 +4471,7 @@ export const ValidateOperationTriggerInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupTriggerValidateOperation",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ValidateOperationTriggerInput =

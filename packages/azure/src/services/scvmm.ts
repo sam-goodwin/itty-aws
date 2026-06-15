@@ -44,6 +44,7 @@ export const AvailabilitySetsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/availabilitySets/{availabilitySetResourceName}",
       apiVersion: "2025-03-13",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AvailabilitySetsCreateOrUpdateInput =
@@ -100,6 +101,7 @@ export const AvailabilitySetsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/availabilitySets/{availabilitySetResourceName}",
       apiVersion: "2025-03-13",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AvailabilitySetsDeleteInput =
@@ -329,6 +331,7 @@ export const AvailabilitySetsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/availabilitySets/{availabilitySetResourceName}",
       apiVersion: "2025-03-13",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AvailabilitySetsUpdateInput =
@@ -432,6 +435,7 @@ export const CloudsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/clouds/{cloudResourceName}",
       apiVersion: "2025-03-13",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CloudsCreateOrUpdateInput = typeof CloudsCreateOrUpdateInput.Type;
@@ -486,6 +490,7 @@ export const CloudsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/clouds/{cloudResourceName}",
     apiVersion: "2025-03-13",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type CloudsDeleteInput = typeof CloudsDeleteInput.Type;
@@ -709,6 +714,7 @@ export const CloudsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/clouds/{cloudResourceName}",
     apiVersion: "2025-03-13",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type CloudsUpdateInput = typeof CloudsUpdateInput.Type;
@@ -793,6 +799,7 @@ export const GuestAgentsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PUT",
     path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/guestAgents/default",
     apiVersion: "2025-03-13",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type GuestAgentsCreateInput = typeof GuestAgentsCreateInput.Type;
@@ -1277,6 +1284,7 @@ export const VirtualMachineInstancesCreateCheckpointInput =
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/createCheckpoint",
       apiVersion: "2025-03-13",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineInstancesCreateCheckpointInput =
@@ -1463,6 +1471,7 @@ export const VirtualMachineInstancesCreateOrUpdateInput =
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default",
       apiVersion: "2025-03-13",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualMachineInstancesCreateOrUpdateInput =
@@ -1514,6 +1523,7 @@ export const VirtualMachineInstancesDeleteInput =
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default",
       apiVersion: "2025-03-13",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualMachineInstancesDeleteInput =
@@ -1548,6 +1558,7 @@ export const VirtualMachineInstancesDeleteCheckpointInput =
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/deleteCheckpoint",
       apiVersion: "2025-03-13",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineInstancesDeleteCheckpointInput =
@@ -1694,6 +1705,7 @@ export const VirtualMachineInstancesRestartInput =
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/restart",
       apiVersion: "2025-03-13",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineInstancesRestartInput =
@@ -1727,6 +1739,7 @@ export const VirtualMachineInstancesRestoreCheckpointInput =
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/restoreCheckpoint",
       apiVersion: "2025-03-13",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineInstancesRestoreCheckpointInput =
@@ -1758,6 +1771,7 @@ export const VirtualMachineInstancesStartInput =
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/start",
       apiVersion: "2025-03-13",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineInstancesStartInput =
@@ -1791,6 +1805,7 @@ export const VirtualMachineInstancesStopInput =
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default/stop",
       apiVersion: "2025-03-13",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineInstancesStopInput =
@@ -1901,6 +1916,7 @@ export const VirtualMachineInstancesUpdateInput =
       method: "PATCH",
       path: "/{resourceUri}/providers/Microsoft.ScVmm/virtualMachineInstances/default",
       apiVersion: "2025-03-13",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualMachineInstancesUpdateInput =
@@ -2045,6 +2061,7 @@ export const VirtualMachineTemplatesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualMachineTemplates/{virtualMachineTemplateName}",
       apiVersion: "2025-03-13",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualMachineTemplatesCreateOrUpdateInput =
@@ -2101,6 +2118,7 @@ export const VirtualMachineTemplatesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualMachineTemplates/{virtualMachineTemplateName}",
       apiVersion: "2025-03-13",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualMachineTemplatesDeleteInput =
@@ -2333,6 +2351,7 @@ export const VirtualMachineTemplatesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualMachineTemplates/{virtualMachineTemplateName}",
       apiVersion: "2025-03-13",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualMachineTemplatesUpdateInput =
@@ -2415,6 +2434,7 @@ export const VirtualNetworksCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualNetworks/{virtualNetworkName}",
       apiVersion: "2025-03-13",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualNetworksCreateOrUpdateInput =
@@ -2471,6 +2491,7 @@ export const VirtualNetworksDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualNetworks/{virtualNetworkName}",
       apiVersion: "2025-03-13",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualNetworksDeleteInput = typeof VirtualNetworksDeleteInput.Type;
@@ -2699,6 +2720,7 @@ export const VirtualNetworksUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/virtualNetworks/{virtualNetworkName}",
       apiVersion: "2025-03-13",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualNetworksUpdateInput = typeof VirtualNetworksUpdateInput.Type;
@@ -2904,6 +2926,7 @@ export const VmmServersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}",
       apiVersion: "2025-03-13",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VmmServersCreateOrUpdateInput =
@@ -2960,6 +2983,7 @@ export const VmmServersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}",
     apiVersion: "2025-03-13",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type VmmServersDeleteInput = typeof VmmServersDeleteInput.Type;
@@ -3181,6 +3205,7 @@ export const VmmServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ScVmm/vmmServers/{vmmServerName}",
     apiVersion: "2025-03-13",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type VmmServersUpdateInput = typeof VmmServersUpdateInput.Type;

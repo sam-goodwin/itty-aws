@@ -66,6 +66,7 @@ export const ArtifactManifestsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests/{artifactManifestName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ArtifactManifestsCreateOrUpdateInput =
@@ -124,6 +125,7 @@ export const ArtifactManifestsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests/{artifactManifestName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ArtifactManifestsDeleteInput =
@@ -412,6 +414,7 @@ export const ArtifactManifestsUpdateStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests/{artifactManifestName}/updateState",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ArtifactManifestsUpdateStateInput =
@@ -469,6 +472,7 @@ export const ArtifactStoresAddNetworkFabricControllerEndPointsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/addNetworkFabricControllerEndPoints",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ArtifactStoresAddNetworkFabricControllerEndPointsInput =
@@ -514,6 +518,7 @@ export const ArtifactStoresApprovePrivateEndPointsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/approvePrivateEndPoints",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ArtifactStoresApprovePrivateEndPointsInput =
@@ -590,6 +595,7 @@ export const ArtifactStoresCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ArtifactStoresCreateOrUpdateInput =
@@ -646,6 +652,7 @@ export const ArtifactStoresDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ArtifactStoresDeleteInput = typeof ArtifactStoresDeleteInput.Type;
@@ -690,6 +697,7 @@ export const ArtifactStoresDeleteNetworkFabricControllerEndPointsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/deleteNetworkFabricControllerEndPoints",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ArtifactStoresDeleteNetworkFabricControllerEndPointsInput =
@@ -853,6 +861,7 @@ export const ArtifactStoresListNetworkFabricControllerPrivateEndPointsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/listNetworkFabricControllerPrivateEndPoints",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ArtifactStoresListNetworkFabricControllerPrivateEndPointsInput =
@@ -907,6 +916,7 @@ export const ArtifactStoresListPrivateEndPointsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/listPrivateEndPoints",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ArtifactStoresListPrivateEndPointsInput =
@@ -967,6 +977,7 @@ export const ArtifactStoresRemovePrivateEndPointsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/removePrivateEndPoints",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ArtifactStoresRemovePrivateEndPointsInput =
@@ -1207,6 +1218,7 @@ export const ConfigurationGroupSchemasCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/configurationGroupSchemas/{configurationGroupSchemaName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConfigurationGroupSchemasCreateOrUpdateInput =
@@ -1263,6 +1275,7 @@ export const ConfigurationGroupSchemasDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/configurationGroupSchemas/{configurationGroupSchemaName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConfigurationGroupSchemasDeleteInput =
@@ -1489,6 +1502,7 @@ export const ConfigurationGroupSchemasUpdateStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/configurationGroupSchemas/{configurationGroupSchemaName}/updateState",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConfigurationGroupSchemasUpdateStateInput =
@@ -1562,6 +1576,7 @@ export const ConfigurationGroupValuesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/configurationGroupValues/{configurationGroupValueName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConfigurationGroupValuesCreateOrUpdateInput =
@@ -1616,6 +1631,7 @@ export const ConfigurationGroupValuesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/configurationGroupValues/{configurationGroupValueName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConfigurationGroupValuesDeleteInput =
@@ -1919,6 +1935,7 @@ export const NetworkFunctionDefinitionGroupsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkFunctionDefinitionGroupsCreateOrUpdateInput =
@@ -1975,6 +1992,7 @@ export const NetworkFunctionDefinitionGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFunctionDefinitionGroupsDeleteInput =
@@ -2234,6 +2252,7 @@ export const NetworkFunctionDefinitionVersionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}/networkFunctionDefinitionVersions/{networkFunctionDefinitionVersionName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkFunctionDefinitionVersionsCreateOrUpdateInput =
@@ -2292,6 +2311,7 @@ export const NetworkFunctionDefinitionVersionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}/networkFunctionDefinitionVersions/{networkFunctionDefinitionVersionName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFunctionDefinitionVersionsDeleteInput =
@@ -2535,6 +2555,7 @@ export const NetworkFunctionDefinitionVersionsUpdateStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}/networkFunctionDefinitionVersions/{networkFunctionDefinitionVersionName}/updateState",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFunctionDefinitionVersionsUpdateStateInput =
@@ -2652,6 +2673,7 @@ export const NetworkFunctionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/networkFunctions/{networkFunctionName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkFunctionsCreateOrUpdateInput =
@@ -2706,6 +2728,7 @@ export const NetworkFunctionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/networkFunctions/{networkFunctionName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFunctionsDeleteInput =
@@ -2757,6 +2780,7 @@ export const NetworkFunctionsExecuteRequestInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/networkFunctions/{networkFunctionName}/executeRequest",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFunctionsExecuteRequestInput =
@@ -3057,6 +3081,7 @@ export const NetworkServiceDesignGroupsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkServiceDesignGroupsCreateOrUpdateInput =
@@ -3113,6 +3138,7 @@ export const NetworkServiceDesignGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkServiceDesignGroupsDeleteInput =
@@ -3399,6 +3425,7 @@ export const NetworkServiceDesignVersionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}/networkServiceDesignVersions/{networkServiceDesignVersionName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkServiceDesignVersionsCreateOrUpdateInput =
@@ -3457,6 +3484,7 @@ export const NetworkServiceDesignVersionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}/networkServiceDesignVersions/{networkServiceDesignVersionName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkServiceDesignVersionsDeleteInput =
@@ -3693,6 +3721,7 @@ export const NetworkServiceDesignVersionsUpdateStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}/networkServiceDesignVersions/{networkServiceDesignVersionName}/updateState",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkServiceDesignVersionsUpdateStateInput =
@@ -3936,6 +3965,7 @@ export const ProxyArtifactUpdateStateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactVersions/{artifactVersionName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ProxyArtifactUpdateStateInput =
@@ -4036,6 +4066,7 @@ export const PublishersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PublishersCreateOrUpdateInput =
@@ -4090,6 +4121,7 @@ export const PublishersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}",
     apiVersion: "2024-04-15",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type PublishersDeleteInput = typeof PublishersDeleteInput.Type;
@@ -4451,6 +4483,7 @@ export const SiteNetworkServicesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/siteNetworkServices/{siteNetworkServiceName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SiteNetworkServicesCreateOrUpdateInput =
@@ -4505,6 +4538,7 @@ export const SiteNetworkServicesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/siteNetworkServices/{siteNetworkServiceName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SiteNetworkServicesDeleteInput =
@@ -4827,6 +4861,7 @@ export const SitesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/sites/{siteName}",
       apiVersion: "2024-04-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SitesCreateOrUpdateInput = typeof SitesCreateOrUpdateInput.Type;
@@ -4877,6 +4912,7 @@ export const SitesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/sites/{siteName}",
     apiVersion: "2024-04-15",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SitesDeleteInput = typeof SitesDeleteInput.Type;

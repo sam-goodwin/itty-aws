@@ -988,6 +988,7 @@ export const DataFlowDebugSessionCreateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/createDataFlowDebugSession",
       apiVersion: "2018-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DataFlowDebugSessionCreateInput =
@@ -1082,6 +1083,7 @@ export const DataFlowDebugSessionExecuteCommandInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/executeDataFlowDebugCommand",
       apiVersion: "2018-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DataFlowDebugSessionExecuteCommandInput =
@@ -2585,6 +2587,7 @@ export const IntegrationRuntimeDisableInteractiveQueryInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/disableInteractiveQuery",
       apiVersion: "2018-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IntegrationRuntimeDisableInteractiveQueryInput =
@@ -2642,6 +2645,7 @@ export const IntegrationRuntimeEnableInteractiveQueryInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/enableInteractiveQuery",
       apiVersion: "2018-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IntegrationRuntimeEnableInteractiveQueryInput =
@@ -2965,6 +2969,7 @@ export const IntegrationRuntimeObjectMetadataRefreshInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/refreshObjectMetadata",
       apiVersion: "2018-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IntegrationRuntimeObjectMetadataRefreshInput =
@@ -3637,6 +3642,7 @@ export const IntegrationRuntimesStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start",
       apiVersion: "2018-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IntegrationRuntimesStartInput =
@@ -3696,6 +3702,7 @@ export const IntegrationRuntimesStopInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop",
       apiVersion: "2018-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IntegrationRuntimesStopInput =
@@ -5996,6 +6003,7 @@ export const TriggersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/start",
     apiVersion: "2018-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type TriggersStartInput = typeof TriggersStartInput.Type;
@@ -6029,6 +6037,7 @@ export const TriggersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/stop",
     apiVersion: "2018-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type TriggersStopInput = typeof TriggersStopInput.Type;
@@ -6063,6 +6072,7 @@ export const TriggersSubscribeToEventsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/subscribeToEvents",
       apiVersion: "2018-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type TriggersSubscribeToEventsInput =
@@ -6113,6 +6123,7 @@ export const TriggersUnsubscribeFromEventsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}/unsubscribeFromEvents",
       apiVersion: "2018-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type TriggersUnsubscribeFromEventsInput =

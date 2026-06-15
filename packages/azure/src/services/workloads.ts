@@ -17,6 +17,7 @@ export const MonitorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}",
     apiVersion: "2023-04-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type MonitorsCreateInput = typeof MonitorsCreateInput.Type;
@@ -66,6 +67,7 @@ export const MonitorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}",
     apiVersion: "2023-04-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type MonitorsDeleteInput = typeof MonitorsDeleteInput.Type;
@@ -449,6 +451,7 @@ export const ProviderInstancesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/providerInstances/{providerInstanceName}",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProviderInstancesCreateInput =
@@ -504,6 +507,7 @@ export const ProviderInstancesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors/{monitorName}/providerInstances/{providerInstanceName}",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProviderInstancesDeleteInput =
@@ -788,6 +792,7 @@ export const SAPApplicationServerInstancesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SAPApplicationServerInstancesCreateInput =
@@ -840,6 +845,7 @@ export const SAPApplicationServerInstancesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SAPApplicationServerInstancesDeleteInput =
@@ -1050,6 +1056,7 @@ export const SapApplicationServerInstancesStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}/start",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SapApplicationServerInstancesStartInput =
@@ -1140,6 +1147,7 @@ export const SAPApplicationServerInstancesStartInstanceInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}/start",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SAPApplicationServerInstancesStartInstanceInput =
@@ -1230,6 +1238,7 @@ export const SapApplicationServerInstancesStopInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}/stop",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SapApplicationServerInstancesStopInput =
@@ -1321,6 +1330,7 @@ export const SAPApplicationServerInstancesStopInstanceInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}/stop",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SAPApplicationServerInstancesStopInstanceInput =
@@ -1408,6 +1418,7 @@ export const SAPApplicationServerInstancesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SAPApplicationServerInstancesUpdateInput =
@@ -1627,6 +1638,7 @@ export const SAPCentralInstancesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SAPCentralInstancesCreateInput =
@@ -1680,6 +1692,7 @@ export const SAPCentralInstancesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SAPCentralInstancesDeleteInput =
@@ -1890,6 +1903,7 @@ export const SAPCentralInstancesStartInstanceInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}/start",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SAPCentralInstancesStartInstanceInput =
@@ -1977,6 +1991,7 @@ export const SAPCentralInstancesStopInstanceInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}/stop",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SAPCentralInstancesStopInstanceInput =
@@ -2064,6 +2079,7 @@ export const SAPCentralInstancesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SAPCentralInstancesUpdateInput =
@@ -2240,6 +2256,7 @@ export const SapCentralServerInstancesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SapCentralServerInstancesCreateInput =
@@ -2296,6 +2313,7 @@ export const SapCentralServerInstancesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SapCentralServerInstancesDeleteInput =
@@ -2460,6 +2478,7 @@ export const SapCentralServerInstancesStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}/start",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SapCentralServerInstancesStartInput =
@@ -2554,6 +2573,7 @@ export const SapCentralServerInstancesStopInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}/stop",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SapCentralServerInstancesStopInput =
@@ -2772,6 +2792,7 @@ export const SAPDatabaseInstancesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SAPDatabaseInstancesCreateInput =
@@ -2825,6 +2846,7 @@ export const SAPDatabaseInstancesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SAPDatabaseInstancesDeleteInput =
@@ -3038,6 +3060,7 @@ export const SapDatabaseInstancesStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}/start",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SapDatabaseInstancesStartInput =
@@ -3129,6 +3152,7 @@ export const SAPDatabaseInstancesStartInstanceInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}/start",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SAPDatabaseInstancesStartInstanceInput =
@@ -3219,6 +3243,7 @@ export const SapDatabaseInstancesStopInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}/stop",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SapDatabaseInstancesStopInput =
@@ -3311,6 +3336,7 @@ export const SAPDatabaseInstancesStopInstanceInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}/stop",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SAPDatabaseInstancesStopInstanceInput =
@@ -3398,6 +3424,7 @@ export const SAPDatabaseInstancesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SAPDatabaseInstancesUpdateInput =
@@ -4000,6 +4027,7 @@ export const SAPVirtualInstancesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SAPVirtualInstancesCreateInput =
@@ -4053,6 +4081,7 @@ export const SAPVirtualInstancesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SAPVirtualInstancesDeleteInput =
@@ -4570,6 +4599,7 @@ export const SAPVirtualInstancesStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/start",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SAPVirtualInstancesStartInput =
@@ -4658,6 +4688,7 @@ export const SAPVirtualInstancesStopInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/stop",
       apiVersion: "2023-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SAPVirtualInstancesStopInput =

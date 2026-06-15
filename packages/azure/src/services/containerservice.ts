@@ -21,6 +21,7 @@ export const AgentPoolsAbortLatestOperationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/abort",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AgentPoolsAbortLatestOperationInput =
@@ -376,6 +377,7 @@ export const AgentPoolsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AgentPoolsCreateOrUpdateInput =
@@ -435,6 +437,7 @@ export const AgentPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type AgentPoolsDeleteInput = typeof AgentPoolsDeleteInput.Type;
@@ -472,6 +475,7 @@ export const AgentPoolsDeleteMachinesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/deleteMachines",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AgentPoolsDeleteMachinesInput =
@@ -726,6 +730,7 @@ export const AgentPoolsUpgradeNodeImageVersionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/agentPools/{agentPoolName}/upgradeNodeImageVersion",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AgentPoolsUpgradeNodeImageVersionInput =
@@ -766,6 +771,7 @@ export const AutoUpgradeProfileOperationsGenerateUpdateRunInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/autoUpgradeProfiles/{autoUpgradeProfileName}/generateUpdateRun",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AutoUpgradeProfileOperationsGenerateUpdateRunInput =
@@ -866,6 +872,7 @@ export const AutoUpgradeProfilesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/autoUpgradeProfiles/{autoUpgradeProfileName}",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AutoUpgradeProfilesCreateOrUpdateInput =
@@ -924,6 +931,7 @@ export const AutoUpgradeProfilesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/autoUpgradeProfiles/{autoUpgradeProfileName}",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AutoUpgradeProfilesDeleteInput =
@@ -1107,6 +1115,7 @@ export const DeploymentSafeguardsCreateInput =
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.ContainerService/deploymentSafeguards/default",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DeploymentSafeguardsCreateInput =
@@ -1155,6 +1164,7 @@ export const DeploymentSafeguardsDeleteInput =
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.ContainerService/deploymentSafeguards/default",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentSafeguardsDeleteInput =
@@ -1356,6 +1366,7 @@ export const FleetMembersCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/members/{fleetMemberName}",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FleetMembersCreateInput = typeof FleetMembersCreateInput.Type;
@@ -1411,6 +1422,7 @@ export const FleetMembersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/members/{fleetMemberName}",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FleetMembersDeleteInput = typeof FleetMembersDeleteInput.Type;
@@ -1572,6 +1584,7 @@ export const FleetMembersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/members/{fleetMemberName}",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type FleetMembersUpdateInput = typeof FleetMembersUpdateInput.Type;
@@ -1722,6 +1735,7 @@ export const FleetsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FleetsCreateOrUpdateInput = typeof FleetsCreateOrUpdateInput.Type;
@@ -1776,6 +1790,7 @@ export const FleetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}",
     apiVersion: "2025-03-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type FleetsDeleteInput = typeof FleetsDeleteInput.Type;
@@ -2058,6 +2073,7 @@ export const FleetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}",
     apiVersion: "2025-03-01",
+    longRunning: { finalStateVia: "original-uri" },
   }),
 );
 export type FleetsUpdateInput = typeof FleetsUpdateInput.Type;
@@ -2133,6 +2149,7 @@ export const FleetUpdateStrategiesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies/{updateStrategyName}",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FleetUpdateStrategiesCreateOrUpdateInput =
@@ -2191,6 +2208,7 @@ export const FleetUpdateStrategiesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies/{updateStrategyName}",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FleetUpdateStrategiesDeleteInput =
@@ -2778,6 +2796,7 @@ export const ManagedClustersAbortLatestOperationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/abort",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedClustersAbortLatestOperationInput =
@@ -3872,6 +3891,7 @@ export const ManagedClustersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ManagedClustersCreateOrUpdateInput =
@@ -3928,6 +3948,7 @@ export const ManagedClustersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ManagedClustersDeleteInput = typeof ManagedClustersDeleteInput.Type;
@@ -4769,6 +4790,7 @@ export const ManagedClustersResetServicePrincipalProfileInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/resetServicePrincipalProfile",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedClustersResetServicePrincipalProfileInput =
@@ -4807,6 +4829,7 @@ export const ManagedClustersRotateClusterCertificatesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/rotateClusterCertificates",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedClustersRotateClusterCertificatesInput =
@@ -4845,6 +4868,7 @@ export const ManagedClustersRotateServiceAccountSigningKeysInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/rotateServiceAccountSigningKeys",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedClustersRotateServiceAccountSigningKeysInput =
@@ -4884,6 +4908,7 @@ export const ManagedClustersRunCommandInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/runCommand",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedClustersRunCommandInput =
@@ -4935,6 +4960,7 @@ export const ManagedClustersStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/start",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedClustersStartInput = typeof ManagedClustersStartInput.Type;
@@ -4972,6 +4998,7 @@ export const ManagedClustersStopInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/stop",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedClustersStopInput = typeof ManagedClustersStopInput.Type;
@@ -5008,6 +5035,7 @@ export const ManagedClustersUpdateTagsInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ManagedClustersUpdateTagsInput =
@@ -5109,6 +5137,7 @@ export const ManagedNamespacesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ManagedNamespacesCreateOrUpdateInput =
@@ -5165,6 +5194,7 @@ export const ManagedNamespacesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/managedNamespaces/{managedNamespaceName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ManagedNamespacesDeleteInput =
@@ -5481,6 +5511,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -6181,6 +6212,7 @@ export const TrustedAccessRoleBindingsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings/{trustedAccessRoleBindingName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type TrustedAccessRoleBindingsCreateOrUpdateInput =
@@ -6237,6 +6269,7 @@ export const TrustedAccessRoleBindingsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/trustedAccessRoleBindings/{trustedAccessRoleBindingName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type TrustedAccessRoleBindingsDeleteInput =
@@ -6830,6 +6863,7 @@ export const UpdateRunsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type UpdateRunsCreateOrUpdateInput =
@@ -6888,6 +6922,7 @@ export const UpdateRunsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}",
     apiVersion: "2025-03-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type UpdateRunsDeleteInput = typeof UpdateRunsDeleteInput.Type;
@@ -7048,6 +7083,7 @@ export const UpdateRunsSkipInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}/skip",
     apiVersion: "2025-03-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type UpdateRunsSkipInput = typeof UpdateRunsSkipInput.Type;
@@ -7100,6 +7136,7 @@ export const UpdateRunsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}/start",
     apiVersion: "2025-03-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type UpdateRunsStartInput = typeof UpdateRunsStartInput.Type;
@@ -7152,6 +7189,7 @@ export const UpdateRunsStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}/stop",
     apiVersion: "2025-03-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type UpdateRunsStopInput = typeof UpdateRunsStopInput.Type;

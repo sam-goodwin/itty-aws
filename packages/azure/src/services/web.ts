@@ -40,6 +40,7 @@ export const AppServiceEnvironmentsApproveOrRejectPrivateEndpointConnectionInput
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AppServiceEnvironmentsApproveOrRejectPrivateEndpointConnectionInput =
@@ -102,6 +103,7 @@ export const AppServiceEnvironmentsChangeVnetInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/changeVirtualNetwork",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AppServiceEnvironmentsChangeVnetInput =
@@ -288,6 +290,7 @@ export const AppServiceEnvironmentsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AppServiceEnvironmentsCreateOrUpdateInput =
@@ -384,6 +387,7 @@ export const AppServiceEnvironmentsCreateOrUpdateMultiRolePoolInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AppServiceEnvironmentsCreateOrUpdateMultiRolePoolInput =
@@ -481,6 +485,7 @@ export const AppServiceEnvironmentsCreateOrUpdateWorkerPoolInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/workerPools/{workerPoolName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AppServiceEnvironmentsCreateOrUpdateWorkerPoolInput =
@@ -539,6 +544,7 @@ export const AppServiceEnvironmentsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AppServiceEnvironmentsDeleteInput =
@@ -617,6 +623,7 @@ export const AppServiceEnvironmentsDeletePrivateEndpointConnectionInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AppServiceEnvironmentsDeletePrivateEndpointConnectionInput =
@@ -2499,6 +2506,7 @@ export const AppServiceEnvironmentsResumeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/resume",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AppServiceEnvironmentsResumeInput =
@@ -2570,6 +2578,7 @@ export const AppServiceEnvironmentsSuspendInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/suspend",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AppServiceEnvironmentsSuspendInput =
@@ -3185,6 +3194,7 @@ export const AppServiceEnvironmentsUpgradeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/upgrade",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AppServiceEnvironmentsUpgradeInput =
@@ -3409,6 +3419,7 @@ export const AppServicePlansCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AppServicePlansCreateOrUpdateInput =
@@ -7772,6 +7783,7 @@ export const KubeEnvironmentsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/kubeEnvironments/{name}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type KubeEnvironmentsCreateOrUpdateInput =
@@ -7828,6 +7840,7 @@ export const KubeEnvironmentsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/kubeEnvironments/{name}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type KubeEnvironmentsDeleteInput =
@@ -10950,6 +10963,7 @@ export const StaticSitesApproveOrRejectPrivateEndpointConnectionInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StaticSitesApproveOrRejectPrivateEndpointConnectionInput =
@@ -11458,6 +11472,7 @@ export const StaticSitesCreateOrUpdateStaticSiteInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StaticSitesCreateOrUpdateStaticSiteInput =
@@ -11670,6 +11685,7 @@ export const StaticSitesCreateOrUpdateStaticSiteCustomDomainInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/customDomains/{domainName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StaticSitesCreateOrUpdateStaticSiteCustomDomainInput =
@@ -11841,6 +11857,7 @@ export const StaticSitesCreateZipDeploymentForStaticSiteInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/zipdeploy",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StaticSitesCreateZipDeploymentForStaticSiteInput =
@@ -11892,6 +11909,7 @@ export const StaticSitesCreateZipDeploymentForStaticSiteBuildInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/zipdeploy",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StaticSitesCreateZipDeploymentForStaticSiteBuildInput =
@@ -12010,6 +12028,7 @@ export const StaticSitesDeletePrivateEndpointConnectionInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StaticSitesDeletePrivateEndpointConnectionInput =
@@ -12049,6 +12068,7 @@ export const StaticSitesDeleteStaticSiteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StaticSitesDeleteStaticSiteInput =
@@ -12089,6 +12109,7 @@ export const StaticSitesDeleteStaticSiteBuildInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StaticSitesDeleteStaticSiteBuildInput =
@@ -12129,6 +12150,7 @@ export const StaticSitesDeleteStaticSiteCustomDomainInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/customDomains/{domainName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StaticSitesDeleteStaticSiteCustomDomainInput =
@@ -12207,6 +12229,7 @@ export const StaticSitesDetachStaticSiteInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/detach",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StaticSitesDetachStaticSiteInput =
@@ -13918,6 +13941,7 @@ export const StaticSitesLinkBackendInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/linkedBackends/{linkedBackendName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StaticSitesLinkBackendInput =
@@ -13985,6 +14009,7 @@ export const StaticSitesLinkBackendToBuildInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/linkedBackends/{linkedBackendName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StaticSitesLinkBackendToBuildInput =
@@ -14719,6 +14744,7 @@ export const StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/userProvidedFunctionApps/{functionAppName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteInput =
@@ -14789,6 +14815,7 @@ export const StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteBuildInput 
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/userProvidedFunctionApps/{functionAppName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteBuildInput =
@@ -15414,6 +15441,7 @@ export const StaticSitesValidateBackendInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/linkedBackends/{linkedBackendName}/validate",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StaticSitesValidateBackendInput =
@@ -15463,6 +15491,7 @@ export const StaticSitesValidateBackendForBuildInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/linkedBackends/{linkedBackendName}/validate",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StaticSitesValidateBackendForBuildInput =
@@ -15510,6 +15539,7 @@ export const StaticSitesValidateCustomDomainCanBeAddedToStaticSiteInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/customDomains/{domainName}/validate",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type StaticSitesValidateCustomDomainCanBeAddedToStaticSiteInput =
@@ -16261,6 +16291,7 @@ export const WebAppsApproveOrRejectPrivateEndpointConnectionInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsApproveOrRejectPrivateEndpointConnectionInput =
@@ -16339,6 +16370,7 @@ export const WebAppsApproveOrRejectPrivateEndpointConnectionSlotInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsApproveOrRejectPrivateEndpointConnectionSlotInput =
@@ -16741,6 +16773,7 @@ export const WebAppsCreateFunctionInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsCreateFunctionInput = typeof WebAppsCreateFunctionInput.Type;
@@ -16818,6 +16851,7 @@ export const WebAppsCreateInstanceFunctionSlotInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/functions/{functionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsCreateInstanceFunctionSlotInput =
@@ -16893,6 +16927,7 @@ export const WebAppsCreateInstanceMSDeployOperationInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/instances/{instanceId}/extensions/MSDeploy",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsCreateInstanceMSDeployOperationInput =
@@ -16968,6 +17003,7 @@ export const WebAppsCreateInstanceMSDeployOperationSlotInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/instances/{instanceId}/extensions/MSDeploy",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsCreateInstanceMSDeployOperationSlotInput =
@@ -17042,6 +17078,7 @@ export const WebAppsCreateMSDeployOperationInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/extensions/MSDeploy",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsCreateMSDeployOperationInput =
@@ -17115,6 +17152,7 @@ export const WebAppsCreateMSDeployOperationSlotInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/extensions/MSDeploy",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsCreateMSDeployOperationSlotInput =
@@ -17854,6 +17892,7 @@ export const WebAppsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsCreateOrUpdateInput = typeof WebAppsCreateOrUpdateInput.Type;
@@ -20520,6 +20559,7 @@ export const WebAppsCreateOrUpdateSlotInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsCreateOrUpdateSlotInput =
@@ -20609,6 +20649,7 @@ export const WebAppsCreateOrUpdateSourceControlInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsCreateOrUpdateSourceControlInput =
@@ -20697,6 +20738,7 @@ export const WebAppsCreateOrUpdateSourceControlSlotInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/sourcecontrols/web",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsCreateOrUpdateSourceControlSlotInput =
@@ -22263,6 +22305,7 @@ export const WebAppsDeletePrivateEndpointConnectionInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsDeletePrivateEndpointConnectionInput =
@@ -22304,6 +22347,7 @@ export const WebAppsDeletePrivateEndpointConnectionSlotInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsDeletePrivateEndpointConnectionSlotInput =
@@ -27997,6 +28041,7 @@ export const WebAppsGetProductionSiteDeploymentStatusInput =
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deploymentStatus/{deploymentStatusId}",
       apiVersion: "2025-05-01",
+      longRunning: {},
     }),
   );
 export type WebAppsGetProductionSiteDeploymentStatusInput =
@@ -29039,6 +29084,7 @@ export const WebAppsGetSlotSiteDeploymentStatusSlotInput =
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/deploymentStatus/{deploymentStatusId}",
       apiVersion: "2025-05-01",
+      longRunning: {},
     }),
   );
 export type WebAppsGetSlotSiteDeploymentStatusSlotInput =
@@ -30053,6 +30099,7 @@ export const WebAppsInstallSiteExtensionInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/siteextensions/{siteExtensionId}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsInstallSiteExtensionInput =
@@ -30113,6 +30160,7 @@ export const WebAppsInstallSiteExtensionSlotInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/siteextensions/{siteExtensionId}",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsInstallSiteExtensionSlotInput =
@@ -34309,6 +34357,7 @@ export const WebAppsListPublishingCredentialsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/config/publishingcredentials/list",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsListPublishingCredentialsInput =
@@ -34366,6 +34415,7 @@ export const WebAppsListPublishingCredentialsSlotInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/config/publishingcredentials/list",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsListPublishingCredentialsSlotInput =
@@ -36653,6 +36703,7 @@ export const WebAppsMigrateMySqlInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migratemysql",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsMigrateMySqlInput = typeof WebAppsMigrateMySqlInput.Type;
@@ -36730,6 +36781,7 @@ export const WebAppsMigrateStorageInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/migrate",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsMigrateStorageInput = typeof WebAppsMigrateStorageInput.Type;
@@ -37212,6 +37264,7 @@ export const WebAppsRestoreInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backups/{backupId}/restore",
     apiVersion: "2025-05-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type WebAppsRestoreInput = typeof WebAppsRestoreInput.Type;
@@ -37287,6 +37340,7 @@ export const WebAppsRestoreFromBackupBlobInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restoreFromBackupBlob",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsRestoreFromBackupBlobInput =
@@ -37366,6 +37420,7 @@ export const WebAppsRestoreFromBackupBlobSlotInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/restoreFromBackupBlob",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsRestoreFromBackupBlobSlotInput =
@@ -37416,6 +37471,7 @@ export const WebAppsRestoreFromDeletedAppInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restoreFromDeletedApp",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsRestoreFromDeletedAppInput =
@@ -37466,6 +37522,7 @@ export const WebAppsRestoreFromDeletedAppSlotInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/restoreFromDeletedApp",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsRestoreFromDeletedAppSlotInput =
@@ -37547,6 +37604,7 @@ export const WebAppsRestoreSlotInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/backups/{backupId}/restore",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsRestoreSlotInput = typeof WebAppsRestoreSlotInput.Type;
@@ -37601,6 +37659,7 @@ export const WebAppsRestoreSnapshotInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/restoreSnapshot",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsRestoreSnapshotInput =
@@ -37659,6 +37718,7 @@ export const WebAppsRestoreSnapshotSlotInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/restoreSnapshot",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsRestoreSnapshotSlotInput =
@@ -37900,6 +37960,7 @@ export const WebAppsStartNetworkTraceInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/startNetworkTrace",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsStartNetworkTraceInput =
@@ -37952,6 +38013,7 @@ export const WebAppsStartNetworkTraceSlotInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/startNetworkTrace",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsStartNetworkTraceSlotInput =
@@ -38082,6 +38144,7 @@ export const WebAppsStartWebSiteNetworkTraceOperationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkTrace/startOperation",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsStartWebSiteNetworkTraceOperationInput =
@@ -38133,6 +38196,7 @@ export const WebAppsStartWebSiteNetworkTraceOperationSlotInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/networkTrace/startOperation",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsStartWebSiteNetworkTraceOperationSlotInput =
@@ -38539,6 +38603,7 @@ export const WebAppsSwapSlotSlotInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slots/{slot}/slotsswap",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsSwapSlotSlotInput = typeof WebAppsSwapSlotSlotInput.Type;
@@ -38577,6 +38642,7 @@ export const WebAppsSwapSlotWithProductionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/slotsswap",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppsSwapSlotWithProductionInput =
@@ -45736,6 +45802,7 @@ export const WorkflowTriggerHistoriesResubmitInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers/{triggerName}/histories/{historyName}/resubmit",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkflowTriggerHistoriesResubmitInput =
@@ -46004,6 +46071,7 @@ export const WorkflowTriggersRunInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hostruntime/runtime/webhooks/workflow/api/management/workflows/{workflowName}/triggers/{triggerName}/run",
       apiVersion: "2025-05-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkflowTriggersRunInput = typeof WorkflowTriggersRunInput.Type;

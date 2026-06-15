@@ -39,6 +39,7 @@ export const EmployeesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Widget/employees/{employeeName}",
       apiVersion: "2021-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type EmployeesCreateOrUpdateInput =
@@ -93,6 +94,7 @@ export const EmployeesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Widget/employees/{employeeName}",
     apiVersion: "2021-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type EmployeesDeleteInput = typeof EmployeesDeleteInput.Type;

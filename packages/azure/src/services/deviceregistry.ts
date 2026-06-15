@@ -76,6 +76,7 @@ export const AssetEndpointProfilesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles/{assetEndpointProfileName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AssetEndpointProfilesCreateOrReplaceInput =
@@ -130,6 +131,7 @@ export const AssetEndpointProfilesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles/{assetEndpointProfileName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AssetEndpointProfilesDeleteInput =
@@ -380,6 +382,7 @@ export const AssetEndpointProfilesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles/{assetEndpointProfileName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AssetEndpointProfilesUpdateInput =
@@ -560,6 +563,7 @@ export const AssetsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets/{assetName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AssetsCreateOrReplaceInput = typeof AssetsCreateOrReplaceInput.Type;
@@ -613,6 +617,7 @@ export const AssetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets/{assetName}",
     apiVersion: "2026-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type AssetsDeleteInput = typeof AssetsDeleteInput.Type;
@@ -890,6 +895,7 @@ export const AssetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assets/{assetName}",
     apiVersion: "2026-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type AssetsUpdateInput = typeof AssetsUpdateInput.Type;
@@ -1416,6 +1422,7 @@ export const NamespaceAssetsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NamespaceAssetsCreateOrReplaceInput =
@@ -1472,6 +1479,7 @@ export const NamespaceAssetsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NamespaceAssetsDeleteInput = typeof NamespaceAssetsDeleteInput.Type;
@@ -1513,6 +1521,7 @@ export const NamespaceAssetsExecuteActionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}/executeAction",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NamespaceAssetsExecuteActionInput =
@@ -1848,6 +1857,7 @@ export const NamespaceAssetsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NamespaceAssetsUpdateInput = typeof NamespaceAssetsUpdateInput.Type;
@@ -2072,6 +2082,7 @@ export const NamespaceDevicesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NamespaceDevicesCreateOrReplaceInput =
@@ -2128,6 +2139,7 @@ export const NamespaceDevicesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NamespaceDevicesDeleteInput =
@@ -2367,6 +2379,7 @@ export const NamespaceDevicesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NamespaceDevicesUpdateInput =
@@ -2603,6 +2616,7 @@ export const NamespaceDiscoveredAssetsCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NamespaceDiscoveredAssetsCreateOrReplaceInput =
@@ -2659,6 +2673,7 @@ export const NamespaceDiscoveredAssetsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NamespaceDiscoveredAssetsDeleteInput =
@@ -2988,6 +3003,7 @@ export const NamespaceDiscoveredAssetsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NamespaceDiscoveredAssetsUpdateInput =
@@ -3109,6 +3125,7 @@ export const NamespaceDiscoveredDevicesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NamespaceDiscoveredDevicesCreateOrReplaceInput =
@@ -3165,6 +3182,7 @@ export const NamespaceDiscoveredDevicesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NamespaceDiscoveredDevicesDeleteInput =
@@ -3378,6 +3396,7 @@ export const NamespaceDiscoveredDevicesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NamespaceDiscoveredDevicesUpdateInput =
@@ -3485,6 +3504,7 @@ export const NamespacesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NamespacesCreateOrReplaceInput =
@@ -3539,6 +3559,7 @@ export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
     apiVersion: "2026-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
@@ -3755,6 +3776,7 @@ export const NamespacesMigrateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/migrate",
     apiVersion: "2026-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type NamespacesMigrateInput = typeof NamespacesMigrateInput.Type;
@@ -3853,6 +3875,7 @@ export const NamespacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
     apiVersion: "2026-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type NamespacesUpdateInput = typeof NamespacesUpdateInput.Type;
@@ -4067,6 +4090,7 @@ export const SchemaRegistriesCreateOrReplaceInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SchemaRegistriesCreateOrReplaceInput =
@@ -4121,6 +4145,7 @@ export const SchemaRegistriesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SchemaRegistriesDeleteInput =
@@ -4355,6 +4380,7 @@ export const SchemaRegistriesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SchemaRegistriesUpdateInput =
@@ -4486,6 +4512,7 @@ export const SchemasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}",
     apiVersion: "2026-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SchemasDeleteInput = typeof SchemasDeleteInput.Type;
@@ -4717,6 +4744,7 @@ export const SchemaVersionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/schemaRegistries/{schemaRegistryName}/schemas/{schemaName}/schemaVersions/{schemaVersionName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SchemaVersionsDeleteInput = typeof SchemaVersionsDeleteInput.Type;

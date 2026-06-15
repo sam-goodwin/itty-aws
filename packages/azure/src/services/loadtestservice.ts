@@ -64,6 +64,7 @@ export const LoadTestsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests/{loadTestName}",
       apiVersion: "2022-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type LoadTestsCreateOrUpdateInput =
@@ -118,6 +119,7 @@ export const LoadTestsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests/{loadTestName}",
     apiVersion: "2022-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type LoadTestsDeleteInput = typeof LoadTestsDeleteInput.Type;
@@ -429,6 +431,7 @@ export const LoadTestsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests/{loadTestName}",
     apiVersion: "2022-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type LoadTestsUpdateInput = typeof LoadTestsUpdateInput.Type;
@@ -834,6 +837,7 @@ export const PlaywrightWorkspacesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces/{playwrightWorkspaceName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PlaywrightWorkspacesCreateOrUpdateInput =
@@ -888,6 +892,7 @@ export const PlaywrightWorkspacesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/playwrightWorkspaces/{playwrightWorkspaceName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PlaywrightWorkspacesDeleteInput =

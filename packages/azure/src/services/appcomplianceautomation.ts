@@ -471,6 +471,7 @@ export const ProviderActionsOnboardInput =
       method: "POST",
       path: "/providers/Microsoft.AppComplianceAutomation/onboard",
       apiVersion: "2024-06-27",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ProviderActionsOnboardInput =
@@ -505,6 +506,7 @@ export const ProviderActionsTriggerEvaluationInput =
       method: "POST",
       path: "/providers/Microsoft.AppComplianceAutomation/triggerEvaluation",
       apiVersion: "2024-06-27",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ProviderActionsTriggerEvaluationInput =
@@ -633,6 +635,7 @@ export const ReportCreateOrUpdateInput =
       method: "PUT",
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}",
       apiVersion: "2024-06-27",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ReportCreateOrUpdateInput = typeof ReportCreateOrUpdateInput.Type;
@@ -681,6 +684,7 @@ export const ReportDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}",
     apiVersion: "2024-06-27",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ReportDeleteInput = typeof ReportDeleteInput.Type;
@@ -708,6 +712,7 @@ export const ReportFixInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/fix",
     apiVersion: "2024-06-27",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ReportFixInput = typeof ReportFixInput.Type;
@@ -968,6 +973,7 @@ export const ReportSyncCertRecordInput =
       method: "POST",
       path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/syncCertRecord",
       apiVersion: "2024-06-27",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReportSyncCertRecordInput = typeof ReportSyncCertRecordInput.Type;
@@ -1092,6 +1098,7 @@ export const ReportUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}",
     apiVersion: "2024-06-27",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ReportUpdateInput = typeof ReportUpdateInput.Type;
@@ -1137,6 +1144,7 @@ export const ReportVerifyInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/verify",
     apiVersion: "2024-06-27",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ReportVerifyInput = typeof ReportVerifyInput.Type;
@@ -1404,6 +1412,7 @@ export const SnapshotDownloadInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/snapshots/{snapshotName}/download",
     apiVersion: "2024-06-27",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SnapshotDownloadInput = typeof SnapshotDownloadInput.Type;

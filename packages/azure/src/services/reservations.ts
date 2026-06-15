@@ -140,6 +140,7 @@ export const CalculateExchangePostInput =
       method: "POST",
       path: "/providers/Microsoft.Capacity/calculateExchange",
       apiVersion: "2022-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CalculateExchangePostInput = typeof CalculateExchangePostInput.Type;
@@ -582,6 +583,7 @@ export const ExchangePostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/providers/Microsoft.Capacity/exchange",
     apiVersion: "2022-11-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ExchangePostInput = typeof ExchangePostInput.Type;
@@ -1093,6 +1095,7 @@ export const ReservationAvailableScopesInput =
       method: "POST",
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/availableScopes",
       apiVersion: "2022-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReservationAvailableScopesInput =
@@ -1406,6 +1409,7 @@ export const ReservationMergeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/merge",
     apiVersion: "2022-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ReservationMergeInput = typeof ReservationMergeInput.Type;
@@ -1864,6 +1868,7 @@ export const ReservationOrderPurchaseInput =
       method: "PUT",
       path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}",
       apiVersion: "2022-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReservationOrderPurchaseInput =
@@ -1922,6 +1927,7 @@ export const ReservationSplitInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/split",
     apiVersion: "2022-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ReservationSplitInput = typeof ReservationSplitInput.Type;
@@ -2109,6 +2115,7 @@ export const ReservationUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}",
     apiVersion: "2022-11-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ReservationUpdateInput = typeof ReservationUpdateInput.Type;
@@ -2171,6 +2178,7 @@ export const ReturnPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/return",
     apiVersion: "2022-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ReturnPostInput = typeof ReturnPostInput.Type;

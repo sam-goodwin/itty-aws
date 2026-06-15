@@ -1985,6 +1985,7 @@ export const GenerateBenefitUtilizationSummariesReportGenerateByBillingAccountIn
       method: "POST",
       path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GenerateBenefitUtilizationSummariesReportGenerateByBillingAccountInput =
@@ -2077,6 +2078,7 @@ export const GenerateBenefitUtilizationSummariesReportGenerateByBillingProfileIn
       method: "POST",
       path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GenerateBenefitUtilizationSummariesReportGenerateByBillingProfileInput =
@@ -2172,6 +2174,7 @@ export const GenerateBenefitUtilizationSummariesReportGenerateByReservationIdInp
       method: "POST",
       path: "/providers/microsoft.Capacity/reservationorders/{reservationOrderId}/reservations/{reservationId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GenerateBenefitUtilizationSummariesReportGenerateByReservationIdInput =
@@ -2266,6 +2269,7 @@ export const GenerateBenefitUtilizationSummariesReportGenerateByReservationOrder
       method: "POST",
       path: "/providers/microsoft.Capacity/reservationorders/{reservationOrderId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GenerateBenefitUtilizationSummariesReportGenerateByReservationOrderIdInput =
@@ -2360,6 +2364,7 @@ export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanIdInp
       method: "POST",
       path: "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanIdInput =
@@ -2454,6 +2459,7 @@ export const GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanOrder
       method: "POST",
       path: "/providers/microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/providers/Microsoft.CostManagement/generateBenefitUtilizationSummariesReport",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GenerateBenefitUtilizationSummariesReportGenerateBySavingsPlanOrderIdInput =
@@ -2546,6 +2552,7 @@ export const GenerateCostDetailsReportCreateOperationInput =
       method: "POST",
       path: "/{scope}/providers/Microsoft.CostManagement/generateCostDetailsReport",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GenerateCostDetailsReportCreateOperationInput =
@@ -2630,6 +2637,7 @@ export const GenerateCostDetailsReportGetOperationResultsInput =
       method: "GET",
       path: "/{scope}/providers/Microsoft.CostManagement/costDetailsOperationResults/{operationId}",
       apiVersion: "2025-03-01",
+      longRunning: {},
     }),
   );
 export type GenerateCostDetailsReportGetOperationResultsInput =
@@ -2724,6 +2732,7 @@ export const GenerateDetailedCostReportCreateOperationInput =
       method: "POST",
       path: "/{scope}/providers/Microsoft.CostManagement/generateDetailedCostReport",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GenerateDetailedCostReportCreateOperationInput =
@@ -2775,6 +2784,7 @@ export const GenerateDetailedCostReportOperationResultsGetInput =
       method: "GET",
       path: "/{scope}/providers/Microsoft.CostManagement/operationResults/{operationId}",
       apiVersion: "2025-03-01",
+      longRunning: {},
     }),
   );
 export type GenerateDetailedCostReportOperationResultsGetInput =
@@ -2880,6 +2890,7 @@ export const GenerateReservationDetailsReportByBillingAccountIdInput =
       method: "POST",
       path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/generateReservationDetailsReport",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GenerateReservationDetailsReportByBillingAccountIdInput =
@@ -2941,6 +2952,7 @@ export const GenerateReservationDetailsReportByBillingProfileIdInput =
       method: "POST",
       path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.CostManagement/generateReservationDetailsReport",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GenerateReservationDetailsReportByBillingProfileIdInput =
@@ -3049,6 +3061,7 @@ export const PriceSheetDownloadByBillingAccountInput =
       method: "POST",
       path: "/providers/microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.CostManagement/pricesheets/default/download",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PriceSheetDownloadByBillingAccountInput =
@@ -3114,6 +3127,7 @@ export const PriceSheetDownloadByBillingProfileInput =
       method: "POST",
       path: "/providers/microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/providers/Microsoft.CostManagement/pricesheets/default/download",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PriceSheetDownloadByBillingProfileInput =
@@ -3184,6 +3198,7 @@ export const PriceSheetDownloadByInvoiceInput =
       method: "POST",
       path: "/providers/microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoices/{invoiceName}/providers/Microsoft.CostManagement/pricesheets/default/download",
       apiVersion: "2025-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PriceSheetDownloadByInvoiceInput =

@@ -137,6 +137,7 @@ export const PrivateEndpointConnectionsAdtAPICreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForO365ManagementActivityAPI/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsAdtAPICreateOrUpdateInput =
@@ -181,6 +182,7 @@ export const PrivateEndpointConnectionsAdtAPIDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForO365ManagementActivityAPI/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsAdtAPIDeleteInput =
@@ -344,6 +346,7 @@ export const PrivateEndpointConnectionsCompCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsCompCreateOrUpdateInput =
@@ -388,6 +391,7 @@ export const PrivateEndpointConnectionsCompDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsCompDeleteInput =
@@ -551,6 +555,7 @@ export const PrivateEndpointConnectionsForEDMCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForEDMUpload/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsForEDMCreateOrUpdateInput =
@@ -595,6 +600,7 @@ export const PrivateEndpointConnectionsForEDMDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForEDMUpload/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsForEDMDeleteInput =
@@ -758,6 +764,7 @@ export const PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsForMIPPolicySyncCreateOrUpdateInput =
@@ -803,6 +810,7 @@ export const PrivateEndpointConnectionsForMIPPolicySyncDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsForMIPPolicySyncDeleteInput =
@@ -966,6 +974,7 @@ export const PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForSCCPowershell/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsForSCCPowershellCreateOrUpdateInput =
@@ -1011,6 +1020,7 @@ export const PrivateEndpointConnectionsForSCCPowershellDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForSCCPowershell/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsForSCCPowershellDeleteInput =
@@ -1174,6 +1184,7 @@ export const PrivateEndpointConnectionsSecCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsSecCreateOrUpdateInput =
@@ -1218,6 +1229,7 @@ export const PrivateEndpointConnectionsSecDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsSecDeleteInput =
@@ -1972,6 +1984,7 @@ export const PrivateLinkServicesForEDMUploadCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForEDMUpload/{resourceName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateLinkServicesForEDMUploadCreateOrUpdateInput =
@@ -2272,6 +2285,7 @@ export const PrivateLinkServicesForEDMUploadUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForEDMUpload/{resourceName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateLinkServicesForEDMUploadUpdateInput =
@@ -2430,6 +2444,7 @@ export const PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter/{resourceName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateInput =
@@ -2496,6 +2511,7 @@ export const PrivateLinkServicesForM365ComplianceCenterDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter/{resourceName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateLinkServicesForM365ComplianceCenterDeleteInput =
@@ -2769,6 +2785,7 @@ export const PrivateLinkServicesForM365ComplianceCenterUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter/{resourceName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateLinkServicesForM365ComplianceCenterUpdateInput =
@@ -2927,6 +2944,7 @@ export const PrivateLinkServicesForM365SecurityCenterCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter/{resourceName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateLinkServicesForM365SecurityCenterCreateOrUpdateInput =
@@ -2992,6 +3010,7 @@ export const PrivateLinkServicesForM365SecurityCenterDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter/{resourceName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateLinkServicesForM365SecurityCenterDeleteInput =
@@ -3265,6 +3284,7 @@ export const PrivateLinkServicesForM365SecurityCenterUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForM365SecurityCenter/{resourceName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateLinkServicesForM365SecurityCenterUpdateInput =
@@ -3423,6 +3443,7 @@ export const PrivateLinkServicesForMIPPolicySyncCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync/{resourceName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateLinkServicesForMIPPolicySyncCreateOrUpdateInput =
@@ -3488,6 +3509,7 @@ export const PrivateLinkServicesForMIPPolicySyncDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync/{resourceName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateLinkServicesForMIPPolicySyncDeleteInput =
@@ -3759,6 +3781,7 @@ export const PrivateLinkServicesForMIPPolicySyncUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForMIPPolicySync/{resourceName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateLinkServicesForMIPPolicySyncUpdateInput =
@@ -3917,6 +3940,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateInput 
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForO365ManagementActivityAPI/{resourceName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateInput =
@@ -3984,6 +4008,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPIDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForO365ManagementActivityAPI/{resourceName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateLinkServicesForO365ManagementActivityAPIDeleteInput =
@@ -4257,6 +4282,7 @@ export const PrivateLinkServicesForO365ManagementActivityAPIUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForO365ManagementActivityAPI/{resourceName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateLinkServicesForO365ManagementActivityAPIUpdateInput =
@@ -4415,6 +4441,7 @@ export const PrivateLinkServicesForSCCPowershellCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForSCCPowershell/{resourceName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateLinkServicesForSCCPowershellCreateOrUpdateInput =
@@ -4480,6 +4507,7 @@ export const PrivateLinkServicesForSCCPowershellDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForSCCPowershell/{resourceName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateLinkServicesForSCCPowershellDeleteInput =
@@ -4751,6 +4779,7 @@ export const PrivateLinkServicesForSCCPowershellUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForSCCPowershell/{resourceName}",
       apiVersion: "2021-03-08",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateLinkServicesForSCCPowershellUpdateInput =
@@ -4817,6 +4846,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SecurityAndCompliance/privateLinkServicesForEDMUpload/{resourceName}",
     apiVersion: "2021-03-08",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;

@@ -26,6 +26,7 @@ export const OffersGenerateAccessTokenInput =
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.EdgeMarketplace/offers/{offerId}/generateAccessToken",
       apiVersion: "2024-10-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OffersGenerateAccessTokenInput =

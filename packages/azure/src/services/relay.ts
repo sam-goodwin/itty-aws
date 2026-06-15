@@ -676,6 +676,7 @@ export const NamespacesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NamespacesCreateOrUpdateInput =
@@ -863,6 +864,7 @@ export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}",
     apiVersion: "2024-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
@@ -1609,6 +1611,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =

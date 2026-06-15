@@ -265,6 +265,7 @@ export const PipelineGroupsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/pipelineGroups/{pipelineGroupName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PipelineGroupsCreateOrUpdateInput =
@@ -319,6 +320,7 @@ export const PipelineGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/pipelineGroups/{pipelineGroupName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PipelineGroupsDeleteInput = typeof PipelineGroupsDeleteInput.Type;
@@ -730,6 +732,7 @@ export const PipelineGroupsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/pipelineGroups/{pipelineGroupName}",
       apiVersion: "2026-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PipelineGroupsUpdateInput = typeof PipelineGroupsUpdateInput.Type;

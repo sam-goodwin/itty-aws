@@ -61,6 +61,7 @@ export const BotsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthBot/healthBots/{botName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type BotsCreateInput = typeof BotsCreateInput.Type;
@@ -110,6 +111,7 @@ export const BotsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthBot/healthBots/{botName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type BotsDeleteInput = typeof BotsDeleteInput.Type;
@@ -433,6 +435,7 @@ export const BotsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthBot/healthBots/{botName}",
     apiVersion: "2025-11-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type BotsUpdateInput = typeof BotsUpdateInput.Type;

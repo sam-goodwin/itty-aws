@@ -48,6 +48,7 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type DatabaseMigrationsMongoToCosmosDbRUMongoCreateInput =
@@ -95,6 +96,7 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type DatabaseMigrationsMongoToCosmosDbRUMongoDeleteInput =
@@ -264,6 +266,7 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateInput =
@@ -311,6 +314,7 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteInput =
@@ -450,6 +454,7 @@ export const DatabaseMigrationsSqlDbCancelInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type DatabaseMigrationsSqlDbCancelInput =
@@ -511,6 +516,7 @@ export const DatabaseMigrationsSqlDbCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type DatabaseMigrationsSqlDbCreateOrUpdateInput =
@@ -559,6 +565,7 @@ export const DatabaseMigrationsSqlDbDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type DatabaseMigrationsSqlDbDeleteInput =
@@ -645,6 +652,7 @@ export const DatabaseMigrationsSqlDbRetryInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/retry",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type DatabaseMigrationsSqlDbRetryInput =
@@ -677,6 +685,7 @@ export const DatabaseMigrationsSqlMiCancelInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type DatabaseMigrationsSqlMiCancelInput =
@@ -738,6 +747,7 @@ export const DatabaseMigrationsSqlMiCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type DatabaseMigrationsSqlMiCreateOrUpdateInput =
@@ -786,6 +796,7 @@ export const DatabaseMigrationsSqlMiCutoverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cutover",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type DatabaseMigrationsSqlMiCutoverInput =
@@ -816,6 +827,7 @@ export const DatabaseMigrationsSqlMiDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type DatabaseMigrationsSqlMiDeleteInput =
@@ -919,6 +931,7 @@ export const DatabaseMigrationsSqlVmCancelInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type DatabaseMigrationsSqlVmCancelInput =
@@ -980,6 +993,7 @@ export const DatabaseMigrationsSqlVmCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type DatabaseMigrationsSqlVmCreateOrUpdateInput =
@@ -1028,6 +1042,7 @@ export const DatabaseMigrationsSqlVmCutoverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cutover",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type DatabaseMigrationsSqlVmCutoverInput =
@@ -1058,6 +1073,7 @@ export const DatabaseMigrationsSqlVmDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type DatabaseMigrationsSqlVmDeleteInput =
@@ -1456,6 +1472,7 @@ export const MigrationServicesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type MigrationServicesCreateOrUpdateInput =
@@ -1501,6 +1518,7 @@ export const MigrationServicesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type MigrationServicesDeleteInput =
@@ -1761,6 +1779,7 @@ export const MigrationServicesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type MigrationServicesUpdateInput =
@@ -2272,6 +2291,7 @@ export const ServicesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type ServicesCreateOrUpdateInput =
@@ -2321,6 +2341,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}",
     apiVersion: "2025-06-30",
+    longRunning: {},
   }),
 );
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
@@ -2580,6 +2601,7 @@ export const ServicesStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/start",
     apiVersion: "2025-06-30",
+    longRunning: {},
   }),
 );
 export type ServicesStartInput = typeof ServicesStartInput.Type;
@@ -2608,6 +2630,7 @@ export const ServicesStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/stop",
     apiVersion: "2025-06-30",
+    longRunning: {},
   }),
 );
 export type ServicesStopInput = typeof ServicesStopInput.Type;
@@ -2636,6 +2659,7 @@ export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}",
     apiVersion: "2025-06-30",
+    longRunning: {},
   }),
 );
 export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;
@@ -2964,6 +2988,7 @@ export const SqlMigrationServicesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type SqlMigrationServicesCreateOrUpdateInput =
@@ -3009,6 +3034,7 @@ export const SqlMigrationServicesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type SqlMigrationServicesDeleteInput =
@@ -3415,6 +3441,7 @@ export const SqlMigrationServicesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}",
       apiVersion: "2025-06-30",
+      longRunning: {},
     }),
   );
 export type SqlMigrationServicesUpdateInput =

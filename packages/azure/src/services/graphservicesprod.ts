@@ -42,6 +42,7 @@ export const AccountsCreateAndUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.GraphServices/accounts/{resourceName}",
       apiVersion: "2023-04-13",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AccountsCreateAndUpdateInput =

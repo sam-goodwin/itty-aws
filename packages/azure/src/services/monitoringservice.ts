@@ -135,6 +135,7 @@ export const AzureMonitorWorkspacesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
       apiVersion: "2023-04-03",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AzureMonitorWorkspacesDeleteInput =

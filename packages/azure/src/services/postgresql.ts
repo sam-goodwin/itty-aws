@@ -30,6 +30,7 @@ export const AdministratorsMicrosoftEntraCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/administrators/{objectId}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AdministratorsMicrosoftEntraCreateOrUpdateInput =
@@ -68,6 +69,7 @@ export const AdministratorsMicrosoftEntraDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/administrators/{objectId}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AdministratorsMicrosoftEntraDeleteInput =
@@ -356,6 +358,7 @@ export const BackupsAutomaticAndOnDemandCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/backups/{backupName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type BackupsAutomaticAndOnDemandCreateInput =
@@ -394,6 +397,7 @@ export const BackupsAutomaticAndOnDemandDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/backups/{backupName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupsAutomaticAndOnDemandDeleteInput =
@@ -731,6 +735,7 @@ export const BackupsLongTermRetentionStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/startLtrBackup",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupsLongTermRetentionStartInput =
@@ -1099,6 +1104,7 @@ export const ConfigurationsPutInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/configurations/{configurationName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ConfigurationsPutInput = typeof ConfigurationsPutInput.Type;
@@ -1157,6 +1163,7 @@ export const ConfigurationsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/configurations/{configurationName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConfigurationsUpdateInput = typeof ConfigurationsUpdateInput.Type;
@@ -1199,6 +1206,7 @@ export const DatabasesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/databases/{databaseName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type DatabasesCreateInput = typeof DatabasesCreateInput.Type;
@@ -1232,6 +1240,7 @@ export const DatabasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/databases/{databaseName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DatabasesDeleteInput = typeof DatabasesDeleteInput.Type;
@@ -1390,6 +1399,7 @@ export const FirewallRulesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FirewallRulesCreateOrUpdateInput =
@@ -1429,6 +1439,7 @@ export const FirewallRulesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
@@ -2388,6 +2399,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -2588,6 +2600,7 @@ export const PrivateEndpointConnectionsUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateEndpointConnectionsUpdateInput =
@@ -3115,6 +3128,7 @@ export const ServersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ServersCreateOrUpdateInput = typeof ServersCreateOrUpdateInput.Type;
@@ -3150,6 +3164,7 @@ export const ServersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ServersDeleteInput = typeof ServersDeleteInput.Type;
@@ -3373,6 +3388,7 @@ export const ServersRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/restart",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ServersRestartInput = typeof ServersRestartInput.Type;
@@ -3404,6 +3420,7 @@ export const ServersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/start",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ServersStartInput = typeof ServersStartInput.Type;
@@ -3435,6 +3452,7 @@ export const ServersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/stop",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ServersStopInput = typeof ServersStopInput.Type;
@@ -3646,6 +3664,7 @@ export const ServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ServersUpdateInput = typeof ServersUpdateInput.Type;
@@ -3685,6 +3704,7 @@ export const ServerThreatProtectionSettingsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/advancedThreatProtectionSettings/{threatProtectionName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ServerThreatProtectionSettingsCreateOrUpdateInput =
@@ -3928,6 +3948,7 @@ export const VirtualEndpointsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints/{virtualEndpointName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualEndpointsCreateInput =
@@ -3967,6 +3988,7 @@ export const VirtualEndpointsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints/{virtualEndpointName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualEndpointsDeleteInput =
@@ -4135,6 +4157,7 @@ export const VirtualEndpointsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}/virtualendpoints/{virtualEndpointName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualEndpointsUpdateInput =

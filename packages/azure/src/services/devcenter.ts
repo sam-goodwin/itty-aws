@@ -76,6 +76,7 @@ export const AttachedNetworksCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/attachednetworks/{attachedNetworkConnectionName}",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AttachedNetworksCreateOrUpdateInput =
@@ -128,6 +129,7 @@ export const AttachedNetworksDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/attachednetworks/{attachedNetworkConnectionName}",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AttachedNetworksDeleteInput =
@@ -408,6 +410,7 @@ export const CatalogsConnectInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/connect",
     apiVersion: "2025-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type CatalogsConnectInput = typeof CatalogsConnectInput.Type;
@@ -477,6 +480,7 @@ export const CatalogsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CatalogsCreateOrUpdateInput =
@@ -529,6 +533,7 @@ export const CatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}",
     apiVersion: "2025-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type CatalogsDeleteInput = typeof CatalogsDeleteInput.Type;
@@ -735,6 +740,7 @@ export const CatalogsSyncInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}/sync",
     apiVersion: "2025-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type CatalogsSyncInput = typeof CatalogsSyncInput.Type;
@@ -786,6 +792,7 @@ export const CatalogsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}",
     apiVersion: "2025-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type CatalogsUpdateInput = typeof CatalogsUpdateInput.Type;
@@ -1081,6 +1088,7 @@ export const DevBoxDefinitionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/devboxdefinitions/{devBoxDefinitionName}",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DevBoxDefinitionsCreateOrUpdateInput =
@@ -1126,6 +1134,7 @@ export const DevBoxDefinitionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/devboxdefinitions/{devBoxDefinitionName}",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DevBoxDefinitionsDeleteInput =
@@ -1395,6 +1404,7 @@ export const DevBoxDefinitionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/devboxdefinitions/{devBoxDefinitionName}",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DevBoxDefinitionsUpdateInput =
@@ -1517,6 +1527,7 @@ export const DevCentersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DevCentersCreateOrUpdateInput =
@@ -1569,6 +1580,7 @@ export const DevCentersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}",
     apiVersion: "2025-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type DevCentersDeleteInput = typeof DevCentersDeleteInput.Type;
@@ -1858,6 +1870,7 @@ export const DevCentersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}",
     apiVersion: "2025-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type DevCentersUpdateInput = typeof DevCentersUpdateInput.Type;
@@ -2506,6 +2519,7 @@ export const GalleriesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type GalleriesCreateOrUpdateInput =
@@ -2558,6 +2572,7 @@ export const GalleriesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}",
     apiVersion: "2025-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type GalleriesDeleteInput = typeof GalleriesDeleteInput.Type;
@@ -3267,6 +3282,7 @@ export const NetworkConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkConnectionsCreateOrUpdateInput =
@@ -3312,6 +3328,7 @@ export const NetworkConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkConnectionsDeleteInput =
@@ -3679,6 +3696,7 @@ export const NetworkConnectionsRunHealthChecksInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}/runHealthChecks",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkConnectionsRunHealthChecksInput =
@@ -3722,6 +3740,7 @@ export const NetworkConnectionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/networkConnections/{networkConnectionName}",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkConnectionsUpdateInput =
@@ -3968,6 +3987,7 @@ export const PoolsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PoolsCreateOrUpdateInput = typeof PoolsCreateOrUpdateInput.Type;
@@ -4011,6 +4031,7 @@ export const PoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}",
     apiVersion: "2025-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type PoolsDeleteInput = typeof PoolsDeleteInput.Type;
@@ -4137,6 +4158,7 @@ export const PoolsRunHealthChecksInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/runHealthChecks",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PoolsRunHealthChecksInput = typeof PoolsRunHealthChecksInput.Type;
@@ -4232,6 +4254,7 @@ export const PoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}",
     apiVersion: "2025-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type PoolsUpdateInput = typeof PoolsUpdateInput.Type;
@@ -4439,6 +4462,7 @@ export const ProjectCatalogImageDefinitionBuildCancelInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/builds/{buildName}/cancel",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProjectCatalogImageDefinitionBuildCancelInput =
@@ -4626,6 +4650,7 @@ export const ProjectCatalogImageDefinitionsBuildImageInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/imageDefinitions/{imageDefinitionName}/buildImage",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProjectCatalogImageDefinitionsBuildImageInput =
@@ -4806,6 +4831,7 @@ export const ProjectCatalogsConnectInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/connect",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProjectCatalogsConnectInput =
@@ -4880,6 +4906,7 @@ export const ProjectCatalogsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProjectCatalogsCreateOrUpdateInput =
@@ -4932,6 +4959,7 @@ export const ProjectCatalogsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProjectCatalogsDeleteInput = typeof ProjectCatalogsDeleteInput.Type;
@@ -5169,6 +5197,7 @@ export const ProjectCatalogsPatchInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProjectCatalogsPatchInput = typeof ProjectCatalogsPatchInput.Type;
@@ -5220,6 +5249,7 @@ export const ProjectCatalogsSyncInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/catalogs/{catalogName}/sync",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProjectCatalogsSyncInput = typeof ProjectCatalogsSyncInput.Type;
@@ -5682,6 +5712,7 @@ export const ProjectPoliciesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/projectPolicies/{projectPolicyName}",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProjectPoliciesCreateOrUpdateInput =
@@ -5734,6 +5765,7 @@ export const ProjectPoliciesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/projectPolicies/{projectPolicyName}",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProjectPoliciesDeleteInput = typeof ProjectPoliciesDeleteInput.Type;
@@ -5905,6 +5937,7 @@ export const ProjectPoliciesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/projectPolicies/{projectPolicyName}",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProjectPoliciesUpdateInput = typeof ProjectPoliciesUpdateInput.Type;
@@ -5997,6 +6030,7 @@ export const ProjectsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProjectsCreateOrUpdateInput =
@@ -6049,6 +6083,7 @@ export const ProjectsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}",
     apiVersion: "2025-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ProjectsDeleteInput = typeof ProjectsDeleteInput.Type;
@@ -6356,6 +6391,7 @@ export const ProjectsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}",
     apiVersion: "2025-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ProjectsUpdateInput = typeof ProjectsUpdateInput.Type;
@@ -6425,6 +6461,7 @@ export const SchedulesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/schedules/{scheduleName}",
       apiVersion: "2025-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SchedulesCreateOrUpdateInput =
@@ -6472,6 +6509,7 @@ export const SchedulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/schedules/{scheduleName}",
     apiVersion: "2025-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type SchedulesDeleteInput = typeof SchedulesDeleteInput.Type;
@@ -6602,6 +6640,7 @@ export const SchedulesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/schedules/{scheduleName}",
     apiVersion: "2025-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type SchedulesUpdateInput = typeof SchedulesUpdateInput.Type;

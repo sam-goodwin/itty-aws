@@ -4974,6 +4974,7 @@ export const WatchlistsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type WatchlistsCreateOrUpdateInput =
@@ -5028,6 +5029,7 @@ export const WatchlistsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type WatchlistsDeleteInput = typeof WatchlistsDeleteInput.Type;

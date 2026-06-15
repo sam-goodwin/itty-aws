@@ -47,6 +47,7 @@ export const PrivateZonesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}",
       apiVersion: "2024-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateZonesCreateOrUpdateInput =
@@ -104,6 +105,7 @@ export const PrivateZonesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}",
       apiVersion: "2024-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateZonesDeleteInput = typeof PrivateZonesDeleteInput.Type;
@@ -347,6 +349,7 @@ export const PrivateZonesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}",
       apiVersion: "2024-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateZonesUpdateInput = typeof PrivateZonesUpdateInput.Type;
@@ -954,6 +957,7 @@ export const VirtualNetworkLinksCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/virtualNetworkLinks/{virtualNetworkLinkName}",
       apiVersion: "2024-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkLinksCreateOrUpdateInput =
@@ -1012,6 +1016,7 @@ export const VirtualNetworkLinksDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/virtualNetworkLinks/{virtualNetworkLinkName}",
       apiVersion: "2024-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkLinksDeleteInput =
@@ -1210,6 +1215,7 @@ export const VirtualNetworkLinksUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/virtualNetworkLinks/{virtualNetworkLinkName}",
       apiVersion: "2024-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualNetworkLinksUpdateInput =

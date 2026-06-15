@@ -1111,6 +1111,7 @@ export const PriceSheetDownloadByBillingAccountPeriodInput =
       method: "POST",
       path: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/pricesheets/download",
       apiVersion: "2024-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PriceSheetDownloadByBillingAccountPeriodInput =

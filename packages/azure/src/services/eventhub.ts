@@ -264,6 +264,7 @@ export const ClustersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters/{clusterName}",
       apiVersion: "2024-01-01",
+      longRunning: {},
     }),
   );
 export type ClustersCreateOrUpdateInput =
@@ -304,6 +305,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters/{clusterName}",
     apiVersion: "2024-01-01",
+    longRunning: {},
   }),
 );
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
@@ -588,6 +590,7 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/clusters/{clusterName}",
     apiVersion: "2024-01-01",
+    longRunning: {},
   }),
 );
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
@@ -2072,6 +2075,7 @@ export const NamespacesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}",
       apiVersion: "2024-01-01",
+      longRunning: {},
     }),
   );
 export type NamespacesCreateOrUpdateInput =
@@ -2266,6 +2270,7 @@ export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}",
     apiVersion: "2024-01-01",
+    longRunning: {},
   }),
 );
 export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
@@ -2911,6 +2916,7 @@ export const NetworkSecurityPerimeterConfigurationsCreateOrUpdateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/networkSecurityPerimeterConfigurations/{resourceAssociationName}/reconcile",
       apiVersion: "2024-01-01",
+      longRunning: {},
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsCreateOrUpdateInput =
@@ -3133,6 +3139,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-01-01",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =

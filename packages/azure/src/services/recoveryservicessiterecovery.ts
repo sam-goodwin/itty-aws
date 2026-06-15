@@ -988,6 +988,7 @@ export const ReplicationFabricsCheckConsistencyInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/checkConsistency",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationFabricsCheckConsistencyInput =
@@ -1055,6 +1056,7 @@ export const ReplicationFabricsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationFabricsCreateInput =
@@ -1114,6 +1116,7 @@ export const ReplicationFabricsDeleteInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/remove",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationFabricsDeleteInput =
@@ -1287,6 +1290,7 @@ export const ReplicationFabricsMigrateToAadInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/migratetoaad",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationFabricsMigrateToAadInput =
@@ -1327,6 +1331,7 @@ export const ReplicationFabricsPurgeInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationFabricsPurgeInput =
@@ -1377,6 +1382,7 @@ export const ReplicationFabricsReassociateGatewayInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/reassociateGateway",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationFabricsReassociateGatewayInput =
@@ -1435,6 +1441,7 @@ export const ReplicationFabricsRemoveInfraInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/removeInfra",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationFabricsRemoveInfraInput =
@@ -1478,6 +1485,7 @@ export const ReplicationFabricsRenewCertificateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/renewCertificate",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationFabricsRenewCertificateInput =
@@ -1536,6 +1544,7 @@ export const ReplicationJobsCancelInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}/cancel",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationJobsCancelInput = typeof ReplicationJobsCancelInput.Type;
@@ -1601,6 +1610,7 @@ export const ReplicationJobsExportInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/export",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationJobsExportInput = typeof ReplicationJobsExportInput.Type;
@@ -1783,6 +1793,7 @@ export const ReplicationJobsRestartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}/restart",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationJobsRestartInput =
@@ -1847,6 +1858,7 @@ export const ReplicationJobsResumeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}/resume",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationJobsResumeInput = typeof ReplicationJobsResumeInput.Type;
@@ -2046,6 +2058,7 @@ export const ReplicationMigrationItemsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationMigrationItemsCreateInput =
@@ -2109,6 +2122,7 @@ export const ReplicationMigrationItemsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationMigrationItemsDeleteInput =
@@ -2377,6 +2391,7 @@ export const ReplicationMigrationItemsMigrateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/migrate",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationMigrationItemsMigrateInput =
@@ -2442,6 +2457,7 @@ export const ReplicationMigrationItemsPauseReplicationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/pauseReplication",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationMigrationItemsPauseReplicationInput =
@@ -2509,6 +2525,7 @@ export const ReplicationMigrationItemsResumeReplicationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/resumeReplication",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationMigrationItemsResumeReplicationInput =
@@ -2576,6 +2593,7 @@ export const ReplicationMigrationItemsResyncInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/resync",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationMigrationItemsResyncInput =
@@ -2643,6 +2661,7 @@ export const ReplicationMigrationItemsTestMigrateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/testMigrate",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationMigrationItemsTestMigrateInput =
@@ -2708,6 +2727,7 @@ export const ReplicationMigrationItemsTestMigrateCleanupInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/testMigrateCleanup",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationMigrationItemsTestMigrateCleanupInput =
@@ -2777,6 +2797,7 @@ export const ReplicationMigrationItemsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationMigrationItemsUpdateInput =
@@ -2848,6 +2869,7 @@ export const ReplicationNetworkMappingsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings/{networkMappingName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationNetworkMappingsCreateInput =
@@ -2910,6 +2932,7 @@ export const ReplicationNetworkMappingsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings/{networkMappingName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationNetworkMappingsDeleteInput =
@@ -3173,6 +3196,7 @@ export const ReplicationNetworkMappingsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings/{networkMappingName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationNetworkMappingsUpdateInput =
@@ -3448,6 +3472,7 @@ export const ReplicationPoliciesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationPoliciesCreateInput =
@@ -3507,6 +3532,7 @@ export const ReplicationPoliciesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationPoliciesDeleteInput =
@@ -3688,6 +3714,7 @@ export const ReplicationPoliciesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationPoliciesUpdateInput =
@@ -3901,6 +3928,7 @@ export const ReplicationProtectedItemsAddDisksInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/addDisks",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectedItemsAddDisksInput =
@@ -3969,6 +3997,7 @@ export const ReplicationProtectedItemsApplyRecoveryPointInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/applyRecoveryPoint",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectedItemsApplyRecoveryPointInput =
@@ -4042,6 +4071,7 @@ export const ReplicationProtectedItemsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectedItemsCreateInput =
@@ -4114,6 +4144,7 @@ export const ReplicationProtectedItemsDeleteInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/remove",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectedItemsDeleteInput =
@@ -4158,6 +4189,7 @@ export const ReplicationProtectedItemsFailoverCancelInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/failoverCancel",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectedItemsFailoverCancelInput =
@@ -4220,6 +4252,7 @@ export const ReplicationProtectedItemsFailoverCommitInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/failoverCommit",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectedItemsFailoverCommitInput =
@@ -4506,6 +4539,7 @@ export const ReplicationProtectedItemsPlannedFailoverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/plannedFailover",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectedItemsPlannedFailoverInput =
@@ -4568,6 +4602,7 @@ export const ReplicationProtectedItemsPurgeInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectedItemsPurgeInput =
@@ -4617,6 +4652,7 @@ export const ReplicationProtectedItemsReinstallMobilityServiceInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/reinstallMobilityService",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectedItemsReinstallMobilityServiceInput =
@@ -4688,6 +4724,7 @@ export const ReplicationProtectedItemsRemoveDisksInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/removeDisks",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectedItemsRemoveDisksInput =
@@ -4750,6 +4787,7 @@ export const ReplicationProtectedItemsRepairReplicationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/repairReplication",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectedItemsRepairReplicationInput =
@@ -4822,6 +4860,7 @@ export const ReplicationProtectedItemsReprotectInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/reProtect",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectedItemsReprotectInput =
@@ -4895,6 +4934,7 @@ export const ReplicationProtectedItemsResolveHealthErrorsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/resolveHealthErrors",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectedItemsResolveHealthErrorsInput =
@@ -4967,6 +5007,7 @@ export const ReplicationProtectedItemsSwitchProviderInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/switchProvider",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ReplicationProtectedItemsSwitchProviderInput =
@@ -5039,6 +5080,7 @@ export const ReplicationProtectedItemsTestFailoverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/testFailover",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectedItemsTestFailoverInput =
@@ -5104,6 +5146,7 @@ export const ReplicationProtectedItemsTestFailoverCleanupInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/testFailoverCleanup",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectedItemsTestFailoverCleanupInput =
@@ -5175,6 +5218,7 @@ export const ReplicationProtectedItemsUnplannedFailoverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/unplannedFailover",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectedItemsUnplannedFailoverInput =
@@ -5298,6 +5342,7 @@ export const ReplicationProtectedItemsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectedItemsUpdateInput =
@@ -5366,6 +5411,7 @@ export const ReplicationProtectedItemsUpdateApplianceInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/updateAppliance",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectedItemsUpdateApplianceInput =
@@ -5433,6 +5479,7 @@ export const ReplicationProtectedItemsUpdateMobilityServiceInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/updateMobilityService",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectedItemsUpdateMobilityServiceInput =
@@ -5504,6 +5551,7 @@ export const ReplicationProtectionClustersApplyRecoveryPointInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/applyRecoveryPoint",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectionClustersApplyRecoveryPointInput =
@@ -5730,6 +5778,7 @@ export const ReplicationProtectionClustersCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectionClustersCreateInput =
@@ -5792,6 +5841,7 @@ export const ReplicationProtectionClustersFailoverCommitInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/failoverCommit",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectionClustersFailoverCommitInput =
@@ -6132,6 +6182,7 @@ export const ReplicationProtectionClustersPurgeInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectionClustersPurgeInput =
@@ -6176,6 +6227,7 @@ export const ReplicationProtectionClustersRepairReplicationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/repairReplication",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectionClustersRepairReplicationInput =
@@ -6250,6 +6302,7 @@ export const ReplicationProtectionClustersTestFailoverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/testFailover",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectionClustersTestFailoverInput =
@@ -6315,6 +6368,7 @@ export const ReplicationProtectionClustersTestFailoverCleanupInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/testFailoverCleanup",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectionClustersTestFailoverCleanupInput =
@@ -6386,6 +6440,7 @@ export const ReplicationProtectionClustersUnplannedFailoverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionClusters/{replicationProtectionClusterName}/unplannedFailover",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectionClustersUnplannedFailoverInput =
@@ -6459,6 +6514,7 @@ export const ReplicationProtectionContainerMappingsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings/{mappingName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectionContainerMappingsCreateInput =
@@ -6530,6 +6586,7 @@ export const ReplicationProtectionContainerMappingsDeleteInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings/{mappingName}/remove",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectionContainerMappingsDeleteInput =
@@ -6784,6 +6841,7 @@ export const ReplicationProtectionContainerMappingsPurgeInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings/{mappingName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectionContainerMappingsPurgeInput =
@@ -6837,6 +6895,7 @@ export const ReplicationProtectionContainerMappingsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings/{mappingName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectionContainerMappingsUpdateInput =
@@ -6909,6 +6968,7 @@ export const ReplicationProtectionContainersCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectionContainersCreateInput =
@@ -6969,6 +7029,7 @@ export const ReplicationProtectionContainersDeleteInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/remove",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectionContainersDeleteInput =
@@ -7018,6 +7079,7 @@ export const ReplicationProtectionContainersDiscoverProtectableItemInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/discoverProtectableItem",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectionContainersDiscoverProtectableItemInput =
@@ -7292,6 +7354,7 @@ export const ReplicationProtectionContainersSwitchClusterProtectionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/switchClusterProtection",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectionContainersSwitchClusterProtectionInput =
@@ -7362,6 +7425,7 @@ export const ReplicationProtectionContainersSwitchProtectionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/switchprotection",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationProtectionContainersSwitchProtectionInput =
@@ -7710,6 +7774,7 @@ export const ReplicationRecoveryPlansCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationRecoveryPlansCreateInput =
@@ -7768,6 +7833,7 @@ export const ReplicationRecoveryPlansDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationRecoveryPlansDeleteInput =
@@ -7808,6 +7874,7 @@ export const ReplicationRecoveryPlansFailoverCancelInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/failoverCancel",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationRecoveryPlansFailoverCancelInput =
@@ -7866,6 +7933,7 @@ export const ReplicationRecoveryPlansFailoverCommitInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/failoverCommit",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationRecoveryPlansFailoverCommitInput =
@@ -8067,6 +8135,7 @@ export const ReplicationRecoveryPlansPlannedFailoverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/plannedFailover",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationRecoveryPlansPlannedFailoverInput =
@@ -8125,6 +8194,7 @@ export const ReplicationRecoveryPlansReprotectInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/reProtect",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationRecoveryPlansReprotectInput =
@@ -8198,6 +8268,7 @@ export const ReplicationRecoveryPlansTestFailoverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/testFailover",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationRecoveryPlansTestFailoverInput =
@@ -8259,6 +8330,7 @@ export const ReplicationRecoveryPlansTestFailoverCleanupInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/testFailoverCleanup",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationRecoveryPlansTestFailoverCleanupInput =
@@ -8331,6 +8403,7 @@ export const ReplicationRecoveryPlansUnplannedFailoverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/unplannedFailover",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationRecoveryPlansUnplannedFailoverInput =
@@ -8476,6 +8549,7 @@ export const ReplicationRecoveryPlansUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationRecoveryPlansUpdateInput =
@@ -8563,6 +8637,7 @@ export const ReplicationRecoveryServicesProvidersCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders/{providerName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationRecoveryServicesProvidersCreateInput =
@@ -8623,6 +8698,7 @@ export const ReplicationRecoveryServicesProvidersDeleteInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders/{providerName}/remove",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationRecoveryServicesProvidersDeleteInput =
@@ -8871,6 +8947,7 @@ export const ReplicationRecoveryServicesProvidersPurgeInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders/{providerName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationRecoveryServicesProvidersPurgeInput =
@@ -8913,6 +8990,7 @@ export const ReplicationRecoveryServicesProvidersRefreshProviderInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders/{providerName}/refreshProvider",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationRecoveryServicesProvidersRefreshProviderInput =
@@ -8979,6 +9057,7 @@ export const ReplicationStorageClassificationMappingsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationStorageClassifications/{storageClassificationName}/replicationStorageClassificationMappings/{storageClassificationMappingName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationStorageClassificationMappingsCreateInput =
@@ -9041,6 +9120,7 @@ export const ReplicationStorageClassificationMappingsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationStorageClassifications/{storageClassificationName}/replicationStorageClassificationMappings/{storageClassificationMappingName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationStorageClassificationMappingsDeleteInput =
@@ -9554,6 +9634,7 @@ export const ReplicationVaultHealthRefreshInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultHealth/default/refresh",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationVaultHealthRefreshInput =
@@ -9613,6 +9694,7 @@ export const ReplicationVaultSettingCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultSettings/{vaultSettingName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationVaultSettingCreateInput =
@@ -9812,6 +9894,7 @@ export const ReplicationvCentersCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationvCentersCreateInput =
@@ -9873,6 +9956,7 @@ export const ReplicationvCentersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationvCentersDeleteInput =
@@ -10131,6 +10215,7 @@ export const ReplicationvCentersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationvCentersUpdateInput =

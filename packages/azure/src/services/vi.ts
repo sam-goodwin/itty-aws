@@ -799,6 +799,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -854,6 +855,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VideoIndexer/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =

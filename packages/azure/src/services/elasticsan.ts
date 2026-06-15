@@ -100,6 +100,7 @@ export const ElasticSansCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ElasticSansCreateInput = typeof ElasticSansCreateInput.Type;
@@ -152,6 +153,7 @@ export const ElasticSansDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ElasticSansDeleteInput = typeof ElasticSansDeleteInput.Type;
@@ -390,6 +392,7 @@ export const ElasticSansUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ElasticSansUpdateInput = typeof ElasticSansUpdateInput.Type;
@@ -519,6 +522,7 @@ export const PrivateEndpointConnectionsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsCreateInput =
@@ -575,6 +579,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -970,6 +975,7 @@ export const VolumeGroupsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumeGroupsCreateInput = typeof VolumeGroupsCreateInput.Type;
@@ -1023,6 +1029,7 @@ export const VolumeGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumeGroupsDeleteInput = typeof VolumeGroupsDeleteInput.Type;
@@ -1238,6 +1245,7 @@ export const VolumeGroupsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumeGroupsUpdateInput = typeof VolumeGroupsUpdateInput.Type;
@@ -1361,6 +1369,7 @@ export const VolumesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type VolumesCreateInput = typeof VolumesCreateInput.Type;
@@ -1414,6 +1423,7 @@ export const VolumesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type VolumesDeleteInput = typeof VolumesDeleteInput.Type;
@@ -1598,6 +1608,7 @@ export const VolumeSnapshotsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/snapshots/{snapshotName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumeSnapshotsCreateInput = typeof VolumeSnapshotsCreateInput.Type;
@@ -1656,6 +1667,7 @@ export const VolumeSnapshotsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/snapshots/{snapshotName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VolumeSnapshotsDeleteInput = typeof VolumeSnapshotsDeleteInput.Type;
@@ -1823,6 +1835,7 @@ export const VolumesPreBackupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/preBackup",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type VolumesPreBackupInput = typeof VolumesPreBackupInput.Type;
@@ -1863,6 +1876,7 @@ export const VolumesPreRestoreInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/preRestore",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type VolumesPreRestoreInput = typeof VolumesPreRestoreInput.Type;
@@ -1910,6 +1924,7 @@ export const VolumesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type VolumesUpdateInput = typeof VolumesUpdateInput.Type;

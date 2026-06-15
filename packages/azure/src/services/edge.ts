@@ -214,6 +214,7 @@ export const ConfigTemplatesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConfigTemplatesCreateOrUpdateInput =
@@ -289,6 +290,7 @@ export const ConfigTemplatesCreateVersionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/createVersion",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConfigTemplatesCreateVersionInput =
@@ -343,6 +345,7 @@ export const ConfigTemplatesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConfigTemplatesDeleteInput = typeof ConfigTemplatesDeleteInput.Type;
@@ -1421,6 +1424,7 @@ export const ContextsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ContextsCreateOrUpdateInput =
@@ -1475,6 +1479,7 @@ export const ContextsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ContextsDeleteInput = typeof ContextsDeleteInput.Type;
@@ -1711,6 +1716,7 @@ export const ContextsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ContextsUpdateInput = typeof ContextsUpdateInput.Type;
@@ -1784,6 +1790,7 @@ export const DiagnosticsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics/{diagnosticName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DiagnosticsCreateOrUpdateInput =
@@ -1840,6 +1847,7 @@ export const DiagnosticsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics/{diagnosticName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DiagnosticsDeleteInput = typeof DiagnosticsDeleteInput.Type;
@@ -2056,6 +2064,7 @@ export const DiagnosticsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/diagnostics/{diagnosticName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DiagnosticsUpdateInput = typeof DiagnosticsUpdateInput.Type;
@@ -2154,6 +2163,7 @@ export const DisconnectedOperationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}",
       apiVersion: "2026-03-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DisconnectedOperationsCreateOrUpdateInput =
@@ -2208,6 +2218,7 @@ export const DisconnectedOperationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}",
       apiVersion: "2026-03-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DisconnectedOperationsDeleteInput =
@@ -2623,6 +2634,7 @@ export const DynamicConfigurationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DynamicConfigurationsCreateOrUpdateInput =
@@ -2928,6 +2940,7 @@ export const DynamicConfigurationVersionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configurations/{configurationName}/dynamicConfigurations/{dynamicConfigurationName}/versions/{dynamicConfigurationVersionName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DynamicConfigurationVersionsCreateOrUpdateInput =
@@ -3239,6 +3252,7 @@ export const DynamicSchemasCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DynamicSchemasCreateOrUpdateInput =
@@ -3295,6 +3309,7 @@ export const DynamicSchemasDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DynamicSchemasDeleteInput = typeof DynamicSchemasDeleteInput.Type;
@@ -3549,6 +3564,7 @@ export const DynamicSchemaVersionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions/{dynamicSchemaVersionName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DynamicSchemaVersionsCreateOrUpdateInput =
@@ -3607,6 +3623,7 @@ export const DynamicSchemaVersionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/dynamicSchemas/{dynamicSchemaName}/versions/{dynamicSchemaVersionName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DynamicSchemaVersionsDeleteInput =
@@ -3895,6 +3912,7 @@ export const ExecutionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions/{executionName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ExecutionsCreateOrUpdateInput =
@@ -3955,6 +3973,7 @@ export const ExecutionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions/{executionName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ExecutionsDeleteInput = typeof ExecutionsDeleteInput.Type;
@@ -4128,6 +4147,7 @@ export const ExecutionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}/executions/{executionName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ExecutionsUpdateInput = typeof ExecutionsUpdateInput.Type;
@@ -4200,6 +4220,7 @@ export const HardwareSettingsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/hardwareSettings/{hardwareSettingName}",
       apiVersion: "2026-03-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type HardwareSettingsCreateOrUpdateInput =
@@ -4256,6 +4277,7 @@ export const HardwareSettingsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/disconnectedOperations/{name}/hardwareSettings/{hardwareSettingName}",
       apiVersion: "2026-03-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type HardwareSettingsDeleteInput =
@@ -4789,6 +4811,7 @@ export const InstancesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type InstancesCreateOrUpdateInput =
@@ -4847,6 +4870,7 @@ export const InstancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type InstancesDeleteInput = typeof InstancesDeleteInput.Type;
@@ -5021,6 +5045,7 @@ export const InstancesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/instances/{instanceName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type InstancesUpdateInput = typeof InstancesUpdateInput.Type;
@@ -5241,6 +5266,7 @@ export const SchemaReferencesCreateOrUpdateInput =
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.Edge/schemaReferences/{schemaReferenceName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SchemaReferencesCreateOrUpdateInput =
@@ -5291,6 +5317,7 @@ export const SchemaReferencesDeleteInput =
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.Edge/schemaReferences/{schemaReferenceName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SchemaReferencesDeleteInput =
@@ -5509,6 +5536,7 @@ export const SchemasCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SchemasCreateOrUpdateInput = typeof SchemasCreateOrUpdateInput.Type;
@@ -5584,6 +5612,7 @@ export const SchemasCreateVersionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/createVersion",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SchemasCreateVersionInput = typeof SchemasCreateVersionInput.Type;
@@ -5636,6 +5665,7 @@ export const SchemasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SchemasDeleteInput = typeof SchemasDeleteInput.Type;
@@ -5957,6 +5987,7 @@ export const SchemaVersionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/versions/{schemaVersionName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SchemaVersionsCreateOrUpdateInput =
@@ -6013,6 +6044,7 @@ export const SchemaVersionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/schemas/{schemaName}/versions/{schemaVersionName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SchemaVersionsDeleteInput = typeof SchemaVersionsDeleteInput.Type;
@@ -6249,6 +6281,7 @@ export const SiteReferencesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/siteReferences/{siteReferenceName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SiteReferencesCreateOrUpdateInput =
@@ -6305,6 +6338,7 @@ export const SiteReferencesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/siteReferences/{siteReferenceName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SiteReferencesDeleteInput = typeof SiteReferencesDeleteInput.Type;
@@ -6471,6 +6505,7 @@ export const SiteReferencesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/siteReferences/{siteReferenceName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SiteReferencesUpdateInput = typeof SiteReferencesUpdateInput.Type;
@@ -6544,6 +6579,7 @@ export const SitesByServiceGroupCreateOrUpdateInput =
       method: "PUT",
       path: "/providers/Microsoft.Management/serviceGroups/{servicegroupName}/providers/Microsoft.Edge/sites/{siteName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SitesByServiceGroupCreateOrUpdateInput =
@@ -6839,6 +6875,7 @@ export const SitesBySubscriptionCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Edge/sites/{siteName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SitesBySubscriptionCreateOrUpdateInput =
@@ -7136,6 +7173,7 @@ export const SitesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/sites/{siteName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SitesCreateOrUpdateInput = typeof SitesCreateOrUpdateInput.Type;
@@ -7434,6 +7472,7 @@ export const SolutionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SolutionsCreateOrUpdateInput =
@@ -7490,6 +7529,7 @@ export const SolutionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SolutionsDeleteInput = typeof SolutionsDeleteInput.Type;
@@ -7644,6 +7684,7 @@ export const SolutionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SolutionsUpdateInput = typeof SolutionsUpdateInput.Type;
@@ -7718,6 +7759,7 @@ export const SolutionTemplatesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SolutionTemplatesCreateOrUpdateInput =
@@ -7793,6 +7835,7 @@ export const SolutionTemplatesCreateVersionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/createVersion",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SolutionTemplatesCreateVersionInput =
@@ -7847,6 +7890,7 @@ export const SolutionTemplatesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SolutionTemplatesDeleteInput =
@@ -8070,6 +8114,7 @@ export const SolutionTemplatesRemoveVersionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/removeVersion",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SolutionTemplatesRemoveVersionInput =
@@ -8176,6 +8221,7 @@ export const SolutionTemplateVersionsBulkDeploySolutionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}/bulkDeploySolution",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SolutionTemplateVersionsBulkDeploySolutionInput =
@@ -8236,6 +8282,7 @@ export const SolutionTemplateVersionsBulkPublishSolutionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}/bulkPublishSolution",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SolutionTemplateVersionsBulkPublishSolutionInput =
@@ -8295,6 +8342,7 @@ export const SolutionTemplateVersionsBulkReviewSolutionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/solutionTemplates/{solutionTemplateName}/versions/{solutionTemplateVersionName}/bulkReviewSolution",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SolutionTemplateVersionsBulkReviewSolutionInput =
@@ -8610,6 +8658,7 @@ export const SolutionVersionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/versions/{solutionVersionName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SolutionVersionsCreateOrUpdateInput =
@@ -8668,6 +8717,7 @@ export const SolutionVersionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/versions/{solutionVersionName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SolutionVersionsDeleteInput =
@@ -8842,6 +8892,7 @@ export const SolutionVersionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/solutions/{solutionName}/versions/{solutionVersionName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SolutionVersionsUpdateInput =
@@ -8957,6 +9008,7 @@ export const TargetsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type TargetsCreateOrUpdateInput = typeof TargetsCreateOrUpdateInput.Type;
@@ -9010,6 +9062,7 @@ export const TargetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type TargetsDeleteInput = typeof TargetsDeleteInput.Type;
@@ -9092,6 +9145,7 @@ export const TargetsInstallSolutionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/installSolution",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type TargetsInstallSolutionInput =
@@ -9264,6 +9318,7 @@ export const TargetsPublishSolutionVersionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/publishSolutionVersion",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type TargetsPublishSolutionVersionInput =
@@ -9320,6 +9375,7 @@ export const TargetsRemoveRevisionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/removeRevision",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type TargetsRemoveRevisionInput = typeof TargetsRemoveRevisionInput.Type;
@@ -9370,6 +9426,7 @@ export const TargetsResolveConfigurationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/resolveConfiguration",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type TargetsResolveConfigurationInput =
@@ -9423,6 +9480,7 @@ export const TargetsReviewSolutionVersionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/reviewSolutionVersion",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type TargetsReviewSolutionVersionInput =
@@ -9479,6 +9537,7 @@ export const TargetsUninstallSolutionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/uninstallSolution",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type TargetsUninstallSolutionInput =
@@ -9517,6 +9576,7 @@ export const TargetsUnstageSolutionVersionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/unstageSolutionVersion",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type TargetsUnstageSolutionVersionInput =
@@ -9585,6 +9645,7 @@ export const TargetsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type TargetsUpdateInput = typeof TargetsUpdateInput.Type;
@@ -9671,6 +9732,7 @@ export const TargetsUpdateExternalValidationStatusInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/targets/{targetName}/updateExternalValidationStatus",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type TargetsUpdateExternalValidationStatusInput =
@@ -9748,6 +9810,7 @@ export const WorkflowsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type WorkflowsCreateOrUpdateInput =
@@ -9804,6 +9867,7 @@ export const WorkflowsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type WorkflowsDeleteInput = typeof WorkflowsDeleteInput.Type;
@@ -9973,6 +10037,7 @@ export const WorkflowsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}",
     apiVersion: "2025-08-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type WorkflowsUpdateInput = typeof WorkflowsUpdateInput.Type;
@@ -10103,6 +10168,7 @@ export const WorkflowVersionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type WorkflowVersionsCreateOrUpdateInput =
@@ -10161,6 +10227,7 @@ export const WorkflowVersionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkflowVersionsDeleteInput =
@@ -10371,6 +10438,7 @@ export const WorkflowVersionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}",
       apiVersion: "2025-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkflowVersionsUpdateInput =

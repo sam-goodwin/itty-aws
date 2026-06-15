@@ -155,6 +155,7 @@ export const WorkspaceCollectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBI/workspaceCollections/{workspaceCollectionName}",
       apiVersion: "2016-01-29",
+      longRunning: {},
     }),
   );
 export type WorkspaceCollectionsDeleteInput =

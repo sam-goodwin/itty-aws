@@ -457,6 +457,7 @@ export const GatewaysCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/gateways/{gatewayName}",
       apiVersion: "2025-01-13",
+      longRunning: {},
     }),
   );
 export type GatewaysCreateOrUpdateInput =
@@ -509,6 +510,7 @@ export const GatewaysDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/gateways/{gatewayName}",
     apiVersion: "2025-01-13",
+    longRunning: {},
   }),
 );
 export type GatewaysDeleteInput = typeof GatewaysDeleteInput.Type;
@@ -1049,6 +1051,7 @@ export const LicenseProfilesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/licenseProfiles/{licenseProfileName}",
       apiVersion: "2025-01-13",
+      longRunning: {},
     }),
   );
 export type LicenseProfilesCreateOrUpdateInput =
@@ -1101,6 +1104,7 @@ export const LicenseProfilesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/licenseProfiles/{licenseProfileName}",
       apiVersion: "2025-01-13",
+      longRunning: {},
     }),
   );
 export type LicenseProfilesDeleteInput = typeof LicenseProfilesDeleteInput.Type;
@@ -1285,6 +1289,7 @@ export const LicenseProfilesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/licenseProfiles/{licenseProfileName}",
       apiVersion: "2025-01-13",
+      longRunning: {},
     }),
   );
 export type LicenseProfilesUpdateInput = typeof LicenseProfilesUpdateInput.Type;
@@ -1387,6 +1392,7 @@ export const LicensesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/licenses/{licenseName}",
       apiVersion: "2025-01-13",
+      longRunning: {},
     }),
   );
 export type LicensesCreateOrUpdateInput =
@@ -1439,6 +1445,7 @@ export const LicensesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/licenses/{licenseName}",
     apiVersion: "2025-01-13",
+    longRunning: {},
   }),
 );
 export type LicensesDeleteInput = typeof LicensesDeleteInput.Type;
@@ -1666,6 +1673,7 @@ export const LicensesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/licenses/{licenseName}",
     apiVersion: "2025-01-13",
+    longRunning: {},
   }),
 );
 export type LicensesUpdateInput = typeof LicensesUpdateInput.Type;
@@ -1763,6 +1771,7 @@ export const LicensesValidateLicenseInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.HybridCompute/validateLicense",
       apiVersion: "2025-01-13",
+      longRunning: {},
     }),
   );
 export type LicensesValidateLicenseInput =
@@ -1852,6 +1861,7 @@ export const MachineExtensionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions/{extensionName}",
       apiVersion: "2025-01-13",
+      longRunning: {},
     }),
   );
 export type MachineExtensionsCreateOrUpdateInput =
@@ -1908,6 +1918,7 @@ export const MachineExtensionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions/{extensionName}",
       apiVersion: "2025-01-13",
+      longRunning: {},
     }),
   );
 export type MachineExtensionsDeleteInput =
@@ -2090,6 +2101,7 @@ export const MachineExtensionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions/{extensionName}",
       apiVersion: "2025-01-13",
+      longRunning: {},
     }),
   );
 export type MachineExtensionsUpdateInput =
@@ -2233,6 +2245,7 @@ export const MachineRunCommandsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}",
       apiVersion: "2025-01-13",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type MachineRunCommandsCreateOrUpdateInput =
@@ -2285,6 +2298,7 @@ export const MachineRunCommandsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}",
       apiVersion: "2025-01-13",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MachineRunCommandsDeleteInput =
@@ -2445,6 +2459,7 @@ export const MachineRunCommandsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}",
       apiVersion: "2025-01-13",
+      longRunning: {},
     }),
   );
 export type MachineRunCommandsUpdateInput =
@@ -2499,6 +2514,7 @@ export const MachinesAssessPatchesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{name}/assessPatches",
       apiVersion: "2025-01-13",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MachinesAssessPatchesInput = typeof MachinesAssessPatchesInput.Type;
@@ -3207,6 +3223,7 @@ export const MachinesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}",
     apiVersion: "2025-01-13",
+    longRunning: {},
   }),
 );
 export type MachinesDeleteInput = typeof MachinesDeleteInput.Type;
@@ -3323,6 +3340,7 @@ export const MachinesInstallPatchesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{name}/installPatches",
       apiVersion: "2025-01-13",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MachinesInstallPatchesInput =
@@ -4329,6 +4347,7 @@ export const NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeI
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/networkSecurityPerimeterConfigurations/{perimeterName}/reconcile",
       apiVersion: "2025-01-13",
+      longRunning: {},
     }),
   );
 export type NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScopeInput =
@@ -4444,6 +4463,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-01-13",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -4498,6 +4518,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-01-13",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -4873,6 +4894,7 @@ export const PrivateLinkScopesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}",
       apiVersion: "2025-01-13",
+      longRunning: {},
     }),
   );
 export type PrivateLinkScopesDeleteInput =
@@ -5371,6 +5393,7 @@ export const SetupExtensionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/addExtensions",
     apiVersion: "2025-01-13",
+    longRunning: {},
   }),
 );
 export type SetupExtensionsInput = typeof SetupExtensionsInput.Type;
@@ -5448,6 +5471,7 @@ export const UpgradeExtensionsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/upgradeExtensions",
     apiVersion: "2025-01-13",
+    longRunning: {},
   }),
 );
 export type UpgradeExtensionsInput = typeof UpgradeExtensionsInput.Type;

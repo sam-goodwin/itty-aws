@@ -81,6 +81,7 @@ export const ClustersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/clusters/{clusterName}",
     apiVersion: "2023-12-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ClustersCreateInput = typeof ClustersCreateInput.Type;
@@ -175,6 +176,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/clusters/{clusterName}",
     apiVersion: "2023-12-01",
+    longRunning: {},
   }),
 );
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
@@ -657,6 +659,7 @@ export const DatastoresCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/datastores/{datastoreName}",
     apiVersion: "2023-12-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type DatastoresCreateInput = typeof DatastoresCreateInput.Type;
@@ -749,6 +752,7 @@ export const DatastoresDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/datastores/{datastoreName}",
     apiVersion: "2023-12-01",
+    longRunning: {},
   }),
 );
 export type DatastoresDeleteInput = typeof DatastoresDeleteInput.Type;
@@ -1220,6 +1224,7 @@ export const HostsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/hosts/{hostName}",
     apiVersion: "2023-12-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type HostsCreateInput = typeof HostsCreateInput.Type;
@@ -1314,6 +1319,7 @@ export const HostsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/hosts/{hostName}",
     apiVersion: "2023-12-01",
+    longRunning: {},
   }),
 );
 export type HostsDeleteInput = typeof HostsDeleteInput.Type;
@@ -2078,6 +2084,7 @@ export const ResourcePoolsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/resourcePools/{resourcePoolName}",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ResourcePoolsCreateInput = typeof ResourcePoolsCreateInput.Type;
@@ -2180,6 +2187,7 @@ export const ResourcePoolsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/resourcePools/{resourcePoolName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type ResourcePoolsDeleteInput = typeof ResourcePoolsDeleteInput.Type;
@@ -2706,6 +2714,7 @@ export const VCentersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}",
     apiVersion: "2023-12-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type VCentersCreateInput = typeof VCentersCreateInput.Type;
@@ -2801,6 +2810,7 @@ export const VCentersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/vcenters/{vcenterName}",
     apiVersion: "2023-12-01",
+    longRunning: {},
   }),
 );
 export type VCentersDeleteInput = typeof VCentersDeleteInput.Type;
@@ -3452,6 +3462,7 @@ export const VirtualMachineInstancesCreateOrUpdateInput =
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualMachineInstancesCreateOrUpdateInput =
@@ -3502,6 +3513,7 @@ export const VirtualMachineInstancesDeleteInput =
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualMachineInstancesDeleteInput =
@@ -3645,6 +3657,7 @@ export const VirtualMachineInstancesRestartInput =
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/restart",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineInstancesRestartInput =
@@ -3674,6 +3687,7 @@ export const VirtualMachineInstancesStartInput =
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/start",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineInstancesStartInput =
@@ -3705,6 +3719,7 @@ export const VirtualMachineInstancesStopInput =
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/stop",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineInstancesStopInput =
@@ -3810,6 +3825,7 @@ export const VirtualMachineInstancesUpdateInput =
       method: "PATCH",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualMachineInstancesUpdateInput =
@@ -4014,6 +4030,7 @@ export const VirtualMachineTemplatesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/{virtualMachineTemplateName}",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualMachineTemplatesCreateInput =
@@ -4204,6 +4221,7 @@ export const VirtualMachineTemplatesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/{virtualMachineTemplateName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type VirtualMachineTemplatesDeleteInput =
@@ -5081,6 +5099,7 @@ export const VirtualNetworksCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks/{virtualNetworkName}",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualNetworksCreateInput = typeof VirtualNetworksCreateInput.Type;
@@ -5174,6 +5193,7 @@ export const VirtualNetworksDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ConnectedVMwarevSphere/virtualNetworks/{virtualNetworkName}",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type VirtualNetworksDeleteInput = typeof VirtualNetworksDeleteInput.Type;
@@ -5637,6 +5657,7 @@ export const VMInstanceGuestAgentsCreateInput =
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/guestAgents/default",
       apiVersion: "2023-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VMInstanceGuestAgentsCreateInput =
@@ -5685,6 +5706,7 @@ export const VMInstanceGuestAgentsDeleteInput =
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineInstances/default/guestAgents/default",
       apiVersion: "2023-12-01",
+      longRunning: {},
     }),
   );
 export type VMInstanceGuestAgentsDeleteInput =

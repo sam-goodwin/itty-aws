@@ -236,6 +236,7 @@ export const ArcSettingsCreateIdentityInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/createArcIdentity",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ArcSettingsCreateIdentityInput =
@@ -285,6 +286,7 @@ export const ArcSettingsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}",
     apiVersion: "2026-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ArcSettingsDeleteInput = typeof ArcSettingsDeleteInput.Type;
@@ -414,6 +416,7 @@ export const ArcSettingsInitializeDisableProcessInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/initializeDisableProcess",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ArcSettingsInitializeDisableProcessInput =
@@ -527,6 +530,7 @@ export const ArcSettingsReconcileInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/reconcile",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ArcSettingsReconcileInput = typeof ArcSettingsReconcileInput.Type;
@@ -664,6 +668,7 @@ export const ClustersConfigureRemoteSupportInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/configureRemoteSupport",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClustersConfigureRemoteSupportInput =
@@ -1032,6 +1037,7 @@ export const ClustersCreateIdentityInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/createClusterIdentity",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ClustersCreateIdentityInput =
@@ -1077,6 +1083,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}",
     apiVersion: "2026-02-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
@@ -1116,6 +1123,7 @@ export const ClustersExtendSoftwareAssuranceBenefitInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/extendSoftwareAssuranceBenefit",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClustersExtendSoftwareAssuranceBenefitInput =
@@ -1359,6 +1367,7 @@ export const ClustersTriggerLogCollectionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/triggerLogCollection",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClustersTriggerLogCollectionInput =
@@ -1509,6 +1518,7 @@ export const ClustersUpdateSecretsLocationsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updateSecretsLocations",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClustersUpdateSecretsLocationsInput =
@@ -1568,6 +1578,7 @@ export const ClustersUploadCertificateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/uploadCertificate",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ClustersUploadCertificateInput =
@@ -1939,6 +1950,7 @@ export const DeploymentSettingsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/deploymentSettings/{deploymentSettingsName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DeploymentSettingsCreateOrUpdateInput =
@@ -1995,6 +2007,7 @@ export const DeploymentSettingsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/deploymentSettings/{deploymentSettingsName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentSettingsDeleteInput =
@@ -2159,6 +2172,7 @@ export const EdgeDeviceJobsCreateOrUpdateInput =
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}/jobs/{jobsName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type EdgeDeviceJobsCreateOrUpdateInput =
@@ -2213,6 +2227,7 @@ export const EdgeDeviceJobsDeleteInput =
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}/jobs/{jobsName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type EdgeDeviceJobsDeleteInput = typeof EdgeDeviceJobsDeleteInput.Type;
@@ -2367,6 +2382,7 @@ export const EdgeDevicesCreateOrUpdateInput =
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type EdgeDevicesCreateOrUpdateInput =
@@ -2421,6 +2437,7 @@ export const EdgeDevicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}",
     apiVersion: "2026-02-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type EdgeDevicesDeleteInput = typeof EdgeDevicesDeleteInput.Type;
@@ -2550,6 +2567,7 @@ export const EdgeDevicesValidateInput =
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/edgeDevices/{edgeDeviceName}/validate",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type EdgeDevicesValidateInput = typeof EdgeDevicesValidateInput.Type;
@@ -2694,6 +2712,7 @@ export const ExtensionsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions/{extensionName}",
     apiVersion: "2026-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ExtensionsCreateInput = typeof ExtensionsCreateInput.Type;
@@ -2749,6 +2768,7 @@ export const ExtensionsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions/{extensionName}",
     apiVersion: "2026-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ExtensionsDeleteInput = typeof ExtensionsDeleteInput.Type;
@@ -2921,6 +2941,7 @@ export const ExtensionsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions/{extensionName}",
     apiVersion: "2026-02-01",
+    longRunning: { finalStateVia: "original-uri" },
   }),
 );
 export type ExtensionsUpdateInput = typeof ExtensionsUpdateInput.Type;
@@ -2979,6 +3000,7 @@ export const ExtensionsUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions/{extensionName}/upgrade",
     apiVersion: "2026-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ExtensionsUpgradeInput = typeof ExtensionsUpgradeInput.Type;
@@ -3084,6 +3106,7 @@ export const GalleryImagesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/galleryImages/{galleryImageName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type GalleryImagesCreateOrUpdateInput =
@@ -3137,6 +3160,7 @@ export const GalleryImagesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/galleryImages/{galleryImageName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type GalleryImagesDeleteInput = typeof GalleryImagesDeleteInput.Type;
@@ -3351,6 +3375,7 @@ export const GalleryImagesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/galleryImages/{galleryImageName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type GalleryImagesUpdateInput = typeof GalleryImagesUpdateInput.Type;
@@ -3424,6 +3449,7 @@ export const GuestAgentCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/guestAgents/default",
     apiVersion: "2024-01-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type GuestAgentCreateInput = typeof GuestAgentCreateInput.Type;
@@ -3472,6 +3498,7 @@ export const GuestAgentDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/guestAgents/default",
     apiVersion: "2024-01-01",
+    longRunning: {},
   }),
 );
 export type GuestAgentDeleteInput = typeof GuestAgentDeleteInput.Type;
@@ -3826,6 +3853,7 @@ export const LogicalNetworksCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type LogicalNetworksCreateOrUpdateInput =
@@ -3878,6 +3906,7 @@ export const LogicalNetworksDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type LogicalNetworksDeleteInput = typeof LogicalNetworksDeleteInput.Type;
@@ -4095,6 +4124,7 @@ export const LogicalNetworksUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/logicalNetworks/{logicalNetworkName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type LogicalNetworksUpdateInput = typeof LogicalNetworksUpdateInput.Type;
@@ -4218,6 +4248,7 @@ export const MarketplaceGalleryImagesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/marketplaceGalleryImages/{marketplaceGalleryImageName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type MarketplaceGalleryImagesCreateOrUpdateInput =
@@ -4270,6 +4301,7 @@ export const MarketplaceGalleryImagesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/marketplaceGalleryImages/{marketplaceGalleryImageName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type MarketplaceGalleryImagesDeleteInput =
@@ -4494,6 +4526,7 @@ export const MarketplaceGalleryImagesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/marketplaceGalleryImages/{marketplaceGalleryImageName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type MarketplaceGalleryImagesUpdateInput =
@@ -4607,6 +4640,7 @@ export const NetworkInterfacesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/networkInterfaces/{networkInterfaceName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkInterfacesCreateOrUpdateInput =
@@ -4659,6 +4693,7 @@ export const NetworkInterfacesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/networkInterfaces/{networkInterfaceName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkInterfacesDeleteInput =
@@ -4883,6 +4918,7 @@ export const NetworkInterfacesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/networkInterfaces/{networkInterfaceName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkInterfacesUpdateInput =
@@ -5233,6 +5269,7 @@ export const SecuritySettingsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/securitySettings/{securitySettingsName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SecuritySettingsCreateOrUpdateInput =
@@ -5289,6 +5326,7 @@ export const SecuritySettingsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/securitySettings/{securitySettingsName}",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SecuritySettingsDeleteInput =
@@ -5604,6 +5642,7 @@ export const StorageContainersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/storageContainers/{storageContainerName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type StorageContainersCreateOrUpdateInput =
@@ -5656,6 +5695,7 @@ export const StorageContainersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/storageContainers/{storageContainerName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type StorageContainersDeleteInput =
@@ -5880,6 +5920,7 @@ export const StorageContainersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/storageContainers/{storageContainerName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type StorageContainersUpdateInput =
@@ -5935,6 +5976,7 @@ export const UpdateRunsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}/updateRuns/{updateRunName}",
     apiVersion: "2026-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type UpdateRunsDeleteInput = typeof UpdateRunsDeleteInput.Type;
@@ -6177,6 +6219,7 @@ export const UpdatesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}",
     apiVersion: "2026-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type UpdatesDeleteInput = typeof UpdatesDeleteInput.Type;
@@ -6315,6 +6358,7 @@ export const UpdatesPostInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updates/{updateName}/apply",
     apiVersion: "2026-02-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type UpdatesPostInput = typeof UpdatesPostInput.Type;
@@ -6549,6 +6593,7 @@ export const UpdateSummariesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/updateSummaries/default",
       apiVersion: "2026-02-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type UpdateSummariesDeleteInput = typeof UpdateSummariesDeleteInput.Type;
@@ -7034,6 +7079,7 @@ export const VirtualHardDisksCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/virtualHardDisks/{virtualHardDiskName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualHardDisksCreateOrUpdateInput =
@@ -7086,6 +7132,7 @@ export const VirtualHardDisksDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/virtualHardDisks/{virtualHardDiskName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualHardDisksDeleteInput =
@@ -7307,6 +7354,7 @@ export const VirtualHardDisksUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/virtualHardDisks/{virtualHardDiskName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualHardDisksUpdateInput =
@@ -7620,6 +7668,7 @@ export const VirtualMachineInstancesCreateOrUpdateInput =
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualMachineInstancesCreateOrUpdateInput =
@@ -7667,6 +7716,7 @@ export const VirtualMachineInstancesDeleteInput =
       method: "DELETE",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualMachineInstancesDeleteInput =
@@ -7809,6 +7859,7 @@ export const VirtualMachineInstancesRestartInput =
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/restart",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineInstancesRestartInput =
@@ -7856,6 +7907,7 @@ export const VirtualMachineInstancesStartInput =
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/start",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineInstancesStartInput =
@@ -7903,6 +7955,7 @@ export const VirtualMachineInstancesStopInput =
       method: "POST",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/stop",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VirtualMachineInstancesStopInput =
@@ -8035,6 +8088,7 @@ export const VirtualMachineInstancesUpdateInput =
       method: "PATCH",
       path: "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualMachineInstancesUpdateInput =

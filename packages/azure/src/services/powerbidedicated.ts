@@ -431,6 +431,7 @@ export const CapacitiesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}",
     apiVersion: "2021-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type CapacitiesCreateInput = typeof CapacitiesCreateInput.Type;
@@ -482,6 +483,7 @@ export const CapacitiesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}",
     apiVersion: "2021-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type CapacitiesDeleteInput = typeof CapacitiesDeleteInput.Type;
@@ -777,6 +779,7 @@ export const CapacitiesResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}/resume",
     apiVersion: "2021-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type CapacitiesResumeInput = typeof CapacitiesResumeInput.Type;
@@ -810,6 +813,7 @@ export const CapacitiesSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}/suspend",
     apiVersion: "2021-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type CapacitiesSuspendInput = typeof CapacitiesSuspendInput.Type;
@@ -863,6 +867,7 @@ export const CapacitiesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}",
     apiVersion: "2021-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type CapacitiesUpdateInput = typeof CapacitiesUpdateInput.Type;

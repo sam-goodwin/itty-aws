@@ -62,6 +62,7 @@ export const AccessConnectorsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/accessConnectors/{connectorName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AccessConnectorsCreateOrUpdateInput =
@@ -102,6 +103,7 @@ export const AccessConnectorsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/accessConnectors/{connectorName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AccessConnectorsDeleteInput =
@@ -282,6 +284,7 @@ export const AccessConnectorsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/accessConnectors/{connectorName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AccessConnectorsUpdateInput =
@@ -453,6 +456,7 @@ export const PrivateEndpointConnectionsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsCreateInput =
@@ -497,6 +501,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -751,6 +756,7 @@ export const VNetPeeringCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/virtualNetworkPeerings/{peeringName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VNetPeeringCreateOrUpdateInput =
@@ -795,6 +801,7 @@ export const VNetPeeringDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}/virtualNetworkPeerings/{peeringName}",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type VNetPeeringDeleteInput = typeof VNetPeeringDeleteInput.Type;
@@ -1209,6 +1216,7 @@ export const WorkspacesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}",
       apiVersion: "2026-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkspacesCreateOrUpdateInput =
@@ -1250,6 +1258,7 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
@@ -1402,6 +1411,7 @@ export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Databricks/workspaces/{workspaceName}",
     apiVersion: "2026-01-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;

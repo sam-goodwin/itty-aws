@@ -65,6 +65,7 @@ export const B2CTenantsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/b2cDirectories/{resourceName}",
     apiVersion: "2021-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type B2CTenantsCreateInput = typeof B2CTenantsCreateInput.Type;
@@ -130,6 +131,7 @@ export const B2CTenantsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureActiveDirectory/b2cDirectories/{resourceName}",
     apiVersion: "2021-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type B2CTenantsDeleteInput = typeof B2CTenantsDeleteInput.Type;

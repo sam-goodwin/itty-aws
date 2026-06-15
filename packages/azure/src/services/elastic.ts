@@ -83,6 +83,7 @@ export const AssociateTrafficFilterAssociateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/associateTrafficFilter",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AssociateTrafficFilterAssociateInput =
@@ -228,6 +229,7 @@ export const CreateAndAssociateIPFilterCreateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/createAndAssociateIPFilter",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CreateAndAssociateIPFilterCreateInput =
@@ -269,6 +271,7 @@ export const CreateAndAssociatePLFilterCreateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/createAndAssociatePLFilter",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CreateAndAssociatePLFilterCreateInput =
@@ -405,6 +408,7 @@ export const DetachTrafficFilterUpdateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/detachTrafficFilter",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DetachTrafficFilterUpdateInput =
@@ -710,6 +714,7 @@ export const MonitoredSubscriptionsCreateorUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MonitoredSubscriptionsCreateorUpdateInput =
@@ -764,6 +769,7 @@ export const MonitoredSubscriptionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MonitoredSubscriptionsDeleteInput =
@@ -1001,6 +1007,7 @@ export const MonitoredSubscriptionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MonitoredSubscriptionsUpdateInput =
@@ -1167,6 +1174,7 @@ export const MonitorsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type MonitorsCreateInput = typeof MonitorsCreateInput.Type;
@@ -1215,6 +1223,7 @@ export const MonitorsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type MonitorsDeleteInput = typeof MonitorsDeleteInput.Type;
@@ -1414,6 +1423,7 @@ export const MonitorsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type MonitorsUpdateInput = typeof MonitorsUpdateInput.Type;
@@ -1463,6 +1473,7 @@ export const MonitorUpgradeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/upgrade",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type MonitorUpgradeInput = typeof MonitorUpgradeInput.Type;
@@ -1881,6 +1892,7 @@ export const OrganizationsResubscribeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/resubscribe",
       apiVersion: "2025-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type OrganizationsResubscribeInput =
@@ -2026,6 +2038,7 @@ export const TagRulesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/tagRules/{ruleSetName}",
     apiVersion: "2025-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type TagRulesDeleteInput = typeof TagRulesDeleteInput.Type;

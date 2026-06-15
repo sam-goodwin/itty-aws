@@ -84,6 +84,7 @@ export const ADCCatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataCatalog/catalogs/{catalogName}",
     apiVersion: "2016-03-30",
+    longRunning: {},
   }),
 );
 export type ADCCatalogsDeleteInput = typeof ADCCatalogsDeleteInput.Type;

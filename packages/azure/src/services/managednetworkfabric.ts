@@ -301,6 +301,7 @@ export const AccessControlListsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AccessControlListsCreateInput =
@@ -356,6 +357,7 @@ export const AccessControlListsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AccessControlListsDeleteInput =
@@ -579,6 +581,7 @@ export const AccessControlListsResyncInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}/resync",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AccessControlListsResyncInput =
@@ -873,6 +876,7 @@ export const AccessControlListsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AccessControlListsUpdateInput =
@@ -932,6 +936,7 @@ export const AccessControlListsUpdateAdministrativeStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AccessControlListsUpdateAdministrativeStateInput =
@@ -1074,6 +1079,7 @@ export const AccessControlListsValidateConfigurationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/accessControlLists/{accessControlListName}/validateConfiguration",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AccessControlListsValidateConfigurationInput =
@@ -1301,6 +1307,7 @@ export const ExternalNetworksCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ExternalNetworksCreateInput =
@@ -1358,6 +1365,7 @@ export const ExternalNetworksDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExternalNetworksDeleteInput =
@@ -1651,6 +1659,7 @@ export const ExternalNetworksUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExternalNetworksUpdateInput =
@@ -1712,6 +1721,7 @@ export const ExternalNetworksUpdateAdministrativeStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExternalNetworksUpdateAdministrativeStateInput =
@@ -1860,6 +1870,7 @@ export const ExternalNetworksUpdateBfdAdministrativeStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}/updateBfdAdministrativeState",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExternalNetworksUpdateBfdAdministrativeStateInput =
@@ -2010,6 +2021,7 @@ export const ExternalNetworksUpdateStaticRouteBfdAdministrativeStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/externalNetworks/{externalNetworkName}/updateStaticRouteBfdAdministrativeState",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ExternalNetworksUpdateStaticRouteBfdAdministrativeStateInput =
@@ -2293,6 +2305,7 @@ export const InternalNetworksCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type InternalNetworksCreateInput =
@@ -2350,6 +2363,7 @@ export const InternalNetworksDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InternalNetworksDeleteInput =
@@ -2608,6 +2622,7 @@ export const InternalNetworksUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InternalNetworksUpdateInput =
@@ -2669,6 +2684,7 @@ export const InternalNetworksUpdateAdministrativeStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InternalNetworksUpdateAdministrativeStateInput =
@@ -2818,6 +2834,7 @@ export const InternalNetworksUpdateBfdAdministrativeStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}/updateBfdAdministrativeState",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InternalNetworksUpdateBfdAdministrativeStateInput =
@@ -2975,6 +2992,7 @@ export const InternalNetworksUpdateBgpAdministrativeStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}/updateBgpAdministrativeState",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InternalNetworksUpdateBgpAdministrativeStateInput =
@@ -3132,6 +3150,7 @@ export const InternalNetworksUpdateStaticRouteBfdAdministrativeStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}/updateStaticRouteBfdAdministrativeState",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InternalNetworksUpdateStaticRouteBfdAdministrativeStateInput =
@@ -3280,6 +3299,7 @@ export const InternetGatewayRulesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/{internetGatewayRuleName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type InternetGatewayRulesCreateInput =
@@ -3335,6 +3355,7 @@ export const InternetGatewayRulesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/{internetGatewayRuleName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InternetGatewayRulesDeleteInput =
@@ -3560,6 +3581,7 @@ export const InternetGatewayRulesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/{internetGatewayRuleName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InternetGatewayRulesUpdateInput =
@@ -3643,6 +3665,7 @@ export const InternetGatewaysCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGateways/{internetGatewayName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type InternetGatewaysCreateInput =
@@ -3698,6 +3721,7 @@ export const InternetGatewaysDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGateways/{internetGatewayName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InternetGatewaysDeleteInput =
@@ -3924,6 +3948,7 @@ export const InternetGatewaysUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGateways/{internetGatewayName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type InternetGatewaysUpdateInput =
@@ -4045,6 +4070,7 @@ export const IpCommunitiesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipCommunities/{ipCommunityName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IpCommunitiesCreateInput = typeof IpCommunitiesCreateInput.Type;
@@ -4096,6 +4122,7 @@ export const IpCommunitiesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipCommunities/{ipCommunityName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IpCommunitiesDeleteInput = typeof IpCommunitiesDeleteInput.Type;
@@ -4337,6 +4364,7 @@ export const IpCommunitiesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipCommunities/{ipCommunityName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IpCommunitiesUpdateInput = typeof IpCommunitiesUpdateInput.Type;
@@ -4443,6 +4471,7 @@ export const IpExtendedCommunitiesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/{ipExtendedCommunityName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IpExtendedCommunitiesCreateInput =
@@ -4498,6 +4527,7 @@ export const IpExtendedCommunitiesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/{ipExtendedCommunityName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IpExtendedCommunitiesDeleteInput =
@@ -4737,6 +4767,7 @@ export const IpExtendedCommunitiesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/{ipExtendedCommunityName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IpExtendedCommunitiesUpdateInput =
@@ -4855,6 +4886,7 @@ export const IpPrefixesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/{ipPrefixName}",
     apiVersion: "2025-07-15",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type IpPrefixesCreateInput = typeof IpPrefixesCreateInput.Type;
@@ -4906,6 +4938,7 @@ export const IpPrefixesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/{ipPrefixName}",
     apiVersion: "2025-07-15",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type IpPrefixesDeleteInput = typeof IpPrefixesDeleteInput.Type;
@@ -5142,6 +5175,7 @@ export const IpPrefixesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/ipPrefixes/{ipPrefixName}",
     apiVersion: "2025-07-15",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type IpPrefixesUpdateInput = typeof IpPrefixesUpdateInput.Type;
@@ -5194,6 +5228,7 @@ export const L2IsolationDomainsCommitConfigurationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}/commitConfiguration",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type L2IsolationDomainsCommitConfigurationInput =
@@ -5273,6 +5308,7 @@ export const L2IsolationDomainsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type L2IsolationDomainsCreateInput =
@@ -5328,6 +5364,7 @@ export const L2IsolationDomainsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type L2IsolationDomainsDeleteInput =
@@ -5578,6 +5615,7 @@ export const L2IsolationDomainsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type L2IsolationDomainsUpdateInput =
@@ -5637,6 +5675,7 @@ export const L2IsolationDomainsUpdateAdministrativeStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type L2IsolationDomainsUpdateAdministrativeStateInput =
@@ -5779,6 +5818,7 @@ export const L2IsolationDomainsValidateConfigurationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l2IsolationDomains/{l2IsolationDomainName}/validateConfiguration",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type L2IsolationDomainsValidateConfigurationInput =
@@ -5832,6 +5872,7 @@ export const L3IsolationDomainsCommitConfigurationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/commitConfiguration",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type L3IsolationDomainsCommitConfigurationInput =
@@ -6024,6 +6065,7 @@ export const L3IsolationDomainsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type L3IsolationDomainsCreateInput =
@@ -6079,6 +6121,7 @@ export const L3IsolationDomainsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type L3IsolationDomainsDeleteInput =
@@ -6399,6 +6442,7 @@ export const L3IsolationDomainsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type L3IsolationDomainsUpdateInput =
@@ -6458,6 +6502,7 @@ export const L3IsolationDomainsUpdateAdministrativeStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type L3IsolationDomainsUpdateAdministrativeStateInput =
@@ -6600,6 +6645,7 @@ export const L3IsolationDomainsValidateConfigurationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/validateConfiguration",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type L3IsolationDomainsValidateConfigurationInput =
@@ -6718,6 +6764,7 @@ export const NeighborGroupsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/neighborGroups/{neighborGroupName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NeighborGroupsCreateInput = typeof NeighborGroupsCreateInput.Type;
@@ -6771,6 +6818,7 @@ export const NeighborGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/neighborGroups/{neighborGroupName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NeighborGroupsDeleteInput = typeof NeighborGroupsDeleteInput.Type;
@@ -6990,6 +7038,7 @@ export const NeighborGroupsResyncInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/neighborGroups/{neighborGroupName}/resync",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NeighborGroupsResyncInput = typeof NeighborGroupsResyncInput.Type;
@@ -7158,6 +7207,7 @@ export const NeighborGroupsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/neighborGroups/{neighborGroupName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NeighborGroupsUpdateInput = typeof NeighborGroupsUpdateInput.Type;
@@ -7284,6 +7334,7 @@ export const NetworkBootstrapDevicesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkBootstrapDevicesCreateInput =
@@ -7338,6 +7389,7 @@ export const NetworkBootstrapDevicesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkBootstrapDevicesDeleteInput =
@@ -7561,6 +7613,7 @@ export const NetworkBootstrapDevicesRebootInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/reboot",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkBootstrapDevicesRebootInput =
@@ -7697,6 +7750,7 @@ export const NetworkBootstrapDevicesRefreshConfigurationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/refreshConfiguration",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkBootstrapDevicesRefreshConfigurationInput =
@@ -7833,6 +7887,7 @@ export const NetworkBootstrapDevicesResyncPasswordsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/resyncPasswords",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkBootstrapDevicesResyncPasswordsInput =
@@ -8000,6 +8055,7 @@ export const NetworkBootstrapDevicesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkBootstrapDevicesUpdateInput =
@@ -8068,6 +8124,7 @@ export const NetworkBootstrapDevicesUpdateAdministrativeStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkBootstrapDevicesUpdateAdministrativeStateInput =
@@ -8205,6 +8262,7 @@ export const NetworkBootstrapDevicesUpgradeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/upgrade",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkBootstrapDevicesUpgradeInput =
@@ -8345,6 +8403,7 @@ export const NetworkBootstrapInterfacesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces/{networkBootstrapInterfaceName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkBootstrapInterfacesCreateInput =
@@ -8401,6 +8460,7 @@ export const NetworkBootstrapInterfacesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces/{networkBootstrapInterfaceName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkBootstrapInterfacesDeleteInput =
@@ -8569,6 +8629,7 @@ export const NetworkBootstrapInterfacesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces/{networkBootstrapInterfaceName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkBootstrapInterfacesUpdateInput =
@@ -8629,6 +8690,7 @@ export const NetworkBootstrapInterfacesUpdateAdministrativeStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkBootstrapDevices/{networkBootstrapDeviceName}/networkBootstrapInterfaces/{networkBootstrapInterfaceName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkBootstrapInterfacesUpdateAdministrativeStateInput =
@@ -8811,6 +8873,7 @@ export const NetworkDevicesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkDevicesCreateInput = typeof NetworkDevicesCreateInput.Type;
@@ -8864,6 +8927,7 @@ export const NetworkDevicesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkDevicesDeleteInput = typeof NetworkDevicesDeleteInput.Type;
@@ -9207,6 +9271,7 @@ export const NetworkDevicesRebootInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/reboot",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkDevicesRebootInput = typeof NetworkDevicesRebootInput.Type;
@@ -9296,6 +9361,7 @@ export const NetworkDevicesRefreshConfigurationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/refreshConfiguration",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkDevicesRefreshConfigurationInput =
@@ -9432,6 +9498,7 @@ export const NetworkDevicesResyncCertificatesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/resyncCertificates",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkDevicesResyncCertificatesInput =
@@ -9570,6 +9637,7 @@ export const NetworkDevicesResyncPasswordsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/resyncPasswords",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkDevicesResyncPasswordsInput =
@@ -9709,6 +9777,7 @@ export const NetworkDevicesRunRoCommandInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/runRoCommand",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkDevicesRunRoCommandInput =
@@ -9765,6 +9834,7 @@ export const NetworkDevicesRunRwCommandInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/runRwCommand",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkDevicesRunRwCommandInput =
@@ -9964,6 +10034,7 @@ export const NetworkDevicesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkDevicesUpdateInput = typeof NetworkDevicesUpdateInput.Type;
@@ -10031,6 +10102,7 @@ export const NetworkDevicesUpdateAdministrativeStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkDevicesUpdateAdministrativeStateInput =
@@ -10169,6 +10241,7 @@ export const NetworkDevicesUpgradeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/upgrade",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkDevicesUpgradeInput = typeof NetworkDevicesUpgradeInput.Type;
@@ -10390,6 +10463,7 @@ export const NetworkFabricControllersCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/{networkFabricControllerName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkFabricControllersCreateInput =
@@ -10444,6 +10518,7 @@ export const NetworkFabricControllersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/{networkFabricControllerName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFabricControllersDeleteInput =
@@ -10709,6 +10784,7 @@ export const NetworkFabricControllersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/{networkFabricControllerName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFabricControllersUpdateInput =
@@ -10763,6 +10839,7 @@ export const NetworkFabricsArmConfigurationDiffInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/armConfigurationDiff",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFabricsArmConfigurationDiffInput =
@@ -10905,6 +10982,7 @@ export const NetworkFabricsCommitBatchStatusInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/commitBatchStatus",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFabricsCommitBatchStatusInput =
@@ -11059,6 +11137,7 @@ export const NetworkFabricsCommitConfigurationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/commitConfiguration",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFabricsCommitConfigurationInput =
@@ -11221,6 +11300,7 @@ export const NetworkFabricsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkFabricsCreateInput = typeof NetworkFabricsCreateInput.Type;
@@ -11274,6 +11354,7 @@ export const NetworkFabricsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFabricsDeleteInput = typeof NetworkFabricsDeleteInput.Type;
@@ -11309,6 +11390,7 @@ export const NetworkFabricsDeprovisionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/deprovision",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFabricsDeprovisionInput =
@@ -11401,6 +11483,7 @@ export const NetworkFabricsDiscardCommitBatchInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/discardCommitBatch",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFabricsDiscardCommitBatchInput =
@@ -11594,6 +11677,7 @@ export const NetworkFabricsGetTopologyInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/getTopology",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFabricsGetTopologyInput =
@@ -11988,6 +12072,7 @@ export const NetworkFabricsLockFabricInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/lockFabric",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFabricsLockFabricInput =
@@ -12079,6 +12164,7 @@ export const NetworkFabricsProvisionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/provision",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFabricsProvisionInput =
@@ -12170,6 +12256,7 @@ export const NetworkFabricsRefreshConfigurationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/refreshConfiguration",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFabricsRefreshConfigurationInput =
@@ -12260,6 +12347,7 @@ export const NetworkFabricsResyncCertificatesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/resyncCertificates",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFabricsResyncCertificatesInput =
@@ -12398,6 +12486,7 @@ export const NetworkFabricsResyncPasswordsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/resyncPasswords",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFabricsResyncPasswordsInput =
@@ -12537,6 +12626,7 @@ export const NetworkFabricsRotateCertificatesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/rotateCertificates",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFabricsRotateCertificatesInput =
@@ -12675,6 +12765,7 @@ export const NetworkFabricsRotatePasswordsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/rotatePasswords",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFabricsRotatePasswordsInput =
@@ -12997,6 +13088,7 @@ export const NetworkFabricsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFabricsUpdateInput = typeof NetworkFabricsUpdateInput.Type;
@@ -13054,6 +13146,7 @@ export const NetworkFabricsUpdateInfraManagementBfdConfigurationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/updateInfraManagementBfdConfiguration",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFabricsUpdateInfraManagementBfdConfigurationInput =
@@ -13200,6 +13293,7 @@ export const NetworkFabricsUpdateWorkloadManagementBfdConfigurationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/updateWorkloadManagementBfdConfiguration",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFabricsUpdateWorkloadManagementBfdConfigurationInput =
@@ -13344,6 +13438,7 @@ export const NetworkFabricsUpgradeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/upgrade",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFabricsUpgradeInput = typeof NetworkFabricsUpgradeInput.Type;
@@ -13437,6 +13532,7 @@ export const NetworkFabricsValidateConfigurationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/validateConfiguration",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFabricsValidateConfigurationInput =
@@ -13490,6 +13586,7 @@ export const NetworkFabricsViewDeviceConfigurationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/viewDeviceConfiguration",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkFabricsViewDeviceConfigurationInput =
@@ -13656,6 +13753,7 @@ export const NetworkInterfacesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces/{networkInterfaceName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkInterfacesCreateInput =
@@ -13713,6 +13811,7 @@ export const NetworkInterfacesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces/{networkInterfaceName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkInterfacesDeleteInput =
@@ -13902,6 +14001,7 @@ export const NetworkInterfacesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces/{networkInterfaceName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkInterfacesUpdateInput =
@@ -13963,6 +14063,7 @@ export const NetworkInterfacesUpdateAdministrativeStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces/{networkInterfaceName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkInterfacesUpdateAdministrativeStateInput =
@@ -14111,6 +14212,7 @@ export const NetworkMonitorsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors/{networkMonitorName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkMonitorsCreateInput = typeof NetworkMonitorsCreateInput.Type;
@@ -14165,6 +14267,7 @@ export const NetworkMonitorsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors/{networkMonitorName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkMonitorsDeleteInput = typeof NetworkMonitorsDeleteInput.Type;
@@ -14440,6 +14543,7 @@ export const NetworkMonitorsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors/{networkMonitorName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkMonitorsUpdateInput = typeof NetworkMonitorsUpdateInput.Type;
@@ -14498,6 +14602,7 @@ export const NetworkMonitorsUpdateAdministrativeStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkMonitors/{networkMonitorName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkMonitorsUpdateAdministrativeStateInput =
@@ -14613,6 +14718,7 @@ export const NetworkPacketBrokersCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers/{networkPacketBrokerName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkPacketBrokersCreateInput =
@@ -14668,6 +14774,7 @@ export const NetworkPacketBrokersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers/{networkPacketBrokerName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkPacketBrokersDeleteInput =
@@ -14914,6 +15021,7 @@ export const NetworkPacketBrokersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers/{networkPacketBrokerName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkPacketBrokersUpdateInput =
@@ -14974,6 +15082,7 @@ export const NetworkRacksCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkRacks/{networkRackName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkRacksCreateInput = typeof NetworkRacksCreateInput.Type;
@@ -15025,6 +15134,7 @@ export const NetworkRacksDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkRacks/{networkRackName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkRacksDeleteInput = typeof NetworkRacksDeleteInput.Type;
@@ -15239,6 +15349,7 @@ export const NetworkRacksUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkRacks/{networkRackName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkRacksUpdateInput = typeof NetworkRacksUpdateInput.Type;
@@ -15481,6 +15592,7 @@ export const NetworkTapRulesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkTapRulesCreateInput = typeof NetworkTapRulesCreateInput.Type;
@@ -15535,6 +15647,7 @@ export const NetworkTapRulesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkTapRulesDeleteInput = typeof NetworkTapRulesDeleteInput.Type;
@@ -15754,6 +15867,7 @@ export const NetworkTapRulesResyncInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}/resync",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkTapRulesResyncInput = typeof NetworkTapRulesResyncInput.Type;
@@ -16039,6 +16153,7 @@ export const NetworkTapRulesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkTapRulesUpdateInput = typeof NetworkTapRulesUpdateInput.Type;
@@ -16097,6 +16212,7 @@ export const NetworkTapRulesUpdateAdministrativeStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkTapRulesUpdateAdministrativeStateInput =
@@ -16150,6 +16266,7 @@ export const NetworkTapRulesValidateConfigurationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTapRules/{networkTapRuleName}/validateConfiguration",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkTapRulesValidateConfigurationInput =
@@ -16230,6 +16347,7 @@ export const NetworkTapsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}",
     apiVersion: "2025-07-15",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type NetworkTapsCreateInput = typeof NetworkTapsCreateInput.Type;
@@ -16282,6 +16400,7 @@ export const NetworkTapsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}",
     apiVersion: "2025-07-15",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type NetworkTapsDeleteInput = typeof NetworkTapsDeleteInput.Type;
@@ -16496,6 +16615,7 @@ export const NetworkTapsResyncInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}/resync",
     apiVersion: "2025-07-15",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type NetworkTapsResyncInput = typeof NetworkTapsResyncInput.Type;
@@ -16657,6 +16777,7 @@ export const NetworkTapsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}",
     apiVersion: "2025-07-15",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type NetworkTapsUpdateInput = typeof NetworkTapsUpdateInput.Type;
@@ -16712,6 +16833,7 @@ export const NetworkTapsUpdateAdministrativeStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkTaps/{networkTapName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkTapsUpdateAdministrativeStateInput =
@@ -17009,6 +17131,7 @@ export const NetworkToNetworkInterconnectsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NetworkToNetworkInterconnectsCreateInput =
@@ -17065,6 +17188,7 @@ export const NetworkToNetworkInterconnectsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkToNetworkInterconnectsDeleteInput =
@@ -17337,6 +17461,7 @@ export const NetworkToNetworkInterconnectsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkToNetworkInterconnectsUpdateInput =
@@ -17397,6 +17522,7 @@ export const NetworkToNetworkInterconnectsUpdateAdministrativeStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkToNetworkInterconnectsUpdateAdministrativeStateInput =
@@ -17545,6 +17671,7 @@ export const NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}/updateBfdAdministrativeState",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkToNetworkInterconnectsUpdateBfdAdministrativeStateInput =
@@ -17696,6 +17823,7 @@ export const NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeS
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkFabrics/{networkFabricName}/networkToNetworkInterconnects/{networkToNetworkInterconnectName}/updateNpbStaticRouteBfdAdministrativeState",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type NetworkToNetworkInterconnectsUpdateNpbStaticRouteBfdAdministrativeStateInput =
@@ -17889,6 +18017,7 @@ export const RoutePoliciesCommitConfigurationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}/commitConfiguration",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RoutePoliciesCommitConfigurationInput =
@@ -17997,6 +18126,7 @@ export const RoutePoliciesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type RoutePoliciesCreateInput = typeof RoutePoliciesCreateInput.Type;
@@ -18048,6 +18178,7 @@ export const RoutePoliciesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RoutePoliciesDeleteInput = typeof RoutePoliciesDeleteInput.Type;
@@ -18277,6 +18408,7 @@ export const RoutePoliciesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RoutePoliciesUpdateInput = typeof RoutePoliciesUpdateInput.Type;
@@ -18332,6 +18464,7 @@ export const RoutePoliciesUpdateAdministrativeStateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}/updateAdministrativeState",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RoutePoliciesUpdateAdministrativeStateInput =
@@ -18474,6 +18607,7 @@ export const RoutePoliciesValidateConfigurationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/routePolicies/{routePolicyName}/validateConfiguration",
       apiVersion: "2025-07-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type RoutePoliciesValidateConfigurationInput =

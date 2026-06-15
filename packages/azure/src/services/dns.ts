@@ -1248,6 +1248,7 @@ export const ZonesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsZones/{zoneName}",
     apiVersion: "2018-05-01",
+    longRunning: {},
   }),
 );
 export type ZonesDeleteInput = typeof ZonesDeleteInput.Type;

@@ -77,6 +77,7 @@ export const ControllersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevSpaces/controllers/{name}",
     apiVersion: "2019-04-01",
+    longRunning: {},
   }),
 );
 export type ControllersCreateInput = typeof ControllersCreateInput.Type;
@@ -108,6 +109,7 @@ export const ControllersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevSpaces/controllers/{name}",
     apiVersion: "2019-04-01",
+    longRunning: {},
   }),
 );
 export type ControllersDeleteInput = typeof ControllersDeleteInput.Type;

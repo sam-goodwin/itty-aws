@@ -120,6 +120,7 @@ export const DicomServicesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/dicomservices/{dicomServiceName}",
       apiVersion: "2024-03-31",
+      longRunning: {},
     }),
   );
 export type DicomServicesCreateOrUpdateInput =
@@ -175,6 +176,7 @@ export const DicomServicesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/dicomservices/{dicomServiceName}",
       apiVersion: "2024-03-31",
+      longRunning: {},
     }),
   );
 export type DicomServicesDeleteInput = typeof DicomServicesDeleteInput.Type;
@@ -338,6 +340,7 @@ export const DicomServicesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/dicomservices/{dicomServiceName}",
       apiVersion: "2024-03-31",
+      longRunning: {},
     }),
   );
 export type DicomServicesUpdateInput = typeof DicomServicesUpdateInput.Type;
@@ -596,6 +599,7 @@ export const FhirServicesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/fhirservices/{fhirServiceName}",
       apiVersion: "2024-03-31",
+      longRunning: {},
     }),
   );
 export type FhirServicesCreateOrUpdateInput =
@@ -651,6 +655,7 @@ export const FhirServicesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/fhirservices/{fhirServiceName}",
       apiVersion: "2024-03-31",
+      longRunning: {},
     }),
   );
 export type FhirServicesDeleteInput = typeof FhirServicesDeleteInput.Type;
@@ -812,6 +817,7 @@ export const FhirServicesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/fhirservices/{fhirServiceName}",
       apiVersion: "2024-03-31",
+      longRunning: {},
     }),
   );
 export type FhirServicesUpdateInput = typeof FhirServicesUpdateInput.Type;
@@ -897,6 +903,7 @@ export const IotConnectorFhirDestinationCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}/fhirdestinations/{fhirDestinationName}",
       apiVersion: "2024-03-31",
+      longRunning: {},
     }),
   );
 export type IotConnectorFhirDestinationCreateOrUpdateInput =
@@ -934,6 +941,7 @@ export const IotConnectorFhirDestinationDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}/fhirdestinations/{fhirDestinationName}",
       apiVersion: "2024-03-31",
+      longRunning: {},
     }),
   );
 export type IotConnectorFhirDestinationDeleteInput =
@@ -1071,6 +1079,7 @@ export const IotConnectorsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}",
       apiVersion: "2024-03-31",
+      longRunning: {},
     }),
   );
 export type IotConnectorsCreateOrUpdateInput =
@@ -1126,6 +1135,7 @@ export const IotConnectorsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}",
       apiVersion: "2024-03-31",
+      longRunning: {},
     }),
   );
 export type IotConnectorsDeleteInput = typeof IotConnectorsDeleteInput.Type;
@@ -1289,6 +1299,7 @@ export const IotConnectorsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/iotconnectors/{iotConnectorName}",
       apiVersion: "2024-03-31",
+      longRunning: {},
     }),
   );
 export type IotConnectorsUpdateInput = typeof IotConnectorsUpdateInput.Type;
@@ -1508,6 +1519,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-03-31",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -1547,6 +1559,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-03-31",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -1896,6 +1909,7 @@ export const ServicesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}",
       apiVersion: "2024-03-31",
+      longRunning: {},
     }),
   );
 export type ServicesCreateOrUpdateInput =
@@ -1943,6 +1957,7 @@ export const ServicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}",
     apiVersion: "2024-03-31",
+    longRunning: {},
   }),
 );
 export type ServicesDeleteInput = typeof ServicesDeleteInput.Type;
@@ -2126,6 +2141,7 @@ export const ServicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/services/{resourceName}",
     apiVersion: "2024-03-31",
+    longRunning: {},
   }),
 );
 export type ServicesUpdateInput = typeof ServicesUpdateInput.Type;
@@ -2203,6 +2219,7 @@ export const WorkspacePrivateEndpointConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-03-31",
+      longRunning: {},
     }),
   );
 export type WorkspacePrivateEndpointConnectionsCreateOrUpdateInput =
@@ -2241,6 +2258,7 @@ export const WorkspacePrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-03-31",
+      longRunning: {},
     }),
   );
 export type WorkspacePrivateEndpointConnectionsDeleteInput =
@@ -2481,6 +2499,7 @@ export const WorkspacesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}",
       apiVersion: "2024-03-31",
+      longRunning: {},
     }),
   );
 export type WorkspacesCreateOrUpdateInput =
@@ -2516,6 +2535,7 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}",
     apiVersion: "2024-03-31",
+    longRunning: {},
   }),
 );
 export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
@@ -2658,6 +2678,7 @@ export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthcareApis/workspaces/{workspaceName}",
     apiVersion: "2024-03-31",
+    longRunning: {},
   }),
 );
 export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;

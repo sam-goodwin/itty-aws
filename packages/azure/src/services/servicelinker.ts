@@ -169,6 +169,7 @@ export const ConnectorCreateDryrunInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns/{dryrunName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConnectorCreateDryrunInput = typeof ConnectorCreateDryrunInput.Type;
@@ -368,6 +369,7 @@ export const ConnectorCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConnectorCreateOrUpdateInput =
@@ -420,6 +422,7 @@ export const ConnectorDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}",
     apiVersion: "2024-04-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ConnectorDeleteInput = typeof ConnectorDeleteInput.Type;
@@ -938,6 +941,7 @@ export const ConnectorUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}",
     apiVersion: "2024-04-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type ConnectorUpdateInput = typeof ConnectorUpdateInput.Type;
@@ -1021,6 +1025,7 @@ export const ConnectorUpdateDryrunInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns/{dryrunName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConnectorUpdateDryrunInput = typeof ConnectorUpdateDryrunInput.Type;
@@ -1075,6 +1080,7 @@ export const ConnectorValidateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}/validate",
     apiVersion: "2024-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ConnectorValidateInput = typeof ConnectorValidateInput.Type;
@@ -1290,6 +1296,7 @@ export const LinkerCreateOrUpdateInput =
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type LinkerCreateOrUpdateInput = typeof LinkerCreateOrUpdateInput.Type;
@@ -1337,6 +1344,7 @@ export const LinkerDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}",
     apiVersion: "2024-04-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type LinkerDeleteInput = typeof LinkerDeleteInput.Type;
@@ -1549,6 +1557,7 @@ export const LinkersCreateDryrunInput =
       method: "PUT",
       path: "/{resourceUri}/providers/Microsoft.ServiceLinker/dryruns/{dryrunName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type LinkersCreateDryrunInput = typeof LinkersCreateDryrunInput.Type;
@@ -1936,6 +1945,7 @@ export const LinkersUpdateDryrunInput =
       method: "PATCH",
       path: "/{resourceUri}/providers/Microsoft.ServiceLinker/dryruns/{dryrunName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type LinkersUpdateDryrunInput = typeof LinkersUpdateDryrunInput.Type;
@@ -2115,6 +2125,7 @@ export const LinkerUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}",
     apiVersion: "2024-04-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type LinkerUpdateInput = typeof LinkerUpdateInput.Type;
@@ -2159,6 +2170,7 @@ export const LinkerValidateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}/validateLinker",
     apiVersion: "2024-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type LinkerValidateInput = typeof LinkerValidateInput.Type;

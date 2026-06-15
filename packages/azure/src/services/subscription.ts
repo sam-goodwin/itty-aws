@@ -32,6 +32,7 @@ export const AliasCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/providers/Microsoft.Subscription/aliases/{aliasName}",
     apiVersion: "2021-10-01",
+    longRunning: {},
   }),
 );
 export type AliasCreateInput = typeof AliasCreateInput.Type;
@@ -367,6 +368,7 @@ export const SubscriptionAcceptOwnershipInput =
       method: "POST",
       path: "/providers/Microsoft.Subscription/subscriptions/{subscriptionId}/acceptOwnership",
       apiVersion: "2021-10-01",
+      longRunning: {},
     }),
   );
 export type SubscriptionAcceptOwnershipInput =

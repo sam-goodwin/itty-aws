@@ -188,6 +188,7 @@ export const CloudHsmClusterPrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/privateEndpointConnections/{peConnectionName}",
       apiVersion: "2025-03-31",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CloudHsmClusterPrivateEndpointConnectionsDeleteInput =
@@ -438,6 +439,7 @@ export const CloudHsmClustersBackupInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/backup",
       apiVersion: "2025-03-31",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CloudHsmClustersBackupInput =
@@ -625,6 +627,7 @@ export const CloudHsmClustersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}",
       apiVersion: "2025-03-31",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type CloudHsmClustersCreateOrUpdateInput =
@@ -679,6 +682,7 @@ export const CloudHsmClustersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}",
       apiVersion: "2025-03-31",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CloudHsmClustersDeleteInput =
@@ -906,6 +910,7 @@ export const CloudHsmClustersRestoreInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/restore",
       apiVersion: "2025-03-31",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CloudHsmClustersRestoreInput =
@@ -1010,6 +1015,7 @@ export const CloudHsmClustersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}",
       apiVersion: "2025-03-31",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CloudHsmClustersUpdateInput =
@@ -1067,6 +1073,7 @@ export const CloudHsmClustersValidateBackupPropertiesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/validateBackupProperties",
       apiVersion: "2025-03-31",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CloudHsmClustersValidateBackupPropertiesInput =
@@ -1151,6 +1158,7 @@ export const CloudHsmClustersValidateRestorePropertiesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/cloudHsmClusters/{cloudHsmClusterName}/validateRestoreProperties",
       apiVersion: "2025-03-31",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CloudHsmClustersValidateRestorePropertiesInput =
@@ -1297,6 +1305,7 @@ export const DedicatedHsmCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/{name}",
       apiVersion: "2025-03-31",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DedicatedHsmCreateOrUpdateInput =
@@ -1352,6 +1361,7 @@ export const DedicatedHsmDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/{name}",
       apiVersion: "2025-03-31",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DedicatedHsmDeleteInput = typeof DedicatedHsmDeleteInput.Type;
@@ -1630,6 +1640,7 @@ export const DedicatedHsmUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/{name}",
       apiVersion: "2025-03-31",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DedicatedHsmUpdateInput = typeof DedicatedHsmUpdateInput.Type;

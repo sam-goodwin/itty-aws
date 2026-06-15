@@ -340,6 +340,7 @@ export const DomainsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DomainRegistration/domains/{domainName}",
       apiVersion: "2024-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DomainsCreateOrUpdateInput = typeof DomainsCreateOrUpdateInput.Type;

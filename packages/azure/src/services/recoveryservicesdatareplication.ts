@@ -514,6 +514,7 @@ export const FabricAgentCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}/fabricAgents/{fabricAgentName}",
     apiVersion: "2024-09-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type FabricAgentCreateInput = typeof FabricAgentCreateInput.Type;
@@ -568,6 +569,7 @@ export const FabricAgentDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}/fabricAgents/{fabricAgentName}",
     apiVersion: "2024-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type FabricAgentDeleteInput = typeof FabricAgentDeleteInput.Type;
@@ -768,6 +770,7 @@ export const FabricCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}",
     apiVersion: "2024-09-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type FabricCreateInput = typeof FabricCreateInput.Type;
@@ -817,6 +820,7 @@ export const FabricDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}",
     apiVersion: "2024-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type FabricDeleteInput = typeof FabricDeleteInput.Type;
@@ -1096,6 +1100,7 @@ export const FabricUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationFabrics/{fabricName}",
     apiVersion: "2024-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type FabricUpdateInput = typeof FabricUpdateInput.Type;
@@ -1410,6 +1415,7 @@ export const PolicyCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationPolicies/{policyName}",
     apiVersion: "2024-09-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type PolicyCreateInput = typeof PolicyCreateInput.Type;
@@ -1461,6 +1467,7 @@ export const PolicyDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationPolicies/{policyName}",
     apiVersion: "2024-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type PolicyDeleteInput = typeof PolicyDeleteInput.Type;
@@ -1748,6 +1755,7 @@ export const PrivateEndpointConnectionProxiesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateEndpointConnectionProxies/{privateEndpointConnectionProxyName}",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionProxiesDeleteInput =
@@ -2059,6 +2067,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -2637,6 +2646,7 @@ export const ProtectedItemCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems/{protectedItemName}",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProtectedItemCreateInput = typeof ProtectedItemCreateInput.Type;
@@ -2691,6 +2701,7 @@ export const ProtectedItemDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems/{protectedItemName}",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ProtectedItemDeleteInput = typeof ProtectedItemDeleteInput.Type;
@@ -2858,6 +2869,7 @@ export const ProtectedItemPlannedFailoverInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems/{protectedItemName}/plannedFailover",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ProtectedItemPlannedFailoverInput =
@@ -2928,6 +2940,7 @@ export const ProtectedItemUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/protectedItems/{protectedItemName}",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ProtectedItemUpdateInput = typeof ProtectedItemUpdateInput.Type;
@@ -3123,6 +3136,7 @@ export const ReplicationExtensionCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationExtensions/{replicationExtensionName}",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ReplicationExtensionCreateInput =
@@ -3180,6 +3194,7 @@ export const ReplicationExtensionDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}/replicationExtensions/{replicationExtensionName}",
       apiVersion: "2024-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ReplicationExtensionDeleteInput =
@@ -3386,6 +3401,7 @@ export const VaultCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}",
     apiVersion: "2024-09-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type VaultCreateInput = typeof VaultCreateInput.Type;
@@ -3435,6 +3451,7 @@ export const VaultDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}",
     apiVersion: "2024-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type VaultDeleteInput = typeof VaultDeleteInput.Type;
@@ -3679,6 +3696,7 @@ export const VaultUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataReplication/replicationVaults/{vaultName}",
     apiVersion: "2024-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type VaultUpdateInput = typeof VaultUpdateInput.Type;

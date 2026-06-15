@@ -68,6 +68,7 @@ export const GeoCatalogsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/geoCatalogs/{catalogName}",
     apiVersion: "2026-04-15",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type GeoCatalogsCreateInput = typeof GeoCatalogsCreateInput.Type;
@@ -120,6 +121,7 @@ export const GeoCatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/geoCatalogs/{catalogName}",
     apiVersion: "2026-04-15",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type GeoCatalogsDeleteInput = typeof GeoCatalogsDeleteInput.Type;
@@ -356,6 +358,7 @@ export const GeoCatalogsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/geoCatalogs/{catalogName}",
     apiVersion: "2026-04-15",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type GeoCatalogsUpdateInput = typeof GeoCatalogsUpdateInput.Type;

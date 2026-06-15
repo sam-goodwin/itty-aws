@@ -32,6 +32,7 @@ export const AzureADOnlyAuthenticationsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/azureADOnlyAuthentications/{azureADOnlyAuthenticationName}",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AzureADOnlyAuthenticationsCreateInput =
@@ -258,6 +259,7 @@ export const BigDataPoolsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools/{bigDataPoolName}",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type BigDataPoolsCreateOrUpdateInput =
@@ -304,6 +306,7 @@ export const BigDataPoolsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/bigDataPools/{bigDataPoolName}",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type BigDataPoolsDeleteInput = typeof BigDataPoolsDeleteInput.Type;
@@ -1382,6 +1385,7 @@ export const IntegrationRuntimeObjectMetadataRefreshInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/refreshObjectMetadata",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type IntegrationRuntimeObjectMetadataRefreshInput =
@@ -1429,6 +1433,7 @@ export const IntegrationRuntimesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type IntegrationRuntimesCreateInput =
@@ -1473,6 +1478,7 @@ export const IntegrationRuntimesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type IntegrationRuntimesDeleteInput =
@@ -1512,6 +1518,7 @@ export const IntegrationRuntimesDisableInteractiveQueryInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/disableInteractiveQuery",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type IntegrationRuntimesDisableInteractiveQueryInput =
@@ -1548,6 +1555,7 @@ export const IntegrationRuntimesEnableInteractiveQueryInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/enableInteractiveQuery",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type IntegrationRuntimesEnableInteractiveQueryInput =
@@ -1737,6 +1745,7 @@ export const IntegrationRuntimesStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/start",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type IntegrationRuntimesStartInput =
@@ -1796,6 +1805,7 @@ export const IntegrationRuntimesStopInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/integrationRuntimes/{integrationRuntimeName}/stop",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type IntegrationRuntimesStopInput =
@@ -1993,6 +2003,7 @@ export const IpFirewallRulesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules/{ruleName}",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IpFirewallRulesCreateOrUpdateInput =
@@ -2033,6 +2044,7 @@ export const IpFirewallRulesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/firewallRules/{ruleName}",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IpFirewallRulesDeleteInput = typeof IpFirewallRulesDeleteInput.Type;
@@ -2175,6 +2187,7 @@ export const IpFirewallRulesReplaceAllInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/replaceAllIpFirewallRules",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type IpFirewallRulesReplaceAllInput =
@@ -2718,6 +2731,7 @@ export const PrivateEndpointConnectionsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateEndpointConnectionsCreateInput =
@@ -2750,6 +2764,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -3108,6 +3123,7 @@ export const PrivateLinkHubsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/privateLinkHubs/{privateLinkHubName}",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateLinkHubsDeleteInput = typeof PrivateLinkHubsDeleteInput.Type;
@@ -4007,6 +4023,7 @@ export const SqlPoolOperationResultsGetLocationHeaderResultInput =
       method: "GET",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/operationResults/{operationId}",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type SqlPoolOperationResultsGetLocationHeaderResultInput =
@@ -4249,6 +4266,7 @@ export const SqlPoolRestorePointsCreateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/restorePoints",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SqlPoolRestorePointsCreateInput =
@@ -4552,6 +4570,7 @@ export const SqlPoolsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}",
     apiVersion: "2021-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SqlPoolsCreateInput = typeof SqlPoolsCreateInput.Type;
@@ -4591,6 +4610,7 @@ export const SqlPoolsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}",
     apiVersion: "2021-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SqlPoolsDeleteInput = typeof SqlPoolsDeleteInput.Type;
@@ -5292,6 +5312,7 @@ export const SqlPoolsPauseInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/pause",
     apiVersion: "2021-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SqlPoolsPauseInput = typeof SqlPoolsPauseInput.Type;
@@ -5331,6 +5352,7 @@ export const SqlPoolsResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/resume",
     apiVersion: "2021-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SqlPoolsResumeInput = typeof SqlPoolsResumeInput.Type;
@@ -5401,6 +5423,7 @@ export const SqlPoolsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}",
     apiVersion: "2021-06-01",
+    longRunning: {},
   }),
 );
 export type SqlPoolsUpdateInput = typeof SqlPoolsUpdateInput.Type;
@@ -6057,6 +6080,7 @@ export const SqlPoolVulnerabilityAssessmentScansInitiateScanInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/vulnerabilityAssessments/{vulnerabilityAssessmentName}/scans/{scanId}/initiateScan",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type SqlPoolVulnerabilityAssessmentScansInitiateScanInput =
@@ -6369,6 +6393,7 @@ export const SqlPoolWorkloadClassifierCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type SqlPoolWorkloadClassifierCreateOrUpdateInput =
@@ -6417,6 +6442,7 @@ export const SqlPoolWorkloadClassifierDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}/workloadClassifiers/{workloadClassifierName}",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type SqlPoolWorkloadClassifierDeleteInput =
@@ -6571,6 +6597,7 @@ export const SqlPoolWorkloadGroupCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type SqlPoolWorkloadGroupCreateOrUpdateInput =
@@ -6617,6 +6644,7 @@ export const SqlPoolWorkloadGroupDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlPools/{sqlPoolName}/workloadGroups/{workloadGroupName}",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type SqlPoolWorkloadGroupDeleteInput =
@@ -6765,6 +6793,7 @@ export const WorkspaceAadAdminsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/administrators/activeDirectory",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkspaceAadAdminsCreateOrUpdateInput =
@@ -6805,6 +6834,7 @@ export const WorkspaceAadAdminsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/administrators/activeDirectory",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkspaceAadAdminsDeleteInput =
@@ -6902,6 +6932,7 @@ export const WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/managedIdentitySqlControlSettings/default",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateInput =
@@ -6998,6 +7029,7 @@ export const WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/auditingSettings/{blobAuditingPolicyName}",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type WorkspaceManagedSqlServerBlobAuditingPoliciesCreateOrUpdateInput =
@@ -7244,6 +7276,7 @@ export const WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateInput 
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/dedicatedSQLminimalTlsSettings/{dedicatedSQLminimalTlsSettingsName}",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type WorkspaceManagedSqlServerDedicatedSQLMinimalTlsSettingsUpdateInput =
@@ -7301,6 +7334,7 @@ export const WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/encryptionProtector/{encryptionProtectorName}",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateInput =
@@ -7440,6 +7474,7 @@ export const WorkspaceManagedSqlServerEncryptionProtectorRevalidateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/encryptionProtector/{encryptionProtectorName}/revalidate",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type WorkspaceManagedSqlServerEncryptionProtectorRevalidateInput =
@@ -7495,6 +7530,7 @@ export const WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdate
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/extendedAuditingSettings/{blobAuditingPolicyName}",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type WorkspaceManagedSqlServerExtendedBlobAuditingPoliciesCreateOrUpdateInput =
@@ -7742,6 +7778,7 @@ export const WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/securityAlertPolicies/{securityAlertPolicyName}",
       apiVersion: "2021-06-01",
+      longRunning: {},
     }),
   );
 export type WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateInput =
@@ -8251,6 +8288,7 @@ export const WorkspacesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkspacesCreateOrUpdateInput =
@@ -8291,6 +8329,7 @@ export const WorkspacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}",
     apiVersion: "2021-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type WorkspacesDeleteInput = typeof WorkspacesDeleteInput.Type;
@@ -8455,6 +8494,7 @@ export const WorkspaceSqlAadAdminsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlAdministrators/activeDirectory",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkspaceSqlAadAdminsCreateOrUpdateInput =
@@ -8495,6 +8535,7 @@ export const WorkspaceSqlAadAdminsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/sqlAdministrators/activeDirectory",
       apiVersion: "2021-06-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WorkspaceSqlAadAdminsDeleteInput =
@@ -8653,6 +8694,7 @@ export const WorkspacesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}",
     apiVersion: "2021-06-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type WorkspacesUpdateInput = typeof WorkspacesUpdateInput.Type;

@@ -1392,6 +1392,7 @@ export const ContainerGroupsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ContainerGroupsCreateOrUpdateInput =
@@ -1437,6 +1438,7 @@ export const ContainerGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ContainerGroupsDeleteInput = typeof ContainerGroupsDeleteInput.Type;
@@ -2627,6 +2629,7 @@ export const ContainerGroupsRestartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/restart",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ContainerGroupsRestartInput =
@@ -2666,6 +2669,7 @@ export const ContainerGroupsStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/start",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ContainerGroupsStartInput = typeof ContainerGroupsStartInput.Type;
@@ -3285,6 +3289,7 @@ export const NGroupsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/ngroups/{ngroupsName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type NGroupsCreateOrUpdateInput = typeof NGroupsCreateOrUpdateInput.Type;
@@ -3340,6 +3345,7 @@ export const NGroupsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/ngroups/{ngroupsName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type NGroupsDeleteInput = typeof NGroupsDeleteInput.Type;
@@ -3546,6 +3552,7 @@ export const NGroupsRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/ngroups/{ngroupsName}/restart",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type NGroupsRestartInput = typeof NGroupsRestartInput.Type;
@@ -3579,6 +3586,7 @@ export const NGroupsStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/ngroups/{ngroupsName}/start",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type NGroupsStartInput = typeof NGroupsStartInput.Type;
@@ -3849,6 +3857,7 @@ export const NGroupsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/ngroups/{ngroupsName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type NGroupsUpdateInput = typeof NGroupsUpdateInput.Type;
@@ -3943,6 +3952,7 @@ export const SubnetServiceAssociationLinkDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SubnetServiceAssociationLinkDeleteInput =

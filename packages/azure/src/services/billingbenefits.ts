@@ -63,6 +63,7 @@ export const ReservationOrderAliasCreateInput =
       method: "PUT",
       path: "/providers/Microsoft.BillingBenefits/reservationOrderAliases/{reservationOrderAliasName}",
       apiVersion: "2022-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ReservationOrderAliasCreateInput =
@@ -349,6 +350,7 @@ export const SavingsPlanOrderAliasCreateInput =
       method: "PUT",
       path: "/providers/Microsoft.BillingBenefits/savingsPlanOrderAliases/{savingsPlanOrderAliasName}",
       apiVersion: "2022-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SavingsPlanOrderAliasCreateInput =

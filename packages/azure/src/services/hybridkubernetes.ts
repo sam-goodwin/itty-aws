@@ -92,6 +92,7 @@ export const ConnectedClusterCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ConnectedClusterCreateInput =
@@ -133,6 +134,7 @@ export const ConnectedClusterDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedClusters/{clusterName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ConnectedClusterDeleteInput =

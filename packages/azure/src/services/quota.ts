@@ -252,6 +252,7 @@ export const GroupQuotaLimitsRequestUpdateInput =
       method: "PATCH",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/groupQuotaLimits/{location}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GroupQuotaLimitsRequestUpdateInput =
@@ -330,6 +331,7 @@ export const GroupQuotaLocationSettingsCreateOrUpdateInput =
       method: "PUT",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/locationSettings/{location}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GroupQuotaLocationSettingsCreateOrUpdateInput =
@@ -467,6 +469,7 @@ export const GroupQuotaLocationSettingsUpdateInput =
       method: "PATCH",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/locationSettings/{location}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GroupQuotaLocationSettingsUpdateInput =
@@ -545,6 +548,7 @@ export const GroupQuotasCreateOrUpdateInput =
       method: "PUT",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GroupQuotasCreateOrUpdateInput =
@@ -599,6 +603,7 @@ export const GroupQuotasDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type GroupQuotasDeleteInput = typeof GroupQuotasDeleteInput.Type;
@@ -958,6 +963,7 @@ export const GroupQuotaSubscriptionAllocationRequestUpdateInput =
       method: "PATCH",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/subscriptions/{subscriptionId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/resourceProviders/{resourceProviderName}/quotaAllocations/{location}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GroupQuotaSubscriptionAllocationRequestUpdateInput =
@@ -1135,6 +1141,7 @@ export const GroupQuotaSubscriptionsCreateOrUpdateInput =
       method: "PUT",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/subscriptions/{subscriptionId}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GroupQuotaSubscriptionsCreateOrUpdateInput =
@@ -1189,6 +1196,7 @@ export const GroupQuotaSubscriptionsDeleteInput =
       method: "DELETE",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/subscriptions/{subscriptionId}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GroupQuotaSubscriptionsDeleteInput =
@@ -1348,6 +1356,7 @@ export const GroupQuotaSubscriptionsUpdateInput =
       method: "PATCH",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}/subscriptions/{subscriptionId}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GroupQuotaSubscriptionsUpdateInput =
@@ -1419,6 +1428,7 @@ export const GroupQuotasUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Quota/groupQuotas/{groupQuotaName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type GroupQuotasUpdateInput = typeof GroupQuotasUpdateInput.Type;
@@ -1559,6 +1569,7 @@ export const QuotaCreateOrUpdateInput =
       method: "PUT",
       path: "/{scope}/providers/Microsoft.Quota/quotas/{resourceName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "original-uri" },
     }),
   );
 export type QuotaCreateOrUpdateInput = typeof QuotaCreateOrUpdateInput.Type;
@@ -1903,6 +1914,7 @@ export const QuotaUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/{scope}/providers/Microsoft.Quota/quotas/{resourceName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "original-uri" },
   }),
 );
 export type QuotaUpdateInput = typeof QuotaUpdateInput.Type;

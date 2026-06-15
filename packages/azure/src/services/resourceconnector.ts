@@ -80,6 +80,7 @@ export const AppliancesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}",
       apiVersion: "2022-10-27",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AppliancesCreateOrUpdateInput =
@@ -136,6 +137,7 @@ export const AppliancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}",
     apiVersion: "2022-10-27",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type AppliancesDeleteInput = typeof AppliancesDeleteInput.Type;

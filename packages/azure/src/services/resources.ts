@@ -100,6 +100,7 @@ export const ApplicationDefinitionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}",
       apiVersion: "2019-07-01",
+      longRunning: {},
     }),
   );
 export type ApplicationDefinitionsCreateOrUpdateInput =
@@ -139,6 +140,7 @@ export const ApplicationDefinitionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}",
       apiVersion: "2019-07-01",
+      longRunning: {},
     }),
   );
 export type ApplicationDefinitionsDeleteInput =
@@ -398,6 +400,7 @@ export const ApplicationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}",
       apiVersion: "2019-07-01",
+      longRunning: {},
     }),
   );
 export type ApplicationsCreateOrUpdateInput =
@@ -579,6 +582,7 @@ export const ApplicationsCreateOrUpdateByIdInput =
       method: "PUT",
       path: "/{applicationId}",
       apiVersion: "2019-07-01",
+      longRunning: {},
     }),
   );
 export type ApplicationsCreateOrUpdateByIdInput =
@@ -617,6 +621,7 @@ export const ApplicationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}",
       apiVersion: "2019-07-01",
+      longRunning: {},
     }),
   );
 export type ApplicationsDeleteInput = typeof ApplicationsDeleteInput.Type;
@@ -645,6 +650,7 @@ export const ApplicationsDeleteByIdInput =
       method: "DELETE",
       path: "/{applicationId}",
       apiVersion: "2019-07-01",
+      longRunning: {},
     }),
   );
 export type ApplicationsDeleteByIdInput =
@@ -830,6 +836,7 @@ export const ApplicationsRefreshPermissionsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}/refreshPermissions",
       apiVersion: "2019-07-01",
+      longRunning: {},
     }),
   );
 export type ApplicationsRefreshPermissionsInput =
@@ -3446,6 +3453,7 @@ export const DeploymentsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentsCreateOrUpdateInput =
@@ -3612,6 +3620,7 @@ export const DeploymentsCreateOrUpdateAtManagementGroupScopeInput =
       method: "PUT",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentsCreateOrUpdateAtManagementGroupScopeInput =
@@ -3790,6 +3799,7 @@ export const DeploymentsCreateOrUpdateAtScopeInput =
       method: "PUT",
       path: "/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentsCreateOrUpdateAtScopeInput =
@@ -3968,6 +3978,7 @@ export const DeploymentsCreateOrUpdateAtSubscriptionScopeInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentsCreateOrUpdateAtSubscriptionScopeInput =
@@ -4131,6 +4142,7 @@ export const DeploymentsCreateOrUpdateAtTenantScopeInput =
       method: "PUT",
       path: "/providers/Microsoft.Resources/deployments/{deploymentName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentsCreateOrUpdateAtTenantScopeInput =
@@ -4202,6 +4214,7 @@ export const DeploymentScriptsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentScripts/{scriptName}",
       apiVersion: "2023-08-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentScriptsCreateInput =
@@ -4657,6 +4670,7 @@ export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}",
     apiVersion: "2025-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DeploymentsDeleteInput = typeof DeploymentsDeleteInput.Type;
@@ -4690,6 +4704,7 @@ export const DeploymentsDeleteAtManagementGroupScopeInput =
       method: "DELETE",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentsDeleteAtManagementGroupScopeInput =
@@ -4726,6 +4741,7 @@ export const DeploymentsDeleteAtScopeInput =
       method: "DELETE",
       path: "/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentsDeleteAtScopeInput =
@@ -4763,6 +4779,7 @@ export const DeploymentsDeleteAtSubscriptionScopeInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentsDeleteAtSubscriptionScopeInput =
@@ -4798,6 +4815,7 @@ export const DeploymentsDeleteAtTenantScopeInput =
       method: "DELETE",
       path: "/providers/Microsoft.Resources/deployments/{deploymentName}",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentsDeleteAtTenantScopeInput =
@@ -5986,6 +6004,7 @@ export const DeploymentStacksCreateOrUpdateAtManagementGroupInput =
       method: "PUT",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DeploymentStacksCreateOrUpdateAtManagementGroupInput =
@@ -6409,6 +6428,7 @@ export const DeploymentStacksCreateOrUpdateAtResourceGroupInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DeploymentStacksCreateOrUpdateAtResourceGroupInput =
@@ -6832,6 +6852,7 @@ export const DeploymentStacksCreateOrUpdateAtSubscriptionInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DeploymentStacksCreateOrUpdateAtSubscriptionInput =
@@ -6884,6 +6905,7 @@ export const DeploymentStacksDeleteAtManagementGroupInput =
       method: "DELETE",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentStacksDeleteAtManagementGroupInput =
@@ -6919,6 +6941,7 @@ export const DeploymentStacksDeleteAtResourceGroupInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentStacksDeleteAtResourceGroupInput =
@@ -6954,6 +6977,7 @@ export const DeploymentStacksDeleteAtSubscriptionInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentStacksDeleteAtSubscriptionInput =
@@ -7850,6 +7874,7 @@ export const DeploymentStacksValidateStackAtManagementGroupInput =
       method: "POST",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}/validate",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentStacksValidateStackAtManagementGroupInput =
@@ -8430,6 +8455,7 @@ export const DeploymentStacksValidateStackAtResourceGroupInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}/validate",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentStacksValidateStackAtResourceGroupInput =
@@ -9010,6 +9036,7 @@ export const DeploymentStacksValidateStackAtSubscriptionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}/validate",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentStacksValidateStackAtSubscriptionInput =
@@ -9567,6 +9594,7 @@ export const DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateInput =
       method: "PUT",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Resources/deploymentStacksWhatIfResults/{deploymentStacksWhatIfResultName}",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateInput =
@@ -9772,6 +9800,7 @@ export const DeploymentStacksWhatIfResultsAtManagementGroupWhatIfInput =
       method: "POST",
       path: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Resources/deploymentStacksWhatIfResults/{deploymentStacksWhatIfResultName}/whatIf",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentStacksWhatIfResultsAtManagementGroupWhatIfInput =
@@ -10173,6 +10202,7 @@ export const DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentStacksWhatIfResults/{deploymentStacksWhatIfResultName}",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateInput =
@@ -10386,6 +10416,7 @@ export const DeploymentStacksWhatIfResultsAtResourceGroupWhatIfInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Resources/deploymentStacksWhatIfResults/{deploymentStacksWhatIfResultName}/whatIf",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentStacksWhatIfResultsAtResourceGroupWhatIfInput =
@@ -10787,6 +10818,7 @@ export const DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deploymentStacksWhatIfResults/{deploymentStacksWhatIfResultName}",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateInput =
@@ -10991,6 +11023,7 @@ export const DeploymentStacksWhatIfResultsAtSubscriptionWhatIfInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deploymentStacksWhatIfResults/{deploymentStacksWhatIfResultName}/whatIf",
       apiVersion: "2025-07-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentStacksWhatIfResultsAtSubscriptionWhatIfInput =
@@ -11168,6 +11201,7 @@ export const DeploymentsValidateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/validate",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentsValidateInput = typeof DeploymentsValidateInput.Type;
@@ -11714,6 +11748,7 @@ export const DeploymentsValidateAtManagementGroupScopeInput =
       method: "POST",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/validate",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentsValidateAtManagementGroupScopeInput =
@@ -12276,6 +12311,7 @@ export const DeploymentsValidateAtScopeInput =
       method: "POST",
       path: "/{scope}/providers/Microsoft.Resources/deployments/{deploymentName}/validate",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentsValidateAtScopeInput =
@@ -12839,6 +12875,7 @@ export const DeploymentsValidateAtSubscriptionScopeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/validate",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentsValidateAtSubscriptionScopeInput =
@@ -13386,6 +13423,7 @@ export const DeploymentsValidateAtTenantScopeInput =
       method: "POST",
       path: "/providers/Microsoft.Resources/deployments/{deploymentName}/validate",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentsValidateAtTenantScopeInput =
@@ -13934,6 +13972,7 @@ export const DeploymentsWhatIfInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf",
     apiVersion: "2025-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DeploymentsWhatIfInput = typeof DeploymentsWhatIfInput.Type;
@@ -14265,6 +14304,7 @@ export const DeploymentsWhatIfAtManagementGroupScopeInput =
       method: "POST",
       path: "/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentsWhatIfAtManagementGroupScopeInput =
@@ -14598,6 +14638,7 @@ export const DeploymentsWhatIfAtSubscriptionScopeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentsWhatIfAtSubscriptionScopeInput =
@@ -14930,6 +14971,7 @@ export const DeploymentsWhatIfAtTenantScopeInput =
       method: "POST",
       path: "/providers/Microsoft.Resources/deployments/{deploymentName}/whatIf",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeploymentsWhatIfAtTenantScopeInput =
@@ -15414,6 +15456,7 @@ export const JitRequestsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests/{jitRequestName}",
       apiVersion: "2019-07-01",
+      longRunning: {},
     }),
   );
 export type JitRequestsCreateOrUpdateInput =
@@ -22266,6 +22309,7 @@ export const ResourceGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}",
       apiVersion: "2025-04-01",
+      longRunning: {},
     }),
   );
 export type ResourceGroupsDeleteInput = typeof ResourceGroupsDeleteInput.Type;
@@ -22302,6 +22346,7 @@ export const ResourceGroupsExportTemplateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/exportTemplate",
       apiVersion: "2025-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ResourceGroupsExportTemplateInput =
@@ -22985,6 +23030,7 @@ export const ResourcesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}",
       apiVersion: "2025-04-01",
+      longRunning: {},
     }),
   );
 export type ResourcesCreateOrUpdateInput =
@@ -23086,7 +23132,12 @@ export const ResourcesCreateOrUpdateByIdInput =
     ),
     tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
   }).pipe(
-    T.Http({ method: "PUT", path: "/{resourceId}", apiVersion: "2025-04-01" }),
+    T.Http({
+      method: "PUT",
+      path: "/{resourceId}",
+      apiVersion: "2025-04-01",
+      longRunning: {},
+    }),
   );
 export type ResourcesCreateOrUpdateByIdInput =
   typeof ResourcesCreateOrUpdateByIdInput.Type;
@@ -23134,6 +23185,7 @@ export const ResourcesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}",
     apiVersion: "2025-04-01",
+    longRunning: {},
   }),
 );
 export type ResourcesDeleteInput = typeof ResourcesDeleteInput.Type;
@@ -23166,6 +23218,7 @@ export const ResourcesDeleteByIdInput =
       method: "DELETE",
       path: "/{resourceId}",
       apiVersion: "2025-04-01",
+      longRunning: {},
     }),
   );
 export type ResourcesDeleteByIdInput = typeof ResourcesDeleteByIdInput.Type;
@@ -23386,6 +23439,7 @@ export const ResourcesMoveResourcesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/moveResources",
       apiVersion: "2025-04-01",
+      longRunning: {},
     }),
   );
 export type ResourcesMoveResourcesInput =
@@ -23479,6 +23533,7 @@ export const ResourcesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}",
     apiVersion: "2025-04-01",
+    longRunning: {},
   }),
 );
 export type ResourcesUpdateInput = typeof ResourcesUpdateInput.Type;
@@ -23579,6 +23634,7 @@ export const ResourcesUpdateByIdInput =
       method: "PATCH",
       path: "/{resourceId}",
       apiVersion: "2025-04-01",
+      longRunning: {},
     }),
   );
 export type ResourcesUpdateByIdInput = typeof ResourcesUpdateByIdInput.Type;
@@ -23622,6 +23678,7 @@ export const ResourcesValidateMoveResourcesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/validateMoveResources",
       apiVersion: "2025-04-01",
+      longRunning: {},
     }),
   );
 export type ResourcesValidateMoveResourcesInput =
@@ -24218,6 +24275,7 @@ export const TagsCreateOrUpdateAtScopeInput =
       method: "PUT",
       path: "/{scope}/providers/Microsoft.Resources/tags/default",
       apiVersion: "2025-04-01",
+      longRunning: {},
     }),
   );
 export type TagsCreateOrUpdateAtScopeInput =
@@ -24329,6 +24387,7 @@ export const TagsDeleteAtScopeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/{scope}/providers/Microsoft.Resources/tags/default",
     apiVersion: "2025-04-01",
+    longRunning: {},
   }),
 );
 export type TagsDeleteAtScopeInput = typeof TagsDeleteAtScopeInput.Type;
@@ -24475,6 +24534,7 @@ export const TagsUpdateAtScopeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "PATCH",
     path: "/{scope}/providers/Microsoft.Resources/tags/default",
     apiVersion: "2025-04-01",
+    longRunning: {},
   }),
 );
 export type TagsUpdateAtScopeInput = typeof TagsUpdateAtScopeInput.Type;

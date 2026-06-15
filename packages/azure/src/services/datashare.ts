@@ -38,6 +38,7 @@ export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}",
     apiVersion: "2021-08-01",
+    longRunning: {},
   }),
 );
 export type AccountsCreateInput = typeof AccountsCreateInput.Type;
@@ -82,6 +83,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}",
     apiVersion: "2021-08-01",
+    longRunning: {},
   }),
 );
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
@@ -948,6 +950,7 @@ export const DataSetsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/dataSets/{dataSetName}",
     apiVersion: "2021-08-01",
+    longRunning: {},
   }),
 );
 export type DataSetsDeleteInput = typeof DataSetsDeleteInput.Type;
@@ -1817,6 +1820,7 @@ export const ProviderShareSubscriptionsRevokeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/providerShareSubscriptions/{providerShareSubscriptionId}/revoke",
       apiVersion: "2021-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProviderShareSubscriptionsRevokeInput =
@@ -1950,6 +1954,7 @@ export const SharesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}",
     apiVersion: "2021-08-01",
+    longRunning: {},
   }),
 );
 export type SharesDeleteInput = typeof SharesDeleteInput.Type;
@@ -2267,6 +2272,7 @@ export const ShareSubscriptionsCancelSynchronizationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/cancelSynchronization",
       apiVersion: "2021-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ShareSubscriptionsCancelSynchronizationInput =
@@ -2406,6 +2412,7 @@ export const ShareSubscriptionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}",
       apiVersion: "2021-08-01",
+      longRunning: {},
     }),
   );
 export type ShareSubscriptionsDeleteInput =
@@ -2766,6 +2773,7 @@ export const ShareSubscriptionsSynchronizeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/synchronize",
       apiVersion: "2021-08-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ShareSubscriptionsSynchronizeInput =
@@ -2881,6 +2889,7 @@ export const SynchronizationSettingsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shares/{shareName}/synchronizationSettings/{synchronizationSettingName}",
       apiVersion: "2021-08-01",
+      longRunning: {},
     }),
   );
 export type SynchronizationSettingsDeleteInput =
@@ -3074,6 +3083,7 @@ export const TriggersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/triggers/{triggerName}",
     apiVersion: "2021-08-01",
+    longRunning: {},
   }),
 );
 export type TriggersCreateInput = typeof TriggersCreateInput.Type;
@@ -3122,6 +3132,7 @@ export const TriggersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataShare/accounts/{accountName}/shareSubscriptions/{shareSubscriptionName}/triggers/{triggerName}",
     apiVersion: "2021-08-01",
+    longRunning: {},
   }),
 );
 export type TriggersDeleteInput = typeof TriggersDeleteInput.Type;

@@ -179,6 +179,7 @@ export const ServersCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
     apiVersion: "2017-08-01",
+    longRunning: {},
   }),
 );
 export type ServersCreateInput = typeof ServersCreateInput.Type;
@@ -218,6 +219,7 @@ export const ServersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
     apiVersion: "2017-08-01",
+    longRunning: {},
   }),
 );
 export type ServersDeleteInput = typeof ServersDeleteInput.Type;
@@ -618,6 +620,7 @@ export const ServersResumeInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/resume",
     apiVersion: "2017-08-01",
+    longRunning: {},
   }),
 );
 export type ServersResumeInput = typeof ServersResumeInput.Type;
@@ -644,6 +647,7 @@ export const ServersSuspendInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}/suspend",
     apiVersion: "2017-08-01",
+    longRunning: {},
   }),
 );
 export type ServersSuspendInput = typeof ServersSuspendInput.Type;
@@ -716,6 +720,7 @@ export const ServersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AnalysisServices/servers/{serverName}",
     apiVersion: "2017-08-01",
+    longRunning: {},
   }),
 );
 export type ServersUpdateInput = typeof ServersUpdateInput.Type;

@@ -197,6 +197,7 @@ export const EnvironmentsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}",
       apiVersion: "2020-05-15",
+      longRunning: {},
     }),
   );
 export type EnvironmentsCreateOrUpdateInput =
@@ -359,6 +360,7 @@ export const EnvironmentsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}",
       apiVersion: "2020-05-15",
+      longRunning: {},
     }),
   );
 export type EnvironmentsUpdateInput = typeof EnvironmentsUpdateInput.Type;

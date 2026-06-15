@@ -564,6 +564,7 @@ export const MigrationConfigsCreateAndStartMigrationInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/migrationConfigurations/{configName}",
       apiVersion: "2024-01-01",
+      longRunning: {},
     }),
   );
 export type MigrationConfigsCreateAndStartMigrationInput =
@@ -915,6 +916,7 @@ export const NamespacesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}",
       apiVersion: "2024-01-01",
+      longRunning: {},
     }),
   );
 export type NamespacesCreateOrUpdateInput =
@@ -1109,6 +1111,7 @@ export const NamespacesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}",
     apiVersion: "2024-01-01",
+    longRunning: {},
   }),
 );
 export type NamespacesDeleteInput = typeof NamespacesDeleteInput.Type;
@@ -1821,6 +1824,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-01-01",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =

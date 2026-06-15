@@ -111,6 +111,7 @@ export const AttachedDatabaseConfigurationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/attachedDatabaseConfigurations/{attachedDatabaseConfigurationName}",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AttachedDatabaseConfigurationsCreateOrUpdateInput =
@@ -167,6 +168,7 @@ export const AttachedDatabaseConfigurationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/attachedDatabaseConfigurations/{attachedDatabaseConfigurationName}",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AttachedDatabaseConfigurationsDeleteInput =
@@ -401,6 +403,7 @@ export const ClusterPrincipalAssignmentsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/principalAssignments/{principalAssignmentName}",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClusterPrincipalAssignmentsCreateOrUpdateInput =
@@ -457,6 +460,7 @@ export const ClusterPrincipalAssignmentsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/principalAssignments/{principalAssignmentName}",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClusterPrincipalAssignmentsDeleteInput =
@@ -644,6 +648,7 @@ export const ClustersAddCalloutPoliciesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/addCalloutPolicies",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClustersAddCalloutPoliciesInput =
@@ -703,6 +708,7 @@ export const ClustersAddLanguageExtensionsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/addLanguageExtensions",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClustersAddLanguageExtensionsInput =
@@ -1060,6 +1066,7 @@ export const ClustersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClustersCreateOrUpdateInput =
@@ -1116,6 +1123,7 @@ export const ClustersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}",
     apiVersion: "2025-02-14",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ClustersDeleteInput = typeof ClustersDeleteInput.Type;
@@ -1170,6 +1178,7 @@ export const ClustersDetachFollowerDatabasesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/detachFollowerDatabases",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClustersDetachFollowerDatabasesInput =
@@ -1206,6 +1215,7 @@ export const ClustersDiagnoseVirtualNetworkInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/diagnoseVirtualNetwork",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClustersDiagnoseVirtualNetworkInput =
@@ -1951,6 +1961,7 @@ export const ClustersMigrateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/migrate",
     apiVersion: "2025-02-14",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ClustersMigrateInput = typeof ClustersMigrateInput.Type;
@@ -1984,6 +1995,7 @@ export const ClustersRemoveCalloutPolicyInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/removeCalloutPolicy",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClustersRemoveCalloutPolicyInput =
@@ -2043,6 +2055,7 @@ export const ClustersRemoveLanguageExtensionsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/removeLanguageExtensions",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ClustersRemoveLanguageExtensionsInput =
@@ -2078,6 +2091,7 @@ export const ClustersStartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/start",
     apiVersion: "2025-02-14",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ClustersStartInput = typeof ClustersStartInput.Type;
@@ -2109,6 +2123,7 @@ export const ClustersStopInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/stop",
     apiVersion: "2025-02-14",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ClustersStopInput = typeof ClustersStopInput.Type;
@@ -2436,6 +2451,7 @@ export const ClustersUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}",
     apiVersion: "2025-02-14",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ClustersUpdateInput = typeof ClustersUpdateInput.Type;
@@ -2623,6 +2639,7 @@ export const DatabasePrincipalAssignmentsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/principalAssignments/{principalAssignmentName}",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DatabasePrincipalAssignmentsCreateOrUpdateInput =
@@ -2681,6 +2698,7 @@ export const DatabasePrincipalAssignmentsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/principalAssignments/{principalAssignmentName}",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DatabasePrincipalAssignmentsDeleteInput =
@@ -2981,6 +2999,7 @@ export const DatabasesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DatabasesCreateOrUpdateInput =
@@ -3038,6 +3057,7 @@ export const DatabasesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}",
     apiVersion: "2025-02-14",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DatabasesDeleteInput = typeof DatabasesDeleteInput.Type;
@@ -3341,6 +3361,7 @@ export const DatabasesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}",
     apiVersion: "2025-02-14",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DatabasesUpdateInput = typeof DatabasesUpdateInput.Type;
@@ -3451,6 +3472,7 @@ export const DataConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/dataConnections/{dataConnectionName}",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DataConnectionsCreateOrUpdateInput =
@@ -3540,6 +3562,7 @@ export const DataConnectionsDataConnectionValidationInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/dataConnectionValidation",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DataConnectionsDataConnectionValidationInput =
@@ -3587,6 +3610,7 @@ export const DataConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/dataConnections/{dataConnectionName}",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DataConnectionsDeleteInput = typeof DataConnectionsDeleteInput.Type;
@@ -3764,6 +3788,7 @@ export const DataConnectionsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/dataConnections/{dataConnectionName}",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DataConnectionsUpdateInput = typeof DataConnectionsUpdateInput.Type;
@@ -3883,6 +3908,7 @@ export const ManagedPrivateEndpointsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedPrivateEndpointsCreateOrUpdateInput =
@@ -3939,6 +3965,7 @@ export const ManagedPrivateEndpointsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedPrivateEndpointsDeleteInput =
@@ -4125,6 +4152,7 @@ export const ManagedPrivateEndpointsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ManagedPrivateEndpointsUpdateInput =
@@ -4309,6 +4337,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -4365,6 +4394,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -4721,6 +4751,7 @@ export const SandboxCustomImagesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/sandboxCustomImages/{sandboxCustomImageName}",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SandboxCustomImagesCreateOrUpdateInput =
@@ -4777,6 +4808,7 @@ export const SandboxCustomImagesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/sandboxCustomImages/{sandboxCustomImageName}",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SandboxCustomImagesDeleteInput =
@@ -4961,6 +4993,7 @@ export const SandboxCustomImagesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/sandboxCustomImages/{sandboxCustomImageName}",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SandboxCustomImagesUpdateInput =
@@ -5092,6 +5125,7 @@ export const ScriptsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/scripts/{scriptName}",
       apiVersion: "2025-02-14",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ScriptsCreateOrUpdateInput = typeof ScriptsCreateOrUpdateInput.Type;
@@ -5149,6 +5183,7 @@ export const ScriptsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/scripts/{scriptName}",
     apiVersion: "2025-02-14",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ScriptsDeleteInput = typeof ScriptsDeleteInput.Type;
@@ -5338,6 +5373,7 @@ export const ScriptsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/scripts/{scriptName}",
     apiVersion: "2025-02-14",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ScriptsUpdateInput = typeof ScriptsUpdateInput.Type;

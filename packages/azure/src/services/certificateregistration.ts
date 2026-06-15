@@ -144,6 +144,7 @@ export const AppServiceCertificateOrdersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}",
       apiVersion: "2024-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AppServiceCertificateOrdersCreateOrUpdateInput =
@@ -225,6 +226,7 @@ export const AppServiceCertificateOrdersCreateOrUpdateCertificateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CertificateRegistration/certificateOrders/{certificateOrderName}/certificates/{name}",
       apiVersion: "2024-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AppServiceCertificateOrdersCreateOrUpdateCertificateInput =

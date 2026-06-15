@@ -358,3 +358,23 @@ export class AzureParseError extends Schema.TaggedErrorClass<AzureParseError>()(
     cause: Schema.Unknown,
   },
 ).pipe(Category.withParseError) {}
+
+/**
+ * A long-running operation reached a non-success terminal state
+ * (`Failed` or `Canceled`). `status` is the terminal provisioning/operation
+ * status; `code`/`message`/`target` carry ARM's `error` envelope when present.
+ *
+ * Deliberately uncategorized so it is **not** auto-retried: the server already
+ * ran the operation to a terminal failure, and silently re-issuing the request
+ * (a create/update) is unsafe. Callers can opt into retrying explicitly.
+ */
+export class AzureLongRunningOperationFailed extends Schema.TaggedErrorClass<AzureLongRunningOperationFailed>()(
+  "AzureLongRunningOperationFailed",
+  {
+    status: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    body: Schema.Unknown,
+  },
+) {}

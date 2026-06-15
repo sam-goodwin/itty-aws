@@ -415,6 +415,7 @@ export const SignalRCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SignalRCreateOrUpdateInput = typeof SignalRCreateOrUpdateInput.Type;
@@ -486,6 +487,7 @@ export const SignalRCustomCertificatesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customCertificates/{certificateName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SignalRCustomCertificatesCreateOrUpdateInput =
@@ -718,6 +720,7 @@ export const SignalRCustomDomainsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customDomains/{name}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SignalRCustomDomainsCreateOrUpdateInput =
@@ -772,6 +775,7 @@ export const SignalRCustomDomainsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customDomains/{name}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SignalRCustomDomainsDeleteInput =
@@ -932,6 +936,7 @@ export const SignalRDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}",
     apiVersion: "2024-03-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SignalRDeleteInput = typeof SignalRDeleteInput.Type;
@@ -1308,6 +1313,7 @@ export const SignalRPrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SignalRPrivateEndpointConnectionsDeleteInput =
@@ -1627,6 +1633,7 @@ export const SignalRRegenerateKeyInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/regenerateKey",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SignalRRegenerateKeyInput = typeof SignalRRegenerateKeyInput.Type;
@@ -1697,6 +1704,7 @@ export const SignalRReplicasCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SignalRReplicasCreateOrUpdateInput =
@@ -1861,6 +1869,7 @@ export const SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateInput =
@@ -2100,6 +2109,7 @@ export const SignalRReplicasRestartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}/restart",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SignalRReplicasRestartInput =
@@ -2167,6 +2177,7 @@ export const SignalRReplicasUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/replicas/{replicaName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SignalRReplicasUpdateInput = typeof SignalRReplicasUpdateInput.Type;
@@ -2218,6 +2229,7 @@ export const SignalRRestartInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/restart",
     apiVersion: "2024-03-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SignalRRestartInput = typeof SignalRRestartInput.Type;
@@ -2277,6 +2289,7 @@ export const SignalRSharedPrivateLinkResourcesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SignalRSharedPrivateLinkResourcesCreateOrUpdateInput =
@@ -2329,6 +2342,7 @@ export const SignalRSharedPrivateLinkResourcesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/sharedPrivateLinkResources/{sharedPrivateLinkResourceName}",
       apiVersion: "2024-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SignalRSharedPrivateLinkResourcesDeleteInput =
@@ -2754,6 +2768,7 @@ export const SignalRUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}",
     apiVersion: "2024-03-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type SignalRUpdateInput = typeof SignalRUpdateInput.Type;

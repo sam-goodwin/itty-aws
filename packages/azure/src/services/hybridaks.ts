@@ -82,6 +82,7 @@ export const AgentPoolCreateOrUpdateInput =
       method: "PUT",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools/{agentPoolName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AgentPoolCreateOrUpdateInput =
@@ -131,6 +132,7 @@ export const AgentPoolDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/agentPools/{agentPoolName}",
     apiVersion: "2024-01-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type AgentPoolDeleteInput = typeof AgentPoolDeleteInput.Type;
@@ -264,6 +266,7 @@ export const DeleteKubernetesVersionsInput =
       method: "DELETE",
       path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/kubernetesVersions/default",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DeleteKubernetesVersionsInput =
@@ -297,6 +300,7 @@ export const DeleteVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/skus/default",
     apiVersion: "2024-01-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type DeleteVMSkusInput = typeof DeleteVMSkusInput.Type;
@@ -417,6 +421,7 @@ export const HybridIdentityMetadataDeleteInput =
       method: "DELETE",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/hybridIdentityMetadata/default",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type HybridIdentityMetadataDeleteInput =
@@ -945,6 +950,7 @@ export const ProvisionedClusterInstancesCreateOrUpdateInput =
       method: "PUT",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProvisionedClusterInstancesCreateOrUpdateInput =
@@ -992,6 +998,7 @@ export const ProvisionedClusterInstancesDeleteInput =
       method: "DELETE",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProvisionedClusterInstancesDeleteInput =
@@ -1179,6 +1186,7 @@ export const ProvisionedClusterInstancesListAdminKubeconfigInput =
       method: "POST",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/listAdminKubeconfig",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProvisionedClusterInstancesListAdminKubeconfigInput =
@@ -1243,6 +1251,7 @@ export const ProvisionedClusterInstancesListUserKubeconfigInput =
       method: "POST",
       path: "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default/listUserKubeconfig",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProvisionedClusterInstancesListUserKubeconfigInput =
@@ -1365,6 +1374,7 @@ export const PutKubernetesVersionsInput =
       method: "PUT",
       path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/kubernetesVersions/default",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PutKubernetesVersionsInput = typeof PutKubernetesVersionsInput.Type;
@@ -1453,6 +1463,7 @@ export const PutVMSkusInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/{customLocationResourceUri}/providers/Microsoft.HybridContainerService/skus/default",
     apiVersion: "2024-01-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type PutVMSkusInput = typeof PutVMSkusInput.Type;
@@ -1570,6 +1581,7 @@ export const VirtualNetworksCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualNetworksCreateOrUpdateInput =
@@ -1622,6 +1634,7 @@ export const VirtualNetworksDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualNetworksDeleteInput = typeof VirtualNetworksDeleteInput.Type;
@@ -1846,6 +1859,7 @@ export const VirtualNetworksUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}",
       apiVersion: "2024-01-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VirtualNetworksUpdateInput = typeof VirtualNetworksUpdateInput.Type;

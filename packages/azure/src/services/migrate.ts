@@ -34,6 +34,7 @@ export const AksAssessmentOperationsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}",
       apiVersion: "2024-01-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AksAssessmentOperationsCreateInput =
@@ -128,6 +129,7 @@ export const AksAssessmentOperationsDownloadUrlInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/aksAssessments/{assessmentName}/downloadUrl",
       apiVersion: "2024-01-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AksAssessmentOperationsDownloadUrlInput =
@@ -1890,6 +1892,7 @@ export const AssessmentProjectsOperationsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}",
       apiVersion: "2024-01-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AssessmentProjectsOperationsCreateInput =
@@ -2188,6 +2191,7 @@ export const AssessmentProjectsOperationsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}",
       apiVersion: "2024-01-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AssessmentProjectsOperationsUpdateInput =
@@ -2385,6 +2389,7 @@ export const AssessmentsOperationsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/assessments/{assessmentName}",
       apiVersion: "2024-01-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AssessmentsOperationsCreateInput =
@@ -2485,6 +2490,7 @@ export const AssessmentsOperationsDownloadUrlInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl",
       apiVersion: "2024-01-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AssessmentsOperationsDownloadUrlInput =
@@ -2941,6 +2947,7 @@ export const AvsAssessmentsOperationsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/avsAssessments/{assessmentName}",
       apiVersion: "2024-01-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AvsAssessmentsOperationsCreateInput =
@@ -3039,6 +3046,7 @@ export const AvsAssessmentsOperationsDownloadUrlInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/avsAssessments/{assessmentName}/downloadUrl",
       apiVersion: "2024-01-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type AvsAssessmentsOperationsDownloadUrlInput =
@@ -3513,6 +3521,7 @@ export const DependencyMapControllerClientGroupMembersInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/clientGroupMembers",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DependencyMapControllerClientGroupMembersInput =
@@ -3551,6 +3560,7 @@ export const DependencyMapControllerExportDependenciesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/exportDependencies",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DependencyMapControllerExportDependenciesInput =
@@ -3595,6 +3605,7 @@ export const DependencyMapControllerGenerateCoarseMapInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/generateCoarseMap",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DependencyMapControllerGenerateCoarseMapInput =
@@ -3640,6 +3651,7 @@ export const DependencyMapControllerGenerateDetailedMapInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/generateDetailedMap",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DependencyMapControllerGenerateDetailedMapInput =
@@ -3685,6 +3697,7 @@ export const DependencyMapControllerServerGroupMembersInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/serverGroupMembers",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DependencyMapControllerServerGroupMembersInput =
@@ -3881,6 +3894,7 @@ export const GroupsOperationsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}",
       apiVersion: "2024-01-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type GroupsOperationsCreateInput =
@@ -4106,6 +4120,7 @@ export const GroupsOperationsUpdateMachinesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/updateMachines",
       apiVersion: "2024-01-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type GroupsOperationsUpdateMachinesInput =
@@ -4221,6 +4236,7 @@ export const HypervClusterControllerCreateClusterInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/clusters/{clusterName}",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type HypervClusterControllerCreateClusterInput =
@@ -4457,6 +4473,7 @@ export const HypervCollectorsOperationsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/hypervcollectors/{hypervCollectorName}",
       apiVersion: "2024-01-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type HypervCollectorsOperationsCreateInput =
@@ -4686,6 +4703,7 @@ export const HypervDependencyMapControllerClientGroupMembersInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/clientGroupMembers",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type HypervDependencyMapControllerClientGroupMembersInput =
@@ -4724,6 +4742,7 @@ export const HypervDependencyMapControllerExportDependenciesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/exportDependencies",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type HypervDependencyMapControllerExportDependenciesInput =
@@ -4768,6 +4787,7 @@ export const HypervDependencyMapControllerGenerateCoarseMapInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/generateCoarseMap",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type HypervDependencyMapControllerGenerateCoarseMapInput =
@@ -4813,6 +4833,7 @@ export const HypervDependencyMapControllerGenerateDetailedMapInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/generateDetailedMap",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type HypervDependencyMapControllerGenerateDetailedMapInput =
@@ -4858,6 +4879,7 @@ export const HypervDependencyMapControllerServerGroupMembersInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/serverGroupMembers",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type HypervDependencyMapControllerServerGroupMembersInput =
@@ -4902,6 +4924,7 @@ export const HypervDependencyMapControllerUpdateDependencyMapStatusInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/updateDependencyMapStatus",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type HypervDependencyMapControllerUpdateDependencyMapStatusInput =
@@ -4995,6 +5018,7 @@ export const HypervHostControllerCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/hosts/{hostName}",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type HypervHostControllerCreateInput =
@@ -5052,6 +5076,7 @@ export const HypervHostControllerDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/hosts/{hostName}",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type HypervHostControllerDeleteInput =
@@ -5702,6 +5727,7 @@ export const HypervMachinesControllerUpdatePropertiesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/updateProperties",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type HypervMachinesControllerUpdatePropertiesInput =
@@ -6142,6 +6168,7 @@ export const HypervSitesControllerExportApplicationsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/exportApplications",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type HypervSitesControllerExportApplicationsInput =
@@ -6191,6 +6218,7 @@ export const HypervSitesControllerExportMachineErrorsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/hypervSites/{siteName}/exportMachineErrors",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type HypervSitesControllerExportMachineErrorsInput =
@@ -7099,6 +7127,7 @@ export const ImportCollectorsOperationsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/importcollectors/{importCollectorName}",
       apiVersion: "2024-01-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ImportCollectorsOperationsCreateInput =
@@ -8873,6 +8902,7 @@ export const MachinesControllerStartInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/machines/{machineName}/start",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MachinesControllerStartInput =
@@ -8912,6 +8942,7 @@ export const MachinesControllerStopInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/machines/{machineName}/stop",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MachinesControllerStopInput =
@@ -9237,6 +9268,7 @@ export const MasterSitesControllerCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MasterSitesControllerCreateInput =
@@ -9583,6 +9615,7 @@ export const MasterSitesControllerUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MasterSitesControllerUpdateInput =
@@ -11569,6 +11602,7 @@ export const PrivateEndpointConnectionOperationsUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-01-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateEndpointConnectionOperationsUpdateInput =
@@ -13471,6 +13505,7 @@ export const ServerCollectorsOperationsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/servercollectors/{serverCollectorName}",
       apiVersion: "2024-01-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ServerCollectorsOperationsCreateInput =
@@ -13700,6 +13735,7 @@ export const ServerDependencyMapControllerClientGroupMembersInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/clientGroupMembers",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerDependencyMapControllerClientGroupMembersInput =
@@ -13738,6 +13774,7 @@ export const ServerDependencyMapControllerExportDependenciesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/exportDependencies",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerDependencyMapControllerExportDependenciesInput =
@@ -13782,6 +13819,7 @@ export const ServerDependencyMapControllerGenerateCoarseMapInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/generateCoarseMap",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerDependencyMapControllerGenerateCoarseMapInput =
@@ -13827,6 +13865,7 @@ export const ServerDependencyMapControllerGenerateDetailedMapInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/generateDetailedMap",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerDependencyMapControllerGenerateDetailedMapInput =
@@ -13872,6 +13911,7 @@ export const ServerDependencyMapControllerServerGroupMembersInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/serverGroupMembers",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerDependencyMapControllerServerGroupMembersInput =
@@ -14650,6 +14690,7 @@ export const ServerSitesControllerCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerSitesControllerCreateInput =
@@ -14742,6 +14783,7 @@ export const ServerSitesControllerExportApplicationsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/exportApplications",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerSitesControllerExportApplicationsInput =
@@ -14791,6 +14833,7 @@ export const ServerSitesControllerExportMachineErrorsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/exportMachineErrors",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerSitesControllerExportMachineErrorsInput =
@@ -15077,6 +15120,7 @@ export const ServerSitesControllerRefreshSiteInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/refreshSite",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerSitesControllerRefreshSiteInput =
@@ -15241,6 +15285,7 @@ export const ServerSitesControllerUpdateDependencyMapStatusInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/updateDependencyMapStatus",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerSitesControllerUpdateDependencyMapStatusInput =
@@ -15285,6 +15330,7 @@ export const ServerSitesControllerUpdatePropertiesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/serverSites/{siteName}/updateProperties",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ServerSitesControllerUpdatePropertiesInput =
@@ -15673,6 +15719,7 @@ export const SitesControllerExportApplicationsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/exportApplications",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SitesControllerExportApplicationsInput =
@@ -15722,6 +15769,7 @@ export const SitesControllerExportMachineErrorsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/exportMachineErrors",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SitesControllerExportMachineErrorsInput =
@@ -15760,6 +15808,7 @@ export const SitesControllerExportMachinesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/exportMachines",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SitesControllerExportMachinesInput =
@@ -17015,6 +17064,7 @@ export const SqlAssessmentV2OperationsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}",
       apiVersion: "2024-01-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SqlAssessmentV2OperationsCreateInput =
@@ -17113,6 +17163,7 @@ export const SqlAssessmentV2OperationsDownloadUrlInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/sqlAssessments/{assessmentName}/downloadUrl",
       apiVersion: "2024-01-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SqlAssessmentV2OperationsDownloadUrlInput =
@@ -17571,6 +17622,7 @@ export const SqlCollectorOperationsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/sqlcollectors/{collectorName}",
       apiVersion: "2024-01-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type SqlCollectorOperationsCreateInput =
@@ -17946,6 +17998,7 @@ export const SqlDiscoverySiteDataSourceControllerCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/discoverySiteDataSources/{discoverySiteDataSourceName}",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SqlDiscoverySiteDataSourceControllerCreateInput =
@@ -18971,6 +19024,7 @@ export const SqlSitesControllerExportSqlServerErrorsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/exportSqlServerErrors",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SqlSitesControllerExportSqlServerErrorsInput =
@@ -19011,6 +19065,7 @@ export const SqlSitesControllerExportSqlServersInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/exportSqlServers",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SqlSitesControllerExportSqlServersInput =
@@ -19175,6 +19230,7 @@ export const SqlSitesControllerRefreshInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}/refresh",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SqlSitesControllerRefreshInput =
@@ -19288,6 +19344,7 @@ export const SqlSitesControllerUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/sqlSites/{sqlSiteName}",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type SqlSitesControllerUpdateInput =
@@ -19736,6 +19793,7 @@ export const VcenterControllerCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/vcenters/{vcenterName}",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VcenterControllerCreateInput =
@@ -20140,6 +20198,7 @@ export const VmwareCollectorsOperationsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/vmwarecollectors/{vmWareCollectorName}",
       apiVersion: "2024-01-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type VmwareCollectorsOperationsCreateInput =
@@ -20547,6 +20606,7 @@ export const VmwarePropertiesControllerUpdateDependencyMapStatusInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/updateDependencyMapStatus",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VmwarePropertiesControllerUpdateDependencyMapStatusInput =
@@ -20592,6 +20652,7 @@ export const VmwarePropertiesControllerUpdatePropertiesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/updateProperties",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VmwarePropertiesControllerUpdatePropertiesInput =
@@ -20636,6 +20697,7 @@ export const VmwarePropertiesControllerUpdateRunAsAccountInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/updateRunAsAccount",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VmwarePropertiesControllerUpdateRunAsAccountInput =
@@ -20681,6 +20743,7 @@ export const VmwarePropertiesControllerUpdateTagsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/vmwareSites/{siteName}/updateTags",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type VmwarePropertiesControllerUpdateTagsInput =
@@ -20993,6 +21056,7 @@ export const WebAppAssessmentV2OperationsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}",
       apiVersion: "2024-01-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type WebAppAssessmentV2OperationsCreateInput =
@@ -21091,6 +21155,7 @@ export const WebAppAssessmentV2OperationsDownloadUrlInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/webAppAssessments/{assessmentName}/downloadUrl",
       apiVersion: "2024-01-15",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppAssessmentV2OperationsDownloadUrlInput =
@@ -21414,6 +21479,7 @@ export const WebAppCollectorOperationsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/webAppCollectors/{collectorName}",
       apiVersion: "2024-01-15",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type WebAppCollectorOperationsCreateInput =
@@ -21650,6 +21716,7 @@ export const WebAppDiscoverySiteDataSourcesControllerCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/discoverySiteDataSources/{discoverySiteDataSourceName}",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppDiscoverySiteDataSourcesControllerCreateInput =
@@ -21708,6 +21775,7 @@ export const WebAppDiscoverySiteDataSourcesControllerDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/discoverySiteDataSources/{discoverySiteDataSourceName}",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppDiscoverySiteDataSourcesControllerDeleteInput =
@@ -22101,6 +22169,7 @@ export const WebAppPropertiesControllerUpdatePropertiesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/updateProperties",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppPropertiesControllerUpdatePropertiesInput =
@@ -22510,6 +22579,7 @@ export const WebAppSitesControllerDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppSitesControllerDeleteInput =
@@ -22602,6 +22672,7 @@ export const WebAppSitesControllerExportInventoryInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/exportInventory",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppSitesControllerExportInventoryInput =
@@ -22767,6 +22838,7 @@ export const WebAppSitesControllerRefreshInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}/refresh",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppSitesControllerRefreshInput =
@@ -22878,6 +22950,7 @@ export const WebAppSitesControllerUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/masterSites/{siteName}/webAppSites/{webAppSiteName}",
       apiVersion: "2023-06-06",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type WebAppSitesControllerUpdateInput =

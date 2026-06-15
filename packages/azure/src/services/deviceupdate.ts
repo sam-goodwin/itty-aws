@@ -107,6 +107,7 @@ export const AccountsCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}",
     apiVersion: "2023-07-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type AccountsCreateInput = typeof AccountsCreateInput.Type;
@@ -149,6 +150,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}",
     apiVersion: "2023-07-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
@@ -365,6 +367,7 @@ export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}",
     apiVersion: "2023-07-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
@@ -472,6 +475,7 @@ export const InstancesCreateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PUT",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/instances/{instanceName}",
     apiVersion: "2023-07-01",
+    longRunning: { finalStateVia: "azure-async-operation" },
   }),
 );
 export type InstancesCreateInput = typeof InstancesCreateInput.Type;
@@ -514,6 +518,7 @@ export const InstancesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/instances/{instanceName}",
     apiVersion: "2023-07-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type InstancesDeleteInput = typeof InstancesDeleteInput.Type;
@@ -813,6 +818,7 @@ export const PrivateEndpointConnectionProxiesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateEndpointConnectionProxies/{privateEndpointConnectionProxyId}",
       apiVersion: "2023-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateEndpointConnectionProxiesCreateOrUpdateInput =
@@ -916,6 +922,7 @@ export const PrivateEndpointConnectionProxiesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateEndpointConnectionProxies/{privateEndpointConnectionProxyId}",
       apiVersion: "2023-07-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionProxiesDeleteInput =
@@ -1340,6 +1347,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2023-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -1390,6 +1398,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceUpdate/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2023-07-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =

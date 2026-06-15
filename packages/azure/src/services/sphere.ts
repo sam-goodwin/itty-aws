@@ -74,6 +74,7 @@ export const CatalogsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type CatalogsCreateOrUpdateInput =
@@ -128,6 +129,7 @@ export const CatalogsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}",
     apiVersion: "2024-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type CatalogsDeleteInput = typeof CatalogsDeleteInput.Type;
@@ -701,6 +703,7 @@ export const CatalogsUploadImageInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/uploadImage",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type CatalogsUploadImageInput = typeof CatalogsUploadImageInput.Type;
@@ -1007,6 +1010,7 @@ export const DeploymentsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/deployments/{deploymentName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DeploymentsCreateOrUpdateInput =
@@ -1069,6 +1073,7 @@ export const DeploymentsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/deployments/{deploymentName}",
     apiVersion: "2024-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DeploymentsDeleteInput = typeof DeploymentsDeleteInput.Type;
@@ -1235,6 +1240,7 @@ export const DeviceGroupsClaimDevicesInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/claimDevices",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeviceGroupsClaimDevicesInput =
@@ -1344,6 +1350,7 @@ export const DeviceGroupsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DeviceGroupsCreateOrUpdateInput =
@@ -1403,6 +1410,7 @@ export const DeviceGroupsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeviceGroupsDeleteInput = typeof DeviceGroupsDeleteInput.Type;
@@ -1577,6 +1585,7 @@ export const DeviceGroupsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeviceGroupsUpdateInput = typeof DeviceGroupsUpdateInput.Type;
@@ -1654,6 +1663,7 @@ export const DevicesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/devices/{deviceName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DevicesCreateOrUpdateInput = typeof DevicesCreateOrUpdateInput.Type;
@@ -1713,6 +1723,7 @@ export const DevicesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/devices/{deviceName}",
     apiVersion: "2024-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DevicesDeleteInput = typeof DevicesDeleteInput.Type;
@@ -1754,6 +1765,7 @@ export const DevicesGenerateCapabilityImageInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/devices/{deviceName}/generateCapabilityImage",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DevicesGenerateCapabilityImageInput =
@@ -1931,6 +1943,7 @@ export const DevicesUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/devices/{deviceName}",
     apiVersion: "2024-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type DevicesUpdateInput = typeof DevicesUpdateInput.Type;
@@ -2035,6 +2048,7 @@ export const ImagesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/images/{imageName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ImagesCreateOrUpdateInput = typeof ImagesCreateOrUpdateInput.Type;
@@ -2089,6 +2103,7 @@ export const ImagesDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/images/{imageName}",
     apiVersion: "2024-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ImagesDeleteInput = typeof ImagesDeleteInput.Type;
@@ -2343,6 +2358,7 @@ export const ProductsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}",
       apiVersion: "2024-04-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ProductsCreateOrUpdateInput =
@@ -2399,6 +2415,7 @@ export const ProductsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}",
     apiVersion: "2024-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ProductsDeleteInput = typeof ProductsDeleteInput.Type;
@@ -2628,6 +2645,7 @@ export const ProductsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}",
     apiVersion: "2024-04-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ProductsUpdateInput = typeof ProductsUpdateInput.Type;

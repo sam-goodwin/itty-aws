@@ -94,6 +94,7 @@ export const DeidServicesCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthDataAIServices/deidServices/{deidServiceName}",
       apiVersion: "2024-09-20",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type DeidServicesCreateInput = typeof DeidServicesCreateInput.Type;
@@ -145,6 +146,7 @@ export const DeidServicesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthDataAIServices/deidServices/{deidServiceName}",
       apiVersion: "2024-09-20",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeidServicesDeleteInput = typeof DeidServicesDeleteInput.Type;
@@ -387,6 +389,7 @@ export const DeidServicesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthDataAIServices/deidServices/{deidServiceName}",
       apiVersion: "2024-09-20",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeidServicesUpdateInput = typeof DeidServicesUpdateInput.Type;
@@ -507,6 +510,7 @@ export const PrivateEndpointConnectionsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthDataAIServices/deidServices/{deidServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-09-20",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateEndpointConnectionsCreateInput =
@@ -563,6 +567,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthDataAIServices/deidServices/{deidServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2024-09-20",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =

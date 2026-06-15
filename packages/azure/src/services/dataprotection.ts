@@ -26,6 +26,7 @@ export const BackupInstancesAdhocBackupInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/backup",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupInstancesAdhocBackupInput =
@@ -225,6 +226,7 @@ export const BackupInstancesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupInstancesCreateOrUpdateInput =
@@ -281,6 +283,7 @@ export const BackupInstancesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupInstancesDeleteInput = typeof BackupInstancesDeleteInput.Type;
@@ -499,6 +502,7 @@ export const BackupInstancesResumeBackupsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/resumeBackups",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupInstancesResumeBackupsInput =
@@ -537,6 +541,7 @@ export const BackupInstancesResumeProtectionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/resumeProtection",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupInstancesResumeProtectionInput =
@@ -578,6 +583,7 @@ export const BackupInstancesStopProtectionInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/stopProtection",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupInstancesStopProtectionInput =
@@ -619,6 +625,7 @@ export const BackupInstancesSuspendBackupsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/suspendBackups",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupInstancesSuspendBackupsInput =
@@ -658,6 +665,7 @@ export const BackupInstancesSyncBackupInstanceInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/sync",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupInstancesSyncBackupInstanceInput =
@@ -724,6 +732,7 @@ export const BackupInstancesTriggerCrossRegionRestoreInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/crossRegionRestore",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupInstancesTriggerCrossRegionRestoreInput =
@@ -768,6 +777,7 @@ export const BackupInstancesTriggerRehydrateInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/rehydrate",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupInstancesTriggerRehydrateInput =
@@ -828,6 +838,7 @@ export const BackupInstancesTriggerRestoreInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/restore",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupInstancesTriggerRestoreInput =
@@ -895,6 +906,7 @@ export const BackupInstancesValidateCrossRegionRestoreInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/locations/{location}/validateCrossRegionRestore",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupInstancesValidateCrossRegionRestoreInput =
@@ -1088,6 +1100,7 @@ export const BackupInstancesValidateForBackupInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/validateForBackup",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupInstancesValidateForBackupInput =
@@ -1282,6 +1295,7 @@ export const BackupInstancesValidateForModifyBackupInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/validateForModifyBackup",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupInstancesValidateForModifyBackupInput =
@@ -1344,6 +1358,7 @@ export const BackupInstancesValidateForRestoreInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/validateRestore",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupInstancesValidateForRestoreInput =
@@ -1825,6 +1840,7 @@ export const BackupVaultsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupVaultsCreateOrUpdateInput =
@@ -1881,6 +1897,7 @@ export const BackupVaultsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupVaultsDeleteInput = typeof BackupVaultsDeleteInput.Type;
@@ -2131,6 +2148,7 @@ export const BackupVaultsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type BackupVaultsUpdateInput = typeof BackupVaultsUpdateInput.Type;
@@ -2367,6 +2385,7 @@ export const DeletedBackupInstancesUndeleteInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/deletedBackupInstances/{backupInstanceName}/undelete",
       apiVersion: "2026-03-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type DeletedBackupInstancesUndeleteInput =
@@ -2820,6 +2839,7 @@ export const ExportJobsTriggerInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "POST",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/exportBackupJobs",
     apiVersion: "2026-03-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type ExportJobsTriggerInput = typeof ExportJobsTriggerInput.Type;

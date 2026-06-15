@@ -98,6 +98,7 @@ export const FabricCapacitiesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}",
       apiVersion: "2023-11-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FabricCapacitiesCreateOrUpdateInput =
@@ -152,6 +153,7 @@ export const FabricCapacitiesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}",
       apiVersion: "2023-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FabricCapacitiesDeleteInput =
@@ -461,6 +463,7 @@ export const FabricCapacitiesResumeInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}/resume",
       apiVersion: "2023-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FabricCapacitiesResumeInput =
@@ -498,6 +501,7 @@ export const FabricCapacitiesSuspendInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}/suspend",
       apiVersion: "2023-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FabricCapacitiesSuspendInput =
@@ -551,6 +555,7 @@ export const FabricCapacitiesUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric/capacities/{capacityName}",
       apiVersion: "2023-11-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FabricCapacitiesUpdateInput =

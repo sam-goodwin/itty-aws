@@ -209,6 +209,7 @@ export const AccountsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzurePlaywrightService/accounts/{accountName}",
       apiVersion: "2024-12-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type AccountsCreateOrUpdateInput =
@@ -263,6 +264,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzurePlaywrightService/accounts/{accountName}",
     apiVersion: "2024-12-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;

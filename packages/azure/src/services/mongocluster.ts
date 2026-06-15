@@ -37,6 +37,7 @@ export const FirewallRulesCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/firewallRules/{firewallRuleName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type FirewallRulesCreateOrUpdateInput =
@@ -94,6 +95,7 @@ export const FirewallRulesDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/firewallRules/{firewallRuleName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type FirewallRulesDeleteInput = typeof FirewallRulesDeleteInput.Type;
@@ -491,6 +493,7 @@ export const MongoClustersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type MongoClustersCreateOrUpdateInput =
@@ -546,6 +549,7 @@ export const MongoClustersDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MongoClustersDeleteInput = typeof MongoClustersDeleteInput.Type;
@@ -808,6 +812,7 @@ export const MongoClustersPromoteInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/promote",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MongoClustersPromoteInput = typeof MongoClustersPromoteInput.Type;
@@ -947,6 +952,7 @@ export const MongoClustersUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type MongoClustersUpdateInput = typeof MongoClustersUpdateInput.Type;
@@ -1067,6 +1073,7 @@ export const PrivateEndpointConnectionsCreateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type PrivateEndpointConnectionsCreateInput =
@@ -1123,6 +1130,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
@@ -1450,6 +1458,7 @@ export const UsersCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users/{userName}",
       apiVersion: "2025-09-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type UsersCreateOrUpdateInput = typeof UsersCreateOrUpdateInput.Type;
@@ -1502,6 +1511,7 @@ export const UsersDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{mongoClusterName}/users/{userName}",
     apiVersion: "2025-09-01",
+    longRunning: { finalStateVia: "location" },
   }),
 );
 export type UsersDeleteInput = typeof UsersDeleteInput.Type;

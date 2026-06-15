@@ -579,6 +579,7 @@ export const ApplicationsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}",
       apiVersion: "2021-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ApplicationsCreateOrUpdateInput =
@@ -772,6 +773,7 @@ export const ApplicationsCreateOrUpdateByIdInput =
       method: "PUT",
       path: "/{applicationId}",
       apiVersion: "2021-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ApplicationsCreateOrUpdateByIdInput =
@@ -825,6 +827,7 @@ export const ApplicationsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}",
       apiVersion: "2021-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ApplicationsDeleteInput = typeof ApplicationsDeleteInput.Type;
@@ -854,6 +857,7 @@ export const ApplicationsDeleteByIdInput =
       method: "DELETE",
       path: "/{applicationId}",
       apiVersion: "2021-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ApplicationsDeleteByIdInput =
@@ -1225,6 +1229,7 @@ export const ApplicationsRefreshPermissionsInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}/refreshPermissions",
       apiVersion: "2021-07-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationsRefreshPermissionsInput =
@@ -1400,6 +1405,7 @@ export const ApplicationsUpdateInput =
       method: "PATCH",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}",
       apiVersion: "2021-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ApplicationsUpdateInput = typeof ApplicationsUpdateInput.Type;
@@ -1468,6 +1474,7 @@ export const ApplicationsUpdateAccessInput =
       method: "POST",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applications/{applicationName}/updateAccess",
       apiVersion: "2021-07-01",
+      longRunning: { finalStateVia: "location" },
     }),
   );
 export type ApplicationsUpdateAccessInput =
@@ -1644,6 +1651,7 @@ export const ApplicationsUpdateByIdInput =
       method: "PATCH",
       path: "/{applicationId}",
       apiVersion: "2021-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type ApplicationsUpdateByIdInput =
@@ -1773,6 +1781,7 @@ export const JitRequestsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/jitRequests/{jitRequestName}",
       apiVersion: "2021-07-01",
+      longRunning: { finalStateVia: "azure-async-operation" },
     }),
   );
 export type JitRequestsCreateOrUpdateInput =

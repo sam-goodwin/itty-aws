@@ -235,6 +235,7 @@ export const AccountsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}",
       apiVersion: "2021-12-01",
+      longRunning: {},
     }),
   );
 export type AccountsCreateOrUpdateInput =
@@ -304,6 +305,7 @@ export const AccountsDeleteInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
     method: "DELETE",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}",
     apiVersion: "2021-12-01",
+    longRunning: {},
   }),
 );
 export type AccountsDeleteInput = typeof AccountsDeleteInput.Type;
@@ -728,6 +730,7 @@ export const AccountsUpdateInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     method: "PATCH",
     path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}",
     apiVersion: "2021-12-01",
+    longRunning: {},
   }),
 );
 export type AccountsUpdateInput = typeof AccountsUpdateInput.Type;
@@ -1358,6 +1361,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateInput =
       method: "PUT",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-12-01",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionsCreateOrUpdateInput =
@@ -1409,6 +1413,7 @@ export const PrivateEndpointConnectionsDeleteInput =
       method: "DELETE",
       path: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/privateEndpointConnections/{privateEndpointConnectionName}",
       apiVersion: "2021-12-01",
+      longRunning: {},
     }),
   );
 export type PrivateEndpointConnectionsDeleteInput =
