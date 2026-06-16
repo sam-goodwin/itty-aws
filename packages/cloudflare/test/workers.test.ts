@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
-import { describe, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import * as Effect from "effect/Effect";
+import * as Schema from "effect/Schema";
 import { test, getAccountId, getZoneId, testRunId } from "./test.ts";
 import * as Workers from "~/services/workers";
 import * as Queues from "~/services/queues";
@@ -2386,6 +2387,24 @@ describe("Workers", () => {
   });
 
   describe("createScriptEdgePreview", () => {
+    it("decodes preview responses when tail_url is omitted", () => {
+      expect(
+        Schema.decodeUnknownSync(Workers.CreateScriptEdgePreviewResponse)({
+          preview_token: "preview-token",
+        }),
+      ).toEqual({
+        previewToken: "preview-token",
+      });
+
+      expect(
+        Schema.decodeUnknownSync(Workers.CreateServiceEdgePreviewResponse)({
+          preview_token: "preview-token",
+        }),
+      ).toEqual({
+        previewToken: "preview-token",
+      });
+    });
+
     test("happy path - uploads worker and gets preview token", () =>
       withScript(scriptName("edge-preview"), (name) =>
         Effect.gen(function* () {

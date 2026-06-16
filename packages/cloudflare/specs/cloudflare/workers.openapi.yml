@@ -15180,7 +15180,6 @@ paths:
                     description: URL for tailing live logs from the preview worker.
                 required:
                   - preview_token
-                  - tail_url
       x-distilled-response-path: result
       x-distilled-errors:
         InvalidRoute:
@@ -23122,7 +23121,6 @@ paths:
                     description: URL for tailing live logs from the preview worker.
                 required:
                   - preview_token
-                  - tail_url
       x-distilled-response-path: result
       x-distilled-errors:
         InvalidRoute:

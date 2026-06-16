@@ -185,7 +185,6 @@ components:
       type: object
       required:
         - preview_token
-        - tail_url
       properties:
         preview_token:
           type: string

@@ -15560,13 +15560,13 @@ export interface CreateScriptEdgePreviewResponse {
   /** Token to send as cf-workers-preview-token header when making requests to the preview host. */
   previewToken: string;
   /** URL for tailing live logs from the preview worker. */
-  tailUrl: string;
+  tailUrl?: string;
 }
 
 export const CreateScriptEdgePreviewResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     previewToken: Schema.String,
-    tailUrl: Schema.String,
+    tailUrl: Schema.optional(Schema.String),
   })
     .pipe(
       Schema.encodeKeys({ previewToken: "preview_token", tailUrl: "tail_url" }),
@@ -22606,13 +22606,13 @@ export interface CreateServiceEdgePreviewResponse {
   /** Token to send as cf-workers-preview-token header when making requests to the preview host. */
   previewToken: string;
   /** URL for tailing live logs from the preview worker. */
-  tailUrl: string;
+  tailUrl?: string;
 }
 
 export const CreateServiceEdgePreviewResponse =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
     previewToken: Schema.String,
-    tailUrl: Schema.String,
+    tailUrl: Schema.optional(Schema.String),
   })
     .pipe(
       Schema.encodeKeys({ previewToken: "preview_token", tailUrl: "tail_url" }),
