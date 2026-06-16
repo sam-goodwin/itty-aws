@@ -148,3 +148,28 @@ export class StripeParseError extends Schema.TaggedErrorClass<StripeParseError>(
     cause: Schema.Unknown,
   },
 ).pipe(Category.withParseError) {}
+
+/**
+ * Stripe webhook signature verification failed.
+ *
+ * This is raised by the local webhook helpers when the Stripe-Signature header
+ * is missing, malformed, expired, or does not match the raw request payload.
+ */
+export class StripeWebhookSignatureError extends Schema.TaggedErrorClass<StripeWebhookSignatureError>()(
+  "StripeWebhookSignatureError",
+  {
+    message: Schema.String,
+    cause: Schema.optional(Schema.Unknown),
+  },
+).pipe(Category.withAuthError) {}
+
+/**
+ * Stripe webhook payload JSON parsing failed after signature verification.
+ */
+export class StripeWebhookPayloadParseError extends Schema.TaggedErrorClass<StripeWebhookPayloadParseError>()(
+  "StripeWebhookPayloadParseError",
+  {
+    message: Schema.String,
+    cause: Schema.optional(Schema.Unknown),
+  },
+).pipe(Category.withParseError) {}

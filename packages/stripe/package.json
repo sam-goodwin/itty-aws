@@ -40,6 +40,11 @@
       "bun": "./src/errors.ts",
       "default": "./lib/errors.js"
     },
+    "./Webhooks": {
+      "types": "./lib/webhooks.d.ts",
+      "bun": "./src/webhooks.ts",
+      "default": "./lib/webhooks.js"
+    },
     "./Operations": {
       "types": "./lib/operations/index.d.ts",
       "bun": "./src/operations/index.ts",
