@@ -1,7 +1,7 @@
 import * as Effect from "effect/Effect";
 import * as Stream from "effect/Stream";
 import { describe, expect, test } from "vitest";
-import { paginatePageNumber } from "../src/pagination.ts";
+import { paginatePageNumber, paginateWithDefaults } from "../src/pagination.ts";
 
 const trait = {
   mode: "page",
@@ -79,5 +79,45 @@ describe("paginatePageNumber", () => {
       "item-3",
     ]);
     expect(calls).toBe(3);
+  });
+
+  test("forwards request options to each page request", async () => {
+    const options = { requestId: "req_123" };
+    const seenOptions: Array<typeof options | undefined> = [];
+    const op = (input: { page?: number }, requestOptions?: typeof options) =>
+      Effect.sync(() => {
+        seenOptions.push(requestOptions);
+        const page = input.page ?? 1;
+        return {
+          result: page === 1 ? [{ id: "a" }] : [],
+          resultInfo: { page, perPage: 1 },
+        };
+      });
+
+    await Effect.runPromise(
+      Stream.runCollect(paginatePageNumber(op, {}, trait, options)),
+    );
+
+    expect(seenOptions).toEqual([options, options]);
+  });
+
+  test("default pagination forwards request options", async () => {
+    const options = { requestId: "req_456" };
+    const seenOptions: Array<typeof options | undefined> = [];
+    const op = (input: { page?: number }, requestOptions?: typeof options) =>
+      Effect.sync(() => {
+        seenOptions.push(requestOptions);
+        const page = input.page ?? 1;
+        return {
+          result: page === 1 ? [{ id: "a" }] : [],
+          resultInfo: { page, perPage: 1 },
+        };
+      });
+
+    await Effect.runPromise(
+      Stream.runCollect(paginateWithDefaults(op, {}, trait, options)),
+    );
+
+    expect(seenOptions).toEqual([options, options]);
   });
 });

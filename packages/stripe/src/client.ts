@@ -25,6 +25,40 @@ import { Credentials } from "./credentials.ts";
 // Re-export for convenience
 export { UnknownStripeError } from "./errors.ts";
 
+type StripeConnectRequestOptions =
+  | {
+      readonly stripeAccount?: string | undefined;
+      readonly stripeContext?: never;
+    }
+  | {
+      readonly stripeAccount?: never;
+      readonly stripeContext?: string | undefined;
+    };
+
+export type StripeRequestOptions = {
+  readonly idempotencyKey?: string | undefined;
+  readonly apiVersion?: string | undefined;
+} & StripeConnectRequestOptions;
+
+const stripeRequestHeaders = (
+  options: StripeRequestOptions | undefined,
+): Record<string, string> => {
+  const headers: Record<string, string> = {};
+  if (options?.idempotencyKey !== undefined) {
+    headers["Idempotency-Key"] = options.idempotencyKey;
+  }
+  if (options?.stripeAccount !== undefined) {
+    headers["Stripe-Account"] = options.stripeAccount;
+  }
+  if (options?.stripeContext !== undefined) {
+    headers["Stripe-Context"] = options.stripeContext;
+  }
+  if (options?.apiVersion !== undefined) {
+    headers["Stripe-Version"] = options.apiVersion;
+  }
+  return headers;
+};
+
 // Stripe API Error Response Schema
 // Stripe wraps errors in { error: { type, code, message, ... } }
 const StripeErrorInner = Schema.Struct({
@@ -160,12 +194,13 @@ const matchError = (
 /**
  * Stripe API client.
  */
-export const API = makeAPI<Credentials>({
+export const API = makeAPI<Credentials, StripeRequestOptions>({
   credentials: Credentials as any,
   getBaseUrl: (creds: any) => creds.apiBaseUrl,
   getAuthHeaders: (creds: any) => ({
     Authorization: `Bearer ${Redacted.value(creds.apiKey)}`,
   }),
+  getRequestHeaders: stripeRequestHeaders,
   matchError,
   ParseError: StripeParseError as any,
   retry: Retry as any,
