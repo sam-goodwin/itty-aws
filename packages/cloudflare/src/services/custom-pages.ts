@@ -35,27 +35,30 @@ export interface GetAssetForZoneRequest extends GetAssetBaseRequest {
 }
 
 export const GetAssetForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    ...GetAssetBaseFields,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/custom_pages/assets/{assetName}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      ...GetAssetBaseFields,
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/custom_pages/assets/{assetName}",
+      }),
+    ),
   ) as unknown as Schema.Schema<GetAssetForAccountRequest>;
 
-export const GetAssetForZoneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    ...GetAssetBaseFields,
-  },
-).pipe(
-  T.Http({
-    method: "GET",
-    path: "/zones/{zone_id}/custom_pages/assets/{assetName}",
-  }),
-) as unknown as Schema.Schema<GetAssetForZoneRequest>;
+export const GetAssetForZoneRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      ...GetAssetBaseFields,
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/zones/{zone_id}/custom_pages/assets/{assetName}",
+      }),
+    ),
+  ) as unknown as Schema.Schema<GetAssetForZoneRequest>;
 
 export interface GetAssetResponse {
   /** A short description of the custom asset. */
@@ -69,23 +72,25 @@ export interface GetAssetResponse {
   url?: string | null;
 }
 
-export const GetAssetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  sizeBytes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-})
-  .pipe(
-    Schema.encodeKeys({
-      description: "description",
-      lastUpdated: "last_updated",
-      name: "name",
-      sizeBytes: "size_bytes",
-      url: "url",
-    }),
-  )
-  .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetAssetResponse>;
+export const GetAssetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    sizeBytes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        description: "description",
+        lastUpdated: "last_updated",
+        name: "name",
+        sizeBytes: "size_bytes",
+        url: "url",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<GetAssetResponse>;
 
 export type GetAssetError = DefaultErrors;
 
@@ -132,22 +137,26 @@ export interface ListAssetsForZoneRequest extends ListAssetsBaseRequest {
 }
 
 export const ListAssetsForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    ...ListAssetsBaseFields,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/custom_pages/assets",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      ...ListAssetsBaseFields,
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/custom_pages/assets",
+      }),
+    ),
   ) as unknown as Schema.Schema<ListAssetsForAccountRequest>;
 
 export const ListAssetsForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    ...ListAssetsBaseFields,
-  }).pipe(
-    T.Http({ method: "GET", path: "/zones/{zone_id}/custom_pages/assets" }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      ...ListAssetsBaseFields,
+    }).pipe(
+      T.Http({ method: "GET", path: "/zones/{zone_id}/custom_pages/assets" }),
+    ),
   ) as unknown as Schema.Schema<ListAssetsForZoneRequest>;
 
 export interface ListAssetsResponse {
@@ -166,44 +175,55 @@ export interface ListAssetsResponse {
   } | null;
 }
 
-export const ListAssetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
+export const ListAssetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sizeBytes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        description: "description",
-        lastUpdated: "last_updated",
-        name: "name",
-        sizeBytes: "size_bytes",
-        url: "url",
-      }),
-    ),
-  ),
-  resultInfo: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          count: "count",
-          page: "page",
-          perPage: "per_page",
-          totalCount: "total_count",
-        }),
+      result: Schema.Array(
+        Schema.Struct({
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          lastUpdated: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          sizeBytes: Schema.optional(
+            Schema.Union([Schema.Number, Schema.Null]),
+          ),
+          url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            description: "description",
+            lastUpdated: "last_updated",
+            name: "name",
+            sizeBytes: "size_bytes",
+            url: "url",
+          }),
+        ),
       ),
-      Schema.Null,
-    ]),
-  ),
-}).pipe(
-  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+      resultInfo: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            perPage: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            totalCount: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              count: "count",
+              page: "page",
+              perPage: "per_page",
+              totalCount: "total_count",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Schema<ListAssetsResponse>;
 
 export type ListAssetsError = DefaultErrors;
@@ -270,22 +290,26 @@ export interface CreateAssetForZoneRequest extends CreateAssetBaseRequest {
 }
 
 export const CreateAssetForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    ...CreateAssetBaseFields,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/custom_pages/assets",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      ...CreateAssetBaseFields,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/custom_pages/assets",
+      }),
+    ),
   ) as unknown as Schema.Schema<CreateAssetForAccountRequest>;
 
 export const CreateAssetForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    ...CreateAssetBaseFields,
-  }).pipe(
-    T.Http({ method: "POST", path: "/zones/{zone_id}/custom_pages/assets" }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      ...CreateAssetBaseFields,
+    }).pipe(
+      T.Http({ method: "POST", path: "/zones/{zone_id}/custom_pages/assets" }),
+    ),
   ) as unknown as Schema.Schema<CreateAssetForZoneRequest>;
 
 export interface CreateAssetResponse {
@@ -300,25 +324,26 @@ export interface CreateAssetResponse {
   url?: string | null;
 }
 
-export const CreateAssetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  sizeBytes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-})
-  .pipe(
-    Schema.encodeKeys({
-      description: "description",
-      lastUpdated: "last_updated",
-      name: "name",
-      sizeBytes: "size_bytes",
-      url: "url",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<CreateAssetResponse>;
+export const CreateAssetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      sizeBytes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          description: "description",
+          lastUpdated: "last_updated",
+          name: "name",
+          sizeBytes: "size_bytes",
+          url: "url",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<CreateAssetResponse>;
 
 export type CreateAssetError = DefaultErrors;
 
@@ -369,25 +394,29 @@ export interface UpdateAssetForZoneRequest extends UpdateAssetBaseRequest {
 }
 
 export const UpdateAssetForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    ...UpdateAssetBaseFields,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/accounts/{account_id}/custom_pages/assets/{assetName}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      ...UpdateAssetBaseFields,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        path: "/accounts/{account_id}/custom_pages/assets/{assetName}",
+      }),
+    ),
   ) as unknown as Schema.Schema<UpdateAssetForAccountRequest>;
 
 export const UpdateAssetForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    ...UpdateAssetBaseFields,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/zones/{zone_id}/custom_pages/assets/{assetName}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      ...UpdateAssetBaseFields,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        path: "/zones/{zone_id}/custom_pages/assets/{assetName}",
+      }),
+    ),
   ) as unknown as Schema.Schema<UpdateAssetForZoneRequest>;
 
 export interface UpdateAssetResponse {
@@ -402,25 +431,26 @@ export interface UpdateAssetResponse {
   url?: string | null;
 }
 
-export const UpdateAssetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  sizeBytes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-})
-  .pipe(
-    Schema.encodeKeys({
-      description: "description",
-      lastUpdated: "last_updated",
-      name: "name",
-      sizeBytes: "size_bytes",
-      url: "url",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<UpdateAssetResponse>;
+export const UpdateAssetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      lastUpdated: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      sizeBytes: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          description: "description",
+          lastUpdated: "last_updated",
+          name: "name",
+          sizeBytes: "size_bytes",
+          url: "url",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<UpdateAssetResponse>;
 
 export type UpdateAssetError = DefaultErrors;
 
@@ -465,31 +495,36 @@ export interface DeleteAssetForZoneRequest extends DeleteAssetBaseRequest {
 }
 
 export const DeleteAssetForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    ...DeleteAssetBaseFields,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/custom_pages/assets/{assetName}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      ...DeleteAssetBaseFields,
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/custom_pages/assets/{assetName}",
+      }),
+    ),
   ) as unknown as Schema.Schema<DeleteAssetForAccountRequest>;
 
 export const DeleteAssetForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    ...DeleteAssetBaseFields,
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/zones/{zone_id}/custom_pages/assets/{assetName}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      ...DeleteAssetBaseFields,
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/zones/{zone_id}/custom_pages/assets/{assetName}",
+      }),
+    ),
   ) as unknown as Schema.Schema<DeleteAssetForZoneRequest>;
 
 export type DeleteAssetResponse = unknown;
 
-export const DeleteAssetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteAssetResponse>;
+export const DeleteAssetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () => Schema.Unknown,
+) as unknown as Schema.Schema<DeleteAssetResponse>;
 
 export type DeleteAssetError = DefaultErrors;
 
@@ -538,25 +573,29 @@ export interface GetCustomPageForZoneRequest extends GetCustomPageBaseRequest {
 }
 
 export const GetCustomPageForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    ...GetCustomPageBaseFields,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/custom_pages/{identifier}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      ...GetCustomPageBaseFields,
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/custom_pages/{identifier}",
+      }),
+    ),
   ) as unknown as Schema.Schema<GetCustomPageForAccountRequest>;
 
 export const GetCustomPageForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    ...GetCustomPageBaseFields,
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/zones/{zone_id}/custom_pages/{identifier}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      ...GetCustomPageBaseFields,
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/zones/{zone_id}/custom_pages/{identifier}",
+      }),
+    ),
   ) as unknown as Schema.Schema<GetCustomPageForZoneRequest>;
 
 export interface GetCustomPageResponse {
@@ -572,38 +611,44 @@ export interface GetCustomPageResponse {
   url?: string | null;
 }
 
-export const GetCustomPageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  previewTarget: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  requiredTokens: Schema.optional(
-    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-  ),
-  state: Schema.optional(
-    Schema.Union([
-      Schema.Union([Schema.Literals(["default", "customized"]), Schema.String]),
-      Schema.Null,
-    ]),
-  ),
-  url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      createdOn: "created_on",
-      description: "description",
-      modifiedOn: "modified_on",
-      previewTarget: "preview_target",
-      requiredTokens: "required_tokens",
-      state: "state",
-      url: "url",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetCustomPageResponse>;
+export const GetCustomPageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      previewTarget: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      requiredTokens: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      state: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["default", "customized"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          createdOn: "created_on",
+          description: "description",
+          modifiedOn: "modified_on",
+          previewTarget: "preview_target",
+          requiredTokens: "required_tokens",
+          state: "state",
+          url: "url",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<GetCustomPageResponse>;
 
 export type GetCustomPageError = DefaultErrors;
 
@@ -644,19 +689,21 @@ export interface ListCustomPagesForZoneRequest extends ListCustomPagesBaseReques
 }
 
 export const ListCustomPagesForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    ...ListCustomPagesBaseFields,
-  }).pipe(
-    T.Http({ method: "GET", path: "/accounts/{account_id}/custom_pages" }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      ...ListCustomPagesBaseFields,
+    }).pipe(
+      T.Http({ method: "GET", path: "/accounts/{account_id}/custom_pages" }),
+    ),
   ) as unknown as Schema.Schema<ListCustomPagesForAccountRequest>;
 
 export const ListCustomPagesForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    ...ListCustomPagesBaseFields,
-  }).pipe(
-    T.Http({ method: "GET", path: "/zones/{zone_id}/custom_pages" }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      ...ListCustomPagesBaseFields,
+    }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/custom_pages" })),
   ) as unknown as Schema.Schema<ListCustomPagesForZoneRequest>;
 
 export interface ListCustomPagesResponse {
@@ -673,45 +720,51 @@ export interface ListCustomPagesResponse {
 }
 
 export const ListCustomPagesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        description: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        previewTarget: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        requiredTokens: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-        state: Schema.optional(
-          Schema.Union([
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          createdOn: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          modifiedOn: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          previewTarget: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          requiredTokens: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+          state: Schema.optional(
             Schema.Union([
-              Schema.Literals(["default", "customized"]),
-              Schema.String,
+              Schema.Union([
+                Schema.Literals(["default", "customized"]),
+                Schema.String,
+              ]),
+              Schema.Null,
             ]),
-            Schema.Null,
-          ]),
+          ),
+          url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdOn: "created_on",
+            description: "description",
+            modifiedOn: "modified_on",
+            previewTarget: "preview_target",
+            requiredTokens: "required_tokens",
+            state: "state",
+            url: "url",
+          }),
         ),
-        url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdOn: "created_on",
-          description: "description",
-          modifiedOn: "modified_on",
-          previewTarget: "preview_target",
-          requiredTokens: "required_tokens",
-          state: "state",
-          url: "url",
-        }),
       ),
-    ),
-  }) as unknown as Schema.Schema<ListCustomPagesResponse>;
+    }),
+  ) as unknown as Schema.Schema<ListCustomPagesResponse>;
 
 export type ListCustomPagesError = DefaultErrors;
 
@@ -773,25 +826,29 @@ export interface PutCustomPageForZoneRequest extends PutCustomPageBaseRequest {
 }
 
 export const PutCustomPageForAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    ...PutCustomPageBaseFields,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/accounts/{account_id}/custom_pages/{identifier}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      ...PutCustomPageBaseFields,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        path: "/accounts/{account_id}/custom_pages/{identifier}",
+      }),
+    ),
   ) as unknown as Schema.Schema<PutCustomPageForAccountRequest>;
 
 export const PutCustomPageForZoneRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    ...PutCustomPageBaseFields,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/zones/{zone_id}/custom_pages/{identifier}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      ...PutCustomPageBaseFields,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        path: "/zones/{zone_id}/custom_pages/{identifier}",
+      }),
+    ),
   ) as unknown as Schema.Schema<PutCustomPageForZoneRequest>;
 
 export interface PutCustomPageResponse {
@@ -807,38 +864,44 @@ export interface PutCustomPageResponse {
   url?: string | null;
 }
 
-export const PutCustomPageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  previewTarget: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  requiredTokens: Schema.optional(
-    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-  ),
-  state: Schema.optional(
-    Schema.Union([
-      Schema.Union([Schema.Literals(["default", "customized"]), Schema.String]),
-      Schema.Null,
-    ]),
-  ),
-  url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      createdOn: "created_on",
-      description: "description",
-      modifiedOn: "modified_on",
-      previewTarget: "preview_target",
-      requiredTokens: "required_tokens",
-      state: "state",
-      url: "url",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<PutCustomPageResponse>;
+export const PutCustomPageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      previewTarget: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      requiredTokens: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      state: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["default", "customized"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          createdOn: "created_on",
+          description: "description",
+          modifiedOn: "modified_on",
+          previewTarget: "preview_target",
+          requiredTokens: "required_tokens",
+          state: "state",
+          url: "url",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<PutCustomPageResponse>;
 
 export type PutCustomPageError = DefaultErrors;
 

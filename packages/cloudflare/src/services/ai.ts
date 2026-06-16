@@ -138,160 +138,165 @@ export interface RunAiRequest {
   ignoreEos?: boolean;
 }
 
-export const RunAiRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  modelName: Schema.String.pipe(T.HttpPath("modelName")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  text: Schema.optional(
-    Schema.Union([Schema.String, Schema.Array(Schema.String)]),
-  ),
-  prompt: Schema.optional(Schema.String),
-  guidance: Schema.optional(Schema.Number),
-  height: Schema.optional(Schema.Number),
-  image: Schema.optional(
-    Schema.Union([Schema.Array(Schema.Number), Schema.String]),
-  ),
-  imageB64: Schema.optional(Schema.String),
-  mask: Schema.optional(Schema.Array(Schema.Number)),
-  negativePrompt: Schema.optional(Schema.String),
-  numSteps: Schema.optional(Schema.Number),
-  seed: Schema.optional(Schema.Number),
-  strength: Schema.optional(Schema.Number),
-  width: Schema.optional(Schema.Number),
-  lang: Schema.optional(Schema.String),
-  audio: Schema.optional(Schema.Array(Schema.Number)),
-  sourceLang: Schema.optional(Schema.String),
-  targetLang: Schema.optional(Schema.String),
-  frequencyPenalty: Schema.optional(Schema.Number),
-  lora: Schema.optional(Schema.String),
-  maxTokens: Schema.optional(Schema.Number),
-  presencePenalty: Schema.optional(Schema.Number),
-  raw: Schema.optional(Schema.Boolean),
-  repetitionPenalty: Schema.optional(Schema.Number),
-  responseFormat: Schema.optional(
-    Schema.Struct({
-      jsonSchema: Schema.optional(Schema.Unknown),
-      type: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["json_object", "json_schema"]),
-          Schema.String,
-        ]),
-      ),
-    }).pipe(Schema.encodeKeys({ jsonSchema: "json_schema", type: "type" })),
-  ),
-  stream: Schema.optional(Schema.Boolean),
-  temperature: Schema.optional(Schema.Number),
-  topK: Schema.optional(Schema.Number),
-  topP: Schema.optional(Schema.Number),
-  messages: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          content: Schema.Union([
+export const RunAiRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    modelName: Schema.String.pipe(T.HttpPath("modelName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    text: Schema.optional(
+      Schema.Union([Schema.String, Schema.Array(Schema.String)]),
+    ),
+    prompt: Schema.optional(Schema.String),
+    guidance: Schema.optional(Schema.Number),
+    height: Schema.optional(Schema.Number),
+    image: Schema.optional(
+      Schema.Union([Schema.Array(Schema.Number), Schema.String]),
+    ),
+    imageB64: Schema.optional(Schema.String),
+    mask: Schema.optional(Schema.Array(Schema.Number)),
+    negativePrompt: Schema.optional(Schema.String),
+    numSteps: Schema.optional(Schema.Number),
+    seed: Schema.optional(Schema.Number),
+    strength: Schema.optional(Schema.Number),
+    width: Schema.optional(Schema.Number),
+    lang: Schema.optional(Schema.String),
+    audio: Schema.optional(Schema.Array(Schema.Number)),
+    sourceLang: Schema.optional(Schema.String),
+    targetLang: Schema.optional(Schema.String),
+    frequencyPenalty: Schema.optional(Schema.Number),
+    lora: Schema.optional(Schema.String),
+    maxTokens: Schema.optional(Schema.Number),
+    presencePenalty: Schema.optional(Schema.Number),
+    raw: Schema.optional(Schema.Boolean),
+    repetitionPenalty: Schema.optional(Schema.Number),
+    responseFormat: Schema.optional(
+      Schema.Struct({
+        jsonSchema: Schema.optional(Schema.Unknown),
+        type: Schema.optional(
+          Schema.Union([
+            Schema.Literals(["json_object", "json_schema"]),
             Schema.String,
-            Schema.Array(
-              Schema.Struct({
-                text: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-              }),
-            ),
           ]),
-          role: Schema.String,
-        }),
-      ),
-      Schema.Array(
-        Schema.Struct({
-          content: Schema.Union([
-            Schema.String,
-            Schema.Array(
-              Schema.Struct({
-                type: Schema.String,
-                imageUrl: Schema.optional(
-                  Schema.Struct({
-                    url: Schema.String,
-                  }),
-                ),
-                text: Schema.optional(Schema.String),
-              }).pipe(
-                Schema.encodeKeys({
-                  type: "type",
-                  imageUrl: "image_url",
-                  text: "text",
+        ),
+      }).pipe(Schema.encodeKeys({ jsonSchema: "json_schema", type: "type" })),
+    ),
+    stream: Schema.optional(Schema.Boolean),
+    temperature: Schema.optional(Schema.Number),
+    topK: Schema.optional(Schema.Number),
+    topP: Schema.optional(Schema.Number),
+    messages: Schema.optional(
+      Schema.Union([
+        Schema.Array(
+          Schema.Struct({
+            content: Schema.Union([
+              Schema.String,
+              Schema.Array(
+                Schema.Struct({
+                  text: Schema.optional(Schema.String),
+                  type: Schema.optional(Schema.String),
                 }),
               ),
-            ),
-          ]),
-          role: Schema.String,
-        }),
-      ),
-    ]),
-  ),
-  functions: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        code: Schema.String,
-        name: Schema.String,
-      }),
-    ),
-  ),
-  tools: Schema.optional(
-    Schema.Array(
-      Schema.Union([
-        Schema.Struct({
-          description: Schema.String,
-          name: Schema.String,
-          parameters: Schema.Struct({
-            properties: Schema.Record(Schema.String, Schema.Unknown),
-            type: Schema.String,
-            required: Schema.optional(Schema.Array(Schema.String)),
+            ]),
+            role: Schema.String,
           }),
-        }),
+        ),
+        Schema.Array(
+          Schema.Struct({
+            content: Schema.Union([
+              Schema.String,
+              Schema.Array(
+                Schema.Struct({
+                  type: Schema.String,
+                  imageUrl: Schema.optional(
+                    Schema.Struct({
+                      url: Schema.String,
+                    }),
+                  ),
+                  text: Schema.optional(Schema.String),
+                }).pipe(
+                  Schema.encodeKeys({
+                    type: "type",
+                    imageUrl: "image_url",
+                    text: "text",
+                  }),
+                ),
+              ),
+            ]),
+            role: Schema.String,
+          }),
+        ),
+      ]),
+    ),
+    functions: Schema.optional(
+      Schema.Array(
         Schema.Struct({
           code: Schema.String,
           name: Schema.String,
         }),
-      ]),
+      ),
     ),
+    tools: Schema.optional(
+      Schema.Array(
+        Schema.Union([
+          Schema.Struct({
+            description: Schema.String,
+            name: Schema.String,
+            parameters: Schema.Struct({
+              properties: Schema.Record(Schema.String, Schema.Unknown),
+              type: Schema.String,
+              required: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          }),
+          Schema.Struct({
+            code: Schema.String,
+            name: Schema.String,
+          }),
+        ]),
+      ),
+    ),
+    inputText: Schema.optional(Schema.String),
+    maxLength: Schema.optional(Schema.Number),
+    ignoreEos: Schema.optional(Schema.Boolean),
+  }).pipe(
+    Schema.encodeKeys({
+      text: "text",
+      prompt: "prompt",
+      guidance: "guidance",
+      height: "height",
+      image: "image",
+      imageB64: "image_b64",
+      mask: "mask",
+      negativePrompt: "negative_prompt",
+      numSteps: "num_steps",
+      seed: "seed",
+      strength: "strength",
+      width: "width",
+      lang: "lang",
+      audio: "audio",
+      sourceLang: "source_lang",
+      targetLang: "target_lang",
+      frequencyPenalty: "frequency_penalty",
+      lora: "lora",
+      maxTokens: "max_tokens",
+      presencePenalty: "presence_penalty",
+      raw: "raw",
+      repetitionPenalty: "repetition_penalty",
+      responseFormat: "response_format",
+      stream: "stream",
+      temperature: "temperature",
+      topK: "top_k",
+      topP: "top_p",
+      messages: "messages",
+      functions: "functions",
+      tools: "tools",
+      inputText: "input_text",
+      maxLength: "max_length",
+      ignoreEos: "ignore_eos",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/ai/run/{modelName}",
+    }),
   ),
-  inputText: Schema.optional(Schema.String),
-  maxLength: Schema.optional(Schema.Number),
-  ignoreEos: Schema.optional(Schema.Boolean),
-}).pipe(
-  Schema.encodeKeys({
-    text: "text",
-    prompt: "prompt",
-    guidance: "guidance",
-    height: "height",
-    image: "image",
-    imageB64: "image_b64",
-    mask: "mask",
-    negativePrompt: "negative_prompt",
-    numSteps: "num_steps",
-    seed: "seed",
-    strength: "strength",
-    width: "width",
-    lang: "lang",
-    audio: "audio",
-    sourceLang: "source_lang",
-    targetLang: "target_lang",
-    frequencyPenalty: "frequency_penalty",
-    lora: "lora",
-    maxTokens: "max_tokens",
-    presencePenalty: "presence_penalty",
-    raw: "raw",
-    repetitionPenalty: "repetition_penalty",
-    responseFormat: "response_format",
-    stream: "stream",
-    temperature: "temperature",
-    topK: "top_k",
-    topP: "top_p",
-    messages: "messages",
-    functions: "functions",
-    tools: "tools",
-    inputText: "input_text",
-    maxLength: "max_length",
-    ignoreEos: "ignore_eos",
-  }),
-  T.Http({ method: "POST", path: "/accounts/{account_id}/ai/run/{modelName}" }),
 ) as unknown as Schema.Schema<RunAiRequest>;
 
 export type RunAiResponse =
@@ -331,120 +336,126 @@ export type RunAiResponse =
   | { summary?: string | null }
   | { description?: string | null };
 
-export const RunAiResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
-  Schema.Struct({
-    text: Schema.String,
-    vtt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    wordCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    words: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            end: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            start: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            word: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({
-      text: "text",
-      vtt: "vtt",
-      wordCount: "word_count",
-      words: "words",
-    }),
-  ),
-  Schema.Struct({
-    response: Schema.String,
-    toolCalls: Schema.optional(
-      Schema.Union([
-        Schema.Array(
-          Schema.Struct({
-            arguments: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
-            ),
-            name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    usage: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          completionTokens: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          promptTokens: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-          totalTokens: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            completionTokens: "completion_tokens",
-            promptTokens: "prompt_tokens",
-            totalTokens: "total_tokens",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({
-      response: "response",
-      toolCalls: "tool_calls",
-      usage: "usage",
-    }),
-  ),
-  Schema.Array(
+export const RunAiResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Union([
     Schema.Struct({
-      label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      score: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }),
-  ),
-  UploadableSchema.pipe(T.HttpFormDataFile()),
-  Schema.Struct({
-    audio: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }),
-  Schema.Struct({
-    data: Schema.optional(
-      Schema.Union([Schema.Array(Schema.Array(Schema.Number)), Schema.Null]),
-    ),
-    shape: Schema.optional(
-      Schema.Union([Schema.Array(Schema.Number), Schema.Null]),
-    ),
-  }),
-  Schema.Array(
-    Schema.Struct({
-      box: Schema.optional(
+      text: Schema.String,
+      vtt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      wordCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      words: Schema.optional(
         Schema.Union([
-          Schema.Struct({
-            xmax: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            xmin: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            ymax: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            ymin: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          }),
+          Schema.Array(
+            Schema.Struct({
+              end: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+              start: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+              word: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            }),
+          ),
           Schema.Null,
         ]),
       ),
-      label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      score: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        text: "text",
+        vtt: "vtt",
+        wordCount: "word_count",
+        words: "words",
+      }),
+    ),
+    Schema.Struct({
+      response: Schema.String,
+      toolCalls: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              arguments: Schema.optional(
+                Schema.Union([Schema.Unknown, Schema.Null]),
+              ),
+              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      usage: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            completionTokens: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            promptTokens: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            totalTokens: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              completionTokens: "completion_tokens",
+              promptTokens: "prompt_tokens",
+              totalTokens: "total_tokens",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        response: "response",
+        toolCalls: "tool_calls",
+        usage: "usage",
+      }),
+    ),
+    Schema.Array(
+      Schema.Struct({
+        label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        score: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }),
+    ),
+    UploadableSchema.pipe(T.HttpFormDataFile()),
+    Schema.Struct({
+      audio: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }),
-  ),
-  Schema.Struct({
-    translatedText: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(Schema.encodeKeys({ translatedText: "translated_text" })),
-  Schema.Struct({
-    summary: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }),
-  Schema.Struct({
-    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }),
-]).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<RunAiResponse>;
+    Schema.Struct({
+      data: Schema.optional(
+        Schema.Union([Schema.Array(Schema.Array(Schema.Number)), Schema.Null]),
+      ),
+      shape: Schema.optional(
+        Schema.Union([Schema.Array(Schema.Number), Schema.Null]),
+      ),
+    }),
+    Schema.Array(
+      Schema.Struct({
+        box: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              xmax: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+              xmin: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+              ymax: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+              ymin: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            }),
+            Schema.Null,
+          ]),
+        ),
+        label: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        score: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      }),
+    ),
+    Schema.Struct({
+      translatedText: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    }).pipe(Schema.encodeKeys({ translatedText: "translated_text" })),
+    Schema.Struct({
+      summary: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+    Schema.Struct({
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ]).pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<RunAiResponse>;
 
 export type RunAiError = DefaultErrors | ModelNotFound;
 
@@ -467,19 +478,28 @@ export interface ListAuthorsRequest {
   accountId: string;
 }
 
-export const ListAuthorsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/ai/authors/search" }),
+export const ListAuthorsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/ai/authors/search",
+      }),
+    ),
 ) as unknown as Schema.Schema<ListAuthorsRequest>;
 
 export interface ListAuthorsResponse {
   result: unknown[];
 }
 
-export const ListAuthorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(Schema.Unknown),
-}) as unknown as Schema.Schema<ListAuthorsResponse>;
+export const ListAuthorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      result: Schema.Array(Schema.Unknown),
+    }),
+) as unknown as Schema.Schema<ListAuthorsResponse>;
 
 export type ListAuthorsError = DefaultErrors;
 
@@ -506,10 +526,13 @@ export interface ListFinetunesRequest {
   accountId: string;
 }
 
-export const ListFinetunesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/ai/finetunes" }),
+export const ListFinetunesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({ method: "GET", path: "/accounts/{account_id}/ai/finetunes" }),
+    ),
 ) as unknown as Schema.Schema<ListFinetunesRequest>;
 
 export type ListFinetunesResponse = {
@@ -521,26 +544,29 @@ export type ListFinetunesResponse = {
   description?: string | null;
 }[];
 
-export const ListFinetunesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    id: Schema.String,
-    createdAt: Schema.String,
-    model: Schema.String,
-    modifiedAt: Schema.String,
-    name: Schema.String,
-    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      createdAt: "created_at",
-      model: "model",
-      modifiedAt: "modified_at",
-      name: "name",
-      description: "description",
-    }),
-  ),
-).pipe(
-  T.ResponsePath("result"),
+export const ListFinetunesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.String,
+        createdAt: Schema.String,
+        model: Schema.String,
+        modifiedAt: Schema.String,
+        name: Schema.String,
+        description: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          createdAt: "created_at",
+          model: "model",
+          modifiedAt: "modified_at",
+          name: "name",
+          description: "description",
+        }),
+      ),
+    ).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Schema<ListFinetunesResponse>;
 
 export type ListFinetunesError = DefaultErrors | AccountNotFound;
@@ -569,14 +595,17 @@ export interface CreateFinetuneRequest {
   public?: boolean;
 }
 
-export const CreateFinetuneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  model: Schema.String,
-  name: Schema.String,
-  description: Schema.optional(Schema.String),
-  public: Schema.optional(Schema.Boolean),
-}).pipe(
-  T.Http({ method: "POST", path: "/accounts/{account_id}/ai/finetunes" }),
+export const CreateFinetuneRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      model: Schema.String,
+      name: Schema.String,
+      description: Schema.optional(Schema.String),
+      public: Schema.optional(Schema.Boolean),
+    }).pipe(
+      T.Http({ method: "POST", path: "/accounts/{account_id}/ai/finetunes" }),
+    ),
 ) as unknown as Schema.Schema<CreateFinetuneRequest>;
 
 export interface CreateFinetuneResponse {
@@ -589,30 +618,29 @@ export interface CreateFinetuneResponse {
   description?: string | null;
 }
 
-export const CreateFinetuneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String,
-    createdAt: Schema.String,
-    model: Schema.String,
-    modifiedAt: Schema.String,
-    name: Schema.String,
-    public: Schema.Boolean,
-    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  },
-)
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      createdAt: "created_at",
-      model: "model",
-      modifiedAt: "modified_at",
-      name: "name",
-      public: "public",
-      description: "description",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
+export const CreateFinetuneResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdAt: Schema.String,
+      model: Schema.String,
+      modifiedAt: Schema.String,
+      name: Schema.String,
+      public: Schema.Boolean,
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          createdAt: "created_at",
+          model: "model",
+          modifiedAt: "modified_at",
+          name: "name",
+          public: "public",
+          description: "description",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<CreateFinetuneResponse>;
 
 export type CreateFinetuneError =
@@ -646,18 +674,20 @@ export interface CreateFinetuneAssetRequest {
 }
 
 export const CreateFinetuneAssetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    finetuneId: Schema.String.pipe(T.HttpPath("finetuneId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    file: UploadableSchema.pipe(T.HttpFormDataFile()),
-    fileName: Schema.String,
-  }).pipe(
-    Schema.encodeKeys({ file: "file", fileName: "file_name" }),
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/ai/finetunes/{finetuneId}/finetune-assets",
-      contentType: "multipart",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      finetuneId: Schema.String.pipe(T.HttpPath("finetuneId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      file: UploadableSchema.pipe(T.HttpFormDataFile()),
+      fileName: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({ file: "file", fileName: "file_name" }),
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/ai/finetunes/{finetuneId}/finetune-assets",
+        contentType: "multipart",
+      }),
+    ),
   ) as unknown as Schema.Schema<CreateFinetuneAssetRequest>;
 
 export interface CreateFinetuneAssetResponse {
@@ -665,9 +695,11 @@ export interface CreateFinetuneAssetResponse {
 }
 
 export const CreateFinetuneAssetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    success: Schema.Boolean,
-  }) as unknown as Schema.Schema<CreateFinetuneAssetResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      success: Schema.Boolean,
+    }),
+  ) as unknown as Schema.Schema<CreateFinetuneAssetResponse>;
 
 export type CreateFinetuneAssetError =
   | DefaultErrors
@@ -701,16 +733,18 @@ export interface ListFinetunePublicsRequest {
 }
 
 export const ListFinetunePublicsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
-    offset: Schema.optional(Schema.Number).pipe(T.HttpQuery("offset")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/ai/finetunes/public",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
+      offset: Schema.optional(Schema.Number).pipe(T.HttpQuery("offset")),
+      orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("orderBy")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/ai/finetunes/public",
+      }),
+    ),
   ) as unknown as Schema.Schema<ListFinetunePublicsRequest>;
 
 export interface ListFinetunePublicsResponse {
@@ -726,31 +760,33 @@ export interface ListFinetunePublicsResponse {
 }
 
 export const ListFinetunePublicsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        createdAt: Schema.String,
-        model: Schema.String,
-        modifiedAt: Schema.String,
-        name: Schema.String,
-        public: Schema.Boolean,
-        description: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          createdAt: Schema.String,
+          model: Schema.String,
+          modifiedAt: Schema.String,
+          name: Schema.String,
+          public: Schema.Boolean,
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            createdAt: "created_at",
+            model: "model",
+            modifiedAt: "modified_at",
+            name: "name",
+            public: "public",
+            description: "description",
+          }),
         ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdAt: "created_at",
-          model: "model",
-          modifiedAt: "modified_at",
-          name: "name",
-          public: "public",
-          description: "description",
-        }),
       ),
-    ),
-  }) as unknown as Schema.Schema<ListFinetunePublicsResponse>;
+    }),
+  ) as unknown as Schema.Schema<ListFinetunePublicsResponse>;
 
 export type ListFinetunePublicsError = DefaultErrors;
 
@@ -794,25 +830,31 @@ export interface ListModelsRequest {
   task?: string;
 }
 
-export const ListModelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  author: Schema.optional(Schema.String).pipe(T.HttpQuery("author")),
-  format: Schema.optional(Schema.Literal("openrouter")).pipe(
-    T.HttpQuery("format"),
-  ),
-  hideExperimental: Schema.optional(Schema.Boolean).pipe(
-    T.HttpQuery("hide_experimental"),
-  ),
-  includeDeprecated: Schema.optional(Schema.Boolean).pipe(
-    T.HttpQuery("include_deprecated"),
-  ),
-  search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
-  source: Schema.optional(Schema.Number).pipe(T.HttpQuery("source")),
-  task: Schema.optional(Schema.String).pipe(T.HttpQuery("task")),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/ai/models/search" }),
+export const ListModelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+      author: Schema.optional(Schema.String).pipe(T.HttpQuery("author")),
+      format: Schema.optional(Schema.Literal("openrouter")).pipe(
+        T.HttpQuery("format"),
+      ),
+      hideExperimental: Schema.optional(Schema.Boolean).pipe(
+        T.HttpQuery("hide_experimental"),
+      ),
+      includeDeprecated: Schema.optional(Schema.Boolean).pipe(
+        T.HttpQuery("include_deprecated"),
+      ),
+      search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
+      source: Schema.optional(Schema.Number).pipe(T.HttpQuery("source")),
+      task: Schema.optional(Schema.String).pipe(T.HttpQuery("task")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/ai/models/search",
+      }),
+    ),
 ) as unknown as Schema.Schema<ListModelsRequest>;
 
 export interface ListModelsResponse {
@@ -825,28 +867,33 @@ export interface ListModelsResponse {
   } | null;
 }
 
-export const ListModelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(Schema.Unknown),
-  resultInfo: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          count: "count",
-          page: "page",
-          perPage: "per_page",
-          totalCount: "total_count",
-        }),
+export const ListModelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      result: Schema.Array(Schema.Unknown),
+      resultInfo: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            perPage: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            totalCount: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              count: "count",
+              page: "page",
+              perPage: "per_page",
+              totalCount: "total_count",
+            }),
+          ),
+          Schema.Null,
+        ]),
       ),
-      Schema.Null,
-    ]),
-  ),
-}).pipe(
-  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Schema<ListModelsResponse>;
 
 export type ListModelsError = DefaultErrors;
@@ -880,11 +927,17 @@ export interface GetModelSchemaRequest {
   model: string;
 }
 
-export const GetModelSchemaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  model: Schema.String.pipe(T.HttpQuery("model")),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/ai/models/schema" }),
+export const GetModelSchemaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      model: Schema.String.pipe(T.HttpQuery("model")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/ai/models/schema",
+      }),
+    ),
 ) as unknown as Schema.Schema<GetModelSchemaRequest>;
 
 export interface GetModelSchemaResponse {
@@ -892,22 +945,21 @@ export interface GetModelSchemaResponse {
   output: { additionalProperties: boolean; description: string; type: string };
 }
 
-export const GetModelSchemaResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    input: Schema.Struct({
-      additionalProperties: Schema.Boolean,
-      description: Schema.String,
-      type: Schema.String,
-    }),
-    output: Schema.Struct({
-      additionalProperties: Schema.Boolean,
-      description: Schema.String,
-      type: Schema.String,
-    }),
-  },
-).pipe(
-  T.ResponsePath("result"),
-) as unknown as Schema.Schema<GetModelSchemaResponse>;
+export const GetModelSchemaResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      input: Schema.Struct({
+        additionalProperties: Schema.Boolean,
+        description: Schema.String,
+        type: Schema.String,
+      }),
+      output: Schema.Struct({
+        additionalProperties: Schema.Boolean,
+        description: Schema.String,
+        type: Schema.String,
+      }),
+    }).pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetModelSchemaResponse>;
 
 export type GetModelSchemaError =
   | DefaultErrors
@@ -934,19 +986,24 @@ export interface ListTasksRequest {
   accountId: string;
 }
 
-export const ListTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/ai/tasks/search" }),
+export const ListTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/ai/tasks/search" }),
+  ),
 ) as unknown as Schema.Schema<ListTasksRequest>;
 
 export interface ListTasksResponse {
   result: unknown[];
 }
 
-export const ListTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(Schema.Unknown),
-}) as unknown as Schema.Schema<ListTasksResponse>;
+export const ListTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      result: Schema.Array(Schema.Unknown),
+    }),
+) as unknown as Schema.Schema<ListTasksResponse>;
 
 export type ListTasksError = DefaultErrors;
 
@@ -974,13 +1031,15 @@ export interface SupportedToMarkdownRequest {
 }
 
 export const SupportedToMarkdownRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/ai/tomarkdown/supported",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/ai/tomarkdown/supported",
+      }),
+    ),
   ) as unknown as Schema.Schema<SupportedToMarkdownRequest>;
 
 export interface SupportedToMarkdownResponse {
@@ -988,14 +1047,16 @@ export interface SupportedToMarkdownResponse {
 }
 
 export const SupportedToMarkdownResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        extension: Schema.String,
-        mimeType: Schema.String,
-      }),
-    ),
-  }) as unknown as Schema.Schema<SupportedToMarkdownResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          extension: Schema.String,
+          mimeType: Schema.String,
+        }),
+      ),
+    }),
+  ) as unknown as Schema.Schema<SupportedToMarkdownResponse>;
 
 export type SupportedToMarkdownError = DefaultErrors;
 
@@ -1022,17 +1083,19 @@ export interface TransformToMarkdownRequest {
 }
 
 export const TransformToMarkdownRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    file: Schema.Struct({
-      files: Schema.Array(UploadableSchema.pipe(T.HttpFormDataFile())),
-    }),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/ai/tomarkdown",
-      contentType: "multipart",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      file: Schema.Struct({
+        files: Schema.Array(UploadableSchema.pipe(T.HttpFormDataFile())),
+      }),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/ai/tomarkdown",
+        contentType: "multipart",
+      }),
+    ),
   ) as unknown as Schema.Schema<TransformToMarkdownRequest>;
 
 export type TransformToMarkdownResponse = {
@@ -1044,16 +1107,16 @@ export type TransformToMarkdownResponse = {
 }[];
 
 export const TransformToMarkdownResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      data: Schema.String,
-      format: Schema.String,
-      mimeType: Schema.String,
-      name: Schema.String,
-      tokens: Schema.String,
-    }),
-  ).pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Array(
+      Schema.Struct({
+        data: Schema.String,
+        format: Schema.String,
+        mimeType: Schema.String,
+        name: Schema.String,
+        tokens: Schema.String,
+      }),
+    ).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<TransformToMarkdownResponse>;
 
 export type TransformToMarkdownError = DefaultErrors;

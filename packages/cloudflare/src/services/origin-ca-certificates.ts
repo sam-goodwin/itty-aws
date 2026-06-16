@@ -49,10 +49,10 @@ export interface GetOriginCaCertificateRequest {
 }
 
 export const GetOriginCaCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
-  }).pipe(
-    T.Http({ method: "GET", path: "/certificates/{certificateId}" }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
+    }).pipe(T.Http({ method: "GET", path: "/certificates/{certificateId}" })),
   ) as unknown as Schema.Schema<GetOriginCaCertificateRequest>;
 
 export interface GetOriginCaCertificateResponse {
@@ -78,36 +78,36 @@ export interface GetOriginCaCertificateResponse {
 }
 
 export const GetOriginCaCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    csr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    hostnames: Schema.Array(Schema.String),
-    requestType: Schema.Union([
-      Schema.Literals(["origin-rsa", "origin-ecc", "keyless-certificate"]),
-      Schema.String,
-    ]),
-    requestedValidity: Schema.optional(
-      Schema.Union([Schema.Number, Schema.Null]),
-    ),
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    revokedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        csr: "csr",
-        hostnames: "hostnames",
-        requestType: "request_type",
-        requestedValidity: "requested_validity",
-        id: "id",
-        certificate: "certificate",
-        expiresOn: "expires_on",
-        revokedAt: "revoked_at",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetOriginCaCertificateResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      csr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      hostnames: Schema.Array(Schema.String),
+      requestType: Schema.Union([
+        Schema.Literals(["origin-rsa", "origin-ecc", "keyless-certificate"]),
+        Schema.String,
+      ]),
+      requestedValidity: Schema.optional(
+        Schema.Union([Schema.Number, Schema.Null]),
+      ),
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      revokedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          csr: "csr",
+          hostnames: "hostnames",
+          requestType: "request_type",
+          requestedValidity: "requested_validity",
+          id: "id",
+          certificate: "certificate",
+          expiresOn: "expires_on",
+          revokedAt: "revoked_at",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetOriginCaCertificateResponse>;
 
 export type GetOriginCaCertificateError =
   | DefaultErrors
@@ -137,14 +137,14 @@ export interface ListOriginCaCertificatesRequest {
 }
 
 export const ListOriginCaCertificatesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    zoneId: Schema.String.pipe(T.HttpQuery("zone_id")),
-    limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
-    offset: Schema.optional(Schema.Number).pipe(T.HttpQuery("offset")),
-  }).pipe(
-    T.Http({ method: "GET", path: "/certificates" }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+      zoneId: Schema.String.pipe(T.HttpQuery("zone_id")),
+      limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
+      offset: Schema.optional(Schema.Number).pipe(T.HttpQuery("offset")),
+    }).pipe(T.Http({ method: "GET", path: "/certificates" })),
   ) as unknown as Schema.Schema<ListOriginCaCertificatesRequest>;
 
 export interface ListOriginCaCertificatesResponse {
@@ -171,66 +171,70 @@ export interface ListOriginCaCertificatesResponse {
 }
 
 export const ListOriginCaCertificatesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        csr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        hostnames: Schema.Array(Schema.String),
-        requestType: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals([
-                "origin-rsa",
-                "origin-ecc",
-                "keyless-certificate",
-              ]),
-              Schema.String,
-            ]),
-            Schema.Null,
-          ]),
-        ),
-        requestedValidity: Schema.optional(
-          Schema.Union([Schema.Number, Schema.Null]),
-        ),
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        certificate: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          csr: "csr",
-          hostnames: "hostnames",
-          requestType: "request_type",
-          requestedValidity: "requested_validity",
-          id: "id",
-          certificate: "certificate",
-          expiresOn: "expires_on",
-        }),
-      ),
-    ),
-    resultInfo: Schema.optional(
-      Schema.Union([
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
         Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
+          csr: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          hostnames: Schema.Array(Schema.String),
+          requestType: Schema.optional(
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals([
+                  "origin-rsa",
+                  "origin-ecc",
+                  "keyless-certificate",
+                ]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
+          ),
+          requestedValidity: Schema.optional(
             Schema.Union([Schema.Number, Schema.Null]),
+          ),
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          certificate: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          expiresOn: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
           ),
         }).pipe(
           Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
+            csr: "csr",
+            hostnames: "hostnames",
+            requestType: "request_type",
+            requestedValidity: "requested_validity",
+            id: "id",
+            certificate: "certificate",
+            expiresOn: "expires_on",
           }),
         ),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+      ),
+      resultInfo: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            perPage: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            totalCount: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              count: "count",
+              page: "page",
+              perPage: "per_page",
+              totalCount: "total_count",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
   ) as unknown as Schema.Schema<ListOriginCaCertificatesResponse>;
 
 export type ListOriginCaCertificatesError = DefaultErrors | Forbidden;
@@ -269,22 +273,24 @@ export interface CreateOriginCaCertificateRequest {
 }
 
 export const CreateOriginCaCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    csr: Schema.String,
-    hostnames: Schema.Array(Schema.String),
-    requestType: Schema.Union([
-      Schema.Literals(["origin-rsa", "origin-ecc", "keyless-certificate"]),
-      Schema.String,
-    ]),
-    requestedValidity: Schema.optional(Schema.Number),
-  }).pipe(
-    Schema.encodeKeys({
-      csr: "csr",
-      hostnames: "hostnames",
-      requestType: "request_type",
-      requestedValidity: "requested_validity",
-    }),
-    T.Http({ method: "POST", path: "/certificates" }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      csr: Schema.String,
+      hostnames: Schema.Array(Schema.String),
+      requestType: Schema.Union([
+        Schema.Literals(["origin-rsa", "origin-ecc", "keyless-certificate"]),
+        Schema.String,
+      ]),
+      requestedValidity: Schema.optional(Schema.Number),
+    }).pipe(
+      Schema.encodeKeys({
+        csr: "csr",
+        hostnames: "hostnames",
+        requestType: "request_type",
+        requestedValidity: "requested_validity",
+      }),
+      T.Http({ method: "POST", path: "/certificates" }),
+    ),
   ) as unknown as Schema.Schema<CreateOriginCaCertificateRequest>;
 
 export interface CreateOriginCaCertificateResponse {
@@ -309,32 +315,32 @@ export interface CreateOriginCaCertificateResponse {
 }
 
 export const CreateOriginCaCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    csr: Schema.String,
-    hostnames: Schema.Array(Schema.String),
-    requestType: Schema.Union([
-      Schema.Literals(["origin-rsa", "origin-ecc", "keyless-certificate"]),
-      Schema.String,
-    ]),
-    requestedValidity: Schema.Number,
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        csr: "csr",
-        hostnames: "hostnames",
-        requestType: "request_type",
-        requestedValidity: "requested_validity",
-        id: "id",
-        certificate: "certificate",
-        expiresOn: "expires_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateOriginCaCertificateResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      csr: Schema.String,
+      hostnames: Schema.Array(Schema.String),
+      requestType: Schema.Union([
+        Schema.Literals(["origin-rsa", "origin-ecc", "keyless-certificate"]),
+        Schema.String,
+      ]),
+      requestedValidity: Schema.Number,
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      certificate: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      expiresOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          csr: "csr",
+          hostnames: "hostnames",
+          requestType: "request_type",
+          requestedValidity: "requested_validity",
+          id: "id",
+          certificate: "certificate",
+          expiresOn: "expires_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<CreateOriginCaCertificateResponse>;
 
 export type CreateOriginCaCertificateError =
   | DefaultErrors
@@ -357,10 +363,12 @@ export interface DeleteOriginCaCertificateRequest {
 }
 
 export const DeleteOriginCaCertificateRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "/certificates/{certificateId}" }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      certificateId: Schema.String.pipe(T.HttpPath("certificateId")),
+    }).pipe(
+      T.Http({ method: "DELETE", path: "/certificates/{certificateId}" }),
+    ),
   ) as unknown as Schema.Schema<DeleteOriginCaCertificateRequest>;
 
 export interface DeleteOriginCaCertificateResponse {
@@ -371,14 +379,14 @@ export interface DeleteOriginCaCertificateResponse {
 }
 
 export const DeleteOriginCaCertificateResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    revokedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(Schema.encodeKeys({ id: "id", revokedAt: "revoked_at" }))
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<DeleteOriginCaCertificateResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      revokedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(Schema.encodeKeys({ id: "id", revokedAt: "revoked_at" }))
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<DeleteOriginCaCertificateResponse>;
 
 export type DeleteOriginCaCertificateError =
   | DefaultErrors

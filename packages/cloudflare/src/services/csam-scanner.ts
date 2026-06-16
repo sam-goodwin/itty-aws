@@ -21,13 +21,16 @@ export interface GetCsamScannerRequest {
   zoneId: string;
 }
 
-export const GetCsamScannerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/zones/{zone_id}/settings/csam_scanner_third_party",
-  }),
+export const GetCsamScannerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/zones/{zone_id}/settings/csam_scanner_third_party",
+      }),
+    ),
 ) as unknown as Schema.Schema<GetCsamScannerRequest>;
 
 export interface GetCsamScannerResponse {
@@ -47,58 +50,61 @@ export interface GetCsamScannerResponse {
   } | null;
 }
 
-export const GetCsamScannerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.optional(
-      Schema.Union([Schema.Literal("csam_scanner"), Schema.Null]),
-    ),
-    editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    value: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          emailState: Schema.optional(
-            Schema.Union([
+export const GetCsamScannerResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(
+        Schema.Union([Schema.Literal("csam_scanner"), Schema.Null]),
+      ),
+      editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      value: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            emailState: Schema.optional(
               Schema.Union([
-                Schema.Literals(["valid", "pending", "unverified"]),
-                Schema.String,
+                Schema.Union([
+                  Schema.Literals(["valid", "pending", "unverified"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
               ]),
-              Schema.Null,
-            ]),
+            ),
+            enabled: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            sources: Schema.optional(
+              Schema.Union([
+                Schema.Record(Schema.String, Schema.Unknown),
+                Schema.Null,
+              ]),
+            ),
+            zonePlan: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              email: "email",
+              emailState: "email_state",
+              enabled: "enabled",
+              sources: "sources",
+              zonePlan: "zone_plan",
+            }),
           ),
-          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          sources: Schema.optional(
-            Schema.Union([
-              Schema.Record(Schema.String, Schema.Unknown),
-              Schema.Null,
-            ]),
-          ),
-          zonePlan: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            email: "email",
-            emailState: "email_state",
-            enabled: "enabled",
-            sources: "sources",
-            zonePlan: "zone_plan",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  },
-)
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      editable: "editable",
-      modifiedOn: "modified_on",
-      value: "value",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
+          Schema.Null,
+        ]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          editable: "editable",
+          modifiedOn: "modified_on",
+          value: "value",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<GetCsamScannerResponse>;
 
 export type GetCsamScannerError = DefaultErrors;
@@ -129,29 +135,33 @@ export interface PatchCsamScannerRequest {
 }
 
 export const PatchCsamScannerRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    id: Schema.optional(Schema.Literal("csam_scanner")),
-    value: Schema.optional(
-      Schema.Struct({
-        email: Schema.optional(Schema.String),
-        enabled: Schema.optional(Schema.Boolean),
-        resendEmail: Schema.optional(Schema.Boolean),
-        sources: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      }).pipe(
-        Schema.encodeKeys({
-          email: "email",
-          enabled: "enabled",
-          resendEmail: "resend_email",
-          sources: "sources",
-        }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      id: Schema.optional(Schema.Literal("csam_scanner")),
+      value: Schema.optional(
+        Schema.Struct({
+          email: Schema.optional(Schema.String),
+          enabled: Schema.optional(Schema.Boolean),
+          resendEmail: Schema.optional(Schema.Boolean),
+          sources: Schema.optional(
+            Schema.Record(Schema.String, Schema.Unknown),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            email: "email",
+            enabled: "enabled",
+            resendEmail: "resend_email",
+            sources: "sources",
+          }),
+        ),
       ),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        path: "/zones/{zone_id}/settings/csam_scanner_third_party",
+      }),
     ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/zones/{zone_id}/settings/csam_scanner_third_party",
-    }),
   ) as unknown as Schema.Schema<PatchCsamScannerRequest>;
 
 export interface PatchCsamScannerResponse {
@@ -172,57 +182,61 @@ export interface PatchCsamScannerResponse {
 }
 
 export const PatchCsamScannerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(
-      Schema.Union([Schema.Literal("csam_scanner"), Schema.Null]),
-    ),
-    editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    value: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          emailState: Schema.optional(
-            Schema.Union([
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(
+        Schema.Union([Schema.Literal("csam_scanner"), Schema.Null]),
+      ),
+      editable: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      value: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            emailState: Schema.optional(
               Schema.Union([
-                Schema.Literals(["valid", "pending", "unverified"]),
-                Schema.String,
+                Schema.Union([
+                  Schema.Literals(["valid", "pending", "unverified"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
               ]),
-              Schema.Null,
-            ]),
+            ),
+            enabled: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            sources: Schema.optional(
+              Schema.Union([
+                Schema.Record(Schema.String, Schema.Unknown),
+                Schema.Null,
+              ]),
+            ),
+            zonePlan: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              email: "email",
+              emailState: "email_state",
+              enabled: "enabled",
+              sources: "sources",
+              zonePlan: "zone_plan",
+            }),
           ),
-          enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          sources: Schema.optional(
-            Schema.Union([
-              Schema.Record(Schema.String, Schema.Unknown),
-              Schema.Null,
-            ]),
-          ),
-          zonePlan: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            email: "email",
-            emailState: "email_state",
-            enabled: "enabled",
-            sources: "sources",
-            zonePlan: "zone_plan",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        modifiedOn: "modified_on",
-        value: "value",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchCsamScannerResponse>;
+          Schema.Null,
+        ]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          editable: "editable",
+          modifiedOn: "modified_on",
+          value: "value",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<PatchCsamScannerResponse>;
 
 export type PatchCsamScannerError = DefaultErrors;
 

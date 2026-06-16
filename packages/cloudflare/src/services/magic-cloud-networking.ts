@@ -55,13 +55,15 @@ export interface DiscoverAllCloudIntegrationRequest {
 }
 
 export const DiscoverAllCloudIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/magic/cloud/providers/discover",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/magic/cloud/providers/discover",
+      }),
+    ),
   ) as unknown as Schema.Schema<DiscoverAllCloudIntegrationRequest>;
 
 export interface DiscoverAllCloudIntegrationResponse {
@@ -413,457 +415,459 @@ export interface DiscoverAllCloudIntegrationResponse {
 }
 
 export const DiscoverAllCloudIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Union([
-          Schema.Literals([
-            "1001",
-            "1002",
-            "1003",
-            "1004",
-            "1005",
-            "1006",
-            "1007",
-            "1008",
-            "1009",
-            "1010",
-            "1011",
-            "1012",
-            "1013",
-            "1014",
-            "1015",
-            "1016",
-            "1017",
-            "1018",
-            "2001",
-            "2002",
-            "2003",
-            "2004",
-            "2005",
-            "2006",
-            "2007",
-            "2008",
-            "2009",
-            "2010",
-            "2011",
-            "2012",
-            "2013",
-            "2014",
-            "2015",
-            "2016",
-            "2017",
-            "2018",
-            "2019",
-            "2020",
-            "2021",
-            "2022",
-            "3001",
-            "3002",
-            "3003",
-            "3004",
-            "3005",
-            "3006",
-            "3007",
-            "4001",
-            "4002",
-            "4003",
-            "4004",
-            "4005",
-            "4006",
-            "4007",
-            "4008",
-            "4009",
-            "4010",
-            "4011",
-            "4012",
-            "4013",
-            "4014",
-            "4015",
-            "4016",
-            "4017",
-            "4018",
-            "4019",
-            "4020",
-            "4021",
-            "4022",
-            "4023",
-            "5001",
-            "5002",
-            "5003",
-            "5004",
-            "102000",
-            "102001",
-            "102002",
-            "102003",
-            "102004",
-            "102005",
-            "102006",
-            "102007",
-            "102008",
-            "102009",
-            "102010",
-            "102011",
-            "102012",
-            "102013",
-            "102014",
-            "102015",
-            "102016",
-            "102017",
-            "102018",
-            "102019",
-            "102020",
-            "102021",
-            "102022",
-            "102023",
-            "102024",
-            "102025",
-            "102026",
-            "102027",
-            "102028",
-            "102029",
-            "102030",
-            "102031",
-            "102032",
-            "102033",
-            "102034",
-            "102035",
-            "102036",
-            "102037",
-            "102038",
-            "102039",
-            "102040",
-            "102041",
-            "102042",
-            "102043",
-            "102044",
-            "102045",
-            "102046",
-            "102047",
-            "102048",
-            "102049",
-            "102050",
-            "102051",
-            "102052",
-            "102053",
-            "102054",
-            "102055",
-            "102056",
-            "102057",
-            "102058",
-            "102059",
-            "102060",
-            "102061",
-            "102062",
-            "102063",
-            "102064",
-            "102065",
-            "102066",
-            "102067",
-            "102068",
-            "102069",
-            "102070",
-            "102071",
-            "102072",
-            "103001",
-            "103002",
-            "103003",
-            "103004",
-            "103005",
-            "103006",
-            "103007",
-            "103008",
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      errors: Schema.Array(
+        Schema.Struct({
+          code: Schema.Union([
+            Schema.Literals([
+              "1001",
+              "1002",
+              "1003",
+              "1004",
+              "1005",
+              "1006",
+              "1007",
+              "1008",
+              "1009",
+              "1010",
+              "1011",
+              "1012",
+              "1013",
+              "1014",
+              "1015",
+              "1016",
+              "1017",
+              "1018",
+              "2001",
+              "2002",
+              "2003",
+              "2004",
+              "2005",
+              "2006",
+              "2007",
+              "2008",
+              "2009",
+              "2010",
+              "2011",
+              "2012",
+              "2013",
+              "2014",
+              "2015",
+              "2016",
+              "2017",
+              "2018",
+              "2019",
+              "2020",
+              "2021",
+              "2022",
+              "3001",
+              "3002",
+              "3003",
+              "3004",
+              "3005",
+              "3006",
+              "3007",
+              "4001",
+              "4002",
+              "4003",
+              "4004",
+              "4005",
+              "4006",
+              "4007",
+              "4008",
+              "4009",
+              "4010",
+              "4011",
+              "4012",
+              "4013",
+              "4014",
+              "4015",
+              "4016",
+              "4017",
+              "4018",
+              "4019",
+              "4020",
+              "4021",
+              "4022",
+              "4023",
+              "5001",
+              "5002",
+              "5003",
+              "5004",
+              "102000",
+              "102001",
+              "102002",
+              "102003",
+              "102004",
+              "102005",
+              "102006",
+              "102007",
+              "102008",
+              "102009",
+              "102010",
+              "102011",
+              "102012",
+              "102013",
+              "102014",
+              "102015",
+              "102016",
+              "102017",
+              "102018",
+              "102019",
+              "102020",
+              "102021",
+              "102022",
+              "102023",
+              "102024",
+              "102025",
+              "102026",
+              "102027",
+              "102028",
+              "102029",
+              "102030",
+              "102031",
+              "102032",
+              "102033",
+              "102034",
+              "102035",
+              "102036",
+              "102037",
+              "102038",
+              "102039",
+              "102040",
+              "102041",
+              "102042",
+              "102043",
+              "102044",
+              "102045",
+              "102046",
+              "102047",
+              "102048",
+              "102049",
+              "102050",
+              "102051",
+              "102052",
+              "102053",
+              "102054",
+              "102055",
+              "102056",
+              "102057",
+              "102058",
+              "102059",
+              "102060",
+              "102061",
+              "102062",
+              "102063",
+              "102064",
+              "102065",
+              "102066",
+              "102067",
+              "102068",
+              "102069",
+              "102070",
+              "102071",
+              "102072",
+              "103001",
+              "103002",
+              "103003",
+              "103004",
+              "103005",
+              "103006",
+              "103007",
+              "103008",
+            ]),
+            Schema.String,
           ]),
-          Schema.String,
-        ]),
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          meta: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                l10nKey: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                loggableError: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                templateData: Schema.optional(
+                  Schema.Union([Schema.Unknown, Schema.Null]),
+                ),
+                traceId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  l10nKey: "l10n_key",
+                  loggableError: "loggable_error",
+                  templateData: "template_data",
+                  traceId: "trace_id",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                parameter: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                parameterValueIndex: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  parameter: "parameter",
+                  parameterValueIndex: "parameter_value_index",
+                  pointer: "pointer",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            meta: "meta",
+            source: "source",
+          }),
         ),
-        meta: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              l10nKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              loggableError: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              templateData: Schema.optional(
-                Schema.Union([Schema.Unknown, Schema.Null]),
-              ),
-              traceId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                l10nKey: "l10n_key",
-                loggableError: "loggable_error",
-                templateData: "template_data",
-                traceId: "trace_id",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              parameter: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              parameterValueIndex: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                parameter: "parameter",
-                parameterValueIndex: "parameter_value_index",
-                pointer: "pointer",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          meta: "meta",
-          source: "source",
-        }),
       ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Union([
-          Schema.Literals([
-            "1001",
-            "1002",
-            "1003",
-            "1004",
-            "1005",
-            "1006",
-            "1007",
-            "1008",
-            "1009",
-            "1010",
-            "1011",
-            "1012",
-            "1013",
-            "1014",
-            "1015",
-            "1016",
-            "1017",
-            "1018",
-            "2001",
-            "2002",
-            "2003",
-            "2004",
-            "2005",
-            "2006",
-            "2007",
-            "2008",
-            "2009",
-            "2010",
-            "2011",
-            "2012",
-            "2013",
-            "2014",
-            "2015",
-            "2016",
-            "2017",
-            "2018",
-            "2019",
-            "2020",
-            "2021",
-            "2022",
-            "3001",
-            "3002",
-            "3003",
-            "3004",
-            "3005",
-            "3006",
-            "3007",
-            "4001",
-            "4002",
-            "4003",
-            "4004",
-            "4005",
-            "4006",
-            "4007",
-            "4008",
-            "4009",
-            "4010",
-            "4011",
-            "4012",
-            "4013",
-            "4014",
-            "4015",
-            "4016",
-            "4017",
-            "4018",
-            "4019",
-            "4020",
-            "4021",
-            "4022",
-            "4023",
-            "5001",
-            "5002",
-            "5003",
-            "5004",
-            "102000",
-            "102001",
-            "102002",
-            "102003",
-            "102004",
-            "102005",
-            "102006",
-            "102007",
-            "102008",
-            "102009",
-            "102010",
-            "102011",
-            "102012",
-            "102013",
-            "102014",
-            "102015",
-            "102016",
-            "102017",
-            "102018",
-            "102019",
-            "102020",
-            "102021",
-            "102022",
-            "102023",
-            "102024",
-            "102025",
-            "102026",
-            "102027",
-            "102028",
-            "102029",
-            "102030",
-            "102031",
-            "102032",
-            "102033",
-            "102034",
-            "102035",
-            "102036",
-            "102037",
-            "102038",
-            "102039",
-            "102040",
-            "102041",
-            "102042",
-            "102043",
-            "102044",
-            "102045",
-            "102046",
-            "102047",
-            "102048",
-            "102049",
-            "102050",
-            "102051",
-            "102052",
-            "102053",
-            "102054",
-            "102055",
-            "102056",
-            "102057",
-            "102058",
-            "102059",
-            "102060",
-            "102061",
-            "102062",
-            "102063",
-            "102064",
-            "102065",
-            "102066",
-            "102067",
-            "102068",
-            "102069",
-            "102070",
-            "102071",
-            "102072",
-            "103001",
-            "103002",
-            "103003",
-            "103004",
-            "103005",
-            "103006",
-            "103007",
-            "103008",
+      messages: Schema.Array(
+        Schema.Struct({
+          code: Schema.Union([
+            Schema.Literals([
+              "1001",
+              "1002",
+              "1003",
+              "1004",
+              "1005",
+              "1006",
+              "1007",
+              "1008",
+              "1009",
+              "1010",
+              "1011",
+              "1012",
+              "1013",
+              "1014",
+              "1015",
+              "1016",
+              "1017",
+              "1018",
+              "2001",
+              "2002",
+              "2003",
+              "2004",
+              "2005",
+              "2006",
+              "2007",
+              "2008",
+              "2009",
+              "2010",
+              "2011",
+              "2012",
+              "2013",
+              "2014",
+              "2015",
+              "2016",
+              "2017",
+              "2018",
+              "2019",
+              "2020",
+              "2021",
+              "2022",
+              "3001",
+              "3002",
+              "3003",
+              "3004",
+              "3005",
+              "3006",
+              "3007",
+              "4001",
+              "4002",
+              "4003",
+              "4004",
+              "4005",
+              "4006",
+              "4007",
+              "4008",
+              "4009",
+              "4010",
+              "4011",
+              "4012",
+              "4013",
+              "4014",
+              "4015",
+              "4016",
+              "4017",
+              "4018",
+              "4019",
+              "4020",
+              "4021",
+              "4022",
+              "4023",
+              "5001",
+              "5002",
+              "5003",
+              "5004",
+              "102000",
+              "102001",
+              "102002",
+              "102003",
+              "102004",
+              "102005",
+              "102006",
+              "102007",
+              "102008",
+              "102009",
+              "102010",
+              "102011",
+              "102012",
+              "102013",
+              "102014",
+              "102015",
+              "102016",
+              "102017",
+              "102018",
+              "102019",
+              "102020",
+              "102021",
+              "102022",
+              "102023",
+              "102024",
+              "102025",
+              "102026",
+              "102027",
+              "102028",
+              "102029",
+              "102030",
+              "102031",
+              "102032",
+              "102033",
+              "102034",
+              "102035",
+              "102036",
+              "102037",
+              "102038",
+              "102039",
+              "102040",
+              "102041",
+              "102042",
+              "102043",
+              "102044",
+              "102045",
+              "102046",
+              "102047",
+              "102048",
+              "102049",
+              "102050",
+              "102051",
+              "102052",
+              "102053",
+              "102054",
+              "102055",
+              "102056",
+              "102057",
+              "102058",
+              "102059",
+              "102060",
+              "102061",
+              "102062",
+              "102063",
+              "102064",
+              "102065",
+              "102066",
+              "102067",
+              "102068",
+              "102069",
+              "102070",
+              "102071",
+              "102072",
+              "103001",
+              "103002",
+              "103003",
+              "103004",
+              "103005",
+              "103006",
+              "103007",
+              "103008",
+            ]),
+            Schema.String,
           ]),
-          Schema.String,
-        ]),
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          meta: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                l10nKey: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                loggableError: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                templateData: Schema.optional(
+                  Schema.Union([Schema.Unknown, Schema.Null]),
+                ),
+                traceId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  l10nKey: "l10n_key",
+                  loggableError: "loggable_error",
+                  templateData: "template_data",
+                  traceId: "trace_id",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                parameter: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                parameterValueIndex: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  parameter: "parameter",
+                  parameterValueIndex: "parameter_value_index",
+                  pointer: "pointer",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            meta: "meta",
+            source: "source",
+          }),
         ),
-        meta: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              l10nKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              loggableError: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              templateData: Schema.optional(
-                Schema.Union([Schema.Unknown, Schema.Null]),
-              ),
-              traceId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                l10nKey: "l10n_key",
-                loggableError: "loggable_error",
-                templateData: "template_data",
-                traceId: "trace_id",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              parameter: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              parameterValueIndex: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                parameter: "parameter",
-                parameterValueIndex: "parameter_value_index",
-                pointer: "pointer",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          meta: "meta",
-          source: "source",
-        }),
       ),
-    ),
-    success: Schema.Boolean,
-  }) as unknown as Schema.Schema<DiscoverAllCloudIntegrationResponse>;
+      success: Schema.Boolean,
+    }),
+  ) as unknown as Schema.Schema<DiscoverAllCloudIntegrationResponse>;
 
 export type DiscoverAllCloudIntegrationError = DefaultErrors;
 
@@ -887,14 +891,17 @@ export interface GetCatalogSyncRequest {
   accountId: string;
 }
 
-export const GetCatalogSyncRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  syncId: Schema.String.pipe(T.HttpPath("syncId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/magic/cloud/catalog-syncs/{syncId}",
-  }),
+export const GetCatalogSyncRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      syncId: Schema.String.pipe(T.HttpPath("syncId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/cloud/catalog-syncs/{syncId}",
+      }),
+    ),
 ) as unknown as Schema.Schema<GetCatalogSyncRequest>;
 
 export interface GetCatalogSyncResponse {
@@ -912,54 +919,56 @@ export interface GetCatalogSyncResponse {
   lastSuccessfulUpdateAt?: string | null;
 }
 
-export const GetCatalogSyncResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String,
-    description: Schema.String,
-    destinationId: Schema.String,
-    destinationType: Schema.Union([
-      Schema.Literals(["NONE", "ZERO_TRUST_LIST"]),
-      Schema.String,
-    ]),
-    lastUserUpdateAt: Schema.String,
-    name: Schema.String,
-    policy: Schema.String,
-    updateMode: Schema.Union([
-      Schema.Literals(["AUTO", "MANUAL"]),
-      Schema.String,
-    ]),
-    errors: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-    includesDiscoveriesUntil: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    lastAttemptedUpdateAt: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    lastSuccessfulUpdateAt: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-  },
-)
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      description: "description",
-      destinationId: "destination_id",
-      destinationType: "destination_type",
-      lastUserUpdateAt: "last_user_update_at",
-      name: "name",
-      policy: "policy",
-      updateMode: "update_mode",
-      errors: "errors",
-      includesDiscoveriesUntil: "includes_discoveries_until",
-      lastAttemptedUpdateAt: "last_attempted_update_at",
-      lastSuccessfulUpdateAt: "last_successful_update_at",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
+export const GetCatalogSyncResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      description: Schema.String,
+      destinationId: Schema.String,
+      destinationType: Schema.Union([
+        Schema.Literals(["NONE", "ZERO_TRUST_LIST"]),
+        Schema.String,
+      ]),
+      lastUserUpdateAt: Schema.String,
+      name: Schema.String,
+      policy: Schema.String,
+      updateMode: Schema.Union([
+        Schema.Literals(["AUTO", "MANUAL"]),
+        Schema.String,
+      ]),
+      errors: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
+      includesDiscoveriesUntil: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      lastAttemptedUpdateAt: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      lastSuccessfulUpdateAt: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          description: "description",
+          destinationId: "destination_id",
+          destinationType: "destination_type",
+          lastUserUpdateAt: "last_user_update_at",
+          name: "name",
+          policy: "policy",
+          updateMode: "update_mode",
+          errors: "errors",
+          includesDiscoveriesUntil: "includes_discoveries_until",
+          lastAttemptedUpdateAt: "last_attempted_update_at",
+          lastSuccessfulUpdateAt: "last_successful_update_at",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<GetCatalogSyncResponse>;
 
 export type GetCatalogSyncError =
@@ -984,13 +993,15 @@ export interface ListCatalogSyncsRequest {
 }
 
 export const ListCatalogSyncsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/magic/cloud/catalog-syncs",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/cloud/catalog-syncs",
+      }),
+    ),
   ) as unknown as Schema.Schema<ListCatalogSyncsRequest>;
 
 export interface ListCatalogSyncsResponse {
@@ -1011,56 +1022,58 @@ export interface ListCatalogSyncsResponse {
 }
 
 export const ListCatalogSyncsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        description: Schema.String,
-        destinationId: Schema.String,
-        destinationType: Schema.Union([
-          Schema.Literals(["NONE", "ZERO_TRUST_LIST"]),
-          Schema.String,
-        ]),
-        lastUserUpdateAt: Schema.String,
-        name: Schema.String,
-        policy: Schema.String,
-        updateMode: Schema.Union([
-          Schema.Literals(["AUTO", "MANUAL"]),
-          Schema.String,
-        ]),
-        errors: Schema.optional(
-          Schema.Union([
-            Schema.Record(Schema.String, Schema.Unknown),
-            Schema.Null,
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          description: Schema.String,
+          destinationId: Schema.String,
+          destinationType: Schema.Union([
+            Schema.Literals(["NONE", "ZERO_TRUST_LIST"]),
+            Schema.String,
           ]),
+          lastUserUpdateAt: Schema.String,
+          name: Schema.String,
+          policy: Schema.String,
+          updateMode: Schema.Union([
+            Schema.Literals(["AUTO", "MANUAL"]),
+            Schema.String,
+          ]),
+          errors: Schema.optional(
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
+          ),
+          includesDiscoveriesUntil: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          lastAttemptedUpdateAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          lastSuccessfulUpdateAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            description: "description",
+            destinationId: "destination_id",
+            destinationType: "destination_type",
+            lastUserUpdateAt: "last_user_update_at",
+            name: "name",
+            policy: "policy",
+            updateMode: "update_mode",
+            errors: "errors",
+            includesDiscoveriesUntil: "includes_discoveries_until",
+            lastAttemptedUpdateAt: "last_attempted_update_at",
+            lastSuccessfulUpdateAt: "last_successful_update_at",
+          }),
         ),
-        includesDiscoveriesUntil: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        lastAttemptedUpdateAt: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        lastSuccessfulUpdateAt: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          description: "description",
-          destinationId: "destination_id",
-          destinationType: "destination_type",
-          lastUserUpdateAt: "last_user_update_at",
-          name: "name",
-          policy: "policy",
-          updateMode: "update_mode",
-          errors: "errors",
-          includesDiscoveriesUntil: "includes_discoveries_until",
-          lastAttemptedUpdateAt: "last_attempted_update_at",
-          lastSuccessfulUpdateAt: "last_successful_update_at",
-        }),
       ),
-    ),
-  }) as unknown as Schema.Schema<ListCatalogSyncsResponse>;
+    }),
+  ) as unknown as Schema.Schema<ListCatalogSyncsResponse>;
 
 export type ListCatalogSyncsError =
   | DefaultErrors
@@ -1100,32 +1113,34 @@ export interface CreateCatalogSyncRequest {
 }
 
 export const CreateCatalogSyncRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    forwarded: Schema.optional(Schema.String).pipe(T.HttpHeader("forwarded")),
-    destinationType: Schema.Union([
-      Schema.Literals(["NONE", "ZERO_TRUST_LIST"]),
-      Schema.String,
-    ]),
-    name: Schema.String,
-    updateMode: Schema.Union([
-      Schema.Literals(["AUTO", "MANUAL"]),
-      Schema.String,
-    ]),
-    description: Schema.optional(Schema.String),
-    policy: Schema.optional(Schema.String),
-  }).pipe(
-    Schema.encodeKeys({
-      destinationType: "destination_type",
-      name: "name",
-      updateMode: "update_mode",
-      description: "description",
-      policy: "policy",
-    }),
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/magic/cloud/catalog-syncs",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      forwarded: Schema.optional(Schema.String).pipe(T.HttpHeader("forwarded")),
+      destinationType: Schema.Union([
+        Schema.Literals(["NONE", "ZERO_TRUST_LIST"]),
+        Schema.String,
+      ]),
+      name: Schema.String,
+      updateMode: Schema.Union([
+        Schema.Literals(["AUTO", "MANUAL"]),
+        Schema.String,
+      ]),
+      description: Schema.optional(Schema.String),
+      policy: Schema.optional(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        destinationType: "destination_type",
+        name: "name",
+        updateMode: "update_mode",
+        description: "description",
+        policy: "policy",
+      }),
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/magic/cloud/catalog-syncs",
+      }),
+    ),
   ) as unknown as Schema.Schema<CreateCatalogSyncRequest>;
 
 export interface CreateCatalogSyncResponse {
@@ -1144,53 +1159,56 @@ export interface CreateCatalogSyncResponse {
 }
 
 export const CreateCatalogSyncResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    description: Schema.String,
-    destinationId: Schema.String,
-    destinationType: Schema.Union([
-      Schema.Literals(["NONE", "ZERO_TRUST_LIST"]),
-      Schema.String,
-    ]),
-    lastUserUpdateAt: Schema.String,
-    name: Schema.String,
-    policy: Schema.String,
-    updateMode: Schema.Union([
-      Schema.Literals(["AUTO", "MANUAL"]),
-      Schema.String,
-    ]),
-    errors: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-    includesDiscoveriesUntil: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    lastAttemptedUpdateAt: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    lastSuccessfulUpdateAt: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        description: "description",
-        destinationId: "destination_id",
-        destinationType: "destination_type",
-        lastUserUpdateAt: "last_user_update_at",
-        name: "name",
-        policy: "policy",
-        updateMode: "update_mode",
-        errors: "errors",
-        includesDiscoveriesUntil: "includes_discoveries_until",
-        lastAttemptedUpdateAt: "last_attempted_update_at",
-        lastSuccessfulUpdateAt: "last_successful_update_at",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateCatalogSyncResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      description: Schema.String,
+      destinationId: Schema.String,
+      destinationType: Schema.Union([
+        Schema.Literals(["NONE", "ZERO_TRUST_LIST"]),
+        Schema.String,
+      ]),
+      lastUserUpdateAt: Schema.String,
+      name: Schema.String,
+      policy: Schema.String,
+      updateMode: Schema.Union([
+        Schema.Literals(["AUTO", "MANUAL"]),
+        Schema.String,
+      ]),
+      errors: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
+      includesDiscoveriesUntil: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      lastAttemptedUpdateAt: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      lastSuccessfulUpdateAt: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          description: "description",
+          destinationId: "destination_id",
+          destinationType: "destination_type",
+          lastUserUpdateAt: "last_user_update_at",
+          name: "name",
+          policy: "policy",
+          updateMode: "update_mode",
+          errors: "errors",
+          includesDiscoveriesUntil: "includes_discoveries_until",
+          lastAttemptedUpdateAt: "last_attempted_update_at",
+          lastSuccessfulUpdateAt: "last_successful_update_at",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<CreateCatalogSyncResponse>;
 
 export type CreateCatalogSyncError =
   | DefaultErrors
@@ -1223,26 +1241,28 @@ export interface UpdateCatalogSyncRequest {
 }
 
 export const UpdateCatalogSyncRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    syncId: Schema.String.pipe(T.HttpPath("syncId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    description: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    policy: Schema.optional(Schema.String),
-    updateMode: Schema.optional(
-      Schema.Union([Schema.Literals(["AUTO", "MANUAL"]), Schema.String]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      syncId: Schema.String.pipe(T.HttpPath("syncId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      description: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      policy: Schema.optional(Schema.String),
+      updateMode: Schema.optional(
+        Schema.Union([Schema.Literals(["AUTO", "MANUAL"]), Schema.String]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        description: "description",
+        name: "name",
+        policy: "policy",
+        updateMode: "update_mode",
+      }),
+      T.Http({
+        method: "PUT",
+        path: "/accounts/{account_id}/magic/cloud/catalog-syncs/{syncId}",
+      }),
     ),
-  }).pipe(
-    Schema.encodeKeys({
-      description: "description",
-      name: "name",
-      policy: "policy",
-      updateMode: "update_mode",
-    }),
-    T.Http({
-      method: "PUT",
-      path: "/accounts/{account_id}/magic/cloud/catalog-syncs/{syncId}",
-    }),
   ) as unknown as Schema.Schema<UpdateCatalogSyncRequest>;
 
 export interface UpdateCatalogSyncResponse {
@@ -1261,53 +1281,56 @@ export interface UpdateCatalogSyncResponse {
 }
 
 export const UpdateCatalogSyncResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    description: Schema.String,
-    destinationId: Schema.String,
-    destinationType: Schema.Union([
-      Schema.Literals(["NONE", "ZERO_TRUST_LIST"]),
-      Schema.String,
-    ]),
-    lastUserUpdateAt: Schema.String,
-    name: Schema.String,
-    policy: Schema.String,
-    updateMode: Schema.Union([
-      Schema.Literals(["AUTO", "MANUAL"]),
-      Schema.String,
-    ]),
-    errors: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-    includesDiscoveriesUntil: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    lastAttemptedUpdateAt: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    lastSuccessfulUpdateAt: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        description: "description",
-        destinationId: "destination_id",
-        destinationType: "destination_type",
-        lastUserUpdateAt: "last_user_update_at",
-        name: "name",
-        policy: "policy",
-        updateMode: "update_mode",
-        errors: "errors",
-        includesDiscoveriesUntil: "includes_discoveries_until",
-        lastAttemptedUpdateAt: "last_attempted_update_at",
-        lastSuccessfulUpdateAt: "last_successful_update_at",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<UpdateCatalogSyncResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      description: Schema.String,
+      destinationId: Schema.String,
+      destinationType: Schema.Union([
+        Schema.Literals(["NONE", "ZERO_TRUST_LIST"]),
+        Schema.String,
+      ]),
+      lastUserUpdateAt: Schema.String,
+      name: Schema.String,
+      policy: Schema.String,
+      updateMode: Schema.Union([
+        Schema.Literals(["AUTO", "MANUAL"]),
+        Schema.String,
+      ]),
+      errors: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
+      includesDiscoveriesUntil: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      lastAttemptedUpdateAt: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      lastSuccessfulUpdateAt: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          description: "description",
+          destinationId: "destination_id",
+          destinationType: "destination_type",
+          lastUserUpdateAt: "last_user_update_at",
+          name: "name",
+          policy: "policy",
+          updateMode: "update_mode",
+          errors: "errors",
+          includesDiscoveriesUntil: "includes_discoveries_until",
+          lastAttemptedUpdateAt: "last_attempted_update_at",
+          lastSuccessfulUpdateAt: "last_successful_update_at",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<UpdateCatalogSyncResponse>;
 
 export type UpdateCatalogSyncError =
   | DefaultErrors
@@ -1341,26 +1364,28 @@ export interface PatchCatalogSyncRequest {
 }
 
 export const PatchCatalogSyncRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    syncId: Schema.String.pipe(T.HttpPath("syncId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    description: Schema.optional(Schema.String),
-    name: Schema.optional(Schema.String),
-    policy: Schema.optional(Schema.String),
-    updateMode: Schema.optional(
-      Schema.Union([Schema.Literals(["AUTO", "MANUAL"]), Schema.String]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      syncId: Schema.String.pipe(T.HttpPath("syncId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      description: Schema.optional(Schema.String),
+      name: Schema.optional(Schema.String),
+      policy: Schema.optional(Schema.String),
+      updateMode: Schema.optional(
+        Schema.Union([Schema.Literals(["AUTO", "MANUAL"]), Schema.String]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        description: "description",
+        name: "name",
+        policy: "policy",
+        updateMode: "update_mode",
+      }),
+      T.Http({
+        method: "PATCH",
+        path: "/accounts/{account_id}/magic/cloud/catalog-syncs/{syncId}",
+      }),
     ),
-  }).pipe(
-    Schema.encodeKeys({
-      description: "description",
-      name: "name",
-      policy: "policy",
-      updateMode: "update_mode",
-    }),
-    T.Http({
-      method: "PATCH",
-      path: "/accounts/{account_id}/magic/cloud/catalog-syncs/{syncId}",
-    }),
   ) as unknown as Schema.Schema<PatchCatalogSyncRequest>;
 
 export interface PatchCatalogSyncResponse {
@@ -1379,53 +1404,56 @@ export interface PatchCatalogSyncResponse {
 }
 
 export const PatchCatalogSyncResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    description: Schema.String,
-    destinationId: Schema.String,
-    destinationType: Schema.Union([
-      Schema.Literals(["NONE", "ZERO_TRUST_LIST"]),
-      Schema.String,
-    ]),
-    lastUserUpdateAt: Schema.String,
-    name: Schema.String,
-    policy: Schema.String,
-    updateMode: Schema.Union([
-      Schema.Literals(["AUTO", "MANUAL"]),
-      Schema.String,
-    ]),
-    errors: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-    includesDiscoveriesUntil: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    lastAttemptedUpdateAt: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    lastSuccessfulUpdateAt: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        description: "description",
-        destinationId: "destination_id",
-        destinationType: "destination_type",
-        lastUserUpdateAt: "last_user_update_at",
-        name: "name",
-        policy: "policy",
-        updateMode: "update_mode",
-        errors: "errors",
-        includesDiscoveriesUntil: "includes_discoveries_until",
-        lastAttemptedUpdateAt: "last_attempted_update_at",
-        lastSuccessfulUpdateAt: "last_successful_update_at",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchCatalogSyncResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      description: Schema.String,
+      destinationId: Schema.String,
+      destinationType: Schema.Union([
+        Schema.Literals(["NONE", "ZERO_TRUST_LIST"]),
+        Schema.String,
+      ]),
+      lastUserUpdateAt: Schema.String,
+      name: Schema.String,
+      policy: Schema.String,
+      updateMode: Schema.Union([
+        Schema.Literals(["AUTO", "MANUAL"]),
+        Schema.String,
+      ]),
+      errors: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
+      includesDiscoveriesUntil: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      lastAttemptedUpdateAt: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      lastSuccessfulUpdateAt: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          description: "description",
+          destinationId: "destination_id",
+          destinationType: "destination_type",
+          lastUserUpdateAt: "last_user_update_at",
+          name: "name",
+          policy: "policy",
+          updateMode: "update_mode",
+          errors: "errors",
+          includesDiscoveriesUntil: "includes_discoveries_until",
+          lastAttemptedUpdateAt: "last_attempted_update_at",
+          lastSuccessfulUpdateAt: "last_successful_update_at",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<PatchCatalogSyncResponse>;
 
 export type PatchCatalogSyncError =
   | DefaultErrors
@@ -1453,17 +1481,19 @@ export interface DeleteCatalogSyncRequest {
 }
 
 export const DeleteCatalogSyncRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    syncId: Schema.String.pipe(T.HttpPath("syncId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    deleteDestination: Schema.optional(Schema.Boolean).pipe(
-      T.HttpQuery("delete_destination"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      syncId: Schema.String.pipe(T.HttpPath("syncId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      deleteDestination: Schema.optional(Schema.Boolean).pipe(
+        T.HttpQuery("delete_destination"),
+      ),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/magic/cloud/catalog-syncs/{syncId}",
+      }),
     ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/magic/cloud/catalog-syncs/{syncId}",
-    }),
   ) as unknown as Schema.Schema<DeleteCatalogSyncRequest>;
 
 export interface DeleteCatalogSyncResponse {
@@ -1471,10 +1501,10 @@ export interface DeleteCatalogSyncResponse {
 }
 
 export const DeleteCatalogSyncResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-  }).pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+    }).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<DeleteCatalogSyncResponse>;
 
 export type DeleteCatalogSyncError =
@@ -1500,21 +1530,23 @@ export interface RefreshCatalogSyncRequest {
 }
 
 export const RefreshCatalogSyncRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    syncId: Schema.String.pipe(T.HttpPath("syncId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/magic/cloud/catalog-syncs/{syncId}/refresh",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      syncId: Schema.String.pipe(T.HttpPath("syncId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/magic/cloud/catalog-syncs/{syncId}/refresh",
+      }),
+    ),
   ) as unknown as Schema.Schema<RefreshCatalogSyncRequest>;
 
 export type RefreshCatalogSyncResponse = string;
 
 export const RefreshCatalogSyncResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String.pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.String.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<RefreshCatalogSyncResponse>;
 
 export type RefreshCatalogSyncError =
@@ -1546,19 +1578,21 @@ export interface ListCatalogSyncPrebuiltPoliciesRequest {
 }
 
 export const ListCatalogSyncPrebuiltPoliciesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    destinationType: Schema.optional(
-      Schema.Union([
-        Schema.Literals(["NONE", "ZERO_TRUST_LIST"]),
-        Schema.String,
-      ]),
-    ).pipe(T.HttpQuery("destination_type")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/magic/cloud/catalog-syncs/prebuilt-policies",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      destinationType: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["NONE", "ZERO_TRUST_LIST"]),
+          Schema.String,
+        ]),
+      ).pipe(T.HttpQuery("destination_type")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/cloud/catalog-syncs/prebuilt-policies",
+      }),
+    ),
   ) as unknown as Schema.Schema<ListCatalogSyncPrebuiltPoliciesRequest>;
 
 export interface ListCatalogSyncPrebuiltPoliciesResponse {
@@ -1571,28 +1605,30 @@ export interface ListCatalogSyncPrebuiltPoliciesResponse {
 }
 
 export const ListCatalogSyncPrebuiltPoliciesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        applicableDestinations: Schema.Array(
-          Schema.Union([
-            Schema.Literals(["NONE", "ZERO_TRUST_LIST"]),
-            Schema.String,
-          ]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          applicableDestinations: Schema.Array(
+            Schema.Union([
+              Schema.Literals(["NONE", "ZERO_TRUST_LIST"]),
+              Schema.String,
+            ]),
+          ),
+          policyDescription: Schema.String,
+          policyName: Schema.String,
+          policyString: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({
+            applicableDestinations: "applicable_destinations",
+            policyDescription: "policy_description",
+            policyName: "policy_name",
+            policyString: "policy_string",
+          }),
         ),
-        policyDescription: Schema.String,
-        policyName: Schema.String,
-        policyString: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({
-          applicableDestinations: "applicable_destinations",
-          policyDescription: "policy_description",
-          policyName: "policy_name",
-          policyString: "policy_string",
-        }),
       ),
-    ),
-  }) as unknown as Schema.Schema<ListCatalogSyncPrebuiltPoliciesResponse>;
+    }),
+  ) as unknown as Schema.Schema<ListCatalogSyncPrebuiltPoliciesResponse>;
 
 export type ListCatalogSyncPrebuiltPoliciesError =
   | DefaultErrors
@@ -1627,15 +1663,17 @@ export interface GetCloudIntegrationRequest {
 }
 
 export const GetCloudIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    providerId: Schema.String.pipe(T.HttpPath("providerId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    status: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("status")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/magic/cloud/providers/{providerId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      providerId: Schema.String.pipe(T.HttpPath("providerId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      status: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("status")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/cloud/providers/{providerId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<GetCloudIntegrationRequest>;
 
 export interface GetCloudIntegrationResponse {
@@ -1699,175 +1737,177 @@ export interface GetCloudIntegrationResponse {
 }
 
 export const GetCloudIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    cloudType: Schema.Union([
-      Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
-      Schema.String,
-    ]),
-    friendlyName: Schema.String,
-    lastUpdated: Schema.String,
-    lifecycleState: Schema.Union([
-      Schema.Literals(["ACTIVE", "PENDING_SETUP", "RETIRED"]),
-      Schema.String,
-    ]),
-    state: Schema.Union([
-      Schema.Literals([
-        "UNSPECIFIED",
-        "PENDING",
-        "DISCOVERING",
-        "FAILED",
-        "SUCCEEDED",
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      cloudType: Schema.Union([
+        Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
+        Schema.String,
       ]),
-      Schema.String,
-    ]),
-    stateV2: Schema.Union([
-      Schema.Literals([
-        "UNSPECIFIED",
-        "PENDING",
-        "DISCOVERING",
-        "FAILED",
-        "SUCCEEDED",
+      friendlyName: Schema.String,
+      lastUpdated: Schema.String,
+      lifecycleState: Schema.Union([
+        Schema.Literals(["ACTIVE", "PENDING_SETUP", "RETIRED"]),
+        Schema.String,
       ]),
-      Schema.String,
-    ]),
-    awsArn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    azureSubscriptionId: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    azureTenantId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    gcpProjectId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    gcpServiceAccountEmail: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    status: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          discoveryProgress: Schema.Struct({
-            done: Schema.Number,
-            total: Schema.Number,
-            unit: Schema.String,
-          }),
-          discoveryProgressV2: Schema.Struct({
-            done: Schema.Number,
-            total: Schema.Number,
-            unit: Schema.String,
-          }),
-          lastDiscoveryStatus: Schema.Union([
-            Schema.Literals([
-              "UNSPECIFIED",
-              "PENDING",
-              "DISCOVERING",
-              "FAILED",
-              "SUCCEEDED",
+      state: Schema.Union([
+        Schema.Literals([
+          "UNSPECIFIED",
+          "PENDING",
+          "DISCOVERING",
+          "FAILED",
+          "SUCCEEDED",
+        ]),
+        Schema.String,
+      ]),
+      stateV2: Schema.Union([
+        Schema.Literals([
+          "UNSPECIFIED",
+          "PENDING",
+          "DISCOVERING",
+          "FAILED",
+          "SUCCEEDED",
+        ]),
+        Schema.String,
+      ]),
+      awsArn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      azureSubscriptionId: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      azureTenantId: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      gcpProjectId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      gcpServiceAccountEmail: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            discoveryProgress: Schema.Struct({
+              done: Schema.Number,
+              total: Schema.Number,
+              unit: Schema.String,
+            }),
+            discoveryProgressV2: Schema.Struct({
+              done: Schema.Number,
+              total: Schema.Number,
+              unit: Schema.String,
+            }),
+            lastDiscoveryStatus: Schema.Union([
+              Schema.Literals([
+                "UNSPECIFIED",
+                "PENDING",
+                "DISCOVERING",
+                "FAILED",
+                "SUCCEEDED",
+              ]),
+              Schema.String,
             ]),
-            Schema.String,
-          ]),
-          lastDiscoveryStatusV2: Schema.Union([
-            Schema.Literals([
-              "UNSPECIFIED",
-              "PENDING",
-              "DISCOVERING",
-              "FAILED",
-              "SUCCEEDED",
+            lastDiscoveryStatusV2: Schema.Union([
+              Schema.Literals([
+                "UNSPECIFIED",
+                "PENDING",
+                "DISCOVERING",
+                "FAILED",
+                "SUCCEEDED",
+              ]),
+              Schema.String,
             ]),
-            Schema.String,
-          ]),
-          regions: Schema.Array(Schema.String),
-          credentialsGoodSince: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          credentialsMissingSince: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          credentialsRejectedSince: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          discoveryMessage: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          discoveryMessageV2: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          inUseBy: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.String,
-                  clientType: Schema.Literal("MAGIC_WAN_CLOUD_ONRAMP"),
-                  name: Schema.String,
-                }).pipe(
-                  Schema.encodeKeys({
-                    id: "id",
-                    clientType: "client_type",
-                    name: "name",
-                  }),
+            regions: Schema.Array(Schema.String),
+            credentialsGoodSince: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            credentialsMissingSince: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            credentialsRejectedSince: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            discoveryMessage: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            discoveryMessageV2: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            inUseBy: Schema.optional(
+              Schema.Union([
+                Schema.Array(
+                  Schema.Struct({
+                    id: Schema.String,
+                    clientType: Schema.Literal("MAGIC_WAN_CLOUD_ONRAMP"),
+                    name: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      id: "id",
+                      clientType: "client_type",
+                      name: "name",
+                    }),
+                  ),
                 ),
-              ),
-              Schema.Null,
-            ]),
+                Schema.Null,
+              ]),
+            ),
+            lastDiscoveryCompletedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            lastDiscoveryCompletedAtV2: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            lastDiscoveryStartedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            lastDiscoveryStartedAtV2: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            lastUpdated: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              discoveryProgress: "discovery_progress",
+              discoveryProgressV2: "discovery_progress_v2",
+              lastDiscoveryStatus: "last_discovery_status",
+              lastDiscoveryStatusV2: "last_discovery_status_v2",
+              regions: "regions",
+              credentialsGoodSince: "credentials_good_since",
+              credentialsMissingSince: "credentials_missing_since",
+              credentialsRejectedSince: "credentials_rejected_since",
+              discoveryMessage: "discovery_message",
+              discoveryMessageV2: "discovery_message_v2",
+              inUseBy: "in_use_by",
+              lastDiscoveryCompletedAt: "last_discovery_completed_at",
+              lastDiscoveryCompletedAtV2: "last_discovery_completed_at_v2",
+              lastDiscoveryStartedAt: "last_discovery_started_at",
+              lastDiscoveryStartedAtV2: "last_discovery_started_at_v2",
+              lastUpdated: "last_updated",
+            }),
           ),
-          lastDiscoveryCompletedAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          lastDiscoveryCompletedAtV2: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          lastDiscoveryStartedAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          lastDiscoveryStartedAtV2: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          lastUpdated: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            discoveryProgress: "discovery_progress",
-            discoveryProgressV2: "discovery_progress_v2",
-            lastDiscoveryStatus: "last_discovery_status",
-            lastDiscoveryStatusV2: "last_discovery_status_v2",
-            regions: "regions",
-            credentialsGoodSince: "credentials_good_since",
-            credentialsMissingSince: "credentials_missing_since",
-            credentialsRejectedSince: "credentials_rejected_since",
-            discoveryMessage: "discovery_message",
-            discoveryMessageV2: "discovery_message_v2",
-            inUseBy: "in_use_by",
-            lastDiscoveryCompletedAt: "last_discovery_completed_at",
-            lastDiscoveryCompletedAtV2: "last_discovery_completed_at_v2",
-            lastDiscoveryStartedAt: "last_discovery_started_at",
-            lastDiscoveryStartedAtV2: "last_discovery_started_at_v2",
-            lastUpdated: "last_updated",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        cloudType: "cloud_type",
-        friendlyName: "friendly_name",
-        lastUpdated: "last_updated",
-        lifecycleState: "lifecycle_state",
-        state: "state",
-        stateV2: "state_v2",
-        awsArn: "aws_arn",
-        azureSubscriptionId: "azure_subscription_id",
-        azureTenantId: "azure_tenant_id",
-        description: "description",
-        gcpProjectId: "gcp_project_id",
-        gcpServiceAccountEmail: "gcp_service_account_email",
-        status: "status",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetCloudIntegrationResponse>;
+          Schema.Null,
+        ]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          cloudType: "cloud_type",
+          friendlyName: "friendly_name",
+          lastUpdated: "last_updated",
+          lifecycleState: "lifecycle_state",
+          state: "state",
+          stateV2: "state_v2",
+          awsArn: "aws_arn",
+          azureSubscriptionId: "azure_subscription_id",
+          azureTenantId: "azure_tenant_id",
+          description: "description",
+          gcpProjectId: "gcp_project_id",
+          gcpServiceAccountEmail: "gcp_service_account_email",
+          status: "status",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetCloudIntegrationResponse>;
 
 export type GetCloudIntegrationError =
   | DefaultErrors
@@ -1900,17 +1940,21 @@ export interface ListCloudIntegrationsRequest {
 }
 
 export const ListCloudIntegrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    cloudflare: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("cloudflare")),
-    desc: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("desc")),
-    orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("order_by")),
-    status: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("status")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/magic/cloud/providers",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      cloudflare: Schema.optional(Schema.Boolean).pipe(
+        T.HttpQuery("cloudflare"),
+      ),
+      desc: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("desc")),
+      orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("order_by")),
+      status: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("status")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/cloud/providers",
+      }),
+    ),
   ) as unknown as Schema.Schema<ListCloudIntegrationsRequest>;
 
 export interface ListCloudIntegrationsResponse {
@@ -1976,181 +2020,183 @@ export interface ListCloudIntegrationsResponse {
 }
 
 export const ListCloudIntegrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        cloudType: Schema.Union([
-          Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
-          Schema.String,
-        ]),
-        friendlyName: Schema.String,
-        lastUpdated: Schema.String,
-        lifecycleState: Schema.Union([
-          Schema.Literals(["ACTIVE", "PENDING_SETUP", "RETIRED"]),
-          Schema.String,
-        ]),
-        state: Schema.Union([
-          Schema.Literals([
-            "UNSPECIFIED",
-            "PENDING",
-            "DISCOVERING",
-            "FAILED",
-            "SUCCEEDED",
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          cloudType: Schema.Union([
+            Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
+            Schema.String,
           ]),
-          Schema.String,
-        ]),
-        stateV2: Schema.Union([
-          Schema.Literals([
-            "UNSPECIFIED",
-            "PENDING",
-            "DISCOVERING",
-            "FAILED",
-            "SUCCEEDED",
+          friendlyName: Schema.String,
+          lastUpdated: Schema.String,
+          lifecycleState: Schema.Union([
+            Schema.Literals(["ACTIVE", "PENDING_SETUP", "RETIRED"]),
+            Schema.String,
           ]),
-          Schema.String,
-        ]),
-        awsArn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        azureSubscriptionId: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        azureTenantId: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        description: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        gcpProjectId: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        gcpServiceAccountEmail: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        status: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              discoveryProgress: Schema.Struct({
-                done: Schema.Number,
-                total: Schema.Number,
-                unit: Schema.String,
-              }),
-              discoveryProgressV2: Schema.Struct({
-                done: Schema.Number,
-                total: Schema.Number,
-                unit: Schema.String,
-              }),
-              lastDiscoveryStatus: Schema.Union([
-                Schema.Literals([
-                  "UNSPECIFIED",
-                  "PENDING",
-                  "DISCOVERING",
-                  "FAILED",
-                  "SUCCEEDED",
+          state: Schema.Union([
+            Schema.Literals([
+              "UNSPECIFIED",
+              "PENDING",
+              "DISCOVERING",
+              "FAILED",
+              "SUCCEEDED",
+            ]),
+            Schema.String,
+          ]),
+          stateV2: Schema.Union([
+            Schema.Literals([
+              "UNSPECIFIED",
+              "PENDING",
+              "DISCOVERING",
+              "FAILED",
+              "SUCCEEDED",
+            ]),
+            Schema.String,
+          ]),
+          awsArn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          azureSubscriptionId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          azureTenantId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          gcpProjectId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          gcpServiceAccountEmail: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          status: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                discoveryProgress: Schema.Struct({
+                  done: Schema.Number,
+                  total: Schema.Number,
+                  unit: Schema.String,
+                }),
+                discoveryProgressV2: Schema.Struct({
+                  done: Schema.Number,
+                  total: Schema.Number,
+                  unit: Schema.String,
+                }),
+                lastDiscoveryStatus: Schema.Union([
+                  Schema.Literals([
+                    "UNSPECIFIED",
+                    "PENDING",
+                    "DISCOVERING",
+                    "FAILED",
+                    "SUCCEEDED",
+                  ]),
+                  Schema.String,
                 ]),
-                Schema.String,
-              ]),
-              lastDiscoveryStatusV2: Schema.Union([
-                Schema.Literals([
-                  "UNSPECIFIED",
-                  "PENDING",
-                  "DISCOVERING",
-                  "FAILED",
-                  "SUCCEEDED",
+                lastDiscoveryStatusV2: Schema.Union([
+                  Schema.Literals([
+                    "UNSPECIFIED",
+                    "PENDING",
+                    "DISCOVERING",
+                    "FAILED",
+                    "SUCCEEDED",
+                  ]),
+                  Schema.String,
                 ]),
-                Schema.String,
-              ]),
-              regions: Schema.Array(Schema.String),
-              credentialsGoodSince: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              credentialsMissingSince: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              credentialsRejectedSince: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              discoveryMessage: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              discoveryMessageV2: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              inUseBy: Schema.optional(
-                Schema.Union([
-                  Schema.Array(
-                    Schema.Struct({
-                      id: Schema.String,
-                      clientType: Schema.Literal("MAGIC_WAN_CLOUD_ONRAMP"),
-                      name: Schema.String,
-                    }).pipe(
-                      Schema.encodeKeys({
-                        id: "id",
-                        clientType: "client_type",
-                        name: "name",
-                      }),
+                regions: Schema.Array(Schema.String),
+                credentialsGoodSince: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                credentialsMissingSince: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                credentialsRejectedSince: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                discoveryMessage: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                discoveryMessageV2: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                inUseBy: Schema.optional(
+                  Schema.Union([
+                    Schema.Array(
+                      Schema.Struct({
+                        id: Schema.String,
+                        clientType: Schema.Literal("MAGIC_WAN_CLOUD_ONRAMP"),
+                        name: Schema.String,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          id: "id",
+                          clientType: "client_type",
+                          name: "name",
+                        }),
+                      ),
                     ),
-                  ),
-                  Schema.Null,
-                ]),
+                    Schema.Null,
+                  ]),
+                ),
+                lastDiscoveryCompletedAt: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                lastDiscoveryCompletedAtV2: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                lastDiscoveryStartedAt: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                lastDiscoveryStartedAtV2: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                lastUpdated: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  discoveryProgress: "discovery_progress",
+                  discoveryProgressV2: "discovery_progress_v2",
+                  lastDiscoveryStatus: "last_discovery_status",
+                  lastDiscoveryStatusV2: "last_discovery_status_v2",
+                  regions: "regions",
+                  credentialsGoodSince: "credentials_good_since",
+                  credentialsMissingSince: "credentials_missing_since",
+                  credentialsRejectedSince: "credentials_rejected_since",
+                  discoveryMessage: "discovery_message",
+                  discoveryMessageV2: "discovery_message_v2",
+                  inUseBy: "in_use_by",
+                  lastDiscoveryCompletedAt: "last_discovery_completed_at",
+                  lastDiscoveryCompletedAtV2: "last_discovery_completed_at_v2",
+                  lastDiscoveryStartedAt: "last_discovery_started_at",
+                  lastDiscoveryStartedAtV2: "last_discovery_started_at_v2",
+                  lastUpdated: "last_updated",
+                }),
               ),
-              lastDiscoveryCompletedAt: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              lastDiscoveryCompletedAtV2: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              lastDiscoveryStartedAt: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              lastDiscoveryStartedAtV2: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              lastUpdated: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                discoveryProgress: "discovery_progress",
-                discoveryProgressV2: "discovery_progress_v2",
-                lastDiscoveryStatus: "last_discovery_status",
-                lastDiscoveryStatusV2: "last_discovery_status_v2",
-                regions: "regions",
-                credentialsGoodSince: "credentials_good_since",
-                credentialsMissingSince: "credentials_missing_since",
-                credentialsRejectedSince: "credentials_rejected_since",
-                discoveryMessage: "discovery_message",
-                discoveryMessageV2: "discovery_message_v2",
-                inUseBy: "in_use_by",
-                lastDiscoveryCompletedAt: "last_discovery_completed_at",
-                lastDiscoveryCompletedAtV2: "last_discovery_completed_at_v2",
-                lastDiscoveryStartedAt: "last_discovery_started_at",
-                lastDiscoveryStartedAtV2: "last_discovery_started_at_v2",
-                lastUpdated: "last_updated",
-              }),
-            ),
-            Schema.Null,
-          ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            cloudType: "cloud_type",
+            friendlyName: "friendly_name",
+            lastUpdated: "last_updated",
+            lifecycleState: "lifecycle_state",
+            state: "state",
+            stateV2: "state_v2",
+            awsArn: "aws_arn",
+            azureSubscriptionId: "azure_subscription_id",
+            azureTenantId: "azure_tenant_id",
+            description: "description",
+            gcpProjectId: "gcp_project_id",
+            gcpServiceAccountEmail: "gcp_service_account_email",
+            status: "status",
+          }),
         ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          cloudType: "cloud_type",
-          friendlyName: "friendly_name",
-          lastUpdated: "last_updated",
-          lifecycleState: "lifecycle_state",
-          state: "state",
-          stateV2: "state_v2",
-          awsArn: "aws_arn",
-          azureSubscriptionId: "azure_subscription_id",
-          azureTenantId: "azure_tenant_id",
-          description: "description",
-          gcpProjectId: "gcp_project_id",
-          gcpServiceAccountEmail: "gcp_service_account_email",
-          status: "status",
-        }),
       ),
-    ),
-  }) as unknown as Schema.Schema<ListCloudIntegrationsResponse>;
+    }),
+  ) as unknown as Schema.Schema<ListCloudIntegrationsResponse>;
 
 export type ListCloudIntegrationsError =
   | DefaultErrors
@@ -2186,25 +2232,27 @@ export interface CreateCloudIntegrationRequest {
 }
 
 export const CreateCloudIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    forwarded: Schema.optional(Schema.String).pipe(T.HttpHeader("forwarded")),
-    cloudType: Schema.Union([
-      Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
-      Schema.String,
-    ]),
-    friendlyName: Schema.String,
-    description: Schema.optional(Schema.String),
-  }).pipe(
-    Schema.encodeKeys({
-      cloudType: "cloud_type",
-      friendlyName: "friendly_name",
-      description: "description",
-    }),
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/magic/cloud/providers",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      forwarded: Schema.optional(Schema.String).pipe(T.HttpHeader("forwarded")),
+      cloudType: Schema.Union([
+        Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
+        Schema.String,
+      ]),
+      friendlyName: Schema.String,
+      description: Schema.optional(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        cloudType: "cloud_type",
+        friendlyName: "friendly_name",
+        description: "description",
+      }),
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/magic/cloud/providers",
+      }),
+    ),
   ) as unknown as Schema.Schema<CreateCloudIntegrationRequest>;
 
 export interface CreateCloudIntegrationResponse {
@@ -2268,175 +2316,177 @@ export interface CreateCloudIntegrationResponse {
 }
 
 export const CreateCloudIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    cloudType: Schema.Union([
-      Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
-      Schema.String,
-    ]),
-    friendlyName: Schema.String,
-    lastUpdated: Schema.String,
-    lifecycleState: Schema.Union([
-      Schema.Literals(["ACTIVE", "PENDING_SETUP", "RETIRED"]),
-      Schema.String,
-    ]),
-    state: Schema.Union([
-      Schema.Literals([
-        "UNSPECIFIED",
-        "PENDING",
-        "DISCOVERING",
-        "FAILED",
-        "SUCCEEDED",
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      cloudType: Schema.Union([
+        Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
+        Schema.String,
       ]),
-      Schema.String,
-    ]),
-    stateV2: Schema.Union([
-      Schema.Literals([
-        "UNSPECIFIED",
-        "PENDING",
-        "DISCOVERING",
-        "FAILED",
-        "SUCCEEDED",
+      friendlyName: Schema.String,
+      lastUpdated: Schema.String,
+      lifecycleState: Schema.Union([
+        Schema.Literals(["ACTIVE", "PENDING_SETUP", "RETIRED"]),
+        Schema.String,
       ]),
-      Schema.String,
-    ]),
-    awsArn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    azureSubscriptionId: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    azureTenantId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    gcpProjectId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    gcpServiceAccountEmail: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    status: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          discoveryProgress: Schema.Struct({
-            done: Schema.Number,
-            total: Schema.Number,
-            unit: Schema.String,
-          }),
-          discoveryProgressV2: Schema.Struct({
-            done: Schema.Number,
-            total: Schema.Number,
-            unit: Schema.String,
-          }),
-          lastDiscoveryStatus: Schema.Union([
-            Schema.Literals([
-              "UNSPECIFIED",
-              "PENDING",
-              "DISCOVERING",
-              "FAILED",
-              "SUCCEEDED",
+      state: Schema.Union([
+        Schema.Literals([
+          "UNSPECIFIED",
+          "PENDING",
+          "DISCOVERING",
+          "FAILED",
+          "SUCCEEDED",
+        ]),
+        Schema.String,
+      ]),
+      stateV2: Schema.Union([
+        Schema.Literals([
+          "UNSPECIFIED",
+          "PENDING",
+          "DISCOVERING",
+          "FAILED",
+          "SUCCEEDED",
+        ]),
+        Schema.String,
+      ]),
+      awsArn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      azureSubscriptionId: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      azureTenantId: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      gcpProjectId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      gcpServiceAccountEmail: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            discoveryProgress: Schema.Struct({
+              done: Schema.Number,
+              total: Schema.Number,
+              unit: Schema.String,
+            }),
+            discoveryProgressV2: Schema.Struct({
+              done: Schema.Number,
+              total: Schema.Number,
+              unit: Schema.String,
+            }),
+            lastDiscoveryStatus: Schema.Union([
+              Schema.Literals([
+                "UNSPECIFIED",
+                "PENDING",
+                "DISCOVERING",
+                "FAILED",
+                "SUCCEEDED",
+              ]),
+              Schema.String,
             ]),
-            Schema.String,
-          ]),
-          lastDiscoveryStatusV2: Schema.Union([
-            Schema.Literals([
-              "UNSPECIFIED",
-              "PENDING",
-              "DISCOVERING",
-              "FAILED",
-              "SUCCEEDED",
+            lastDiscoveryStatusV2: Schema.Union([
+              Schema.Literals([
+                "UNSPECIFIED",
+                "PENDING",
+                "DISCOVERING",
+                "FAILED",
+                "SUCCEEDED",
+              ]),
+              Schema.String,
             ]),
-            Schema.String,
-          ]),
-          regions: Schema.Array(Schema.String),
-          credentialsGoodSince: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          credentialsMissingSince: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          credentialsRejectedSince: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          discoveryMessage: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          discoveryMessageV2: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          inUseBy: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.String,
-                  clientType: Schema.Literal("MAGIC_WAN_CLOUD_ONRAMP"),
-                  name: Schema.String,
-                }).pipe(
-                  Schema.encodeKeys({
-                    id: "id",
-                    clientType: "client_type",
-                    name: "name",
-                  }),
+            regions: Schema.Array(Schema.String),
+            credentialsGoodSince: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            credentialsMissingSince: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            credentialsRejectedSince: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            discoveryMessage: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            discoveryMessageV2: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            inUseBy: Schema.optional(
+              Schema.Union([
+                Schema.Array(
+                  Schema.Struct({
+                    id: Schema.String,
+                    clientType: Schema.Literal("MAGIC_WAN_CLOUD_ONRAMP"),
+                    name: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      id: "id",
+                      clientType: "client_type",
+                      name: "name",
+                    }),
+                  ),
                 ),
-              ),
-              Schema.Null,
-            ]),
+                Schema.Null,
+              ]),
+            ),
+            lastDiscoveryCompletedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            lastDiscoveryCompletedAtV2: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            lastDiscoveryStartedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            lastDiscoveryStartedAtV2: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            lastUpdated: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              discoveryProgress: "discovery_progress",
+              discoveryProgressV2: "discovery_progress_v2",
+              lastDiscoveryStatus: "last_discovery_status",
+              lastDiscoveryStatusV2: "last_discovery_status_v2",
+              regions: "regions",
+              credentialsGoodSince: "credentials_good_since",
+              credentialsMissingSince: "credentials_missing_since",
+              credentialsRejectedSince: "credentials_rejected_since",
+              discoveryMessage: "discovery_message",
+              discoveryMessageV2: "discovery_message_v2",
+              inUseBy: "in_use_by",
+              lastDiscoveryCompletedAt: "last_discovery_completed_at",
+              lastDiscoveryCompletedAtV2: "last_discovery_completed_at_v2",
+              lastDiscoveryStartedAt: "last_discovery_started_at",
+              lastDiscoveryStartedAtV2: "last_discovery_started_at_v2",
+              lastUpdated: "last_updated",
+            }),
           ),
-          lastDiscoveryCompletedAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          lastDiscoveryCompletedAtV2: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          lastDiscoveryStartedAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          lastDiscoveryStartedAtV2: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          lastUpdated: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            discoveryProgress: "discovery_progress",
-            discoveryProgressV2: "discovery_progress_v2",
-            lastDiscoveryStatus: "last_discovery_status",
-            lastDiscoveryStatusV2: "last_discovery_status_v2",
-            regions: "regions",
-            credentialsGoodSince: "credentials_good_since",
-            credentialsMissingSince: "credentials_missing_since",
-            credentialsRejectedSince: "credentials_rejected_since",
-            discoveryMessage: "discovery_message",
-            discoveryMessageV2: "discovery_message_v2",
-            inUseBy: "in_use_by",
-            lastDiscoveryCompletedAt: "last_discovery_completed_at",
-            lastDiscoveryCompletedAtV2: "last_discovery_completed_at_v2",
-            lastDiscoveryStartedAt: "last_discovery_started_at",
-            lastDiscoveryStartedAtV2: "last_discovery_started_at_v2",
-            lastUpdated: "last_updated",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        cloudType: "cloud_type",
-        friendlyName: "friendly_name",
-        lastUpdated: "last_updated",
-        lifecycleState: "lifecycle_state",
-        state: "state",
-        stateV2: "state_v2",
-        awsArn: "aws_arn",
-        azureSubscriptionId: "azure_subscription_id",
-        azureTenantId: "azure_tenant_id",
-        description: "description",
-        gcpProjectId: "gcp_project_id",
-        gcpServiceAccountEmail: "gcp_service_account_email",
-        status: "status",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateCloudIntegrationResponse>;
+          Schema.Null,
+        ]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          cloudType: "cloud_type",
+          friendlyName: "friendly_name",
+          lastUpdated: "last_updated",
+          lifecycleState: "lifecycle_state",
+          state: "state",
+          stateV2: "state_v2",
+          awsArn: "aws_arn",
+          azureSubscriptionId: "azure_subscription_id",
+          azureTenantId: "azure_tenant_id",
+          description: "description",
+          gcpProjectId: "gcp_project_id",
+          gcpServiceAccountEmail: "gcp_service_account_email",
+          status: "status",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<CreateCloudIntegrationResponse>;
 
 export type CreateCloudIntegrationError =
   | DefaultErrors
@@ -2475,30 +2525,32 @@ export interface UpdateCloudIntegrationRequest {
 }
 
 export const UpdateCloudIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    providerId: Schema.String.pipe(T.HttpPath("providerId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    awsArn: Schema.optional(Schema.String),
-    azureSubscriptionId: Schema.optional(Schema.String),
-    azureTenantId: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    friendlyName: Schema.optional(Schema.String),
-    gcpProjectId: Schema.optional(Schema.String),
-    gcpServiceAccountEmail: Schema.optional(Schema.String),
-  }).pipe(
-    Schema.encodeKeys({
-      awsArn: "aws_arn",
-      azureSubscriptionId: "azure_subscription_id",
-      azureTenantId: "azure_tenant_id",
-      description: "description",
-      friendlyName: "friendly_name",
-      gcpProjectId: "gcp_project_id",
-      gcpServiceAccountEmail: "gcp_service_account_email",
-    }),
-    T.Http({
-      method: "PUT",
-      path: "/accounts/{account_id}/magic/cloud/providers/{providerId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      providerId: Schema.String.pipe(T.HttpPath("providerId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      awsArn: Schema.optional(Schema.String),
+      azureSubscriptionId: Schema.optional(Schema.String),
+      azureTenantId: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      friendlyName: Schema.optional(Schema.String),
+      gcpProjectId: Schema.optional(Schema.String),
+      gcpServiceAccountEmail: Schema.optional(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        awsArn: "aws_arn",
+        azureSubscriptionId: "azure_subscription_id",
+        azureTenantId: "azure_tenant_id",
+        description: "description",
+        friendlyName: "friendly_name",
+        gcpProjectId: "gcp_project_id",
+        gcpServiceAccountEmail: "gcp_service_account_email",
+      }),
+      T.Http({
+        method: "PUT",
+        path: "/accounts/{account_id}/magic/cloud/providers/{providerId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<UpdateCloudIntegrationRequest>;
 
 export interface UpdateCloudIntegrationResponse {
@@ -2562,175 +2614,177 @@ export interface UpdateCloudIntegrationResponse {
 }
 
 export const UpdateCloudIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    cloudType: Schema.Union([
-      Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
-      Schema.String,
-    ]),
-    friendlyName: Schema.String,
-    lastUpdated: Schema.String,
-    lifecycleState: Schema.Union([
-      Schema.Literals(["ACTIVE", "PENDING_SETUP", "RETIRED"]),
-      Schema.String,
-    ]),
-    state: Schema.Union([
-      Schema.Literals([
-        "UNSPECIFIED",
-        "PENDING",
-        "DISCOVERING",
-        "FAILED",
-        "SUCCEEDED",
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      cloudType: Schema.Union([
+        Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
+        Schema.String,
       ]),
-      Schema.String,
-    ]),
-    stateV2: Schema.Union([
-      Schema.Literals([
-        "UNSPECIFIED",
-        "PENDING",
-        "DISCOVERING",
-        "FAILED",
-        "SUCCEEDED",
+      friendlyName: Schema.String,
+      lastUpdated: Schema.String,
+      lifecycleState: Schema.Union([
+        Schema.Literals(["ACTIVE", "PENDING_SETUP", "RETIRED"]),
+        Schema.String,
       ]),
-      Schema.String,
-    ]),
-    awsArn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    azureSubscriptionId: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    azureTenantId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    gcpProjectId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    gcpServiceAccountEmail: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    status: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          discoveryProgress: Schema.Struct({
-            done: Schema.Number,
-            total: Schema.Number,
-            unit: Schema.String,
-          }),
-          discoveryProgressV2: Schema.Struct({
-            done: Schema.Number,
-            total: Schema.Number,
-            unit: Schema.String,
-          }),
-          lastDiscoveryStatus: Schema.Union([
-            Schema.Literals([
-              "UNSPECIFIED",
-              "PENDING",
-              "DISCOVERING",
-              "FAILED",
-              "SUCCEEDED",
+      state: Schema.Union([
+        Schema.Literals([
+          "UNSPECIFIED",
+          "PENDING",
+          "DISCOVERING",
+          "FAILED",
+          "SUCCEEDED",
+        ]),
+        Schema.String,
+      ]),
+      stateV2: Schema.Union([
+        Schema.Literals([
+          "UNSPECIFIED",
+          "PENDING",
+          "DISCOVERING",
+          "FAILED",
+          "SUCCEEDED",
+        ]),
+        Schema.String,
+      ]),
+      awsArn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      azureSubscriptionId: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      azureTenantId: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      gcpProjectId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      gcpServiceAccountEmail: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            discoveryProgress: Schema.Struct({
+              done: Schema.Number,
+              total: Schema.Number,
+              unit: Schema.String,
+            }),
+            discoveryProgressV2: Schema.Struct({
+              done: Schema.Number,
+              total: Schema.Number,
+              unit: Schema.String,
+            }),
+            lastDiscoveryStatus: Schema.Union([
+              Schema.Literals([
+                "UNSPECIFIED",
+                "PENDING",
+                "DISCOVERING",
+                "FAILED",
+                "SUCCEEDED",
+              ]),
+              Schema.String,
             ]),
-            Schema.String,
-          ]),
-          lastDiscoveryStatusV2: Schema.Union([
-            Schema.Literals([
-              "UNSPECIFIED",
-              "PENDING",
-              "DISCOVERING",
-              "FAILED",
-              "SUCCEEDED",
+            lastDiscoveryStatusV2: Schema.Union([
+              Schema.Literals([
+                "UNSPECIFIED",
+                "PENDING",
+                "DISCOVERING",
+                "FAILED",
+                "SUCCEEDED",
+              ]),
+              Schema.String,
             ]),
-            Schema.String,
-          ]),
-          regions: Schema.Array(Schema.String),
-          credentialsGoodSince: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          credentialsMissingSince: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          credentialsRejectedSince: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          discoveryMessage: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          discoveryMessageV2: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          inUseBy: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.String,
-                  clientType: Schema.Literal("MAGIC_WAN_CLOUD_ONRAMP"),
-                  name: Schema.String,
-                }).pipe(
-                  Schema.encodeKeys({
-                    id: "id",
-                    clientType: "client_type",
-                    name: "name",
-                  }),
+            regions: Schema.Array(Schema.String),
+            credentialsGoodSince: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            credentialsMissingSince: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            credentialsRejectedSince: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            discoveryMessage: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            discoveryMessageV2: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            inUseBy: Schema.optional(
+              Schema.Union([
+                Schema.Array(
+                  Schema.Struct({
+                    id: Schema.String,
+                    clientType: Schema.Literal("MAGIC_WAN_CLOUD_ONRAMP"),
+                    name: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      id: "id",
+                      clientType: "client_type",
+                      name: "name",
+                    }),
+                  ),
                 ),
-              ),
-              Schema.Null,
-            ]),
+                Schema.Null,
+              ]),
+            ),
+            lastDiscoveryCompletedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            lastDiscoveryCompletedAtV2: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            lastDiscoveryStartedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            lastDiscoveryStartedAtV2: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            lastUpdated: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              discoveryProgress: "discovery_progress",
+              discoveryProgressV2: "discovery_progress_v2",
+              lastDiscoveryStatus: "last_discovery_status",
+              lastDiscoveryStatusV2: "last_discovery_status_v2",
+              regions: "regions",
+              credentialsGoodSince: "credentials_good_since",
+              credentialsMissingSince: "credentials_missing_since",
+              credentialsRejectedSince: "credentials_rejected_since",
+              discoveryMessage: "discovery_message",
+              discoveryMessageV2: "discovery_message_v2",
+              inUseBy: "in_use_by",
+              lastDiscoveryCompletedAt: "last_discovery_completed_at",
+              lastDiscoveryCompletedAtV2: "last_discovery_completed_at_v2",
+              lastDiscoveryStartedAt: "last_discovery_started_at",
+              lastDiscoveryStartedAtV2: "last_discovery_started_at_v2",
+              lastUpdated: "last_updated",
+            }),
           ),
-          lastDiscoveryCompletedAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          lastDiscoveryCompletedAtV2: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          lastDiscoveryStartedAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          lastDiscoveryStartedAtV2: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          lastUpdated: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            discoveryProgress: "discovery_progress",
-            discoveryProgressV2: "discovery_progress_v2",
-            lastDiscoveryStatus: "last_discovery_status",
-            lastDiscoveryStatusV2: "last_discovery_status_v2",
-            regions: "regions",
-            credentialsGoodSince: "credentials_good_since",
-            credentialsMissingSince: "credentials_missing_since",
-            credentialsRejectedSince: "credentials_rejected_since",
-            discoveryMessage: "discovery_message",
-            discoveryMessageV2: "discovery_message_v2",
-            inUseBy: "in_use_by",
-            lastDiscoveryCompletedAt: "last_discovery_completed_at",
-            lastDiscoveryCompletedAtV2: "last_discovery_completed_at_v2",
-            lastDiscoveryStartedAt: "last_discovery_started_at",
-            lastDiscoveryStartedAtV2: "last_discovery_started_at_v2",
-            lastUpdated: "last_updated",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        cloudType: "cloud_type",
-        friendlyName: "friendly_name",
-        lastUpdated: "last_updated",
-        lifecycleState: "lifecycle_state",
-        state: "state",
-        stateV2: "state_v2",
-        awsArn: "aws_arn",
-        azureSubscriptionId: "azure_subscription_id",
-        azureTenantId: "azure_tenant_id",
-        description: "description",
-        gcpProjectId: "gcp_project_id",
-        gcpServiceAccountEmail: "gcp_service_account_email",
-        status: "status",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<UpdateCloudIntegrationResponse>;
+          Schema.Null,
+        ]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          cloudType: "cloud_type",
+          friendlyName: "friendly_name",
+          lastUpdated: "last_updated",
+          lifecycleState: "lifecycle_state",
+          state: "state",
+          stateV2: "state_v2",
+          awsArn: "aws_arn",
+          azureSubscriptionId: "azure_subscription_id",
+          azureTenantId: "azure_tenant_id",
+          description: "description",
+          gcpProjectId: "gcp_project_id",
+          gcpServiceAccountEmail: "gcp_service_account_email",
+          status: "status",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<UpdateCloudIntegrationResponse>;
 
 export type UpdateCloudIntegrationError =
   | DefaultErrors
@@ -2770,30 +2824,32 @@ export interface PatchCloudIntegrationRequest {
 }
 
 export const PatchCloudIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    providerId: Schema.String.pipe(T.HttpPath("providerId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    awsArn: Schema.optional(Schema.String),
-    azureSubscriptionId: Schema.optional(Schema.String),
-    azureTenantId: Schema.optional(Schema.String),
-    description: Schema.optional(Schema.String),
-    friendlyName: Schema.optional(Schema.String),
-    gcpProjectId: Schema.optional(Schema.String),
-    gcpServiceAccountEmail: Schema.optional(Schema.String),
-  }).pipe(
-    Schema.encodeKeys({
-      awsArn: "aws_arn",
-      azureSubscriptionId: "azure_subscription_id",
-      azureTenantId: "azure_tenant_id",
-      description: "description",
-      friendlyName: "friendly_name",
-      gcpProjectId: "gcp_project_id",
-      gcpServiceAccountEmail: "gcp_service_account_email",
-    }),
-    T.Http({
-      method: "PATCH",
-      path: "/accounts/{account_id}/magic/cloud/providers/{providerId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      providerId: Schema.String.pipe(T.HttpPath("providerId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      awsArn: Schema.optional(Schema.String),
+      azureSubscriptionId: Schema.optional(Schema.String),
+      azureTenantId: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      friendlyName: Schema.optional(Schema.String),
+      gcpProjectId: Schema.optional(Schema.String),
+      gcpServiceAccountEmail: Schema.optional(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        awsArn: "aws_arn",
+        azureSubscriptionId: "azure_subscription_id",
+        azureTenantId: "azure_tenant_id",
+        description: "description",
+        friendlyName: "friendly_name",
+        gcpProjectId: "gcp_project_id",
+        gcpServiceAccountEmail: "gcp_service_account_email",
+      }),
+      T.Http({
+        method: "PATCH",
+        path: "/accounts/{account_id}/magic/cloud/providers/{providerId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<PatchCloudIntegrationRequest>;
 
 export interface PatchCloudIntegrationResponse {
@@ -2857,175 +2913,177 @@ export interface PatchCloudIntegrationResponse {
 }
 
 export const PatchCloudIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    cloudType: Schema.Union([
-      Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
-      Schema.String,
-    ]),
-    friendlyName: Schema.String,
-    lastUpdated: Schema.String,
-    lifecycleState: Schema.Union([
-      Schema.Literals(["ACTIVE", "PENDING_SETUP", "RETIRED"]),
-      Schema.String,
-    ]),
-    state: Schema.Union([
-      Schema.Literals([
-        "UNSPECIFIED",
-        "PENDING",
-        "DISCOVERING",
-        "FAILED",
-        "SUCCEEDED",
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      cloudType: Schema.Union([
+        Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
+        Schema.String,
       ]),
-      Schema.String,
-    ]),
-    stateV2: Schema.Union([
-      Schema.Literals([
-        "UNSPECIFIED",
-        "PENDING",
-        "DISCOVERING",
-        "FAILED",
-        "SUCCEEDED",
+      friendlyName: Schema.String,
+      lastUpdated: Schema.String,
+      lifecycleState: Schema.Union([
+        Schema.Literals(["ACTIVE", "PENDING_SETUP", "RETIRED"]),
+        Schema.String,
       ]),
-      Schema.String,
-    ]),
-    awsArn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    azureSubscriptionId: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    azureTenantId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    gcpProjectId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    gcpServiceAccountEmail: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    status: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          discoveryProgress: Schema.Struct({
-            done: Schema.Number,
-            total: Schema.Number,
-            unit: Schema.String,
-          }),
-          discoveryProgressV2: Schema.Struct({
-            done: Schema.Number,
-            total: Schema.Number,
-            unit: Schema.String,
-          }),
-          lastDiscoveryStatus: Schema.Union([
-            Schema.Literals([
-              "UNSPECIFIED",
-              "PENDING",
-              "DISCOVERING",
-              "FAILED",
-              "SUCCEEDED",
+      state: Schema.Union([
+        Schema.Literals([
+          "UNSPECIFIED",
+          "PENDING",
+          "DISCOVERING",
+          "FAILED",
+          "SUCCEEDED",
+        ]),
+        Schema.String,
+      ]),
+      stateV2: Schema.Union([
+        Schema.Literals([
+          "UNSPECIFIED",
+          "PENDING",
+          "DISCOVERING",
+          "FAILED",
+          "SUCCEEDED",
+        ]),
+        Schema.String,
+      ]),
+      awsArn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      azureSubscriptionId: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      azureTenantId: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      gcpProjectId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      gcpServiceAccountEmail: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            discoveryProgress: Schema.Struct({
+              done: Schema.Number,
+              total: Schema.Number,
+              unit: Schema.String,
+            }),
+            discoveryProgressV2: Schema.Struct({
+              done: Schema.Number,
+              total: Schema.Number,
+              unit: Schema.String,
+            }),
+            lastDiscoveryStatus: Schema.Union([
+              Schema.Literals([
+                "UNSPECIFIED",
+                "PENDING",
+                "DISCOVERING",
+                "FAILED",
+                "SUCCEEDED",
+              ]),
+              Schema.String,
             ]),
-            Schema.String,
-          ]),
-          lastDiscoveryStatusV2: Schema.Union([
-            Schema.Literals([
-              "UNSPECIFIED",
-              "PENDING",
-              "DISCOVERING",
-              "FAILED",
-              "SUCCEEDED",
+            lastDiscoveryStatusV2: Schema.Union([
+              Schema.Literals([
+                "UNSPECIFIED",
+                "PENDING",
+                "DISCOVERING",
+                "FAILED",
+                "SUCCEEDED",
+              ]),
+              Schema.String,
             ]),
-            Schema.String,
-          ]),
-          regions: Schema.Array(Schema.String),
-          credentialsGoodSince: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          credentialsMissingSince: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          credentialsRejectedSince: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          discoveryMessage: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          discoveryMessageV2: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          inUseBy: Schema.optional(
-            Schema.Union([
-              Schema.Array(
-                Schema.Struct({
-                  id: Schema.String,
-                  clientType: Schema.Literal("MAGIC_WAN_CLOUD_ONRAMP"),
-                  name: Schema.String,
-                }).pipe(
-                  Schema.encodeKeys({
-                    id: "id",
-                    clientType: "client_type",
-                    name: "name",
-                  }),
+            regions: Schema.Array(Schema.String),
+            credentialsGoodSince: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            credentialsMissingSince: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            credentialsRejectedSince: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            discoveryMessage: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            discoveryMessageV2: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            inUseBy: Schema.optional(
+              Schema.Union([
+                Schema.Array(
+                  Schema.Struct({
+                    id: Schema.String,
+                    clientType: Schema.Literal("MAGIC_WAN_CLOUD_ONRAMP"),
+                    name: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      id: "id",
+                      clientType: "client_type",
+                      name: "name",
+                    }),
+                  ),
                 ),
-              ),
-              Schema.Null,
-            ]),
+                Schema.Null,
+              ]),
+            ),
+            lastDiscoveryCompletedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            lastDiscoveryCompletedAtV2: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            lastDiscoveryStartedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            lastDiscoveryStartedAtV2: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            lastUpdated: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              discoveryProgress: "discovery_progress",
+              discoveryProgressV2: "discovery_progress_v2",
+              lastDiscoveryStatus: "last_discovery_status",
+              lastDiscoveryStatusV2: "last_discovery_status_v2",
+              regions: "regions",
+              credentialsGoodSince: "credentials_good_since",
+              credentialsMissingSince: "credentials_missing_since",
+              credentialsRejectedSince: "credentials_rejected_since",
+              discoveryMessage: "discovery_message",
+              discoveryMessageV2: "discovery_message_v2",
+              inUseBy: "in_use_by",
+              lastDiscoveryCompletedAt: "last_discovery_completed_at",
+              lastDiscoveryCompletedAtV2: "last_discovery_completed_at_v2",
+              lastDiscoveryStartedAt: "last_discovery_started_at",
+              lastDiscoveryStartedAtV2: "last_discovery_started_at_v2",
+              lastUpdated: "last_updated",
+            }),
           ),
-          lastDiscoveryCompletedAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          lastDiscoveryCompletedAtV2: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          lastDiscoveryStartedAt: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          lastDiscoveryStartedAtV2: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          lastUpdated: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            discoveryProgress: "discovery_progress",
-            discoveryProgressV2: "discovery_progress_v2",
-            lastDiscoveryStatus: "last_discovery_status",
-            lastDiscoveryStatusV2: "last_discovery_status_v2",
-            regions: "regions",
-            credentialsGoodSince: "credentials_good_since",
-            credentialsMissingSince: "credentials_missing_since",
-            credentialsRejectedSince: "credentials_rejected_since",
-            discoveryMessage: "discovery_message",
-            discoveryMessageV2: "discovery_message_v2",
-            inUseBy: "in_use_by",
-            lastDiscoveryCompletedAt: "last_discovery_completed_at",
-            lastDiscoveryCompletedAtV2: "last_discovery_completed_at_v2",
-            lastDiscoveryStartedAt: "last_discovery_started_at",
-            lastDiscoveryStartedAtV2: "last_discovery_started_at_v2",
-            lastUpdated: "last_updated",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        cloudType: "cloud_type",
-        friendlyName: "friendly_name",
-        lastUpdated: "last_updated",
-        lifecycleState: "lifecycle_state",
-        state: "state",
-        stateV2: "state_v2",
-        awsArn: "aws_arn",
-        azureSubscriptionId: "azure_subscription_id",
-        azureTenantId: "azure_tenant_id",
-        description: "description",
-        gcpProjectId: "gcp_project_id",
-        gcpServiceAccountEmail: "gcp_service_account_email",
-        status: "status",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchCloudIntegrationResponse>;
+          Schema.Null,
+        ]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          cloudType: "cloud_type",
+          friendlyName: "friendly_name",
+          lastUpdated: "last_updated",
+          lifecycleState: "lifecycle_state",
+          state: "state",
+          stateV2: "state_v2",
+          awsArn: "aws_arn",
+          azureSubscriptionId: "azure_subscription_id",
+          azureTenantId: "azure_tenant_id",
+          description: "description",
+          gcpProjectId: "gcp_project_id",
+          gcpServiceAccountEmail: "gcp_service_account_email",
+          status: "status",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<PatchCloudIntegrationResponse>;
 
 export type PatchCloudIntegrationError =
   | DefaultErrors
@@ -3050,14 +3108,16 @@ export interface DeleteCloudIntegrationRequest {
 }
 
 export const DeleteCloudIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    providerId: Schema.String.pipe(T.HttpPath("providerId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/magic/cloud/providers/{providerId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      providerId: Schema.String.pipe(T.HttpPath("providerId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/magic/cloud/providers/{providerId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<DeleteCloudIntegrationRequest>;
 
 export interface DeleteCloudIntegrationResponse {
@@ -3065,10 +3125,10 @@ export interface DeleteCloudIntegrationResponse {
 }
 
 export const DeleteCloudIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-  }).pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+    }).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<DeleteCloudIntegrationResponse>;
 
 export type DeleteCloudIntegrationError =
@@ -3097,15 +3157,17 @@ export interface DiscoverCloudIntegrationRequest {
 }
 
 export const DiscoverCloudIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    providerId: Schema.String.pipe(T.HttpPath("providerId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    v2: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("v2")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/magic/cloud/providers/{providerId}/discover",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      providerId: Schema.String.pipe(T.HttpPath("providerId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      v2: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("v2")),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/magic/cloud/providers/{providerId}/discover",
+      }),
+    ),
   ) as unknown as Schema.Schema<DiscoverCloudIntegrationRequest>;
 
 export interface DiscoverCloudIntegrationResponse {
@@ -3457,457 +3519,459 @@ export interface DiscoverCloudIntegrationResponse {
 }
 
 export const DiscoverCloudIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Union([
-          Schema.Literals([
-            "1001",
-            "1002",
-            "1003",
-            "1004",
-            "1005",
-            "1006",
-            "1007",
-            "1008",
-            "1009",
-            "1010",
-            "1011",
-            "1012",
-            "1013",
-            "1014",
-            "1015",
-            "1016",
-            "1017",
-            "1018",
-            "2001",
-            "2002",
-            "2003",
-            "2004",
-            "2005",
-            "2006",
-            "2007",
-            "2008",
-            "2009",
-            "2010",
-            "2011",
-            "2012",
-            "2013",
-            "2014",
-            "2015",
-            "2016",
-            "2017",
-            "2018",
-            "2019",
-            "2020",
-            "2021",
-            "2022",
-            "3001",
-            "3002",
-            "3003",
-            "3004",
-            "3005",
-            "3006",
-            "3007",
-            "4001",
-            "4002",
-            "4003",
-            "4004",
-            "4005",
-            "4006",
-            "4007",
-            "4008",
-            "4009",
-            "4010",
-            "4011",
-            "4012",
-            "4013",
-            "4014",
-            "4015",
-            "4016",
-            "4017",
-            "4018",
-            "4019",
-            "4020",
-            "4021",
-            "4022",
-            "4023",
-            "5001",
-            "5002",
-            "5003",
-            "5004",
-            "102000",
-            "102001",
-            "102002",
-            "102003",
-            "102004",
-            "102005",
-            "102006",
-            "102007",
-            "102008",
-            "102009",
-            "102010",
-            "102011",
-            "102012",
-            "102013",
-            "102014",
-            "102015",
-            "102016",
-            "102017",
-            "102018",
-            "102019",
-            "102020",
-            "102021",
-            "102022",
-            "102023",
-            "102024",
-            "102025",
-            "102026",
-            "102027",
-            "102028",
-            "102029",
-            "102030",
-            "102031",
-            "102032",
-            "102033",
-            "102034",
-            "102035",
-            "102036",
-            "102037",
-            "102038",
-            "102039",
-            "102040",
-            "102041",
-            "102042",
-            "102043",
-            "102044",
-            "102045",
-            "102046",
-            "102047",
-            "102048",
-            "102049",
-            "102050",
-            "102051",
-            "102052",
-            "102053",
-            "102054",
-            "102055",
-            "102056",
-            "102057",
-            "102058",
-            "102059",
-            "102060",
-            "102061",
-            "102062",
-            "102063",
-            "102064",
-            "102065",
-            "102066",
-            "102067",
-            "102068",
-            "102069",
-            "102070",
-            "102071",
-            "102072",
-            "103001",
-            "103002",
-            "103003",
-            "103004",
-            "103005",
-            "103006",
-            "103007",
-            "103008",
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      errors: Schema.Array(
+        Schema.Struct({
+          code: Schema.Union([
+            Schema.Literals([
+              "1001",
+              "1002",
+              "1003",
+              "1004",
+              "1005",
+              "1006",
+              "1007",
+              "1008",
+              "1009",
+              "1010",
+              "1011",
+              "1012",
+              "1013",
+              "1014",
+              "1015",
+              "1016",
+              "1017",
+              "1018",
+              "2001",
+              "2002",
+              "2003",
+              "2004",
+              "2005",
+              "2006",
+              "2007",
+              "2008",
+              "2009",
+              "2010",
+              "2011",
+              "2012",
+              "2013",
+              "2014",
+              "2015",
+              "2016",
+              "2017",
+              "2018",
+              "2019",
+              "2020",
+              "2021",
+              "2022",
+              "3001",
+              "3002",
+              "3003",
+              "3004",
+              "3005",
+              "3006",
+              "3007",
+              "4001",
+              "4002",
+              "4003",
+              "4004",
+              "4005",
+              "4006",
+              "4007",
+              "4008",
+              "4009",
+              "4010",
+              "4011",
+              "4012",
+              "4013",
+              "4014",
+              "4015",
+              "4016",
+              "4017",
+              "4018",
+              "4019",
+              "4020",
+              "4021",
+              "4022",
+              "4023",
+              "5001",
+              "5002",
+              "5003",
+              "5004",
+              "102000",
+              "102001",
+              "102002",
+              "102003",
+              "102004",
+              "102005",
+              "102006",
+              "102007",
+              "102008",
+              "102009",
+              "102010",
+              "102011",
+              "102012",
+              "102013",
+              "102014",
+              "102015",
+              "102016",
+              "102017",
+              "102018",
+              "102019",
+              "102020",
+              "102021",
+              "102022",
+              "102023",
+              "102024",
+              "102025",
+              "102026",
+              "102027",
+              "102028",
+              "102029",
+              "102030",
+              "102031",
+              "102032",
+              "102033",
+              "102034",
+              "102035",
+              "102036",
+              "102037",
+              "102038",
+              "102039",
+              "102040",
+              "102041",
+              "102042",
+              "102043",
+              "102044",
+              "102045",
+              "102046",
+              "102047",
+              "102048",
+              "102049",
+              "102050",
+              "102051",
+              "102052",
+              "102053",
+              "102054",
+              "102055",
+              "102056",
+              "102057",
+              "102058",
+              "102059",
+              "102060",
+              "102061",
+              "102062",
+              "102063",
+              "102064",
+              "102065",
+              "102066",
+              "102067",
+              "102068",
+              "102069",
+              "102070",
+              "102071",
+              "102072",
+              "103001",
+              "103002",
+              "103003",
+              "103004",
+              "103005",
+              "103006",
+              "103007",
+              "103008",
+            ]),
+            Schema.String,
           ]),
-          Schema.String,
-        ]),
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          meta: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                l10nKey: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                loggableError: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                templateData: Schema.optional(
+                  Schema.Union([Schema.Unknown, Schema.Null]),
+                ),
+                traceId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  l10nKey: "l10n_key",
+                  loggableError: "loggable_error",
+                  templateData: "template_data",
+                  traceId: "trace_id",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                parameter: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                parameterValueIndex: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  parameter: "parameter",
+                  parameterValueIndex: "parameter_value_index",
+                  pointer: "pointer",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            meta: "meta",
+            source: "source",
+          }),
         ),
-        meta: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              l10nKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              loggableError: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              templateData: Schema.optional(
-                Schema.Union([Schema.Unknown, Schema.Null]),
-              ),
-              traceId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                l10nKey: "l10n_key",
-                loggableError: "loggable_error",
-                templateData: "template_data",
-                traceId: "trace_id",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              parameter: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              parameterValueIndex: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                parameter: "parameter",
-                parameterValueIndex: "parameter_value_index",
-                pointer: "pointer",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          meta: "meta",
-          source: "source",
-        }),
       ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Union([
-          Schema.Literals([
-            "1001",
-            "1002",
-            "1003",
-            "1004",
-            "1005",
-            "1006",
-            "1007",
-            "1008",
-            "1009",
-            "1010",
-            "1011",
-            "1012",
-            "1013",
-            "1014",
-            "1015",
-            "1016",
-            "1017",
-            "1018",
-            "2001",
-            "2002",
-            "2003",
-            "2004",
-            "2005",
-            "2006",
-            "2007",
-            "2008",
-            "2009",
-            "2010",
-            "2011",
-            "2012",
-            "2013",
-            "2014",
-            "2015",
-            "2016",
-            "2017",
-            "2018",
-            "2019",
-            "2020",
-            "2021",
-            "2022",
-            "3001",
-            "3002",
-            "3003",
-            "3004",
-            "3005",
-            "3006",
-            "3007",
-            "4001",
-            "4002",
-            "4003",
-            "4004",
-            "4005",
-            "4006",
-            "4007",
-            "4008",
-            "4009",
-            "4010",
-            "4011",
-            "4012",
-            "4013",
-            "4014",
-            "4015",
-            "4016",
-            "4017",
-            "4018",
-            "4019",
-            "4020",
-            "4021",
-            "4022",
-            "4023",
-            "5001",
-            "5002",
-            "5003",
-            "5004",
-            "102000",
-            "102001",
-            "102002",
-            "102003",
-            "102004",
-            "102005",
-            "102006",
-            "102007",
-            "102008",
-            "102009",
-            "102010",
-            "102011",
-            "102012",
-            "102013",
-            "102014",
-            "102015",
-            "102016",
-            "102017",
-            "102018",
-            "102019",
-            "102020",
-            "102021",
-            "102022",
-            "102023",
-            "102024",
-            "102025",
-            "102026",
-            "102027",
-            "102028",
-            "102029",
-            "102030",
-            "102031",
-            "102032",
-            "102033",
-            "102034",
-            "102035",
-            "102036",
-            "102037",
-            "102038",
-            "102039",
-            "102040",
-            "102041",
-            "102042",
-            "102043",
-            "102044",
-            "102045",
-            "102046",
-            "102047",
-            "102048",
-            "102049",
-            "102050",
-            "102051",
-            "102052",
-            "102053",
-            "102054",
-            "102055",
-            "102056",
-            "102057",
-            "102058",
-            "102059",
-            "102060",
-            "102061",
-            "102062",
-            "102063",
-            "102064",
-            "102065",
-            "102066",
-            "102067",
-            "102068",
-            "102069",
-            "102070",
-            "102071",
-            "102072",
-            "103001",
-            "103002",
-            "103003",
-            "103004",
-            "103005",
-            "103006",
-            "103007",
-            "103008",
+      messages: Schema.Array(
+        Schema.Struct({
+          code: Schema.Union([
+            Schema.Literals([
+              "1001",
+              "1002",
+              "1003",
+              "1004",
+              "1005",
+              "1006",
+              "1007",
+              "1008",
+              "1009",
+              "1010",
+              "1011",
+              "1012",
+              "1013",
+              "1014",
+              "1015",
+              "1016",
+              "1017",
+              "1018",
+              "2001",
+              "2002",
+              "2003",
+              "2004",
+              "2005",
+              "2006",
+              "2007",
+              "2008",
+              "2009",
+              "2010",
+              "2011",
+              "2012",
+              "2013",
+              "2014",
+              "2015",
+              "2016",
+              "2017",
+              "2018",
+              "2019",
+              "2020",
+              "2021",
+              "2022",
+              "3001",
+              "3002",
+              "3003",
+              "3004",
+              "3005",
+              "3006",
+              "3007",
+              "4001",
+              "4002",
+              "4003",
+              "4004",
+              "4005",
+              "4006",
+              "4007",
+              "4008",
+              "4009",
+              "4010",
+              "4011",
+              "4012",
+              "4013",
+              "4014",
+              "4015",
+              "4016",
+              "4017",
+              "4018",
+              "4019",
+              "4020",
+              "4021",
+              "4022",
+              "4023",
+              "5001",
+              "5002",
+              "5003",
+              "5004",
+              "102000",
+              "102001",
+              "102002",
+              "102003",
+              "102004",
+              "102005",
+              "102006",
+              "102007",
+              "102008",
+              "102009",
+              "102010",
+              "102011",
+              "102012",
+              "102013",
+              "102014",
+              "102015",
+              "102016",
+              "102017",
+              "102018",
+              "102019",
+              "102020",
+              "102021",
+              "102022",
+              "102023",
+              "102024",
+              "102025",
+              "102026",
+              "102027",
+              "102028",
+              "102029",
+              "102030",
+              "102031",
+              "102032",
+              "102033",
+              "102034",
+              "102035",
+              "102036",
+              "102037",
+              "102038",
+              "102039",
+              "102040",
+              "102041",
+              "102042",
+              "102043",
+              "102044",
+              "102045",
+              "102046",
+              "102047",
+              "102048",
+              "102049",
+              "102050",
+              "102051",
+              "102052",
+              "102053",
+              "102054",
+              "102055",
+              "102056",
+              "102057",
+              "102058",
+              "102059",
+              "102060",
+              "102061",
+              "102062",
+              "102063",
+              "102064",
+              "102065",
+              "102066",
+              "102067",
+              "102068",
+              "102069",
+              "102070",
+              "102071",
+              "102072",
+              "103001",
+              "103002",
+              "103003",
+              "103004",
+              "103005",
+              "103006",
+              "103007",
+              "103008",
+            ]),
+            Schema.String,
           ]),
-          Schema.String,
-        ]),
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          meta: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                l10nKey: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                loggableError: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                templateData: Schema.optional(
+                  Schema.Union([Schema.Unknown, Schema.Null]),
+                ),
+                traceId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  l10nKey: "l10n_key",
+                  loggableError: "loggable_error",
+                  templateData: "template_data",
+                  traceId: "trace_id",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                parameter: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                parameterValueIndex: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  parameter: "parameter",
+                  parameterValueIndex: "parameter_value_index",
+                  pointer: "pointer",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            meta: "meta",
+            source: "source",
+          }),
         ),
-        meta: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              l10nKey: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              loggableError: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              templateData: Schema.optional(
-                Schema.Union([Schema.Unknown, Schema.Null]),
-              ),
-              traceId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                l10nKey: "l10n_key",
-                loggableError: "loggable_error",
-                templateData: "template_data",
-                traceId: "trace_id",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              parameter: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              parameterValueIndex: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                parameter: "parameter",
-                parameterValueIndex: "parameter_value_index",
-                pointer: "pointer",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          meta: "meta",
-          source: "source",
-        }),
       ),
-    ),
-    success: Schema.Boolean,
-  }) as unknown as Schema.Schema<DiscoverCloudIntegrationResponse>;
+      success: Schema.Boolean,
+    }),
+  ) as unknown as Schema.Schema<DiscoverCloudIntegrationResponse>;
 
 export type DiscoverCloudIntegrationError =
   | DefaultErrors
@@ -3943,22 +4007,24 @@ export interface GetOnRampRequest {
   vpcs?: boolean;
 }
 
-export const GetOnRampRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  onrampId: Schema.String.pipe(T.HttpPath("onrampId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  plannedResources: Schema.optional(Schema.Boolean).pipe(
-    T.HttpQuery("planned_resources"),
+export const GetOnRampRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    onrampId: Schema.String.pipe(T.HttpPath("onrampId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    plannedResources: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("planned_resources"),
+    ),
+    postApplyResources: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("post_apply_resources"),
+    ),
+    status: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("status")),
+    vpcs: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("vpcs")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/magic/cloud/onramps/{onrampId}",
+    }),
   ),
-  postApplyResources: Schema.optional(Schema.Boolean).pipe(
-    T.HttpQuery("post_apply_resources"),
-  ),
-  status: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("status")),
-  vpcs: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("vpcs")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/magic/cloud/onramps/{onrampId}",
-  }),
 ) as unknown as Schema.Schema<GetOnRampRequest>;
 
 export interface GetOnRampResponse {
@@ -4112,511 +4178,8 @@ export interface GetOnRampResponse {
   vpcsByIdUnavailable?: string[] | null;
 }
 
-export const GetOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
-  cloudType: Schema.Union([
-    Schema.Literals(["AWS", "AZURE", "GOOGLE"]),
-    Schema.String,
-  ]),
-  dynamicRouting: Schema.Boolean,
-  installRoutesInCloud: Schema.Boolean,
-  installRoutesInMagicWan: Schema.Boolean,
-  name: Schema.String,
-  type: Schema.Union([
-    Schema.Literals(["OnrampTypeSingle", "OnrampTypeHub"]),
-    Schema.String,
-  ]),
-  updatedAt: Schema.String,
-  attachedHubs: Schema.optional(
-    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-  ),
-  attachedVpcs: Schema.optional(
-    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-  ),
-  cloudAsn: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  hub: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  lastAppliedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  lastExportedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  lastPlannedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  manageHubToHubAttachments: Schema.optional(
-    Schema.Union([Schema.Boolean, Schema.Null]),
-  ),
-  manageVpcToHubAttachments: Schema.optional(
-    Schema.Union([Schema.Boolean, Schema.Null]),
-  ),
-  plannedMonthlyCostEstimate: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        currency: Schema.String,
-        currentMonthlyCost: Schema.Number,
-        diff: Schema.Number,
-        proposedMonthlyCost: Schema.Number,
-      }).pipe(
-        Schema.encodeKeys({
-          currency: "currency",
-          currentMonthlyCost: "current_monthly_cost",
-          diff: "diff",
-          proposedMonthlyCost: "proposed_monthly_cost",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  plannedResources: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          diff: Schema.Struct({
-            diff: Schema.String,
-            leftDescription: Schema.String,
-            leftYaml: Schema.String,
-            rightDescription: Schema.String,
-            rightYaml: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({
-              diff: "diff",
-              leftDescription: "left_description",
-              leftYaml: "left_yaml",
-              rightDescription: "right_description",
-              rightYaml: "right_yaml",
-            }),
-          ),
-          keysRequireReplace: Schema.Array(Schema.String),
-          monthlyCostEstimateDiff: Schema.Struct({
-            currency: Schema.String,
-            currentMonthlyCost: Schema.Number,
-            diff: Schema.Number,
-            proposedMonthlyCost: Schema.Number,
-          }).pipe(
-            Schema.encodeKeys({
-              currency: "currency",
-              currentMonthlyCost: "current_monthly_cost",
-              diff: "diff",
-              proposedMonthlyCost: "proposed_monthly_cost",
-            }),
-          ),
-          plannedAction: Schema.Union([
-            Schema.Literals([
-              "no_op",
-              "create",
-              "update",
-              "replace",
-              "destroy",
-            ]),
-            Schema.String,
-          ]),
-          resource: Schema.Struct({
-            id: Schema.String,
-            cloudType: Schema.Union([
-              Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
-              Schema.String,
-            ]),
-            detail: Schema.String,
-            name: Schema.String,
-            resourceType: Schema.Union([
-              Schema.Literals([
-                "aws_customer_gateway",
-                "aws_egress_only_internet_gateway",
-                "aws_internet_gateway",
-                "aws_instance",
-                "aws_network_interface",
-                "aws_route",
-                "aws_route_table",
-                "aws_route_table_association",
-                "aws_subnet",
-                "aws_vpc",
-                "aws_vpc_ipv4_cidr_block_association",
-                "aws_vpn_connection",
-                "aws_vpn_connection_route",
-                "aws_vpn_gateway",
-                "aws_security_group",
-                "aws_vpc_security_group_ingress_rule",
-                "aws_vpc_security_group_egress_rule",
-                "aws_ec2_managed_prefix_list",
-                "aws_ec2_transit_gateway",
-                "aws_ec2_transit_gateway_prefix_list_reference",
-                "aws_ec2_transit_gateway_vpc_attachment",
-                "azurerm_application_security_group",
-                "azurerm_lb",
-                "azurerm_lb_backend_address_pool",
-                "azurerm_lb_nat_pool",
-                "azurerm_lb_nat_rule",
-                "azurerm_lb_rule",
-                "azurerm_local_network_gateway",
-                "azurerm_network_interface",
-                "azurerm_network_interface_application_security_group_association",
-                "azurerm_network_interface_backend_address_pool_association",
-                "azurerm_network_interface_security_group_association",
-                "azurerm_network_security_group",
-                "azurerm_public_ip",
-                "azurerm_route",
-                "azurerm_route_table",
-                "azurerm_subnet",
-                "azurerm_subnet_route_table_association",
-                "azurerm_virtual_machine",
-                "azurerm_virtual_network_gateway_connection",
-                "azurerm_virtual_network",
-                "azurerm_virtual_network_gateway",
-                "google_compute_network",
-                "google_compute_subnetwork",
-                "google_compute_vpn_gateway",
-                "google_compute_vpn_tunnel",
-                "google_compute_route",
-                "google_compute_address",
-                "google_compute_global_address",
-                "google_compute_router",
-                "google_compute_interconnect_attachment",
-                "google_compute_ha_vpn_gateway",
-                "google_compute_forwarding_rule",
-                "google_compute_network_firewall_policy",
-                "google_compute_network_firewall_policy_rule",
-                "cloudflare_static_route",
-                "cloudflare_ipsec_tunnel",
-              ]),
-              Schema.String,
-            ]),
-            title: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({
-              id: "id",
-              cloudType: "cloud_type",
-              detail: "detail",
-              name: "name",
-              resourceType: "resource_type",
-              title: "title",
-            }),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            diff: "diff",
-            keysRequireReplace: "keys_require_replace",
-            monthlyCostEstimateDiff: "monthly_cost_estimate_diff",
-            plannedAction: "planned_action",
-            resource: "resource",
-          }),
-        ),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  plannedResourcesUnavailable: Schema.optional(
-    Schema.Union([Schema.Boolean, Schema.Null]),
-  ),
-  postApplyMonthlyCostEstimate: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        currency: Schema.String,
-        monthlyCost: Schema.Number,
-      }).pipe(
-        Schema.encodeKeys({
-          currency: "currency",
-          monthlyCost: "monthly_cost",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  postApplyResources: Schema.optional(
-    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-  ),
-  postApplyResourcesUnavailable: Schema.optional(
-    Schema.Union([Schema.Boolean, Schema.Null]),
-  ),
-  region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  status: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        applyProgress: Schema.Struct({
-          done: Schema.Number,
-          total: Schema.Number,
-        }),
-        lifecycleState: Schema.Union([
-          Schema.Literals([
-            "OnrampNeedsApply",
-            "OnrampPendingPlan",
-            "OnrampPlanning",
-            "OnrampPlanFailed",
-            "OnrampPendingApproval",
-            "OnrampPendingApply",
-            "OnrampApplying",
-            "OnrampApplyFailed",
-            "OnrampActive",
-            "OnrampPendingDestroy",
-            "OnrampDestroying",
-            "OnrampDestroyFailed",
-          ]),
-          Schema.String,
-        ]),
-        planProgress: Schema.Struct({
-          done: Schema.Number,
-          total: Schema.Number,
-        }),
-        routes: Schema.Array(Schema.String),
-        tunnels: Schema.Array(Schema.String),
-        lifecycleErrors: Schema.optional(
-          Schema.Union([
-            Schema.Record(Schema.String, Schema.Unknown),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          applyProgress: "apply_progress",
-          lifecycleState: "lifecycle_state",
-          planProgress: "plan_progress",
-          routes: "routes",
-          tunnels: "tunnels",
-          lifecycleErrors: "lifecycle_errors",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  vpc: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  vpcsById: Schema.optional(
-    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-  ),
-  vpcsByIdUnavailable: Schema.optional(
-    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-  ),
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      cloudType: "cloud_type",
-      dynamicRouting: "dynamic_routing",
-      installRoutesInCloud: "install_routes_in_cloud",
-      installRoutesInMagicWan: "install_routes_in_magic_wan",
-      name: "name",
-      type: "type",
-      updatedAt: "updated_at",
-      attachedHubs: "attached_hubs",
-      attachedVpcs: "attached_vpcs",
-      cloudAsn: "cloud_asn",
-      description: "description",
-      hub: "hub",
-      lastAppliedAt: "last_applied_at",
-      lastExportedAt: "last_exported_at",
-      lastPlannedAt: "last_planned_at",
-      manageHubToHubAttachments: "manage_hub_to_hub_attachments",
-      manageVpcToHubAttachments: "manage_vpc_to_hub_attachments",
-      plannedMonthlyCostEstimate: "planned_monthly_cost_estimate",
-      plannedResources: "planned_resources",
-      plannedResourcesUnavailable: "planned_resources_unavailable",
-      postApplyMonthlyCostEstimate: "post_apply_monthly_cost_estimate",
-      postApplyResources: "post_apply_resources",
-      postApplyResourcesUnavailable: "post_apply_resources_unavailable",
-      region: "region",
-      status: "status",
-      vpc: "vpc",
-      vpcsById: "vpcs_by_id",
-      vpcsByIdUnavailable: "vpcs_by_id_unavailable",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetOnRampResponse>;
-
-export type GetOnRampError =
-  | DefaultErrors
-  | FeatureNotEnabled
-  | Forbidden
-  | OnRampNotFound;
-
-export const getOnRamp: API.OperationMethod<
-  GetOnRampRequest,
-  GetOnRampResponse,
-  GetOnRampError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetOnRampRequest,
-  output: GetOnRampResponse,
-  errors: [FeatureNotEnabled, Forbidden, OnRampNotFound],
-}));
-
-export interface ListOnRampsRequest {
-  /** Path param */
-  accountId: string;
-  /** Query param */
-  desc?: boolean;
-  /** Query param: One of ["updated_at", "id", "cloud_type", "name"]. */
-  orderBy?: string;
-  /** Query param */
-  status?: boolean;
-  /** Query param */
-  vpcs?: boolean;
-}
-
-export const ListOnRampsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  desc: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("desc")),
-  orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("order_by")),
-  status: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("status")),
-  vpcs: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("vpcs")),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/magic/cloud/onramps" }),
-) as unknown as Schema.Schema<ListOnRampsRequest>;
-
-export interface ListOnRampsResponse {
-  result: {
-    id: string;
-    cloudType: "AWS" | "AZURE" | "GOOGLE" | (string & {});
-    dynamicRouting: boolean;
-    installRoutesInCloud: boolean;
-    installRoutesInMagicWan: boolean;
-    name: string;
-    type: "OnrampTypeSingle" | "OnrampTypeHub" | (string & {});
-    updatedAt: string;
-    attachedHubs?: string[] | null;
-    attachedVpcs?: string[] | null;
-    cloudAsn?: number | null;
-    description?: string | null;
-    hub?: string | null;
-    lastAppliedAt?: string | null;
-    lastExportedAt?: string | null;
-    lastPlannedAt?: string | null;
-    manageHubToHubAttachments?: boolean | null;
-    manageVpcToHubAttachments?: boolean | null;
-    plannedMonthlyCostEstimate?: {
-      currency: string;
-      currentMonthlyCost: number;
-      diff: number;
-      proposedMonthlyCost: number;
-    } | null;
-    plannedResources?:
-      | {
-          diff: {
-            diff: string;
-            leftDescription: string;
-            leftYaml: string;
-            rightDescription: string;
-            rightYaml: string;
-          };
-          keysRequireReplace: string[];
-          monthlyCostEstimateDiff: {
-            currency: string;
-            currentMonthlyCost: number;
-            diff: number;
-            proposedMonthlyCost: number;
-          };
-          plannedAction:
-            | "no_op"
-            | "create"
-            | "update"
-            | "replace"
-            | "destroy"
-            | (string & {});
-          resource: {
-            id: string;
-            cloudType:
-              | "AWS"
-              | "AZURE"
-              | "GOOGLE"
-              | "CLOUDFLARE"
-              | (string & {});
-            detail: string;
-            name: string;
-            resourceType:
-              | "aws_customer_gateway"
-              | "aws_egress_only_internet_gateway"
-              | "aws_internet_gateway"
-              | "aws_instance"
-              | "aws_network_interface"
-              | "aws_route"
-              | "aws_route_table"
-              | "aws_route_table_association"
-              | "aws_subnet"
-              | "aws_vpc"
-              | "aws_vpc_ipv4_cidr_block_association"
-              | "aws_vpn_connection"
-              | "aws_vpn_connection_route"
-              | "aws_vpn_gateway"
-              | "aws_security_group"
-              | "aws_vpc_security_group_ingress_rule"
-              | "aws_vpc_security_group_egress_rule"
-              | "aws_ec2_managed_prefix_list"
-              | "aws_ec2_transit_gateway"
-              | "aws_ec2_transit_gateway_prefix_list_reference"
-              | "aws_ec2_transit_gateway_vpc_attachment"
-              | "azurerm_application_security_group"
-              | "azurerm_lb"
-              | "azurerm_lb_backend_address_pool"
-              | "azurerm_lb_nat_pool"
-              | "azurerm_lb_nat_rule"
-              | "azurerm_lb_rule"
-              | "azurerm_local_network_gateway"
-              | "azurerm_network_interface"
-              | "azurerm_network_interface_application_security_group_association"
-              | "azurerm_network_interface_backend_address_pool_association"
-              | "azurerm_network_interface_security_group_association"
-              | "azurerm_network_security_group"
-              | "azurerm_public_ip"
-              | "azurerm_route"
-              | "azurerm_route_table"
-              | "azurerm_subnet"
-              | "azurerm_subnet_route_table_association"
-              | "azurerm_virtual_machine"
-              | "azurerm_virtual_network_gateway_connection"
-              | "azurerm_virtual_network"
-              | "azurerm_virtual_network_gateway"
-              | "google_compute_network"
-              | "google_compute_subnetwork"
-              | "google_compute_vpn_gateway"
-              | "google_compute_vpn_tunnel"
-              | "google_compute_route"
-              | "google_compute_address"
-              | "google_compute_global_address"
-              | "google_compute_router"
-              | "google_compute_interconnect_attachment"
-              | "google_compute_ha_vpn_gateway"
-              | "google_compute_forwarding_rule"
-              | "google_compute_network_firewall_policy"
-              | "google_compute_network_firewall_policy_rule"
-              | "cloudflare_static_route"
-              | "cloudflare_ipsec_tunnel"
-              | (string & {});
-            title: string;
-          };
-        }[]
-      | null;
-    plannedResourcesUnavailable?: boolean | null;
-    postApplyMonthlyCostEstimate?: {
-      currency: string;
-      monthlyCost: number;
-    } | null;
-    postApplyResources?: Record<string, unknown> | null;
-    postApplyResourcesUnavailable?: boolean | null;
-    region?: string | null;
-    status?: {
-      applyProgress: { done: number; total: number };
-      lifecycleState:
-        | "OnrampNeedsApply"
-        | "OnrampPendingPlan"
-        | "OnrampPlanning"
-        | "OnrampPlanFailed"
-        | "OnrampPendingApproval"
-        | "OnrampPendingApply"
-        | "OnrampApplying"
-        | "OnrampApplyFailed"
-        | "OnrampActive"
-        | "OnrampPendingDestroy"
-        | "OnrampDestroying"
-        | "OnrampDestroyFailed"
-        | (string & {});
-      planProgress: { done: number; total: number };
-      routes: string[];
-      tunnels: string[];
-      lifecycleErrors?: Record<string, unknown> | null;
-    } | null;
-    vpc?: string | null;
-    vpcsById?: Record<string, unknown> | null;
-    vpcsByIdUnavailable?: string[] | null;
-  }[];
-}
-
-export const ListOnRampsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
+export const GetOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       id: Schema.String,
       cloudType: Schema.Union([
@@ -4897,41 +4460,568 @@ export const ListOnRampsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       vpcsByIdUnavailable: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          cloudType: "cloud_type",
+          dynamicRouting: "dynamic_routing",
+          installRoutesInCloud: "install_routes_in_cloud",
+          installRoutesInMagicWan: "install_routes_in_magic_wan",
+          name: "name",
+          type: "type",
+          updatedAt: "updated_at",
+          attachedHubs: "attached_hubs",
+          attachedVpcs: "attached_vpcs",
+          cloudAsn: "cloud_asn",
+          description: "description",
+          hub: "hub",
+          lastAppliedAt: "last_applied_at",
+          lastExportedAt: "last_exported_at",
+          lastPlannedAt: "last_planned_at",
+          manageHubToHubAttachments: "manage_hub_to_hub_attachments",
+          manageVpcToHubAttachments: "manage_vpc_to_hub_attachments",
+          plannedMonthlyCostEstimate: "planned_monthly_cost_estimate",
+          plannedResources: "planned_resources",
+          plannedResourcesUnavailable: "planned_resources_unavailable",
+          postApplyMonthlyCostEstimate: "post_apply_monthly_cost_estimate",
+          postApplyResources: "post_apply_resources",
+          postApplyResourcesUnavailable: "post_apply_resources_unavailable",
+          region: "region",
+          status: "status",
+          vpc: "vpc",
+          vpcsById: "vpcs_by_id",
+          vpcsByIdUnavailable: "vpcs_by_id_unavailable",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<GetOnRampResponse>;
+
+export type GetOnRampError =
+  | DefaultErrors
+  | FeatureNotEnabled
+  | Forbidden
+  | OnRampNotFound;
+
+export const getOnRamp: API.OperationMethod<
+  GetOnRampRequest,
+  GetOnRampResponse,
+  GetOnRampError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetOnRampRequest,
+  output: GetOnRampResponse,
+  errors: [FeatureNotEnabled, Forbidden, OnRampNotFound],
+}));
+
+export interface ListOnRampsRequest {
+  /** Path param */
+  accountId: string;
+  /** Query param */
+  desc?: boolean;
+  /** Query param: One of ["updated_at", "id", "cloud_type", "name"]. */
+  orderBy?: string;
+  /** Query param */
+  status?: boolean;
+  /** Query param */
+  vpcs?: boolean;
+}
+
+export const ListOnRampsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      desc: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("desc")),
+      orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("order_by")),
+      status: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("status")),
+      vpcs: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("vpcs")),
     }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        cloudType: "cloud_type",
-        dynamicRouting: "dynamic_routing",
-        installRoutesInCloud: "install_routes_in_cloud",
-        installRoutesInMagicWan: "install_routes_in_magic_wan",
-        name: "name",
-        type: "type",
-        updatedAt: "updated_at",
-        attachedHubs: "attached_hubs",
-        attachedVpcs: "attached_vpcs",
-        cloudAsn: "cloud_asn",
-        description: "description",
-        hub: "hub",
-        lastAppliedAt: "last_applied_at",
-        lastExportedAt: "last_exported_at",
-        lastPlannedAt: "last_planned_at",
-        manageHubToHubAttachments: "manage_hub_to_hub_attachments",
-        manageVpcToHubAttachments: "manage_vpc_to_hub_attachments",
-        plannedMonthlyCostEstimate: "planned_monthly_cost_estimate",
-        plannedResources: "planned_resources",
-        plannedResourcesUnavailable: "planned_resources_unavailable",
-        postApplyMonthlyCostEstimate: "post_apply_monthly_cost_estimate",
-        postApplyResources: "post_apply_resources",
-        postApplyResourcesUnavailable: "post_apply_resources_unavailable",
-        region: "region",
-        status: "status",
-        vpc: "vpc",
-        vpcsById: "vpcs_by_id",
-        vpcsByIdUnavailable: "vpcs_by_id_unavailable",
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/cloud/onramps",
       }),
     ),
-  ),
-}) as unknown as Schema.Schema<ListOnRampsResponse>;
+) as unknown as Schema.Schema<ListOnRampsRequest>;
+
+export interface ListOnRampsResponse {
+  result: {
+    id: string;
+    cloudType: "AWS" | "AZURE" | "GOOGLE" | (string & {});
+    dynamicRouting: boolean;
+    installRoutesInCloud: boolean;
+    installRoutesInMagicWan: boolean;
+    name: string;
+    type: "OnrampTypeSingle" | "OnrampTypeHub" | (string & {});
+    updatedAt: string;
+    attachedHubs?: string[] | null;
+    attachedVpcs?: string[] | null;
+    cloudAsn?: number | null;
+    description?: string | null;
+    hub?: string | null;
+    lastAppliedAt?: string | null;
+    lastExportedAt?: string | null;
+    lastPlannedAt?: string | null;
+    manageHubToHubAttachments?: boolean | null;
+    manageVpcToHubAttachments?: boolean | null;
+    plannedMonthlyCostEstimate?: {
+      currency: string;
+      currentMonthlyCost: number;
+      diff: number;
+      proposedMonthlyCost: number;
+    } | null;
+    plannedResources?:
+      | {
+          diff: {
+            diff: string;
+            leftDescription: string;
+            leftYaml: string;
+            rightDescription: string;
+            rightYaml: string;
+          };
+          keysRequireReplace: string[];
+          monthlyCostEstimateDiff: {
+            currency: string;
+            currentMonthlyCost: number;
+            diff: number;
+            proposedMonthlyCost: number;
+          };
+          plannedAction:
+            | "no_op"
+            | "create"
+            | "update"
+            | "replace"
+            | "destroy"
+            | (string & {});
+          resource: {
+            id: string;
+            cloudType:
+              | "AWS"
+              | "AZURE"
+              | "GOOGLE"
+              | "CLOUDFLARE"
+              | (string & {});
+            detail: string;
+            name: string;
+            resourceType:
+              | "aws_customer_gateway"
+              | "aws_egress_only_internet_gateway"
+              | "aws_internet_gateway"
+              | "aws_instance"
+              | "aws_network_interface"
+              | "aws_route"
+              | "aws_route_table"
+              | "aws_route_table_association"
+              | "aws_subnet"
+              | "aws_vpc"
+              | "aws_vpc_ipv4_cidr_block_association"
+              | "aws_vpn_connection"
+              | "aws_vpn_connection_route"
+              | "aws_vpn_gateway"
+              | "aws_security_group"
+              | "aws_vpc_security_group_ingress_rule"
+              | "aws_vpc_security_group_egress_rule"
+              | "aws_ec2_managed_prefix_list"
+              | "aws_ec2_transit_gateway"
+              | "aws_ec2_transit_gateway_prefix_list_reference"
+              | "aws_ec2_transit_gateway_vpc_attachment"
+              | "azurerm_application_security_group"
+              | "azurerm_lb"
+              | "azurerm_lb_backend_address_pool"
+              | "azurerm_lb_nat_pool"
+              | "azurerm_lb_nat_rule"
+              | "azurerm_lb_rule"
+              | "azurerm_local_network_gateway"
+              | "azurerm_network_interface"
+              | "azurerm_network_interface_application_security_group_association"
+              | "azurerm_network_interface_backend_address_pool_association"
+              | "azurerm_network_interface_security_group_association"
+              | "azurerm_network_security_group"
+              | "azurerm_public_ip"
+              | "azurerm_route"
+              | "azurerm_route_table"
+              | "azurerm_subnet"
+              | "azurerm_subnet_route_table_association"
+              | "azurerm_virtual_machine"
+              | "azurerm_virtual_network_gateway_connection"
+              | "azurerm_virtual_network"
+              | "azurerm_virtual_network_gateway"
+              | "google_compute_network"
+              | "google_compute_subnetwork"
+              | "google_compute_vpn_gateway"
+              | "google_compute_vpn_tunnel"
+              | "google_compute_route"
+              | "google_compute_address"
+              | "google_compute_global_address"
+              | "google_compute_router"
+              | "google_compute_interconnect_attachment"
+              | "google_compute_ha_vpn_gateway"
+              | "google_compute_forwarding_rule"
+              | "google_compute_network_firewall_policy"
+              | "google_compute_network_firewall_policy_rule"
+              | "cloudflare_static_route"
+              | "cloudflare_ipsec_tunnel"
+              | (string & {});
+            title: string;
+          };
+        }[]
+      | null;
+    plannedResourcesUnavailable?: boolean | null;
+    postApplyMonthlyCostEstimate?: {
+      currency: string;
+      monthlyCost: number;
+    } | null;
+    postApplyResources?: Record<string, unknown> | null;
+    postApplyResourcesUnavailable?: boolean | null;
+    region?: string | null;
+    status?: {
+      applyProgress: { done: number; total: number };
+      lifecycleState:
+        | "OnrampNeedsApply"
+        | "OnrampPendingPlan"
+        | "OnrampPlanning"
+        | "OnrampPlanFailed"
+        | "OnrampPendingApproval"
+        | "OnrampPendingApply"
+        | "OnrampApplying"
+        | "OnrampApplyFailed"
+        | "OnrampActive"
+        | "OnrampPendingDestroy"
+        | "OnrampDestroying"
+        | "OnrampDestroyFailed"
+        | (string & {});
+      planProgress: { done: number; total: number };
+      routes: string[];
+      tunnels: string[];
+      lifecycleErrors?: Record<string, unknown> | null;
+    } | null;
+    vpc?: string | null;
+    vpcsById?: Record<string, unknown> | null;
+    vpcsByIdUnavailable?: string[] | null;
+  }[];
+}
+
+export const ListOnRampsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          cloudType: Schema.Union([
+            Schema.Literals(["AWS", "AZURE", "GOOGLE"]),
+            Schema.String,
+          ]),
+          dynamicRouting: Schema.Boolean,
+          installRoutesInCloud: Schema.Boolean,
+          installRoutesInMagicWan: Schema.Boolean,
+          name: Schema.String,
+          type: Schema.Union([
+            Schema.Literals(["OnrampTypeSingle", "OnrampTypeHub"]),
+            Schema.String,
+          ]),
+          updatedAt: Schema.String,
+          attachedHubs: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+          attachedVpcs: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+          cloudAsn: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          hub: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          lastAppliedAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          lastExportedAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          lastPlannedAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          manageHubToHubAttachments: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          manageVpcToHubAttachments: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          plannedMonthlyCostEstimate: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                currency: Schema.String,
+                currentMonthlyCost: Schema.Number,
+                diff: Schema.Number,
+                proposedMonthlyCost: Schema.Number,
+              }).pipe(
+                Schema.encodeKeys({
+                  currency: "currency",
+                  currentMonthlyCost: "current_monthly_cost",
+                  diff: "diff",
+                  proposedMonthlyCost: "proposed_monthly_cost",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          plannedResources: Schema.optional(
+            Schema.Union([
+              Schema.Array(
+                Schema.Struct({
+                  diff: Schema.Struct({
+                    diff: Schema.String,
+                    leftDescription: Schema.String,
+                    leftYaml: Schema.String,
+                    rightDescription: Schema.String,
+                    rightYaml: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      diff: "diff",
+                      leftDescription: "left_description",
+                      leftYaml: "left_yaml",
+                      rightDescription: "right_description",
+                      rightYaml: "right_yaml",
+                    }),
+                  ),
+                  keysRequireReplace: Schema.Array(Schema.String),
+                  monthlyCostEstimateDiff: Schema.Struct({
+                    currency: Schema.String,
+                    currentMonthlyCost: Schema.Number,
+                    diff: Schema.Number,
+                    proposedMonthlyCost: Schema.Number,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      currency: "currency",
+                      currentMonthlyCost: "current_monthly_cost",
+                      diff: "diff",
+                      proposedMonthlyCost: "proposed_monthly_cost",
+                    }),
+                  ),
+                  plannedAction: Schema.Union([
+                    Schema.Literals([
+                      "no_op",
+                      "create",
+                      "update",
+                      "replace",
+                      "destroy",
+                    ]),
+                    Schema.String,
+                  ]),
+                  resource: Schema.Struct({
+                    id: Schema.String,
+                    cloudType: Schema.Union([
+                      Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
+                      Schema.String,
+                    ]),
+                    detail: Schema.String,
+                    name: Schema.String,
+                    resourceType: Schema.Union([
+                      Schema.Literals([
+                        "aws_customer_gateway",
+                        "aws_egress_only_internet_gateway",
+                        "aws_internet_gateway",
+                        "aws_instance",
+                        "aws_network_interface",
+                        "aws_route",
+                        "aws_route_table",
+                        "aws_route_table_association",
+                        "aws_subnet",
+                        "aws_vpc",
+                        "aws_vpc_ipv4_cidr_block_association",
+                        "aws_vpn_connection",
+                        "aws_vpn_connection_route",
+                        "aws_vpn_gateway",
+                        "aws_security_group",
+                        "aws_vpc_security_group_ingress_rule",
+                        "aws_vpc_security_group_egress_rule",
+                        "aws_ec2_managed_prefix_list",
+                        "aws_ec2_transit_gateway",
+                        "aws_ec2_transit_gateway_prefix_list_reference",
+                        "aws_ec2_transit_gateway_vpc_attachment",
+                        "azurerm_application_security_group",
+                        "azurerm_lb",
+                        "azurerm_lb_backend_address_pool",
+                        "azurerm_lb_nat_pool",
+                        "azurerm_lb_nat_rule",
+                        "azurerm_lb_rule",
+                        "azurerm_local_network_gateway",
+                        "azurerm_network_interface",
+                        "azurerm_network_interface_application_security_group_association",
+                        "azurerm_network_interface_backend_address_pool_association",
+                        "azurerm_network_interface_security_group_association",
+                        "azurerm_network_security_group",
+                        "azurerm_public_ip",
+                        "azurerm_route",
+                        "azurerm_route_table",
+                        "azurerm_subnet",
+                        "azurerm_subnet_route_table_association",
+                        "azurerm_virtual_machine",
+                        "azurerm_virtual_network_gateway_connection",
+                        "azurerm_virtual_network",
+                        "azurerm_virtual_network_gateway",
+                        "google_compute_network",
+                        "google_compute_subnetwork",
+                        "google_compute_vpn_gateway",
+                        "google_compute_vpn_tunnel",
+                        "google_compute_route",
+                        "google_compute_address",
+                        "google_compute_global_address",
+                        "google_compute_router",
+                        "google_compute_interconnect_attachment",
+                        "google_compute_ha_vpn_gateway",
+                        "google_compute_forwarding_rule",
+                        "google_compute_network_firewall_policy",
+                        "google_compute_network_firewall_policy_rule",
+                        "cloudflare_static_route",
+                        "cloudflare_ipsec_tunnel",
+                      ]),
+                      Schema.String,
+                    ]),
+                    title: Schema.String,
+                  }).pipe(
+                    Schema.encodeKeys({
+                      id: "id",
+                      cloudType: "cloud_type",
+                      detail: "detail",
+                      name: "name",
+                      resourceType: "resource_type",
+                      title: "title",
+                    }),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    diff: "diff",
+                    keysRequireReplace: "keys_require_replace",
+                    monthlyCostEstimateDiff: "monthly_cost_estimate_diff",
+                    plannedAction: "planned_action",
+                    resource: "resource",
+                  }),
+                ),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          plannedResourcesUnavailable: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          postApplyMonthlyCostEstimate: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                currency: Schema.String,
+                monthlyCost: Schema.Number,
+              }).pipe(
+                Schema.encodeKeys({
+                  currency: "currency",
+                  monthlyCost: "monthly_cost",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          postApplyResources: Schema.optional(
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
+          ),
+          postApplyResourcesUnavailable: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          status: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                applyProgress: Schema.Struct({
+                  done: Schema.Number,
+                  total: Schema.Number,
+                }),
+                lifecycleState: Schema.Union([
+                  Schema.Literals([
+                    "OnrampNeedsApply",
+                    "OnrampPendingPlan",
+                    "OnrampPlanning",
+                    "OnrampPlanFailed",
+                    "OnrampPendingApproval",
+                    "OnrampPendingApply",
+                    "OnrampApplying",
+                    "OnrampApplyFailed",
+                    "OnrampActive",
+                    "OnrampPendingDestroy",
+                    "OnrampDestroying",
+                    "OnrampDestroyFailed",
+                  ]),
+                  Schema.String,
+                ]),
+                planProgress: Schema.Struct({
+                  done: Schema.Number,
+                  total: Schema.Number,
+                }),
+                routes: Schema.Array(Schema.String),
+                tunnels: Schema.Array(Schema.String),
+                lifecycleErrors: Schema.optional(
+                  Schema.Union([
+                    Schema.Record(Schema.String, Schema.Unknown),
+                    Schema.Null,
+                  ]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  applyProgress: "apply_progress",
+                  lifecycleState: "lifecycle_state",
+                  planProgress: "plan_progress",
+                  routes: "routes",
+                  tunnels: "tunnels",
+                  lifecycleErrors: "lifecycle_errors",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          vpc: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          vpcsById: Schema.optional(
+            Schema.Union([
+              Schema.Record(Schema.String, Schema.Unknown),
+              Schema.Null,
+            ]),
+          ),
+          vpcsByIdUnavailable: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            cloudType: "cloud_type",
+            dynamicRouting: "dynamic_routing",
+            installRoutesInCloud: "install_routes_in_cloud",
+            installRoutesInMagicWan: "install_routes_in_magic_wan",
+            name: "name",
+            type: "type",
+            updatedAt: "updated_at",
+            attachedHubs: "attached_hubs",
+            attachedVpcs: "attached_vpcs",
+            cloudAsn: "cloud_asn",
+            description: "description",
+            hub: "hub",
+            lastAppliedAt: "last_applied_at",
+            lastExportedAt: "last_exported_at",
+            lastPlannedAt: "last_planned_at",
+            manageHubToHubAttachments: "manage_hub_to_hub_attachments",
+            manageVpcToHubAttachments: "manage_vpc_to_hub_attachments",
+            plannedMonthlyCostEstimate: "planned_monthly_cost_estimate",
+            plannedResources: "planned_resources",
+            plannedResourcesUnavailable: "planned_resources_unavailable",
+            postApplyMonthlyCostEstimate: "post_apply_monthly_cost_estimate",
+            postApplyResources: "post_apply_resources",
+            postApplyResourcesUnavailable: "post_apply_resources_unavailable",
+            region: "region",
+            status: "status",
+            vpc: "vpc",
+            vpcsById: "vpcs_by_id",
+            vpcsByIdUnavailable: "vpcs_by_id_unavailable",
+          }),
+        ),
+      ),
+    }),
+) as unknown as Schema.Schema<ListOnRampsResponse>;
 
 export type ListOnRampsError = DefaultErrors | FeatureNotEnabled | Forbidden;
 
@@ -4989,54 +5079,57 @@ export interface CreateOnRampRequest {
   vpc?: string;
 }
 
-export const CreateOnRampRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  forwarded: Schema.optional(Schema.String).pipe(T.HttpHeader("forwarded")),
-  cloudType: Schema.Union([
-    Schema.Literals(["AWS", "AZURE", "GOOGLE"]),
-    Schema.String,
-  ]),
-  dynamicRouting: Schema.Boolean,
-  installRoutesInCloud: Schema.Boolean,
-  installRoutesInMagicWan: Schema.Boolean,
-  name: Schema.String,
-  type: Schema.Union([
-    Schema.Literals(["OnrampTypeSingle", "OnrampTypeHub"]),
-    Schema.String,
-  ]),
-  adoptedHubId: Schema.optional(Schema.String),
-  attachedHubs: Schema.optional(Schema.Array(Schema.String)),
-  attachedVpcs: Schema.optional(Schema.Array(Schema.String)),
-  cloudAsn: Schema.optional(Schema.Number),
-  description: Schema.optional(Schema.String),
-  hubProviderId: Schema.optional(Schema.String),
-  manageHubToHubAttachments: Schema.optional(Schema.Boolean),
-  manageVpcToHubAttachments: Schema.optional(Schema.Boolean),
-  region: Schema.optional(Schema.String),
-  vpc: Schema.optional(Schema.String),
-}).pipe(
-  Schema.encodeKeys({
-    cloudType: "cloud_type",
-    dynamicRouting: "dynamic_routing",
-    installRoutesInCloud: "install_routes_in_cloud",
-    installRoutesInMagicWan: "install_routes_in_magic_wan",
-    name: "name",
-    type: "type",
-    adoptedHubId: "adopted_hub_id",
-    attachedHubs: "attached_hubs",
-    attachedVpcs: "attached_vpcs",
-    cloudAsn: "cloud_asn",
-    description: "description",
-    hubProviderId: "hub_provider_id",
-    manageHubToHubAttachments: "manage_hub_to_hub_attachments",
-    manageVpcToHubAttachments: "manage_vpc_to_hub_attachments",
-    region: "region",
-    vpc: "vpc",
-  }),
-  T.Http({
-    method: "POST",
-    path: "/accounts/{account_id}/magic/cloud/onramps",
-  }),
+export const CreateOnRampRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      forwarded: Schema.optional(Schema.String).pipe(T.HttpHeader("forwarded")),
+      cloudType: Schema.Union([
+        Schema.Literals(["AWS", "AZURE", "GOOGLE"]),
+        Schema.String,
+      ]),
+      dynamicRouting: Schema.Boolean,
+      installRoutesInCloud: Schema.Boolean,
+      installRoutesInMagicWan: Schema.Boolean,
+      name: Schema.String,
+      type: Schema.Union([
+        Schema.Literals(["OnrampTypeSingle", "OnrampTypeHub"]),
+        Schema.String,
+      ]),
+      adoptedHubId: Schema.optional(Schema.String),
+      attachedHubs: Schema.optional(Schema.Array(Schema.String)),
+      attachedVpcs: Schema.optional(Schema.Array(Schema.String)),
+      cloudAsn: Schema.optional(Schema.Number),
+      description: Schema.optional(Schema.String),
+      hubProviderId: Schema.optional(Schema.String),
+      manageHubToHubAttachments: Schema.optional(Schema.Boolean),
+      manageVpcToHubAttachments: Schema.optional(Schema.Boolean),
+      region: Schema.optional(Schema.String),
+      vpc: Schema.optional(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        cloudType: "cloud_type",
+        dynamicRouting: "dynamic_routing",
+        installRoutesInCloud: "install_routes_in_cloud",
+        installRoutesInMagicWan: "install_routes_in_magic_wan",
+        name: "name",
+        type: "type",
+        adoptedHubId: "adopted_hub_id",
+        attachedHubs: "attached_hubs",
+        attachedVpcs: "attached_vpcs",
+        cloudAsn: "cloud_asn",
+        description: "description",
+        hubProviderId: "hub_provider_id",
+        manageHubToHubAttachments: "manage_hub_to_hub_attachments",
+        manageVpcToHubAttachments: "manage_vpc_to_hub_attachments",
+        region: "region",
+        vpc: "vpc",
+      }),
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/magic/cloud/onramps",
+      }),
+    ),
 ) as unknown as Schema.Schema<CreateOnRampRequest>;
 
 export interface CreateOnRampResponse {
@@ -5190,78 +5283,50 @@ export interface CreateOnRampResponse {
   vpcsByIdUnavailable?: string[] | null;
 }
 
-export const CreateOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
-  cloudType: Schema.Union([
-    Schema.Literals(["AWS", "AZURE", "GOOGLE"]),
-    Schema.String,
-  ]),
-  dynamicRouting: Schema.Boolean,
-  installRoutesInCloud: Schema.Boolean,
-  installRoutesInMagicWan: Schema.Boolean,
-  name: Schema.String,
-  type: Schema.Union([
-    Schema.Literals(["OnrampTypeSingle", "OnrampTypeHub"]),
-    Schema.String,
-  ]),
-  updatedAt: Schema.String,
-  attachedHubs: Schema.optional(
-    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-  ),
-  attachedVpcs: Schema.optional(
-    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-  ),
-  cloudAsn: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  hub: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  lastAppliedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  lastExportedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  lastPlannedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  manageHubToHubAttachments: Schema.optional(
-    Schema.Union([Schema.Boolean, Schema.Null]),
-  ),
-  manageVpcToHubAttachments: Schema.optional(
-    Schema.Union([Schema.Boolean, Schema.Null]),
-  ),
-  plannedMonthlyCostEstimate: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        currency: Schema.String,
-        currentMonthlyCost: Schema.Number,
-        diff: Schema.Number,
-        proposedMonthlyCost: Schema.Number,
-      }).pipe(
-        Schema.encodeKeys({
-          currency: "currency",
-          currentMonthlyCost: "current_monthly_cost",
-          diff: "diff",
-          proposedMonthlyCost: "proposed_monthly_cost",
-        }),
+export const CreateOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.String,
+      cloudType: Schema.Union([
+        Schema.Literals(["AWS", "AZURE", "GOOGLE"]),
+        Schema.String,
+      ]),
+      dynamicRouting: Schema.Boolean,
+      installRoutesInCloud: Schema.Boolean,
+      installRoutesInMagicWan: Schema.Boolean,
+      name: Schema.String,
+      type: Schema.Union([
+        Schema.Literals(["OnrampTypeSingle", "OnrampTypeHub"]),
+        Schema.String,
+      ]),
+      updatedAt: Schema.String,
+      attachedHubs: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
-      Schema.Null,
-    ]),
-  ),
-  plannedResources: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          diff: Schema.Struct({
-            diff: Schema.String,
-            leftDescription: Schema.String,
-            leftYaml: Schema.String,
-            rightDescription: Schema.String,
-            rightYaml: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({
-              diff: "diff",
-              leftDescription: "left_description",
-              leftYaml: "left_yaml",
-              rightDescription: "right_description",
-              rightYaml: "right_yaml",
-            }),
-          ),
-          keysRequireReplace: Schema.Array(Schema.String),
-          monthlyCostEstimateDiff: Schema.Struct({
+      attachedVpcs: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      cloudAsn: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      hub: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      lastAppliedAt: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      lastExportedAt: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      lastPlannedAt: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      manageHubToHubAttachments: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      manageVpcToHubAttachments: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      plannedMonthlyCostEstimate: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
             currency: Schema.String,
             currentMonthlyCost: Schema.Number,
             diff: Schema.Number,
@@ -5274,227 +5339,268 @@ export const CreateOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               proposedMonthlyCost: "proposed_monthly_cost",
             }),
           ),
-          plannedAction: Schema.Union([
-            Schema.Literals([
-              "no_op",
-              "create",
-              "update",
-              "replace",
-              "destroy",
-            ]),
-            Schema.String,
-          ]),
-          resource: Schema.Struct({
-            id: Schema.String,
-            cloudType: Schema.Union([
-              Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
-              Schema.String,
-            ]),
-            detail: Schema.String,
-            name: Schema.String,
-            resourceType: Schema.Union([
+          Schema.Null,
+        ]),
+      ),
+      plannedResources: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              diff: Schema.Struct({
+                diff: Schema.String,
+                leftDescription: Schema.String,
+                leftYaml: Schema.String,
+                rightDescription: Schema.String,
+                rightYaml: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  diff: "diff",
+                  leftDescription: "left_description",
+                  leftYaml: "left_yaml",
+                  rightDescription: "right_description",
+                  rightYaml: "right_yaml",
+                }),
+              ),
+              keysRequireReplace: Schema.Array(Schema.String),
+              monthlyCostEstimateDiff: Schema.Struct({
+                currency: Schema.String,
+                currentMonthlyCost: Schema.Number,
+                diff: Schema.Number,
+                proposedMonthlyCost: Schema.Number,
+              }).pipe(
+                Schema.encodeKeys({
+                  currency: "currency",
+                  currentMonthlyCost: "current_monthly_cost",
+                  diff: "diff",
+                  proposedMonthlyCost: "proposed_monthly_cost",
+                }),
+              ),
+              plannedAction: Schema.Union([
+                Schema.Literals([
+                  "no_op",
+                  "create",
+                  "update",
+                  "replace",
+                  "destroy",
+                ]),
+                Schema.String,
+              ]),
+              resource: Schema.Struct({
+                id: Schema.String,
+                cloudType: Schema.Union([
+                  Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
+                  Schema.String,
+                ]),
+                detail: Schema.String,
+                name: Schema.String,
+                resourceType: Schema.Union([
+                  Schema.Literals([
+                    "aws_customer_gateway",
+                    "aws_egress_only_internet_gateway",
+                    "aws_internet_gateway",
+                    "aws_instance",
+                    "aws_network_interface",
+                    "aws_route",
+                    "aws_route_table",
+                    "aws_route_table_association",
+                    "aws_subnet",
+                    "aws_vpc",
+                    "aws_vpc_ipv4_cidr_block_association",
+                    "aws_vpn_connection",
+                    "aws_vpn_connection_route",
+                    "aws_vpn_gateway",
+                    "aws_security_group",
+                    "aws_vpc_security_group_ingress_rule",
+                    "aws_vpc_security_group_egress_rule",
+                    "aws_ec2_managed_prefix_list",
+                    "aws_ec2_transit_gateway",
+                    "aws_ec2_transit_gateway_prefix_list_reference",
+                    "aws_ec2_transit_gateway_vpc_attachment",
+                    "azurerm_application_security_group",
+                    "azurerm_lb",
+                    "azurerm_lb_backend_address_pool",
+                    "azurerm_lb_nat_pool",
+                    "azurerm_lb_nat_rule",
+                    "azurerm_lb_rule",
+                    "azurerm_local_network_gateway",
+                    "azurerm_network_interface",
+                    "azurerm_network_interface_application_security_group_association",
+                    "azurerm_network_interface_backend_address_pool_association",
+                    "azurerm_network_interface_security_group_association",
+                    "azurerm_network_security_group",
+                    "azurerm_public_ip",
+                    "azurerm_route",
+                    "azurerm_route_table",
+                    "azurerm_subnet",
+                    "azurerm_subnet_route_table_association",
+                    "azurerm_virtual_machine",
+                    "azurerm_virtual_network_gateway_connection",
+                    "azurerm_virtual_network",
+                    "azurerm_virtual_network_gateway",
+                    "google_compute_network",
+                    "google_compute_subnetwork",
+                    "google_compute_vpn_gateway",
+                    "google_compute_vpn_tunnel",
+                    "google_compute_route",
+                    "google_compute_address",
+                    "google_compute_global_address",
+                    "google_compute_router",
+                    "google_compute_interconnect_attachment",
+                    "google_compute_ha_vpn_gateway",
+                    "google_compute_forwarding_rule",
+                    "google_compute_network_firewall_policy",
+                    "google_compute_network_firewall_policy_rule",
+                    "cloudflare_static_route",
+                    "cloudflare_ipsec_tunnel",
+                  ]),
+                  Schema.String,
+                ]),
+                title: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  cloudType: "cloud_type",
+                  detail: "detail",
+                  name: "name",
+                  resourceType: "resource_type",
+                  title: "title",
+                }),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                diff: "diff",
+                keysRequireReplace: "keys_require_replace",
+                monthlyCostEstimateDiff: "monthly_cost_estimate_diff",
+                plannedAction: "planned_action",
+                resource: "resource",
+              }),
+            ),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      plannedResourcesUnavailable: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      postApplyMonthlyCostEstimate: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            currency: Schema.String,
+            monthlyCost: Schema.Number,
+          }).pipe(
+            Schema.encodeKeys({
+              currency: "currency",
+              monthlyCost: "monthly_cost",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      postApplyResources: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
+      postApplyResourcesUnavailable: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            applyProgress: Schema.Struct({
+              done: Schema.Number,
+              total: Schema.Number,
+            }),
+            lifecycleState: Schema.Union([
               Schema.Literals([
-                "aws_customer_gateway",
-                "aws_egress_only_internet_gateway",
-                "aws_internet_gateway",
-                "aws_instance",
-                "aws_network_interface",
-                "aws_route",
-                "aws_route_table",
-                "aws_route_table_association",
-                "aws_subnet",
-                "aws_vpc",
-                "aws_vpc_ipv4_cidr_block_association",
-                "aws_vpn_connection",
-                "aws_vpn_connection_route",
-                "aws_vpn_gateway",
-                "aws_security_group",
-                "aws_vpc_security_group_ingress_rule",
-                "aws_vpc_security_group_egress_rule",
-                "aws_ec2_managed_prefix_list",
-                "aws_ec2_transit_gateway",
-                "aws_ec2_transit_gateway_prefix_list_reference",
-                "aws_ec2_transit_gateway_vpc_attachment",
-                "azurerm_application_security_group",
-                "azurerm_lb",
-                "azurerm_lb_backend_address_pool",
-                "azurerm_lb_nat_pool",
-                "azurerm_lb_nat_rule",
-                "azurerm_lb_rule",
-                "azurerm_local_network_gateway",
-                "azurerm_network_interface",
-                "azurerm_network_interface_application_security_group_association",
-                "azurerm_network_interface_backend_address_pool_association",
-                "azurerm_network_interface_security_group_association",
-                "azurerm_network_security_group",
-                "azurerm_public_ip",
-                "azurerm_route",
-                "azurerm_route_table",
-                "azurerm_subnet",
-                "azurerm_subnet_route_table_association",
-                "azurerm_virtual_machine",
-                "azurerm_virtual_network_gateway_connection",
-                "azurerm_virtual_network",
-                "azurerm_virtual_network_gateway",
-                "google_compute_network",
-                "google_compute_subnetwork",
-                "google_compute_vpn_gateway",
-                "google_compute_vpn_tunnel",
-                "google_compute_route",
-                "google_compute_address",
-                "google_compute_global_address",
-                "google_compute_router",
-                "google_compute_interconnect_attachment",
-                "google_compute_ha_vpn_gateway",
-                "google_compute_forwarding_rule",
-                "google_compute_network_firewall_policy",
-                "google_compute_network_firewall_policy_rule",
-                "cloudflare_static_route",
-                "cloudflare_ipsec_tunnel",
+                "OnrampNeedsApply",
+                "OnrampPendingPlan",
+                "OnrampPlanning",
+                "OnrampPlanFailed",
+                "OnrampPendingApproval",
+                "OnrampPendingApply",
+                "OnrampApplying",
+                "OnrampApplyFailed",
+                "OnrampActive",
+                "OnrampPendingDestroy",
+                "OnrampDestroying",
+                "OnrampDestroyFailed",
               ]),
               Schema.String,
             ]),
-            title: Schema.String,
+            planProgress: Schema.Struct({
+              done: Schema.Number,
+              total: Schema.Number,
+            }),
+            routes: Schema.Array(Schema.String),
+            tunnels: Schema.Array(Schema.String),
+            lifecycleErrors: Schema.optional(
+              Schema.Union([
+                Schema.Record(Schema.String, Schema.Unknown),
+                Schema.Null,
+              ]),
+            ),
           }).pipe(
             Schema.encodeKeys({
-              id: "id",
-              cloudType: "cloud_type",
-              detail: "detail",
-              name: "name",
-              resourceType: "resource_type",
-              title: "title",
+              applyProgress: "apply_progress",
+              lifecycleState: "lifecycle_state",
+              planProgress: "plan_progress",
+              routes: "routes",
+              tunnels: "tunnels",
+              lifecycleErrors: "lifecycle_errors",
             }),
           ),
-        }).pipe(
-          Schema.encodeKeys({
-            diff: "diff",
-            keysRequireReplace: "keys_require_replace",
-            monthlyCostEstimateDiff: "monthly_cost_estimate_diff",
-            plannedAction: "planned_action",
-            resource: "resource",
-          }),
-        ),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  plannedResourcesUnavailable: Schema.optional(
-    Schema.Union([Schema.Boolean, Schema.Null]),
-  ),
-  postApplyMonthlyCostEstimate: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        currency: Schema.String,
-        monthlyCost: Schema.Number,
-      }).pipe(
-        Schema.encodeKeys({
-          currency: "currency",
-          monthlyCost: "monthly_cost",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  postApplyResources: Schema.optional(
-    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-  ),
-  postApplyResourcesUnavailable: Schema.optional(
-    Schema.Union([Schema.Boolean, Schema.Null]),
-  ),
-  region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  status: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        applyProgress: Schema.Struct({
-          done: Schema.Number,
-          total: Schema.Number,
-        }),
-        lifecycleState: Schema.Union([
-          Schema.Literals([
-            "OnrampNeedsApply",
-            "OnrampPendingPlan",
-            "OnrampPlanning",
-            "OnrampPlanFailed",
-            "OnrampPendingApproval",
-            "OnrampPendingApply",
-            "OnrampApplying",
-            "OnrampApplyFailed",
-            "OnrampActive",
-            "OnrampPendingDestroy",
-            "OnrampDestroying",
-            "OnrampDestroyFailed",
-          ]),
-          Schema.String,
+          Schema.Null,
         ]),
-        planProgress: Schema.Struct({
-          done: Schema.Number,
-          total: Schema.Number,
-        }),
-        routes: Schema.Array(Schema.String),
-        tunnels: Schema.Array(Schema.String),
-        lifecycleErrors: Schema.optional(
-          Schema.Union([
-            Schema.Record(Schema.String, Schema.Unknown),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          applyProgress: "apply_progress",
-          lifecycleState: "lifecycle_state",
-          planProgress: "plan_progress",
-          routes: "routes",
-          tunnels: "tunnels",
-          lifecycleErrors: "lifecycle_errors",
-        }),
       ),
-      Schema.Null,
-    ]),
-  ),
-  vpc: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  vpcsById: Schema.optional(
-    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-  ),
-  vpcsByIdUnavailable: Schema.optional(
-    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-  ),
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      cloudType: "cloud_type",
-      dynamicRouting: "dynamic_routing",
-      installRoutesInCloud: "install_routes_in_cloud",
-      installRoutesInMagicWan: "install_routes_in_magic_wan",
-      name: "name",
-      type: "type",
-      updatedAt: "updated_at",
-      attachedHubs: "attached_hubs",
-      attachedVpcs: "attached_vpcs",
-      cloudAsn: "cloud_asn",
-      description: "description",
-      hub: "hub",
-      lastAppliedAt: "last_applied_at",
-      lastExportedAt: "last_exported_at",
-      lastPlannedAt: "last_planned_at",
-      manageHubToHubAttachments: "manage_hub_to_hub_attachments",
-      manageVpcToHubAttachments: "manage_vpc_to_hub_attachments",
-      plannedMonthlyCostEstimate: "planned_monthly_cost_estimate",
-      plannedResources: "planned_resources",
-      plannedResourcesUnavailable: "planned_resources_unavailable",
-      postApplyMonthlyCostEstimate: "post_apply_monthly_cost_estimate",
-      postApplyResources: "post_apply_resources",
-      postApplyResourcesUnavailable: "post_apply_resources_unavailable",
-      region: "region",
-      status: "status",
-      vpc: "vpc",
-      vpcsById: "vpcs_by_id",
-      vpcsByIdUnavailable: "vpcs_by_id_unavailable",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<CreateOnRampResponse>;
+      vpc: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      vpcsById: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
+      vpcsByIdUnavailable: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          cloudType: "cloud_type",
+          dynamicRouting: "dynamic_routing",
+          installRoutesInCloud: "install_routes_in_cloud",
+          installRoutesInMagicWan: "install_routes_in_magic_wan",
+          name: "name",
+          type: "type",
+          updatedAt: "updated_at",
+          attachedHubs: "attached_hubs",
+          attachedVpcs: "attached_vpcs",
+          cloudAsn: "cloud_asn",
+          description: "description",
+          hub: "hub",
+          lastAppliedAt: "last_applied_at",
+          lastExportedAt: "last_exported_at",
+          lastPlannedAt: "last_planned_at",
+          manageHubToHubAttachments: "manage_hub_to_hub_attachments",
+          manageVpcToHubAttachments: "manage_vpc_to_hub_attachments",
+          plannedMonthlyCostEstimate: "planned_monthly_cost_estimate",
+          plannedResources: "planned_resources",
+          plannedResourcesUnavailable: "planned_resources_unavailable",
+          postApplyMonthlyCostEstimate: "post_apply_monthly_cost_estimate",
+          postApplyResources: "post_apply_resources",
+          postApplyResourcesUnavailable: "post_apply_resources_unavailable",
+          region: "region",
+          status: "status",
+          vpc: "vpc",
+          vpcsById: "vpcs_by_id",
+          vpcsByIdUnavailable: "vpcs_by_id_unavailable",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<CreateOnRampResponse>;
 
 export type CreateOnRampError = DefaultErrors | FeatureNotEnabled | Forbidden;
 
@@ -5533,34 +5639,37 @@ export interface UpdateOnRampRequest {
   vpc?: string;
 }
 
-export const UpdateOnRampRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  onrampId: Schema.String.pipe(T.HttpPath("onrampId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  attachedHubs: Schema.optional(Schema.Array(Schema.String)),
-  attachedVpcs: Schema.optional(Schema.Array(Schema.String)),
-  description: Schema.optional(Schema.String),
-  installRoutesInCloud: Schema.optional(Schema.Boolean),
-  installRoutesInMagicWan: Schema.optional(Schema.Boolean),
-  manageHubToHubAttachments: Schema.optional(Schema.Boolean),
-  manageVpcToHubAttachments: Schema.optional(Schema.Boolean),
-  name: Schema.optional(Schema.String),
-  vpc: Schema.optional(Schema.String),
-}).pipe(
-  Schema.encodeKeys({
-    attachedHubs: "attached_hubs",
-    attachedVpcs: "attached_vpcs",
-    description: "description",
-    installRoutesInCloud: "install_routes_in_cloud",
-    installRoutesInMagicWan: "install_routes_in_magic_wan",
-    manageHubToHubAttachments: "manage_hub_to_hub_attachments",
-    manageVpcToHubAttachments: "manage_vpc_to_hub_attachments",
-    name: "name",
-    vpc: "vpc",
-  }),
-  T.Http({
-    method: "PUT",
-    path: "/accounts/{account_id}/magic/cloud/onramps/{onrampId}",
-  }),
+export const UpdateOnRampRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      onrampId: Schema.String.pipe(T.HttpPath("onrampId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      attachedHubs: Schema.optional(Schema.Array(Schema.String)),
+      attachedVpcs: Schema.optional(Schema.Array(Schema.String)),
+      description: Schema.optional(Schema.String),
+      installRoutesInCloud: Schema.optional(Schema.Boolean),
+      installRoutesInMagicWan: Schema.optional(Schema.Boolean),
+      manageHubToHubAttachments: Schema.optional(Schema.Boolean),
+      manageVpcToHubAttachments: Schema.optional(Schema.Boolean),
+      name: Schema.optional(Schema.String),
+      vpc: Schema.optional(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        attachedHubs: "attached_hubs",
+        attachedVpcs: "attached_vpcs",
+        description: "description",
+        installRoutesInCloud: "install_routes_in_cloud",
+        installRoutesInMagicWan: "install_routes_in_magic_wan",
+        manageHubToHubAttachments: "manage_hub_to_hub_attachments",
+        manageVpcToHubAttachments: "manage_vpc_to_hub_attachments",
+        name: "name",
+        vpc: "vpc",
+      }),
+      T.Http({
+        method: "PUT",
+        path: "/accounts/{account_id}/magic/cloud/onramps/{onrampId}",
+      }),
+    ),
 ) as unknown as Schema.Schema<UpdateOnRampRequest>;
 
 export interface UpdateOnRampResponse {
@@ -5714,78 +5823,50 @@ export interface UpdateOnRampResponse {
   vpcsByIdUnavailable?: string[] | null;
 }
 
-export const UpdateOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
-  cloudType: Schema.Union([
-    Schema.Literals(["AWS", "AZURE", "GOOGLE"]),
-    Schema.String,
-  ]),
-  dynamicRouting: Schema.Boolean,
-  installRoutesInCloud: Schema.Boolean,
-  installRoutesInMagicWan: Schema.Boolean,
-  name: Schema.String,
-  type: Schema.Union([
-    Schema.Literals(["OnrampTypeSingle", "OnrampTypeHub"]),
-    Schema.String,
-  ]),
-  updatedAt: Schema.String,
-  attachedHubs: Schema.optional(
-    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-  ),
-  attachedVpcs: Schema.optional(
-    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-  ),
-  cloudAsn: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  hub: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  lastAppliedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  lastExportedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  lastPlannedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  manageHubToHubAttachments: Schema.optional(
-    Schema.Union([Schema.Boolean, Schema.Null]),
-  ),
-  manageVpcToHubAttachments: Schema.optional(
-    Schema.Union([Schema.Boolean, Schema.Null]),
-  ),
-  plannedMonthlyCostEstimate: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        currency: Schema.String,
-        currentMonthlyCost: Schema.Number,
-        diff: Schema.Number,
-        proposedMonthlyCost: Schema.Number,
-      }).pipe(
-        Schema.encodeKeys({
-          currency: "currency",
-          currentMonthlyCost: "current_monthly_cost",
-          diff: "diff",
-          proposedMonthlyCost: "proposed_monthly_cost",
-        }),
+export const UpdateOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.String,
+      cloudType: Schema.Union([
+        Schema.Literals(["AWS", "AZURE", "GOOGLE"]),
+        Schema.String,
+      ]),
+      dynamicRouting: Schema.Boolean,
+      installRoutesInCloud: Schema.Boolean,
+      installRoutesInMagicWan: Schema.Boolean,
+      name: Schema.String,
+      type: Schema.Union([
+        Schema.Literals(["OnrampTypeSingle", "OnrampTypeHub"]),
+        Schema.String,
+      ]),
+      updatedAt: Schema.String,
+      attachedHubs: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
-      Schema.Null,
-    ]),
-  ),
-  plannedResources: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          diff: Schema.Struct({
-            diff: Schema.String,
-            leftDescription: Schema.String,
-            leftYaml: Schema.String,
-            rightDescription: Schema.String,
-            rightYaml: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({
-              diff: "diff",
-              leftDescription: "left_description",
-              leftYaml: "left_yaml",
-              rightDescription: "right_description",
-              rightYaml: "right_yaml",
-            }),
-          ),
-          keysRequireReplace: Schema.Array(Schema.String),
-          monthlyCostEstimateDiff: Schema.Struct({
+      attachedVpcs: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      cloudAsn: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      hub: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      lastAppliedAt: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      lastExportedAt: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      lastPlannedAt: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      manageHubToHubAttachments: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      manageVpcToHubAttachments: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      plannedMonthlyCostEstimate: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
             currency: Schema.String,
             currentMonthlyCost: Schema.Number,
             diff: Schema.Number,
@@ -5798,227 +5879,268 @@ export const UpdateOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               proposedMonthlyCost: "proposed_monthly_cost",
             }),
           ),
-          plannedAction: Schema.Union([
-            Schema.Literals([
-              "no_op",
-              "create",
-              "update",
-              "replace",
-              "destroy",
-            ]),
-            Schema.String,
-          ]),
-          resource: Schema.Struct({
-            id: Schema.String,
-            cloudType: Schema.Union([
-              Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
-              Schema.String,
-            ]),
-            detail: Schema.String,
-            name: Schema.String,
-            resourceType: Schema.Union([
+          Schema.Null,
+        ]),
+      ),
+      plannedResources: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              diff: Schema.Struct({
+                diff: Schema.String,
+                leftDescription: Schema.String,
+                leftYaml: Schema.String,
+                rightDescription: Schema.String,
+                rightYaml: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  diff: "diff",
+                  leftDescription: "left_description",
+                  leftYaml: "left_yaml",
+                  rightDescription: "right_description",
+                  rightYaml: "right_yaml",
+                }),
+              ),
+              keysRequireReplace: Schema.Array(Schema.String),
+              monthlyCostEstimateDiff: Schema.Struct({
+                currency: Schema.String,
+                currentMonthlyCost: Schema.Number,
+                diff: Schema.Number,
+                proposedMonthlyCost: Schema.Number,
+              }).pipe(
+                Schema.encodeKeys({
+                  currency: "currency",
+                  currentMonthlyCost: "current_monthly_cost",
+                  diff: "diff",
+                  proposedMonthlyCost: "proposed_monthly_cost",
+                }),
+              ),
+              plannedAction: Schema.Union([
+                Schema.Literals([
+                  "no_op",
+                  "create",
+                  "update",
+                  "replace",
+                  "destroy",
+                ]),
+                Schema.String,
+              ]),
+              resource: Schema.Struct({
+                id: Schema.String,
+                cloudType: Schema.Union([
+                  Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
+                  Schema.String,
+                ]),
+                detail: Schema.String,
+                name: Schema.String,
+                resourceType: Schema.Union([
+                  Schema.Literals([
+                    "aws_customer_gateway",
+                    "aws_egress_only_internet_gateway",
+                    "aws_internet_gateway",
+                    "aws_instance",
+                    "aws_network_interface",
+                    "aws_route",
+                    "aws_route_table",
+                    "aws_route_table_association",
+                    "aws_subnet",
+                    "aws_vpc",
+                    "aws_vpc_ipv4_cidr_block_association",
+                    "aws_vpn_connection",
+                    "aws_vpn_connection_route",
+                    "aws_vpn_gateway",
+                    "aws_security_group",
+                    "aws_vpc_security_group_ingress_rule",
+                    "aws_vpc_security_group_egress_rule",
+                    "aws_ec2_managed_prefix_list",
+                    "aws_ec2_transit_gateway",
+                    "aws_ec2_transit_gateway_prefix_list_reference",
+                    "aws_ec2_transit_gateway_vpc_attachment",
+                    "azurerm_application_security_group",
+                    "azurerm_lb",
+                    "azurerm_lb_backend_address_pool",
+                    "azurerm_lb_nat_pool",
+                    "azurerm_lb_nat_rule",
+                    "azurerm_lb_rule",
+                    "azurerm_local_network_gateway",
+                    "azurerm_network_interface",
+                    "azurerm_network_interface_application_security_group_association",
+                    "azurerm_network_interface_backend_address_pool_association",
+                    "azurerm_network_interface_security_group_association",
+                    "azurerm_network_security_group",
+                    "azurerm_public_ip",
+                    "azurerm_route",
+                    "azurerm_route_table",
+                    "azurerm_subnet",
+                    "azurerm_subnet_route_table_association",
+                    "azurerm_virtual_machine",
+                    "azurerm_virtual_network_gateway_connection",
+                    "azurerm_virtual_network",
+                    "azurerm_virtual_network_gateway",
+                    "google_compute_network",
+                    "google_compute_subnetwork",
+                    "google_compute_vpn_gateway",
+                    "google_compute_vpn_tunnel",
+                    "google_compute_route",
+                    "google_compute_address",
+                    "google_compute_global_address",
+                    "google_compute_router",
+                    "google_compute_interconnect_attachment",
+                    "google_compute_ha_vpn_gateway",
+                    "google_compute_forwarding_rule",
+                    "google_compute_network_firewall_policy",
+                    "google_compute_network_firewall_policy_rule",
+                    "cloudflare_static_route",
+                    "cloudflare_ipsec_tunnel",
+                  ]),
+                  Schema.String,
+                ]),
+                title: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  cloudType: "cloud_type",
+                  detail: "detail",
+                  name: "name",
+                  resourceType: "resource_type",
+                  title: "title",
+                }),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                diff: "diff",
+                keysRequireReplace: "keys_require_replace",
+                monthlyCostEstimateDiff: "monthly_cost_estimate_diff",
+                plannedAction: "planned_action",
+                resource: "resource",
+              }),
+            ),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      plannedResourcesUnavailable: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      postApplyMonthlyCostEstimate: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            currency: Schema.String,
+            monthlyCost: Schema.Number,
+          }).pipe(
+            Schema.encodeKeys({
+              currency: "currency",
+              monthlyCost: "monthly_cost",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      postApplyResources: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
+      postApplyResourcesUnavailable: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            applyProgress: Schema.Struct({
+              done: Schema.Number,
+              total: Schema.Number,
+            }),
+            lifecycleState: Schema.Union([
               Schema.Literals([
-                "aws_customer_gateway",
-                "aws_egress_only_internet_gateway",
-                "aws_internet_gateway",
-                "aws_instance",
-                "aws_network_interface",
-                "aws_route",
-                "aws_route_table",
-                "aws_route_table_association",
-                "aws_subnet",
-                "aws_vpc",
-                "aws_vpc_ipv4_cidr_block_association",
-                "aws_vpn_connection",
-                "aws_vpn_connection_route",
-                "aws_vpn_gateway",
-                "aws_security_group",
-                "aws_vpc_security_group_ingress_rule",
-                "aws_vpc_security_group_egress_rule",
-                "aws_ec2_managed_prefix_list",
-                "aws_ec2_transit_gateway",
-                "aws_ec2_transit_gateway_prefix_list_reference",
-                "aws_ec2_transit_gateway_vpc_attachment",
-                "azurerm_application_security_group",
-                "azurerm_lb",
-                "azurerm_lb_backend_address_pool",
-                "azurerm_lb_nat_pool",
-                "azurerm_lb_nat_rule",
-                "azurerm_lb_rule",
-                "azurerm_local_network_gateway",
-                "azurerm_network_interface",
-                "azurerm_network_interface_application_security_group_association",
-                "azurerm_network_interface_backend_address_pool_association",
-                "azurerm_network_interface_security_group_association",
-                "azurerm_network_security_group",
-                "azurerm_public_ip",
-                "azurerm_route",
-                "azurerm_route_table",
-                "azurerm_subnet",
-                "azurerm_subnet_route_table_association",
-                "azurerm_virtual_machine",
-                "azurerm_virtual_network_gateway_connection",
-                "azurerm_virtual_network",
-                "azurerm_virtual_network_gateway",
-                "google_compute_network",
-                "google_compute_subnetwork",
-                "google_compute_vpn_gateway",
-                "google_compute_vpn_tunnel",
-                "google_compute_route",
-                "google_compute_address",
-                "google_compute_global_address",
-                "google_compute_router",
-                "google_compute_interconnect_attachment",
-                "google_compute_ha_vpn_gateway",
-                "google_compute_forwarding_rule",
-                "google_compute_network_firewall_policy",
-                "google_compute_network_firewall_policy_rule",
-                "cloudflare_static_route",
-                "cloudflare_ipsec_tunnel",
+                "OnrampNeedsApply",
+                "OnrampPendingPlan",
+                "OnrampPlanning",
+                "OnrampPlanFailed",
+                "OnrampPendingApproval",
+                "OnrampPendingApply",
+                "OnrampApplying",
+                "OnrampApplyFailed",
+                "OnrampActive",
+                "OnrampPendingDestroy",
+                "OnrampDestroying",
+                "OnrampDestroyFailed",
               ]),
               Schema.String,
             ]),
-            title: Schema.String,
+            planProgress: Schema.Struct({
+              done: Schema.Number,
+              total: Schema.Number,
+            }),
+            routes: Schema.Array(Schema.String),
+            tunnels: Schema.Array(Schema.String),
+            lifecycleErrors: Schema.optional(
+              Schema.Union([
+                Schema.Record(Schema.String, Schema.Unknown),
+                Schema.Null,
+              ]),
+            ),
           }).pipe(
             Schema.encodeKeys({
-              id: "id",
-              cloudType: "cloud_type",
-              detail: "detail",
-              name: "name",
-              resourceType: "resource_type",
-              title: "title",
+              applyProgress: "apply_progress",
+              lifecycleState: "lifecycle_state",
+              planProgress: "plan_progress",
+              routes: "routes",
+              tunnels: "tunnels",
+              lifecycleErrors: "lifecycle_errors",
             }),
           ),
-        }).pipe(
-          Schema.encodeKeys({
-            diff: "diff",
-            keysRequireReplace: "keys_require_replace",
-            monthlyCostEstimateDiff: "monthly_cost_estimate_diff",
-            plannedAction: "planned_action",
-            resource: "resource",
-          }),
-        ),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  plannedResourcesUnavailable: Schema.optional(
-    Schema.Union([Schema.Boolean, Schema.Null]),
-  ),
-  postApplyMonthlyCostEstimate: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        currency: Schema.String,
-        monthlyCost: Schema.Number,
-      }).pipe(
-        Schema.encodeKeys({
-          currency: "currency",
-          monthlyCost: "monthly_cost",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  postApplyResources: Schema.optional(
-    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-  ),
-  postApplyResourcesUnavailable: Schema.optional(
-    Schema.Union([Schema.Boolean, Schema.Null]),
-  ),
-  region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  status: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        applyProgress: Schema.Struct({
-          done: Schema.Number,
-          total: Schema.Number,
-        }),
-        lifecycleState: Schema.Union([
-          Schema.Literals([
-            "OnrampNeedsApply",
-            "OnrampPendingPlan",
-            "OnrampPlanning",
-            "OnrampPlanFailed",
-            "OnrampPendingApproval",
-            "OnrampPendingApply",
-            "OnrampApplying",
-            "OnrampApplyFailed",
-            "OnrampActive",
-            "OnrampPendingDestroy",
-            "OnrampDestroying",
-            "OnrampDestroyFailed",
-          ]),
-          Schema.String,
+          Schema.Null,
         ]),
-        planProgress: Schema.Struct({
-          done: Schema.Number,
-          total: Schema.Number,
-        }),
-        routes: Schema.Array(Schema.String),
-        tunnels: Schema.Array(Schema.String),
-        lifecycleErrors: Schema.optional(
-          Schema.Union([
-            Schema.Record(Schema.String, Schema.Unknown),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          applyProgress: "apply_progress",
-          lifecycleState: "lifecycle_state",
-          planProgress: "plan_progress",
-          routes: "routes",
-          tunnels: "tunnels",
-          lifecycleErrors: "lifecycle_errors",
-        }),
       ),
-      Schema.Null,
-    ]),
-  ),
-  vpc: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  vpcsById: Schema.optional(
-    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-  ),
-  vpcsByIdUnavailable: Schema.optional(
-    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-  ),
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      cloudType: "cloud_type",
-      dynamicRouting: "dynamic_routing",
-      installRoutesInCloud: "install_routes_in_cloud",
-      installRoutesInMagicWan: "install_routes_in_magic_wan",
-      name: "name",
-      type: "type",
-      updatedAt: "updated_at",
-      attachedHubs: "attached_hubs",
-      attachedVpcs: "attached_vpcs",
-      cloudAsn: "cloud_asn",
-      description: "description",
-      hub: "hub",
-      lastAppliedAt: "last_applied_at",
-      lastExportedAt: "last_exported_at",
-      lastPlannedAt: "last_planned_at",
-      manageHubToHubAttachments: "manage_hub_to_hub_attachments",
-      manageVpcToHubAttachments: "manage_vpc_to_hub_attachments",
-      plannedMonthlyCostEstimate: "planned_monthly_cost_estimate",
-      plannedResources: "planned_resources",
-      plannedResourcesUnavailable: "planned_resources_unavailable",
-      postApplyMonthlyCostEstimate: "post_apply_monthly_cost_estimate",
-      postApplyResources: "post_apply_resources",
-      postApplyResourcesUnavailable: "post_apply_resources_unavailable",
-      region: "region",
-      status: "status",
-      vpc: "vpc",
-      vpcsById: "vpcs_by_id",
-      vpcsByIdUnavailable: "vpcs_by_id_unavailable",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<UpdateOnRampResponse>;
+      vpc: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      vpcsById: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
+      vpcsByIdUnavailable: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          cloudType: "cloud_type",
+          dynamicRouting: "dynamic_routing",
+          installRoutesInCloud: "install_routes_in_cloud",
+          installRoutesInMagicWan: "install_routes_in_magic_wan",
+          name: "name",
+          type: "type",
+          updatedAt: "updated_at",
+          attachedHubs: "attached_hubs",
+          attachedVpcs: "attached_vpcs",
+          cloudAsn: "cloud_asn",
+          description: "description",
+          hub: "hub",
+          lastAppliedAt: "last_applied_at",
+          lastExportedAt: "last_exported_at",
+          lastPlannedAt: "last_planned_at",
+          manageHubToHubAttachments: "manage_hub_to_hub_attachments",
+          manageVpcToHubAttachments: "manage_vpc_to_hub_attachments",
+          plannedMonthlyCostEstimate: "planned_monthly_cost_estimate",
+          plannedResources: "planned_resources",
+          plannedResourcesUnavailable: "planned_resources_unavailable",
+          postApplyMonthlyCostEstimate: "post_apply_monthly_cost_estimate",
+          postApplyResources: "post_apply_resources",
+          postApplyResourcesUnavailable: "post_apply_resources_unavailable",
+          region: "region",
+          status: "status",
+          vpc: "vpc",
+          vpcsById: "vpcs_by_id",
+          vpcsByIdUnavailable: "vpcs_by_id_unavailable",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<UpdateOnRampResponse>;
 
 export type UpdateOnRampError =
   | DefaultErrors
@@ -6061,34 +6183,37 @@ export interface PatchOnRampRequest {
   vpc?: string;
 }
 
-export const PatchOnRampRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  onrampId: Schema.String.pipe(T.HttpPath("onrampId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  attachedHubs: Schema.optional(Schema.Array(Schema.String)),
-  attachedVpcs: Schema.optional(Schema.Array(Schema.String)),
-  description: Schema.optional(Schema.String),
-  installRoutesInCloud: Schema.optional(Schema.Boolean),
-  installRoutesInMagicWan: Schema.optional(Schema.Boolean),
-  manageHubToHubAttachments: Schema.optional(Schema.Boolean),
-  manageVpcToHubAttachments: Schema.optional(Schema.Boolean),
-  name: Schema.optional(Schema.String),
-  vpc: Schema.optional(Schema.String),
-}).pipe(
-  Schema.encodeKeys({
-    attachedHubs: "attached_hubs",
-    attachedVpcs: "attached_vpcs",
-    description: "description",
-    installRoutesInCloud: "install_routes_in_cloud",
-    installRoutesInMagicWan: "install_routes_in_magic_wan",
-    manageHubToHubAttachments: "manage_hub_to_hub_attachments",
-    manageVpcToHubAttachments: "manage_vpc_to_hub_attachments",
-    name: "name",
-    vpc: "vpc",
-  }),
-  T.Http({
-    method: "PATCH",
-    path: "/accounts/{account_id}/magic/cloud/onramps/{onrampId}",
-  }),
+export const PatchOnRampRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      onrampId: Schema.String.pipe(T.HttpPath("onrampId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      attachedHubs: Schema.optional(Schema.Array(Schema.String)),
+      attachedVpcs: Schema.optional(Schema.Array(Schema.String)),
+      description: Schema.optional(Schema.String),
+      installRoutesInCloud: Schema.optional(Schema.Boolean),
+      installRoutesInMagicWan: Schema.optional(Schema.Boolean),
+      manageHubToHubAttachments: Schema.optional(Schema.Boolean),
+      manageVpcToHubAttachments: Schema.optional(Schema.Boolean),
+      name: Schema.optional(Schema.String),
+      vpc: Schema.optional(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        attachedHubs: "attached_hubs",
+        attachedVpcs: "attached_vpcs",
+        description: "description",
+        installRoutesInCloud: "install_routes_in_cloud",
+        installRoutesInMagicWan: "install_routes_in_magic_wan",
+        manageHubToHubAttachments: "manage_hub_to_hub_attachments",
+        manageVpcToHubAttachments: "manage_vpc_to_hub_attachments",
+        name: "name",
+        vpc: "vpc",
+      }),
+      T.Http({
+        method: "PATCH",
+        path: "/accounts/{account_id}/magic/cloud/onramps/{onrampId}",
+      }),
+    ),
 ) as unknown as Schema.Schema<PatchOnRampRequest>;
 
 export interface PatchOnRampResponse {
@@ -6242,78 +6367,50 @@ export interface PatchOnRampResponse {
   vpcsByIdUnavailable?: string[] | null;
 }
 
-export const PatchOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
-  cloudType: Schema.Union([
-    Schema.Literals(["AWS", "AZURE", "GOOGLE"]),
-    Schema.String,
-  ]),
-  dynamicRouting: Schema.Boolean,
-  installRoutesInCloud: Schema.Boolean,
-  installRoutesInMagicWan: Schema.Boolean,
-  name: Schema.String,
-  type: Schema.Union([
-    Schema.Literals(["OnrampTypeSingle", "OnrampTypeHub"]),
-    Schema.String,
-  ]),
-  updatedAt: Schema.String,
-  attachedHubs: Schema.optional(
-    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-  ),
-  attachedVpcs: Schema.optional(
-    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-  ),
-  cloudAsn: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  hub: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  lastAppliedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  lastExportedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  lastPlannedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  manageHubToHubAttachments: Schema.optional(
-    Schema.Union([Schema.Boolean, Schema.Null]),
-  ),
-  manageVpcToHubAttachments: Schema.optional(
-    Schema.Union([Schema.Boolean, Schema.Null]),
-  ),
-  plannedMonthlyCostEstimate: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        currency: Schema.String,
-        currentMonthlyCost: Schema.Number,
-        diff: Schema.Number,
-        proposedMonthlyCost: Schema.Number,
-      }).pipe(
-        Schema.encodeKeys({
-          currency: "currency",
-          currentMonthlyCost: "current_monthly_cost",
-          diff: "diff",
-          proposedMonthlyCost: "proposed_monthly_cost",
-        }),
+export const PatchOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.String,
+      cloudType: Schema.Union([
+        Schema.Literals(["AWS", "AZURE", "GOOGLE"]),
+        Schema.String,
+      ]),
+      dynamicRouting: Schema.Boolean,
+      installRoutesInCloud: Schema.Boolean,
+      installRoutesInMagicWan: Schema.Boolean,
+      name: Schema.String,
+      type: Schema.Union([
+        Schema.Literals(["OnrampTypeSingle", "OnrampTypeHub"]),
+        Schema.String,
+      ]),
+      updatedAt: Schema.String,
+      attachedHubs: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),
-      Schema.Null,
-    ]),
-  ),
-  plannedResources: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          diff: Schema.Struct({
-            diff: Schema.String,
-            leftDescription: Schema.String,
-            leftYaml: Schema.String,
-            rightDescription: Schema.String,
-            rightYaml: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({
-              diff: "diff",
-              leftDescription: "left_description",
-              leftYaml: "left_yaml",
-              rightDescription: "right_description",
-              rightYaml: "right_yaml",
-            }),
-          ),
-          keysRequireReplace: Schema.Array(Schema.String),
-          monthlyCostEstimateDiff: Schema.Struct({
+      attachedVpcs: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      cloudAsn: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      hub: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      lastAppliedAt: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      lastExportedAt: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      lastPlannedAt: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      manageHubToHubAttachments: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      manageVpcToHubAttachments: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      plannedMonthlyCostEstimate: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
             currency: Schema.String,
             currentMonthlyCost: Schema.Number,
             diff: Schema.Number,
@@ -6326,227 +6423,268 @@ export const PatchOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
               proposedMonthlyCost: "proposed_monthly_cost",
             }),
           ),
-          plannedAction: Schema.Union([
-            Schema.Literals([
-              "no_op",
-              "create",
-              "update",
-              "replace",
-              "destroy",
-            ]),
-            Schema.String,
-          ]),
-          resource: Schema.Struct({
-            id: Schema.String,
-            cloudType: Schema.Union([
-              Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
-              Schema.String,
-            ]),
-            detail: Schema.String,
-            name: Schema.String,
-            resourceType: Schema.Union([
+          Schema.Null,
+        ]),
+      ),
+      plannedResources: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              diff: Schema.Struct({
+                diff: Schema.String,
+                leftDescription: Schema.String,
+                leftYaml: Schema.String,
+                rightDescription: Schema.String,
+                rightYaml: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  diff: "diff",
+                  leftDescription: "left_description",
+                  leftYaml: "left_yaml",
+                  rightDescription: "right_description",
+                  rightYaml: "right_yaml",
+                }),
+              ),
+              keysRequireReplace: Schema.Array(Schema.String),
+              monthlyCostEstimateDiff: Schema.Struct({
+                currency: Schema.String,
+                currentMonthlyCost: Schema.Number,
+                diff: Schema.Number,
+                proposedMonthlyCost: Schema.Number,
+              }).pipe(
+                Schema.encodeKeys({
+                  currency: "currency",
+                  currentMonthlyCost: "current_monthly_cost",
+                  diff: "diff",
+                  proposedMonthlyCost: "proposed_monthly_cost",
+                }),
+              ),
+              plannedAction: Schema.Union([
+                Schema.Literals([
+                  "no_op",
+                  "create",
+                  "update",
+                  "replace",
+                  "destroy",
+                ]),
+                Schema.String,
+              ]),
+              resource: Schema.Struct({
+                id: Schema.String,
+                cloudType: Schema.Union([
+                  Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
+                  Schema.String,
+                ]),
+                detail: Schema.String,
+                name: Schema.String,
+                resourceType: Schema.Union([
+                  Schema.Literals([
+                    "aws_customer_gateway",
+                    "aws_egress_only_internet_gateway",
+                    "aws_internet_gateway",
+                    "aws_instance",
+                    "aws_network_interface",
+                    "aws_route",
+                    "aws_route_table",
+                    "aws_route_table_association",
+                    "aws_subnet",
+                    "aws_vpc",
+                    "aws_vpc_ipv4_cidr_block_association",
+                    "aws_vpn_connection",
+                    "aws_vpn_connection_route",
+                    "aws_vpn_gateway",
+                    "aws_security_group",
+                    "aws_vpc_security_group_ingress_rule",
+                    "aws_vpc_security_group_egress_rule",
+                    "aws_ec2_managed_prefix_list",
+                    "aws_ec2_transit_gateway",
+                    "aws_ec2_transit_gateway_prefix_list_reference",
+                    "aws_ec2_transit_gateway_vpc_attachment",
+                    "azurerm_application_security_group",
+                    "azurerm_lb",
+                    "azurerm_lb_backend_address_pool",
+                    "azurerm_lb_nat_pool",
+                    "azurerm_lb_nat_rule",
+                    "azurerm_lb_rule",
+                    "azurerm_local_network_gateway",
+                    "azurerm_network_interface",
+                    "azurerm_network_interface_application_security_group_association",
+                    "azurerm_network_interface_backend_address_pool_association",
+                    "azurerm_network_interface_security_group_association",
+                    "azurerm_network_security_group",
+                    "azurerm_public_ip",
+                    "azurerm_route",
+                    "azurerm_route_table",
+                    "azurerm_subnet",
+                    "azurerm_subnet_route_table_association",
+                    "azurerm_virtual_machine",
+                    "azurerm_virtual_network_gateway_connection",
+                    "azurerm_virtual_network",
+                    "azurerm_virtual_network_gateway",
+                    "google_compute_network",
+                    "google_compute_subnetwork",
+                    "google_compute_vpn_gateway",
+                    "google_compute_vpn_tunnel",
+                    "google_compute_route",
+                    "google_compute_address",
+                    "google_compute_global_address",
+                    "google_compute_router",
+                    "google_compute_interconnect_attachment",
+                    "google_compute_ha_vpn_gateway",
+                    "google_compute_forwarding_rule",
+                    "google_compute_network_firewall_policy",
+                    "google_compute_network_firewall_policy_rule",
+                    "cloudflare_static_route",
+                    "cloudflare_ipsec_tunnel",
+                  ]),
+                  Schema.String,
+                ]),
+                title: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  cloudType: "cloud_type",
+                  detail: "detail",
+                  name: "name",
+                  resourceType: "resource_type",
+                  title: "title",
+                }),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                diff: "diff",
+                keysRequireReplace: "keys_require_replace",
+                monthlyCostEstimateDiff: "monthly_cost_estimate_diff",
+                plannedAction: "planned_action",
+                resource: "resource",
+              }),
+            ),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      plannedResourcesUnavailable: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      postApplyMonthlyCostEstimate: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            currency: Schema.String,
+            monthlyCost: Schema.Number,
+          }).pipe(
+            Schema.encodeKeys({
+              currency: "currency",
+              monthlyCost: "monthly_cost",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      postApplyResources: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
+      postApplyResourcesUnavailable: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            applyProgress: Schema.Struct({
+              done: Schema.Number,
+              total: Schema.Number,
+            }),
+            lifecycleState: Schema.Union([
               Schema.Literals([
-                "aws_customer_gateway",
-                "aws_egress_only_internet_gateway",
-                "aws_internet_gateway",
-                "aws_instance",
-                "aws_network_interface",
-                "aws_route",
-                "aws_route_table",
-                "aws_route_table_association",
-                "aws_subnet",
-                "aws_vpc",
-                "aws_vpc_ipv4_cidr_block_association",
-                "aws_vpn_connection",
-                "aws_vpn_connection_route",
-                "aws_vpn_gateway",
-                "aws_security_group",
-                "aws_vpc_security_group_ingress_rule",
-                "aws_vpc_security_group_egress_rule",
-                "aws_ec2_managed_prefix_list",
-                "aws_ec2_transit_gateway",
-                "aws_ec2_transit_gateway_prefix_list_reference",
-                "aws_ec2_transit_gateway_vpc_attachment",
-                "azurerm_application_security_group",
-                "azurerm_lb",
-                "azurerm_lb_backend_address_pool",
-                "azurerm_lb_nat_pool",
-                "azurerm_lb_nat_rule",
-                "azurerm_lb_rule",
-                "azurerm_local_network_gateway",
-                "azurerm_network_interface",
-                "azurerm_network_interface_application_security_group_association",
-                "azurerm_network_interface_backend_address_pool_association",
-                "azurerm_network_interface_security_group_association",
-                "azurerm_network_security_group",
-                "azurerm_public_ip",
-                "azurerm_route",
-                "azurerm_route_table",
-                "azurerm_subnet",
-                "azurerm_subnet_route_table_association",
-                "azurerm_virtual_machine",
-                "azurerm_virtual_network_gateway_connection",
-                "azurerm_virtual_network",
-                "azurerm_virtual_network_gateway",
-                "google_compute_network",
-                "google_compute_subnetwork",
-                "google_compute_vpn_gateway",
-                "google_compute_vpn_tunnel",
-                "google_compute_route",
-                "google_compute_address",
-                "google_compute_global_address",
-                "google_compute_router",
-                "google_compute_interconnect_attachment",
-                "google_compute_ha_vpn_gateway",
-                "google_compute_forwarding_rule",
-                "google_compute_network_firewall_policy",
-                "google_compute_network_firewall_policy_rule",
-                "cloudflare_static_route",
-                "cloudflare_ipsec_tunnel",
+                "OnrampNeedsApply",
+                "OnrampPendingPlan",
+                "OnrampPlanning",
+                "OnrampPlanFailed",
+                "OnrampPendingApproval",
+                "OnrampPendingApply",
+                "OnrampApplying",
+                "OnrampApplyFailed",
+                "OnrampActive",
+                "OnrampPendingDestroy",
+                "OnrampDestroying",
+                "OnrampDestroyFailed",
               ]),
               Schema.String,
             ]),
-            title: Schema.String,
+            planProgress: Schema.Struct({
+              done: Schema.Number,
+              total: Schema.Number,
+            }),
+            routes: Schema.Array(Schema.String),
+            tunnels: Schema.Array(Schema.String),
+            lifecycleErrors: Schema.optional(
+              Schema.Union([
+                Schema.Record(Schema.String, Schema.Unknown),
+                Schema.Null,
+              ]),
+            ),
           }).pipe(
             Schema.encodeKeys({
-              id: "id",
-              cloudType: "cloud_type",
-              detail: "detail",
-              name: "name",
-              resourceType: "resource_type",
-              title: "title",
+              applyProgress: "apply_progress",
+              lifecycleState: "lifecycle_state",
+              planProgress: "plan_progress",
+              routes: "routes",
+              tunnels: "tunnels",
+              lifecycleErrors: "lifecycle_errors",
             }),
           ),
-        }).pipe(
-          Schema.encodeKeys({
-            diff: "diff",
-            keysRequireReplace: "keys_require_replace",
-            monthlyCostEstimateDiff: "monthly_cost_estimate_diff",
-            plannedAction: "planned_action",
-            resource: "resource",
-          }),
-        ),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  plannedResourcesUnavailable: Schema.optional(
-    Schema.Union([Schema.Boolean, Schema.Null]),
-  ),
-  postApplyMonthlyCostEstimate: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        currency: Schema.String,
-        monthlyCost: Schema.Number,
-      }).pipe(
-        Schema.encodeKeys({
-          currency: "currency",
-          monthlyCost: "monthly_cost",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  postApplyResources: Schema.optional(
-    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-  ),
-  postApplyResourcesUnavailable: Schema.optional(
-    Schema.Union([Schema.Boolean, Schema.Null]),
-  ),
-  region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  status: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        applyProgress: Schema.Struct({
-          done: Schema.Number,
-          total: Schema.Number,
-        }),
-        lifecycleState: Schema.Union([
-          Schema.Literals([
-            "OnrampNeedsApply",
-            "OnrampPendingPlan",
-            "OnrampPlanning",
-            "OnrampPlanFailed",
-            "OnrampPendingApproval",
-            "OnrampPendingApply",
-            "OnrampApplying",
-            "OnrampApplyFailed",
-            "OnrampActive",
-            "OnrampPendingDestroy",
-            "OnrampDestroying",
-            "OnrampDestroyFailed",
-          ]),
-          Schema.String,
+          Schema.Null,
         ]),
-        planProgress: Schema.Struct({
-          done: Schema.Number,
-          total: Schema.Number,
-        }),
-        routes: Schema.Array(Schema.String),
-        tunnels: Schema.Array(Schema.String),
-        lifecycleErrors: Schema.optional(
-          Schema.Union([
-            Schema.Record(Schema.String, Schema.Unknown),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          applyProgress: "apply_progress",
-          lifecycleState: "lifecycle_state",
-          planProgress: "plan_progress",
-          routes: "routes",
-          tunnels: "tunnels",
-          lifecycleErrors: "lifecycle_errors",
-        }),
       ),
-      Schema.Null,
-    ]),
-  ),
-  vpc: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  vpcsById: Schema.optional(
-    Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-  ),
-  vpcsByIdUnavailable: Schema.optional(
-    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-  ),
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      cloudType: "cloud_type",
-      dynamicRouting: "dynamic_routing",
-      installRoutesInCloud: "install_routes_in_cloud",
-      installRoutesInMagicWan: "install_routes_in_magic_wan",
-      name: "name",
-      type: "type",
-      updatedAt: "updated_at",
-      attachedHubs: "attached_hubs",
-      attachedVpcs: "attached_vpcs",
-      cloudAsn: "cloud_asn",
-      description: "description",
-      hub: "hub",
-      lastAppliedAt: "last_applied_at",
-      lastExportedAt: "last_exported_at",
-      lastPlannedAt: "last_planned_at",
-      manageHubToHubAttachments: "manage_hub_to_hub_attachments",
-      manageVpcToHubAttachments: "manage_vpc_to_hub_attachments",
-      plannedMonthlyCostEstimate: "planned_monthly_cost_estimate",
-      plannedResources: "planned_resources",
-      plannedResourcesUnavailable: "planned_resources_unavailable",
-      postApplyMonthlyCostEstimate: "post_apply_monthly_cost_estimate",
-      postApplyResources: "post_apply_resources",
-      postApplyResourcesUnavailable: "post_apply_resources_unavailable",
-      region: "region",
-      status: "status",
-      vpc: "vpc",
-      vpcsById: "vpcs_by_id",
-      vpcsByIdUnavailable: "vpcs_by_id_unavailable",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<PatchOnRampResponse>;
+      vpc: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      vpcsById: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
+      vpcsByIdUnavailable: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          cloudType: "cloud_type",
+          dynamicRouting: "dynamic_routing",
+          installRoutesInCloud: "install_routes_in_cloud",
+          installRoutesInMagicWan: "install_routes_in_magic_wan",
+          name: "name",
+          type: "type",
+          updatedAt: "updated_at",
+          attachedHubs: "attached_hubs",
+          attachedVpcs: "attached_vpcs",
+          cloudAsn: "cloud_asn",
+          description: "description",
+          hub: "hub",
+          lastAppliedAt: "last_applied_at",
+          lastExportedAt: "last_exported_at",
+          lastPlannedAt: "last_planned_at",
+          manageHubToHubAttachments: "manage_hub_to_hub_attachments",
+          manageVpcToHubAttachments: "manage_vpc_to_hub_attachments",
+          plannedMonthlyCostEstimate: "planned_monthly_cost_estimate",
+          plannedResources: "planned_resources",
+          plannedResourcesUnavailable: "planned_resources_unavailable",
+          postApplyMonthlyCostEstimate: "post_apply_monthly_cost_estimate",
+          postApplyResources: "post_apply_resources",
+          postApplyResourcesUnavailable: "post_apply_resources_unavailable",
+          region: "region",
+          status: "status",
+          vpc: "vpc",
+          vpcsById: "vpcs_by_id",
+          vpcsByIdUnavailable: "vpcs_by_id_unavailable",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<PatchOnRampResponse>;
 
 export type PatchOnRampError =
   | DefaultErrors
@@ -6575,26 +6713,30 @@ export interface DeleteOnRampRequest {
   force?: boolean;
 }
 
-export const DeleteOnRampRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  onrampId: Schema.String.pipe(T.HttpPath("onrampId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  destroy: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("destroy")),
-  force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
-}).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "/accounts/{account_id}/magic/cloud/onramps/{onrampId}",
-  }),
+export const DeleteOnRampRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      onrampId: Schema.String.pipe(T.HttpPath("onrampId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      destroy: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("destroy")),
+      force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/magic/cloud/onramps/{onrampId}",
+      }),
+    ),
 ) as unknown as Schema.Schema<DeleteOnRampRequest>;
 
 export interface DeleteOnRampResponse {
   id: string;
 }
 
-export const DeleteOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
-}).pipe(
-  T.ResponsePath("result"),
+export const DeleteOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.String,
+    }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Schema<DeleteOnRampResponse>;
 
 export type DeleteOnRampError =
@@ -6619,14 +6761,17 @@ export interface ApplyOnRampRequest {
   accountId: string;
 }
 
-export const ApplyOnRampRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  onrampId: Schema.String.pipe(T.HttpPath("onrampId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "/accounts/{account_id}/magic/cloud/onramps/{onrampId}/apply",
-  }),
+export const ApplyOnRampRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      onrampId: Schema.String.pipe(T.HttpPath("onrampId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/magic/cloud/onramps/{onrampId}/apply",
+      }),
+    ),
 ) as unknown as Schema.Schema<ApplyOnRampRequest>;
 
 export interface ApplyOnRampResponse {
@@ -6977,457 +7122,460 @@ export interface ApplyOnRampResponse {
   success: boolean;
 }
 
-export const ApplyOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  errors: Schema.Array(
+export const ApplyOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      code: Schema.Union([
-        Schema.Literals([
-          "1001",
-          "1002",
-          "1003",
-          "1004",
-          "1005",
-          "1006",
-          "1007",
-          "1008",
-          "1009",
-          "1010",
-          "1011",
-          "1012",
-          "1013",
-          "1014",
-          "1015",
-          "1016",
-          "1017",
-          "1018",
-          "2001",
-          "2002",
-          "2003",
-          "2004",
-          "2005",
-          "2006",
-          "2007",
-          "2008",
-          "2009",
-          "2010",
-          "2011",
-          "2012",
-          "2013",
-          "2014",
-          "2015",
-          "2016",
-          "2017",
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-          "2022",
-          "3001",
-          "3002",
-          "3003",
-          "3004",
-          "3005",
-          "3006",
-          "3007",
-          "4001",
-          "4002",
-          "4003",
-          "4004",
-          "4005",
-          "4006",
-          "4007",
-          "4008",
-          "4009",
-          "4010",
-          "4011",
-          "4012",
-          "4013",
-          "4014",
-          "4015",
-          "4016",
-          "4017",
-          "4018",
-          "4019",
-          "4020",
-          "4021",
-          "4022",
-          "4023",
-          "5001",
-          "5002",
-          "5003",
-          "5004",
-          "102000",
-          "102001",
-          "102002",
-          "102003",
-          "102004",
-          "102005",
-          "102006",
-          "102007",
-          "102008",
-          "102009",
-          "102010",
-          "102011",
-          "102012",
-          "102013",
-          "102014",
-          "102015",
-          "102016",
-          "102017",
-          "102018",
-          "102019",
-          "102020",
-          "102021",
-          "102022",
-          "102023",
-          "102024",
-          "102025",
-          "102026",
-          "102027",
-          "102028",
-          "102029",
-          "102030",
-          "102031",
-          "102032",
-          "102033",
-          "102034",
-          "102035",
-          "102036",
-          "102037",
-          "102038",
-          "102039",
-          "102040",
-          "102041",
-          "102042",
-          "102043",
-          "102044",
-          "102045",
-          "102046",
-          "102047",
-          "102048",
-          "102049",
-          "102050",
-          "102051",
-          "102052",
-          "102053",
-          "102054",
-          "102055",
-          "102056",
-          "102057",
-          "102058",
-          "102059",
-          "102060",
-          "102061",
-          "102062",
-          "102063",
-          "102064",
-          "102065",
-          "102066",
-          "102067",
-          "102068",
-          "102069",
-          "102070",
-          "102071",
-          "102072",
-          "103001",
-          "103002",
-          "103003",
-          "103004",
-          "103005",
-          "103006",
-          "103007",
-          "103008",
-        ]),
-        Schema.String,
-      ]),
-      message: Schema.String,
-      documentationUrl: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      meta: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            l10nKey: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            loggableError: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            templateData: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
-            ),
-            traceId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              l10nKey: "l10n_key",
-              loggableError: "loggable_error",
-              templateData: "template_data",
-              traceId: "trace_id",
-            }),
+      errors: Schema.Array(
+        Schema.Struct({
+          code: Schema.Union([
+            Schema.Literals([
+              "1001",
+              "1002",
+              "1003",
+              "1004",
+              "1005",
+              "1006",
+              "1007",
+              "1008",
+              "1009",
+              "1010",
+              "1011",
+              "1012",
+              "1013",
+              "1014",
+              "1015",
+              "1016",
+              "1017",
+              "1018",
+              "2001",
+              "2002",
+              "2003",
+              "2004",
+              "2005",
+              "2006",
+              "2007",
+              "2008",
+              "2009",
+              "2010",
+              "2011",
+              "2012",
+              "2013",
+              "2014",
+              "2015",
+              "2016",
+              "2017",
+              "2018",
+              "2019",
+              "2020",
+              "2021",
+              "2022",
+              "3001",
+              "3002",
+              "3003",
+              "3004",
+              "3005",
+              "3006",
+              "3007",
+              "4001",
+              "4002",
+              "4003",
+              "4004",
+              "4005",
+              "4006",
+              "4007",
+              "4008",
+              "4009",
+              "4010",
+              "4011",
+              "4012",
+              "4013",
+              "4014",
+              "4015",
+              "4016",
+              "4017",
+              "4018",
+              "4019",
+              "4020",
+              "4021",
+              "4022",
+              "4023",
+              "5001",
+              "5002",
+              "5003",
+              "5004",
+              "102000",
+              "102001",
+              "102002",
+              "102003",
+              "102004",
+              "102005",
+              "102006",
+              "102007",
+              "102008",
+              "102009",
+              "102010",
+              "102011",
+              "102012",
+              "102013",
+              "102014",
+              "102015",
+              "102016",
+              "102017",
+              "102018",
+              "102019",
+              "102020",
+              "102021",
+              "102022",
+              "102023",
+              "102024",
+              "102025",
+              "102026",
+              "102027",
+              "102028",
+              "102029",
+              "102030",
+              "102031",
+              "102032",
+              "102033",
+              "102034",
+              "102035",
+              "102036",
+              "102037",
+              "102038",
+              "102039",
+              "102040",
+              "102041",
+              "102042",
+              "102043",
+              "102044",
+              "102045",
+              "102046",
+              "102047",
+              "102048",
+              "102049",
+              "102050",
+              "102051",
+              "102052",
+              "102053",
+              "102054",
+              "102055",
+              "102056",
+              "102057",
+              "102058",
+              "102059",
+              "102060",
+              "102061",
+              "102062",
+              "102063",
+              "102064",
+              "102065",
+              "102066",
+              "102067",
+              "102068",
+              "102069",
+              "102070",
+              "102071",
+              "102072",
+              "103001",
+              "103002",
+              "103003",
+              "103004",
+              "103005",
+              "103006",
+              "103007",
+              "103008",
+            ]),
+            Schema.String,
+          ]),
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
           ),
-          Schema.Null,
-        ]),
-      ),
-      source: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            parameter: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            parameterValueIndex: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            pointer: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              parameter: "parameter",
-              parameterValueIndex: "parameter_value_index",
-              pointer: "pointer",
-            }),
+          meta: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                l10nKey: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                loggableError: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                templateData: Schema.optional(
+                  Schema.Union([Schema.Unknown, Schema.Null]),
+                ),
+                traceId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  l10nKey: "l10n_key",
+                  loggableError: "loggable_error",
+                  templateData: "template_data",
+                  traceId: "trace_id",
+                }),
+              ),
+              Schema.Null,
+            ]),
           ),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        code: "code",
-        message: "message",
-        documentationUrl: "documentation_url",
-        meta: "meta",
-        source: "source",
-      }),
-    ),
-  ),
-  messages: Schema.Array(
-    Schema.Struct({
-      code: Schema.Union([
-        Schema.Literals([
-          "1001",
-          "1002",
-          "1003",
-          "1004",
-          "1005",
-          "1006",
-          "1007",
-          "1008",
-          "1009",
-          "1010",
-          "1011",
-          "1012",
-          "1013",
-          "1014",
-          "1015",
-          "1016",
-          "1017",
-          "1018",
-          "2001",
-          "2002",
-          "2003",
-          "2004",
-          "2005",
-          "2006",
-          "2007",
-          "2008",
-          "2009",
-          "2010",
-          "2011",
-          "2012",
-          "2013",
-          "2014",
-          "2015",
-          "2016",
-          "2017",
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-          "2022",
-          "3001",
-          "3002",
-          "3003",
-          "3004",
-          "3005",
-          "3006",
-          "3007",
-          "4001",
-          "4002",
-          "4003",
-          "4004",
-          "4005",
-          "4006",
-          "4007",
-          "4008",
-          "4009",
-          "4010",
-          "4011",
-          "4012",
-          "4013",
-          "4014",
-          "4015",
-          "4016",
-          "4017",
-          "4018",
-          "4019",
-          "4020",
-          "4021",
-          "4022",
-          "4023",
-          "5001",
-          "5002",
-          "5003",
-          "5004",
-          "102000",
-          "102001",
-          "102002",
-          "102003",
-          "102004",
-          "102005",
-          "102006",
-          "102007",
-          "102008",
-          "102009",
-          "102010",
-          "102011",
-          "102012",
-          "102013",
-          "102014",
-          "102015",
-          "102016",
-          "102017",
-          "102018",
-          "102019",
-          "102020",
-          "102021",
-          "102022",
-          "102023",
-          "102024",
-          "102025",
-          "102026",
-          "102027",
-          "102028",
-          "102029",
-          "102030",
-          "102031",
-          "102032",
-          "102033",
-          "102034",
-          "102035",
-          "102036",
-          "102037",
-          "102038",
-          "102039",
-          "102040",
-          "102041",
-          "102042",
-          "102043",
-          "102044",
-          "102045",
-          "102046",
-          "102047",
-          "102048",
-          "102049",
-          "102050",
-          "102051",
-          "102052",
-          "102053",
-          "102054",
-          "102055",
-          "102056",
-          "102057",
-          "102058",
-          "102059",
-          "102060",
-          "102061",
-          "102062",
-          "102063",
-          "102064",
-          "102065",
-          "102066",
-          "102067",
-          "102068",
-          "102069",
-          "102070",
-          "102071",
-          "102072",
-          "103001",
-          "103002",
-          "103003",
-          "103004",
-          "103005",
-          "103006",
-          "103007",
-          "103008",
-        ]),
-        Schema.String,
-      ]),
-      message: Schema.String,
-      documentationUrl: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      meta: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            l10nKey: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            loggableError: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            templateData: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
-            ),
-            traceId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              l10nKey: "l10n_key",
-              loggableError: "loggable_error",
-              templateData: "template_data",
-              traceId: "trace_id",
-            }),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                parameter: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                parameterValueIndex: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  parameter: "parameter",
+                  parameterValueIndex: "parameter_value_index",
+                  pointer: "pointer",
+                }),
+              ),
+              Schema.Null,
+            ]),
           ),
-          Schema.Null,
-        ]),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            meta: "meta",
+            source: "source",
+          }),
+        ),
       ),
-      source: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            parameter: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            parameterValueIndex: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            pointer: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              parameter: "parameter",
-              parameterValueIndex: "parameter_value_index",
-              pointer: "pointer",
-            }),
+      messages: Schema.Array(
+        Schema.Struct({
+          code: Schema.Union([
+            Schema.Literals([
+              "1001",
+              "1002",
+              "1003",
+              "1004",
+              "1005",
+              "1006",
+              "1007",
+              "1008",
+              "1009",
+              "1010",
+              "1011",
+              "1012",
+              "1013",
+              "1014",
+              "1015",
+              "1016",
+              "1017",
+              "1018",
+              "2001",
+              "2002",
+              "2003",
+              "2004",
+              "2005",
+              "2006",
+              "2007",
+              "2008",
+              "2009",
+              "2010",
+              "2011",
+              "2012",
+              "2013",
+              "2014",
+              "2015",
+              "2016",
+              "2017",
+              "2018",
+              "2019",
+              "2020",
+              "2021",
+              "2022",
+              "3001",
+              "3002",
+              "3003",
+              "3004",
+              "3005",
+              "3006",
+              "3007",
+              "4001",
+              "4002",
+              "4003",
+              "4004",
+              "4005",
+              "4006",
+              "4007",
+              "4008",
+              "4009",
+              "4010",
+              "4011",
+              "4012",
+              "4013",
+              "4014",
+              "4015",
+              "4016",
+              "4017",
+              "4018",
+              "4019",
+              "4020",
+              "4021",
+              "4022",
+              "4023",
+              "5001",
+              "5002",
+              "5003",
+              "5004",
+              "102000",
+              "102001",
+              "102002",
+              "102003",
+              "102004",
+              "102005",
+              "102006",
+              "102007",
+              "102008",
+              "102009",
+              "102010",
+              "102011",
+              "102012",
+              "102013",
+              "102014",
+              "102015",
+              "102016",
+              "102017",
+              "102018",
+              "102019",
+              "102020",
+              "102021",
+              "102022",
+              "102023",
+              "102024",
+              "102025",
+              "102026",
+              "102027",
+              "102028",
+              "102029",
+              "102030",
+              "102031",
+              "102032",
+              "102033",
+              "102034",
+              "102035",
+              "102036",
+              "102037",
+              "102038",
+              "102039",
+              "102040",
+              "102041",
+              "102042",
+              "102043",
+              "102044",
+              "102045",
+              "102046",
+              "102047",
+              "102048",
+              "102049",
+              "102050",
+              "102051",
+              "102052",
+              "102053",
+              "102054",
+              "102055",
+              "102056",
+              "102057",
+              "102058",
+              "102059",
+              "102060",
+              "102061",
+              "102062",
+              "102063",
+              "102064",
+              "102065",
+              "102066",
+              "102067",
+              "102068",
+              "102069",
+              "102070",
+              "102071",
+              "102072",
+              "103001",
+              "103002",
+              "103003",
+              "103004",
+              "103005",
+              "103006",
+              "103007",
+              "103008",
+            ]),
+            Schema.String,
+          ]),
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
           ),
-          Schema.Null,
-        ]),
+          meta: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                l10nKey: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                loggableError: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                templateData: Schema.optional(
+                  Schema.Union([Schema.Unknown, Schema.Null]),
+                ),
+                traceId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  l10nKey: "l10n_key",
+                  loggableError: "loggable_error",
+                  templateData: "template_data",
+                  traceId: "trace_id",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                parameter: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                parameterValueIndex: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  parameter: "parameter",
+                  parameterValueIndex: "parameter_value_index",
+                  pointer: "pointer",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            meta: "meta",
+            source: "source",
+          }),
+        ),
       ),
-    }).pipe(
-      Schema.encodeKeys({
-        code: "code",
-        message: "message",
-        documentationUrl: "documentation_url",
-        meta: "meta",
-        source: "source",
-      }),
-    ),
-  ),
-  success: Schema.Boolean,
-}) as unknown as Schema.Schema<ApplyOnRampResponse>;
+      success: Schema.Boolean,
+    }),
+) as unknown as Schema.Schema<ApplyOnRampResponse>;
 
 export type ApplyOnRampError = DefaultErrors;
 
@@ -7447,20 +7595,24 @@ export interface ExportOnRampRequest {
   accountId: string;
 }
 
-export const ExportOnRampRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  onrampId: Schema.String.pipe(T.HttpPath("onrampId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "/accounts/{account_id}/magic/cloud/onramps/{onrampId}/export",
-  }),
+export const ExportOnRampRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      onrampId: Schema.String.pipe(T.HttpPath("onrampId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/magic/cloud/onramps/{onrampId}/export",
+      }),
+    ),
 ) as unknown as Schema.Schema<ExportOnRampRequest>;
 
 export type ExportOnRampResponse = unknown;
 
-export const ExportOnRampResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<ExportOnRampResponse>;
+export const ExportOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () => Schema.Unknown,
+) as unknown as Schema.Schema<ExportOnRampResponse>;
 
 export type ExportOnRampError = DefaultErrors;
 
@@ -7480,14 +7632,17 @@ export interface PlanOnRampRequest {
   accountId: string;
 }
 
-export const PlanOnRampRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  onrampId: Schema.String.pipe(T.HttpPath("onrampId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "/accounts/{account_id}/magic/cloud/onramps/{onrampId}/plan",
-  }),
+export const PlanOnRampRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      onrampId: Schema.String.pipe(T.HttpPath("onrampId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/magic/cloud/onramps/{onrampId}/plan",
+      }),
+    ),
 ) as unknown as Schema.Schema<PlanOnRampRequest>;
 
 export interface PlanOnRampResponse {
@@ -7838,457 +7993,460 @@ export interface PlanOnRampResponse {
   success: boolean;
 }
 
-export const PlanOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  errors: Schema.Array(
+export const PlanOnRampResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      code: Schema.Union([
-        Schema.Literals([
-          "1001",
-          "1002",
-          "1003",
-          "1004",
-          "1005",
-          "1006",
-          "1007",
-          "1008",
-          "1009",
-          "1010",
-          "1011",
-          "1012",
-          "1013",
-          "1014",
-          "1015",
-          "1016",
-          "1017",
-          "1018",
-          "2001",
-          "2002",
-          "2003",
-          "2004",
-          "2005",
-          "2006",
-          "2007",
-          "2008",
-          "2009",
-          "2010",
-          "2011",
-          "2012",
-          "2013",
-          "2014",
-          "2015",
-          "2016",
-          "2017",
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-          "2022",
-          "3001",
-          "3002",
-          "3003",
-          "3004",
-          "3005",
-          "3006",
-          "3007",
-          "4001",
-          "4002",
-          "4003",
-          "4004",
-          "4005",
-          "4006",
-          "4007",
-          "4008",
-          "4009",
-          "4010",
-          "4011",
-          "4012",
-          "4013",
-          "4014",
-          "4015",
-          "4016",
-          "4017",
-          "4018",
-          "4019",
-          "4020",
-          "4021",
-          "4022",
-          "4023",
-          "5001",
-          "5002",
-          "5003",
-          "5004",
-          "102000",
-          "102001",
-          "102002",
-          "102003",
-          "102004",
-          "102005",
-          "102006",
-          "102007",
-          "102008",
-          "102009",
-          "102010",
-          "102011",
-          "102012",
-          "102013",
-          "102014",
-          "102015",
-          "102016",
-          "102017",
-          "102018",
-          "102019",
-          "102020",
-          "102021",
-          "102022",
-          "102023",
-          "102024",
-          "102025",
-          "102026",
-          "102027",
-          "102028",
-          "102029",
-          "102030",
-          "102031",
-          "102032",
-          "102033",
-          "102034",
-          "102035",
-          "102036",
-          "102037",
-          "102038",
-          "102039",
-          "102040",
-          "102041",
-          "102042",
-          "102043",
-          "102044",
-          "102045",
-          "102046",
-          "102047",
-          "102048",
-          "102049",
-          "102050",
-          "102051",
-          "102052",
-          "102053",
-          "102054",
-          "102055",
-          "102056",
-          "102057",
-          "102058",
-          "102059",
-          "102060",
-          "102061",
-          "102062",
-          "102063",
-          "102064",
-          "102065",
-          "102066",
-          "102067",
-          "102068",
-          "102069",
-          "102070",
-          "102071",
-          "102072",
-          "103001",
-          "103002",
-          "103003",
-          "103004",
-          "103005",
-          "103006",
-          "103007",
-          "103008",
-        ]),
-        Schema.String,
-      ]),
-      message: Schema.String,
-      documentationUrl: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      meta: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            l10nKey: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            loggableError: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            templateData: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
-            ),
-            traceId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              l10nKey: "l10n_key",
-              loggableError: "loggable_error",
-              templateData: "template_data",
-              traceId: "trace_id",
-            }),
+      errors: Schema.Array(
+        Schema.Struct({
+          code: Schema.Union([
+            Schema.Literals([
+              "1001",
+              "1002",
+              "1003",
+              "1004",
+              "1005",
+              "1006",
+              "1007",
+              "1008",
+              "1009",
+              "1010",
+              "1011",
+              "1012",
+              "1013",
+              "1014",
+              "1015",
+              "1016",
+              "1017",
+              "1018",
+              "2001",
+              "2002",
+              "2003",
+              "2004",
+              "2005",
+              "2006",
+              "2007",
+              "2008",
+              "2009",
+              "2010",
+              "2011",
+              "2012",
+              "2013",
+              "2014",
+              "2015",
+              "2016",
+              "2017",
+              "2018",
+              "2019",
+              "2020",
+              "2021",
+              "2022",
+              "3001",
+              "3002",
+              "3003",
+              "3004",
+              "3005",
+              "3006",
+              "3007",
+              "4001",
+              "4002",
+              "4003",
+              "4004",
+              "4005",
+              "4006",
+              "4007",
+              "4008",
+              "4009",
+              "4010",
+              "4011",
+              "4012",
+              "4013",
+              "4014",
+              "4015",
+              "4016",
+              "4017",
+              "4018",
+              "4019",
+              "4020",
+              "4021",
+              "4022",
+              "4023",
+              "5001",
+              "5002",
+              "5003",
+              "5004",
+              "102000",
+              "102001",
+              "102002",
+              "102003",
+              "102004",
+              "102005",
+              "102006",
+              "102007",
+              "102008",
+              "102009",
+              "102010",
+              "102011",
+              "102012",
+              "102013",
+              "102014",
+              "102015",
+              "102016",
+              "102017",
+              "102018",
+              "102019",
+              "102020",
+              "102021",
+              "102022",
+              "102023",
+              "102024",
+              "102025",
+              "102026",
+              "102027",
+              "102028",
+              "102029",
+              "102030",
+              "102031",
+              "102032",
+              "102033",
+              "102034",
+              "102035",
+              "102036",
+              "102037",
+              "102038",
+              "102039",
+              "102040",
+              "102041",
+              "102042",
+              "102043",
+              "102044",
+              "102045",
+              "102046",
+              "102047",
+              "102048",
+              "102049",
+              "102050",
+              "102051",
+              "102052",
+              "102053",
+              "102054",
+              "102055",
+              "102056",
+              "102057",
+              "102058",
+              "102059",
+              "102060",
+              "102061",
+              "102062",
+              "102063",
+              "102064",
+              "102065",
+              "102066",
+              "102067",
+              "102068",
+              "102069",
+              "102070",
+              "102071",
+              "102072",
+              "103001",
+              "103002",
+              "103003",
+              "103004",
+              "103005",
+              "103006",
+              "103007",
+              "103008",
+            ]),
+            Schema.String,
+          ]),
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
           ),
-          Schema.Null,
-        ]),
-      ),
-      source: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            parameter: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            parameterValueIndex: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            pointer: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              parameter: "parameter",
-              parameterValueIndex: "parameter_value_index",
-              pointer: "pointer",
-            }),
+          meta: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                l10nKey: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                loggableError: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                templateData: Schema.optional(
+                  Schema.Union([Schema.Unknown, Schema.Null]),
+                ),
+                traceId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  l10nKey: "l10n_key",
+                  loggableError: "loggable_error",
+                  templateData: "template_data",
+                  traceId: "trace_id",
+                }),
+              ),
+              Schema.Null,
+            ]),
           ),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        code: "code",
-        message: "message",
-        documentationUrl: "documentation_url",
-        meta: "meta",
-        source: "source",
-      }),
-    ),
-  ),
-  messages: Schema.Array(
-    Schema.Struct({
-      code: Schema.Union([
-        Schema.Literals([
-          "1001",
-          "1002",
-          "1003",
-          "1004",
-          "1005",
-          "1006",
-          "1007",
-          "1008",
-          "1009",
-          "1010",
-          "1011",
-          "1012",
-          "1013",
-          "1014",
-          "1015",
-          "1016",
-          "1017",
-          "1018",
-          "2001",
-          "2002",
-          "2003",
-          "2004",
-          "2005",
-          "2006",
-          "2007",
-          "2008",
-          "2009",
-          "2010",
-          "2011",
-          "2012",
-          "2013",
-          "2014",
-          "2015",
-          "2016",
-          "2017",
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-          "2022",
-          "3001",
-          "3002",
-          "3003",
-          "3004",
-          "3005",
-          "3006",
-          "3007",
-          "4001",
-          "4002",
-          "4003",
-          "4004",
-          "4005",
-          "4006",
-          "4007",
-          "4008",
-          "4009",
-          "4010",
-          "4011",
-          "4012",
-          "4013",
-          "4014",
-          "4015",
-          "4016",
-          "4017",
-          "4018",
-          "4019",
-          "4020",
-          "4021",
-          "4022",
-          "4023",
-          "5001",
-          "5002",
-          "5003",
-          "5004",
-          "102000",
-          "102001",
-          "102002",
-          "102003",
-          "102004",
-          "102005",
-          "102006",
-          "102007",
-          "102008",
-          "102009",
-          "102010",
-          "102011",
-          "102012",
-          "102013",
-          "102014",
-          "102015",
-          "102016",
-          "102017",
-          "102018",
-          "102019",
-          "102020",
-          "102021",
-          "102022",
-          "102023",
-          "102024",
-          "102025",
-          "102026",
-          "102027",
-          "102028",
-          "102029",
-          "102030",
-          "102031",
-          "102032",
-          "102033",
-          "102034",
-          "102035",
-          "102036",
-          "102037",
-          "102038",
-          "102039",
-          "102040",
-          "102041",
-          "102042",
-          "102043",
-          "102044",
-          "102045",
-          "102046",
-          "102047",
-          "102048",
-          "102049",
-          "102050",
-          "102051",
-          "102052",
-          "102053",
-          "102054",
-          "102055",
-          "102056",
-          "102057",
-          "102058",
-          "102059",
-          "102060",
-          "102061",
-          "102062",
-          "102063",
-          "102064",
-          "102065",
-          "102066",
-          "102067",
-          "102068",
-          "102069",
-          "102070",
-          "102071",
-          "102072",
-          "103001",
-          "103002",
-          "103003",
-          "103004",
-          "103005",
-          "103006",
-          "103007",
-          "103008",
-        ]),
-        Schema.String,
-      ]),
-      message: Schema.String,
-      documentationUrl: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      meta: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            l10nKey: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            loggableError: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            templateData: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
-            ),
-            traceId: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              l10nKey: "l10n_key",
-              loggableError: "loggable_error",
-              templateData: "template_data",
-              traceId: "trace_id",
-            }),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                parameter: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                parameterValueIndex: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  parameter: "parameter",
+                  parameterValueIndex: "parameter_value_index",
+                  pointer: "pointer",
+                }),
+              ),
+              Schema.Null,
+            ]),
           ),
-          Schema.Null,
-        ]),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            meta: "meta",
+            source: "source",
+          }),
+        ),
       ),
-      source: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            parameter: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            parameterValueIndex: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            pointer: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              parameter: "parameter",
-              parameterValueIndex: "parameter_value_index",
-              pointer: "pointer",
-            }),
+      messages: Schema.Array(
+        Schema.Struct({
+          code: Schema.Union([
+            Schema.Literals([
+              "1001",
+              "1002",
+              "1003",
+              "1004",
+              "1005",
+              "1006",
+              "1007",
+              "1008",
+              "1009",
+              "1010",
+              "1011",
+              "1012",
+              "1013",
+              "1014",
+              "1015",
+              "1016",
+              "1017",
+              "1018",
+              "2001",
+              "2002",
+              "2003",
+              "2004",
+              "2005",
+              "2006",
+              "2007",
+              "2008",
+              "2009",
+              "2010",
+              "2011",
+              "2012",
+              "2013",
+              "2014",
+              "2015",
+              "2016",
+              "2017",
+              "2018",
+              "2019",
+              "2020",
+              "2021",
+              "2022",
+              "3001",
+              "3002",
+              "3003",
+              "3004",
+              "3005",
+              "3006",
+              "3007",
+              "4001",
+              "4002",
+              "4003",
+              "4004",
+              "4005",
+              "4006",
+              "4007",
+              "4008",
+              "4009",
+              "4010",
+              "4011",
+              "4012",
+              "4013",
+              "4014",
+              "4015",
+              "4016",
+              "4017",
+              "4018",
+              "4019",
+              "4020",
+              "4021",
+              "4022",
+              "4023",
+              "5001",
+              "5002",
+              "5003",
+              "5004",
+              "102000",
+              "102001",
+              "102002",
+              "102003",
+              "102004",
+              "102005",
+              "102006",
+              "102007",
+              "102008",
+              "102009",
+              "102010",
+              "102011",
+              "102012",
+              "102013",
+              "102014",
+              "102015",
+              "102016",
+              "102017",
+              "102018",
+              "102019",
+              "102020",
+              "102021",
+              "102022",
+              "102023",
+              "102024",
+              "102025",
+              "102026",
+              "102027",
+              "102028",
+              "102029",
+              "102030",
+              "102031",
+              "102032",
+              "102033",
+              "102034",
+              "102035",
+              "102036",
+              "102037",
+              "102038",
+              "102039",
+              "102040",
+              "102041",
+              "102042",
+              "102043",
+              "102044",
+              "102045",
+              "102046",
+              "102047",
+              "102048",
+              "102049",
+              "102050",
+              "102051",
+              "102052",
+              "102053",
+              "102054",
+              "102055",
+              "102056",
+              "102057",
+              "102058",
+              "102059",
+              "102060",
+              "102061",
+              "102062",
+              "102063",
+              "102064",
+              "102065",
+              "102066",
+              "102067",
+              "102068",
+              "102069",
+              "102070",
+              "102071",
+              "102072",
+              "103001",
+              "103002",
+              "103003",
+              "103004",
+              "103005",
+              "103006",
+              "103007",
+              "103008",
+            ]),
+            Schema.String,
+          ]),
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
           ),
-          Schema.Null,
-        ]),
+          meta: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                l10nKey: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                loggableError: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                templateData: Schema.optional(
+                  Schema.Union([Schema.Unknown, Schema.Null]),
+                ),
+                traceId: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  l10nKey: "l10n_key",
+                  loggableError: "loggable_error",
+                  templateData: "template_data",
+                  traceId: "trace_id",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                parameter: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                parameterValueIndex: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  parameter: "parameter",
+                  parameterValueIndex: "parameter_value_index",
+                  pointer: "pointer",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            meta: "meta",
+            source: "source",
+          }),
+        ),
       ),
-    }).pipe(
-      Schema.encodeKeys({
-        code: "code",
-        message: "message",
-        documentationUrl: "documentation_url",
-        meta: "meta",
-        source: "source",
-      }),
-    ),
-  ),
-  success: Schema.Boolean,
-}) as unknown as Schema.Schema<PlanOnRampResponse>;
+      success: Schema.Boolean,
+    }),
+) as unknown as Schema.Schema<PlanOnRampResponse>;
 
 export type PlanOnRampError = DefaultErrors;
 
@@ -8312,13 +8470,15 @@ export interface ListOnRampAddressSpacesRequest {
 }
 
 export const ListOnRampAddressSpacesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
+      }),
+    ),
   ) as unknown as Schema.Schema<ListOnRampAddressSpacesRequest>;
 
 export interface ListOnRampAddressSpacesResponse {
@@ -8326,10 +8486,10 @@ export interface ListOnRampAddressSpacesResponse {
 }
 
 export const ListOnRampAddressSpacesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    prefixes: Schema.Array(Schema.String),
-  }).pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      prefixes: Schema.Array(Schema.String),
+    }).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<ListOnRampAddressSpacesResponse>;
 
 export type ListOnRampAddressSpacesError = DefaultErrors;
@@ -8353,14 +8513,16 @@ export interface PutOnRampAddressSpaceRequest {
 }
 
 export const PutOnRampAddressSpaceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    prefixes: Schema.Array(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      prefixes: Schema.Array(Schema.String),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        path: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
+      }),
+    ),
   ) as unknown as Schema.Schema<PutOnRampAddressSpaceRequest>;
 
 export interface PutOnRampAddressSpaceResponse {
@@ -8368,10 +8530,10 @@ export interface PutOnRampAddressSpaceResponse {
 }
 
 export const PutOnRampAddressSpaceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    prefixes: Schema.Array(Schema.String),
-  }).pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      prefixes: Schema.Array(Schema.String),
+    }).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<PutOnRampAddressSpaceResponse>;
 
 export type PutOnRampAddressSpaceError = DefaultErrors;
@@ -8395,14 +8557,16 @@ export interface PatchOnRampAddressSpaceRequest {
 }
 
 export const PatchOnRampAddressSpaceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    prefixes: Schema.Array(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      prefixes: Schema.Array(Schema.String),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        path: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
+      }),
+    ),
   ) as unknown as Schema.Schema<PatchOnRampAddressSpaceRequest>;
 
 export interface PatchOnRampAddressSpaceResponse {
@@ -8410,10 +8574,10 @@ export interface PatchOnRampAddressSpaceResponse {
 }
 
 export const PatchOnRampAddressSpaceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    prefixes: Schema.Array(Schema.String),
-  }).pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      prefixes: Schema.Array(Schema.String),
+    }).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<PatchOnRampAddressSpaceResponse>;
 
 export type PatchOnRampAddressSpaceError = DefaultErrors;
@@ -8441,21 +8605,23 @@ export interface PolicyPreviewResourceRequest {
 }
 
 export const PolicyPreviewResourceRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    policy: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/magic/cloud/resources/policy-preview",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      policy: Schema.String,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/magic/cloud/resources/policy-preview",
+      }),
+    ),
   ) as unknown as Schema.Schema<PolicyPreviewResourceRequest>;
 
 export type PolicyPreviewResourceResponse = string;
 
 export const PolicyPreviewResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String.pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.String.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<PolicyPreviewResourceResponse>;
 
 export type PolicyPreviewResourceError = DefaultErrors;
@@ -8483,15 +8649,18 @@ export interface GetResourceRequest {
   v2?: boolean;
 }
 
-export const GetResourceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  v2: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("v2")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/magic/cloud/resources/{resourceId}",
-  }),
+export const GetResourceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      resourceId: Schema.String.pipe(T.HttpPath("resourceId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      v2: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("v2")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/cloud/resources/{resourceId}",
+      }),
+    ),
 ) as unknown as Schema.Schema<GetResourceRequest>;
 
 export interface GetResourceResponse {
@@ -8799,659 +8968,689 @@ export interface GetResourceResponse {
     | null;
 }
 
-export const GetResourceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
-  accountId: Schema.String,
-  cloudType: Schema.Union([
-    Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
-    Schema.String,
-  ]),
-  config: Schema.Record(Schema.String, Schema.Unknown),
-  deploymentProvider: Schema.String,
-  managed: Schema.Boolean,
-  monthlyCostEstimate: Schema.Struct({
-    currency: Schema.String,
-    monthlyCost: Schema.Number,
-  }).pipe(
-    Schema.encodeKeys({ currency: "currency", monthlyCost: "monthly_cost" }),
-  ),
-  name: Schema.String,
-  nativeId: Schema.String,
-  observations: Schema.Record(Schema.String, Schema.Unknown),
-  providerIds: Schema.Array(Schema.String),
-  providerNamesById: Schema.Record(Schema.String, Schema.Unknown),
-  region: Schema.String,
-  resourceGroup: Schema.String,
-  resourceType: Schema.Union([
-    Schema.Literals([
-      "aws_customer_gateway",
-      "aws_egress_only_internet_gateway",
-      "aws_internet_gateway",
-      "aws_instance",
-      "aws_network_interface",
-      "aws_route",
-      "aws_route_table",
-      "aws_route_table_association",
-      "aws_subnet",
-      "aws_vpc",
-      "aws_vpc_ipv4_cidr_block_association",
-      "aws_vpn_connection",
-      "aws_vpn_connection_route",
-      "aws_vpn_gateway",
-      "aws_security_group",
-      "aws_vpc_security_group_ingress_rule",
-      "aws_vpc_security_group_egress_rule",
-      "aws_ec2_managed_prefix_list",
-      "aws_ec2_transit_gateway",
-      "aws_ec2_transit_gateway_prefix_list_reference",
-      "aws_ec2_transit_gateway_vpc_attachment",
-      "azurerm_application_security_group",
-      "azurerm_lb",
-      "azurerm_lb_backend_address_pool",
-      "azurerm_lb_nat_pool",
-      "azurerm_lb_nat_rule",
-      "azurerm_lb_rule",
-      "azurerm_local_network_gateway",
-      "azurerm_network_interface",
-      "azurerm_network_interface_application_security_group_association",
-      "azurerm_network_interface_backend_address_pool_association",
-      "azurerm_network_interface_security_group_association",
-      "azurerm_network_security_group",
-      "azurerm_public_ip",
-      "azurerm_route",
-      "azurerm_route_table",
-      "azurerm_subnet",
-      "azurerm_subnet_route_table_association",
-      "azurerm_virtual_machine",
-      "azurerm_virtual_network_gateway_connection",
-      "azurerm_virtual_network",
-      "azurerm_virtual_network_gateway",
-      "google_compute_network",
-      "google_compute_subnetwork",
-      "google_compute_vpn_gateway",
-      "google_compute_vpn_tunnel",
-      "google_compute_route",
-      "google_compute_address",
-      "google_compute_global_address",
-      "google_compute_router",
-      "google_compute_interconnect_attachment",
-      "google_compute_ha_vpn_gateway",
-      "google_compute_forwarding_rule",
-      "google_compute_network_firewall_policy",
-      "google_compute_network_firewall_policy_rule",
-      "cloudflare_static_route",
-      "cloudflare_ipsec_tunnel",
-    ]),
-    Schema.String,
-  ]),
-  sections: Schema.Array(
+export const GetResourceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      hiddenItems: Schema.Array(
-        Schema.Struct({
-          helpText: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Struct({
-                  itemType: Schema.String,
-                  string: Schema.String,
-                }).pipe(
-                  Schema.encodeKeys({
-                    itemType: "item_type",
-                    string: "string",
-                  }),
-                ),
-                Schema.Struct({
-                  itemType: Schema.String,
-                  yaml: Schema.String,
-                }).pipe(
-                  Schema.encodeKeys({ itemType: "item_type", yaml: "yaml" }),
-                ),
-                Schema.Struct({
-                  itemType: Schema.String,
-                  yamlDiff: Schema.Struct({
-                    diff: Schema.String,
-                    leftDescription: Schema.String,
-                    leftYaml: Schema.String,
-                    rightDescription: Schema.String,
-                    rightYaml: Schema.String,
-                  }).pipe(
-                    Schema.encodeKeys({
-                      diff: "diff",
-                      leftDescription: "left_description",
-                      leftYaml: "left_yaml",
-                      rightDescription: "right_description",
-                      rightYaml: "right_yaml",
-                    }),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    itemType: "item_type",
-                    yamlDiff: "yaml_diff",
-                  }),
-                ),
-                Schema.Struct({
-                  itemType: Schema.String,
-                  resourcePreview: Schema.Struct({
-                    id: Schema.String,
-                    cloudType: Schema.Union([
-                      Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
-                      Schema.String,
-                    ]),
-                    detail: Schema.String,
-                    name: Schema.String,
-                    resourceType: Schema.Union([
-                      Schema.Literals([
-                        "aws_customer_gateway",
-                        "aws_egress_only_internet_gateway",
-                        "aws_internet_gateway",
-                        "aws_instance",
-                        "aws_network_interface",
-                        "aws_route",
-                        "aws_route_table",
-                        "aws_route_table_association",
-                        "aws_subnet",
-                        "aws_vpc",
-                        "aws_vpc_ipv4_cidr_block_association",
-                        "aws_vpn_connection",
-                        "aws_vpn_connection_route",
-                        "aws_vpn_gateway",
-                        "aws_security_group",
-                        "aws_vpc_security_group_ingress_rule",
-                        "aws_vpc_security_group_egress_rule",
-                        "aws_ec2_managed_prefix_list",
-                        "aws_ec2_transit_gateway",
-                        "aws_ec2_transit_gateway_prefix_list_reference",
-                        "aws_ec2_transit_gateway_vpc_attachment",
-                        "azurerm_application_security_group",
-                        "azurerm_lb",
-                        "azurerm_lb_backend_address_pool",
-                        "azurerm_lb_nat_pool",
-                        "azurerm_lb_nat_rule",
-                        "azurerm_lb_rule",
-                        "azurerm_local_network_gateway",
-                        "azurerm_network_interface",
-                        "azurerm_network_interface_application_security_group_association",
-                        "azurerm_network_interface_backend_address_pool_association",
-                        "azurerm_network_interface_security_group_association",
-                        "azurerm_network_security_group",
-                        "azurerm_public_ip",
-                        "azurerm_route",
-                        "azurerm_route_table",
-                        "azurerm_subnet",
-                        "azurerm_subnet_route_table_association",
-                        "azurerm_virtual_machine",
-                        "azurerm_virtual_network_gateway_connection",
-                        "azurerm_virtual_network",
-                        "azurerm_virtual_network_gateway",
-                        "google_compute_network",
-                        "google_compute_subnetwork",
-                        "google_compute_vpn_gateway",
-                        "google_compute_vpn_tunnel",
-                        "google_compute_route",
-                        "google_compute_address",
-                        "google_compute_global_address",
-                        "google_compute_router",
-                        "google_compute_interconnect_attachment",
-                        "google_compute_ha_vpn_gateway",
-                        "google_compute_forwarding_rule",
-                        "google_compute_network_firewall_policy",
-                        "google_compute_network_firewall_policy_rule",
-                        "cloudflare_static_route",
-                        "cloudflare_ipsec_tunnel",
-                      ]),
-                      Schema.String,
-                    ]),
-                    title: Schema.String,
-                  }).pipe(
-                    Schema.encodeKeys({
-                      id: "id",
-                      cloudType: "cloud_type",
-                      detail: "detail",
-                      name: "name",
-                      resourceType: "resource_type",
-                      title: "title",
-                    }),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    itemType: "item_type",
-                    resourcePreview: "resource_preview",
-                  }),
-                ),
-                Schema.Struct({
-                  itemType: Schema.String,
-                  list: Schema.Array(
-                    Schema.Union([
-                      Schema.Struct({
-                        itemType: Schema.String,
-                        string: Schema.String,
-                      }).pipe(
-                        Schema.encodeKeys({
-                          itemType: "item_type",
-                          string: "string",
-                        }),
-                      ),
-                      Schema.Struct({
-                        itemType: Schema.String,
-                        resourcePreview: Schema.Struct({
-                          id: Schema.String,
-                          cloudType: Schema.Union([
-                            Schema.Literals([
-                              "AWS",
-                              "AZURE",
-                              "GOOGLE",
-                              "CLOUDFLARE",
-                            ]),
-                            Schema.String,
-                          ]),
-                          detail: Schema.String,
-                          name: Schema.String,
-                          resourceType: Schema.Union([
-                            Schema.Literals([
-                              "aws_customer_gateway",
-                              "aws_egress_only_internet_gateway",
-                              "aws_internet_gateway",
-                              "aws_instance",
-                              "aws_network_interface",
-                              "aws_route",
-                              "aws_route_table",
-                              "aws_route_table_association",
-                              "aws_subnet",
-                              "aws_vpc",
-                              "aws_vpc_ipv4_cidr_block_association",
-                              "aws_vpn_connection",
-                              "aws_vpn_connection_route",
-                              "aws_vpn_gateway",
-                              "aws_security_group",
-                              "aws_vpc_security_group_ingress_rule",
-                              "aws_vpc_security_group_egress_rule",
-                              "aws_ec2_managed_prefix_list",
-                              "aws_ec2_transit_gateway",
-                              "aws_ec2_transit_gateway_prefix_list_reference",
-                              "aws_ec2_transit_gateway_vpc_attachment",
-                              "azurerm_application_security_group",
-                              "azurerm_lb",
-                              "azurerm_lb_backend_address_pool",
-                              "azurerm_lb_nat_pool",
-                              "azurerm_lb_nat_rule",
-                              "azurerm_lb_rule",
-                              "azurerm_local_network_gateway",
-                              "azurerm_network_interface",
-                              "azurerm_network_interface_application_security_group_association",
-                              "azurerm_network_interface_backend_address_pool_association",
-                              "azurerm_network_interface_security_group_association",
-                              "azurerm_network_security_group",
-                              "azurerm_public_ip",
-                              "azurerm_route",
-                              "azurerm_route_table",
-                              "azurerm_subnet",
-                              "azurerm_subnet_route_table_association",
-                              "azurerm_virtual_machine",
-                              "azurerm_virtual_network_gateway_connection",
-                              "azurerm_virtual_network",
-                              "azurerm_virtual_network_gateway",
-                              "google_compute_network",
-                              "google_compute_subnetwork",
-                              "google_compute_vpn_gateway",
-                              "google_compute_vpn_tunnel",
-                              "google_compute_route",
-                              "google_compute_address",
-                              "google_compute_global_address",
-                              "google_compute_router",
-                              "google_compute_interconnect_attachment",
-                              "google_compute_ha_vpn_gateway",
-                              "google_compute_forwarding_rule",
-                              "google_compute_network_firewall_policy",
-                              "google_compute_network_firewall_policy_rule",
-                              "cloudflare_static_route",
-                              "cloudflare_ipsec_tunnel",
-                            ]),
-                            Schema.String,
-                          ]),
-                          title: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            id: "id",
-                            cloudType: "cloud_type",
-                            detail: "detail",
-                            name: "name",
-                            resourceType: "resource_type",
-                            title: "title",
-                          }),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          itemType: "item_type",
-                          resourcePreview: "resource_preview",
-                        }),
-                      ),
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({ itemType: "item_type", list: "list" }),
-                ),
-              ]),
-              Schema.Null,
-            ]),
-          ),
+      id: Schema.String,
+      accountId: Schema.String,
+      cloudType: Schema.Union([
+        Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
+        Schema.String,
+      ]),
+      config: Schema.Record(Schema.String, Schema.Unknown),
+      deploymentProvider: Schema.String,
+      managed: Schema.Boolean,
+      monthlyCostEstimate: Schema.Struct({
+        currency: Schema.String,
+        monthlyCost: Schema.Number,
+      }).pipe(
+        Schema.encodeKeys({
+          currency: "currency",
+          monthlyCost: "monthly_cost",
         }),
       ),
       name: Schema.String,
-      visibleItems: Schema.Array(
+      nativeId: Schema.String,
+      observations: Schema.Record(Schema.String, Schema.Unknown),
+      providerIds: Schema.Array(Schema.String),
+      providerNamesById: Schema.Record(Schema.String, Schema.Unknown),
+      region: Schema.String,
+      resourceGroup: Schema.String,
+      resourceType: Schema.Union([
+        Schema.Literals([
+          "aws_customer_gateway",
+          "aws_egress_only_internet_gateway",
+          "aws_internet_gateway",
+          "aws_instance",
+          "aws_network_interface",
+          "aws_route",
+          "aws_route_table",
+          "aws_route_table_association",
+          "aws_subnet",
+          "aws_vpc",
+          "aws_vpc_ipv4_cidr_block_association",
+          "aws_vpn_connection",
+          "aws_vpn_connection_route",
+          "aws_vpn_gateway",
+          "aws_security_group",
+          "aws_vpc_security_group_ingress_rule",
+          "aws_vpc_security_group_egress_rule",
+          "aws_ec2_managed_prefix_list",
+          "aws_ec2_transit_gateway",
+          "aws_ec2_transit_gateway_prefix_list_reference",
+          "aws_ec2_transit_gateway_vpc_attachment",
+          "azurerm_application_security_group",
+          "azurerm_lb",
+          "azurerm_lb_backend_address_pool",
+          "azurerm_lb_nat_pool",
+          "azurerm_lb_nat_rule",
+          "azurerm_lb_rule",
+          "azurerm_local_network_gateway",
+          "azurerm_network_interface",
+          "azurerm_network_interface_application_security_group_association",
+          "azurerm_network_interface_backend_address_pool_association",
+          "azurerm_network_interface_security_group_association",
+          "azurerm_network_security_group",
+          "azurerm_public_ip",
+          "azurerm_route",
+          "azurerm_route_table",
+          "azurerm_subnet",
+          "azurerm_subnet_route_table_association",
+          "azurerm_virtual_machine",
+          "azurerm_virtual_network_gateway_connection",
+          "azurerm_virtual_network",
+          "azurerm_virtual_network_gateway",
+          "google_compute_network",
+          "google_compute_subnetwork",
+          "google_compute_vpn_gateway",
+          "google_compute_vpn_tunnel",
+          "google_compute_route",
+          "google_compute_address",
+          "google_compute_global_address",
+          "google_compute_router",
+          "google_compute_interconnect_attachment",
+          "google_compute_ha_vpn_gateway",
+          "google_compute_forwarding_rule",
+          "google_compute_network_firewall_policy",
+          "google_compute_network_firewall_policy_rule",
+          "cloudflare_static_route",
+          "cloudflare_ipsec_tunnel",
+        ]),
+        Schema.String,
+      ]),
+      sections: Schema.Array(
         Schema.Struct({
-          helpText: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Struct({
-                  itemType: Schema.String,
-                  string: Schema.String,
-                }).pipe(
-                  Schema.encodeKeys({
-                    itemType: "item_type",
-                    string: "string",
-                  }),
-                ),
-                Schema.Struct({
-                  itemType: Schema.String,
-                  yaml: Schema.String,
-                }).pipe(
-                  Schema.encodeKeys({ itemType: "item_type", yaml: "yaml" }),
-                ),
-                Schema.Struct({
-                  itemType: Schema.String,
-                  yamlDiff: Schema.Struct({
-                    diff: Schema.String,
-                    leftDescription: Schema.String,
-                    leftYaml: Schema.String,
-                    rightDescription: Schema.String,
-                    rightYaml: Schema.String,
-                  }).pipe(
-                    Schema.encodeKeys({
-                      diff: "diff",
-                      leftDescription: "left_description",
-                      leftYaml: "left_yaml",
-                      rightDescription: "right_description",
-                      rightYaml: "right_yaml",
-                    }),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    itemType: "item_type",
-                    yamlDiff: "yaml_diff",
-                  }),
-                ),
-                Schema.Struct({
-                  itemType: Schema.String,
-                  resourcePreview: Schema.Struct({
-                    id: Schema.String,
-                    cloudType: Schema.Union([
-                      Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
-                      Schema.String,
-                    ]),
-                    detail: Schema.String,
-                    name: Schema.String,
-                    resourceType: Schema.Union([
-                      Schema.Literals([
-                        "aws_customer_gateway",
-                        "aws_egress_only_internet_gateway",
-                        "aws_internet_gateway",
-                        "aws_instance",
-                        "aws_network_interface",
-                        "aws_route",
-                        "aws_route_table",
-                        "aws_route_table_association",
-                        "aws_subnet",
-                        "aws_vpc",
-                        "aws_vpc_ipv4_cidr_block_association",
-                        "aws_vpn_connection",
-                        "aws_vpn_connection_route",
-                        "aws_vpn_gateway",
-                        "aws_security_group",
-                        "aws_vpc_security_group_ingress_rule",
-                        "aws_vpc_security_group_egress_rule",
-                        "aws_ec2_managed_prefix_list",
-                        "aws_ec2_transit_gateway",
-                        "aws_ec2_transit_gateway_prefix_list_reference",
-                        "aws_ec2_transit_gateway_vpc_attachment",
-                        "azurerm_application_security_group",
-                        "azurerm_lb",
-                        "azurerm_lb_backend_address_pool",
-                        "azurerm_lb_nat_pool",
-                        "azurerm_lb_nat_rule",
-                        "azurerm_lb_rule",
-                        "azurerm_local_network_gateway",
-                        "azurerm_network_interface",
-                        "azurerm_network_interface_application_security_group_association",
-                        "azurerm_network_interface_backend_address_pool_association",
-                        "azurerm_network_interface_security_group_association",
-                        "azurerm_network_security_group",
-                        "azurerm_public_ip",
-                        "azurerm_route",
-                        "azurerm_route_table",
-                        "azurerm_subnet",
-                        "azurerm_subnet_route_table_association",
-                        "azurerm_virtual_machine",
-                        "azurerm_virtual_network_gateway_connection",
-                        "azurerm_virtual_network",
-                        "azurerm_virtual_network_gateway",
-                        "google_compute_network",
-                        "google_compute_subnetwork",
-                        "google_compute_vpn_gateway",
-                        "google_compute_vpn_tunnel",
-                        "google_compute_route",
-                        "google_compute_address",
-                        "google_compute_global_address",
-                        "google_compute_router",
-                        "google_compute_interconnect_attachment",
-                        "google_compute_ha_vpn_gateway",
-                        "google_compute_forwarding_rule",
-                        "google_compute_network_firewall_policy",
-                        "google_compute_network_firewall_policy_rule",
-                        "cloudflare_static_route",
-                        "cloudflare_ipsec_tunnel",
-                      ]),
-                      Schema.String,
-                    ]),
-                    title: Schema.String,
-                  }).pipe(
-                    Schema.encodeKeys({
-                      id: "id",
-                      cloudType: "cloud_type",
-                      detail: "detail",
-                      name: "name",
-                      resourceType: "resource_type",
-                      title: "title",
-                    }),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({
-                    itemType: "item_type",
-                    resourcePreview: "resource_preview",
-                  }),
-                ),
-                Schema.Struct({
-                  itemType: Schema.String,
-                  list: Schema.Array(
-                    Schema.Union([
-                      Schema.Struct({
-                        itemType: Schema.String,
-                        string: Schema.String,
+          hiddenItems: Schema.Array(
+            Schema.Struct({
+              helpText: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Struct({
+                      itemType: Schema.String,
+                      string: Schema.String,
+                    }).pipe(
+                      Schema.encodeKeys({
+                        itemType: "item_type",
+                        string: "string",
+                      }),
+                    ),
+                    Schema.Struct({
+                      itemType: Schema.String,
+                      yaml: Schema.String,
+                    }).pipe(
+                      Schema.encodeKeys({
+                        itemType: "item_type",
+                        yaml: "yaml",
+                      }),
+                    ),
+                    Schema.Struct({
+                      itemType: Schema.String,
+                      yamlDiff: Schema.Struct({
+                        diff: Schema.String,
+                        leftDescription: Schema.String,
+                        leftYaml: Schema.String,
+                        rightDescription: Schema.String,
+                        rightYaml: Schema.String,
                       }).pipe(
                         Schema.encodeKeys({
-                          itemType: "item_type",
-                          string: "string",
+                          diff: "diff",
+                          leftDescription: "left_description",
+                          leftYaml: "left_yaml",
+                          rightDescription: "right_description",
+                          rightYaml: "right_yaml",
                         }),
                       ),
-                      Schema.Struct({
-                        itemType: Schema.String,
-                        resourcePreview: Schema.Struct({
-                          id: Schema.String,
-                          cloudType: Schema.Union([
-                            Schema.Literals([
-                              "AWS",
-                              "AZURE",
-                              "GOOGLE",
-                              "CLOUDFLARE",
-                            ]),
-                            Schema.String,
+                    }).pipe(
+                      Schema.encodeKeys({
+                        itemType: "item_type",
+                        yamlDiff: "yaml_diff",
+                      }),
+                    ),
+                    Schema.Struct({
+                      itemType: Schema.String,
+                      resourcePreview: Schema.Struct({
+                        id: Schema.String,
+                        cloudType: Schema.Union([
+                          Schema.Literals([
+                            "AWS",
+                            "AZURE",
+                            "GOOGLE",
+                            "CLOUDFLARE",
                           ]),
-                          detail: Schema.String,
-                          name: Schema.String,
-                          resourceType: Schema.Union([
-                            Schema.Literals([
-                              "aws_customer_gateway",
-                              "aws_egress_only_internet_gateway",
-                              "aws_internet_gateway",
-                              "aws_instance",
-                              "aws_network_interface",
-                              "aws_route",
-                              "aws_route_table",
-                              "aws_route_table_association",
-                              "aws_subnet",
-                              "aws_vpc",
-                              "aws_vpc_ipv4_cidr_block_association",
-                              "aws_vpn_connection",
-                              "aws_vpn_connection_route",
-                              "aws_vpn_gateway",
-                              "aws_security_group",
-                              "aws_vpc_security_group_ingress_rule",
-                              "aws_vpc_security_group_egress_rule",
-                              "aws_ec2_managed_prefix_list",
-                              "aws_ec2_transit_gateway",
-                              "aws_ec2_transit_gateway_prefix_list_reference",
-                              "aws_ec2_transit_gateway_vpc_attachment",
-                              "azurerm_application_security_group",
-                              "azurerm_lb",
-                              "azurerm_lb_backend_address_pool",
-                              "azurerm_lb_nat_pool",
-                              "azurerm_lb_nat_rule",
-                              "azurerm_lb_rule",
-                              "azurerm_local_network_gateway",
-                              "azurerm_network_interface",
-                              "azurerm_network_interface_application_security_group_association",
-                              "azurerm_network_interface_backend_address_pool_association",
-                              "azurerm_network_interface_security_group_association",
-                              "azurerm_network_security_group",
-                              "azurerm_public_ip",
-                              "azurerm_route",
-                              "azurerm_route_table",
-                              "azurerm_subnet",
-                              "azurerm_subnet_route_table_association",
-                              "azurerm_virtual_machine",
-                              "azurerm_virtual_network_gateway_connection",
-                              "azurerm_virtual_network",
-                              "azurerm_virtual_network_gateway",
-                              "google_compute_network",
-                              "google_compute_subnetwork",
-                              "google_compute_vpn_gateway",
-                              "google_compute_vpn_tunnel",
-                              "google_compute_route",
-                              "google_compute_address",
-                              "google_compute_global_address",
-                              "google_compute_router",
-                              "google_compute_interconnect_attachment",
-                              "google_compute_ha_vpn_gateway",
-                              "google_compute_forwarding_rule",
-                              "google_compute_network_firewall_policy",
-                              "google_compute_network_firewall_policy_rule",
-                              "cloudflare_static_route",
-                              "cloudflare_ipsec_tunnel",
-                            ]),
-                            Schema.String,
+                          Schema.String,
+                        ]),
+                        detail: Schema.String,
+                        name: Schema.String,
+                        resourceType: Schema.Union([
+                          Schema.Literals([
+                            "aws_customer_gateway",
+                            "aws_egress_only_internet_gateway",
+                            "aws_internet_gateway",
+                            "aws_instance",
+                            "aws_network_interface",
+                            "aws_route",
+                            "aws_route_table",
+                            "aws_route_table_association",
+                            "aws_subnet",
+                            "aws_vpc",
+                            "aws_vpc_ipv4_cidr_block_association",
+                            "aws_vpn_connection",
+                            "aws_vpn_connection_route",
+                            "aws_vpn_gateway",
+                            "aws_security_group",
+                            "aws_vpc_security_group_ingress_rule",
+                            "aws_vpc_security_group_egress_rule",
+                            "aws_ec2_managed_prefix_list",
+                            "aws_ec2_transit_gateway",
+                            "aws_ec2_transit_gateway_prefix_list_reference",
+                            "aws_ec2_transit_gateway_vpc_attachment",
+                            "azurerm_application_security_group",
+                            "azurerm_lb",
+                            "azurerm_lb_backend_address_pool",
+                            "azurerm_lb_nat_pool",
+                            "azurerm_lb_nat_rule",
+                            "azurerm_lb_rule",
+                            "azurerm_local_network_gateway",
+                            "azurerm_network_interface",
+                            "azurerm_network_interface_application_security_group_association",
+                            "azurerm_network_interface_backend_address_pool_association",
+                            "azurerm_network_interface_security_group_association",
+                            "azurerm_network_security_group",
+                            "azurerm_public_ip",
+                            "azurerm_route",
+                            "azurerm_route_table",
+                            "azurerm_subnet",
+                            "azurerm_subnet_route_table_association",
+                            "azurerm_virtual_machine",
+                            "azurerm_virtual_network_gateway_connection",
+                            "azurerm_virtual_network",
+                            "azurerm_virtual_network_gateway",
+                            "google_compute_network",
+                            "google_compute_subnetwork",
+                            "google_compute_vpn_gateway",
+                            "google_compute_vpn_tunnel",
+                            "google_compute_route",
+                            "google_compute_address",
+                            "google_compute_global_address",
+                            "google_compute_router",
+                            "google_compute_interconnect_attachment",
+                            "google_compute_ha_vpn_gateway",
+                            "google_compute_forwarding_rule",
+                            "google_compute_network_firewall_policy",
+                            "google_compute_network_firewall_policy_rule",
+                            "cloudflare_static_route",
+                            "cloudflare_ipsec_tunnel",
                           ]),
-                          title: Schema.String,
-                        }).pipe(
-                          Schema.encodeKeys({
-                            id: "id",
-                            cloudType: "cloud_type",
-                            detail: "detail",
-                            name: "name",
-                            resourceType: "resource_type",
-                            title: "title",
-                          }),
-                        ),
+                          Schema.String,
+                        ]),
+                        title: Schema.String,
                       }).pipe(
                         Schema.encodeKeys({
-                          itemType: "item_type",
-                          resourcePreview: "resource_preview",
+                          id: "id",
+                          cloudType: "cloud_type",
+                          detail: "detail",
+                          name: "name",
+                          resourceType: "resource_type",
+                          title: "title",
                         }),
                       ),
-                    ]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({ itemType: "item_type", list: "list" }),
-                ),
-              ]),
-              Schema.Null,
-            ]),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        itemType: "item_type",
+                        resourcePreview: "resource_preview",
+                      }),
+                    ),
+                    Schema.Struct({
+                      itemType: Schema.String,
+                      list: Schema.Array(
+                        Schema.Union([
+                          Schema.Struct({
+                            itemType: Schema.String,
+                            string: Schema.String,
+                          }).pipe(
+                            Schema.encodeKeys({
+                              itemType: "item_type",
+                              string: "string",
+                            }),
+                          ),
+                          Schema.Struct({
+                            itemType: Schema.String,
+                            resourcePreview: Schema.Struct({
+                              id: Schema.String,
+                              cloudType: Schema.Union([
+                                Schema.Literals([
+                                  "AWS",
+                                  "AZURE",
+                                  "GOOGLE",
+                                  "CLOUDFLARE",
+                                ]),
+                                Schema.String,
+                              ]),
+                              detail: Schema.String,
+                              name: Schema.String,
+                              resourceType: Schema.Union([
+                                Schema.Literals([
+                                  "aws_customer_gateway",
+                                  "aws_egress_only_internet_gateway",
+                                  "aws_internet_gateway",
+                                  "aws_instance",
+                                  "aws_network_interface",
+                                  "aws_route",
+                                  "aws_route_table",
+                                  "aws_route_table_association",
+                                  "aws_subnet",
+                                  "aws_vpc",
+                                  "aws_vpc_ipv4_cidr_block_association",
+                                  "aws_vpn_connection",
+                                  "aws_vpn_connection_route",
+                                  "aws_vpn_gateway",
+                                  "aws_security_group",
+                                  "aws_vpc_security_group_ingress_rule",
+                                  "aws_vpc_security_group_egress_rule",
+                                  "aws_ec2_managed_prefix_list",
+                                  "aws_ec2_transit_gateway",
+                                  "aws_ec2_transit_gateway_prefix_list_reference",
+                                  "aws_ec2_transit_gateway_vpc_attachment",
+                                  "azurerm_application_security_group",
+                                  "azurerm_lb",
+                                  "azurerm_lb_backend_address_pool",
+                                  "azurerm_lb_nat_pool",
+                                  "azurerm_lb_nat_rule",
+                                  "azurerm_lb_rule",
+                                  "azurerm_local_network_gateway",
+                                  "azurerm_network_interface",
+                                  "azurerm_network_interface_application_security_group_association",
+                                  "azurerm_network_interface_backend_address_pool_association",
+                                  "azurerm_network_interface_security_group_association",
+                                  "azurerm_network_security_group",
+                                  "azurerm_public_ip",
+                                  "azurerm_route",
+                                  "azurerm_route_table",
+                                  "azurerm_subnet",
+                                  "azurerm_subnet_route_table_association",
+                                  "azurerm_virtual_machine",
+                                  "azurerm_virtual_network_gateway_connection",
+                                  "azurerm_virtual_network",
+                                  "azurerm_virtual_network_gateway",
+                                  "google_compute_network",
+                                  "google_compute_subnetwork",
+                                  "google_compute_vpn_gateway",
+                                  "google_compute_vpn_tunnel",
+                                  "google_compute_route",
+                                  "google_compute_address",
+                                  "google_compute_global_address",
+                                  "google_compute_router",
+                                  "google_compute_interconnect_attachment",
+                                  "google_compute_ha_vpn_gateway",
+                                  "google_compute_forwarding_rule",
+                                  "google_compute_network_firewall_policy",
+                                  "google_compute_network_firewall_policy_rule",
+                                  "cloudflare_static_route",
+                                  "cloudflare_ipsec_tunnel",
+                                ]),
+                                Schema.String,
+                              ]),
+                              title: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                id: "id",
+                                cloudType: "cloud_type",
+                                detail: "detail",
+                                name: "name",
+                                resourceType: "resource_type",
+                                title: "title",
+                              }),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              itemType: "item_type",
+                              resourcePreview: "resource_preview",
+                            }),
+                          ),
+                        ]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        itemType: "item_type",
+                        list: "list",
+                      }),
+                    ),
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
           ),
-        }),
-      ),
-      helpText: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        hiddenItems: "hidden_items",
-        name: "name",
-        visibleItems: "visible_items",
-        helpText: "help_text",
-      }),
-    ),
-  ),
-  state: Schema.Record(Schema.String, Schema.Unknown),
-  tags: Schema.Record(Schema.String, Schema.Unknown),
-  updatedAt: Schema.String,
-  url: Schema.String,
-  managedBy: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.String,
-          clientType: Schema.Literal("MAGIC_WAN_CLOUD_ONRAMP"),
           name: Schema.String,
+          visibleItems: Schema.Array(
+            Schema.Struct({
+              helpText: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Struct({
+                      itemType: Schema.String,
+                      string: Schema.String,
+                    }).pipe(
+                      Schema.encodeKeys({
+                        itemType: "item_type",
+                        string: "string",
+                      }),
+                    ),
+                    Schema.Struct({
+                      itemType: Schema.String,
+                      yaml: Schema.String,
+                    }).pipe(
+                      Schema.encodeKeys({
+                        itemType: "item_type",
+                        yaml: "yaml",
+                      }),
+                    ),
+                    Schema.Struct({
+                      itemType: Schema.String,
+                      yamlDiff: Schema.Struct({
+                        diff: Schema.String,
+                        leftDescription: Schema.String,
+                        leftYaml: Schema.String,
+                        rightDescription: Schema.String,
+                        rightYaml: Schema.String,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          diff: "diff",
+                          leftDescription: "left_description",
+                          leftYaml: "left_yaml",
+                          rightDescription: "right_description",
+                          rightYaml: "right_yaml",
+                        }),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        itemType: "item_type",
+                        yamlDiff: "yaml_diff",
+                      }),
+                    ),
+                    Schema.Struct({
+                      itemType: Schema.String,
+                      resourcePreview: Schema.Struct({
+                        id: Schema.String,
+                        cloudType: Schema.Union([
+                          Schema.Literals([
+                            "AWS",
+                            "AZURE",
+                            "GOOGLE",
+                            "CLOUDFLARE",
+                          ]),
+                          Schema.String,
+                        ]),
+                        detail: Schema.String,
+                        name: Schema.String,
+                        resourceType: Schema.Union([
+                          Schema.Literals([
+                            "aws_customer_gateway",
+                            "aws_egress_only_internet_gateway",
+                            "aws_internet_gateway",
+                            "aws_instance",
+                            "aws_network_interface",
+                            "aws_route",
+                            "aws_route_table",
+                            "aws_route_table_association",
+                            "aws_subnet",
+                            "aws_vpc",
+                            "aws_vpc_ipv4_cidr_block_association",
+                            "aws_vpn_connection",
+                            "aws_vpn_connection_route",
+                            "aws_vpn_gateway",
+                            "aws_security_group",
+                            "aws_vpc_security_group_ingress_rule",
+                            "aws_vpc_security_group_egress_rule",
+                            "aws_ec2_managed_prefix_list",
+                            "aws_ec2_transit_gateway",
+                            "aws_ec2_transit_gateway_prefix_list_reference",
+                            "aws_ec2_transit_gateway_vpc_attachment",
+                            "azurerm_application_security_group",
+                            "azurerm_lb",
+                            "azurerm_lb_backend_address_pool",
+                            "azurerm_lb_nat_pool",
+                            "azurerm_lb_nat_rule",
+                            "azurerm_lb_rule",
+                            "azurerm_local_network_gateway",
+                            "azurerm_network_interface",
+                            "azurerm_network_interface_application_security_group_association",
+                            "azurerm_network_interface_backend_address_pool_association",
+                            "azurerm_network_interface_security_group_association",
+                            "azurerm_network_security_group",
+                            "azurerm_public_ip",
+                            "azurerm_route",
+                            "azurerm_route_table",
+                            "azurerm_subnet",
+                            "azurerm_subnet_route_table_association",
+                            "azurerm_virtual_machine",
+                            "azurerm_virtual_network_gateway_connection",
+                            "azurerm_virtual_network",
+                            "azurerm_virtual_network_gateway",
+                            "google_compute_network",
+                            "google_compute_subnetwork",
+                            "google_compute_vpn_gateway",
+                            "google_compute_vpn_tunnel",
+                            "google_compute_route",
+                            "google_compute_address",
+                            "google_compute_global_address",
+                            "google_compute_router",
+                            "google_compute_interconnect_attachment",
+                            "google_compute_ha_vpn_gateway",
+                            "google_compute_forwarding_rule",
+                            "google_compute_network_firewall_policy",
+                            "google_compute_network_firewall_policy_rule",
+                            "cloudflare_static_route",
+                            "cloudflare_ipsec_tunnel",
+                          ]),
+                          Schema.String,
+                        ]),
+                        title: Schema.String,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          id: "id",
+                          cloudType: "cloud_type",
+                          detail: "detail",
+                          name: "name",
+                          resourceType: "resource_type",
+                          title: "title",
+                        }),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        itemType: "item_type",
+                        resourcePreview: "resource_preview",
+                      }),
+                    ),
+                    Schema.Struct({
+                      itemType: Schema.String,
+                      list: Schema.Array(
+                        Schema.Union([
+                          Schema.Struct({
+                            itemType: Schema.String,
+                            string: Schema.String,
+                          }).pipe(
+                            Schema.encodeKeys({
+                              itemType: "item_type",
+                              string: "string",
+                            }),
+                          ),
+                          Schema.Struct({
+                            itemType: Schema.String,
+                            resourcePreview: Schema.Struct({
+                              id: Schema.String,
+                              cloudType: Schema.Union([
+                                Schema.Literals([
+                                  "AWS",
+                                  "AZURE",
+                                  "GOOGLE",
+                                  "CLOUDFLARE",
+                                ]),
+                                Schema.String,
+                              ]),
+                              detail: Schema.String,
+                              name: Schema.String,
+                              resourceType: Schema.Union([
+                                Schema.Literals([
+                                  "aws_customer_gateway",
+                                  "aws_egress_only_internet_gateway",
+                                  "aws_internet_gateway",
+                                  "aws_instance",
+                                  "aws_network_interface",
+                                  "aws_route",
+                                  "aws_route_table",
+                                  "aws_route_table_association",
+                                  "aws_subnet",
+                                  "aws_vpc",
+                                  "aws_vpc_ipv4_cidr_block_association",
+                                  "aws_vpn_connection",
+                                  "aws_vpn_connection_route",
+                                  "aws_vpn_gateway",
+                                  "aws_security_group",
+                                  "aws_vpc_security_group_ingress_rule",
+                                  "aws_vpc_security_group_egress_rule",
+                                  "aws_ec2_managed_prefix_list",
+                                  "aws_ec2_transit_gateway",
+                                  "aws_ec2_transit_gateway_prefix_list_reference",
+                                  "aws_ec2_transit_gateway_vpc_attachment",
+                                  "azurerm_application_security_group",
+                                  "azurerm_lb",
+                                  "azurerm_lb_backend_address_pool",
+                                  "azurerm_lb_nat_pool",
+                                  "azurerm_lb_nat_rule",
+                                  "azurerm_lb_rule",
+                                  "azurerm_local_network_gateway",
+                                  "azurerm_network_interface",
+                                  "azurerm_network_interface_application_security_group_association",
+                                  "azurerm_network_interface_backend_address_pool_association",
+                                  "azurerm_network_interface_security_group_association",
+                                  "azurerm_network_security_group",
+                                  "azurerm_public_ip",
+                                  "azurerm_route",
+                                  "azurerm_route_table",
+                                  "azurerm_subnet",
+                                  "azurerm_subnet_route_table_association",
+                                  "azurerm_virtual_machine",
+                                  "azurerm_virtual_network_gateway_connection",
+                                  "azurerm_virtual_network",
+                                  "azurerm_virtual_network_gateway",
+                                  "google_compute_network",
+                                  "google_compute_subnetwork",
+                                  "google_compute_vpn_gateway",
+                                  "google_compute_vpn_tunnel",
+                                  "google_compute_route",
+                                  "google_compute_address",
+                                  "google_compute_global_address",
+                                  "google_compute_router",
+                                  "google_compute_interconnect_attachment",
+                                  "google_compute_ha_vpn_gateway",
+                                  "google_compute_forwarding_rule",
+                                  "google_compute_network_firewall_policy",
+                                  "google_compute_network_firewall_policy_rule",
+                                  "cloudflare_static_route",
+                                  "cloudflare_ipsec_tunnel",
+                                ]),
+                                Schema.String,
+                              ]),
+                              title: Schema.String,
+                            }).pipe(
+                              Schema.encodeKeys({
+                                id: "id",
+                                cloudType: "cloud_type",
+                                detail: "detail",
+                                name: "name",
+                                resourceType: "resource_type",
+                                title: "title",
+                              }),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              itemType: "item_type",
+                              resourcePreview: "resource_preview",
+                            }),
+                          ),
+                        ]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        itemType: "item_type",
+                        list: "list",
+                      }),
+                    ),
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+          ),
+          helpText: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         }).pipe(
           Schema.encodeKeys({
-            id: "id",
-            clientType: "client_type",
+            hiddenItems: "hidden_items",
             name: "name",
+            visibleItems: "visible_items",
+            helpText: "help_text",
           }),
         ),
       ),
-      Schema.Null,
-    ]),
-  ),
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      accountId: "account_id",
-      cloudType: "cloud_type",
-      config: "config",
-      deploymentProvider: "deployment_provider",
-      managed: "managed",
-      monthlyCostEstimate: "monthly_cost_estimate",
-      name: "name",
-      nativeId: "native_id",
-      observations: "observations",
-      providerIds: "provider_ids",
-      providerNamesById: "provider_names_by_id",
-      region: "region",
-      resourceGroup: "resource_group",
-      resourceType: "resource_type",
-      sections: "sections",
-      state: "state",
-      tags: "tags",
-      updatedAt: "updated_at",
-      url: "url",
-      managedBy: "managed_by",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetResourceResponse>;
+      state: Schema.Record(Schema.String, Schema.Unknown),
+      tags: Schema.Record(Schema.String, Schema.Unknown),
+      updatedAt: Schema.String,
+      url: Schema.String,
+      managedBy: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.String,
+              clientType: Schema.Literal("MAGIC_WAN_CLOUD_ONRAMP"),
+              name: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                id: "id",
+                clientType: "client_type",
+                name: "name",
+              }),
+            ),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          accountId: "account_id",
+          cloudType: "cloud_type",
+          config: "config",
+          deploymentProvider: "deployment_provider",
+          managed: "managed",
+          monthlyCostEstimate: "monthly_cost_estimate",
+          name: "name",
+          nativeId: "native_id",
+          observations: "observations",
+          providerIds: "provider_ids",
+          providerNamesById: "provider_names_by_id",
+          region: "region",
+          resourceGroup: "resource_group",
+          resourceType: "resource_type",
+          sections: "sections",
+          state: "state",
+          tags: "tags",
+          updatedAt: "updated_at",
+          url: "url",
+          managedBy: "managed_by",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<GetResourceResponse>;
 
 export type GetResourceError = DefaultErrors;
 
@@ -9554,97 +9753,104 @@ export interface ListResourcesRequest {
   v2?: boolean;
 }
 
-export const ListResourcesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  cloudflare: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("cloudflare")),
-  desc: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("desc")),
-  managed: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("managed")),
-  orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("order_by")),
-  providerId: Schema.optional(Schema.String).pipe(T.HttpQuery("provider_id")),
-  region: Schema.optional(Schema.String).pipe(T.HttpQuery("region")),
-  resourceGroup: Schema.optional(Schema.String).pipe(
-    T.HttpQuery("resource_group"),
-  ),
-  resourceId: Schema.optional(Schema.Array(Schema.String)).pipe(
-    T.HttpQuery("resource_id"),
-  ),
-  resourceType: Schema.optional(
-    Schema.Array(
-      Schema.Union([
-        Schema.Literals([
-          "aws_customer_gateway",
-          "aws_egress_only_internet_gateway",
-          "aws_internet_gateway",
-          "aws_instance",
-          "aws_network_interface",
-          "aws_route",
-          "aws_route_table",
-          "aws_route_table_association",
-          "aws_subnet",
-          "aws_vpc",
-          "aws_vpc_ipv4_cidr_block_association",
-          "aws_vpn_connection",
-          "aws_vpn_connection_route",
-          "aws_vpn_gateway",
-          "aws_security_group",
-          "aws_vpc_security_group_ingress_rule",
-          "aws_vpc_security_group_egress_rule",
-          "aws_ec2_managed_prefix_list",
-          "aws_ec2_transit_gateway",
-          "aws_ec2_transit_gateway_prefix_list_reference",
-          "aws_ec2_transit_gateway_vpc_attachment",
-          "azurerm_application_security_group",
-          "azurerm_lb",
-          "azurerm_lb_backend_address_pool",
-          "azurerm_lb_nat_pool",
-          "azurerm_lb_nat_rule",
-          "azurerm_lb_rule",
-          "azurerm_local_network_gateway",
-          "azurerm_network_interface",
-          "azurerm_network_interface_application_security_group_association",
-          "azurerm_network_interface_backend_address_pool_association",
-          "azurerm_network_interface_security_group_association",
-          "azurerm_network_security_group",
-          "azurerm_public_ip",
-          "azurerm_route",
-          "azurerm_route_table",
-          "azurerm_subnet",
-          "azurerm_subnet_route_table_association",
-          "azurerm_virtual_machine",
-          "azurerm_virtual_network_gateway_connection",
-          "azurerm_virtual_network",
-          "azurerm_virtual_network_gateway",
-          "google_compute_network",
-          "google_compute_subnetwork",
-          "google_compute_vpn_gateway",
-          "google_compute_vpn_tunnel",
-          "google_compute_route",
-          "google_compute_address",
-          "google_compute_global_address",
-          "google_compute_router",
-          "google_compute_interconnect_attachment",
-          "google_compute_ha_vpn_gateway",
-          "google_compute_forwarding_rule",
-          "google_compute_network_firewall_policy",
-          "google_compute_network_firewall_policy_rule",
-          "cloudflare_static_route",
-          "cloudflare_ipsec_tunnel",
-        ]),
-        Schema.String,
-      ]),
+export const ListResourcesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+      cloudflare: Schema.optional(Schema.Boolean).pipe(
+        T.HttpQuery("cloudflare"),
+      ),
+      desc: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("desc")),
+      managed: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("managed")),
+      orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("order_by")),
+      providerId: Schema.optional(Schema.String).pipe(
+        T.HttpQuery("provider_id"),
+      ),
+      region: Schema.optional(Schema.String).pipe(T.HttpQuery("region")),
+      resourceGroup: Schema.optional(Schema.String).pipe(
+        T.HttpQuery("resource_group"),
+      ),
+      resourceId: Schema.optional(Schema.Array(Schema.String)).pipe(
+        T.HttpQuery("resource_id"),
+      ),
+      resourceType: Schema.optional(
+        Schema.Array(
+          Schema.Union([
+            Schema.Literals([
+              "aws_customer_gateway",
+              "aws_egress_only_internet_gateway",
+              "aws_internet_gateway",
+              "aws_instance",
+              "aws_network_interface",
+              "aws_route",
+              "aws_route_table",
+              "aws_route_table_association",
+              "aws_subnet",
+              "aws_vpc",
+              "aws_vpc_ipv4_cidr_block_association",
+              "aws_vpn_connection",
+              "aws_vpn_connection_route",
+              "aws_vpn_gateway",
+              "aws_security_group",
+              "aws_vpc_security_group_ingress_rule",
+              "aws_vpc_security_group_egress_rule",
+              "aws_ec2_managed_prefix_list",
+              "aws_ec2_transit_gateway",
+              "aws_ec2_transit_gateway_prefix_list_reference",
+              "aws_ec2_transit_gateway_vpc_attachment",
+              "azurerm_application_security_group",
+              "azurerm_lb",
+              "azurerm_lb_backend_address_pool",
+              "azurerm_lb_nat_pool",
+              "azurerm_lb_nat_rule",
+              "azurerm_lb_rule",
+              "azurerm_local_network_gateway",
+              "azurerm_network_interface",
+              "azurerm_network_interface_application_security_group_association",
+              "azurerm_network_interface_backend_address_pool_association",
+              "azurerm_network_interface_security_group_association",
+              "azurerm_network_security_group",
+              "azurerm_public_ip",
+              "azurerm_route",
+              "azurerm_route_table",
+              "azurerm_subnet",
+              "azurerm_subnet_route_table_association",
+              "azurerm_virtual_machine",
+              "azurerm_virtual_network_gateway_connection",
+              "azurerm_virtual_network",
+              "azurerm_virtual_network_gateway",
+              "google_compute_network",
+              "google_compute_subnetwork",
+              "google_compute_vpn_gateway",
+              "google_compute_vpn_tunnel",
+              "google_compute_route",
+              "google_compute_address",
+              "google_compute_global_address",
+              "google_compute_router",
+              "google_compute_interconnect_attachment",
+              "google_compute_ha_vpn_gateway",
+              "google_compute_forwarding_rule",
+              "google_compute_network_firewall_policy",
+              "google_compute_network_firewall_policy_rule",
+              "cloudflare_static_route",
+              "cloudflare_ipsec_tunnel",
+            ]),
+            Schema.String,
+          ]),
+        ),
+      ).pipe(T.HttpQuery("resource_type")),
+      search: Schema.optional(Schema.Array(Schema.String)).pipe(
+        T.HttpQuery("search"),
+      ),
+      v2: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("v2")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/cloud/resources",
+      }),
     ),
-  ).pipe(T.HttpQuery("resource_type")),
-  search: Schema.optional(Schema.Array(Schema.String)).pipe(
-    T.HttpQuery("search"),
-  ),
-  v2: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("v2")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/magic/cloud/resources",
-  }),
 ) as unknown as Schema.Schema<ListResourcesRequest>;
 
 export interface ListResourcesResponse {
@@ -9940,537 +10146,548 @@ export interface ListResourcesResponse {
   } | null;
 }
 
-export const ListResourcesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
+export const ListResourcesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      id: Schema.String,
-      accountId: Schema.String,
-      cloudType: Schema.Union([
-        Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
-        Schema.String,
-      ]),
-      config: Schema.Record(Schema.String, Schema.Unknown),
-      deploymentProvider: Schema.String,
-      managed: Schema.Boolean,
-      monthlyCostEstimate: Schema.Struct({
-        currency: Schema.String,
-        monthlyCost: Schema.Number,
-      }).pipe(
-        Schema.encodeKeys({
-          currency: "currency",
-          monthlyCost: "monthly_cost",
-        }),
-      ),
-      name: Schema.String,
-      nativeId: Schema.String,
-      observations: Schema.Record(Schema.String, Schema.Unknown),
-      providerIds: Schema.Array(Schema.String),
-      providerNamesById: Schema.Record(Schema.String, Schema.Unknown),
-      region: Schema.String,
-      resourceGroup: Schema.String,
-      resourceType: Schema.Union([
-        Schema.Literals([
-          "aws_customer_gateway",
-          "aws_egress_only_internet_gateway",
-          "aws_internet_gateway",
-          "aws_instance",
-          "aws_network_interface",
-          "aws_route",
-          "aws_route_table",
-          "aws_route_table_association",
-          "aws_subnet",
-          "aws_vpc",
-          "aws_vpc_ipv4_cidr_block_association",
-          "aws_vpn_connection",
-          "aws_vpn_connection_route",
-          "aws_vpn_gateway",
-          "aws_security_group",
-          "aws_vpc_security_group_ingress_rule",
-          "aws_vpc_security_group_egress_rule",
-          "aws_ec2_managed_prefix_list",
-          "aws_ec2_transit_gateway",
-          "aws_ec2_transit_gateway_prefix_list_reference",
-          "aws_ec2_transit_gateway_vpc_attachment",
-          "azurerm_application_security_group",
-          "azurerm_lb",
-          "azurerm_lb_backend_address_pool",
-          "azurerm_lb_nat_pool",
-          "azurerm_lb_nat_rule",
-          "azurerm_lb_rule",
-          "azurerm_local_network_gateway",
-          "azurerm_network_interface",
-          "azurerm_network_interface_application_security_group_association",
-          "azurerm_network_interface_backend_address_pool_association",
-          "azurerm_network_interface_security_group_association",
-          "azurerm_network_security_group",
-          "azurerm_public_ip",
-          "azurerm_route",
-          "azurerm_route_table",
-          "azurerm_subnet",
-          "azurerm_subnet_route_table_association",
-          "azurerm_virtual_machine",
-          "azurerm_virtual_network_gateway_connection",
-          "azurerm_virtual_network",
-          "azurerm_virtual_network_gateway",
-          "google_compute_network",
-          "google_compute_subnetwork",
-          "google_compute_vpn_gateway",
-          "google_compute_vpn_tunnel",
-          "google_compute_route",
-          "google_compute_address",
-          "google_compute_global_address",
-          "google_compute_router",
-          "google_compute_interconnect_attachment",
-          "google_compute_ha_vpn_gateway",
-          "google_compute_forwarding_rule",
-          "google_compute_network_firewall_policy",
-          "google_compute_network_firewall_policy_rule",
-          "cloudflare_static_route",
-          "cloudflare_ipsec_tunnel",
-        ]),
-        Schema.String,
-      ]),
-      sections: Schema.Array(
+      result: Schema.Array(
         Schema.Struct({
-          hiddenItems: Schema.Array(
-            Schema.Struct({
-              helpText: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              value: Schema.optional(
-                Schema.Union([
-                  Schema.Union([
-                    Schema.Struct({
-                      itemType: Schema.String,
-                      string: Schema.String,
-                    }).pipe(
-                      Schema.encodeKeys({
-                        itemType: "item_type",
-                        string: "string",
-                      }),
-                    ),
-                    Schema.Struct({
-                      itemType: Schema.String,
-                      yaml: Schema.String,
-                    }).pipe(
-                      Schema.encodeKeys({
-                        itemType: "item_type",
-                        yaml: "yaml",
-                      }),
-                    ),
-                    Schema.Struct({
-                      itemType: Schema.String,
-                      yamlDiff: Schema.Struct({
-                        diff: Schema.String,
-                        leftDescription: Schema.String,
-                        leftYaml: Schema.String,
-                        rightDescription: Schema.String,
-                        rightYaml: Schema.String,
-                      }).pipe(
-                        Schema.encodeKeys({
-                          diff: "diff",
-                          leftDescription: "left_description",
-                          leftYaml: "left_yaml",
-                          rightDescription: "right_description",
-                          rightYaml: "right_yaml",
-                        }),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        itemType: "item_type",
-                        yamlDiff: "yaml_diff",
-                      }),
-                    ),
-                    Schema.Struct({
-                      itemType: Schema.String,
-                      resourcePreview: Schema.Struct({
-                        id: Schema.String,
-                        cloudType: Schema.Union([
-                          Schema.Literals([
-                            "AWS",
-                            "AZURE",
-                            "GOOGLE",
-                            "CLOUDFLARE",
-                          ]),
-                          Schema.String,
-                        ]),
-                        detail: Schema.String,
-                        name: Schema.String,
-                        resourceType: Schema.Union([
-                          Schema.Literals([
-                            "aws_customer_gateway",
-                            "aws_egress_only_internet_gateway",
-                            "aws_internet_gateway",
-                            "aws_instance",
-                            "aws_network_interface",
-                            "aws_route",
-                            "aws_route_table",
-                            "aws_route_table_association",
-                            "aws_subnet",
-                            "aws_vpc",
-                            "aws_vpc_ipv4_cidr_block_association",
-                            "aws_vpn_connection",
-                            "aws_vpn_connection_route",
-                            "aws_vpn_gateway",
-                            "aws_security_group",
-                            "aws_vpc_security_group_ingress_rule",
-                            "aws_vpc_security_group_egress_rule",
-                            "aws_ec2_managed_prefix_list",
-                            "aws_ec2_transit_gateway",
-                            "aws_ec2_transit_gateway_prefix_list_reference",
-                            "aws_ec2_transit_gateway_vpc_attachment",
-                            "azurerm_application_security_group",
-                            "azurerm_lb",
-                            "azurerm_lb_backend_address_pool",
-                            "azurerm_lb_nat_pool",
-                            "azurerm_lb_nat_rule",
-                            "azurerm_lb_rule",
-                            "azurerm_local_network_gateway",
-                            "azurerm_network_interface",
-                            "azurerm_network_interface_application_security_group_association",
-                            "azurerm_network_interface_backend_address_pool_association",
-                            "azurerm_network_interface_security_group_association",
-                            "azurerm_network_security_group",
-                            "azurerm_public_ip",
-                            "azurerm_route",
-                            "azurerm_route_table",
-                            "azurerm_subnet",
-                            "azurerm_subnet_route_table_association",
-                            "azurerm_virtual_machine",
-                            "azurerm_virtual_network_gateway_connection",
-                            "azurerm_virtual_network",
-                            "azurerm_virtual_network_gateway",
-                            "google_compute_network",
-                            "google_compute_subnetwork",
-                            "google_compute_vpn_gateway",
-                            "google_compute_vpn_tunnel",
-                            "google_compute_route",
-                            "google_compute_address",
-                            "google_compute_global_address",
-                            "google_compute_router",
-                            "google_compute_interconnect_attachment",
-                            "google_compute_ha_vpn_gateway",
-                            "google_compute_forwarding_rule",
-                            "google_compute_network_firewall_policy",
-                            "google_compute_network_firewall_policy_rule",
-                            "cloudflare_static_route",
-                            "cloudflare_ipsec_tunnel",
-                          ]),
-                          Schema.String,
-                        ]),
-                        title: Schema.String,
-                      }).pipe(
-                        Schema.encodeKeys({
-                          id: "id",
-                          cloudType: "cloud_type",
-                          detail: "detail",
-                          name: "name",
-                          resourceType: "resource_type",
-                          title: "title",
-                        }),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        itemType: "item_type",
-                        resourcePreview: "resource_preview",
-                      }),
-                    ),
-                    Schema.Struct({
-                      itemType: Schema.String,
-                      list: Schema.Array(
-                        Schema.Union([
-                          Schema.Struct({
-                            itemType: Schema.Unknown,
-                            string: Schema.Unknown,
-                          }).pipe(
-                            Schema.encodeKeys({
-                              itemType: "item_type",
-                              string: "string",
-                            }),
-                          ),
-                          Schema.Struct({
-                            itemType: Schema.Unknown,
-                            resourcePreview: Schema.Unknown,
-                          }).pipe(
-                            Schema.encodeKeys({
-                              itemType: "item_type",
-                              resourcePreview: "resource_preview",
-                            }),
-                          ),
-                        ]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        itemType: "item_type",
-                        list: "list",
-                      }),
-                    ),
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
+          id: Schema.String,
+          accountId: Schema.String,
+          cloudType: Schema.Union([
+            Schema.Literals(["AWS", "AZURE", "GOOGLE", "CLOUDFLARE"]),
+            Schema.String,
+          ]),
+          config: Schema.Record(Schema.String, Schema.Unknown),
+          deploymentProvider: Schema.String,
+          managed: Schema.Boolean,
+          monthlyCostEstimate: Schema.Struct({
+            currency: Schema.String,
+            monthlyCost: Schema.Number,
+          }).pipe(
+            Schema.encodeKeys({
+              currency: "currency",
+              monthlyCost: "monthly_cost",
             }),
           ),
           name: Schema.String,
-          visibleItems: Schema.Array(
+          nativeId: Schema.String,
+          observations: Schema.Record(Schema.String, Schema.Unknown),
+          providerIds: Schema.Array(Schema.String),
+          providerNamesById: Schema.Record(Schema.String, Schema.Unknown),
+          region: Schema.String,
+          resourceGroup: Schema.String,
+          resourceType: Schema.Union([
+            Schema.Literals([
+              "aws_customer_gateway",
+              "aws_egress_only_internet_gateway",
+              "aws_internet_gateway",
+              "aws_instance",
+              "aws_network_interface",
+              "aws_route",
+              "aws_route_table",
+              "aws_route_table_association",
+              "aws_subnet",
+              "aws_vpc",
+              "aws_vpc_ipv4_cidr_block_association",
+              "aws_vpn_connection",
+              "aws_vpn_connection_route",
+              "aws_vpn_gateway",
+              "aws_security_group",
+              "aws_vpc_security_group_ingress_rule",
+              "aws_vpc_security_group_egress_rule",
+              "aws_ec2_managed_prefix_list",
+              "aws_ec2_transit_gateway",
+              "aws_ec2_transit_gateway_prefix_list_reference",
+              "aws_ec2_transit_gateway_vpc_attachment",
+              "azurerm_application_security_group",
+              "azurerm_lb",
+              "azurerm_lb_backend_address_pool",
+              "azurerm_lb_nat_pool",
+              "azurerm_lb_nat_rule",
+              "azurerm_lb_rule",
+              "azurerm_local_network_gateway",
+              "azurerm_network_interface",
+              "azurerm_network_interface_application_security_group_association",
+              "azurerm_network_interface_backend_address_pool_association",
+              "azurerm_network_interface_security_group_association",
+              "azurerm_network_security_group",
+              "azurerm_public_ip",
+              "azurerm_route",
+              "azurerm_route_table",
+              "azurerm_subnet",
+              "azurerm_subnet_route_table_association",
+              "azurerm_virtual_machine",
+              "azurerm_virtual_network_gateway_connection",
+              "azurerm_virtual_network",
+              "azurerm_virtual_network_gateway",
+              "google_compute_network",
+              "google_compute_subnetwork",
+              "google_compute_vpn_gateway",
+              "google_compute_vpn_tunnel",
+              "google_compute_route",
+              "google_compute_address",
+              "google_compute_global_address",
+              "google_compute_router",
+              "google_compute_interconnect_attachment",
+              "google_compute_ha_vpn_gateway",
+              "google_compute_forwarding_rule",
+              "google_compute_network_firewall_policy",
+              "google_compute_network_firewall_policy_rule",
+              "cloudflare_static_route",
+              "cloudflare_ipsec_tunnel",
+            ]),
+            Schema.String,
+          ]),
+          sections: Schema.Array(
             Schema.Struct({
+              hiddenItems: Schema.Array(
+                Schema.Struct({
+                  helpText: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  name: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  value: Schema.optional(
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Struct({
+                          itemType: Schema.String,
+                          string: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            itemType: "item_type",
+                            string: "string",
+                          }),
+                        ),
+                        Schema.Struct({
+                          itemType: Schema.String,
+                          yaml: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            itemType: "item_type",
+                            yaml: "yaml",
+                          }),
+                        ),
+                        Schema.Struct({
+                          itemType: Schema.String,
+                          yamlDiff: Schema.Struct({
+                            diff: Schema.String,
+                            leftDescription: Schema.String,
+                            leftYaml: Schema.String,
+                            rightDescription: Schema.String,
+                            rightYaml: Schema.String,
+                          }).pipe(
+                            Schema.encodeKeys({
+                              diff: "diff",
+                              leftDescription: "left_description",
+                              leftYaml: "left_yaml",
+                              rightDescription: "right_description",
+                              rightYaml: "right_yaml",
+                            }),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            itemType: "item_type",
+                            yamlDiff: "yaml_diff",
+                          }),
+                        ),
+                        Schema.Struct({
+                          itemType: Schema.String,
+                          resourcePreview: Schema.Struct({
+                            id: Schema.String,
+                            cloudType: Schema.Union([
+                              Schema.Literals([
+                                "AWS",
+                                "AZURE",
+                                "GOOGLE",
+                                "CLOUDFLARE",
+                              ]),
+                              Schema.String,
+                            ]),
+                            detail: Schema.String,
+                            name: Schema.String,
+                            resourceType: Schema.Union([
+                              Schema.Literals([
+                                "aws_customer_gateway",
+                                "aws_egress_only_internet_gateway",
+                                "aws_internet_gateway",
+                                "aws_instance",
+                                "aws_network_interface",
+                                "aws_route",
+                                "aws_route_table",
+                                "aws_route_table_association",
+                                "aws_subnet",
+                                "aws_vpc",
+                                "aws_vpc_ipv4_cidr_block_association",
+                                "aws_vpn_connection",
+                                "aws_vpn_connection_route",
+                                "aws_vpn_gateway",
+                                "aws_security_group",
+                                "aws_vpc_security_group_ingress_rule",
+                                "aws_vpc_security_group_egress_rule",
+                                "aws_ec2_managed_prefix_list",
+                                "aws_ec2_transit_gateway",
+                                "aws_ec2_transit_gateway_prefix_list_reference",
+                                "aws_ec2_transit_gateway_vpc_attachment",
+                                "azurerm_application_security_group",
+                                "azurerm_lb",
+                                "azurerm_lb_backend_address_pool",
+                                "azurerm_lb_nat_pool",
+                                "azurerm_lb_nat_rule",
+                                "azurerm_lb_rule",
+                                "azurerm_local_network_gateway",
+                                "azurerm_network_interface",
+                                "azurerm_network_interface_application_security_group_association",
+                                "azurerm_network_interface_backend_address_pool_association",
+                                "azurerm_network_interface_security_group_association",
+                                "azurerm_network_security_group",
+                                "azurerm_public_ip",
+                                "azurerm_route",
+                                "azurerm_route_table",
+                                "azurerm_subnet",
+                                "azurerm_subnet_route_table_association",
+                                "azurerm_virtual_machine",
+                                "azurerm_virtual_network_gateway_connection",
+                                "azurerm_virtual_network",
+                                "azurerm_virtual_network_gateway",
+                                "google_compute_network",
+                                "google_compute_subnetwork",
+                                "google_compute_vpn_gateway",
+                                "google_compute_vpn_tunnel",
+                                "google_compute_route",
+                                "google_compute_address",
+                                "google_compute_global_address",
+                                "google_compute_router",
+                                "google_compute_interconnect_attachment",
+                                "google_compute_ha_vpn_gateway",
+                                "google_compute_forwarding_rule",
+                                "google_compute_network_firewall_policy",
+                                "google_compute_network_firewall_policy_rule",
+                                "cloudflare_static_route",
+                                "cloudflare_ipsec_tunnel",
+                              ]),
+                              Schema.String,
+                            ]),
+                            title: Schema.String,
+                          }).pipe(
+                            Schema.encodeKeys({
+                              id: "id",
+                              cloudType: "cloud_type",
+                              detail: "detail",
+                              name: "name",
+                              resourceType: "resource_type",
+                              title: "title",
+                            }),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            itemType: "item_type",
+                            resourcePreview: "resource_preview",
+                          }),
+                        ),
+                        Schema.Struct({
+                          itemType: Schema.String,
+                          list: Schema.Array(
+                            Schema.Union([
+                              Schema.Struct({
+                                itemType: Schema.Unknown,
+                                string: Schema.Unknown,
+                              }).pipe(
+                                Schema.encodeKeys({
+                                  itemType: "item_type",
+                                  string: "string",
+                                }),
+                              ),
+                              Schema.Struct({
+                                itemType: Schema.Unknown,
+                                resourcePreview: Schema.Unknown,
+                              }).pipe(
+                                Schema.encodeKeys({
+                                  itemType: "item_type",
+                                  resourcePreview: "resource_preview",
+                                }),
+                              ),
+                            ]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            itemType: "item_type",
+                            list: "list",
+                          }),
+                        ),
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                }),
+              ),
+              name: Schema.String,
+              visibleItems: Schema.Array(
+                Schema.Struct({
+                  helpText: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  name: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  value: Schema.optional(
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Struct({
+                          itemType: Schema.String,
+                          string: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            itemType: "item_type",
+                            string: "string",
+                          }),
+                        ),
+                        Schema.Struct({
+                          itemType: Schema.String,
+                          yaml: Schema.String,
+                        }).pipe(
+                          Schema.encodeKeys({
+                            itemType: "item_type",
+                            yaml: "yaml",
+                          }),
+                        ),
+                        Schema.Struct({
+                          itemType: Schema.String,
+                          yamlDiff: Schema.Struct({
+                            diff: Schema.String,
+                            leftDescription: Schema.String,
+                            leftYaml: Schema.String,
+                            rightDescription: Schema.String,
+                            rightYaml: Schema.String,
+                          }).pipe(
+                            Schema.encodeKeys({
+                              diff: "diff",
+                              leftDescription: "left_description",
+                              leftYaml: "left_yaml",
+                              rightDescription: "right_description",
+                              rightYaml: "right_yaml",
+                            }),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            itemType: "item_type",
+                            yamlDiff: "yaml_diff",
+                          }),
+                        ),
+                        Schema.Struct({
+                          itemType: Schema.String,
+                          resourcePreview: Schema.Struct({
+                            id: Schema.String,
+                            cloudType: Schema.Union([
+                              Schema.Literals([
+                                "AWS",
+                                "AZURE",
+                                "GOOGLE",
+                                "CLOUDFLARE",
+                              ]),
+                              Schema.String,
+                            ]),
+                            detail: Schema.String,
+                            name: Schema.String,
+                            resourceType: Schema.Union([
+                              Schema.Literals([
+                                "aws_customer_gateway",
+                                "aws_egress_only_internet_gateway",
+                                "aws_internet_gateway",
+                                "aws_instance",
+                                "aws_network_interface",
+                                "aws_route",
+                                "aws_route_table",
+                                "aws_route_table_association",
+                                "aws_subnet",
+                                "aws_vpc",
+                                "aws_vpc_ipv4_cidr_block_association",
+                                "aws_vpn_connection",
+                                "aws_vpn_connection_route",
+                                "aws_vpn_gateway",
+                                "aws_security_group",
+                                "aws_vpc_security_group_ingress_rule",
+                                "aws_vpc_security_group_egress_rule",
+                                "aws_ec2_managed_prefix_list",
+                                "aws_ec2_transit_gateway",
+                                "aws_ec2_transit_gateway_prefix_list_reference",
+                                "aws_ec2_transit_gateway_vpc_attachment",
+                                "azurerm_application_security_group",
+                                "azurerm_lb",
+                                "azurerm_lb_backend_address_pool",
+                                "azurerm_lb_nat_pool",
+                                "azurerm_lb_nat_rule",
+                                "azurerm_lb_rule",
+                                "azurerm_local_network_gateway",
+                                "azurerm_network_interface",
+                                "azurerm_network_interface_application_security_group_association",
+                                "azurerm_network_interface_backend_address_pool_association",
+                                "azurerm_network_interface_security_group_association",
+                                "azurerm_network_security_group",
+                                "azurerm_public_ip",
+                                "azurerm_route",
+                                "azurerm_route_table",
+                                "azurerm_subnet",
+                                "azurerm_subnet_route_table_association",
+                                "azurerm_virtual_machine",
+                                "azurerm_virtual_network_gateway_connection",
+                                "azurerm_virtual_network",
+                                "azurerm_virtual_network_gateway",
+                                "google_compute_network",
+                                "google_compute_subnetwork",
+                                "google_compute_vpn_gateway",
+                                "google_compute_vpn_tunnel",
+                                "google_compute_route",
+                                "google_compute_address",
+                                "google_compute_global_address",
+                                "google_compute_router",
+                                "google_compute_interconnect_attachment",
+                                "google_compute_ha_vpn_gateway",
+                                "google_compute_forwarding_rule",
+                                "google_compute_network_firewall_policy",
+                                "google_compute_network_firewall_policy_rule",
+                                "cloudflare_static_route",
+                                "cloudflare_ipsec_tunnel",
+                              ]),
+                              Schema.String,
+                            ]),
+                            title: Schema.String,
+                          }).pipe(
+                            Schema.encodeKeys({
+                              id: "id",
+                              cloudType: "cloud_type",
+                              detail: "detail",
+                              name: "name",
+                              resourceType: "resource_type",
+                              title: "title",
+                            }),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            itemType: "item_type",
+                            resourcePreview: "resource_preview",
+                          }),
+                        ),
+                        Schema.Struct({
+                          itemType: Schema.String,
+                          list: Schema.Array(
+                            Schema.Union([
+                              Schema.Struct({
+                                itemType: Schema.Unknown,
+                                string: Schema.Unknown,
+                              }).pipe(
+                                Schema.encodeKeys({
+                                  itemType: "item_type",
+                                  string: "string",
+                                }),
+                              ),
+                              Schema.Struct({
+                                itemType: Schema.Unknown,
+                                resourcePreview: Schema.Unknown,
+                              }).pipe(
+                                Schema.encodeKeys({
+                                  itemType: "item_type",
+                                  resourcePreview: "resource_preview",
+                                }),
+                              ),
+                            ]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            itemType: "item_type",
+                            list: "list",
+                          }),
+                        ),
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                }),
+              ),
               helpText: Schema.optional(
                 Schema.Union([Schema.String, Schema.Null]),
               ),
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              value: Schema.optional(
-                Schema.Union([
-                  Schema.Union([
-                    Schema.Struct({
-                      itemType: Schema.String,
-                      string: Schema.String,
-                    }).pipe(
-                      Schema.encodeKeys({
-                        itemType: "item_type",
-                        string: "string",
-                      }),
-                    ),
-                    Schema.Struct({
-                      itemType: Schema.String,
-                      yaml: Schema.String,
-                    }).pipe(
-                      Schema.encodeKeys({
-                        itemType: "item_type",
-                        yaml: "yaml",
-                      }),
-                    ),
-                    Schema.Struct({
-                      itemType: Schema.String,
-                      yamlDiff: Schema.Struct({
-                        diff: Schema.String,
-                        leftDescription: Schema.String,
-                        leftYaml: Schema.String,
-                        rightDescription: Schema.String,
-                        rightYaml: Schema.String,
-                      }).pipe(
-                        Schema.encodeKeys({
-                          diff: "diff",
-                          leftDescription: "left_description",
-                          leftYaml: "left_yaml",
-                          rightDescription: "right_description",
-                          rightYaml: "right_yaml",
-                        }),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        itemType: "item_type",
-                        yamlDiff: "yaml_diff",
-                      }),
-                    ),
-                    Schema.Struct({
-                      itemType: Schema.String,
-                      resourcePreview: Schema.Struct({
-                        id: Schema.String,
-                        cloudType: Schema.Union([
-                          Schema.Literals([
-                            "AWS",
-                            "AZURE",
-                            "GOOGLE",
-                            "CLOUDFLARE",
-                          ]),
-                          Schema.String,
-                        ]),
-                        detail: Schema.String,
-                        name: Schema.String,
-                        resourceType: Schema.Union([
-                          Schema.Literals([
-                            "aws_customer_gateway",
-                            "aws_egress_only_internet_gateway",
-                            "aws_internet_gateway",
-                            "aws_instance",
-                            "aws_network_interface",
-                            "aws_route",
-                            "aws_route_table",
-                            "aws_route_table_association",
-                            "aws_subnet",
-                            "aws_vpc",
-                            "aws_vpc_ipv4_cidr_block_association",
-                            "aws_vpn_connection",
-                            "aws_vpn_connection_route",
-                            "aws_vpn_gateway",
-                            "aws_security_group",
-                            "aws_vpc_security_group_ingress_rule",
-                            "aws_vpc_security_group_egress_rule",
-                            "aws_ec2_managed_prefix_list",
-                            "aws_ec2_transit_gateway",
-                            "aws_ec2_transit_gateway_prefix_list_reference",
-                            "aws_ec2_transit_gateway_vpc_attachment",
-                            "azurerm_application_security_group",
-                            "azurerm_lb",
-                            "azurerm_lb_backend_address_pool",
-                            "azurerm_lb_nat_pool",
-                            "azurerm_lb_nat_rule",
-                            "azurerm_lb_rule",
-                            "azurerm_local_network_gateway",
-                            "azurerm_network_interface",
-                            "azurerm_network_interface_application_security_group_association",
-                            "azurerm_network_interface_backend_address_pool_association",
-                            "azurerm_network_interface_security_group_association",
-                            "azurerm_network_security_group",
-                            "azurerm_public_ip",
-                            "azurerm_route",
-                            "azurerm_route_table",
-                            "azurerm_subnet",
-                            "azurerm_subnet_route_table_association",
-                            "azurerm_virtual_machine",
-                            "azurerm_virtual_network_gateway_connection",
-                            "azurerm_virtual_network",
-                            "azurerm_virtual_network_gateway",
-                            "google_compute_network",
-                            "google_compute_subnetwork",
-                            "google_compute_vpn_gateway",
-                            "google_compute_vpn_tunnel",
-                            "google_compute_route",
-                            "google_compute_address",
-                            "google_compute_global_address",
-                            "google_compute_router",
-                            "google_compute_interconnect_attachment",
-                            "google_compute_ha_vpn_gateway",
-                            "google_compute_forwarding_rule",
-                            "google_compute_network_firewall_policy",
-                            "google_compute_network_firewall_policy_rule",
-                            "cloudflare_static_route",
-                            "cloudflare_ipsec_tunnel",
-                          ]),
-                          Schema.String,
-                        ]),
-                        title: Schema.String,
-                      }).pipe(
-                        Schema.encodeKeys({
-                          id: "id",
-                          cloudType: "cloud_type",
-                          detail: "detail",
-                          name: "name",
-                          resourceType: "resource_type",
-                          title: "title",
-                        }),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        itemType: "item_type",
-                        resourcePreview: "resource_preview",
-                      }),
-                    ),
-                    Schema.Struct({
-                      itemType: Schema.String,
-                      list: Schema.Array(
-                        Schema.Union([
-                          Schema.Struct({
-                            itemType: Schema.Unknown,
-                            string: Schema.Unknown,
-                          }).pipe(
-                            Schema.encodeKeys({
-                              itemType: "item_type",
-                              string: "string",
-                            }),
-                          ),
-                          Schema.Struct({
-                            itemType: Schema.Unknown,
-                            resourcePreview: Schema.Unknown,
-                          }).pipe(
-                            Schema.encodeKeys({
-                              itemType: "item_type",
-                              resourcePreview: "resource_preview",
-                            }),
-                          ),
-                        ]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        itemType: "item_type",
-                        list: "list",
-                      }),
-                    ),
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-            }),
+            }).pipe(
+              Schema.encodeKeys({
+                hiddenItems: "hidden_items",
+                name: "name",
+                visibleItems: "visible_items",
+                helpText: "help_text",
+              }),
+            ),
           ),
-          helpText: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          state: Schema.Record(Schema.String, Schema.Unknown),
+          tags: Schema.Record(Schema.String, Schema.Unknown),
+          updatedAt: Schema.String,
+          url: Schema.String,
+          managedBy: Schema.optional(
+            Schema.Union([
+              Schema.Array(
+                Schema.Struct({
+                  id: Schema.String,
+                  clientType: Schema.Literal("MAGIC_WAN_CLOUD_ONRAMP"),
+                  name: Schema.String,
+                }).pipe(
+                  Schema.encodeKeys({
+                    id: "id",
+                    clientType: "client_type",
+                    name: "name",
+                  }),
+                ),
+              ),
+              Schema.Null,
+            ]),
+          ),
         }).pipe(
           Schema.encodeKeys({
-            hiddenItems: "hidden_items",
+            id: "id",
+            accountId: "account_id",
+            cloudType: "cloud_type",
+            config: "config",
+            deploymentProvider: "deployment_provider",
+            managed: "managed",
+            monthlyCostEstimate: "monthly_cost_estimate",
             name: "name",
-            visibleItems: "visible_items",
-            helpText: "help_text",
+            nativeId: "native_id",
+            observations: "observations",
+            providerIds: "provider_ids",
+            providerNamesById: "provider_names_by_id",
+            region: "region",
+            resourceGroup: "resource_group",
+            resourceType: "resource_type",
+            sections: "sections",
+            state: "state",
+            tags: "tags",
+            updatedAt: "updated_at",
+            url: "url",
+            managedBy: "managed_by",
           }),
         ),
       ),
-      state: Schema.Record(Schema.String, Schema.Unknown),
-      tags: Schema.Record(Schema.String, Schema.Unknown),
-      updatedAt: Schema.String,
-      url: Schema.String,
-      managedBy: Schema.optional(
+      resultInfo: Schema.optional(
         Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              id: Schema.String,
-              clientType: Schema.Literal("MAGIC_WAN_CLOUD_ONRAMP"),
-              name: Schema.String,
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                clientType: "client_type",
-                name: "name",
-              }),
+          Schema.Struct({
+            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            perPage: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
             ),
+            totalCount: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              count: "count",
+              page: "page",
+              perPage: "per_page",
+              totalCount: "total_count",
+            }),
           ),
           Schema.Null,
         ]),
       ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        accountId: "account_id",
-        cloudType: "cloud_type",
-        config: "config",
-        deploymentProvider: "deployment_provider",
-        managed: "managed",
-        monthlyCostEstimate: "monthly_cost_estimate",
-        name: "name",
-        nativeId: "native_id",
-        observations: "observations",
-        providerIds: "provider_ids",
-        providerNamesById: "provider_names_by_id",
-        region: "region",
-        resourceGroup: "resource_group",
-        resourceType: "resource_type",
-        sections: "sections",
-        state: "state",
-        tags: "tags",
-        updatedAt: "updated_at",
-        url: "url",
-        managedBy: "managed_by",
-      }),
-    ),
-  ),
-  resultInfo: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          count: "count",
-          page: "page",
-          perPage: "per_page",
-          totalCount: "total_count",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-}).pipe(
-  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Schema<ListResourcesResponse>;
 
 export type ListResourcesError = DefaultErrors;
@@ -10575,99 +10792,106 @@ export interface ExportResourceRequest {
   v2?: boolean;
 }
 
-export const ExportResourceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  desc: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("desc")),
-  orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("order_by")),
-  providerId: Schema.optional(Schema.String).pipe(T.HttpQuery("provider_id")),
-  region: Schema.optional(Schema.String).pipe(T.HttpQuery("region")),
-  resourceGroup: Schema.optional(Schema.String).pipe(
-    T.HttpQuery("resource_group"),
-  ),
-  resourceId: Schema.optional(Schema.Array(Schema.String)).pipe(
-    T.HttpQuery("resource_id"),
-  ),
-  resourceType: Schema.optional(
-    Schema.Array(
-      Schema.Union([
-        Schema.Literals([
-          "aws_customer_gateway",
-          "aws_egress_only_internet_gateway",
-          "aws_internet_gateway",
-          "aws_instance",
-          "aws_network_interface",
-          "aws_route",
-          "aws_route_table",
-          "aws_route_table_association",
-          "aws_subnet",
-          "aws_vpc",
-          "aws_vpc_ipv4_cidr_block_association",
-          "aws_vpn_connection",
-          "aws_vpn_connection_route",
-          "aws_vpn_gateway",
-          "aws_security_group",
-          "aws_vpc_security_group_ingress_rule",
-          "aws_vpc_security_group_egress_rule",
-          "aws_ec2_managed_prefix_list",
-          "aws_ec2_transit_gateway",
-          "aws_ec2_transit_gateway_prefix_list_reference",
-          "aws_ec2_transit_gateway_vpc_attachment",
-          "azurerm_application_security_group",
-          "azurerm_lb",
-          "azurerm_lb_backend_address_pool",
-          "azurerm_lb_nat_pool",
-          "azurerm_lb_nat_rule",
-          "azurerm_lb_rule",
-          "azurerm_local_network_gateway",
-          "azurerm_network_interface",
-          "azurerm_network_interface_application_security_group_association",
-          "azurerm_network_interface_backend_address_pool_association",
-          "azurerm_network_interface_security_group_association",
-          "azurerm_network_security_group",
-          "azurerm_public_ip",
-          "azurerm_route",
-          "azurerm_route_table",
-          "azurerm_subnet",
-          "azurerm_subnet_route_table_association",
-          "azurerm_virtual_machine",
-          "azurerm_virtual_network_gateway_connection",
-          "azurerm_virtual_network",
-          "azurerm_virtual_network_gateway",
-          "google_compute_network",
-          "google_compute_subnetwork",
-          "google_compute_vpn_gateway",
-          "google_compute_vpn_tunnel",
-          "google_compute_route",
-          "google_compute_address",
-          "google_compute_global_address",
-          "google_compute_router",
-          "google_compute_interconnect_attachment",
-          "google_compute_ha_vpn_gateway",
-          "google_compute_forwarding_rule",
-          "google_compute_network_firewall_policy",
-          "google_compute_network_firewall_policy_rule",
-          "cloudflare_static_route",
-          "cloudflare_ipsec_tunnel",
-        ]),
-        Schema.String,
-      ]),
+export const ExportResourceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      desc: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("desc")),
+      orderBy: Schema.optional(Schema.String).pipe(T.HttpQuery("order_by")),
+      providerId: Schema.optional(Schema.String).pipe(
+        T.HttpQuery("provider_id"),
+      ),
+      region: Schema.optional(Schema.String).pipe(T.HttpQuery("region")),
+      resourceGroup: Schema.optional(Schema.String).pipe(
+        T.HttpQuery("resource_group"),
+      ),
+      resourceId: Schema.optional(Schema.Array(Schema.String)).pipe(
+        T.HttpQuery("resource_id"),
+      ),
+      resourceType: Schema.optional(
+        Schema.Array(
+          Schema.Union([
+            Schema.Literals([
+              "aws_customer_gateway",
+              "aws_egress_only_internet_gateway",
+              "aws_internet_gateway",
+              "aws_instance",
+              "aws_network_interface",
+              "aws_route",
+              "aws_route_table",
+              "aws_route_table_association",
+              "aws_subnet",
+              "aws_vpc",
+              "aws_vpc_ipv4_cidr_block_association",
+              "aws_vpn_connection",
+              "aws_vpn_connection_route",
+              "aws_vpn_gateway",
+              "aws_security_group",
+              "aws_vpc_security_group_ingress_rule",
+              "aws_vpc_security_group_egress_rule",
+              "aws_ec2_managed_prefix_list",
+              "aws_ec2_transit_gateway",
+              "aws_ec2_transit_gateway_prefix_list_reference",
+              "aws_ec2_transit_gateway_vpc_attachment",
+              "azurerm_application_security_group",
+              "azurerm_lb",
+              "azurerm_lb_backend_address_pool",
+              "azurerm_lb_nat_pool",
+              "azurerm_lb_nat_rule",
+              "azurerm_lb_rule",
+              "azurerm_local_network_gateway",
+              "azurerm_network_interface",
+              "azurerm_network_interface_application_security_group_association",
+              "azurerm_network_interface_backend_address_pool_association",
+              "azurerm_network_interface_security_group_association",
+              "azurerm_network_security_group",
+              "azurerm_public_ip",
+              "azurerm_route",
+              "azurerm_route_table",
+              "azurerm_subnet",
+              "azurerm_subnet_route_table_association",
+              "azurerm_virtual_machine",
+              "azurerm_virtual_network_gateway_connection",
+              "azurerm_virtual_network",
+              "azurerm_virtual_network_gateway",
+              "google_compute_network",
+              "google_compute_subnetwork",
+              "google_compute_vpn_gateway",
+              "google_compute_vpn_tunnel",
+              "google_compute_route",
+              "google_compute_address",
+              "google_compute_global_address",
+              "google_compute_router",
+              "google_compute_interconnect_attachment",
+              "google_compute_ha_vpn_gateway",
+              "google_compute_forwarding_rule",
+              "google_compute_network_firewall_policy",
+              "google_compute_network_firewall_policy_rule",
+              "cloudflare_static_route",
+              "cloudflare_ipsec_tunnel",
+            ]),
+            Schema.String,
+          ]),
+        ),
+      ).pipe(T.HttpQuery("resource_type")),
+      search: Schema.optional(Schema.Array(Schema.String)).pipe(
+        T.HttpQuery("search"),
+      ),
+      v2: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("v2")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/cloud/resources/export",
+      }),
     ),
-  ).pipe(T.HttpQuery("resource_type")),
-  search: Schema.optional(Schema.Array(Schema.String)).pipe(
-    T.HttpQuery("search"),
-  ),
-  v2: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("v2")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/magic/cloud/resources/export",
-  }),
 ) as unknown as Schema.Schema<ExportResourceRequest>;
 
 export type ExportResourceResponse = unknown;
 
 export const ExportResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<ExportResourceResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+    () => Schema.Unknown,
+  ) as unknown as Schema.Schema<ExportResourceResponse>;
 
 export type ExportResourceError = DefaultErrors;
 
@@ -10692,14 +10916,16 @@ export interface InitialSetupCloudIntegrationRequest {
 }
 
 export const InitialSetupCloudIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    providerId: Schema.String.pipe(T.HttpPath("providerId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/magic/cloud/providers/{providerId}/initial_setup",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      providerId: Schema.String.pipe(T.HttpPath("providerId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/cloud/providers/{providerId}/initial_setup",
+      }),
+    ),
   ) as unknown as Schema.Schema<InitialSetupCloudIntegrationRequest>;
 
 export type InitialSetupCloudIntegrationResponse =
@@ -10713,42 +10939,42 @@ export type InitialSetupCloudIntegrationResponse =
   | { integrationIdentityTag: string; itemType: string; tagCliCommand: string };
 
 export const InitialSetupCloudIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
-    Schema.Struct({
-      azureConsentUrl: Schema.String,
-      integrationIdentityTag: Schema.String,
-      itemType: Schema.String,
-      tagCliCommand: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({
-        azureConsentUrl: "azure_consent_url",
-        integrationIdentityTag: "integration_identity_tag",
-        itemType: "item_type",
-        tagCliCommand: "tag_cli_command",
-      }),
-    ),
-    Schema.Struct({
-      integrationIdentityTag: Schema.String,
-      itemType: Schema.String,
-      tagCliCommand: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({
-        integrationIdentityTag: "integration_identity_tag",
-        itemType: "item_type",
-        tagCliCommand: "tag_cli_command",
-      }),
-    ),
-    Schema.Struct({
-      awsTrustPolicy: Schema.String,
-      itemType: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({
-        awsTrustPolicy: "aws_trust_policy",
-        itemType: "item_type",
-      }),
-    ),
-  ]).pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Union([
+      Schema.Struct({
+        azureConsentUrl: Schema.String,
+        integrationIdentityTag: Schema.String,
+        itemType: Schema.String,
+        tagCliCommand: Schema.String,
+      }).pipe(
+        Schema.encodeKeys({
+          azureConsentUrl: "azure_consent_url",
+          integrationIdentityTag: "integration_identity_tag",
+          itemType: "item_type",
+          tagCliCommand: "tag_cli_command",
+        }),
+      ),
+      Schema.Struct({
+        integrationIdentityTag: Schema.String,
+        itemType: Schema.String,
+        tagCliCommand: Schema.String,
+      }).pipe(
+        Schema.encodeKeys({
+          integrationIdentityTag: "integration_identity_tag",
+          itemType: "item_type",
+          tagCliCommand: "tag_cli_command",
+        }),
+      ),
+      Schema.Struct({
+        awsTrustPolicy: Schema.String,
+        itemType: Schema.String,
+      }).pipe(
+        Schema.encodeKeys({
+          awsTrustPolicy: "aws_trust_policy",
+          itemType: "item_type",
+        }),
+      ),
+    ]).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<InitialSetupCloudIntegrationResponse>;
 
 export type InitialSetupCloudIntegrationError = DefaultErrors;

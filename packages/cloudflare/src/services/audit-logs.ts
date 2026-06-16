@@ -41,38 +41,41 @@ export interface ListAuditLogsRequest {
   zone?: { name?: string };
 }
 
-export const ListAuditLogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
-  action: Schema.optional(
+export const ListAuditLogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).pipe(T.HttpQuery("action")),
-  actor: Schema.optional(
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-      ip: Schema.optional(Schema.String),
-    }),
-  ).pipe(T.HttpQuery("actor")),
-  before: Schema.optional(Schema.Unknown).pipe(T.HttpQuery("before")),
-  direction: Schema.optional(
-    Schema.Union([Schema.Literals(["desc", "asc"]), Schema.String]),
-  ).pipe(T.HttpQuery("direction")),
-  export: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("export")),
-  hideUserLogs: Schema.optional(Schema.Boolean).pipe(
-    T.HttpQuery("hide_user_logs"),
-  ),
-  since: Schema.optional(Schema.Unknown).pipe(T.HttpQuery("since")),
-  zone: Schema.optional(
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).pipe(T.HttpQuery("zone")),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/audit_logs" }),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+      id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
+      action: Schema.optional(
+        Schema.Struct({
+          type: Schema.optional(Schema.String),
+        }),
+      ).pipe(T.HttpQuery("action")),
+      actor: Schema.optional(
+        Schema.Struct({
+          email: Schema.optional(Schema.String),
+          ip: Schema.optional(Schema.String),
+        }),
+      ).pipe(T.HttpQuery("actor")),
+      before: Schema.optional(Schema.Unknown).pipe(T.HttpQuery("before")),
+      direction: Schema.optional(
+        Schema.Union([Schema.Literals(["desc", "asc"]), Schema.String]),
+      ).pipe(T.HttpQuery("direction")),
+      export: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("export")),
+      hideUserLogs: Schema.optional(Schema.Boolean).pipe(
+        T.HttpQuery("hide_user_logs"),
+      ),
+      since: Schema.optional(Schema.Unknown).pipe(T.HttpQuery("since")),
+      zone: Schema.optional(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+        }),
+      ).pipe(T.HttpQuery("zone")),
+    }).pipe(
+      T.Http({ method: "GET", path: "/accounts/{account_id}/audit_logs" }),
+    ),
 ) as unknown as Schema.Schema<ListAuditLogsRequest>;
 
 export interface ListAuditLogsResponse {
@@ -101,84 +104,99 @@ export interface ListAuditLogsResponse {
   } | null;
 }
 
-export const ListAuditLogsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
+export const ListAuditLogsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      action: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            result: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
-      actor: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            ip: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            type: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["user", "admin", "Cloudflare"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
-      interface: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      metadata: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
-      newValue: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      oldValue: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      owner: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
-      resource: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }),
-          Schema.Null,
-        ]),
-      ),
-      when: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
-  ),
-  resultInfo: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          count: "count",
-          page: "page",
-          perPage: "per_page",
-          totalCount: "total_count",
+      result: Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          action: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                result: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                type: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+          actor: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+                email: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                ip: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+                type: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["user", "admin", "Cloudflare"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+          interface: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          metadata: Schema.optional(
+            Schema.Union([Schema.Unknown, Schema.Null]),
+          ),
+          newValue: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          oldValue: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          owner: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              }),
+              Schema.Null,
+            ]),
+          ),
+          resource: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+                type: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+          when: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         }),
       ),
-      Schema.Null,
-    ]),
-  ),
-}).pipe(
-  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+      resultInfo: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            perPage: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            totalCount: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              count: "count",
+              page: "page",
+              perPage: "per_page",
+              totalCount: "total_count",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Schema<ListAuditLogsResponse>;
 
 export type ListAuditLogsError = DefaultErrors;

@@ -101,22 +101,29 @@ export interface GetQuotaRequest {
   accountId: string;
 }
 
-export const GetQuotaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/secrets_store/quota" }),
+export const GetQuotaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/secrets_store/quota",
+    }),
+  ),
 ) as unknown as Schema.Schema<GetQuotaRequest>;
 
 export interface GetQuotaResponse {
   secrets: { quota: number; usage: number };
 }
 
-export const GetQuotaResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  secrets: Schema.Struct({
-    quota: Schema.Number,
-    usage: Schema.Number,
-  }),
-}).pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetQuotaResponse>;
+export const GetQuotaResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    secrets: Schema.Struct({
+      quota: Schema.Number,
+      usage: Schema.Number,
+    }),
+  }).pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<GetQuotaResponse>;
 
 export type GetQuotaError = DefaultErrors | InvalidAccountId;
 
@@ -141,14 +148,16 @@ export interface GetStoreRequest {
   accountId: string;
 }
 
-export const GetStoreRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  storeId: Schema.String.pipe(T.HttpPath("storeId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/secrets_store/stores/{storeId}",
-  }),
+export const GetStoreRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    storeId: Schema.String.pipe(T.HttpPath("storeId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/secrets_store/stores/{storeId}",
+    }),
+  ),
 ) as unknown as Schema.Schema<GetStoreRequest>;
 
 export interface GetStoreResponse {
@@ -164,23 +173,25 @@ export interface GetStoreResponse {
   accountId?: string | null;
 }
 
-export const GetStoreResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
-  created: Schema.String,
-  modified: Schema.String,
-  name: Schema.String,
-  accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      created: "created",
-      modified: "modified",
-      name: "name",
-      accountId: "account_id",
-    }),
-  )
-  .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetStoreResponse>;
+export const GetStoreResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    created: Schema.String,
+    modified: Schema.String,
+    name: Schema.String,
+    accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        created: "created",
+        modified: "modified",
+        name: "name",
+        accountId: "account_id",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<GetStoreResponse>;
 
 export type GetStoreError = DefaultErrors;
 
@@ -212,24 +223,27 @@ export interface ListStoresRequest {
     | (string & {});
 }
 
-export const ListStoresRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  direction: Schema.optional(
-    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-  ).pipe(T.HttpQuery("direction")),
-  order: Schema.optional(
-    Schema.Union([
-      Schema.Literals(["name", "comment", "created", "modified", "status"]),
-      Schema.String,
-    ]),
-  ).pipe(T.HttpQuery("order")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/secrets_store/stores",
-  }),
+export const ListStoresRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+      direction: Schema.optional(
+        Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+      ).pipe(T.HttpQuery("direction")),
+      order: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["name", "comment", "created", "modified", "status"]),
+          Schema.String,
+        ]),
+      ).pipe(T.HttpQuery("order")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/secrets_store/stores",
+      }),
+    ),
 ) as unknown as Schema.Schema<ListStoresRequest>;
 
 export interface ListStoresResponse {
@@ -248,44 +262,51 @@ export interface ListStoresResponse {
   } | null;
 }
 
-export const ListStoresResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
+export const ListStoresResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      id: Schema.String,
-      created: Schema.String,
-      modified: Schema.String,
-      name: Schema.String,
-      accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        created: "created",
-        modified: "modified",
-        name: "name",
-        accountId: "account_id",
-      }),
-    ),
-  ),
-  resultInfo: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          count: "count",
-          page: "page",
-          perPage: "per_page",
-          totalCount: "total_count",
-        }),
+      result: Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          created: Schema.String,
+          modified: Schema.String,
+          name: Schema.String,
+          accountId: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            created: "created",
+            modified: "modified",
+            name: "name",
+            accountId: "account_id",
+          }),
+        ),
       ),
-      Schema.Null,
-    ]),
-  ),
-}).pipe(
-  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+      resultInfo: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            perPage: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            totalCount: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              count: "count",
+              page: "page",
+              perPage: "per_page",
+              totalCount: "total_count",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Schema<ListStoresResponse>;
 
 export type ListStoresError = DefaultErrors | InvalidAccountId;
@@ -315,14 +336,17 @@ export interface CreateStoreRequest {
   name: string;
 }
 
-export const CreateStoreRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  name: Schema.String,
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "/accounts/{account_id}/secrets_store/stores",
-  }),
+export const CreateStoreRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      name: Schema.String,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/secrets_store/stores",
+      }),
+    ),
 ) as unknown as Schema.Schema<CreateStoreRequest>;
 
 export interface CreateStoreResponse {
@@ -336,13 +360,14 @@ export interface CreateStoreResponse {
   name: string;
 }
 
-export const CreateStoreResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
-  created: Schema.String,
-  modified: Schema.String,
-  name: Schema.String,
-}).pipe(
-  T.ResponsePath("result"),
+export const CreateStoreResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.String,
+      created: Schema.String,
+      modified: Schema.String,
+      name: Schema.String,
+    }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Schema<CreateStoreResponse>;
 
 export type CreateStoreError =
@@ -369,23 +394,25 @@ export interface DeleteStoreRequest {
   force?: boolean;
 }
 
-export const DeleteStoreRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  storeId: Schema.String.pipe(T.HttpPath("storeId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
-}).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "/accounts/{account_id}/secrets_store/stores/{storeId}",
-  }),
+export const DeleteStoreRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      storeId: Schema.String.pipe(T.HttpPath("storeId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/secrets_store/stores/{storeId}",
+      }),
+    ),
 ) as unknown as Schema.Schema<DeleteStoreRequest>;
 
 export type DeleteStoreResponse = unknown;
 
-export const DeleteStoreResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<DeleteStoreResponse>;
+export const DeleteStoreResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () => Schema.Unknown.pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<DeleteStoreResponse>;
 
 export type DeleteStoreError =
   | DefaultErrors
@@ -415,15 +442,18 @@ export interface GetStoreSecretRequest {
   accountId: string;
 }
 
-export const GetStoreSecretRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  storeId: Schema.String.pipe(T.HttpPath("storeId")),
-  secretId: Schema.String.pipe(T.HttpPath("secretId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/secrets_store/stores/{storeId}/secrets/{secretId}",
-  }),
+export const GetStoreSecretRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      storeId: Schema.String.pipe(T.HttpPath("storeId")),
+      secretId: Schema.String.pipe(T.HttpPath("secretId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/secrets_store/stores/{storeId}/secrets/{secretId}",
+      }),
+    ),
 ) as unknown as Schema.Schema<GetStoreSecretRequest>;
 
 export interface GetStoreSecretResponse {
@@ -444,37 +474,36 @@ export interface GetStoreSecretResponse {
   scopes?: string[] | null;
 }
 
-export const GetStoreSecretResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String,
-    created: Schema.String,
-    modified: Schema.String,
-    name: Schema.String,
-    status: Schema.Union([
-      Schema.Literals(["pending", "active", "deleted"]),
-      Schema.String,
-    ]),
-    storeId: Schema.String,
-    comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    scopes: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-  },
-)
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      created: "created",
-      modified: "modified",
-      name: "name",
-      status: "status",
-      storeId: "store_id",
-      comment: "comment",
-      scopes: "scopes",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
+export const GetStoreSecretResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      created: Schema.String,
+      modified: Schema.String,
+      name: Schema.String,
+      status: Schema.Union([
+        Schema.Literals(["pending", "active", "deleted"]),
+        Schema.String,
+      ]),
+      storeId: Schema.String,
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      scopes: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          created: "created",
+          modified: "modified",
+          name: "name",
+          status: "status",
+          storeId: "store_id",
+          comment: "comment",
+          scopes: "scopes",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<GetStoreSecretResponse>;
 
 export type GetStoreSecretError =
@@ -518,29 +547,31 @@ export interface ListStoreSecretsRequest {
 }
 
 export const ListStoreSecretsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    storeId: Schema.String.pipe(T.HttpPath("storeId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    direction: Schema.optional(
-      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-    ).pipe(T.HttpQuery("direction")),
-    order: Schema.optional(
-      Schema.Union([
-        Schema.Literals(["name", "comment", "created", "modified", "status"]),
-        Schema.String,
-      ]),
-    ).pipe(T.HttpQuery("order")),
-    scopes: Schema.optional(Schema.Array(Schema.Array(Schema.String))).pipe(
-      T.HttpQuery("scopes"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      storeId: Schema.String.pipe(T.HttpPath("storeId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+      direction: Schema.optional(
+        Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+      ).pipe(T.HttpQuery("direction")),
+      order: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["name", "comment", "created", "modified", "status"]),
+          Schema.String,
+        ]),
+      ).pipe(T.HttpQuery("order")),
+      scopes: Schema.optional(Schema.Array(Schema.Array(Schema.String))).pipe(
+        T.HttpQuery("scopes"),
+      ),
+      search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/secrets_store/stores/{storeId}/secrets",
+      }),
     ),
-    search: Schema.optional(Schema.String).pipe(T.HttpQuery("search")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/secrets_store/stores/{storeId}/secrets",
-    }),
   ) as unknown as Schema.Schema<ListStoreSecretsRequest>;
 
 export interface ListStoreSecretsResponse {
@@ -563,57 +594,59 @@ export interface ListStoreSecretsResponse {
 }
 
 export const ListStoreSecretsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        created: Schema.String,
-        modified: Schema.String,
-        name: Schema.String,
-        status: Schema.Union([
-          Schema.Literals(["pending", "active", "deleted"]),
-          Schema.String,
-        ]),
-        storeId: Schema.String,
-        comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        scopes: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          created: "created",
-          modified: "modified",
-          name: "name",
-          status: "status",
-          storeId: "store_id",
-          comment: "comment",
-          scopes: "scopes",
-        }),
-      ),
-    ),
-    resultInfo: Schema.optional(
-      Schema.Union([
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
         Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
+          id: Schema.String,
+          created: Schema.String,
+          modified: Schema.String,
+          name: Schema.String,
+          status: Schema.Union([
+            Schema.Literals(["pending", "active", "deleted"]),
+            Schema.String,
+          ]),
+          storeId: Schema.String,
+          comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          scopes: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
           ),
         }).pipe(
           Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
+            id: "id",
+            created: "created",
+            modified: "modified",
+            name: "name",
+            status: "status",
+            storeId: "store_id",
+            comment: "comment",
+            scopes: "scopes",
           }),
         ),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+      ),
+      resultInfo: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            perPage: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            totalCount: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              count: "count",
+              page: "page",
+              perPage: "per_page",
+              totalCount: "total_count",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
   ) as unknown as Schema.Schema<ListStoreSecretsResponse>;
 
 export type ListStoreSecretsError =
@@ -648,22 +681,24 @@ export interface CreateStoreSecretRequest {
 }
 
 export const CreateStoreSecretRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    storeId: Schema.String.pipe(T.HttpPath("storeId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    body: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        scopes: Schema.Array(Schema.String),
-        value: Schema.String,
-        comment: Schema.optional(Schema.String),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      storeId: Schema.String.pipe(T.HttpPath("storeId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      body: Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          scopes: Schema.Array(Schema.String),
+          value: Schema.String,
+          comment: Schema.optional(Schema.String),
+        }),
+      ).pipe(T.HttpBody()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/secrets_store/stores/{storeId}/secrets",
       }),
-    ).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/secrets_store/stores/{storeId}/secrets",
-    }),
+    ),
   ) as unknown as Schema.Schema<CreateStoreSecretRequest>;
 
 export interface CreateStoreSecretResponse {
@@ -680,36 +715,38 @@ export interface CreateStoreSecretResponse {
 }
 
 export const CreateStoreSecretResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        created: Schema.String,
-        modified: Schema.String,
-        name: Schema.String,
-        status: Schema.Union([
-          Schema.Literals(["pending", "active", "deleted"]),
-          Schema.String,
-        ]),
-        storeId: Schema.String,
-        comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        scopes: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          created: Schema.String,
+          modified: Schema.String,
+          name: Schema.String,
+          status: Schema.Union([
+            Schema.Literals(["pending", "active", "deleted"]),
+            Schema.String,
+          ]),
+          storeId: Schema.String,
+          comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          scopes: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            created: "created",
+            modified: "modified",
+            name: "name",
+            status: "status",
+            storeId: "store_id",
+            comment: "comment",
+            scopes: "scopes",
+          }),
         ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          created: "created",
-          modified: "modified",
-          name: "name",
-          status: "status",
-          storeId: "store_id",
-          comment: "comment",
-          scopes: "scopes",
-        }),
       ),
-    ),
-  }) as unknown as Schema.Schema<CreateStoreSecretResponse>;
+    }),
+  ) as unknown as Schema.Schema<CreateStoreSecretResponse>;
 
 export type CreateStoreSecretError =
   | DefaultErrors
@@ -754,18 +791,20 @@ export interface PatchStoreSecretRequest {
 }
 
 export const PatchStoreSecretRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    storeId: Schema.String.pipe(T.HttpPath("storeId")),
-    secretId: Schema.String.pipe(T.HttpPath("secretId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    comment: Schema.optional(Schema.String),
-    scopes: Schema.optional(Schema.Array(Schema.String)),
-    value: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/accounts/{account_id}/secrets_store/stores/{storeId}/secrets/{secretId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      storeId: Schema.String.pipe(T.HttpPath("storeId")),
+      secretId: Schema.String.pipe(T.HttpPath("secretId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      comment: Schema.optional(Schema.String),
+      scopes: Schema.optional(Schema.Array(Schema.String)),
+      value: Schema.optional(Schema.String),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        path: "/accounts/{account_id}/secrets_store/stores/{storeId}/secrets/{secretId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<PatchStoreSecretRequest>;
 
 export interface PatchStoreSecretResponse {
@@ -787,36 +826,36 @@ export interface PatchStoreSecretResponse {
 }
 
 export const PatchStoreSecretResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    created: Schema.String,
-    modified: Schema.String,
-    name: Schema.String,
-    status: Schema.Union([
-      Schema.Literals(["pending", "active", "deleted"]),
-      Schema.String,
-    ]),
-    storeId: Schema.String,
-    comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    scopes: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        created: "created",
-        modified: "modified",
-        name: "name",
-        status: "status",
-        storeId: "store_id",
-        comment: "comment",
-        scopes: "scopes",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchStoreSecretResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      created: Schema.String,
+      modified: Schema.String,
+      name: Schema.String,
+      status: Schema.Union([
+        Schema.Literals(["pending", "active", "deleted"]),
+        Schema.String,
+      ]),
+      storeId: Schema.String,
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      scopes: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          created: "created",
+          modified: "modified",
+          name: "name",
+          status: "status",
+          storeId: "store_id",
+          comment: "comment",
+          scopes: "scopes",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<PatchStoreSecretResponse>;
 
 export type PatchStoreSecretError =
   | DefaultErrors
@@ -844,22 +883,24 @@ export interface DeleteStoreSecretRequest {
 }
 
 export const DeleteStoreSecretRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    storeId: Schema.String.pipe(T.HttpPath("storeId")),
-    secretId: Schema.String.pipe(T.HttpPath("secretId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/secrets_store/stores/{storeId}/secrets/{secretId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      storeId: Schema.String.pipe(T.HttpPath("storeId")),
+      secretId: Schema.String.pipe(T.HttpPath("secretId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/secrets_store/stores/{storeId}/secrets/{secretId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<DeleteStoreSecretRequest>;
 
 export type DeleteStoreSecretResponse = unknown;
 
 export const DeleteStoreSecretResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<DeleteStoreSecretResponse>;
 
 export type DeleteStoreSecretError =
@@ -887,21 +928,23 @@ export interface BulkDeleteStoreSecretsRequest {
 }
 
 export const BulkDeleteStoreSecretsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    storeId: Schema.String.pipe(T.HttpPath("storeId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/secrets_store/stores/{storeId}/secrets",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      storeId: Schema.String.pipe(T.HttpPath("storeId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/secrets_store/stores/{storeId}/secrets",
+      }),
+    ),
   ) as unknown as Schema.Schema<BulkDeleteStoreSecretsRequest>;
 
 export type BulkDeleteStoreSecretsResponse = unknown;
 
 export const BulkDeleteStoreSecretsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<BulkDeleteStoreSecretsResponse>;
 
 export type BulkDeleteStoreSecretsError =
@@ -935,18 +978,20 @@ export interface DuplicateStoreSecretRequest {
 }
 
 export const DuplicateStoreSecretRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    storeId: Schema.String.pipe(T.HttpPath("storeId")),
-    secretId: Schema.String.pipe(T.HttpPath("secretId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    name: Schema.String,
-    scopes: Schema.Array(Schema.String),
-    comment: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/secrets_store/stores/{storeId}/secrets/{secretId}/duplicate",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      storeId: Schema.String.pipe(T.HttpPath("storeId")),
+      secretId: Schema.String.pipe(T.HttpPath("secretId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      name: Schema.String,
+      scopes: Schema.Array(Schema.String),
+      comment: Schema.optional(Schema.String),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/secrets_store/stores/{storeId}/secrets/{secretId}/duplicate",
+      }),
+    ),
   ) as unknown as Schema.Schema<DuplicateStoreSecretRequest>;
 
 export interface DuplicateStoreSecretResponse {
@@ -968,36 +1013,36 @@ export interface DuplicateStoreSecretResponse {
 }
 
 export const DuplicateStoreSecretResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    created: Schema.String,
-    modified: Schema.String,
-    name: Schema.String,
-    status: Schema.Union([
-      Schema.Literals(["pending", "active", "deleted"]),
-      Schema.String,
-    ]),
-    storeId: Schema.String,
-    comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    scopes: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        created: "created",
-        modified: "modified",
-        name: "name",
-        status: "status",
-        storeId: "store_id",
-        comment: "comment",
-        scopes: "scopes",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<DuplicateStoreSecretResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      created: Schema.String,
+      modified: Schema.String,
+      name: Schema.String,
+      status: Schema.Union([
+        Schema.Literals(["pending", "active", "deleted"]),
+        Schema.String,
+      ]),
+      storeId: Schema.String,
+      comment: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      scopes: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          created: "created",
+          modified: "modified",
+          name: "name",
+          status: "status",
+          storeId: "store_id",
+          comment: "comment",
+          scopes: "scopes",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<DuplicateStoreSecretResponse>;
 
 export type DuplicateStoreSecretError =
   | DefaultErrors

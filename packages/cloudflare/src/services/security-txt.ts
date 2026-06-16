@@ -39,13 +39,16 @@ export interface GetSecurityTxtRequest {
   zoneId: string;
 }
 
-export const GetSecurityTxtRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/zones/{zone_id}/security-center/securitytxt",
-  }),
+export const GetSecurityTxtRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/zones/{zone_id}/security-center/securitytxt",
+      }),
+    ),
 ) as unknown as Schema.Schema<GetSecurityTxtRequest>;
 
 export type GetSecurityTxtResponse =
@@ -62,48 +65,49 @@ export type GetSecurityTxtResponse =
     }
   | string;
 
-export const GetSecurityTxtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
-  Schema.Struct({
-    acknowledgments: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    canonical: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    contact: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    encryption: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    expires: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    hiring: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    policy: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    preferredLanguages: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({
-      acknowledgments: "acknowledgments",
-      canonical: "canonical",
-      contact: "contact",
-      enabled: "enabled",
-      encryption: "encryption",
-      expires: "expires",
-      hiring: "hiring",
-      policy: "policy",
-      preferredLanguages: "preferred_languages",
-    }),
-  ),
-  Schema.String,
-]).pipe(
-  T.ResponsePath("result"),
-) as unknown as Schema.Schema<GetSecurityTxtResponse>;
+export const GetSecurityTxtResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Union([
+      Schema.Struct({
+        acknowledgments: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        canonical: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        contact: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        encryption: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        expires: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        hiring: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        policy: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        preferredLanguages: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          acknowledgments: "acknowledgments",
+          canonical: "canonical",
+          contact: "contact",
+          enabled: "enabled",
+          encryption: "encryption",
+          expires: "expires",
+          hiring: "hiring",
+          policy: "policy",
+          preferredLanguages: "preferred_languages",
+        }),
+      ),
+      Schema.String,
+    ]).pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetSecurityTxtResponse>;
 
 export type GetSecurityTxtError = DefaultErrors | Forbidden;
 
@@ -141,33 +145,36 @@ export interface PutSecurityTxtRequest {
   preferredLanguages?: string;
 }
 
-export const PutSecurityTxtRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  acknowledgments: Schema.optional(Schema.Array(Schema.String)),
-  canonical: Schema.optional(Schema.Array(Schema.String)),
-  contact: Schema.optional(Schema.Array(Schema.String)),
-  enabled: Schema.optional(Schema.Boolean),
-  encryption: Schema.optional(Schema.Array(Schema.String)),
-  expires: Schema.optional(Schema.String),
-  hiring: Schema.optional(Schema.Array(Schema.String)),
-  policy: Schema.optional(Schema.Array(Schema.String)),
-  preferredLanguages: Schema.optional(Schema.String),
-}).pipe(
-  Schema.encodeKeys({
-    acknowledgments: "acknowledgments",
-    canonical: "canonical",
-    contact: "contact",
-    enabled: "enabled",
-    encryption: "encryption",
-    expires: "expires",
-    hiring: "hiring",
-    policy: "policy",
-    preferredLanguages: "preferred_languages",
-  }),
-  T.Http({
-    method: "PUT",
-    path: "/zones/{zone_id}/security-center/securitytxt",
-  }),
+export const PutSecurityTxtRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      acknowledgments: Schema.optional(Schema.Array(Schema.String)),
+      canonical: Schema.optional(Schema.Array(Schema.String)),
+      contact: Schema.optional(Schema.Array(Schema.String)),
+      enabled: Schema.optional(Schema.Boolean),
+      encryption: Schema.optional(Schema.Array(Schema.String)),
+      expires: Schema.optional(Schema.String),
+      hiring: Schema.optional(Schema.Array(Schema.String)),
+      policy: Schema.optional(Schema.Array(Schema.String)),
+      preferredLanguages: Schema.optional(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        acknowledgments: "acknowledgments",
+        canonical: "canonical",
+        contact: "contact",
+        enabled: "enabled",
+        encryption: "encryption",
+        expires: "expires",
+        hiring: "hiring",
+        policy: "policy",
+        preferredLanguages: "preferred_languages",
+      }),
+      T.Http({
+        method: "PUT",
+        path: "/zones/{zone_id}/security-center/securitytxt",
+      }),
+    ),
 ) as unknown as Schema.Schema<PutSecurityTxtRequest>;
 
 export interface PutSecurityTxtResponse {
@@ -187,63 +194,64 @@ export interface PutSecurityTxtResponse {
   success: true;
 }
 
-export const PutSecurityTxtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+export const PutSecurityTxtResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      errors: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+      messages: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    success: Schema.Literal(true),
-  },
-) as unknown as Schema.Schema<PutSecurityTxtResponse>;
+      success: Schema.Literal(true),
+    }),
+  ) as unknown as Schema.Schema<PutSecurityTxtResponse>;
 
 export type PutSecurityTxtError =
   | DefaultErrors
@@ -267,13 +275,15 @@ export interface DeleteSecurityTxtRequest {
 }
 
 export const DeleteSecurityTxtRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/zones/{zone_id}/security-center/securitytxt",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/zones/{zone_id}/security-center/securitytxt",
+      }),
+    ),
   ) as unknown as Schema.Schema<DeleteSecurityTxtRequest>;
 
 export interface DeleteSecurityTxtResponse {
@@ -294,61 +304,63 @@ export interface DeleteSecurityTxtResponse {
 }
 
 export const DeleteSecurityTxtResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      errors: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+      messages: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    success: Schema.Literal(true),
-  }) as unknown as Schema.Schema<DeleteSecurityTxtResponse>;
+      success: Schema.Literal(true),
+    }),
+  ) as unknown as Schema.Schema<DeleteSecurityTxtResponse>;
 
 export type DeleteSecurityTxtError = DefaultErrors | Forbidden;
 

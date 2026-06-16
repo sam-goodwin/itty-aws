@@ -34,16 +34,18 @@ export interface GetHostnameAssociationRequest {
 }
 
 export const GetHostnameAssociationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    mtlsCertificateId: Schema.optional(Schema.String).pipe(
-      T.HttpQuery("mtls_certificate_id"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      mtlsCertificateId: Schema.optional(Schema.String).pipe(
+        T.HttpQuery("mtls_certificate_id"),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/zones/{zone_id}/certificate_authorities/hostname_associations",
+      }),
     ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/zones/{zone_id}/certificate_authorities/hostname_associations",
-    }),
   ) as unknown as Schema.Schema<GetHostnameAssociationRequest>;
 
 export interface GetHostnameAssociationResponse {
@@ -51,12 +53,12 @@ export interface GetHostnameAssociationResponse {
 }
 
 export const GetHostnameAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    hostnames: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-  }).pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      hostnames: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<GetHostnameAssociationResponse>;
 
 export type GetHostnameAssociationError = DefaultErrors | Forbidden;
@@ -82,19 +84,21 @@ export interface PutHostnameAssociationRequest {
 }
 
 export const PutHostnameAssociationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    hostnames: Schema.optional(Schema.Array(Schema.String)),
-    mtlsCertificateId: Schema.optional(Schema.String),
-  }).pipe(
-    Schema.encodeKeys({
-      hostnames: "hostnames",
-      mtlsCertificateId: "mtls_certificate_id",
-    }),
-    T.Http({
-      method: "PUT",
-      path: "/zones/{zone_id}/certificate_authorities/hostname_associations",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      hostnames: Schema.optional(Schema.Array(Schema.String)),
+      mtlsCertificateId: Schema.optional(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        hostnames: "hostnames",
+        mtlsCertificateId: "mtls_certificate_id",
+      }),
+      T.Http({
+        method: "PUT",
+        path: "/zones/{zone_id}/certificate_authorities/hostname_associations",
+      }),
+    ),
   ) as unknown as Schema.Schema<PutHostnameAssociationRequest>;
 
 export interface PutHostnameAssociationResponse {
@@ -102,12 +106,12 @@ export interface PutHostnameAssociationResponse {
 }
 
 export const PutHostnameAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    hostnames: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-  }).pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      hostnames: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<PutHostnameAssociationResponse>;
 
 export type PutHostnameAssociationError = DefaultErrors | Forbidden;

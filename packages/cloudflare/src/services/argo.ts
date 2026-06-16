@@ -43,13 +43,14 @@ export interface GetSmartRoutingRequest {
   zoneId: string;
 }
 
-export const GetSmartRoutingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  },
-).pipe(
-  T.Http({ method: "GET", path: "/zones/{zone_id}/argo/smart_routing" }),
-) as unknown as Schema.Schema<GetSmartRoutingRequest>;
+export const GetSmartRoutingRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(
+      T.Http({ method: "GET", path: "/zones/{zone_id}/argo/smart_routing" }),
+    ),
+  ) as unknown as Schema.Schema<GetSmartRoutingRequest>;
 
 export interface GetSmartRoutingResponse {
   /** Specifies the identifier of the Argo Smart Routing setting. */
@@ -63,23 +64,23 @@ export interface GetSmartRoutingResponse {
 }
 
 export const GetSmartRoutingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    editable: Schema.Boolean,
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetSmartRoutingResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      editable: Schema.Boolean,
+      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          editable: "editable",
+          value: "value",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetSmartRoutingResponse>;
 
 export type GetSmartRoutingError =
   | DefaultErrors
@@ -106,11 +107,13 @@ export interface PatchSmartRoutingRequest {
 }
 
 export const PatchSmartRoutingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "/zones/{zone_id}/argo/smart_routing" }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+    }).pipe(
+      T.Http({ method: "PATCH", path: "/zones/{zone_id}/argo/smart_routing" }),
+    ),
   ) as unknown as Schema.Schema<PatchSmartRoutingRequest>;
 
 export interface PatchSmartRoutingResponse {
@@ -125,23 +128,23 @@ export interface PatchSmartRoutingResponse {
 }
 
 export const PatchSmartRoutingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    editable: Schema.Boolean,
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchSmartRoutingResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      editable: Schema.Boolean,
+      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          editable: "editable",
+          value: "value",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<PatchSmartRoutingResponse>;
 
 export type PatchSmartRoutingError =
   | DefaultErrors
@@ -170,10 +173,12 @@ export interface GetTieredCachingRequest {
 }
 
 export const GetTieredCachingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({ method: "GET", path: "/zones/{zone_id}/argo/tiered_caching" }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(
+      T.Http({ method: "GET", path: "/zones/{zone_id}/argo/tiered_caching" }),
+    ),
   ) as unknown as Schema.Schema<GetTieredCachingRequest>;
 
 export interface GetTieredCachingResponse {
@@ -188,23 +193,23 @@ export interface GetTieredCachingResponse {
 }
 
 export const GetTieredCachingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("tiered_caching"),
-    editable: Schema.Boolean,
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetTieredCachingResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("tiered_caching"),
+      editable: Schema.Boolean,
+      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          editable: "editable",
+          value: "value",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetTieredCachingResponse>;
 
 export type GetTieredCachingError =
   | DefaultErrors
@@ -230,11 +235,13 @@ export interface PatchTieredCachingRequest {
 }
 
 export const PatchTieredCachingRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "/zones/{zone_id}/argo/tiered_caching" }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+    }).pipe(
+      T.Http({ method: "PATCH", path: "/zones/{zone_id}/argo/tiered_caching" }),
+    ),
   ) as unknown as Schema.Schema<PatchTieredCachingRequest>;
 
 export interface PatchTieredCachingResponse {
@@ -249,23 +256,23 @@ export interface PatchTieredCachingResponse {
 }
 
 export const PatchTieredCachingResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("tiered_caching"),
-    editable: Schema.Boolean,
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchTieredCachingResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("tiered_caching"),
+      editable: Schema.Boolean,
+      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          editable: "editable",
+          value: "value",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<PatchTieredCachingResponse>;
 
 export type PatchTieredCachingError =
   | DefaultErrors

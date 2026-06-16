@@ -248,6 +248,20 @@ function isArrayAST(ast: AST.AST): boolean {
   return false;
 }
 
+/**
+ * Resolve a (possibly `Schema.suspend`-wrapped) AST down to the concrete
+ * underlying node by forcing the memoized thunk. Generated SDK schemas may
+ * wrap each request/response struct in `Schema.suspend(() => ...)` so the
+ * (expensive) schema construction is deferred from module-load time to the
+ * first time the operation is actually called. Trait extraction needs the
+ * real node, so we force it here. `Suspend.thunk` memoizes, so this only
+ * pays the construction cost once per operation. Returns the input AST
+ * untouched when it isn't a Suspend (the common case for non-suspended SDKs).
+ */
+function resolveAst(ast: AST.AST): AST.AST {
+  return ast._tag === "Suspend" ? resolveAst(ast.thunk()) : ast;
+}
+
 // ============================================================================
 // Form URL-Encoded Builder (Stripe deepObject style)
 // ============================================================================
@@ -489,28 +503,75 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
       InstanceType<E[number]>,
       Creds
     > => {
-      const opConfig = configFn();
-      // Support both input/output and inputSchema/outputSchema aliases
-      const inputSchema = (opConfig.inputSchema ?? opConfig.input)!;
-      const outputSchema = (opConfig.outputSchema ?? opConfig.output)!;
-      const responsePath = Traits.getResponsePath(outputSchema.ast);
-      const graphqlOp = Traits.getGraphQLOp(inputSchema.ast);
-      const noFollowRedirect = Traits.getNoFollowRedirect(inputSchema.ast);
       type Input = Schema.Schema.Type<I>;
 
-      // Read HTTP trait from input schema annotations
-      const httpTrait = Traits.getHttpTrait(inputSchema.ast);
-
-      if (!httpTrait) {
-        throw new Error("Input schema must have Http trait");
+      // Lazily resolve the operation config + schema traits on first use,
+      // not at module-load time. Generated SDKs may wrap each request/response
+      // schema in `Schema.suspend(() => ...)`; forcing them here (rather than
+      // when the `export const` is evaluated) keeps importing a service module
+      // cheap and only pays the schema-construction cost for operations that
+      // are actually called. The result is memoized so subsequent calls are
+      // free, and non-suspended SDKs are unaffected (resolveAst is a no-op).
+      type HttpTraitResolved = NonNullable<
+        ReturnType<typeof Traits.getHttpTrait>
+      >;
+      interface Prepared {
+        opConfig: OperationConfig<I, O, E>;
+        inputSchema: I;
+        outputSchema: O;
+        inputAst: AST.AST;
+        outputAst: AST.AST;
+        responsePath: string | undefined;
+        graphqlOp: ReturnType<typeof Traits.getGraphQLOp>;
+        noFollowRedirect: ReturnType<typeof Traits.getNoFollowRedirect>;
+        httpTrait: HttpTraitResolved;
+        method: HttpTraitResolved["method"];
+        spanName: string;
       }
-
-      const method = httpTrait.method;
-
-      const spanName = `${method} ${httpTrait.path}`;
+      let prepared: Prepared | undefined;
+      const prepare = (): Prepared => {
+        if (prepared) return prepared;
+        const opConfig = configFn();
+        // Support both input/output and inputSchema/outputSchema aliases
+        const inputSchema = (opConfig.inputSchema ?? opConfig.input)!;
+        const outputSchema = (opConfig.outputSchema ?? opConfig.output)!;
+        const inputAst = resolveAst(inputSchema.ast);
+        const outputAst = resolveAst(outputSchema.ast);
+        const httpTrait = Traits.getHttpTrait(inputAst);
+        if (!httpTrait) {
+          throw new Error("Input schema must have Http trait");
+        }
+        const method = httpTrait.method;
+        prepared = {
+          opConfig,
+          inputSchema,
+          outputSchema,
+          inputAst,
+          outputAst,
+          responsePath: Traits.getResponsePath(outputAst),
+          graphqlOp: Traits.getGraphQLOp(inputAst),
+          noFollowRedirect: Traits.getNoFollowRedirect(inputAst),
+          httpTrait,
+          method,
+          spanName: `${method} ${httpTrait.path}`,
+        };
+        return prepared;
+      };
 
       const innerFn = (input: Input): Effect.Effect<any, any, any> =>
         Effect.gen(function* () {
+          const {
+            opConfig,
+            inputSchema,
+            outputSchema,
+            inputAst,
+            outputAst,
+            responsePath,
+            graphqlOp,
+            noFollowRedirect,
+            httpTrait,
+            method,
+          } = prepare();
           const credentials = yield* config.credentials;
           const creds = isEffectLike(credentials)
             ? yield* credentials
@@ -521,7 +582,7 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
           // `getBaseUrl` empty (per-service hosts rather than per-credentials).
           let baseUrl = config.getBaseUrl(creds as ResolvedCreds);
           if (!baseUrl) {
-            const svcTrait = Traits.getServiceTrait(inputSchema.ast);
+            const svcTrait = Traits.getServiceTrait(inputAst);
             if (svcTrait?.rootUrl) {
               baseUrl = svcTrait.rootUrl + (svcTrait.servicePath ?? "");
             }
@@ -530,7 +591,7 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
 
           // Use schema-aware request builder for proper camelCase → wire_name mapping
           let parts = Traits.buildRequestParts(
-            inputSchema.ast,
+            inputAst,
             httpTrait,
             input as Record<string, unknown>,
             inputSchema,
@@ -737,7 +798,7 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
           }
 
           // For void-returning operations (e.g. DELETE 204 No Content)
-          if (AST.isVoid(outputSchema.ast)) {
+          if (AST.isVoid(outputAst)) {
             return undefined;
           }
 
@@ -756,7 +817,7 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
             const bytes = yield* response.arrayBuffer;
             const stream = Stream.succeed(new Uint8Array(bytes));
             return Traits.buildBinaryResponse(
-              outputSchema.ast,
+              outputAst,
               stream,
               response.headers as Record<string, string>,
             ) as unknown;
@@ -765,7 +826,7 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
           // For 204 No Content: if schema is not Unknown, return undefined.
           // If schema IS Unknown, return empty string (so callers get a defined value).
           if (response.status === 204) {
-            if (outputSchema.ast._tag === "Unknown") {
+            if (outputAst._tag === "Unknown") {
               return "";
             }
             return undefined;
@@ -830,7 +891,7 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
           // Handle Cloudflare-style paginated responses where result is
           // { items: [...] } but the schema expects an array
           if (
-            isArrayAST(outputSchema.ast) &&
+            isArrayAST(outputAst) &&
             !Array.isArray(responseBody) &&
             typeof responseBody === "object" &&
             responseBody !== null &&
@@ -859,6 +920,7 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
       // every call site with `Effect.retry(...)`.
       const retryTag = config.retry;
       const fn = (input: Input): Effect.Effect<any, any, any> => {
+        const { spanName, method, httpTrait } = prepare();
         const withRetry = Effect.gen(function* () {
           const lastError = yield* Ref.make<unknown>(undefined);
           const policy = (yield* Effect.serviceOption(retryTag)).pipe(

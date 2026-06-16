@@ -50,14 +50,16 @@ export interface GetAppRequest {
   accountId: string;
 }
 
-export const GetAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  appId: Schema.String.pipe(T.HttpPath("appId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/flagship/apps/{appId}",
-  }),
+export const GetAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    appId: Schema.String.pipe(T.HttpPath("appId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/flagship/apps/{appId}",
+    }),
+  ),
 ) as unknown as Schema.Schema<GetAppRequest>;
 
 export interface GetAppResponse {
@@ -69,23 +71,25 @@ export interface GetAppResponse {
   updatedBy: string;
 }
 
-export const GetAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
-  createdAt: Schema.String,
-  name: Schema.String,
-  updatedAt: Schema.String,
-  updatedBy: Schema.String,
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      createdAt: "created_at",
-      name: "name",
-      updatedAt: "updated_at",
-      updatedBy: "updated_by",
-    }),
-  )
-  .pipe(T.ResponsePath("result")) as unknown as Schema.Schema<GetAppResponse>;
+export const GetAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdAt: Schema.String,
+    name: Schema.String,
+    updatedAt: Schema.String,
+    updatedBy: Schema.String,
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdAt: "created_at",
+        name: "name",
+        updatedAt: "updated_at",
+        updatedBy: "updated_by",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<GetAppResponse>;
 
 export type GetAppError = DefaultErrors | FlagshipAppNotFound;
 
@@ -105,10 +109,12 @@ export interface ListAppsRequest {
   accountId: string;
 }
 
-export const ListAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/flagship/apps" }),
+export const ListAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/flagship/apps" }),
+  ),
 ) as unknown as Schema.Schema<ListAppsRequest>;
 
 export interface ListAppsResponse {
@@ -121,25 +127,27 @@ export interface ListAppsResponse {
   }[];
 }
 
-export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      createdAt: Schema.String,
-      name: Schema.String,
-      updatedAt: Schema.String,
-      updatedBy: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        name: "name",
-        updatedAt: "updated_at",
-        updatedBy: "updated_by",
-      }),
+export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(
+      Schema.Struct({
+        id: Schema.String,
+        createdAt: Schema.String,
+        name: Schema.String,
+        updatedAt: Schema.String,
+        updatedBy: Schema.String,
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          createdAt: "created_at",
+          name: "name",
+          updatedAt: "updated_at",
+          updatedBy: "updated_by",
+        }),
+      ),
     ),
-  ),
-}) as unknown as Schema.Schema<ListAppsResponse>;
+  }),
+) as unknown as Schema.Schema<ListAppsResponse>;
 
 export type ListAppsError = DefaultErrors;
 
@@ -165,11 +173,13 @@ export interface CreateAppRequest {
   name: string;
 }
 
-export const CreateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  name: Schema.String,
-}).pipe(
-  T.Http({ method: "POST", path: "/accounts/{account_id}/flagship/apps" }),
+export const CreateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    name: Schema.String,
+  }).pipe(
+    T.Http({ method: "POST", path: "/accounts/{account_id}/flagship/apps" }),
+  ),
 ) as unknown as Schema.Schema<CreateAppRequest>;
 
 export interface CreateAppResponse {
@@ -181,25 +191,26 @@ export interface CreateAppResponse {
   updatedBy: string;
 }
 
-export const CreateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
-  createdAt: Schema.String,
-  name: Schema.String,
-  updatedAt: Schema.String,
-  updatedBy: Schema.String,
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      createdAt: "created_at",
-      name: "name",
-      updatedAt: "updated_at",
-      updatedBy: "updated_by",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<CreateAppResponse>;
+export const CreateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.String,
+      createdAt: Schema.String,
+      name: Schema.String,
+      updatedAt: Schema.String,
+      updatedBy: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          createdAt: "created_at",
+          name: "name",
+          updatedAt: "updated_at",
+          updatedBy: "updated_by",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<CreateAppResponse>;
 
 export type CreateAppError = DefaultErrors;
 
@@ -222,15 +233,17 @@ export interface UpdateAppRequest {
   name?: string;
 }
 
-export const UpdateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  appId: Schema.String.pipe(T.HttpPath("appId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  name: Schema.optional(Schema.String),
-}).pipe(
-  T.Http({
-    method: "PUT",
-    path: "/accounts/{account_id}/flagship/apps/{appId}",
-  }),
+export const UpdateAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    appId: Schema.String.pipe(T.HttpPath("appId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    name: Schema.optional(Schema.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/flagship/apps/{appId}",
+    }),
+  ),
 ) as unknown as Schema.Schema<UpdateAppRequest>;
 
 export interface UpdateAppResponse {
@@ -242,25 +255,26 @@ export interface UpdateAppResponse {
   updatedBy: string;
 }
 
-export const UpdateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
-  createdAt: Schema.String,
-  name: Schema.String,
-  updatedAt: Schema.String,
-  updatedBy: Schema.String,
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      createdAt: "created_at",
-      name: "name",
-      updatedAt: "updated_at",
-      updatedBy: "updated_by",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<UpdateAppResponse>;
+export const UpdateAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.String,
+      createdAt: Schema.String,
+      name: Schema.String,
+      updatedAt: Schema.String,
+      updatedBy: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          createdAt: "created_at",
+          name: "name",
+          updatedAt: "updated_at",
+          updatedBy: "updated_by",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<UpdateAppResponse>;
 
 export type UpdateAppError = DefaultErrors | FlagshipAppNotFound;
 
@@ -281,24 +295,27 @@ export interface DeleteAppRequest {
   accountId: string;
 }
 
-export const DeleteAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  appId: Schema.String.pipe(T.HttpPath("appId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "/accounts/{account_id}/flagship/apps/{appId}",
-  }),
+export const DeleteAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    appId: Schema.String.pipe(T.HttpPath("appId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/flagship/apps/{appId}",
+    }),
+  ),
 ) as unknown as Schema.Schema<DeleteAppRequest>;
 
 export interface DeleteAppResponse {
   id: string;
 }
 
-export const DeleteAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
-}).pipe(
-  T.ResponsePath("result"),
+export const DeleteAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.String,
+    }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Schema<DeleteAppResponse>;
 
 export type DeleteAppError = DefaultErrors | FlagshipAppNotFound;
@@ -328,18 +345,21 @@ export interface GetAppEvaluateRequest {
   targetingKey?: string;
 }
 
-export const GetAppEvaluateRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  appId: Schema.String.pipe(T.HttpPath("appId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  flagKey: Schema.String.pipe(T.HttpQuery("flagKey")),
-  targetingKey: Schema.optional(Schema.String).pipe(
-    T.HttpQuery("targetingKey"),
-  ),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/flagship/apps/{appId}/evaluate",
-  }),
+export const GetAppEvaluateRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      appId: Schema.String.pipe(T.HttpPath("appId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      flagKey: Schema.String.pipe(T.HttpQuery("flagKey")),
+      targetingKey: Schema.optional(Schema.String).pipe(
+        T.HttpQuery("targetingKey"),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/flagship/apps/{appId}/evaluate",
+      }),
+    ),
 ) as unknown as Schema.Schema<GetAppEvaluateRequest>;
 
 export interface GetAppEvaluateResponse {
@@ -355,26 +375,27 @@ export interface GetAppEvaluateResponse {
     | unknown[];
 }
 
-export const GetAppEvaluateResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    flagKey: Schema.String,
-    reason: Schema.Union([
-      Schema.Literals(["TARGETING_MATCH", "DEFAULT", "DISABLED", "SPLIT"]),
-      Schema.String,
-    ]),
-    variant: Schema.String,
-    value: Schema.optional(
-      Schema.Union([
+export const GetAppEvaluateResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      flagKey: Schema.String,
+      reason: Schema.Union([
+        Schema.Literals(["TARGETING_MATCH", "DEFAULT", "DISABLED", "SPLIT"]),
         Schema.String,
-        Schema.Null,
-        Schema.Number,
-        Schema.Boolean,
-        Schema.Record(Schema.String, Schema.Unknown),
-        Schema.Array(Schema.Unknown),
       ]),
-    ),
-  },
-) as unknown as Schema.Schema<GetAppEvaluateResponse>;
+      variant: Schema.String,
+      value: Schema.optional(
+        Schema.Union([
+          Schema.String,
+          Schema.Null,
+          Schema.Number,
+          Schema.Boolean,
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Array(Schema.Unknown),
+        ]),
+      ),
+    }),
+  ) as unknown as Schema.Schema<GetAppEvaluateResponse>;
 
 export type GetAppEvaluateError = DefaultErrors;
 
@@ -400,15 +421,18 @@ export interface GetAppFlagRequest {
   accountId: string;
 }
 
-export const GetAppFlagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  appId: Schema.String.pipe(T.HttpPath("appId")),
-  flagKey: Schema.String.pipe(T.HttpPath("flagKey")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/flagship/apps/{appId}/flags/{flagKey}",
-  }),
+export const GetAppFlagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      appId: Schema.String.pipe(T.HttpPath("appId")),
+      flagKey: Schema.String.pipe(T.HttpPath("flagKey")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/flagship/apps/{appId}/flags/{flagKey}",
+      }),
+    ),
 ) as unknown as Schema.Schema<GetAppFlagRequest>;
 
 export interface GetAppFlagResponse {
@@ -481,241 +505,8 @@ export interface GetAppFlagResponse {
   updatedBy?: string | null;
 }
 
-export const GetAppFlagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  defaultVariation: Schema.String,
-  enabled: Schema.Boolean,
-  key: Schema.String,
-  rules: Schema.Array(
-    Schema.Struct({
-      conditions: Schema.Array(
-        Schema.Union([
-          Schema.Struct({
-            attribute: Schema.String,
-            operator: Schema.Union([
-              Schema.Literals([
-                "equals",
-                "not_equals",
-                "greater_than",
-                "less_than",
-                "greater_than_or_equals",
-                "less_than_or_equals",
-                "contains",
-                "starts_with",
-                "ends_with",
-                "in",
-                "not_in",
-              ]),
-              Schema.String,
-            ]),
-            value: Schema.Unknown,
-          }),
-          Schema.Struct({
-            clauses: Schema.Array(
-              Schema.Union([
-                Schema.Struct({
-                  attribute: Schema.String,
-                  operator: Schema.Union([
-                    Schema.Literals([
-                      "equals",
-                      "not_equals",
-                      "greater_than",
-                      "less_than",
-                      "greater_than_or_equals",
-                      "less_than_or_equals",
-                      "contains",
-                      "starts_with",
-                      "ends_with",
-                      "in",
-                      "not_in",
-                    ]),
-                    Schema.String,
-                  ]),
-                  value: Schema.Unknown,
-                }),
-                Schema.Struct({
-                  clauses: Schema.Array(
-                    Schema.Union([
-                      Schema.Struct({
-                        attribute: Schema.Unknown,
-                        operator: Schema.Unknown,
-                        value: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        clauses: Schema.Unknown,
-                        logicalOperator: Schema.Unknown,
-                      }).pipe(
-                        Schema.encodeKeys({
-                          clauses: "clauses",
-                          logicalOperator: "logical_operator",
-                        }),
-                      ),
-                    ]),
-                  ),
-                  logicalOperator: Schema.Union([
-                    Schema.Literals(["AND", "OR"]),
-                    Schema.String,
-                  ]),
-                }).pipe(
-                  Schema.encodeKeys({
-                    clauses: "clauses",
-                    logicalOperator: "logical_operator",
-                  }),
-                ),
-              ]),
-            ),
-            logicalOperator: Schema.Union([
-              Schema.Literals(["AND", "OR"]),
-              Schema.String,
-            ]),
-          }).pipe(
-            Schema.encodeKeys({
-              clauses: "clauses",
-              logicalOperator: "logical_operator",
-            }),
-          ),
-        ]),
-      ),
-      priority: Schema.Number,
-      serveVariation: Schema.String,
-      rollout: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            percentage: Schema.Number,
-            attribute: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        conditions: "conditions",
-        priority: "priority",
-        serveVariation: "serve_variation",
-        rollout: "rollout",
-      }),
-    ),
-  ),
-  variations: Schema.Record(Schema.String, Schema.Unknown),
-  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  type: Schema.optional(
-    Schema.Union([
-      Schema.Union([
-        Schema.Literals(["boolean", "string", "number", "json"]),
-        Schema.String,
-      ]),
-      Schema.Null,
-    ]),
-  ),
-  updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  updatedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-})
-  .pipe(
-    Schema.encodeKeys({
-      defaultVariation: "default_variation",
-      enabled: "enabled",
-      key: "key",
-      rules: "rules",
-      variations: "variations",
-      description: "description",
-      type: "type",
-      updatedAt: "updated_at",
-      updatedBy: "updated_by",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetAppFlagResponse>;
-
-export type GetAppFlagError =
-  | DefaultErrors
-  | FlagshipFlagNotFound
-  | FlagshipAppNotFound;
-
-export const getAppFlag: API.OperationMethod<
-  GetAppFlagRequest,
-  GetAppFlagResponse,
-  GetAppFlagError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetAppFlagRequest,
-  output: GetAppFlagResponse,
-  errors: [FlagshipFlagNotFound, FlagshipAppNotFound],
-}));
-
-export interface ListAppFlagsRequest {
-  appId: string;
-  /** Path param: Cloudflare account ID. */
-  accountId: string;
-  cursor?: string;
-  /** Query param: Max items to return (1–200). */
-  limit?: string;
-}
-
-export const ListAppFlagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  appId: Schema.String.pipe(T.HttpPath("appId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
-  limit: Schema.optional(Schema.String).pipe(T.HttpQuery("limit")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/flagship/apps/{appId}/flags",
-  }),
-) as unknown as Schema.Schema<ListAppFlagsRequest>;
-
-export interface ListAppFlagsResponse {
-  result: {
-    defaultVariation: string;
-    enabled: boolean;
-    key: string;
-    rules: {
-      conditions: (
-        | {
-            attribute: string;
-            operator:
-              | "equals"
-              | "not_equals"
-              | "greater_than"
-              | "less_than"
-              | "greater_than_or_equals"
-              | "less_than_or_equals"
-              | "contains"
-              | "starts_with"
-              | "ends_with"
-              | "in"
-              | "not_in"
-              | (string & {});
-            value: unknown;
-          }
-        | {
-            clauses: (
-              | {
-                  attribute: string;
-                  operator: unknown | (string & {});
-                  value: unknown;
-                }
-              | { clauses: unknown[]; logicalOperator: unknown | (string & {}) }
-            )[];
-            logicalOperator: "AND" | "OR" | (string & {});
-          }
-      )[];
-      priority: number;
-      serveVariation: string;
-      rollout?: { percentage: number; attribute?: string | null } | null;
-    }[];
-    variations: Record<string, unknown>;
-    description?: string | null;
-    type?: "boolean" | "string" | "number" | "json" | (string & {}) | null;
-    updatedAt?: string | null;
-    updatedBy?: string | null;
-  }[];
-  resultInfo?: { cursors?: { after?: string | null } | null } | null;
-}
-
-export const ListAppFlagsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
+export const GetAppFlagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       defaultVariation: Schema.String,
       enabled: Schema.Boolean,
@@ -768,7 +559,24 @@ export const ListAppFlagsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                       value: Schema.Unknown,
                     }),
                     Schema.Struct({
-                      clauses: Schema.Array(Schema.Unknown),
+                      clauses: Schema.Array(
+                        Schema.Union([
+                          Schema.Struct({
+                            attribute: Schema.Unknown,
+                            operator: Schema.Unknown,
+                            value: Schema.Unknown,
+                          }),
+                          Schema.Struct({
+                            clauses: Schema.Unknown,
+                            logicalOperator: Schema.Unknown,
+                          }).pipe(
+                            Schema.encodeKeys({
+                              clauses: "clauses",
+                              logicalOperator: "logical_operator",
+                            }),
+                          ),
+                        ]),
+                      ),
                       logicalOperator: Schema.Union([
                         Schema.Literals(["AND", "OR"]),
                         Schema.String,
@@ -828,39 +636,266 @@ export const ListAppFlagsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       ),
       updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       updatedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          defaultVariation: "default_variation",
+          enabled: "enabled",
+          key: "key",
+          rules: "rules",
+          variations: "variations",
+          description: "description",
+          type: "type",
+          updatedAt: "updated_at",
+          updatedBy: "updated_by",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<GetAppFlagResponse>;
+
+export type GetAppFlagError =
+  | DefaultErrors
+  | FlagshipFlagNotFound
+  | FlagshipAppNotFound;
+
+export const getAppFlag: API.OperationMethod<
+  GetAppFlagRequest,
+  GetAppFlagResponse,
+  GetAppFlagError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAppFlagRequest,
+  output: GetAppFlagResponse,
+  errors: [FlagshipFlagNotFound, FlagshipAppNotFound],
+}));
+
+export interface ListAppFlagsRequest {
+  appId: string;
+  /** Path param: Cloudflare account ID. */
+  accountId: string;
+  cursor?: string;
+  /** Query param: Max items to return (1–200). */
+  limit?: string;
+}
+
+export const ListAppFlagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      appId: Schema.String.pipe(T.HttpPath("appId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
+      limit: Schema.optional(Schema.String).pipe(T.HttpQuery("limit")),
     }).pipe(
-      Schema.encodeKeys({
-        defaultVariation: "default_variation",
-        enabled: "enabled",
-        key: "key",
-        rules: "rules",
-        variations: "variations",
-        description: "description",
-        type: "type",
-        updatedAt: "updated_at",
-        updatedBy: "updated_by",
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/flagship/apps/{appId}/flags",
       }),
     ),
-  ),
-  resultInfo: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        cursors: Schema.optional(
-          Schema.Union([
+) as unknown as Schema.Schema<ListAppFlagsRequest>;
+
+export interface ListAppFlagsResponse {
+  result: {
+    defaultVariation: string;
+    enabled: boolean;
+    key: string;
+    rules: {
+      conditions: (
+        | {
+            attribute: string;
+            operator:
+              | "equals"
+              | "not_equals"
+              | "greater_than"
+              | "less_than"
+              | "greater_than_or_equals"
+              | "less_than_or_equals"
+              | "contains"
+              | "starts_with"
+              | "ends_with"
+              | "in"
+              | "not_in"
+              | (string & {});
+            value: unknown;
+          }
+        | {
+            clauses: (
+              | {
+                  attribute: string;
+                  operator: unknown | (string & {});
+                  value: unknown;
+                }
+              | { clauses: unknown[]; logicalOperator: unknown | (string & {}) }
+            )[];
+            logicalOperator: "AND" | "OR" | (string & {});
+          }
+      )[];
+      priority: number;
+      serveVariation: string;
+      rollout?: { percentage: number; attribute?: string | null } | null;
+    }[];
+    variations: Record<string, unknown>;
+    description?: string | null;
+    type?: "boolean" | "string" | "number" | "json" | (string & {}) | null;
+    updatedAt?: string | null;
+    updatedBy?: string | null;
+  }[];
+  resultInfo?: { cursors?: { after?: string | null } | null } | null;
+}
+
+export const ListAppFlagsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          defaultVariation: Schema.String,
+          enabled: Schema.Boolean,
+          key: Schema.String,
+          rules: Schema.Array(
             Schema.Struct({
-              after: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
+              conditions: Schema.Array(
+                Schema.Union([
+                  Schema.Struct({
+                    attribute: Schema.String,
+                    operator: Schema.Union([
+                      Schema.Literals([
+                        "equals",
+                        "not_equals",
+                        "greater_than",
+                        "less_than",
+                        "greater_than_or_equals",
+                        "less_than_or_equals",
+                        "contains",
+                        "starts_with",
+                        "ends_with",
+                        "in",
+                        "not_in",
+                      ]),
+                      Schema.String,
+                    ]),
+                    value: Schema.Unknown,
+                  }),
+                  Schema.Struct({
+                    clauses: Schema.Array(
+                      Schema.Union([
+                        Schema.Struct({
+                          attribute: Schema.String,
+                          operator: Schema.Union([
+                            Schema.Literals([
+                              "equals",
+                              "not_equals",
+                              "greater_than",
+                              "less_than",
+                              "greater_than_or_equals",
+                              "less_than_or_equals",
+                              "contains",
+                              "starts_with",
+                              "ends_with",
+                              "in",
+                              "not_in",
+                            ]),
+                            Schema.String,
+                          ]),
+                          value: Schema.Unknown,
+                        }),
+                        Schema.Struct({
+                          clauses: Schema.Array(Schema.Unknown),
+                          logicalOperator: Schema.Union([
+                            Schema.Literals(["AND", "OR"]),
+                            Schema.String,
+                          ]),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            clauses: "clauses",
+                            logicalOperator: "logical_operator",
+                          }),
+                        ),
+                      ]),
+                    ),
+                    logicalOperator: Schema.Union([
+                      Schema.Literals(["AND", "OR"]),
+                      Schema.String,
+                    ]),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      clauses: "clauses",
+                      logicalOperator: "logical_operator",
+                    }),
+                  ),
+                ]),
               ),
-            }),
-            Schema.Null,
-          ]),
+              priority: Schema.Number,
+              serveVariation: Schema.String,
+              rollout: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    percentage: Schema.Number,
+                    attribute: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                conditions: "conditions",
+                priority: "priority",
+                serveVariation: "serve_variation",
+                rollout: "rollout",
+              }),
+            ),
+          ),
+          variations: Schema.Record(Schema.String, Schema.Unknown),
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          type: Schema.optional(
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["boolean", "string", "number", "json"]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
+          ),
+          updatedAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          updatedBy: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            defaultVariation: "default_variation",
+            enabled: "enabled",
+            key: "key",
+            rules: "rules",
+            variations: "variations",
+            description: "description",
+            type: "type",
+            updatedAt: "updated_at",
+            updatedBy: "updated_by",
+          }),
         ),
-      }),
-      Schema.Null,
-    ]),
-  ),
-}).pipe(
-  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+      ),
+      resultInfo: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            cursors: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  after: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Schema<ListAppFlagsResponse>;
 
 export type ListAppFlagsError = DefaultErrors | FlagshipAppNotFound;
@@ -954,141 +989,144 @@ export interface CreateAppFlagRequest {
   type?: "boolean" | "string" | "number" | "json" | (string & {});
 }
 
-export const CreateAppFlagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  appId: Schema.String.pipe(T.HttpPath("appId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  defaultVariation: Schema.String,
-  enabled: Schema.Boolean,
-  key: Schema.String,
-  rules: Schema.Array(
+export const CreateAppFlagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      conditions: Schema.Array(
-        Schema.Union([
-          Schema.Struct({
-            attribute: Schema.String,
-            operator: Schema.Union([
-              Schema.Literals([
-                "equals",
-                "not_equals",
-                "greater_than",
-                "less_than",
-                "greater_than_or_equals",
-                "less_than_or_equals",
-                "contains",
-                "starts_with",
-                "ends_with",
-                "in",
-                "not_in",
-              ]),
-              Schema.String,
-            ]),
-            value: Schema.Unknown,
-          }),
-          Schema.Struct({
-            clauses: Schema.Array(
-              Schema.Union([
-                Schema.Struct({
-                  attribute: Schema.String,
-                  operator: Schema.Union([
-                    Schema.Literals([
-                      "equals",
-                      "not_equals",
-                      "greater_than",
-                      "less_than",
-                      "greater_than_or_equals",
-                      "less_than_or_equals",
-                      "contains",
-                      "starts_with",
-                      "ends_with",
-                      "in",
-                      "not_in",
-                    ]),
-                    Schema.String,
+      appId: Schema.String.pipe(T.HttpPath("appId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      defaultVariation: Schema.String,
+      enabled: Schema.Boolean,
+      key: Schema.String,
+      rules: Schema.Array(
+        Schema.Struct({
+          conditions: Schema.Array(
+            Schema.Union([
+              Schema.Struct({
+                attribute: Schema.String,
+                operator: Schema.Union([
+                  Schema.Literals([
+                    "equals",
+                    "not_equals",
+                    "greater_than",
+                    "less_than",
+                    "greater_than_or_equals",
+                    "less_than_or_equals",
+                    "contains",
+                    "starts_with",
+                    "ends_with",
+                    "in",
+                    "not_in",
                   ]),
-                  value: Schema.Unknown,
-                }),
-                Schema.Struct({
-                  clauses: Schema.Array(
-                    Schema.Union([
-                      Schema.Struct({
-                        attribute: Schema.Unknown,
-                        operator: Schema.Unknown,
-                        value: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        clauses: Schema.Unknown,
-                        logicalOperator: Schema.Unknown,
-                      }).pipe(
-                        Schema.encodeKeys({
-                          clauses: "clauses",
-                          logicalOperator: "logical_operator",
-                        }),
+                  Schema.String,
+                ]),
+                value: Schema.Unknown,
+              }),
+              Schema.Struct({
+                clauses: Schema.Array(
+                  Schema.Union([
+                    Schema.Struct({
+                      attribute: Schema.String,
+                      operator: Schema.Union([
+                        Schema.Literals([
+                          "equals",
+                          "not_equals",
+                          "greater_than",
+                          "less_than",
+                          "greater_than_or_equals",
+                          "less_than_or_equals",
+                          "contains",
+                          "starts_with",
+                          "ends_with",
+                          "in",
+                          "not_in",
+                        ]),
+                        Schema.String,
+                      ]),
+                      value: Schema.Unknown,
+                    }),
+                    Schema.Struct({
+                      clauses: Schema.Array(
+                        Schema.Union([
+                          Schema.Struct({
+                            attribute: Schema.Unknown,
+                            operator: Schema.Unknown,
+                            value: Schema.Unknown,
+                          }),
+                          Schema.Struct({
+                            clauses: Schema.Unknown,
+                            logicalOperator: Schema.Unknown,
+                          }).pipe(
+                            Schema.encodeKeys({
+                              clauses: "clauses",
+                              logicalOperator: "logical_operator",
+                            }),
+                          ),
+                        ]),
                       ),
-                    ]),
-                  ),
-                  logicalOperator: Schema.Union([
-                    Schema.Literals(["AND", "OR"]),
-                    Schema.String,
+                      logicalOperator: Schema.Union([
+                        Schema.Literals(["AND", "OR"]),
+                        Schema.String,
+                      ]),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        clauses: "clauses",
+                        logicalOperator: "logical_operator",
+                      }),
+                    ),
                   ]),
-                }).pipe(
-                  Schema.encodeKeys({
-                    clauses: "clauses",
-                    logicalOperator: "logical_operator",
-                  }),
                 ),
-              ]),
-            ),
-            logicalOperator: Schema.Union([
-              Schema.Literals(["AND", "OR"]),
-              Schema.String,
+                logicalOperator: Schema.Union([
+                  Schema.Literals(["AND", "OR"]),
+                  Schema.String,
+                ]),
+              }).pipe(
+                Schema.encodeKeys({
+                  clauses: "clauses",
+                  logicalOperator: "logical_operator",
+                }),
+              ),
             ]),
-          }).pipe(
-            Schema.encodeKeys({
-              clauses: "clauses",
-              logicalOperator: "logical_operator",
+          ),
+          priority: Schema.Number,
+          serveVariation: Schema.String,
+          rollout: Schema.optional(
+            Schema.Struct({
+              percentage: Schema.Number,
+              attribute: Schema.optional(Schema.String),
             }),
           ),
-        ]),
+        }).pipe(
+          Schema.encodeKeys({
+            conditions: "conditions",
+            priority: "priority",
+            serveVariation: "serve_variation",
+            rollout: "rollout",
+          }),
+        ),
       ),
-      priority: Schema.Number,
-      serveVariation: Schema.String,
-      rollout: Schema.optional(
-        Schema.Struct({
-          percentage: Schema.Number,
-          attribute: Schema.optional(Schema.String),
-        }),
+      variations: Schema.Record(Schema.String, Schema.Unknown),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["boolean", "string", "number", "json"]),
+          Schema.String,
+        ]),
       ),
     }).pipe(
       Schema.encodeKeys({
-        conditions: "conditions",
-        priority: "priority",
-        serveVariation: "serve_variation",
-        rollout: "rollout",
+        defaultVariation: "default_variation",
+        enabled: "enabled",
+        key: "key",
+        rules: "rules",
+        variations: "variations",
+        description: "description",
+        type: "type",
+      }),
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/flagship/apps/{appId}/flags",
       }),
     ),
-  ),
-  variations: Schema.Record(Schema.String, Schema.Unknown),
-  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  type: Schema.optional(
-    Schema.Union([
-      Schema.Literals(["boolean", "string", "number", "json"]),
-      Schema.String,
-    ]),
-  ),
-}).pipe(
-  Schema.encodeKeys({
-    defaultVariation: "default_variation",
-    enabled: "enabled",
-    key: "key",
-    rules: "rules",
-    variations: "variations",
-    description: "description",
-    type: "type",
-  }),
-  T.Http({
-    method: "POST",
-    path: "/accounts/{account_id}/flagship/apps/{appId}/flags",
-  }),
 ) as unknown as Schema.Schema<CreateAppFlagRequest>;
 
 export interface CreateAppFlagResponse {
@@ -1161,152 +1199,153 @@ export interface CreateAppFlagResponse {
   updatedBy?: string | null;
 }
 
-export const CreateAppFlagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  defaultVariation: Schema.String,
-  enabled: Schema.Boolean,
-  key: Schema.String,
-  rules: Schema.Array(
+export const CreateAppFlagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      conditions: Schema.Array(
-        Schema.Union([
-          Schema.Struct({
-            attribute: Schema.String,
-            operator: Schema.Union([
-              Schema.Literals([
-                "equals",
-                "not_equals",
-                "greater_than",
-                "less_than",
-                "greater_than_or_equals",
-                "less_than_or_equals",
-                "contains",
-                "starts_with",
-                "ends_with",
-                "in",
-                "not_in",
-              ]),
-              Schema.String,
-            ]),
-            value: Schema.Unknown,
-          }),
-          Schema.Struct({
-            clauses: Schema.Array(
-              Schema.Union([
-                Schema.Struct({
-                  attribute: Schema.String,
-                  operator: Schema.Union([
-                    Schema.Literals([
-                      "equals",
-                      "not_equals",
-                      "greater_than",
-                      "less_than",
-                      "greater_than_or_equals",
-                      "less_than_or_equals",
-                      "contains",
-                      "starts_with",
-                      "ends_with",
-                      "in",
-                      "not_in",
-                    ]),
-                    Schema.String,
+      defaultVariation: Schema.String,
+      enabled: Schema.Boolean,
+      key: Schema.String,
+      rules: Schema.Array(
+        Schema.Struct({
+          conditions: Schema.Array(
+            Schema.Union([
+              Schema.Struct({
+                attribute: Schema.String,
+                operator: Schema.Union([
+                  Schema.Literals([
+                    "equals",
+                    "not_equals",
+                    "greater_than",
+                    "less_than",
+                    "greater_than_or_equals",
+                    "less_than_or_equals",
+                    "contains",
+                    "starts_with",
+                    "ends_with",
+                    "in",
+                    "not_in",
                   ]),
-                  value: Schema.Unknown,
-                }),
-                Schema.Struct({
-                  clauses: Schema.Array(
-                    Schema.Union([
-                      Schema.Struct({
-                        attribute: Schema.Unknown,
-                        operator: Schema.Unknown,
-                        value: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        clauses: Schema.Unknown,
-                        logicalOperator: Schema.Unknown,
-                      }).pipe(
-                        Schema.encodeKeys({
-                          clauses: "clauses",
-                          logicalOperator: "logical_operator",
-                        }),
+                  Schema.String,
+                ]),
+                value: Schema.Unknown,
+              }),
+              Schema.Struct({
+                clauses: Schema.Array(
+                  Schema.Union([
+                    Schema.Struct({
+                      attribute: Schema.String,
+                      operator: Schema.Union([
+                        Schema.Literals([
+                          "equals",
+                          "not_equals",
+                          "greater_than",
+                          "less_than",
+                          "greater_than_or_equals",
+                          "less_than_or_equals",
+                          "contains",
+                          "starts_with",
+                          "ends_with",
+                          "in",
+                          "not_in",
+                        ]),
+                        Schema.String,
+                      ]),
+                      value: Schema.Unknown,
+                    }),
+                    Schema.Struct({
+                      clauses: Schema.Array(
+                        Schema.Union([
+                          Schema.Struct({
+                            attribute: Schema.Unknown,
+                            operator: Schema.Unknown,
+                            value: Schema.Unknown,
+                          }),
+                          Schema.Struct({
+                            clauses: Schema.Unknown,
+                            logicalOperator: Schema.Unknown,
+                          }).pipe(
+                            Schema.encodeKeys({
+                              clauses: "clauses",
+                              logicalOperator: "logical_operator",
+                            }),
+                          ),
+                        ]),
                       ),
-                    ]),
-                  ),
-                  logicalOperator: Schema.Union([
-                    Schema.Literals(["AND", "OR"]),
-                    Schema.String,
+                      logicalOperator: Schema.Union([
+                        Schema.Literals(["AND", "OR"]),
+                        Schema.String,
+                      ]),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        clauses: "clauses",
+                        logicalOperator: "logical_operator",
+                      }),
+                    ),
                   ]),
-                }).pipe(
-                  Schema.encodeKeys({
-                    clauses: "clauses",
-                    logicalOperator: "logical_operator",
-                  }),
                 ),
-              ]),
-            ),
-            logicalOperator: Schema.Union([
-              Schema.Literals(["AND", "OR"]),
-              Schema.String,
+                logicalOperator: Schema.Union([
+                  Schema.Literals(["AND", "OR"]),
+                  Schema.String,
+                ]),
+              }).pipe(
+                Schema.encodeKeys({
+                  clauses: "clauses",
+                  logicalOperator: "logical_operator",
+                }),
+              ),
             ]),
-          }).pipe(
-            Schema.encodeKeys({
-              clauses: "clauses",
-              logicalOperator: "logical_operator",
-            }),
           ),
-        ]),
-      ),
-      priority: Schema.Number,
-      serveVariation: Schema.String,
-      rollout: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            percentage: Schema.Number,
-            attribute: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
+          priority: Schema.Number,
+          serveVariation: Schema.String,
+          rollout: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                percentage: Schema.Number,
+                attribute: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            conditions: "conditions",
+            priority: "priority",
+            serveVariation: "serve_variation",
+            rollout: "rollout",
           }),
+        ),
+      ),
+      variations: Schema.Record(Schema.String, Schema.Unknown),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["boolean", "string", "number", "json"]),
+            Schema.String,
+          ]),
           Schema.Null,
         ]),
       ),
-    }).pipe(
-      Schema.encodeKeys({
-        conditions: "conditions",
-        priority: "priority",
-        serveVariation: "serve_variation",
-        rollout: "rollout",
-      }),
-    ),
-  ),
-  variations: Schema.Record(Schema.String, Schema.Unknown),
-  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  type: Schema.optional(
-    Schema.Union([
-      Schema.Union([
-        Schema.Literals(["boolean", "string", "number", "json"]),
-        Schema.String,
-      ]),
-      Schema.Null,
-    ]),
-  ),
-  updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  updatedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-})
-  .pipe(
-    Schema.encodeKeys({
-      defaultVariation: "default_variation",
-      enabled: "enabled",
-      key: "key",
-      rules: "rules",
-      variations: "variations",
-      description: "description",
-      type: "type",
-      updatedAt: "updated_at",
-      updatedBy: "updated_by",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<CreateAppFlagResponse>;
+      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      updatedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          defaultVariation: "default_variation",
+          enabled: "enabled",
+          key: "key",
+          rules: "rules",
+          variations: "variations",
+          description: "description",
+          type: "type",
+          updatedAt: "updated_at",
+          updatedBy: "updated_by",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<CreateAppFlagResponse>;
 
 export type CreateAppFlagError =
   | DefaultErrors
@@ -1397,142 +1436,145 @@ export interface UpdateAppFlagRequest {
   type?: "boolean" | "string" | "number" | "json" | (string & {});
 }
 
-export const UpdateAppFlagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  appId: Schema.String.pipe(T.HttpPath("appId")),
-  flagKey: Schema.String.pipe(T.HttpPath("flagKey")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  defaultVariation: Schema.String,
-  enabled: Schema.Boolean,
-  key: Schema.String,
-  rules: Schema.Array(
+export const UpdateAppFlagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      conditions: Schema.Array(
-        Schema.Union([
-          Schema.Struct({
-            attribute: Schema.String,
-            operator: Schema.Union([
-              Schema.Literals([
-                "equals",
-                "not_equals",
-                "greater_than",
-                "less_than",
-                "greater_than_or_equals",
-                "less_than_or_equals",
-                "contains",
-                "starts_with",
-                "ends_with",
-                "in",
-                "not_in",
-              ]),
-              Schema.String,
-            ]),
-            value: Schema.Unknown,
-          }),
-          Schema.Struct({
-            clauses: Schema.Array(
-              Schema.Union([
-                Schema.Struct({
-                  attribute: Schema.String,
-                  operator: Schema.Union([
-                    Schema.Literals([
-                      "equals",
-                      "not_equals",
-                      "greater_than",
-                      "less_than",
-                      "greater_than_or_equals",
-                      "less_than_or_equals",
-                      "contains",
-                      "starts_with",
-                      "ends_with",
-                      "in",
-                      "not_in",
-                    ]),
-                    Schema.String,
+      appId: Schema.String.pipe(T.HttpPath("appId")),
+      flagKey: Schema.String.pipe(T.HttpPath("flagKey")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      defaultVariation: Schema.String,
+      enabled: Schema.Boolean,
+      key: Schema.String,
+      rules: Schema.Array(
+        Schema.Struct({
+          conditions: Schema.Array(
+            Schema.Union([
+              Schema.Struct({
+                attribute: Schema.String,
+                operator: Schema.Union([
+                  Schema.Literals([
+                    "equals",
+                    "not_equals",
+                    "greater_than",
+                    "less_than",
+                    "greater_than_or_equals",
+                    "less_than_or_equals",
+                    "contains",
+                    "starts_with",
+                    "ends_with",
+                    "in",
+                    "not_in",
                   ]),
-                  value: Schema.Unknown,
-                }),
-                Schema.Struct({
-                  clauses: Schema.Array(
-                    Schema.Union([
-                      Schema.Struct({
-                        attribute: Schema.Unknown,
-                        operator: Schema.Unknown,
-                        value: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        clauses: Schema.Unknown,
-                        logicalOperator: Schema.Unknown,
-                      }).pipe(
-                        Schema.encodeKeys({
-                          clauses: "clauses",
-                          logicalOperator: "logical_operator",
-                        }),
+                  Schema.String,
+                ]),
+                value: Schema.Unknown,
+              }),
+              Schema.Struct({
+                clauses: Schema.Array(
+                  Schema.Union([
+                    Schema.Struct({
+                      attribute: Schema.String,
+                      operator: Schema.Union([
+                        Schema.Literals([
+                          "equals",
+                          "not_equals",
+                          "greater_than",
+                          "less_than",
+                          "greater_than_or_equals",
+                          "less_than_or_equals",
+                          "contains",
+                          "starts_with",
+                          "ends_with",
+                          "in",
+                          "not_in",
+                        ]),
+                        Schema.String,
+                      ]),
+                      value: Schema.Unknown,
+                    }),
+                    Schema.Struct({
+                      clauses: Schema.Array(
+                        Schema.Union([
+                          Schema.Struct({
+                            attribute: Schema.Unknown,
+                            operator: Schema.Unknown,
+                            value: Schema.Unknown,
+                          }),
+                          Schema.Struct({
+                            clauses: Schema.Unknown,
+                            logicalOperator: Schema.Unknown,
+                          }).pipe(
+                            Schema.encodeKeys({
+                              clauses: "clauses",
+                              logicalOperator: "logical_operator",
+                            }),
+                          ),
+                        ]),
                       ),
-                    ]),
-                  ),
-                  logicalOperator: Schema.Union([
-                    Schema.Literals(["AND", "OR"]),
-                    Schema.String,
+                      logicalOperator: Schema.Union([
+                        Schema.Literals(["AND", "OR"]),
+                        Schema.String,
+                      ]),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        clauses: "clauses",
+                        logicalOperator: "logical_operator",
+                      }),
+                    ),
                   ]),
-                }).pipe(
-                  Schema.encodeKeys({
-                    clauses: "clauses",
-                    logicalOperator: "logical_operator",
-                  }),
                 ),
-              ]),
-            ),
-            logicalOperator: Schema.Union([
-              Schema.Literals(["AND", "OR"]),
-              Schema.String,
+                logicalOperator: Schema.Union([
+                  Schema.Literals(["AND", "OR"]),
+                  Schema.String,
+                ]),
+              }).pipe(
+                Schema.encodeKeys({
+                  clauses: "clauses",
+                  logicalOperator: "logical_operator",
+                }),
+              ),
             ]),
-          }).pipe(
-            Schema.encodeKeys({
-              clauses: "clauses",
-              logicalOperator: "logical_operator",
+          ),
+          priority: Schema.Number,
+          serveVariation: Schema.String,
+          rollout: Schema.optional(
+            Schema.Struct({
+              percentage: Schema.Number,
+              attribute: Schema.optional(Schema.String),
             }),
           ),
-        ]),
+        }).pipe(
+          Schema.encodeKeys({
+            conditions: "conditions",
+            priority: "priority",
+            serveVariation: "serve_variation",
+            rollout: "rollout",
+          }),
+        ),
       ),
-      priority: Schema.Number,
-      serveVariation: Schema.String,
-      rollout: Schema.optional(
-        Schema.Struct({
-          percentage: Schema.Number,
-          attribute: Schema.optional(Schema.String),
-        }),
+      variations: Schema.Record(Schema.String, Schema.Unknown),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["boolean", "string", "number", "json"]),
+          Schema.String,
+        ]),
       ),
     }).pipe(
       Schema.encodeKeys({
-        conditions: "conditions",
-        priority: "priority",
-        serveVariation: "serve_variation",
-        rollout: "rollout",
+        defaultVariation: "default_variation",
+        enabled: "enabled",
+        key: "key",
+        rules: "rules",
+        variations: "variations",
+        description: "description",
+        type: "type",
+      }),
+      T.Http({
+        method: "PUT",
+        path: "/accounts/{account_id}/flagship/apps/{appId}/flags/{flagKey}",
       }),
     ),
-  ),
-  variations: Schema.Record(Schema.String, Schema.Unknown),
-  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  type: Schema.optional(
-    Schema.Union([
-      Schema.Literals(["boolean", "string", "number", "json"]),
-      Schema.String,
-    ]),
-  ),
-}).pipe(
-  Schema.encodeKeys({
-    defaultVariation: "default_variation",
-    enabled: "enabled",
-    key: "key",
-    rules: "rules",
-    variations: "variations",
-    description: "description",
-    type: "type",
-  }),
-  T.Http({
-    method: "PUT",
-    path: "/accounts/{account_id}/flagship/apps/{appId}/flags/{flagKey}",
-  }),
 ) as unknown as Schema.Schema<UpdateAppFlagRequest>;
 
 export interface UpdateAppFlagResponse {
@@ -1605,152 +1647,153 @@ export interface UpdateAppFlagResponse {
   updatedBy?: string | null;
 }
 
-export const UpdateAppFlagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  defaultVariation: Schema.String,
-  enabled: Schema.Boolean,
-  key: Schema.String,
-  rules: Schema.Array(
+export const UpdateAppFlagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      conditions: Schema.Array(
-        Schema.Union([
-          Schema.Struct({
-            attribute: Schema.String,
-            operator: Schema.Union([
-              Schema.Literals([
-                "equals",
-                "not_equals",
-                "greater_than",
-                "less_than",
-                "greater_than_or_equals",
-                "less_than_or_equals",
-                "contains",
-                "starts_with",
-                "ends_with",
-                "in",
-                "not_in",
-              ]),
-              Schema.String,
-            ]),
-            value: Schema.Unknown,
-          }),
-          Schema.Struct({
-            clauses: Schema.Array(
-              Schema.Union([
-                Schema.Struct({
-                  attribute: Schema.String,
-                  operator: Schema.Union([
-                    Schema.Literals([
-                      "equals",
-                      "not_equals",
-                      "greater_than",
-                      "less_than",
-                      "greater_than_or_equals",
-                      "less_than_or_equals",
-                      "contains",
-                      "starts_with",
-                      "ends_with",
-                      "in",
-                      "not_in",
-                    ]),
-                    Schema.String,
+      defaultVariation: Schema.String,
+      enabled: Schema.Boolean,
+      key: Schema.String,
+      rules: Schema.Array(
+        Schema.Struct({
+          conditions: Schema.Array(
+            Schema.Union([
+              Schema.Struct({
+                attribute: Schema.String,
+                operator: Schema.Union([
+                  Schema.Literals([
+                    "equals",
+                    "not_equals",
+                    "greater_than",
+                    "less_than",
+                    "greater_than_or_equals",
+                    "less_than_or_equals",
+                    "contains",
+                    "starts_with",
+                    "ends_with",
+                    "in",
+                    "not_in",
                   ]),
-                  value: Schema.Unknown,
-                }),
-                Schema.Struct({
-                  clauses: Schema.Array(
-                    Schema.Union([
-                      Schema.Struct({
-                        attribute: Schema.Unknown,
-                        operator: Schema.Unknown,
-                        value: Schema.Unknown,
-                      }),
-                      Schema.Struct({
-                        clauses: Schema.Unknown,
-                        logicalOperator: Schema.Unknown,
-                      }).pipe(
-                        Schema.encodeKeys({
-                          clauses: "clauses",
-                          logicalOperator: "logical_operator",
-                        }),
+                  Schema.String,
+                ]),
+                value: Schema.Unknown,
+              }),
+              Schema.Struct({
+                clauses: Schema.Array(
+                  Schema.Union([
+                    Schema.Struct({
+                      attribute: Schema.String,
+                      operator: Schema.Union([
+                        Schema.Literals([
+                          "equals",
+                          "not_equals",
+                          "greater_than",
+                          "less_than",
+                          "greater_than_or_equals",
+                          "less_than_or_equals",
+                          "contains",
+                          "starts_with",
+                          "ends_with",
+                          "in",
+                          "not_in",
+                        ]),
+                        Schema.String,
+                      ]),
+                      value: Schema.Unknown,
+                    }),
+                    Schema.Struct({
+                      clauses: Schema.Array(
+                        Schema.Union([
+                          Schema.Struct({
+                            attribute: Schema.Unknown,
+                            operator: Schema.Unknown,
+                            value: Schema.Unknown,
+                          }),
+                          Schema.Struct({
+                            clauses: Schema.Unknown,
+                            logicalOperator: Schema.Unknown,
+                          }).pipe(
+                            Schema.encodeKeys({
+                              clauses: "clauses",
+                              logicalOperator: "logical_operator",
+                            }),
+                          ),
+                        ]),
                       ),
-                    ]),
-                  ),
-                  logicalOperator: Schema.Union([
-                    Schema.Literals(["AND", "OR"]),
-                    Schema.String,
+                      logicalOperator: Schema.Union([
+                        Schema.Literals(["AND", "OR"]),
+                        Schema.String,
+                      ]),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        clauses: "clauses",
+                        logicalOperator: "logical_operator",
+                      }),
+                    ),
                   ]),
-                }).pipe(
-                  Schema.encodeKeys({
-                    clauses: "clauses",
-                    logicalOperator: "logical_operator",
-                  }),
                 ),
-              ]),
-            ),
-            logicalOperator: Schema.Union([
-              Schema.Literals(["AND", "OR"]),
-              Schema.String,
+                logicalOperator: Schema.Union([
+                  Schema.Literals(["AND", "OR"]),
+                  Schema.String,
+                ]),
+              }).pipe(
+                Schema.encodeKeys({
+                  clauses: "clauses",
+                  logicalOperator: "logical_operator",
+                }),
+              ),
             ]),
-          }).pipe(
-            Schema.encodeKeys({
-              clauses: "clauses",
-              logicalOperator: "logical_operator",
-            }),
           ),
-        ]),
-      ),
-      priority: Schema.Number,
-      serveVariation: Schema.String,
-      rollout: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            percentage: Schema.Number,
-            attribute: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
+          priority: Schema.Number,
+          serveVariation: Schema.String,
+          rollout: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                percentage: Schema.Number,
+                attribute: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            conditions: "conditions",
+            priority: "priority",
+            serveVariation: "serve_variation",
+            rollout: "rollout",
           }),
+        ),
+      ),
+      variations: Schema.Record(Schema.String, Schema.Unknown),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["boolean", "string", "number", "json"]),
+            Schema.String,
+          ]),
           Schema.Null,
         ]),
       ),
-    }).pipe(
-      Schema.encodeKeys({
-        conditions: "conditions",
-        priority: "priority",
-        serveVariation: "serve_variation",
-        rollout: "rollout",
-      }),
-    ),
-  ),
-  variations: Schema.Record(Schema.String, Schema.Unknown),
-  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  type: Schema.optional(
-    Schema.Union([
-      Schema.Union([
-        Schema.Literals(["boolean", "string", "number", "json"]),
-        Schema.String,
-      ]),
-      Schema.Null,
-    ]),
-  ),
-  updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  updatedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-})
-  .pipe(
-    Schema.encodeKeys({
-      defaultVariation: "default_variation",
-      enabled: "enabled",
-      key: "key",
-      rules: "rules",
-      variations: "variations",
-      description: "description",
-      type: "type",
-      updatedAt: "updated_at",
-      updatedBy: "updated_by",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<UpdateAppFlagResponse>;
+      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      updatedBy: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          defaultVariation: "default_variation",
+          enabled: "enabled",
+          key: "key",
+          rules: "rules",
+          variations: "variations",
+          description: "description",
+          type: "type",
+          updatedAt: "updated_at",
+          updatedBy: "updated_by",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<UpdateAppFlagResponse>;
 
 export type UpdateAppFlagError =
   | DefaultErrors
@@ -1775,25 +1818,29 @@ export interface DeleteAppFlagRequest {
   accountId: string;
 }
 
-export const DeleteAppFlagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  appId: Schema.String.pipe(T.HttpPath("appId")),
-  flagKey: Schema.String.pipe(T.HttpPath("flagKey")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "/accounts/{account_id}/flagship/apps/{appId}/flags/{flagKey}",
-  }),
+export const DeleteAppFlagRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      appId: Schema.String.pipe(T.HttpPath("appId")),
+      flagKey: Schema.String.pipe(T.HttpPath("flagKey")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/flagship/apps/{appId}/flags/{flagKey}",
+      }),
+    ),
 ) as unknown as Schema.Schema<DeleteAppFlagRequest>;
 
 export interface DeleteAppFlagResponse {
   key: string;
 }
 
-export const DeleteAppFlagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  key: Schema.String,
-}).pipe(
-  T.ResponsePath("result"),
+export const DeleteAppFlagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      key: Schema.String,
+    }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Schema<DeleteAppFlagResponse>;
 
 export type DeleteAppFlagError =
@@ -1827,17 +1874,19 @@ export interface ListAppFlagChangelogsRequest {
 }
 
 export const ListAppFlagChangelogsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    appId: Schema.String.pipe(T.HttpPath("appId")),
-    flagKey: Schema.String.pipe(T.HttpPath("flagKey")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
-    limit: Schema.optional(Schema.String).pipe(T.HttpQuery("limit")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/flagship/apps/{appId}/flags/{flagKey}/changelog",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      appId: Schema.String.pipe(T.HttpPath("appId")),
+      flagKey: Schema.String.pipe(T.HttpPath("flagKey")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      cursor: Schema.optional(Schema.String).pipe(T.HttpQuery("cursor")),
+      limit: Schema.optional(Schema.String).pipe(T.HttpQuery("limit")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/flagship/apps/{appId}/flags/{flagKey}/changelog",
+      }),
+    ),
   ) as unknown as Schema.Schema<ListAppFlagChangelogsRequest>;
 
 export interface ListAppFlagChangelogsResponse {
@@ -1992,350 +2041,350 @@ export interface ListAppFlagChangelogsResponse {
 }
 
 export const ListAppFlagChangelogsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Union([
-        Schema.Struct({
-          after: Schema.Struct({
-            defaultVariation: Schema.String,
-            enabled: Schema.Boolean,
-            key: Schema.String,
-            rules: Schema.Array(
-              Schema.Struct({
-                conditions: Schema.Array(
-                  Schema.Union([
-                    Schema.Struct({
-                      attribute: Schema.String,
-                      operator: Schema.Union([
-                        Schema.Literals([
-                          "equals",
-                          "not_equals",
-                          "greater_than",
-                          "less_than",
-                          "greater_than_or_equals",
-                          "less_than_or_equals",
-                          "contains",
-                          "starts_with",
-                          "ends_with",
-                          "in",
-                          "not_in",
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Union([
+          Schema.Struct({
+            after: Schema.Struct({
+              defaultVariation: Schema.String,
+              enabled: Schema.Boolean,
+              key: Schema.String,
+              rules: Schema.Array(
+                Schema.Struct({
+                  conditions: Schema.Array(
+                    Schema.Union([
+                      Schema.Struct({
+                        attribute: Schema.String,
+                        operator: Schema.Union([
+                          Schema.Literals([
+                            "equals",
+                            "not_equals",
+                            "greater_than",
+                            "less_than",
+                            "greater_than_or_equals",
+                            "less_than_or_equals",
+                            "contains",
+                            "starts_with",
+                            "ends_with",
+                            "in",
+                            "not_in",
+                          ]),
+                          Schema.String,
                         ]),
-                        Schema.String,
-                      ]),
-                      value: Schema.Unknown,
-                    }),
-                    Schema.Struct({
-                      clauses: Schema.Array(Schema.Unknown),
-                      logicalOperator: Schema.Union([
-                        Schema.Literals(["AND", "OR"]),
-                        Schema.String,
-                      ]),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        clauses: "clauses",
-                        logicalOperator: "logical_operator",
+                        value: Schema.Unknown,
                       }),
-                    ),
-                  ]),
-                ),
-                priority: Schema.Number,
-                serveVariation: Schema.String,
-                rollout: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      percentage: Schema.Number,
-                      attribute: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  conditions: "conditions",
-                  priority: "priority",
-                  serveVariation: "serve_variation",
-                  rollout: "rollout",
-                }),
-              ),
-            ),
-            variations: Schema.Record(Schema.String, Schema.Unknown),
-            description: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            type: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["boolean", "string", "number", "json"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            updatedAt: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            updatedBy: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              defaultVariation: "default_variation",
-              enabled: "enabled",
-              key: "key",
-              rules: "rules",
-              variations: "variations",
-              description: "description",
-              type: "type",
-              updatedAt: "updated_at",
-              updatedBy: "updated_by",
-            }),
-          ),
-          diff: Schema.Record(Schema.String, Schema.Unknown),
-          event: Schema.Literal("update"),
-          flagKey: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            after: "after",
-            diff: "diff",
-            event: "event",
-            flagKey: "flag_key",
-          }),
-        ),
-        Schema.Struct({
-          after: Schema.Struct({
-            defaultVariation: Schema.String,
-            enabled: Schema.Boolean,
-            key: Schema.String,
-            rules: Schema.Array(
-              Schema.Struct({
-                conditions: Schema.Array(
-                  Schema.Union([
-                    Schema.Struct({
-                      attribute: Schema.String,
-                      operator: Schema.Union([
-                        Schema.Literals([
-                          "equals",
-                          "not_equals",
-                          "greater_than",
-                          "less_than",
-                          "greater_than_or_equals",
-                          "less_than_or_equals",
-                          "contains",
-                          "starts_with",
-                          "ends_with",
-                          "in",
-                          "not_in",
+                      Schema.Struct({
+                        clauses: Schema.Array(Schema.Unknown),
+                        logicalOperator: Schema.Union([
+                          Schema.Literals(["AND", "OR"]),
+                          Schema.String,
                         ]),
-                        Schema.String,
-                      ]),
-                      value: Schema.Unknown,
-                    }),
-                    Schema.Struct({
-                      clauses: Schema.Array(Schema.Unknown),
-                      logicalOperator: Schema.Union([
-                        Schema.Literals(["AND", "OR"]),
-                        Schema.String,
-                      ]),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        clauses: "clauses",
-                        logicalOperator: "logical_operator",
-                      }),
-                    ),
-                  ]),
-                ),
-                priority: Schema.Number,
-                serveVariation: Schema.String,
-                rollout: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      percentage: Schema.Number,
-                      attribute: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          clauses: "clauses",
+                          logicalOperator: "logical_operator",
+                        }),
                       ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  conditions: "conditions",
-                  priority: "priority",
-                  serveVariation: "serve_variation",
-                  rollout: "rollout",
-                }),
-              ),
-            ),
-            variations: Schema.Record(Schema.String, Schema.Unknown),
-            description: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            type: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["boolean", "string", "number", "json"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            updatedAt: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            updatedBy: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              defaultVariation: "default_variation",
-              enabled: "enabled",
-              key: "key",
-              rules: "rules",
-              variations: "variations",
-              description: "description",
-              type: "type",
-              updatedAt: "updated_at",
-              updatedBy: "updated_by",
-            }),
-          ),
-          event: Schema.Literal("create"),
-          flagKey: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            after: "after",
-            event: "event",
-            flagKey: "flag_key",
-          }),
-        ),
-        Schema.Struct({
-          after: Schema.Struct({
-            defaultVariation: Schema.String,
-            enabled: Schema.Boolean,
-            key: Schema.String,
-            rules: Schema.Array(
-              Schema.Struct({
-                conditions: Schema.Array(
-                  Schema.Union([
-                    Schema.Struct({
-                      attribute: Schema.String,
-                      operator: Schema.Union([
-                        Schema.Literals([
-                          "equals",
-                          "not_equals",
-                          "greater_than",
-                          "less_than",
-                          "greater_than_or_equals",
-                          "less_than_or_equals",
-                          "contains",
-                          "starts_with",
-                          "ends_with",
-                          "in",
-                          "not_in",
-                        ]),
-                        Schema.String,
-                      ]),
-                      value: Schema.Unknown,
-                    }),
-                    Schema.Struct({
-                      clauses: Schema.Array(Schema.Unknown),
-                      logicalOperator: Schema.Union([
-                        Schema.Literals(["AND", "OR"]),
-                        Schema.String,
-                      ]),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        clauses: "clauses",
-                        logicalOperator: "logical_operator",
+                    ]),
+                  ),
+                  priority: Schema.Number,
+                  serveVariation: Schema.String,
+                  rollout: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        percentage: Schema.Number,
+                        attribute: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
                       }),
-                    ),
-                  ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    conditions: "conditions",
+                    priority: "priority",
+                    serveVariation: "serve_variation",
+                    rollout: "rollout",
+                  }),
                 ),
-                priority: Schema.Number,
-                serveVariation: Schema.String,
-                rollout: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      percentage: Schema.Number,
-                      attribute: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  conditions: "conditions",
-                  priority: "priority",
-                  serveVariation: "serve_variation",
-                  rollout: "rollout",
-                }),
               ),
-            ),
-            variations: Schema.Record(Schema.String, Schema.Unknown),
-            description: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            type: Schema.optional(
-              Schema.Union([
+              variations: Schema.Record(Schema.String, Schema.Unknown),
+              description: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              type: Schema.optional(
                 Schema.Union([
-                  Schema.Literals(["boolean", "string", "number", "json"]),
-                  Schema.String,
+                  Schema.Union([
+                    Schema.Literals(["boolean", "string", "number", "json"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
                 ]),
-                Schema.Null,
-              ]),
-            ),
-            updatedAt: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            updatedBy: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              defaultVariation: "default_variation",
-              enabled: "enabled",
-              key: "key",
-              rules: "rules",
-              variations: "variations",
-              description: "description",
-              type: "type",
-              updatedAt: "updated_at",
-              updatedBy: "updated_by",
-            }),
-          ),
-          event: Schema.Literal("delete"),
-          flagKey: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            after: "after",
-            event: "event",
-            flagKey: "flag_key",
-          }),
-        ),
-      ]),
-    ),
-    resultInfo: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          cursors: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                after: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
+              ),
+              updatedAt: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              updatedBy: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                defaultVariation: "default_variation",
+                enabled: "enabled",
+                key: "key",
+                rules: "rules",
+                variations: "variations",
+                description: "description",
+                type: "type",
+                updatedAt: "updated_at",
+                updatedBy: "updated_by",
               }),
-              Schema.Null,
-            ]),
+            ),
+            diff: Schema.Record(Schema.String, Schema.Unknown),
+            event: Schema.Literal("update"),
+            flagKey: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              after: "after",
+              diff: "diff",
+              event: "event",
+              flagKey: "flag_key",
+            }),
           ),
-        }),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+          Schema.Struct({
+            after: Schema.Struct({
+              defaultVariation: Schema.String,
+              enabled: Schema.Boolean,
+              key: Schema.String,
+              rules: Schema.Array(
+                Schema.Struct({
+                  conditions: Schema.Array(
+                    Schema.Union([
+                      Schema.Struct({
+                        attribute: Schema.String,
+                        operator: Schema.Union([
+                          Schema.Literals([
+                            "equals",
+                            "not_equals",
+                            "greater_than",
+                            "less_than",
+                            "greater_than_or_equals",
+                            "less_than_or_equals",
+                            "contains",
+                            "starts_with",
+                            "ends_with",
+                            "in",
+                            "not_in",
+                          ]),
+                          Schema.String,
+                        ]),
+                        value: Schema.Unknown,
+                      }),
+                      Schema.Struct({
+                        clauses: Schema.Array(Schema.Unknown),
+                        logicalOperator: Schema.Union([
+                          Schema.Literals(["AND", "OR"]),
+                          Schema.String,
+                        ]),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          clauses: "clauses",
+                          logicalOperator: "logical_operator",
+                        }),
+                      ),
+                    ]),
+                  ),
+                  priority: Schema.Number,
+                  serveVariation: Schema.String,
+                  rollout: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        percentage: Schema.Number,
+                        attribute: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    conditions: "conditions",
+                    priority: "priority",
+                    serveVariation: "serve_variation",
+                    rollout: "rollout",
+                  }),
+                ),
+              ),
+              variations: Schema.Record(Schema.String, Schema.Unknown),
+              description: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              type: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["boolean", "string", "number", "json"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              updatedAt: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              updatedBy: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                defaultVariation: "default_variation",
+                enabled: "enabled",
+                key: "key",
+                rules: "rules",
+                variations: "variations",
+                description: "description",
+                type: "type",
+                updatedAt: "updated_at",
+                updatedBy: "updated_by",
+              }),
+            ),
+            event: Schema.Literal("create"),
+            flagKey: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              after: "after",
+              event: "event",
+              flagKey: "flag_key",
+            }),
+          ),
+          Schema.Struct({
+            after: Schema.Struct({
+              defaultVariation: Schema.String,
+              enabled: Schema.Boolean,
+              key: Schema.String,
+              rules: Schema.Array(
+                Schema.Struct({
+                  conditions: Schema.Array(
+                    Schema.Union([
+                      Schema.Struct({
+                        attribute: Schema.String,
+                        operator: Schema.Union([
+                          Schema.Literals([
+                            "equals",
+                            "not_equals",
+                            "greater_than",
+                            "less_than",
+                            "greater_than_or_equals",
+                            "less_than_or_equals",
+                            "contains",
+                            "starts_with",
+                            "ends_with",
+                            "in",
+                            "not_in",
+                          ]),
+                          Schema.String,
+                        ]),
+                        value: Schema.Unknown,
+                      }),
+                      Schema.Struct({
+                        clauses: Schema.Array(Schema.Unknown),
+                        logicalOperator: Schema.Union([
+                          Schema.Literals(["AND", "OR"]),
+                          Schema.String,
+                        ]),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          clauses: "clauses",
+                          logicalOperator: "logical_operator",
+                        }),
+                      ),
+                    ]),
+                  ),
+                  priority: Schema.Number,
+                  serveVariation: Schema.String,
+                  rollout: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        percentage: Schema.Number,
+                        attribute: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    conditions: "conditions",
+                    priority: "priority",
+                    serveVariation: "serve_variation",
+                    rollout: "rollout",
+                  }),
+                ),
+              ),
+              variations: Schema.Record(Schema.String, Schema.Unknown),
+              description: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              type: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["boolean", "string", "number", "json"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              updatedAt: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              updatedBy: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                defaultVariation: "default_variation",
+                enabled: "enabled",
+                key: "key",
+                rules: "rules",
+                variations: "variations",
+                description: "description",
+                type: "type",
+                updatedAt: "updated_at",
+                updatedBy: "updated_by",
+              }),
+            ),
+            event: Schema.Literal("delete"),
+            flagKey: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              after: "after",
+              event: "event",
+              flagKey: "flag_key",
+            }),
+          ),
+        ]),
+      ),
+      resultInfo: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            cursors: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  after: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
   ) as unknown as Schema.Schema<ListAppFlagChangelogsResponse>;
 
 export type ListAppFlagChangelogsError = DefaultErrors;

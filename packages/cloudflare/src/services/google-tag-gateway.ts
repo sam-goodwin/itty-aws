@@ -31,13 +31,15 @@ export interface GetConfigRequest {
   zoneId: string;
 }
 
-export const GetConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/zones/{zone_id}/settings/google-tag-gateway/config",
-  }),
+export const GetConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/zones/{zone_id}/settings/google-tag-gateway/config",
+    }),
+  ),
 ) as unknown as Schema.Schema<GetConfigRequest>;
 
 export type GetConfigResponse = {
@@ -48,17 +50,18 @@ export type GetConfigResponse = {
   setUpTag?: boolean | null;
 } | null;
 
-export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Union([
-  Schema.Struct({
-    enabled: Schema.Boolean,
-    endpoint: Schema.String,
-    hideOriginalIp: Schema.Boolean,
-    measurementId: Schema.String,
-    setUpTag: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-  }),
-  Schema.Null,
-]).pipe(
-  T.ResponsePath("result"),
+export const GetConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Union([
+      Schema.Struct({
+        enabled: Schema.Boolean,
+        endpoint: Schema.String,
+        hideOriginalIp: Schema.Boolean,
+        measurementId: Schema.String,
+        setUpTag: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      }),
+      Schema.Null,
+    ]).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Schema<GetConfigResponse>;
 
 export type GetConfigError = DefaultErrors | Forbidden;
@@ -89,18 +92,20 @@ export interface PutConfigRequest {
   setUpTag?: boolean | null;
 }
 
-export const PutConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  enabled: Schema.Boolean,
-  endpoint: Schema.String,
-  hideOriginalIp: Schema.Boolean,
-  measurementId: Schema.String,
-  setUpTag: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-}).pipe(
-  T.Http({
-    method: "PUT",
-    path: "/zones/{zone_id}/settings/google-tag-gateway/config",
-  }),
+export const PutConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    enabled: Schema.Boolean,
+    endpoint: Schema.String,
+    hideOriginalIp: Schema.Boolean,
+    measurementId: Schema.String,
+    setUpTag: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/zones/{zone_id}/settings/google-tag-gateway/config",
+    }),
+  ),
 ) as unknown as Schema.Schema<PutConfigRequest>;
 
 export interface PutConfigResponse {
@@ -116,14 +121,15 @@ export interface PutConfigResponse {
   setUpTag?: boolean | null;
 }
 
-export const PutConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  enabled: Schema.Boolean,
-  endpoint: Schema.String,
-  hideOriginalIp: Schema.Boolean,
-  measurementId: Schema.String,
-  setUpTag: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-}).pipe(
-  T.ResponsePath("result"),
+export const PutConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      enabled: Schema.Boolean,
+      endpoint: Schema.String,
+      hideOriginalIp: Schema.Boolean,
+      measurementId: Schema.String,
+      setUpTag: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Schema<PutConfigResponse>;
 
 export type PutConfigError = DefaultErrors | Forbidden;

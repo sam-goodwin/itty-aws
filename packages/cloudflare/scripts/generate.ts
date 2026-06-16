@@ -3256,6 +3256,24 @@ T.applyErrorMatchers(${tag}, ${JSON.stringify(matchers)});`);
   }
 
   let code = lines.join("\n");
+
+  // Defer schema construction. Each generated request/response schema is a
+  // large eager `Schema.Struct({...})` — a service like zero-trust builds
+  // >11k of them at module-eval time, which dominates import cost even when
+  // the consumer only calls a couple of operations. Wrap every schema const
+  // in `Schema.suspend(() => ...)` so construction is deferred until the
+  // operation is first invoked (the shared `API.make` client forces + memoizes
+  // it lazily). Each schema const is uniquely identified by its
+  // `... as unknown as Schema.Schema<Name>;` cast tail; operation consts
+  // (`API.make(...)`) and error classes don't carry it. The tempered
+  // `(?!export const )` body guard prevents a cast-less const from swallowing
+  // the next const's tail.
+  code = code.replace(
+    /(export const \w+ = \/\*@__PURE__\*\/ \/\*#__PURE__\*\/ )((?:(?!export const )[\s\S])*?)( as unknown as Schema\.Schema<\w+>;)/g,
+    (_m, head: string, body: string, tail: string) =>
+      `${head}Schema.suspend(() => ${body})${tail}`,
+  );
+
   // Only include the Effect import if it's actually used in the generated code
   if (code.includes("Effect.")) {
     code = code.replace(

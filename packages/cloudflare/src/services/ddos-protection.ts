@@ -74,17 +74,19 @@ export interface ListAdvancedTcpProtectionAllowlistsRequest {
 }
 
 export const ListAdvancedTcpProtectionAllowlistsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    direction: Schema.optional(Schema.String).pipe(T.HttpQuery("direction")),
-    order: Schema.optional(Schema.String).pipe(T.HttpQuery("order")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+      direction: Schema.optional(Schema.String).pipe(T.HttpQuery("direction")),
+      order: Schema.optional(Schema.String).pipe(T.HttpQuery("order")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist",
+      }),
+    ),
   ) as unknown as Schema.Schema<ListAdvancedTcpProtectionAllowlistsRequest>;
 
 export interface ListAdvancedTcpProtectionAllowlistsResponse {
@@ -105,48 +107,50 @@ export interface ListAdvancedTcpProtectionAllowlistsResponse {
 }
 
 export const ListAdvancedTcpProtectionAllowlistsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        comment: Schema.String,
-        createdOn: Schema.String,
-        enabled: Schema.Boolean,
-        modifiedOn: Schema.String,
-        prefix: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          comment: "comment",
-          createdOn: "created_on",
-          enabled: "enabled",
-          modifiedOn: "modified_on",
-          prefix: "prefix",
-        }),
-      ),
-    ),
-    resultInfo: Schema.optional(
-      Schema.Union([
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
         Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
+          id: Schema.String,
+          comment: Schema.String,
+          createdOn: Schema.String,
+          enabled: Schema.Boolean,
+          modifiedOn: Schema.String,
+          prefix: Schema.String,
         }).pipe(
           Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
+            id: "id",
+            comment: "comment",
+            createdOn: "created_on",
+            enabled: "enabled",
+            modifiedOn: "modified_on",
+            prefix: "prefix",
           }),
         ),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+      ),
+      resultInfo: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            perPage: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            totalCount: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              count: "count",
+              page: "page",
+              perPage: "per_page",
+              totalCount: "total_count",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
   ) as unknown as Schema.Schema<ListAdvancedTcpProtectionAllowlistsResponse>;
 
 export type ListAdvancedTcpProtectionAllowlistsError =
@@ -184,16 +188,18 @@ export interface CreateAdvancedTcpProtectionAllowlistRequest {
 }
 
 export const CreateAdvancedTcpProtectionAllowlistRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    comment: Schema.String,
-    enabled: Schema.Boolean,
-    prefix: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      comment: Schema.String,
+      enabled: Schema.Boolean,
+      prefix: Schema.String,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist",
+      }),
+    ),
   ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionAllowlistRequest>;
 
 export interface CreateAdvancedTcpProtectionAllowlistResponse {
@@ -212,27 +218,27 @@ export interface CreateAdvancedTcpProtectionAllowlistResponse {
 }
 
 export const CreateAdvancedTcpProtectionAllowlistResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    comment: Schema.String,
-    createdOn: Schema.String,
-    enabled: Schema.Boolean,
-    modifiedOn: Schema.String,
-    prefix: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        comment: "comment",
-        createdOn: "created_on",
-        enabled: "enabled",
-        modifiedOn: "modified_on",
-        prefix: "prefix",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionAllowlistResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      comment: Schema.String,
+      createdOn: Schema.String,
+      enabled: Schema.Boolean,
+      modifiedOn: Schema.String,
+      prefix: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          comment: "comment",
+          createdOn: "created_on",
+          enabled: "enabled",
+          modifiedOn: "modified_on",
+          prefix: "prefix",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionAllowlistResponse>;
 
 export type CreateAdvancedTcpProtectionAllowlistError =
   | DefaultErrors
@@ -256,13 +262,15 @@ export interface BulkDeleteAdvancedTcpProtectionAllowlistsRequest {
 }
 
 export const BulkDeleteAdvancedTcpProtectionAllowlistsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist",
+      }),
+    ),
   ) as unknown as Schema.Schema<BulkDeleteAdvancedTcpProtectionAllowlistsRequest>;
 
 export interface BulkDeleteAdvancedTcpProtectionAllowlistsResponse {
@@ -283,61 +291,63 @@ export interface BulkDeleteAdvancedTcpProtectionAllowlistsResponse {
 }
 
 export const BulkDeleteAdvancedTcpProtectionAllowlistsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      errors: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+      messages: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    success: Schema.Literal(true),
-  }) as unknown as Schema.Schema<BulkDeleteAdvancedTcpProtectionAllowlistsResponse>;
+      success: Schema.Literal(true),
+    }),
+  ) as unknown as Schema.Schema<BulkDeleteAdvancedTcpProtectionAllowlistsResponse>;
 
 export type BulkDeleteAdvancedTcpProtectionAllowlistsError = DefaultErrors;
 
@@ -363,14 +373,16 @@ export interface GetAdvancedTcpProtectionAllowlistItemRequest {
 }
 
 export const GetAdvancedTcpProtectionAllowlistItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    prefixId: Schema.String.pipe(T.HttpPath("prefixId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist/{prefixId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      prefixId: Schema.String.pipe(T.HttpPath("prefixId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist/{prefixId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<GetAdvancedTcpProtectionAllowlistItemRequest>;
 
 export interface GetAdvancedTcpProtectionAllowlistItemResponse {
@@ -389,27 +401,27 @@ export interface GetAdvancedTcpProtectionAllowlistItemResponse {
 }
 
 export const GetAdvancedTcpProtectionAllowlistItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    comment: Schema.String,
-    createdOn: Schema.String,
-    enabled: Schema.Boolean,
-    modifiedOn: Schema.String,
-    prefix: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        comment: "comment",
-        createdOn: "created_on",
-        enabled: "enabled",
-        modifiedOn: "modified_on",
-        prefix: "prefix",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetAdvancedTcpProtectionAllowlistItemResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      comment: Schema.String,
+      createdOn: Schema.String,
+      enabled: Schema.Boolean,
+      modifiedOn: Schema.String,
+      prefix: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          comment: "comment",
+          createdOn: "created_on",
+          enabled: "enabled",
+          modifiedOn: "modified_on",
+          prefix: "prefix",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetAdvancedTcpProtectionAllowlistItemResponse>;
 
 export type GetAdvancedTcpProtectionAllowlistItemError =
   | DefaultErrors
@@ -439,16 +451,18 @@ export interface PatchAdvancedTcpProtectionAllowlistItemRequest {
 }
 
 export const PatchAdvancedTcpProtectionAllowlistItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    prefixId: Schema.String.pipe(T.HttpPath("prefixId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    comment: Schema.optional(Schema.String),
-    enabled: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist/{prefixId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      prefixId: Schema.String.pipe(T.HttpPath("prefixId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      comment: Schema.optional(Schema.String),
+      enabled: Schema.optional(Schema.Boolean),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist/{prefixId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionAllowlistItemRequest>;
 
 export interface PatchAdvancedTcpProtectionAllowlistItemResponse {
@@ -467,27 +481,27 @@ export interface PatchAdvancedTcpProtectionAllowlistItemResponse {
 }
 
 export const PatchAdvancedTcpProtectionAllowlistItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    comment: Schema.String,
-    createdOn: Schema.String,
-    enabled: Schema.Boolean,
-    modifiedOn: Schema.String,
-    prefix: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        comment: "comment",
-        createdOn: "created_on",
-        enabled: "enabled",
-        modifiedOn: "modified_on",
-        prefix: "prefix",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionAllowlistItemResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      comment: Schema.String,
+      createdOn: Schema.String,
+      enabled: Schema.Boolean,
+      modifiedOn: Schema.String,
+      prefix: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          comment: "comment",
+          createdOn: "created_on",
+          enabled: "enabled",
+          modifiedOn: "modified_on",
+          prefix: "prefix",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionAllowlistItemResponse>;
 
 export type PatchAdvancedTcpProtectionAllowlistItemError =
   | DefaultErrors
@@ -513,14 +527,16 @@ export interface DeleteAdvancedTcpProtectionAllowlistItemRequest {
 }
 
 export const DeleteAdvancedTcpProtectionAllowlistItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    prefixId: Schema.String.pipe(T.HttpPath("prefixId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist/{prefixId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      prefixId: Schema.String.pipe(T.HttpPath("prefixId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/allowlist/{prefixId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionAllowlistItemRequest>;
 
 export interface DeleteAdvancedTcpProtectionAllowlistItemResponse {
@@ -541,61 +557,63 @@ export interface DeleteAdvancedTcpProtectionAllowlistItemResponse {
 }
 
 export const DeleteAdvancedTcpProtectionAllowlistItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      errors: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+      messages: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    success: Schema.Literal(true),
-  }) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionAllowlistItemResponse>;
+      success: Schema.Literal(true),
+    }),
+  ) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionAllowlistItemResponse>;
 
 export type DeleteAdvancedTcpProtectionAllowlistItemError =
   | DefaultErrors
@@ -630,17 +648,19 @@ export interface ListAdvancedTcpProtectionPrefixesRequest {
 }
 
 export const ListAdvancedTcpProtectionPrefixesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    direction: Schema.optional(Schema.String).pipe(T.HttpQuery("direction")),
-    order: Schema.optional(Schema.String).pipe(T.HttpQuery("order")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+      direction: Schema.optional(Schema.String).pipe(T.HttpQuery("direction")),
+      order: Schema.optional(Schema.String).pipe(T.HttpQuery("order")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes",
+      }),
+    ),
   ) as unknown as Schema.Schema<ListAdvancedTcpProtectionPrefixesRequest>;
 
 export interface ListAdvancedTcpProtectionPrefixesResponse {
@@ -661,48 +681,50 @@ export interface ListAdvancedTcpProtectionPrefixesResponse {
 }
 
 export const ListAdvancedTcpProtectionPrefixesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        comment: Schema.String,
-        createdOn: Schema.String,
-        excluded: Schema.Boolean,
-        modifiedOn: Schema.String,
-        prefix: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          comment: "comment",
-          createdOn: "created_on",
-          excluded: "excluded",
-          modifiedOn: "modified_on",
-          prefix: "prefix",
-        }),
-      ),
-    ),
-    resultInfo: Schema.optional(
-      Schema.Union([
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
         Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
+          id: Schema.String,
+          comment: Schema.String,
+          createdOn: Schema.String,
+          excluded: Schema.Boolean,
+          modifiedOn: Schema.String,
+          prefix: Schema.String,
         }).pipe(
           Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
+            id: "id",
+            comment: "comment",
+            createdOn: "created_on",
+            excluded: "excluded",
+            modifiedOn: "modified_on",
+            prefix: "prefix",
           }),
         ),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+      ),
+      resultInfo: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            perPage: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            totalCount: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              count: "count",
+              page: "page",
+              perPage: "per_page",
+              totalCount: "total_count",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
   ) as unknown as Schema.Schema<ListAdvancedTcpProtectionPrefixesResponse>;
 
 export type ListAdvancedTcpProtectionPrefixesError = DefaultErrors;
@@ -737,16 +759,18 @@ export interface CreateAdvancedTcpProtectionPrefixRequest {
 }
 
 export const CreateAdvancedTcpProtectionPrefixRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    comment: Schema.String,
-    excluded: Schema.Boolean,
-    prefix: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      comment: Schema.String,
+      excluded: Schema.Boolean,
+      prefix: Schema.String,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes",
+      }),
+    ),
   ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionPrefixRequest>;
 
 export interface CreateAdvancedTcpProtectionPrefixResponse {
@@ -765,27 +789,27 @@ export interface CreateAdvancedTcpProtectionPrefixResponse {
 }
 
 export const CreateAdvancedTcpProtectionPrefixResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    comment: Schema.String,
-    createdOn: Schema.String,
-    excluded: Schema.Boolean,
-    modifiedOn: Schema.String,
-    prefix: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        comment: "comment",
-        createdOn: "created_on",
-        excluded: "excluded",
-        modifiedOn: "modified_on",
-        prefix: "prefix",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionPrefixResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      comment: Schema.String,
+      createdOn: Schema.String,
+      excluded: Schema.Boolean,
+      modifiedOn: Schema.String,
+      prefix: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          comment: "comment",
+          createdOn: "created_on",
+          excluded: "excluded",
+          modifiedOn: "modified_on",
+          prefix: "prefix",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionPrefixResponse>;
 
 export type CreateAdvancedTcpProtectionPrefixError = DefaultErrors;
 
@@ -808,20 +832,22 @@ export interface BulkCreateAdvancedTcpProtectionPrefixesRequest {
 }
 
 export const BulkCreateAdvancedTcpProtectionPrefixesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    body: Schema.Array(
-      Schema.Struct({
-        comment: Schema.String,
-        excluded: Schema.Boolean,
-        prefix: Schema.String,
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      body: Schema.Array(
+        Schema.Struct({
+          comment: Schema.String,
+          excluded: Schema.Boolean,
+          prefix: Schema.String,
+        }),
+      ).pipe(T.HttpBody()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/bulk",
       }),
-    ).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/bulk",
-    }),
+    ),
   ) as unknown as Schema.Schema<BulkCreateAdvancedTcpProtectionPrefixesRequest>;
 
 export interface BulkCreateAdvancedTcpProtectionPrefixesResponse {
@@ -836,27 +862,29 @@ export interface BulkCreateAdvancedTcpProtectionPrefixesResponse {
 }
 
 export const BulkCreateAdvancedTcpProtectionPrefixesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        comment: Schema.String,
-        createdOn: Schema.String,
-        excluded: Schema.Boolean,
-        modifiedOn: Schema.String,
-        prefix: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          comment: "comment",
-          createdOn: "created_on",
-          excluded: "excluded",
-          modifiedOn: "modified_on",
-          prefix: "prefix",
-        }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          comment: Schema.String,
+          createdOn: Schema.String,
+          excluded: Schema.Boolean,
+          modifiedOn: Schema.String,
+          prefix: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            comment: "comment",
+            createdOn: "created_on",
+            excluded: "excluded",
+            modifiedOn: "modified_on",
+            prefix: "prefix",
+          }),
+        ),
       ),
-    ),
-  }) as unknown as Schema.Schema<BulkCreateAdvancedTcpProtectionPrefixesResponse>;
+    }),
+  ) as unknown as Schema.Schema<BulkCreateAdvancedTcpProtectionPrefixesResponse>;
 
 export type BulkCreateAdvancedTcpProtectionPrefixesError = DefaultErrors;
 
@@ -881,13 +909,15 @@ export interface BulkDeleteAdvancedTcpProtectionPrefixesRequest {
 }
 
 export const BulkDeleteAdvancedTcpProtectionPrefixesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes",
+      }),
+    ),
   ) as unknown as Schema.Schema<BulkDeleteAdvancedTcpProtectionPrefixesRequest>;
 
 export interface BulkDeleteAdvancedTcpProtectionPrefixesResponse {
@@ -908,61 +938,63 @@ export interface BulkDeleteAdvancedTcpProtectionPrefixesResponse {
 }
 
 export const BulkDeleteAdvancedTcpProtectionPrefixesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      errors: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+      messages: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    success: Schema.Literal(true),
-  }) as unknown as Schema.Schema<BulkDeleteAdvancedTcpProtectionPrefixesResponse>;
+      success: Schema.Literal(true),
+    }),
+  ) as unknown as Schema.Schema<BulkDeleteAdvancedTcpProtectionPrefixesResponse>;
 
 export type BulkDeleteAdvancedTcpProtectionPrefixesError = DefaultErrors;
 
@@ -988,14 +1020,16 @@ export interface GetAdvancedTcpProtectionPrefixItemRequest {
 }
 
 export const GetAdvancedTcpProtectionPrefixItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    prefixId: Schema.String.pipe(T.HttpPath("prefixId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/{prefixId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      prefixId: Schema.String.pipe(T.HttpPath("prefixId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/{prefixId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<GetAdvancedTcpProtectionPrefixItemRequest>;
 
 export interface GetAdvancedTcpProtectionPrefixItemResponse {
@@ -1014,27 +1048,27 @@ export interface GetAdvancedTcpProtectionPrefixItemResponse {
 }
 
 export const GetAdvancedTcpProtectionPrefixItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    comment: Schema.String,
-    createdOn: Schema.String,
-    excluded: Schema.Boolean,
-    modifiedOn: Schema.String,
-    prefix: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        comment: "comment",
-        createdOn: "created_on",
-        excluded: "excluded",
-        modifiedOn: "modified_on",
-        prefix: "prefix",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetAdvancedTcpProtectionPrefixItemResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      comment: Schema.String,
+      createdOn: Schema.String,
+      excluded: Schema.Boolean,
+      modifiedOn: Schema.String,
+      prefix: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          comment: "comment",
+          createdOn: "created_on",
+          excluded: "excluded",
+          modifiedOn: "modified_on",
+          prefix: "prefix",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetAdvancedTcpProtectionPrefixItemResponse>;
 
 export type GetAdvancedTcpProtectionPrefixItemError = DefaultErrors;
 
@@ -1060,16 +1094,18 @@ export interface PatchAdvancedTcpProtectionPrefixItemRequest {
 }
 
 export const PatchAdvancedTcpProtectionPrefixItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    prefixId: Schema.String.pipe(T.HttpPath("prefixId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    comment: Schema.optional(Schema.String),
-    excluded: Schema.optional(Schema.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/{prefixId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      prefixId: Schema.String.pipe(T.HttpPath("prefixId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      comment: Schema.optional(Schema.String),
+      excluded: Schema.optional(Schema.Boolean),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/{prefixId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionPrefixItemRequest>;
 
 export interface PatchAdvancedTcpProtectionPrefixItemResponse {
@@ -1088,27 +1124,27 @@ export interface PatchAdvancedTcpProtectionPrefixItemResponse {
 }
 
 export const PatchAdvancedTcpProtectionPrefixItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    comment: Schema.String,
-    createdOn: Schema.String,
-    excluded: Schema.Boolean,
-    modifiedOn: Schema.String,
-    prefix: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        comment: "comment",
-        createdOn: "created_on",
-        excluded: "excluded",
-        modifiedOn: "modified_on",
-        prefix: "prefix",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionPrefixItemResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      comment: Schema.String,
+      createdOn: Schema.String,
+      excluded: Schema.Boolean,
+      modifiedOn: Schema.String,
+      prefix: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          comment: "comment",
+          createdOn: "created_on",
+          excluded: "excluded",
+          modifiedOn: "modified_on",
+          prefix: "prefix",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionPrefixItemResponse>;
 
 export type PatchAdvancedTcpProtectionPrefixItemError = DefaultErrors;
 
@@ -1130,14 +1166,16 @@ export interface DeleteAdvancedTcpProtectionPrefixItemRequest {
 }
 
 export const DeleteAdvancedTcpProtectionPrefixItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    prefixId: Schema.String.pipe(T.HttpPath("prefixId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/{prefixId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      prefixId: Schema.String.pipe(T.HttpPath("prefixId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/prefixes/{prefixId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionPrefixItemRequest>;
 
 export interface DeleteAdvancedTcpProtectionPrefixItemResponse {
@@ -1158,61 +1196,63 @@ export interface DeleteAdvancedTcpProtectionPrefixItemResponse {
 }
 
 export const DeleteAdvancedTcpProtectionPrefixItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      errors: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+      messages: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    success: Schema.Literal(true),
-  }) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionPrefixItemResponse>;
+      success: Schema.Literal(true),
+    }),
+  ) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionPrefixItemResponse>;
 
 export type DeleteAdvancedTcpProtectionPrefixItemError = DefaultErrors;
 
@@ -1237,13 +1277,15 @@ export interface GetAdvancedTcpProtectionStatusRequest {
 }
 
 export const GetAdvancedTcpProtectionStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_protection_status",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_protection_status",
+      }),
+    ),
   ) as unknown as Schema.Schema<GetAdvancedTcpProtectionStatusRequest>;
 
 export interface GetAdvancedTcpProtectionStatusResponse {
@@ -1251,10 +1293,10 @@ export interface GetAdvancedTcpProtectionStatusResponse {
 }
 
 export const GetAdvancedTcpProtectionStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    enabled: Schema.Boolean,
-  }).pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      enabled: Schema.Boolean,
+    }).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<GetAdvancedTcpProtectionStatusResponse>;
 
 export type GetAdvancedTcpProtectionStatusError = DefaultErrors;
@@ -1278,14 +1320,16 @@ export interface PatchAdvancedTcpProtectionStatusRequest {
 }
 
 export const PatchAdvancedTcpProtectionStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    enabled: Schema.Boolean,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_protection_status",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      enabled: Schema.Boolean,
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_protection_status",
+      }),
+    ),
   ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionStatusRequest>;
 
 export interface PatchAdvancedTcpProtectionStatusResponse {
@@ -1293,10 +1337,10 @@ export interface PatchAdvancedTcpProtectionStatusResponse {
 }
 
 export const PatchAdvancedTcpProtectionStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    enabled: Schema.Boolean,
-  }).pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      enabled: Schema.Boolean,
+    }).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionStatusResponse>;
 
 export type PatchAdvancedTcpProtectionStatusError = DefaultErrors;
@@ -1330,18 +1374,20 @@ export interface ListAdvancedTcpProtectionSynProtectionFiltersRequest {
 }
 
 export const ListAdvancedTcpProtectionSynProtectionFiltersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    direction: Schema.optional(Schema.String).pipe(T.HttpQuery("direction")),
-    mode: Schema.optional(Schema.String).pipe(T.HttpQuery("mode")),
-    order: Schema.optional(Schema.String).pipe(T.HttpQuery("order")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+      direction: Schema.optional(Schema.String).pipe(T.HttpQuery("direction")),
+      mode: Schema.optional(Schema.String).pipe(T.HttpQuery("mode")),
+      order: Schema.optional(Schema.String).pipe(T.HttpQuery("order")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters",
+      }),
+    ),
   ) as unknown as Schema.Schema<ListAdvancedTcpProtectionSynProtectionFiltersRequest>;
 
 export interface ListAdvancedTcpProtectionSynProtectionFiltersResponse {
@@ -1361,46 +1407,48 @@ export interface ListAdvancedTcpProtectionSynProtectionFiltersResponse {
 }
 
 export const ListAdvancedTcpProtectionSynProtectionFiltersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        createdOn: Schema.String,
-        expression: Schema.String,
-        mode: Schema.String,
-        modifiedOn: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdOn: "created_on",
-          expression: "expression",
-          mode: "mode",
-          modifiedOn: "modified_on",
-        }),
-      ),
-    ),
-    resultInfo: Schema.optional(
-      Schema.Union([
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
         Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
+          id: Schema.String,
+          createdOn: Schema.String,
+          expression: Schema.String,
+          mode: Schema.String,
+          modifiedOn: Schema.String,
         }).pipe(
           Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
+            id: "id",
+            createdOn: "created_on",
+            expression: "expression",
+            mode: "mode",
+            modifiedOn: "modified_on",
           }),
         ),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+      ),
+      resultInfo: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            perPage: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            totalCount: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              count: "count",
+              page: "page",
+              perPage: "per_page",
+              totalCount: "total_count",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
   ) as unknown as Schema.Schema<ListAdvancedTcpProtectionSynProtectionFiltersResponse>;
 
 export type ListAdvancedTcpProtectionSynProtectionFiltersError =
@@ -1436,15 +1484,17 @@ export interface CreateAdvancedTcpProtectionSynProtectionFilterRequest {
 }
 
 export const CreateAdvancedTcpProtectionSynProtectionFilterRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    expression: Schema.String,
-    mode: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      expression: Schema.String,
+      mode: Schema.String,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters",
+      }),
+    ),
   ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionSynProtectionFilterRequest>;
 
 export interface CreateAdvancedTcpProtectionSynProtectionFilterResponse {
@@ -1461,25 +1511,25 @@ export interface CreateAdvancedTcpProtectionSynProtectionFilterResponse {
 }
 
 export const CreateAdvancedTcpProtectionSynProtectionFilterResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    createdOn: Schema.String,
-    expression: Schema.String,
-    mode: Schema.String,
-    modifiedOn: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdOn: "created_on",
-        expression: "expression",
-        mode: "mode",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionSynProtectionFilterResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      expression: Schema.String,
+      mode: Schema.String,
+      modifiedOn: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          createdOn: "created_on",
+          expression: "expression",
+          mode: "mode",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionSynProtectionFilterResponse>;
 
 export type CreateAdvancedTcpProtectionSynProtectionFilterError =
   | DefaultErrors
@@ -1503,13 +1553,15 @@ export interface BulkDeleteAdvancedTcpProtectionSynProtectionFiltersRequest {
 }
 
 export const BulkDeleteAdvancedTcpProtectionSynProtectionFiltersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters",
+      }),
+    ),
   ) as unknown as Schema.Schema<BulkDeleteAdvancedTcpProtectionSynProtectionFiltersRequest>;
 
 export interface BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse {
@@ -1530,61 +1582,63 @@ export interface BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse {
 }
 
 export const BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      errors: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+      messages: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    success: Schema.Literal(true),
-  }) as unknown as Schema.Schema<BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse>;
+      success: Schema.Literal(true),
+    }),
+  ) as unknown as Schema.Schema<BulkDeleteAdvancedTcpProtectionSynProtectionFiltersResponse>;
 
 export type BulkDeleteAdvancedTcpProtectionSynProtectionFiltersError =
   DefaultErrors;
@@ -1611,14 +1665,16 @@ export interface GetAdvancedTcpProtectionSynProtectionFilterItemRequest {
 }
 
 export const GetAdvancedTcpProtectionSynProtectionFilterItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    filterId: Schema.String.pipe(T.HttpPath("filterId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters/{filterId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      filterId: Schema.String.pipe(T.HttpPath("filterId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters/{filterId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<GetAdvancedTcpProtectionSynProtectionFilterItemRequest>;
 
 export interface GetAdvancedTcpProtectionSynProtectionFilterItemResponse {
@@ -1635,25 +1691,25 @@ export interface GetAdvancedTcpProtectionSynProtectionFilterItemResponse {
 }
 
 export const GetAdvancedTcpProtectionSynProtectionFilterItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    createdOn: Schema.String,
-    expression: Schema.String,
-    mode: Schema.String,
-    modifiedOn: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdOn: "created_on",
-        expression: "expression",
-        mode: "mode",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetAdvancedTcpProtectionSynProtectionFilterItemResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      expression: Schema.String,
+      mode: Schema.String,
+      modifiedOn: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          createdOn: "created_on",
+          expression: "expression",
+          mode: "mode",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetAdvancedTcpProtectionSynProtectionFilterItemResponse>;
 
 export type GetAdvancedTcpProtectionSynProtectionFilterItemError =
   | DefaultErrors
@@ -1687,16 +1743,18 @@ export interface PatchAdvancedTcpProtectionSynProtectionFilterItemRequest {
 }
 
 export const PatchAdvancedTcpProtectionSynProtectionFilterItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    filterId: Schema.String.pipe(T.HttpPath("filterId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    expression: Schema.optional(Schema.String),
-    mode: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters/{filterId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      filterId: Schema.String.pipe(T.HttpPath("filterId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      expression: Schema.optional(Schema.String),
+      mode: Schema.optional(Schema.String),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters/{filterId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionSynProtectionFilterItemRequest>;
 
 export interface PatchAdvancedTcpProtectionSynProtectionFilterItemResponse {
@@ -1713,25 +1771,25 @@ export interface PatchAdvancedTcpProtectionSynProtectionFilterItemResponse {
 }
 
 export const PatchAdvancedTcpProtectionSynProtectionFilterItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    createdOn: Schema.String,
-    expression: Schema.String,
-    mode: Schema.String,
-    modifiedOn: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdOn: "created_on",
-        expression: "expression",
-        mode: "mode",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionSynProtectionFilterItemResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      expression: Schema.String,
+      mode: Schema.String,
+      modifiedOn: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          createdOn: "created_on",
+          expression: "expression",
+          mode: "mode",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionSynProtectionFilterItemResponse>;
 
 export type PatchAdvancedTcpProtectionSynProtectionFilterItemError =
   | DefaultErrors
@@ -1761,14 +1819,16 @@ export interface DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest {
 }
 
 export const DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    filterId: Schema.String.pipe(T.HttpPath("filterId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters/{filterId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      filterId: Schema.String.pipe(T.HttpPath("filterId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/filters/{filterId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionSynProtectionFilterItemRequest>;
 
 export interface DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse {
@@ -1789,61 +1849,63 @@ export interface DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse {
 }
 
 export const DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      errors: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+      messages: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    success: Schema.Literal(true),
-  }) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse>;
+      success: Schema.Literal(true),
+    }),
+  ) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionSynProtectionFilterItemResponse>;
 
 export type DeleteAdvancedTcpProtectionSynProtectionFilterItemError =
   | DefaultErrors
@@ -1882,17 +1944,19 @@ export interface ListAdvancedTcpProtectionSynProtectionRulesRequest {
 }
 
 export const ListAdvancedTcpProtectionSynProtectionRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    direction: Schema.optional(Schema.String).pipe(T.HttpQuery("direction")),
-    order: Schema.optional(Schema.String).pipe(T.HttpQuery("order")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+      direction: Schema.optional(Schema.String).pipe(T.HttpQuery("direction")),
+      order: Schema.optional(Schema.String).pipe(T.HttpQuery("order")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules",
+      }),
+    ),
   ) as unknown as Schema.Schema<ListAdvancedTcpProtectionSynProtectionRulesRequest>;
 
 export interface ListAdvancedTcpProtectionSynProtectionRulesResponse {
@@ -1916,54 +1980,56 @@ export interface ListAdvancedTcpProtectionSynProtectionRulesResponse {
 }
 
 export const ListAdvancedTcpProtectionSynProtectionRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        burstSensitivity: Schema.String,
-        createdOn: Schema.String,
-        mitigationType: Schema.String,
-        mode: Schema.String,
-        modifiedOn: Schema.String,
-        name: Schema.String,
-        rateSensitivity: Schema.String,
-        scope: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          burstSensitivity: "burst_sensitivity",
-          createdOn: "created_on",
-          mitigationType: "mitigation_type",
-          mode: "mode",
-          modifiedOn: "modified_on",
-          name: "name",
-          rateSensitivity: "rate_sensitivity",
-          scope: "scope",
-        }),
-      ),
-    ),
-    resultInfo: Schema.optional(
-      Schema.Union([
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
         Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
+          id: Schema.String,
+          burstSensitivity: Schema.String,
+          createdOn: Schema.String,
+          mitigationType: Schema.String,
+          mode: Schema.String,
+          modifiedOn: Schema.String,
+          name: Schema.String,
+          rateSensitivity: Schema.String,
+          scope: Schema.String,
         }).pipe(
           Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
+            id: "id",
+            burstSensitivity: "burst_sensitivity",
+            createdOn: "created_on",
+            mitigationType: "mitigation_type",
+            mode: "mode",
+            modifiedOn: "modified_on",
+            name: "name",
+            rateSensitivity: "rate_sensitivity",
+            scope: "scope",
           }),
         ),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+      ),
+      resultInfo: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            perPage: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            totalCount: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              count: "count",
+              page: "page",
+              perPage: "per_page",
+              totalCount: "total_count",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
   ) as unknown as Schema.Schema<ListAdvancedTcpProtectionSynProtectionRulesResponse>;
 
 export type ListAdvancedTcpProtectionSynProtectionRulesError =
@@ -2007,27 +2073,29 @@ export interface CreateAdvancedTcpProtectionSynProtectionRuleRequest {
 }
 
 export const CreateAdvancedTcpProtectionSynProtectionRuleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    burstSensitivity: Schema.String,
-    mode: Schema.String,
-    name: Schema.String,
-    rateSensitivity: Schema.String,
-    scope: Schema.String,
-    mitigationType: Schema.optional(Schema.String),
-  }).pipe(
-    Schema.encodeKeys({
-      burstSensitivity: "burst_sensitivity",
-      mode: "mode",
-      name: "name",
-      rateSensitivity: "rate_sensitivity",
-      scope: "scope",
-      mitigationType: "mitigation_type",
-    }),
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      burstSensitivity: Schema.String,
+      mode: Schema.String,
+      name: Schema.String,
+      rateSensitivity: Schema.String,
+      scope: Schema.String,
+      mitigationType: Schema.optional(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        burstSensitivity: "burst_sensitivity",
+        mode: "mode",
+        name: "name",
+        rateSensitivity: "rate_sensitivity",
+        scope: "scope",
+        mitigationType: "mitigation_type",
+      }),
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules",
+      }),
+    ),
   ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionSynProtectionRuleRequest>;
 
 export interface CreateAdvancedTcpProtectionSynProtectionRuleResponse {
@@ -2052,33 +2120,33 @@ export interface CreateAdvancedTcpProtectionSynProtectionRuleResponse {
 }
 
 export const CreateAdvancedTcpProtectionSynProtectionRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    burstSensitivity: Schema.String,
-    createdOn: Schema.String,
-    mitigationType: Schema.String,
-    mode: Schema.String,
-    modifiedOn: Schema.String,
-    name: Schema.String,
-    rateSensitivity: Schema.String,
-    scope: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        burstSensitivity: "burst_sensitivity",
-        createdOn: "created_on",
-        mitigationType: "mitigation_type",
-        mode: "mode",
-        modifiedOn: "modified_on",
-        name: "name",
-        rateSensitivity: "rate_sensitivity",
-        scope: "scope",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionSynProtectionRuleResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      burstSensitivity: Schema.String,
+      createdOn: Schema.String,
+      mitigationType: Schema.String,
+      mode: Schema.String,
+      modifiedOn: Schema.String,
+      name: Schema.String,
+      rateSensitivity: Schema.String,
+      scope: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          burstSensitivity: "burst_sensitivity",
+          createdOn: "created_on",
+          mitigationType: "mitigation_type",
+          mode: "mode",
+          modifiedOn: "modified_on",
+          name: "name",
+          rateSensitivity: "rate_sensitivity",
+          scope: "scope",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionSynProtectionRuleResponse>;
 
 export type CreateAdvancedTcpProtectionSynProtectionRuleError =
   | DefaultErrors
@@ -2102,13 +2170,15 @@ export interface BulkDeleteAdvancedTcpProtectionSynProtectionRulesRequest {
 }
 
 export const BulkDeleteAdvancedTcpProtectionSynProtectionRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules",
+      }),
+    ),
   ) as unknown as Schema.Schema<BulkDeleteAdvancedTcpProtectionSynProtectionRulesRequest>;
 
 export interface BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse {
@@ -2129,61 +2199,63 @@ export interface BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse {
 }
 
 export const BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      errors: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+      messages: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    success: Schema.Literal(true),
-  }) as unknown as Schema.Schema<BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse>;
+      success: Schema.Literal(true),
+    }),
+  ) as unknown as Schema.Schema<BulkDeleteAdvancedTcpProtectionSynProtectionRulesResponse>;
 
 export type BulkDeleteAdvancedTcpProtectionSynProtectionRulesError =
   DefaultErrors;
@@ -2210,14 +2282,16 @@ export interface GetAdvancedTcpProtectionSynProtectionRuleItemRequest {
 }
 
 export const GetAdvancedTcpProtectionSynProtectionRuleItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules/{ruleId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules/{ruleId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<GetAdvancedTcpProtectionSynProtectionRuleItemRequest>;
 
 export interface GetAdvancedTcpProtectionSynProtectionRuleItemResponse {
@@ -2242,33 +2316,33 @@ export interface GetAdvancedTcpProtectionSynProtectionRuleItemResponse {
 }
 
 export const GetAdvancedTcpProtectionSynProtectionRuleItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    burstSensitivity: Schema.String,
-    createdOn: Schema.String,
-    mitigationType: Schema.String,
-    mode: Schema.String,
-    modifiedOn: Schema.String,
-    name: Schema.String,
-    rateSensitivity: Schema.String,
-    scope: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        burstSensitivity: "burst_sensitivity",
-        createdOn: "created_on",
-        mitigationType: "mitigation_type",
-        mode: "mode",
-        modifiedOn: "modified_on",
-        name: "name",
-        rateSensitivity: "rate_sensitivity",
-        scope: "scope",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetAdvancedTcpProtectionSynProtectionRuleItemResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      burstSensitivity: Schema.String,
+      createdOn: Schema.String,
+      mitigationType: Schema.String,
+      mode: Schema.String,
+      modifiedOn: Schema.String,
+      name: Schema.String,
+      rateSensitivity: Schema.String,
+      scope: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          burstSensitivity: "burst_sensitivity",
+          createdOn: "created_on",
+          mitigationType: "mitigation_type",
+          mode: "mode",
+          modifiedOn: "modified_on",
+          name: "name",
+          rateSensitivity: "rate_sensitivity",
+          scope: "scope",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetAdvancedTcpProtectionSynProtectionRuleItemResponse>;
 
 export type GetAdvancedTcpProtectionSynProtectionRuleItemError =
   | DefaultErrors
@@ -2306,24 +2380,26 @@ export interface PatchAdvancedTcpProtectionSynProtectionRuleItemRequest {
 }
 
 export const PatchAdvancedTcpProtectionSynProtectionRuleItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    burstSensitivity: Schema.optional(Schema.String),
-    mitigationType: Schema.optional(Schema.String),
-    mode: Schema.optional(Schema.String),
-    rateSensitivity: Schema.optional(Schema.String),
-  }).pipe(
-    Schema.encodeKeys({
-      burstSensitivity: "burst_sensitivity",
-      mitigationType: "mitigation_type",
-      mode: "mode",
-      rateSensitivity: "rate_sensitivity",
-    }),
-    T.Http({
-      method: "PATCH",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules/{ruleId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      burstSensitivity: Schema.optional(Schema.String),
+      mitigationType: Schema.optional(Schema.String),
+      mode: Schema.optional(Schema.String),
+      rateSensitivity: Schema.optional(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        burstSensitivity: "burst_sensitivity",
+        mitigationType: "mitigation_type",
+        mode: "mode",
+        rateSensitivity: "rate_sensitivity",
+      }),
+      T.Http({
+        method: "PATCH",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules/{ruleId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionSynProtectionRuleItemRequest>;
 
 export interface PatchAdvancedTcpProtectionSynProtectionRuleItemResponse {
@@ -2348,33 +2424,33 @@ export interface PatchAdvancedTcpProtectionSynProtectionRuleItemResponse {
 }
 
 export const PatchAdvancedTcpProtectionSynProtectionRuleItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    burstSensitivity: Schema.String,
-    createdOn: Schema.String,
-    mitigationType: Schema.String,
-    mode: Schema.String,
-    modifiedOn: Schema.String,
-    name: Schema.String,
-    rateSensitivity: Schema.String,
-    scope: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        burstSensitivity: "burst_sensitivity",
-        createdOn: "created_on",
-        mitigationType: "mitigation_type",
-        mode: "mode",
-        modifiedOn: "modified_on",
-        name: "name",
-        rateSensitivity: "rate_sensitivity",
-        scope: "scope",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionSynProtectionRuleItemResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      burstSensitivity: Schema.String,
+      createdOn: Schema.String,
+      mitigationType: Schema.String,
+      mode: Schema.String,
+      modifiedOn: Schema.String,
+      name: Schema.String,
+      rateSensitivity: Schema.String,
+      scope: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          burstSensitivity: "burst_sensitivity",
+          createdOn: "created_on",
+          mitigationType: "mitigation_type",
+          mode: "mode",
+          modifiedOn: "modified_on",
+          name: "name",
+          rateSensitivity: "rate_sensitivity",
+          scope: "scope",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionSynProtectionRuleItemResponse>;
 
 export type PatchAdvancedTcpProtectionSynProtectionRuleItemError =
   | DefaultErrors
@@ -2404,14 +2480,16 @@ export interface DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest {
 }
 
 export const DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules/{ruleId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/syn_protection/rules/{ruleId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionSynProtectionRuleItemRequest>;
 
 export interface DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse {
@@ -2432,61 +2510,63 @@ export interface DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse {
 }
 
 export const DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      errors: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+      messages: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    success: Schema.Literal(true),
-  }) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse>;
+      success: Schema.Literal(true),
+    }),
+  ) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionSynProtectionRuleItemResponse>;
 
 export type DeleteAdvancedTcpProtectionSynProtectionRuleItemError =
   | DefaultErrors
@@ -2527,18 +2607,20 @@ export interface ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest {
 }
 
 export const ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    direction: Schema.optional(Schema.String).pipe(T.HttpQuery("direction")),
-    mode: Schema.optional(Schema.String).pipe(T.HttpQuery("mode")),
-    order: Schema.optional(Schema.String).pipe(T.HttpQuery("order")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+      direction: Schema.optional(Schema.String).pipe(T.HttpQuery("direction")),
+      mode: Schema.optional(Schema.String).pipe(T.HttpQuery("mode")),
+      order: Schema.optional(Schema.String).pipe(T.HttpQuery("order")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters",
+      }),
+    ),
   ) as unknown as Schema.Schema<ListAdvancedTcpProtectionTcpFlowProtectionFiltersRequest>;
 
 export interface ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse {
@@ -2558,46 +2640,48 @@ export interface ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse {
 }
 
 export const ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        createdOn: Schema.String,
-        expression: Schema.String,
-        mode: Schema.String,
-        modifiedOn: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdOn: "created_on",
-          expression: "expression",
-          mode: "mode",
-          modifiedOn: "modified_on",
-        }),
-      ),
-    ),
-    resultInfo: Schema.optional(
-      Schema.Union([
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
         Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
+          id: Schema.String,
+          createdOn: Schema.String,
+          expression: Schema.String,
+          mode: Schema.String,
+          modifiedOn: Schema.String,
         }).pipe(
           Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
+            id: "id",
+            createdOn: "created_on",
+            expression: "expression",
+            mode: "mode",
+            modifiedOn: "modified_on",
           }),
         ),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+      ),
+      resultInfo: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            perPage: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            totalCount: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              count: "count",
+              page: "page",
+              perPage: "per_page",
+              totalCount: "total_count",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
   ) as unknown as Schema.Schema<ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse>;
 
 export type ListAdvancedTcpProtectionTcpFlowProtectionFiltersError =
@@ -2633,15 +2717,17 @@ export interface CreateAdvancedTcpProtectionTcpFlowProtectionFilterRequest {
 }
 
 export const CreateAdvancedTcpProtectionTcpFlowProtectionFilterRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    expression: Schema.String,
-    mode: Schema.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      expression: Schema.String,
+      mode: Schema.String,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters",
+      }),
+    ),
   ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionTcpFlowProtectionFilterRequest>;
 
 export interface CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse {
@@ -2658,25 +2744,25 @@ export interface CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse {
 }
 
 export const CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    createdOn: Schema.String,
-    expression: Schema.String,
-    mode: Schema.String,
-    modifiedOn: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdOn: "created_on",
-        expression: "expression",
-        mode: "mode",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      expression: Schema.String,
+      mode: Schema.String,
+      modifiedOn: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          createdOn: "created_on",
+          expression: "expression",
+          mode: "mode",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionTcpFlowProtectionFilterResponse>;
 
 export type CreateAdvancedTcpProtectionTcpFlowProtectionFilterError =
   | DefaultErrors
@@ -2700,13 +2786,15 @@ export interface BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersRequest 
 }
 
 export const BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters",
+      }),
+    ),
   ) as unknown as Schema.Schema<BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersRequest>;
 
 export interface BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse {
@@ -2727,61 +2815,63 @@ export interface BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse
 }
 
 export const BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      errors: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+      messages: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    success: Schema.Literal(true),
-  }) as unknown as Schema.Schema<BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse>;
+      success: Schema.Literal(true),
+    }),
+  ) as unknown as Schema.Schema<BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersResponse>;
 
 export type BulkDeleteAdvancedTcpProtectionTcpFlowProtectionFiltersError =
   DefaultErrors;
@@ -2808,14 +2898,16 @@ export interface GetAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest {
 }
 
 export const GetAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    filterId: Schema.String.pipe(T.HttpPath("filterId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters/{filterId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      filterId: Schema.String.pipe(T.HttpPath("filterId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters/{filterId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<GetAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest>;
 
 export interface GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse {
@@ -2832,25 +2924,25 @@ export interface GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse {
 }
 
 export const GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    createdOn: Schema.String,
-    expression: Schema.String,
-    mode: Schema.String,
-    modifiedOn: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdOn: "created_on",
-        expression: "expression",
-        mode: "mode",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      expression: Schema.String,
+      mode: Schema.String,
+      modifiedOn: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          createdOn: "created_on",
+          expression: "expression",
+          mode: "mode",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse>;
 
 export type GetAdvancedTcpProtectionTcpFlowProtectionFilterItemError =
   | DefaultErrors
@@ -2884,16 +2976,18 @@ export interface PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest {
 }
 
 export const PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    filterId: Schema.String.pipe(T.HttpPath("filterId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    expression: Schema.optional(Schema.String),
-    mode: Schema.optional(Schema.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters/{filterId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      filterId: Schema.String.pipe(T.HttpPath("filterId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      expression: Schema.optional(Schema.String),
+      mode: Schema.optional(Schema.String),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters/{filterId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest>;
 
 export interface PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse {
@@ -2910,25 +3004,25 @@ export interface PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse {
 }
 
 export const PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    createdOn: Schema.String,
-    expression: Schema.String,
-    mode: Schema.String,
-    modifiedOn: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdOn: "created_on",
-        expression: "expression",
-        mode: "mode",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdOn: Schema.String,
+      expression: Schema.String,
+      mode: Schema.String,
+      modifiedOn: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          createdOn: "created_on",
+          expression: "expression",
+          mode: "mode",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse>;
 
 export type PatchAdvancedTcpProtectionTcpFlowProtectionFilterItemError =
   | DefaultErrors
@@ -2958,14 +3052,16 @@ export interface DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest {
 }
 
 export const DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    filterId: Schema.String.pipe(T.HttpPath("filterId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters/{filterId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      filterId: Schema.String.pipe(T.HttpPath("filterId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/filters/{filterId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemRequest>;
 
 export interface DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse {
@@ -2986,61 +3082,63 @@ export interface DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse 
 }
 
 export const DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      errors: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+      messages: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    success: Schema.Literal(true),
-  }) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse>;
+      success: Schema.Literal(true),
+    }),
+  ) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemResponse>;
 
 export type DeleteAdvancedTcpProtectionTcpFlowProtectionFilterItemError =
   | DefaultErrors
@@ -3079,17 +3177,19 @@ export interface ListAdvancedTcpProtectionTcpFlowProtectionRulesRequest {
 }
 
 export const ListAdvancedTcpProtectionTcpFlowProtectionRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    direction: Schema.optional(Schema.String).pipe(T.HttpQuery("direction")),
-    order: Schema.optional(Schema.String).pipe(T.HttpQuery("order")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+      direction: Schema.optional(Schema.String).pipe(T.HttpQuery("direction")),
+      order: Schema.optional(Schema.String).pipe(T.HttpQuery("order")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules",
+      }),
+    ),
   ) as unknown as Schema.Schema<ListAdvancedTcpProtectionTcpFlowProtectionRulesRequest>;
 
 export interface ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse {
@@ -3112,52 +3212,54 @@ export interface ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse {
 }
 
 export const ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        burstSensitivity: Schema.String,
-        createdOn: Schema.String,
-        mode: Schema.String,
-        modifiedOn: Schema.String,
-        name: Schema.String,
-        rateSensitivity: Schema.String,
-        scope: Schema.String,
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          burstSensitivity: "burst_sensitivity",
-          createdOn: "created_on",
-          mode: "mode",
-          modifiedOn: "modified_on",
-          name: "name",
-          rateSensitivity: "rate_sensitivity",
-          scope: "scope",
-        }),
-      ),
-    ),
-    resultInfo: Schema.optional(
-      Schema.Union([
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
         Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
-          ),
+          id: Schema.String,
+          burstSensitivity: Schema.String,
+          createdOn: Schema.String,
+          mode: Schema.String,
+          modifiedOn: Schema.String,
+          name: Schema.String,
+          rateSensitivity: Schema.String,
+          scope: Schema.String,
         }).pipe(
           Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
+            id: "id",
+            burstSensitivity: "burst_sensitivity",
+            createdOn: "created_on",
+            mode: "mode",
+            modifiedOn: "modified_on",
+            name: "name",
+            rateSensitivity: "rate_sensitivity",
+            scope: "scope",
           }),
         ),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+      ),
+      resultInfo: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            perPage: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            totalCount: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              count: "count",
+              page: "page",
+              perPage: "per_page",
+              totalCount: "total_count",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
   ) as unknown as Schema.Schema<ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse>;
 
 export type ListAdvancedTcpProtectionTcpFlowProtectionRulesError =
@@ -3199,25 +3301,27 @@ export interface CreateAdvancedTcpProtectionTcpFlowProtectionRuleRequest {
 }
 
 export const CreateAdvancedTcpProtectionTcpFlowProtectionRuleRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    burstSensitivity: Schema.String,
-    mode: Schema.String,
-    name: Schema.String,
-    rateSensitivity: Schema.String,
-    scope: Schema.String,
-  }).pipe(
-    Schema.encodeKeys({
-      burstSensitivity: "burst_sensitivity",
-      mode: "mode",
-      name: "name",
-      rateSensitivity: "rate_sensitivity",
-      scope: "scope",
-    }),
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      burstSensitivity: Schema.String,
+      mode: Schema.String,
+      name: Schema.String,
+      rateSensitivity: Schema.String,
+      scope: Schema.String,
+    }).pipe(
+      Schema.encodeKeys({
+        burstSensitivity: "burst_sensitivity",
+        mode: "mode",
+        name: "name",
+        rateSensitivity: "rate_sensitivity",
+        scope: "scope",
+      }),
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules",
+      }),
+    ),
   ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionTcpFlowProtectionRuleRequest>;
 
 export interface CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse {
@@ -3240,31 +3344,31 @@ export interface CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse {
 }
 
 export const CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    burstSensitivity: Schema.String,
-    createdOn: Schema.String,
-    mode: Schema.String,
-    modifiedOn: Schema.String,
-    name: Schema.String,
-    rateSensitivity: Schema.String,
-    scope: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        burstSensitivity: "burst_sensitivity",
-        createdOn: "created_on",
-        mode: "mode",
-        modifiedOn: "modified_on",
-        name: "name",
-        rateSensitivity: "rate_sensitivity",
-        scope: "scope",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      burstSensitivity: Schema.String,
+      createdOn: Schema.String,
+      mode: Schema.String,
+      modifiedOn: Schema.String,
+      name: Schema.String,
+      rateSensitivity: Schema.String,
+      scope: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          burstSensitivity: "burst_sensitivity",
+          createdOn: "created_on",
+          mode: "mode",
+          modifiedOn: "modified_on",
+          name: "name",
+          rateSensitivity: "rate_sensitivity",
+          scope: "scope",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<CreateAdvancedTcpProtectionTcpFlowProtectionRuleResponse>;
 
 export type CreateAdvancedTcpProtectionTcpFlowProtectionRuleError =
   | DefaultErrors
@@ -3288,13 +3392,15 @@ export interface BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesRequest {
 }
 
 export const BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules",
+      }),
+    ),
   ) as unknown as Schema.Schema<BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesRequest>;
 
 export interface BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse {
@@ -3315,61 +3421,63 @@ export interface BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse {
 }
 
 export const BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      errors: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+      messages: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    success: Schema.Literal(true),
-  }) as unknown as Schema.Schema<BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse>;
+      success: Schema.Literal(true),
+    }),
+  ) as unknown as Schema.Schema<BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesResponse>;
 
 export type BulkDeleteAdvancedTcpProtectionTcpFlowProtectionRulesError =
   DefaultErrors;
@@ -3396,14 +3504,16 @@ export interface GetAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest {
 }
 
 export const GetAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules/{ruleId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules/{ruleId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<GetAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest>;
 
 export interface GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse {
@@ -3426,31 +3536,31 @@ export interface GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse {
 }
 
 export const GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    burstSensitivity: Schema.String,
-    createdOn: Schema.String,
-    mode: Schema.String,
-    modifiedOn: Schema.String,
-    name: Schema.String,
-    rateSensitivity: Schema.String,
-    scope: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        burstSensitivity: "burst_sensitivity",
-        createdOn: "created_on",
-        mode: "mode",
-        modifiedOn: "modified_on",
-        name: "name",
-        rateSensitivity: "rate_sensitivity",
-        scope: "scope",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      burstSensitivity: Schema.String,
+      createdOn: Schema.String,
+      mode: Schema.String,
+      modifiedOn: Schema.String,
+      name: Schema.String,
+      rateSensitivity: Schema.String,
+      scope: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          burstSensitivity: "burst_sensitivity",
+          createdOn: "created_on",
+          mode: "mode",
+          modifiedOn: "modified_on",
+          name: "name",
+          rateSensitivity: "rate_sensitivity",
+          scope: "scope",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse>;
 
 export type GetAdvancedTcpProtectionTcpFlowProtectionRuleItemError =
   | DefaultErrors
@@ -3486,22 +3596,24 @@ export interface PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest {
 }
 
 export const PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    burstSensitivity: Schema.optional(Schema.String),
-    mode: Schema.optional(Schema.String),
-    rateSensitivity: Schema.optional(Schema.String),
-  }).pipe(
-    Schema.encodeKeys({
-      burstSensitivity: "burst_sensitivity",
-      mode: "mode",
-      rateSensitivity: "rate_sensitivity",
-    }),
-    T.Http({
-      method: "PATCH",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules/{ruleId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      burstSensitivity: Schema.optional(Schema.String),
+      mode: Schema.optional(Schema.String),
+      rateSensitivity: Schema.optional(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        burstSensitivity: "burst_sensitivity",
+        mode: "mode",
+        rateSensitivity: "rate_sensitivity",
+      }),
+      T.Http({
+        method: "PATCH",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules/{ruleId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest>;
 
 export interface PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse {
@@ -3524,31 +3636,31 @@ export interface PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse {
 }
 
 export const PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    burstSensitivity: Schema.String,
-    createdOn: Schema.String,
-    mode: Schema.String,
-    modifiedOn: Schema.String,
-    name: Schema.String,
-    rateSensitivity: Schema.String,
-    scope: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        burstSensitivity: "burst_sensitivity",
-        createdOn: "created_on",
-        mode: "mode",
-        modifiedOn: "modified_on",
-        name: "name",
-        rateSensitivity: "rate_sensitivity",
-        scope: "scope",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      burstSensitivity: Schema.String,
+      createdOn: Schema.String,
+      mode: Schema.String,
+      modifiedOn: Schema.String,
+      name: Schema.String,
+      rateSensitivity: Schema.String,
+      scope: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          burstSensitivity: "burst_sensitivity",
+          createdOn: "created_on",
+          mode: "mode",
+          modifiedOn: "modified_on",
+          name: "name",
+          rateSensitivity: "rate_sensitivity",
+          scope: "scope",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse>;
 
 export type PatchAdvancedTcpProtectionTcpFlowProtectionRuleItemError =
   | DefaultErrors
@@ -3578,14 +3690,16 @@ export interface DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest {
 }
 
 export const DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules/{ruleId}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      ruleId: Schema.String.pipe(T.HttpPath("ruleId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/magic/advanced_tcp_protection/configs/tcp_flow_protection/rules/{ruleId}",
+      }),
+    ),
   ) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemRequest>;
 
 export interface DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse {
@@ -3606,61 +3720,63 @@ export interface DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse {
 }
 
 export const DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      errors: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+      messages: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    success: Schema.Literal(true),
-  }) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse>;
+      success: Schema.Literal(true),
+    }),
+  ) as unknown as Schema.Schema<DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemResponse>;
 
 export type DeleteAdvancedTcpProtectionTcpFlowProtectionRuleItemError =
   | DefaultErrors

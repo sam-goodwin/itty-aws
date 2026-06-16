@@ -64,44 +64,48 @@ export interface PurgeCacheRequest {
   files?: string[] | { headers?: Record<string, unknown>; url?: string }[];
 }
 
-export const PurgeCacheRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  tags: Schema.optional(Schema.Array(Schema.String)),
-  hosts: Schema.optional(Schema.Array(Schema.String)),
-  prefixes: Schema.optional(Schema.Array(Schema.String)),
-  purgeEverything: Schema.optional(Schema.Boolean),
-  files: Schema.optional(
-    Schema.Union([
-      Schema.Array(Schema.String),
-      Schema.Array(
-        Schema.Struct({
-          headers: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
+export const PurgeCacheRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      tags: Schema.optional(Schema.Array(Schema.String)),
+      hosts: Schema.optional(Schema.Array(Schema.String)),
+      prefixes: Schema.optional(Schema.Array(Schema.String)),
+      purgeEverything: Schema.optional(Schema.Boolean),
+      files: Schema.optional(
+        Schema.Union([
+          Schema.Array(Schema.String),
+          Schema.Array(
+            Schema.Struct({
+              headers: Schema.optional(
+                Schema.Record(Schema.String, Schema.Unknown),
+              ),
+              url: Schema.optional(Schema.String),
+            }),
           ),
-          url: Schema.optional(Schema.String),
-        }),
+        ]),
       ),
-    ]),
-  ),
-}).pipe(
-  Schema.encodeKeys({
-    tags: "tags",
-    hosts: "hosts",
-    prefixes: "prefixes",
-    purgeEverything: "purge_everything",
-    files: "files",
-  }),
-  T.Http({ method: "POST", path: "/zones/{zone_id}/purge_cache" }),
+    }).pipe(
+      Schema.encodeKeys({
+        tags: "tags",
+        hosts: "hosts",
+        prefixes: "prefixes",
+        purgeEverything: "purge_everything",
+        files: "files",
+      }),
+      T.Http({ method: "POST", path: "/zones/{zone_id}/purge_cache" }),
+    ),
 ) as unknown as Schema.Schema<PurgeCacheRequest>;
 
 export interface PurgeCacheResponse {
   id: string;
 }
 
-export const PurgeCacheResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
-}).pipe(
-  T.ResponsePath("result"),
+export const PurgeCacheResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.String,
+    }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Schema<PurgeCacheResponse>;
 
 export type PurgeCacheError = DefaultErrors;
@@ -126,13 +130,14 @@ export interface GetCacheReserveRequest {
   zoneId: string;
 }
 
-export const GetCacheReserveRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  },
-).pipe(
-  T.Http({ method: "GET", path: "/zones/{zone_id}/cache/cache_reserve" }),
-) as unknown as Schema.Schema<GetCacheReserveRequest>;
+export const GetCacheReserveRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(
+      T.Http({ method: "GET", path: "/zones/{zone_id}/cache/cache_reserve" }),
+    ),
+  ) as unknown as Schema.Schema<GetCacheReserveRequest>;
 
 export interface GetCacheReserveResponse {
   /** The identifier of the caching setting. */
@@ -146,23 +151,23 @@ export interface GetCacheReserveResponse {
 }
 
 export const GetCacheReserveResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("cache_reserve"),
-    editable: Schema.Boolean,
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetCacheReserveResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("cache_reserve"),
+      editable: Schema.Boolean,
+      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          editable: "editable",
+          value: "value",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetCacheReserveResponse>;
 
 export type GetCacheReserveError =
   | DefaultErrors
@@ -188,11 +193,13 @@ export interface PatchCacheReserveRequest {
 }
 
 export const PatchCacheReserveRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-  }).pipe(
-    T.Http({ method: "PATCH", path: "/zones/{zone_id}/cache/cache_reserve" }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+    }).pipe(
+      T.Http({ method: "PATCH", path: "/zones/{zone_id}/cache/cache_reserve" }),
+    ),
   ) as unknown as Schema.Schema<PatchCacheReserveRequest>;
 
 export interface PatchCacheReserveResponse {
@@ -207,23 +214,23 @@ export interface PatchCacheReserveResponse {
 }
 
 export const PatchCacheReserveResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("cache_reserve"),
-    editable: Schema.Boolean,
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchCacheReserveResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("cache_reserve"),
+      editable: Schema.Boolean,
+      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          editable: "editable",
+          value: "value",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<PatchCacheReserveResponse>;
 
 export type PatchCacheReserveError =
   | DefaultErrors
@@ -247,13 +254,15 @@ export interface StatusCacheReserveRequest {
 }
 
 export const StatusCacheReserveRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/zones/{zone_id}/cache/cache_reserve_clear",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/zones/{zone_id}/cache/cache_reserve_clear",
+      }),
+    ),
   ) as unknown as Schema.Schema<StatusCacheReserveRequest>;
 
 export interface StatusCacheReserveResponse {
@@ -270,28 +279,28 @@ export interface StatusCacheReserveResponse {
 }
 
 export const StatusCacheReserveResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("cache_reserve_clear"),
-    startTs: Schema.String,
-    state: Schema.Union([
-      Schema.Literals(["In-progress", "Completed"]),
-      Schema.String,
-    ]),
-    endTs: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        startTs: "start_ts",
-        state: "state",
-        endTs: "end_ts",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<StatusCacheReserveResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("cache_reserve_clear"),
+      startTs: Schema.String,
+      state: Schema.Union([
+        Schema.Literals(["In-progress", "Completed"]),
+        Schema.String,
+      ]),
+      endTs: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          startTs: "start_ts",
+          state: "state",
+          endTs: "end_ts",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<StatusCacheReserveResponse>;
 
 export type StatusCacheReserveError = DefaultErrors;
 
@@ -314,14 +323,16 @@ export interface ClearCacheReserveRequest {
 }
 
 export const ClearCacheReserveRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    body: Schema.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/zones/{zone_id}/cache/cache_reserve_clear",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      body: Schema.Unknown.pipe(T.HttpBody()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/zones/{zone_id}/cache/cache_reserve_clear",
+      }),
+    ),
   ) as unknown as Schema.Schema<ClearCacheReserveRequest>;
 
 export interface ClearCacheReserveResponse {
@@ -338,28 +349,28 @@ export interface ClearCacheReserveResponse {
 }
 
 export const ClearCacheReserveResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("cache_reserve_clear"),
-    startTs: Schema.String,
-    state: Schema.Union([
-      Schema.Literals(["In-progress", "Completed"]),
-      Schema.String,
-    ]),
-    endTs: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        startTs: "start_ts",
-        state: "state",
-        endTs: "end_ts",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<ClearCacheReserveResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("cache_reserve_clear"),
+      startTs: Schema.String,
+      state: Schema.Union([
+        Schema.Literals(["In-progress", "Completed"]),
+        Schema.String,
+      ]),
+      endTs: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          startTs: "start_ts",
+          state: "state",
+          endTs: "end_ts",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<ClearCacheReserveResponse>;
 
 export type ClearCacheReserveError = DefaultErrors;
 
@@ -395,38 +406,40 @@ export interface PurgeEnvironmentCacheRequest {
 }
 
 export const PurgeEnvironmentCacheRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    environmentId: Schema.String.pipe(T.HttpPath("environmentId")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    tags: Schema.optional(Schema.Array(Schema.String)),
-    hosts: Schema.optional(Schema.Array(Schema.String)),
-    prefixes: Schema.optional(Schema.Array(Schema.String)),
-    purgeEverything: Schema.optional(Schema.Boolean),
-    files: Schema.optional(
-      Schema.Union([
-        Schema.Array(Schema.String),
-        Schema.Array(
-          Schema.Struct({
-            headers: Schema.optional(
-              Schema.Record(Schema.String, Schema.Unknown),
-            ),
-            url: Schema.optional(Schema.String),
-          }),
-        ),
-      ]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      environmentId: Schema.String.pipe(T.HttpPath("environmentId")),
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      tags: Schema.optional(Schema.Array(Schema.String)),
+      hosts: Schema.optional(Schema.Array(Schema.String)),
+      prefixes: Schema.optional(Schema.Array(Schema.String)),
+      purgeEverything: Schema.optional(Schema.Boolean),
+      files: Schema.optional(
+        Schema.Union([
+          Schema.Array(Schema.String),
+          Schema.Array(
+            Schema.Struct({
+              headers: Schema.optional(
+                Schema.Record(Schema.String, Schema.Unknown),
+              ),
+              url: Schema.optional(Schema.String),
+            }),
+          ),
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        tags: "tags",
+        hosts: "hosts",
+        prefixes: "prefixes",
+        purgeEverything: "purge_everything",
+        files: "files",
+      }),
+      T.Http({
+        method: "POST",
+        path: "/zones/{zone_id}/environments/{environmentId}/purge_cache",
+      }),
     ),
-  }).pipe(
-    Schema.encodeKeys({
-      tags: "tags",
-      hosts: "hosts",
-      prefixes: "prefixes",
-      purgeEverything: "purge_everything",
-      files: "files",
-    }),
-    T.Http({
-      method: "POST",
-      path: "/zones/{zone_id}/environments/{environmentId}/purge_cache",
-    }),
   ) as unknown as Schema.Schema<PurgeEnvironmentCacheRequest>;
 
 export interface PurgeEnvironmentCacheResponse {
@@ -434,10 +447,10 @@ export interface PurgeEnvironmentCacheResponse {
 }
 
 export const PurgeEnvironmentCacheResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-  }).pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+    }).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<PurgeEnvironmentCacheResponse>;
 
 export type PurgeEnvironmentCacheError = DefaultErrors;
@@ -464,14 +477,16 @@ export interface GetOriginCloudRegionRequest {
 }
 
 export const GetOriginCloudRegionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    originIP: Schema.String.pipe(T.HttpPath("originIP")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/zones/{zone_id}/origin/cloud_regions/{originIP}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      originIP: Schema.String.pipe(T.HttpPath("originIP")),
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/zones/{zone_id}/origin/cloud_regions/{originIP}",
+      }),
+    ),
   ) as unknown as Schema.Schema<GetOriginCloudRegionRequest>;
 
 export interface GetOriginCloudRegionResponse {
@@ -486,26 +501,26 @@ export interface GetOriginCloudRegionResponse {
 }
 
 export const GetOriginCloudRegionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    originIp: Schema.String,
-    region: Schema.String,
-    vendor: Schema.Union([
-      Schema.Literals(["aws", "azure", "gcp", "oci"]),
-      Schema.String,
-    ]),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        originIp: "origin_ip",
-        region: "region",
-        vendor: "vendor",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetOriginCloudRegionResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      originIp: Schema.String,
+      region: Schema.String,
+      vendor: Schema.Union([
+        Schema.Literals(["aws", "azure", "gcp", "oci"]),
+        Schema.String,
+      ]),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          originIp: "origin_ip",
+          region: "region",
+          vendor: "vendor",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetOriginCloudRegionResponse>;
 
 export type GetOriginCloudRegionError =
   | DefaultErrors
@@ -531,12 +546,14 @@ export interface ListOriginCloudRegionsRequest {
 }
 
 export const ListOriginCloudRegionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  }).pipe(
-    T.Http({ method: "GET", path: "/zones/{zone_id}/origin/cloud_regions" }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    }).pipe(
+      T.Http({ method: "GET", path: "/zones/{zone_id}/origin/cloud_regions" }),
+    ),
   ) as unknown as Schema.Schema<ListOriginCloudRegionsRequest>;
 
 export interface ListOriginCloudRegionsResponse {
@@ -555,47 +572,51 @@ export interface ListOriginCloudRegionsResponse {
 }
 
 export const ListOriginCloudRegionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        originIp: Schema.String,
-        region: Schema.String,
-        vendor: Schema.Union([
-          Schema.Literals(["aws", "azure", "gcp", "oci"]),
-          Schema.String,
-        ]),
-        modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          originIp: "origin_ip",
-          region: "region",
-          vendor: "vendor",
-          modifiedOn: "modified_on",
-        }),
-      ),
-    ),
-    resultInfo: Schema.optional(
-      Schema.Union([
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
         Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
+          originIp: Schema.String,
+          region: Schema.String,
+          vendor: Schema.Union([
+            Schema.Literals(["aws", "azure", "gcp", "oci"]),
+            Schema.String,
+          ]),
+          modifiedOn: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
           ),
         }).pipe(
           Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
+            originIp: "origin_ip",
+            region: "region",
+            vendor: "vendor",
+            modifiedOn: "modified_on",
           }),
         ),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+      ),
+      resultInfo: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            perPage: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            totalCount: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              count: "count",
+              page: "page",
+              perPage: "per_page",
+              totalCount: "total_count",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
   ) as unknown as Schema.Schema<ListOriginCloudRegionsResponse>;
 
 export type ListOriginCloudRegionsError = DefaultErrors | Forbidden;
@@ -631,25 +652,27 @@ export interface PutOriginCloudRegionRequest {
 }
 
 export const PutOriginCloudRegionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    originIP: Schema.String.pipe(T.HttpPath("originIP")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    originIp: Schema.String,
-    region: Schema.String,
-    vendor: Schema.Union([
-      Schema.Literals(["aws", "azure", "gcp", "oci"]),
-      Schema.String,
-    ]),
-  }).pipe(
-    Schema.encodeKeys({
-      originIp: "origin_ip",
-      region: "region",
-      vendor: "vendor",
-    }),
-    T.Http({
-      method: "PUT",
-      path: "/zones/{zone_id}/origin/cloud_regions/{originIP}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      originIP: Schema.String.pipe(T.HttpPath("originIP")),
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      originIp: Schema.String,
+      region: Schema.String,
+      vendor: Schema.Union([
+        Schema.Literals(["aws", "azure", "gcp", "oci"]),
+        Schema.String,
+      ]),
+    }).pipe(
+      Schema.encodeKeys({
+        originIp: "origin_ip",
+        region: "region",
+        vendor: "vendor",
+      }),
+      T.Http({
+        method: "PUT",
+        path: "/zones/{zone_id}/origin/cloud_regions/{originIP}",
+      }),
+    ),
   ) as unknown as Schema.Schema<PutOriginCloudRegionRequest>;
 
 export interface PutOriginCloudRegionResponse {
@@ -664,26 +687,26 @@ export interface PutOriginCloudRegionResponse {
 }
 
 export const PutOriginCloudRegionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    originIp: Schema.String,
-    region: Schema.String,
-    vendor: Schema.Union([
-      Schema.Literals(["aws", "azure", "gcp", "oci"]),
-      Schema.String,
-    ]),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        originIp: "origin_ip",
-        region: "region",
-        vendor: "vendor",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PutOriginCloudRegionResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      originIp: Schema.String,
+      region: Schema.String,
+      vendor: Schema.Union([
+        Schema.Literals(["aws", "azure", "gcp", "oci"]),
+        Schema.String,
+      ]),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          originIp: "origin_ip",
+          region: "region",
+          vendor: "vendor",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<PutOriginCloudRegionResponse>;
 
 export type PutOriginCloudRegionError = DefaultErrors | Forbidden;
 
@@ -705,14 +728,16 @@ export interface DeleteOriginCloudRegionRequest {
 }
 
 export const DeleteOriginCloudRegionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    originIP: Schema.String.pipe(T.HttpPath("originIP")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/zones/{zone_id}/origin/cloud_regions/{originIP}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      originIP: Schema.String.pipe(T.HttpPath("originIP")),
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/zones/{zone_id}/origin/cloud_regions/{originIP}",
+      }),
+    ),
   ) as unknown as Schema.Schema<DeleteOriginCloudRegionRequest>;
 
 export interface DeleteOriginCloudRegionResponse {
@@ -721,13 +746,13 @@ export interface DeleteOriginCloudRegionResponse {
 }
 
 export const DeleteOriginCloudRegionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    originIp: Schema.String,
-  })
-    .pipe(Schema.encodeKeys({ originIp: "origin_ip" }))
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<DeleteOriginCloudRegionResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      originIp: Schema.String,
+    })
+      .pipe(Schema.encodeKeys({ originIp: "origin_ip" }))
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<DeleteOriginCloudRegionResponse>;
 
 export type DeleteOriginCloudRegionError =
   | DefaultErrors
@@ -751,13 +776,15 @@ export interface BulkDeleteOriginCloudRegionsRequest {
 }
 
 export const BulkDeleteOriginCloudRegionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/zones/{zone_id}/origin/cloud_regions/batch",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/zones/{zone_id}/origin/cloud_regions/batch",
+      }),
+    ),
   ) as unknown as Schema.Schema<BulkDeleteOriginCloudRegionsRequest>;
 
 export interface BulkDeleteOriginCloudRegionsResponse {
@@ -778,39 +805,39 @@ export interface BulkDeleteOriginCloudRegionsResponse {
 }
 
 export const BulkDeleteOriginCloudRegionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    failed: Schema.Array(
-      Schema.Struct({
-        originIp: Schema.String,
-        error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        vendor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          originIp: "origin_ip",
-          error: "error",
-          region: "region",
-          vendor: "vendor",
-        }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      failed: Schema.Array(
+        Schema.Struct({
+          originIp: Schema.String,
+          error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          vendor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            originIp: "origin_ip",
+            error: "error",
+            region: "region",
+            vendor: "vendor",
+          }),
+        ),
       ),
-    ),
-    succeeded: Schema.Array(
-      Schema.Struct({
-        originIp: Schema.String,
-        error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        vendor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          originIp: "origin_ip",
-          error: "error",
-          region: "region",
-          vendor: "vendor",
-        }),
+      succeeded: Schema.Array(
+        Schema.Struct({
+          originIp: Schema.String,
+          error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          vendor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            originIp: "origin_ip",
+            error: "error",
+            region: "region",
+            vendor: "vendor",
+          }),
+        ),
       ),
-    ),
-  }).pipe(
-    T.ResponsePath("result"),
+    }).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<BulkDeleteOriginCloudRegionsResponse>;
 
 export type BulkDeleteOriginCloudRegionsError = DefaultErrors;
@@ -842,29 +869,31 @@ export interface BulkPutOriginCloudRegionsRequest {
 }
 
 export const BulkPutOriginCloudRegionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    body: Schema.Array(
-      Schema.Struct({
-        originIp: Schema.String,
-        region: Schema.String,
-        vendor: Schema.Union([
-          Schema.Literals(["aws", "azure", "gcp", "oci"]),
-          Schema.String,
-        ]),
-      }).pipe(
-        Schema.encodeKeys({
-          originIp: "origin_ip",
-          region: "region",
-          vendor: "vendor",
-        }),
-      ),
-    ).pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/zones/{zone_id}/origin/cloud_regions/batch",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      body: Schema.Array(
+        Schema.Struct({
+          originIp: Schema.String,
+          region: Schema.String,
+          vendor: Schema.Union([
+            Schema.Literals(["aws", "azure", "gcp", "oci"]),
+            Schema.String,
+          ]),
+        }).pipe(
+          Schema.encodeKeys({
+            originIp: "origin_ip",
+            region: "region",
+            vendor: "vendor",
+          }),
+        ),
+      ).pipe(T.HttpBody()),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        path: "/zones/{zone_id}/origin/cloud_regions/batch",
+      }),
+    ),
   ) as unknown as Schema.Schema<BulkPutOriginCloudRegionsRequest>;
 
 export interface BulkPutOriginCloudRegionsResponse {
@@ -885,39 +914,39 @@ export interface BulkPutOriginCloudRegionsResponse {
 }
 
 export const BulkPutOriginCloudRegionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    failed: Schema.Array(
-      Schema.Struct({
-        originIp: Schema.String,
-        error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        vendor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          originIp: "origin_ip",
-          error: "error",
-          region: "region",
-          vendor: "vendor",
-        }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      failed: Schema.Array(
+        Schema.Struct({
+          originIp: Schema.String,
+          error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          vendor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            originIp: "origin_ip",
+            error: "error",
+            region: "region",
+            vendor: "vendor",
+          }),
+        ),
       ),
-    ),
-    succeeded: Schema.Array(
-      Schema.Struct({
-        originIp: Schema.String,
-        error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        vendor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          originIp: "origin_ip",
-          error: "error",
-          region: "region",
-          vendor: "vendor",
-        }),
+      succeeded: Schema.Array(
+        Schema.Struct({
+          originIp: Schema.String,
+          error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          region: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          vendor: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            originIp: "origin_ip",
+            error: "error",
+            region: "region",
+            vendor: "vendor",
+          }),
+        ),
       ),
-    ),
-  }).pipe(
-    T.ResponsePath("result"),
+    }).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<BulkPutOriginCloudRegionsResponse>;
 
 export type BulkPutOriginCloudRegionsError = DefaultErrors;
@@ -943,13 +972,15 @@ export interface GetRegionalTieredCacheRequest {
 }
 
 export const GetRegionalTieredCacheRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/zones/{zone_id}/cache/regional_tiered_cache",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/zones/{zone_id}/cache/regional_tiered_cache",
+      }),
+    ),
   ) as unknown as Schema.Schema<GetRegionalTieredCacheRequest>;
 
 export interface GetRegionalTieredCacheResponse {
@@ -964,23 +995,23 @@ export interface GetRegionalTieredCacheResponse {
 }
 
 export const GetRegionalTieredCacheResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("tc_regional"),
-    editable: Schema.Boolean,
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetRegionalTieredCacheResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("tc_regional"),
+      editable: Schema.Boolean,
+      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          editable: "editable",
+          value: "value",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetRegionalTieredCacheResponse>;
 
 export type GetRegionalTieredCacheError =
   | DefaultErrors
@@ -1006,14 +1037,16 @@ export interface PatchRegionalTieredCacheRequest {
 }
 
 export const PatchRegionalTieredCacheRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/zones/{zone_id}/cache/regional_tiered_cache",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        path: "/zones/{zone_id}/cache/regional_tiered_cache",
+      }),
+    ),
   ) as unknown as Schema.Schema<PatchRegionalTieredCacheRequest>;
 
 export interface PatchRegionalTieredCacheResponse {
@@ -1028,23 +1061,23 @@ export interface PatchRegionalTieredCacheResponse {
 }
 
 export const PatchRegionalTieredCacheResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("tc_regional"),
-    editable: Schema.Boolean,
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchRegionalTieredCacheResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("tc_regional"),
+      editable: Schema.Boolean,
+      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          editable: "editable",
+          value: "value",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<PatchRegionalTieredCacheResponse>;
 
 export type PatchRegionalTieredCacheError =
   | DefaultErrors
@@ -1072,13 +1105,15 @@ export interface SupportedRegionsOriginCloudRegionRequest {
 }
 
 export const SupportedRegionsOriginCloudRegionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/zones/{zone_id}/origin/cloud_regions/supported_regions",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/zones/{zone_id}/origin/cloud_regions/supported_regions",
+      }),
+    ),
   ) as unknown as Schema.Schema<SupportedRegionsOriginCloudRegionRequest>;
 
 export interface SupportedRegionsOriginCloudRegionResponse {
@@ -1089,19 +1124,19 @@ export interface SupportedRegionsOriginCloudRegionResponse {
 }
 
 export const SupportedRegionsOriginCloudRegionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    obtainedCodes: Schema.Boolean,
-    vendors: Schema.Record(Schema.String, Schema.Unknown),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        obtainedCodes: "obtained_codes",
-        vendors: "vendors",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<SupportedRegionsOriginCloudRegionResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      obtainedCodes: Schema.Boolean,
+      vendors: Schema.Record(Schema.String, Schema.Unknown),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          obtainedCodes: "obtained_codes",
+          vendors: "vendors",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<SupportedRegionsOriginCloudRegionResponse>;
 
 export type SupportedRegionsOriginCloudRegionError = DefaultErrors;
 
@@ -1126,13 +1161,15 @@ export interface GetSmartTieredCacheRequest {
 }
 
 export const GetSmartTieredCacheRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
+      }),
+    ),
   ) as unknown as Schema.Schema<GetSmartTieredCacheRequest>;
 
 export interface GetSmartTieredCacheResponse {
@@ -1147,23 +1184,23 @@ export interface GetSmartTieredCacheResponse {
 }
 
 export const GetSmartTieredCacheResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("tiered_cache_smart_topology_enable"),
-    editable: Schema.Boolean,
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetSmartTieredCacheResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("tiered_cache_smart_topology_enable"),
+      editable: Schema.Boolean,
+      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          editable: "editable",
+          value: "value",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetSmartTieredCacheResponse>;
 
 export type GetSmartTieredCacheError = DefaultErrors | Forbidden;
 
@@ -1186,14 +1223,16 @@ export interface CreateSmartTieredCacheRequest {
 }
 
 export const CreateSmartTieredCacheRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
+      }),
+    ),
   ) as unknown as Schema.Schema<CreateSmartTieredCacheRequest>;
 
 export interface CreateSmartTieredCacheResponse {
@@ -1208,23 +1247,23 @@ export interface CreateSmartTieredCacheResponse {
 }
 
 export const CreateSmartTieredCacheResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("tiered_cache_smart_topology_enable"),
-    editable: Schema.Boolean,
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateSmartTieredCacheResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("tiered_cache_smart_topology_enable"),
+      editable: Schema.Boolean,
+      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          editable: "editable",
+          value: "value",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<CreateSmartTieredCacheResponse>;
 
 export type CreateSmartTieredCacheError = DefaultErrors;
 
@@ -1247,14 +1286,16 @@ export interface PatchSmartTieredCacheRequest {
 }
 
 export const PatchSmartTieredCacheRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      path: "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        path: "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
+      }),
+    ),
   ) as unknown as Schema.Schema<PatchSmartTieredCacheRequest>;
 
 export interface PatchSmartTieredCacheResponse {
@@ -1269,23 +1310,23 @@ export interface PatchSmartTieredCacheResponse {
 }
 
 export const PatchSmartTieredCacheResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("tiered_cache_smart_topology_enable"),
-    editable: Schema.Boolean,
-    value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PatchSmartTieredCacheResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("tiered_cache_smart_topology_enable"),
+      editable: Schema.Boolean,
+      value: Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          editable: "editable",
+          value: "value",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<PatchSmartTieredCacheResponse>;
 
 export type PatchSmartTieredCacheError = DefaultErrors | Forbidden;
 
@@ -1306,13 +1347,15 @@ export interface DeleteSmartTieredCacheRequest {
 }
 
 export const DeleteSmartTieredCacheRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/zones/{zone_id}/cache/tiered_cache_smart_topology_enable",
+      }),
+    ),
   ) as unknown as Schema.Schema<DeleteSmartTieredCacheRequest>;
 
 export interface DeleteSmartTieredCacheResponse {
@@ -1325,21 +1368,21 @@ export interface DeleteSmartTieredCacheResponse {
 }
 
 export const DeleteSmartTieredCacheResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("tiered_cache_smart_topology_enable"),
-    editable: Schema.Boolean,
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<DeleteSmartTieredCacheResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("tiered_cache_smart_topology_enable"),
+      editable: Schema.Boolean,
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          editable: "editable",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<DeleteSmartTieredCacheResponse>;
 
 export type DeleteSmartTieredCacheError = DefaultErrors;
 
@@ -1363,10 +1406,11 @@ export interface GetVariantRequest {
   zoneId: string;
 }
 
-export const GetVariantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-}).pipe(
-  T.Http({ method: "GET", path: "/zones/{zone_id}/cache/variants" }),
+export const GetVariantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/cache/variants" })),
 ) as unknown as Schema.Schema<GetVariantRequest>;
 
 export interface GetVariantResponse {
@@ -1392,57 +1436,58 @@ export interface GetVariantResponse {
   modifiedOn?: string | null;
 }
 
-export const GetVariantResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.Literal("variants"),
-  editable: Schema.Boolean,
-  value: Schema.Struct({
-    avif: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    bmp: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    gif: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    jp2: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    jpeg: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    jpg: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    jpg2: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    png: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    tif: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    tiff: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    webp: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-  }),
-  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      editable: "editable",
-      value: "value",
-      modifiedOn: "modified_on",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetVariantResponse>;
+export const GetVariantResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.Literal("variants"),
+      editable: Schema.Boolean,
+      value: Schema.Struct({
+        avif: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        bmp: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        gif: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        jp2: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        jpeg: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        jpg: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        jpg2: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        png: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        tif: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        tiff: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        webp: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+      }),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          editable: "editable",
+          value: "value",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<GetVariantResponse>;
 
 export type GetVariantError = DefaultErrors | VariantsNotConfigured | Forbidden;
 
@@ -1476,23 +1521,26 @@ export interface PatchVariantRequest {
   };
 }
 
-export const PatchVariantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  value: Schema.Struct({
-    avif: Schema.optional(Schema.Array(Schema.String)),
-    bmp: Schema.optional(Schema.Array(Schema.String)),
-    gif: Schema.optional(Schema.Array(Schema.String)),
-    jp2: Schema.optional(Schema.Array(Schema.String)),
-    jpeg: Schema.optional(Schema.Array(Schema.String)),
-    jpg: Schema.optional(Schema.Array(Schema.String)),
-    jpg2: Schema.optional(Schema.Array(Schema.String)),
-    png: Schema.optional(Schema.Array(Schema.String)),
-    tif: Schema.optional(Schema.Array(Schema.String)),
-    tiff: Schema.optional(Schema.Array(Schema.String)),
-    webp: Schema.optional(Schema.Array(Schema.String)),
-  }),
-}).pipe(
-  T.Http({ method: "PATCH", path: "/zones/{zone_id}/cache/variants" }),
+export const PatchVariantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      value: Schema.Struct({
+        avif: Schema.optional(Schema.Array(Schema.String)),
+        bmp: Schema.optional(Schema.Array(Schema.String)),
+        gif: Schema.optional(Schema.Array(Schema.String)),
+        jp2: Schema.optional(Schema.Array(Schema.String)),
+        jpeg: Schema.optional(Schema.Array(Schema.String)),
+        jpg: Schema.optional(Schema.Array(Schema.String)),
+        jpg2: Schema.optional(Schema.Array(Schema.String)),
+        png: Schema.optional(Schema.Array(Schema.String)),
+        tif: Schema.optional(Schema.Array(Schema.String)),
+        tiff: Schema.optional(Schema.Array(Schema.String)),
+        webp: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    }).pipe(
+      T.Http({ method: "PATCH", path: "/zones/{zone_id}/cache/variants" }),
+    ),
 ) as unknown as Schema.Schema<PatchVariantRequest>;
 
 export interface PatchVariantResponse {
@@ -1518,57 +1566,58 @@ export interface PatchVariantResponse {
   modifiedOn?: string | null;
 }
 
-export const PatchVariantResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.Literal("variants"),
-  editable: Schema.Boolean,
-  value: Schema.Struct({
-    avif: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    bmp: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    gif: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    jp2: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    jpeg: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    jpg: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    jpg2: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    png: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    tif: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    tiff: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    webp: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-  }),
-  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      editable: "editable",
-      value: "value",
-      modifiedOn: "modified_on",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<PatchVariantResponse>;
+export const PatchVariantResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.Literal("variants"),
+      editable: Schema.Boolean,
+      value: Schema.Struct({
+        avif: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        bmp: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        gif: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        jp2: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        jpeg: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        jpg: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        jpg2: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        png: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        tif: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        tiff: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        webp: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+      }),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          editable: "editable",
+          value: "value",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<PatchVariantResponse>;
 
 export type PatchVariantError = DefaultErrors | Forbidden;
 
@@ -1588,10 +1637,13 @@ export interface DeleteVariantRequest {
   zoneId: string;
 }
 
-export const DeleteVariantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-}).pipe(
-  T.Http({ method: "DELETE", path: "/zones/{zone_id}/cache/variants" }),
+export const DeleteVariantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(
+      T.Http({ method: "DELETE", path: "/zones/{zone_id}/cache/variants" }),
+    ),
 ) as unknown as Schema.Schema<DeleteVariantRequest>;
 
 export interface DeleteVariantResponse {
@@ -1603,21 +1655,22 @@ export interface DeleteVariantResponse {
   modifiedOn?: string | null;
 }
 
-export const DeleteVariantResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.Literal("variants"),
-  editable: Schema.Boolean,
-  modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      editable: "editable",
-      modifiedOn: "modified_on",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<DeleteVariantResponse>;
+export const DeleteVariantResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.Literal("variants"),
+      editable: Schema.Boolean,
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          editable: "editable",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<DeleteVariantResponse>;
 
 export type DeleteVariantError =
   | DefaultErrors

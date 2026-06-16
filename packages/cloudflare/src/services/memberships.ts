@@ -20,10 +20,11 @@ export interface GetMembershipRequest {
   membershipId: string;
 }
 
-export const GetMembershipRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  membershipId: Schema.String.pipe(T.HttpPath("membershipId")),
-}).pipe(
-  T.Http({ method: "GET", path: "/memberships/{membershipId}" }),
+export const GetMembershipRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      membershipId: Schema.String.pipe(T.HttpPath("membershipId")),
+    }).pipe(T.Http({ method: "GET", path: "/memberships/{membershipId}" })),
 ) as unknown as Schema.Schema<GetMembershipRequest>;
 
 export interface GetMembershipResponse {
@@ -88,360 +89,366 @@ export interface GetMembershipResponse {
   status?: "accepted" | "pending" | "rejected" | (string & {}) | null;
 }
 
-export const GetMembershipResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  account: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-        type: Schema.Union([
-          Schema.Literals(["standard", "enterprise"]),
-          Schema.String,
-        ]),
-        createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        managedBy: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              parentOrgId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              parentOrgName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                parentOrgId: "parent_org_id",
-                parentOrgName: "parent_org_name",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        settings: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              abuseContactEmail: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              enforceTwofactor: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                abuseContactEmail: "abuse_contact_email",
-                enforceTwofactor: "enforce_twofactor",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          name: "name",
-          type: "type",
-          createdOn: "created_on",
-          managedBy: "managed_by",
-          settings: "settings",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  apiAccessEnabled: Schema.optional(
-    Schema.Union([Schema.Boolean, Schema.Null]),
-  ),
-  permissions: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        analytics: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        billing: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        cachePurge: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        dns: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        dnsRecords: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        lb: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        logs: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        organization: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        ssl: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        waf: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        zoneSettings: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        zones: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          analytics: "analytics",
-          billing: "billing",
-          cachePurge: "cache_purge",
-          dns: "dns",
-          dnsRecords: "dns_records",
-          lb: "lb",
-          logs: "logs",
-          organization: "organization",
-          ssl: "ssl",
-          waf: "waf",
-          zoneSettings: "zone_settings",
-          zones: "zones",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  policies: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          access: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["allow", "deny"]), Schema.String]),
-              Schema.Null,
+export const GetMembershipResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      account: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            id: Schema.String,
+            name: Schema.String,
+            type: Schema.Union([
+              Schema.Literals(["standard", "enterprise"]),
+              Schema.String,
             ]),
-          ),
-          permissionGroups: Schema.optional(
-            Schema.Union([
-              Schema.Array(
+            createdOn: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            managedBy: Schema.optional(
+              Schema.Union([
                 Schema.Struct({
-                  id: Schema.String,
-                  meta: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        key: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        value: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                      }),
-                      Schema.Null,
-                    ]),
-                  ),
-                  name: Schema.optional(
+                  parentOrgId: Schema.optional(
                     Schema.Union([Schema.String, Schema.Null]),
                   ),
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          resourceGroups: Schema.optional(
-            Schema.Union([
-              Schema.Array(
+                  parentOrgName: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    parentOrgId: "parent_org_id",
+                    parentOrgName: "parent_org_name",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            settings: Schema.optional(
+              Schema.Union([
                 Schema.Struct({
-                  id: Schema.String,
-                  scope: Schema.Array(
+                  abuseContactEmail: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  enforceTwofactor: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    abuseContactEmail: "abuse_contact_email",
+                    enforceTwofactor: "enforce_twofactor",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              name: "name",
+              type: "type",
+              createdOn: "created_on",
+              managedBy: "managed_by",
+              settings: "settings",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      apiAccessEnabled: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      permissions: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            analytics: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            billing: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            cachePurge: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            dns: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            dnsRecords: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            lb: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            logs: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            organization: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            ssl: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            waf: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            zoneSettings: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            zones: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              analytics: "analytics",
+              billing: "billing",
+              cachePurge: "cache_purge",
+              dns: "dns",
+              dnsRecords: "dns_records",
+              lb: "lb",
+              logs: "logs",
+              organization: "organization",
+              ssl: "ssl",
+              waf: "waf",
+              zoneSettings: "zone_settings",
+              zones: "zones",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      policies: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              access: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["allow", "deny"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              permissionGroups: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
                     Schema.Struct({
-                      key: Schema.String,
-                      objects: Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                        }),
+                      id: Schema.String,
+                      meta: Schema.optional(
+                        Schema.Union([
+                          Schema.Struct({
+                            key: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                            value: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                          }),
+                          Schema.Null,
+                        ]),
+                      ),
+                      name: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
                       ),
                     }),
                   ),
-                  meta: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        key: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        value: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                      }),
-                      Schema.Null,
-                    ]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
+                  Schema.Null,
+                ]),
               ),
-              Schema.Null,
-            ]),
+              resourceGroups: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Struct({
+                      id: Schema.String,
+                      scope: Schema.Array(
+                        Schema.Struct({
+                          key: Schema.String,
+                          objects: Schema.Array(
+                            Schema.Struct({
+                              key: Schema.String,
+                            }),
+                          ),
+                        }),
+                      ),
+                      meta: Schema.optional(
+                        Schema.Union([
+                          Schema.Struct({
+                            key: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                            value: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                          }),
+                          Schema.Null,
+                        ]),
+                      ),
+                      name: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                id: "id",
+                access: "access",
+                permissionGroups: "permission_groups",
+                resourceGroups: "resource_groups",
+              }),
+            ),
           ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            access: "access",
-            permissionGroups: "permission_groups",
-            resourceGroups: "resource_groups",
-          }),
-        ),
+          Schema.Null,
+        ]),
       ),
-      Schema.Null,
-    ]),
-  ),
-  roles: Schema.optional(
-    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-  ),
-  status: Schema.optional(
-    Schema.Union([
-      Schema.Union([
-        Schema.Literals(["accepted", "pending", "rejected"]),
-        Schema.String,
-      ]),
-      Schema.Null,
-    ]),
-  ),
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      account: "account",
-      apiAccessEnabled: "api_access_enabled",
-      permissions: "permissions",
-      policies: "policies",
-      roles: "roles",
-      status: "status",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetMembershipResponse>;
+      roles: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["accepted", "pending", "rejected"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          account: "account",
+          apiAccessEnabled: "api_access_enabled",
+          permissions: "permissions",
+          policies: "policies",
+          roles: "roles",
+          status: "status",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<GetMembershipResponse>;
 
 export type GetMembershipError = DefaultErrors;
 
@@ -470,35 +477,34 @@ export interface ListMembershipsRequest {
   status?: "accepted" | "pending" | "rejected" | (string & {});
 }
 
-export const ListMembershipsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    account: Schema.optional(
-      Schema.Struct({
-        name: Schema.optional(Schema.String),
-      }),
-    ).pipe(T.HttpQuery("account")),
-    direction: Schema.optional(
-      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-    ).pipe(T.HttpQuery("direction")),
-    name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
-    order: Schema.optional(
-      Schema.Union([
-        Schema.Literals(["id", "account.name", "status"]),
-        Schema.String,
-      ]),
-    ).pipe(T.HttpQuery("order")),
-    status: Schema.optional(
-      Schema.Union([
-        Schema.Literals(["accepted", "pending", "rejected"]),
-        Schema.String,
-      ]),
-    ).pipe(T.HttpQuery("status")),
-  },
-).pipe(
-  T.Http({ method: "GET", path: "/memberships" }),
-) as unknown as Schema.Schema<ListMembershipsRequest>;
+export const ListMembershipsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+      account: Schema.optional(
+        Schema.Struct({
+          name: Schema.optional(Schema.String),
+        }),
+      ).pipe(T.HttpQuery("account")),
+      direction: Schema.optional(
+        Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+      ).pipe(T.HttpQuery("direction")),
+      name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+      order: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["id", "account.name", "status"]),
+          Schema.String,
+        ]),
+      ).pipe(T.HttpQuery("order")),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["accepted", "pending", "rejected"]),
+          Schema.String,
+        ]),
+      ).pipe(T.HttpQuery("status")),
+    }).pipe(T.Http({ method: "GET", path: "/memberships" })),
+  ) as unknown as Schema.Schema<ListMembershipsRequest>;
 
 export interface ListMembershipsResponse {
   result: {
@@ -544,297 +550,299 @@ export interface ListMembershipsResponse {
 }
 
 export const ListMembershipsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        account: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              id: Schema.String,
-              name: Schema.String,
-              type: Schema.Union([
-                Schema.Literals(["standard", "enterprise"]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          account: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                id: Schema.String,
+                name: Schema.String,
+                type: Schema.Union([
+                  Schema.Literals(["standard", "enterprise"]),
+                  Schema.String,
+                ]),
+                createdOn: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                managedBy: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      parentOrgId: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      parentOrgName: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        parentOrgId: "parent_org_id",
+                        parentOrgName: "parent_org_name",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+                settings: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      abuseContactEmail: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      enforceTwofactor: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        abuseContactEmail: "abuse_contact_email",
+                        enforceTwofactor: "enforce_twofactor",
+                      }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  id: "id",
+                  name: "name",
+                  type: "type",
+                  createdOn: "created_on",
+                  managedBy: "managed_by",
+                  settings: "settings",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          apiAccessEnabled: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          permissions: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                analytics: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      read: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      write: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                billing: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      read: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      write: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                cachePurge: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      read: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      write: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                dns: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      read: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      write: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                dnsRecords: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      read: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      write: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                lb: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      read: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      write: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                logs: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      read: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      write: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                organization: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      read: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      write: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                ssl: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      read: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      write: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                waf: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      read: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      write: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                zoneSettings: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      read: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      write: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                zones: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      read: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                      write: Schema.optional(
+                        Schema.Union([Schema.Boolean, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  analytics: "analytics",
+                  billing: "billing",
+                  cachePurge: "cache_purge",
+                  dns: "dns",
+                  dnsRecords: "dns_records",
+                  lb: "lb",
+                  logs: "logs",
+                  organization: "organization",
+                  ssl: "ssl",
+                  waf: "waf",
+                  zoneSettings: "zone_settings",
+                  zones: "zones",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          roles: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+          status: Schema.optional(
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals(["accepted", "pending", "rejected"]),
                 Schema.String,
               ]),
-              createdOn: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              managedBy: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    parentOrgId: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    parentOrgName: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      parentOrgId: "parent_org_id",
-                      parentOrgName: "parent_org_name",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              settings: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    abuseContactEmail: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    enforceTwofactor: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      abuseContactEmail: "abuse_contact_email",
-                      enforceTwofactor: "enforce_twofactor",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                id: "id",
-                name: "name",
-                type: "type",
-                createdOn: "created_on",
-                managedBy: "managed_by",
-                settings: "settings",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        apiAccessEnabled: Schema.optional(
-          Schema.Union([Schema.Boolean, Schema.Null]),
-        ),
-        permissions: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              analytics: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    read: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    write: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              billing: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    read: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    write: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              cachePurge: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    read: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    write: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              dns: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    read: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    write: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              dnsRecords: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    read: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    write: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              lb: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    read: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    write: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              logs: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    read: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    write: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              organization: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    read: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    write: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              ssl: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    read: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    write: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              waf: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    read: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    write: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              zoneSettings: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    read: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    write: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              zones: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    read: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    write: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                analytics: "analytics",
-                billing: "billing",
-                cachePurge: "cache_purge",
-                dns: "dns",
-                dnsRecords: "dns_records",
-                lb: "lb",
-                logs: "logs",
-                organization: "organization",
-                ssl: "ssl",
-                waf: "waf",
-                zoneSettings: "zone_settings",
-                zones: "zones",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        roles: Schema.optional(
-          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-        ),
-        status: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals(["accepted", "pending", "rejected"]),
-              Schema.String,
+              Schema.Null,
             ]),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          account: "account",
-          apiAccessEnabled: "api_access_enabled",
-          permissions: "permissions",
-          roles: "roles",
-          status: "status",
-        }),
-      ),
-    ),
-    resultInfo: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          totalCount: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
           ),
         }).pipe(
           Schema.encodeKeys({
-            count: "count",
-            page: "page",
-            perPage: "per_page",
-            totalCount: "total_count",
+            id: "id",
+            account: "account",
+            apiAccessEnabled: "api_access_enabled",
+            permissions: "permissions",
+            roles: "roles",
+            status: "status",
           }),
         ),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+      ),
+      resultInfo: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            perPage: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            totalCount: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              count: "count",
+              page: "page",
+              perPage: "per_page",
+              totalCount: "total_count",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
   ) as unknown as Schema.Schema<ListMembershipsResponse>;
 
 export type ListMembershipsError = DefaultErrors;
@@ -863,14 +871,15 @@ export interface PutMembershipRequest {
   status: "accepted" | "rejected" | (string & {});
 }
 
-export const PutMembershipRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  membershipId: Schema.String.pipe(T.HttpPath("membershipId")),
-  status: Schema.Union([
-    Schema.Literals(["accepted", "rejected"]),
-    Schema.String,
-  ]),
-}).pipe(
-  T.Http({ method: "PUT", path: "/memberships/{membershipId}" }),
+export const PutMembershipRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      membershipId: Schema.String.pipe(T.HttpPath("membershipId")),
+      status: Schema.Union([
+        Schema.Literals(["accepted", "rejected"]),
+        Schema.String,
+      ]),
+    }).pipe(T.Http({ method: "PUT", path: "/memberships/{membershipId}" })),
 ) as unknown as Schema.Schema<PutMembershipRequest>;
 
 export interface PutMembershipResponse {
@@ -935,360 +944,366 @@ export interface PutMembershipResponse {
   status?: "accepted" | "pending" | "rejected" | (string & {}) | null;
 }
 
-export const PutMembershipResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  account: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-        type: Schema.Union([
-          Schema.Literals(["standard", "enterprise"]),
-          Schema.String,
-        ]),
-        createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        managedBy: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              parentOrgId: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              parentOrgName: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                parentOrgId: "parent_org_id",
-                parentOrgName: "parent_org_name",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        settings: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              abuseContactEmail: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-              enforceTwofactor: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                abuseContactEmail: "abuse_contact_email",
-                enforceTwofactor: "enforce_twofactor",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          name: "name",
-          type: "type",
-          createdOn: "created_on",
-          managedBy: "managed_by",
-          settings: "settings",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  apiAccessEnabled: Schema.optional(
-    Schema.Union([Schema.Boolean, Schema.Null]),
-  ),
-  permissions: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        analytics: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        billing: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        cachePurge: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        dns: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        dnsRecords: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        lb: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        logs: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        organization: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        ssl: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        waf: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        zoneSettings: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-        zones: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              read: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-              write: Schema.optional(
-                Schema.Union([Schema.Boolean, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          analytics: "analytics",
-          billing: "billing",
-          cachePurge: "cache_purge",
-          dns: "dns",
-          dnsRecords: "dns_records",
-          lb: "lb",
-          logs: "logs",
-          organization: "organization",
-          ssl: "ssl",
-          waf: "waf",
-          zoneSettings: "zone_settings",
-          zones: "zones",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-  policies: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          access: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["allow", "deny"]), Schema.String]),
-              Schema.Null,
+export const PutMembershipResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      account: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            id: Schema.String,
+            name: Schema.String,
+            type: Schema.Union([
+              Schema.Literals(["standard", "enterprise"]),
+              Schema.String,
             ]),
-          ),
-          permissionGroups: Schema.optional(
-            Schema.Union([
-              Schema.Array(
+            createdOn: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            managedBy: Schema.optional(
+              Schema.Union([
                 Schema.Struct({
-                  id: Schema.String,
-                  meta: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        key: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        value: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                      }),
-                      Schema.Null,
-                    ]),
-                  ),
-                  name: Schema.optional(
+                  parentOrgId: Schema.optional(
                     Schema.Union([Schema.String, Schema.Null]),
                   ),
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-          resourceGroups: Schema.optional(
-            Schema.Union([
-              Schema.Array(
+                  parentOrgName: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    parentOrgId: "parent_org_id",
+                    parentOrgName: "parent_org_name",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            settings: Schema.optional(
+              Schema.Union([
                 Schema.Struct({
-                  id: Schema.String,
-                  scope: Schema.Array(
+                  abuseContactEmail: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  enforceTwofactor: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    abuseContactEmail: "abuse_contact_email",
+                    enforceTwofactor: "enforce_twofactor",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              id: "id",
+              name: "name",
+              type: "type",
+              createdOn: "created_on",
+              managedBy: "managed_by",
+              settings: "settings",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      apiAccessEnabled: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      permissions: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            analytics: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            billing: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            cachePurge: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            dns: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            dnsRecords: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            lb: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            logs: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            organization: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            ssl: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            waf: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            zoneSettings: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+            zones: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  read: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  write: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              analytics: "analytics",
+              billing: "billing",
+              cachePurge: "cache_purge",
+              dns: "dns",
+              dnsRecords: "dns_records",
+              lb: "lb",
+              logs: "logs",
+              organization: "organization",
+              ssl: "ssl",
+              waf: "waf",
+              zoneSettings: "zone_settings",
+              zones: "zones",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+      policies: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              access: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["allow", "deny"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              permissionGroups: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
                     Schema.Struct({
-                      key: Schema.String,
-                      objects: Schema.Array(
-                        Schema.Struct({
-                          key: Schema.String,
-                        }),
+                      id: Schema.String,
+                      meta: Schema.optional(
+                        Schema.Union([
+                          Schema.Struct({
+                            key: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                            value: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                          }),
+                          Schema.Null,
+                        ]),
+                      ),
+                      name: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
                       ),
                     }),
                   ),
-                  meta: Schema.optional(
-                    Schema.Union([
-                      Schema.Struct({
-                        key: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                        value: Schema.optional(
-                          Schema.Union([Schema.String, Schema.Null]),
-                        ),
-                      }),
-                      Schema.Null,
-                    ]),
-                  ),
-                  name: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
+                  Schema.Null,
+                ]),
               ),
-              Schema.Null,
-            ]),
+              resourceGroups: Schema.optional(
+                Schema.Union([
+                  Schema.Array(
+                    Schema.Struct({
+                      id: Schema.String,
+                      scope: Schema.Array(
+                        Schema.Struct({
+                          key: Schema.String,
+                          objects: Schema.Array(
+                            Schema.Struct({
+                              key: Schema.String,
+                            }),
+                          ),
+                        }),
+                      ),
+                      meta: Schema.optional(
+                        Schema.Union([
+                          Schema.Struct({
+                            key: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                            value: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                          }),
+                          Schema.Null,
+                        ]),
+                      ),
+                      name: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                id: "id",
+                access: "access",
+                permissionGroups: "permission_groups",
+                resourceGroups: "resource_groups",
+              }),
+            ),
           ),
-        }).pipe(
-          Schema.encodeKeys({
-            id: "id",
-            access: "access",
-            permissionGroups: "permission_groups",
-            resourceGroups: "resource_groups",
-          }),
-        ),
+          Schema.Null,
+        ]),
       ),
-      Schema.Null,
-    ]),
-  ),
-  roles: Schema.optional(
-    Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-  ),
-  status: Schema.optional(
-    Schema.Union([
-      Schema.Union([
-        Schema.Literals(["accepted", "pending", "rejected"]),
-        Schema.String,
-      ]),
-      Schema.Null,
-    ]),
-  ),
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      account: "account",
-      apiAccessEnabled: "api_access_enabled",
-      permissions: "permissions",
-      policies: "policies",
-      roles: "roles",
-      status: "status",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<PutMembershipResponse>;
+      roles: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["accepted", "pending", "rejected"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          account: "account",
+          apiAccessEnabled: "api_access_enabled",
+          permissions: "permissions",
+          policies: "policies",
+          roles: "roles",
+          status: "status",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<PutMembershipResponse>;
 
 export type PutMembershipError = DefaultErrors;
 
@@ -1308,10 +1323,10 @@ export interface DeleteMembershipRequest {
 }
 
 export const DeleteMembershipRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    membershipId: Schema.String.pipe(T.HttpPath("membershipId")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "/memberships/{membershipId}" }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      membershipId: Schema.String.pipe(T.HttpPath("membershipId")),
+    }).pipe(T.Http({ method: "DELETE", path: "/memberships/{membershipId}" })),
   ) as unknown as Schema.Schema<DeleteMembershipRequest>;
 
 export interface DeleteMembershipResponse {
@@ -1320,10 +1335,10 @@ export interface DeleteMembershipResponse {
 }
 
 export const DeleteMembershipResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<DeleteMembershipResponse>;
 
 export type DeleteMembershipError = DefaultErrors;

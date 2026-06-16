@@ -38,11 +38,17 @@ export interface GetPageRuleRequest {
   zoneId: string;
 }
 
-export const GetPageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  pageruleId: Schema.String.pipe(T.HttpPath("pageruleId")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-}).pipe(
-  T.Http({ method: "GET", path: "/zones/{zone_id}/pagerules/{pageruleId}" }),
+export const GetPageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      pageruleId: Schema.String.pipe(T.HttpPath("pageruleId")),
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/zones/{zone_id}/pagerules/{pageruleId}",
+      }),
+    ),
 ) as unknown as Schema.Schema<GetPageRuleRequest>;
 
 export interface GetPageRuleResponse {
@@ -217,531 +223,580 @@ export interface GetPageRuleResponse {
   }[];
 }
 
-export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
-  actions: Schema.Array(
-    Schema.Union([
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("always_use_https"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([
-            Schema.Literal("automatic_https_rewrites"),
-            Schema.Null,
-          ]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("browser_cache_ttl"), Schema.Null]),
-        ),
-        value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("browser_check"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("bypass_cache_on_cookie"), Schema.Null]),
-        ),
-        value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("cache_by_device_type"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("cache_deception_armor"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("cache_key_fields"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              cookie: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    checkPresence: Schema.optional(
-                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                    ),
-                    include: Schema.optional(
-                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      checkPresence: "check_presence",
-                      include: "include",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              header: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    checkPresence: Schema.optional(
-                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                    ),
-                    exclude: Schema.optional(
-                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                    ),
-                    include: Schema.optional(
-                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      checkPresence: "check_presence",
-                      exclude: "exclude",
-                      include: "include",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              host: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    resolved: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              queryString: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    exclude: Schema.optional(
-                      Schema.Union([
-                        Schema.Union([
-                          Schema.Literal("*"),
-                          Schema.Array(Schema.String),
-                        ]),
-                        Schema.Null,
-                      ]),
-                    ),
-                    include: Schema.optional(
-                      Schema.Union([
-                        Schema.Union([
-                          Schema.Literal("*"),
-                          Schema.Array(Schema.String),
-                        ]),
-                        Schema.Null,
-                      ]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              user: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    deviceType: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    geo: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    lang: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      deviceType: "device_type",
-                      geo: "geo",
-                      lang: "lang",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                cookie: "cookie",
-                header: "header",
-                host: "host",
-                queryString: "query_string",
-                user: "user",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("cache_level"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals([
-                "bypass",
-                "basic",
-                "simplified",
-                "aggressive",
-                "cache_everything",
-              ]),
-              Schema.String,
-            ]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("cache_on_cookie"), Schema.Null]),
-        ),
-        value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("cache_ttl_by_status"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Record(Schema.String, Schema.Unknown),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("disable_apps"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("disable_performance"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("disable_security"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("disable_zaraz"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("edge_cache_ttl"), Schema.Null]),
-        ),
-        value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("email_obfuscation"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("explicit_cache_control"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("forwarding_url"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              statusCode: Schema.optional(
-                Schema.Union([
-                  Schema.Union([
-                    Schema.Literals(["301", "302"]),
-                    Schema.String,
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-              url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            }).pipe(
-              Schema.encodeKeys({ statusCode: "status_code", url: "url" }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("host_header_override"), Schema.Null]),
-        ),
-        value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("ip_geolocation"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("mirage"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([
-            Schema.Literal("opportunistic_encryption"),
-            Schema.Null,
-          ]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([
-            Schema.Literal("origin_error_page_pass_thru"),
-            Schema.Null,
-          ]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("polish"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals(["off", "lossless", "lossy"]),
-              Schema.String,
-            ]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("resolve_override"), Schema.Null]),
-        ),
-        value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("respect_strong_etag"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("response_buffering"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("rocket_loader"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("security_level"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals([
-                "off",
-                "essentially_off",
-                "low",
-                "medium",
-                "high",
-                "under_attack",
-              ]),
-              Schema.String,
-            ]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([
-            Schema.Literal("sort_query_string_for_cache"),
-            Schema.Null,
-          ]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.Literal("ssl"), Schema.Null])),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals([
-                "off",
-                "flexible",
-                "full",
-                "strict",
-                "origin_pull",
-              ]),
-              Schema.String,
-            ]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("true_client_ip_header"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.Literal("waf"), Schema.Null])),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-    ]),
-  ),
-  createdOn: Schema.String,
-  modifiedOn: Schema.String,
-  priority: Schema.Number,
-  status: Schema.Union([
-    Schema.Literals(["active", "disabled"]),
-    Schema.String,
-  ]),
-  targets: Schema.Array(
+export const GetPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      constraint: Schema.optional(
+      id: Schema.String,
+      actions: Schema.Array(
         Schema.Union([
           Schema.Struct({
-            operator: Schema.Union([
-              Schema.Literals([
-                "matches",
-                "contains",
-                "equals",
-                "not_equal",
-                "not_contain",
-              ]),
-              Schema.String,
-            ]),
-            value: Schema.String,
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("always_use_https"), Schema.Null]),
+            ),
           }),
-          Schema.Null,
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("automatic_https_rewrites"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("browser_cache_ttl"), Schema.Null]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("browser_check"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("bypass_cache_on_cookie"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("cache_by_device_type"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("cache_deception_armor"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("cache_key_fields"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  cookie: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        checkPresence: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                        include: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          checkPresence: "check_presence",
+                          include: "include",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  header: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        checkPresence: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                        exclude: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                        include: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          checkPresence: "check_presence",
+                          exclude: "exclude",
+                          include: "include",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  host: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        resolved: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
+                  queryString: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        exclude: Schema.optional(
+                          Schema.Union([
+                            Schema.Union([
+                              Schema.Literal("*"),
+                              Schema.Array(Schema.String),
+                            ]),
+                            Schema.Null,
+                          ]),
+                        ),
+                        include: Schema.optional(
+                          Schema.Union([
+                            Schema.Union([
+                              Schema.Literal("*"),
+                              Schema.Array(Schema.String),
+                            ]),
+                            Schema.Null,
+                          ]),
+                        ),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
+                  user: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        deviceType: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                        geo: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                        lang: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          deviceType: "device_type",
+                          geo: "geo",
+                          lang: "lang",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    cookie: "cookie",
+                    header: "header",
+                    host: "host",
+                    queryString: "query_string",
+                    user: "user",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("cache_level"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals([
+                    "bypass",
+                    "basic",
+                    "simplified",
+                    "aggressive",
+                    "cache_everything",
+                  ]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("cache_on_cookie"), Schema.Null]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("cache_ttl_by_status"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Record(Schema.String, Schema.Unknown),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("disable_apps"), Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("disable_performance"),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("disable_security"), Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("disable_zaraz"), Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("edge_cache_ttl"), Schema.Null]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("email_obfuscation"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("explicit_cache_control"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("forwarding_url"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  statusCode: Schema.optional(
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["301", "302"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  url: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({ statusCode: "status_code", url: "url" }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("host_header_override"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("ip_geolocation"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("mirage"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("opportunistic_encryption"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("origin_error_page_pass_thru"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("polish"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["off", "lossless", "lossy"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("resolve_override"), Schema.Null]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("respect_strong_etag"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("response_buffering"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("rocket_loader"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("security_level"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals([
+                    "off",
+                    "essentially_off",
+                    "low",
+                    "medium",
+                    "high",
+                    "under_attack",
+                  ]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("sort_query_string_for_cache"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("ssl"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals([
+                    "off",
+                    "flexible",
+                    "full",
+                    "strict",
+                    "origin_pull",
+                  ]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("true_client_ip_header"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("waf"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
         ]),
       ),
-      target: Schema.optional(
-        Schema.Union([Schema.Literal("url"), Schema.Null]),
+      createdOn: Schema.String,
+      modifiedOn: Schema.String,
+      priority: Schema.Number,
+      status: Schema.Union([
+        Schema.Literals(["active", "disabled"]),
+        Schema.String,
+      ]),
+      targets: Schema.Array(
+        Schema.Struct({
+          constraint: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                operator: Schema.Union([
+                  Schema.Literals([
+                    "matches",
+                    "contains",
+                    "equals",
+                    "not_equal",
+                    "not_contain",
+                  ]),
+                  Schema.String,
+                ]),
+                value: Schema.String,
+              }),
+              Schema.Null,
+            ]),
+          ),
+          target: Schema.optional(
+            Schema.Union([Schema.Literal("url"), Schema.Null]),
+          ),
+        }),
       ),
-    }),
-  ),
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      actions: "actions",
-      createdOn: "created_on",
-      modifiedOn: "modified_on",
-      priority: "priority",
-      status: "status",
-      targets: "targets",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetPageRuleResponse>;
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          actions: "actions",
+          createdOn: "created_on",
+          modifiedOn: "modified_on",
+          priority: "priority",
+          status: "status",
+          targets: "targets",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<GetPageRuleResponse>;
 
 export type GetPageRuleError = DefaultErrors | PageRuleNotFound | Forbidden;
 
@@ -769,22 +824,23 @@ export interface ListPageRulesRequest {
   status?: "active" | "disabled" | (string & {});
 }
 
-export const ListPageRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  direction: Schema.optional(
-    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-  ).pipe(T.HttpQuery("direction")),
-  match: Schema.optional(
-    Schema.Union([Schema.Literals(["any", "all"]), Schema.String]),
-  ).pipe(T.HttpQuery("match")),
-  order: Schema.optional(
-    Schema.Union([Schema.Literals(["status", "priority"]), Schema.String]),
-  ).pipe(T.HttpQuery("order")),
-  status: Schema.optional(
-    Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
-  ).pipe(T.HttpQuery("status")),
-}).pipe(
-  T.Http({ method: "GET", path: "/zones/{zone_id}/pagerules" }),
+export const ListPageRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      direction: Schema.optional(
+        Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+      ).pipe(T.HttpQuery("direction")),
+      match: Schema.optional(
+        Schema.Union([Schema.Literals(["any", "all"]), Schema.String]),
+      ).pipe(T.HttpQuery("match")),
+      order: Schema.optional(
+        Schema.Union([Schema.Literals(["status", "priority"]), Schema.String]),
+      ).pipe(T.HttpQuery("order")),
+      status: Schema.optional(
+        Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
+      ).pipe(T.HttpQuery("status")),
+    }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/pagerules" })),
 ) as unknown as Schema.Schema<ListPageRulesRequest>;
 
 export type ListPageRulesResponse = {
@@ -952,563 +1008,603 @@ export type ListPageRulesResponse = {
   }[];
 }[];
 
-export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    id: Schema.String,
-    actions: Schema.Array(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("always_use_https"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("automatic_https_rewrites"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("browser_cache_ttl"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("browser_check"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("bypass_cache_on_cookie"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("cache_by_device_type"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("cache_deception_armor"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("cache_key_fields"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                cookie: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      checkPresence: Schema.optional(
-                        Schema.Union([
-                          Schema.Array(Schema.String),
-                          Schema.Null,
-                        ]),
-                      ),
-                      include: Schema.optional(
-                        Schema.Union([
-                          Schema.Array(Schema.String),
-                          Schema.Null,
-                        ]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        checkPresence: "check_presence",
-                        include: "include",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                header: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      checkPresence: Schema.optional(
-                        Schema.Union([
-                          Schema.Array(Schema.String),
-                          Schema.Null,
-                        ]),
-                      ),
-                      exclude: Schema.optional(
-                        Schema.Union([
-                          Schema.Array(Schema.String),
-                          Schema.Null,
-                        ]),
-                      ),
-                      include: Schema.optional(
-                        Schema.Union([
-                          Schema.Array(Schema.String),
-                          Schema.Null,
-                        ]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        checkPresence: "check_presence",
-                        exclude: "exclude",
-                        include: "include",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                host: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      resolved: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-                queryString: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      exclude: Schema.optional(
-                        Schema.Union([
-                          Schema.Union([
-                            Schema.Literal("*"),
-                            Schema.Array(Schema.String),
-                          ]),
-                          Schema.Null,
-                        ]),
-                      ),
-                      include: Schema.optional(
-                        Schema.Union([
-                          Schema.Union([
-                            Schema.Literal("*"),
-                            Schema.Array(Schema.String),
-                          ]),
-                          Schema.Null,
-                        ]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-                user: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      deviceType: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      geo: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      lang: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        deviceType: "device_type",
-                        geo: "geo",
-                        lang: "lang",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  cookie: "cookie",
-                  header: "header",
-                  host: "host",
-                  queryString: "query_string",
-                  user: "user",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("cache_level"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals([
-                  "bypass",
-                  "basic",
-                  "simplified",
-                  "aggressive",
-                  "cache_everything",
-                ]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("cache_on_cookie"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("cache_ttl_by_status"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Record(Schema.String, Schema.Unknown),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("disable_apps"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("disable_performance"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("disable_security"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("disable_zaraz"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("edge_cache_ttl"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("email_obfuscation"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("explicit_cache_control"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("forwarding_url"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                statusCode: Schema.optional(
-                  Schema.Union([
-                    Schema.Union([
-                      Schema.Literals(["301", "302"]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                url: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({ statusCode: "status_code", url: "url" }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("host_header_override"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("ip_geolocation"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("mirage"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("opportunistic_encryption"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("origin_error_page_pass_thru"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("polish"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["off", "lossless", "lossy"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("resolve_override"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("respect_strong_etag"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("response_buffering"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("rocket_loader"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("security_level"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals([
-                  "off",
-                  "essentially_off",
-                  "low",
-                  "medium",
-                  "high",
-                  "under_attack",
-                ]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("sort_query_string_for_cache"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("ssl"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals([
-                  "off",
-                  "flexible",
-                  "full",
-                  "strict",
-                  "origin_pull",
-                ]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("true_client_ip_header"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("waf"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-      ]),
-    ),
-    createdOn: Schema.String,
-    modifiedOn: Schema.String,
-    priority: Schema.Number,
-    status: Schema.Union([
-      Schema.Literals(["active", "disabled"]),
-      Schema.String,
-    ]),
-    targets: Schema.Array(
+export const ListPageRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Array(
       Schema.Struct({
-        constraint: Schema.optional(
+        id: Schema.String,
+        actions: Schema.Array(
           Schema.Union([
             Schema.Struct({
-              operator: Schema.Union([
-                Schema.Literals([
-                  "matches",
-                  "contains",
-                  "equals",
-                  "not_equal",
-                  "not_contain",
-                ]),
-                Schema.String,
-              ]),
-              value: Schema.String,
+              id: Schema.optional(
+                Schema.Union([Schema.Literal("always_use_https"), Schema.Null]),
+              ),
             }),
-            Schema.Null,
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([
+                  Schema.Literal("automatic_https_rewrites"),
+                  Schema.Null,
+                ]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([
+                  Schema.Literal("browser_cache_ttl"),
+                  Schema.Null,
+                ]),
+              ),
+              value: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([Schema.Literal("browser_check"), Schema.Null]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([
+                  Schema.Literal("bypass_cache_on_cookie"),
+                  Schema.Null,
+                ]),
+              ),
+              value: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([
+                  Schema.Literal("cache_by_device_type"),
+                  Schema.Null,
+                ]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([
+                  Schema.Literal("cache_deception_armor"),
+                  Schema.Null,
+                ]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([Schema.Literal("cache_key_fields"), Schema.Null]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    cookie: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({
+                          checkPresence: Schema.optional(
+                            Schema.Union([
+                              Schema.Array(Schema.String),
+                              Schema.Null,
+                            ]),
+                          ),
+                          include: Schema.optional(
+                            Schema.Union([
+                              Schema.Array(Schema.String),
+                              Schema.Null,
+                            ]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            checkPresence: "check_presence",
+                            include: "include",
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    header: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({
+                          checkPresence: Schema.optional(
+                            Schema.Union([
+                              Schema.Array(Schema.String),
+                              Schema.Null,
+                            ]),
+                          ),
+                          exclude: Schema.optional(
+                            Schema.Union([
+                              Schema.Array(Schema.String),
+                              Schema.Null,
+                            ]),
+                          ),
+                          include: Schema.optional(
+                            Schema.Union([
+                              Schema.Array(Schema.String),
+                              Schema.Null,
+                            ]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            checkPresence: "check_presence",
+                            exclude: "exclude",
+                            include: "include",
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    host: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({
+                          resolved: Schema.optional(
+                            Schema.Union([Schema.Boolean, Schema.Null]),
+                          ),
+                        }),
+                        Schema.Null,
+                      ]),
+                    ),
+                    queryString: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({
+                          exclude: Schema.optional(
+                            Schema.Union([
+                              Schema.Union([
+                                Schema.Literal("*"),
+                                Schema.Array(Schema.String),
+                              ]),
+                              Schema.Null,
+                            ]),
+                          ),
+                          include: Schema.optional(
+                            Schema.Union([
+                              Schema.Union([
+                                Schema.Literal("*"),
+                                Schema.Array(Schema.String),
+                              ]),
+                              Schema.Null,
+                            ]),
+                          ),
+                        }),
+                        Schema.Null,
+                      ]),
+                    ),
+                    user: Schema.optional(
+                      Schema.Union([
+                        Schema.Struct({
+                          deviceType: Schema.optional(
+                            Schema.Union([Schema.Boolean, Schema.Null]),
+                          ),
+                          geo: Schema.optional(
+                            Schema.Union([Schema.Boolean, Schema.Null]),
+                          ),
+                          lang: Schema.optional(
+                            Schema.Union([Schema.Boolean, Schema.Null]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            deviceType: "device_type",
+                            geo: "geo",
+                            lang: "lang",
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      cookie: "cookie",
+                      header: "header",
+                      host: "host",
+                      queryString: "query_string",
+                      user: "user",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([Schema.Literal("cache_level"), Schema.Null]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals([
+                      "bypass",
+                      "basic",
+                      "simplified",
+                      "aggressive",
+                      "cache_everything",
+                    ]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([Schema.Literal("cache_on_cookie"), Schema.Null]),
+              ),
+              value: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([
+                  Schema.Literal("cache_ttl_by_status"),
+                  Schema.Null,
+                ]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Record(Schema.String, Schema.Unknown),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([Schema.Literal("disable_apps"), Schema.Null]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([
+                  Schema.Literal("disable_performance"),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([Schema.Literal("disable_security"), Schema.Null]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([Schema.Literal("disable_zaraz"), Schema.Null]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([Schema.Literal("edge_cache_ttl"), Schema.Null]),
+              ),
+              value: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([
+                  Schema.Literal("email_obfuscation"),
+                  Schema.Null,
+                ]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([
+                  Schema.Literal("explicit_cache_control"),
+                  Schema.Null,
+                ]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([Schema.Literal("forwarding_url"), Schema.Null]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    statusCode: Schema.optional(
+                      Schema.Union([
+                        Schema.Union([
+                          Schema.Literals(["301", "302"]),
+                          Schema.String,
+                        ]),
+                        Schema.Null,
+                      ]),
+                    ),
+                    url: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      statusCode: "status_code",
+                      url: "url",
+                    }),
+                  ),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([
+                  Schema.Literal("host_header_override"),
+                  Schema.Null,
+                ]),
+              ),
+              value: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([Schema.Literal("ip_geolocation"), Schema.Null]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([Schema.Literal("mirage"), Schema.Null]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([
+                  Schema.Literal("opportunistic_encryption"),
+                  Schema.Null,
+                ]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([
+                  Schema.Literal("origin_error_page_pass_thru"),
+                  Schema.Null,
+                ]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([Schema.Literal("polish"), Schema.Null]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["off", "lossless", "lossy"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([Schema.Literal("resolve_override"), Schema.Null]),
+              ),
+              value: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([
+                  Schema.Literal("respect_strong_etag"),
+                  Schema.Null,
+                ]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([
+                  Schema.Literal("response_buffering"),
+                  Schema.Null,
+                ]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([Schema.Literal("rocket_loader"), Schema.Null]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([Schema.Literal("security_level"), Schema.Null]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals([
+                      "off",
+                      "essentially_off",
+                      "low",
+                      "medium",
+                      "high",
+                      "under_attack",
+                    ]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([
+                  Schema.Literal("sort_query_string_for_cache"),
+                  Schema.Null,
+                ]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([Schema.Literal("ssl"), Schema.Null]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals([
+                      "off",
+                      "flexible",
+                      "full",
+                      "strict",
+                      "origin_pull",
+                    ]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([
+                  Schema.Literal("true_client_ip_header"),
+                  Schema.Null,
+                ]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Union([Schema.Literal("waf"), Schema.Null]),
+              ),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                  Schema.Null,
+                ]),
+              ),
+            }),
           ]),
         ),
-        target: Schema.optional(
-          Schema.Union([Schema.Literal("url"), Schema.Null]),
+        createdOn: Schema.String,
+        modifiedOn: Schema.String,
+        priority: Schema.Number,
+        status: Schema.Union([
+          Schema.Literals(["active", "disabled"]),
+          Schema.String,
+        ]),
+        targets: Schema.Array(
+          Schema.Struct({
+            constraint: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  operator: Schema.Union([
+                    Schema.Literals([
+                      "matches",
+                      "contains",
+                      "equals",
+                      "not_equal",
+                      "not_contain",
+                    ]),
+                    Schema.String,
+                  ]),
+                  value: Schema.String,
+                }),
+                Schema.Null,
+              ]),
+            ),
+            target: Schema.optional(
+              Schema.Union([Schema.Literal("url"), Schema.Null]),
+            ),
+          }),
         ),
-      }),
-    ),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      actions: "actions",
-      createdOn: "created_on",
-      modifiedOn: "modified_on",
-      priority: "priority",
-      status: "status",
-      targets: "targets",
-    }),
-  ),
-).pipe(
-  T.ResponsePath("result"),
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          actions: "actions",
+          createdOn: "created_on",
+          modifiedOn: "modified_on",
+          priority: "priority",
+          status: "status",
+          targets: "targets",
+        }),
+      ),
+    ).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Schema<ListPageRulesResponse>;
 
 export type ListPageRulesError = DefaultErrors | Forbidden;
@@ -1634,316 +1730,324 @@ export interface CreatePageRuleRequest {
   status?: "active" | "disabled" | (string & {});
 }
 
-export const CreatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  actions: Schema.Array(
-    Schema.Union([
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("always_use_https")),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("automatic_https_rewrites")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("browser_cache_ttl")),
-        value: Schema.optional(Schema.Number),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("browser_check")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("bypass_cache_on_cookie")),
-        value: Schema.optional(Schema.String),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("cache_by_device_type")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("cache_deception_armor")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("cache_key_fields")),
-        value: Schema.optional(
+export const CreatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      actions: Schema.Array(
+        Schema.Union([
           Schema.Struct({
-            cookie: Schema.optional(
+            id: Schema.optional(Schema.Literal("always_use_https")),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("automatic_https_rewrites")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("browser_cache_ttl")),
+            value: Schema.optional(Schema.Number),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("browser_check")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("bypass_cache_on_cookie")),
+            value: Schema.optional(Schema.String),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("cache_by_device_type")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("cache_deception_armor")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("cache_key_fields")),
+            value: Schema.optional(
               Schema.Struct({
-                checkPresence: Schema.optional(Schema.Array(Schema.String)),
-                include: Schema.optional(Schema.Array(Schema.String)),
+                cookie: Schema.optional(
+                  Schema.Struct({
+                    checkPresence: Schema.optional(Schema.Array(Schema.String)),
+                    include: Schema.optional(Schema.Array(Schema.String)),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      checkPresence: "check_presence",
+                      include: "include",
+                    }),
+                  ),
+                ),
+                header: Schema.optional(
+                  Schema.Struct({
+                    checkPresence: Schema.optional(Schema.Array(Schema.String)),
+                    exclude: Schema.optional(Schema.Array(Schema.String)),
+                    include: Schema.optional(Schema.Array(Schema.String)),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      checkPresence: "check_presence",
+                      exclude: "exclude",
+                      include: "include",
+                    }),
+                  ),
+                ),
+                host: Schema.optional(
+                  Schema.Struct({
+                    resolved: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+                queryString: Schema.optional(
+                  Schema.Struct({
+                    exclude: Schema.optional(
+                      Schema.Union([
+                        Schema.Literal("*"),
+                        Schema.Array(Schema.String),
+                      ]),
+                    ),
+                    include: Schema.optional(
+                      Schema.Union([
+                        Schema.Literal("*"),
+                        Schema.Array(Schema.String),
+                      ]),
+                    ),
+                  }),
+                ),
+                user: Schema.optional(
+                  Schema.Struct({
+                    deviceType: Schema.optional(Schema.Boolean),
+                    geo: Schema.optional(Schema.Boolean),
+                    lang: Schema.optional(Schema.Boolean),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      deviceType: "device_type",
+                      geo: "geo",
+                      lang: "lang",
+                    }),
+                  ),
+                ),
               }).pipe(
                 Schema.encodeKeys({
-                  checkPresence: "check_presence",
-                  include: "include",
+                  cookie: "cookie",
+                  header: "header",
+                  host: "host",
+                  queryString: "query_string",
+                  user: "user",
                 }),
               ),
             ),
-            header: Schema.optional(
-              Schema.Struct({
-                checkPresence: Schema.optional(Schema.Array(Schema.String)),
-                exclude: Schema.optional(Schema.Array(Schema.String)),
-                include: Schema.optional(Schema.Array(Schema.String)),
-              }).pipe(
-                Schema.encodeKeys({
-                  checkPresence: "check_presence",
-                  exclude: "exclude",
-                  include: "include",
-                }),
-              ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("cache_level")),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "bypass",
+                  "basic",
+                  "simplified",
+                  "aggressive",
+                  "cache_everything",
+                ]),
+                Schema.String,
+              ]),
             ),
-            host: Schema.optional(
-              Schema.Struct({
-                resolved: Schema.optional(Schema.Boolean),
-              }),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("cache_on_cookie")),
+            value: Schema.optional(Schema.String),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("cache_ttl_by_status")),
+            value: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
             ),
-            queryString: Schema.optional(
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("disable_apps")),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("disable_performance")),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("disable_security")),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("disable_zaraz")),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("edge_cache_ttl")),
+            value: Schema.optional(Schema.Number),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("email_obfuscation")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("explicit_cache_control")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("forwarding_url")),
+            value: Schema.optional(
               Schema.Struct({
-                exclude: Schema.optional(
+                statusCode: Schema.optional(
                   Schema.Union([
-                    Schema.Literal("*"),
-                    Schema.Array(Schema.String),
+                    Schema.Literals(["301", "302"]),
+                    Schema.String,
                   ]),
                 ),
-                include: Schema.optional(
-                  Schema.Union([
-                    Schema.Literal("*"),
-                    Schema.Array(Schema.String),
-                  ]),
-                ),
-              }),
-            ),
-            user: Schema.optional(
-              Schema.Struct({
-                deviceType: Schema.optional(Schema.Boolean),
-                geo: Schema.optional(Schema.Boolean),
-                lang: Schema.optional(Schema.Boolean),
+                url: Schema.optional(Schema.String),
               }).pipe(
-                Schema.encodeKeys({
-                  deviceType: "device_type",
-                  geo: "geo",
-                  lang: "lang",
-                }),
+                Schema.encodeKeys({ statusCode: "status_code", url: "url" }),
               ),
             ),
-          }).pipe(
-            Schema.encodeKeys({
-              cookie: "cookie",
-              header: "header",
-              host: "host",
-              queryString: "query_string",
-              user: "user",
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("host_header_override")),
+            value: Schema.optional(Schema.String),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("ip_geolocation")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("mirage")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("opportunistic_encryption")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("origin_error_page_pass_thru")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("polish")),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["off", "lossless", "lossy"]),
+                Schema.String,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("resolve_override")),
+            value: Schema.optional(Schema.String),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("respect_strong_etag")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("response_buffering")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("rocket_loader")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("security_level")),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "off",
+                  "essentially_off",
+                  "low",
+                  "medium",
+                  "high",
+                  "under_attack",
+                ]),
+                Schema.String,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("sort_query_string_for_cache")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("ssl")),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "off",
+                  "flexible",
+                  "full",
+                  "strict",
+                  "origin_pull",
+                ]),
+                Schema.String,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("true_client_ip_header")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("waf")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+        ]),
+      ),
+      targets: Schema.Array(
+        Schema.Struct({
+          constraint: Schema.optional(
+            Schema.Struct({
+              operator: Schema.Union([
+                Schema.Literals([
+                  "matches",
+                  "contains",
+                  "equals",
+                  "not_equal",
+                  "not_contain",
+                ]),
+                Schema.String,
+              ]),
+              value: Schema.String,
             }),
           ),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("cache_level")),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Literals([
-              "bypass",
-              "basic",
-              "simplified",
-              "aggressive",
-              "cache_everything",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("cache_on_cookie")),
-        value: Schema.optional(Schema.String),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("cache_ttl_by_status")),
-        value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("disable_apps")),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("disable_performance")),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("disable_security")),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("disable_zaraz")),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("edge_cache_ttl")),
-        value: Schema.optional(Schema.Number),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("email_obfuscation")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("explicit_cache_control")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("forwarding_url")),
-        value: Schema.optional(
-          Schema.Struct({
-            statusCode: Schema.optional(
-              Schema.Union([Schema.Literals(["301", "302"]), Schema.String]),
-            ),
-            url: Schema.optional(Schema.String),
-          }).pipe(Schema.encodeKeys({ statusCode: "status_code", url: "url" })),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("host_header_override")),
-        value: Schema.optional(Schema.String),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("ip_geolocation")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("mirage")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("opportunistic_encryption")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("origin_error_page_pass_thru")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("polish")),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["off", "lossless", "lossy"]),
-            Schema.String,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("resolve_override")),
-        value: Schema.optional(Schema.String),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("respect_strong_etag")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("response_buffering")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("rocket_loader")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("security_level")),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Literals([
-              "off",
-              "essentially_off",
-              "low",
-              "medium",
-              "high",
-              "under_attack",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("sort_query_string_for_cache")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("ssl")),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Literals([
-              "off",
-              "flexible",
-              "full",
-              "strict",
-              "origin_pull",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("true_client_ip_header")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("waf")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-    ]),
-  ),
-  targets: Schema.Array(
-    Schema.Struct({
-      constraint: Schema.optional(
-        Schema.Struct({
-          operator: Schema.Union([
-            Schema.Literals([
-              "matches",
-              "contains",
-              "equals",
-              "not_equal",
-              "not_contain",
-            ]),
-            Schema.String,
-          ]),
-          value: Schema.String,
+          target: Schema.optional(Schema.Literal("url")),
         }),
       ),
-      target: Schema.optional(Schema.Literal("url")),
-    }),
-  ),
-  priority: Schema.optional(Schema.Number),
-  status: Schema.optional(
-    Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
-  ),
-}).pipe(
-  T.Http({ method: "POST", path: "/zones/{zone_id}/pagerules" }),
+      priority: Schema.optional(Schema.Number),
+      status: Schema.optional(
+        Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
+      ),
+    }).pipe(T.Http({ method: "POST", path: "/zones/{zone_id}/pagerules" })),
 ) as unknown as Schema.Schema<CreatePageRuleRequest>;
 
 export interface CreatePageRuleResponse {
@@ -2118,565 +2222,579 @@ export interface CreatePageRuleResponse {
   }[];
 }
 
-export const CreatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String,
-    actions: Schema.Array(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("always_use_https"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("automatic_https_rewrites"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("browser_cache_ttl"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("browser_check"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("bypass_cache_on_cookie"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("cache_by_device_type"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("cache_deception_armor"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("cache_key_fields"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                cookie: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      checkPresence: Schema.optional(
-                        Schema.Union([
-                          Schema.Array(Schema.String),
-                          Schema.Null,
-                        ]),
-                      ),
-                      include: Schema.optional(
-                        Schema.Union([
-                          Schema.Array(Schema.String),
-                          Schema.Null,
-                        ]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        checkPresence: "check_presence",
-                        include: "include",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                header: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      checkPresence: Schema.optional(
-                        Schema.Union([
-                          Schema.Array(Schema.String),
-                          Schema.Null,
-                        ]),
-                      ),
-                      exclude: Schema.optional(
-                        Schema.Union([
-                          Schema.Array(Schema.String),
-                          Schema.Null,
-                        ]),
-                      ),
-                      include: Schema.optional(
-                        Schema.Union([
-                          Schema.Array(Schema.String),
-                          Schema.Null,
-                        ]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        checkPresence: "check_presence",
-                        exclude: "exclude",
-                        include: "include",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                host: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      resolved: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-                queryString: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      exclude: Schema.optional(
-                        Schema.Union([
-                          Schema.Union([
-                            Schema.Literal("*"),
-                            Schema.Array(Schema.String),
-                          ]),
-                          Schema.Null,
-                        ]),
-                      ),
-                      include: Schema.optional(
-                        Schema.Union([
-                          Schema.Union([
-                            Schema.Literal("*"),
-                            Schema.Array(Schema.String),
-                          ]),
-                          Schema.Null,
-                        ]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-                user: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      deviceType: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      geo: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      lang: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        deviceType: "device_type",
-                        geo: "geo",
-                        lang: "lang",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  cookie: "cookie",
-                  header: "header",
-                  host: "host",
-                  queryString: "query_string",
-                  user: "user",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("cache_level"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
+export const CreatePageRuleResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      actions: Schema.Array(
+        Schema.Union([
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("always_use_https"), Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "bypass",
-                  "basic",
-                  "simplified",
-                  "aggressive",
-                  "cache_everything",
-                ]),
-                Schema.String,
+                Schema.Literal("automatic_https_rewrites"),
+                Schema.Null,
               ]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("cache_on_cookie"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("cache_ttl_by_status"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Record(Schema.String, Schema.Unknown),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("disable_apps"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("disable_performance"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("disable_security"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("disable_zaraz"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("edge_cache_ttl"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("email_obfuscation"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("explicit_cache_control"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("forwarding_url"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                statusCode: Schema.optional(
-                  Schema.Union([
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("browser_cache_ttl"), Schema.Null]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("browser_check"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("bypass_cache_on_cookie"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("cache_by_device_type"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("cache_deception_armor"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("cache_key_fields"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  cookie: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["301", "302"]),
-                      Schema.String,
+                      Schema.Struct({
+                        checkPresence: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                        include: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          checkPresence: "check_presence",
+                          include: "include",
+                        }),
+                      ),
+                      Schema.Null,
                     ]),
-                    Schema.Null,
+                  ),
+                  header: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        checkPresence: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                        exclude: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                        include: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          checkPresence: "check_presence",
+                          exclude: "exclude",
+                          include: "include",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  host: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        resolved: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
+                  queryString: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        exclude: Schema.optional(
+                          Schema.Union([
+                            Schema.Union([
+                              Schema.Literal("*"),
+                              Schema.Array(Schema.String),
+                            ]),
+                            Schema.Null,
+                          ]),
+                        ),
+                        include: Schema.optional(
+                          Schema.Union([
+                            Schema.Union([
+                              Schema.Literal("*"),
+                              Schema.Array(Schema.String),
+                            ]),
+                            Schema.Null,
+                          ]),
+                        ),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
+                  user: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        deviceType: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                        geo: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                        lang: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          deviceType: "device_type",
+                          geo: "geo",
+                          lang: "lang",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    cookie: "cookie",
+                    header: "header",
+                    host: "host",
+                    queryString: "query_string",
+                    user: "user",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("cache_level"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals([
+                    "bypass",
+                    "basic",
+                    "simplified",
+                    "aggressive",
+                    "cache_everything",
                   ]),
-                ),
-                url: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({ statusCode: "status_code", url: "url" }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("host_header_override"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("ip_geolocation"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("mirage"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("opportunistic_encryption"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("origin_error_page_pass_thru"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("polish"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["off", "lossless", "lossy"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("resolve_override"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("respect_strong_etag"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("response_buffering"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("rocket_loader"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("security_level"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals([
-                  "off",
-                  "essentially_off",
-                  "low",
-                  "medium",
-                  "high",
-                  "under_attack",
+                  Schema.String,
                 ]),
-                Schema.String,
+                Schema.Null,
               ]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("sort_query_string_for_cache"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("ssl"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("cache_on_cookie"), Schema.Null]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "off",
-                  "flexible",
-                  "full",
-                  "strict",
-                  "origin_pull",
-                ]),
-                Schema.String,
+                Schema.Literal("cache_ttl_by_status"),
+                Schema.Null,
               ]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("true_client_ip_header"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("waf"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Record(Schema.String, Schema.Unknown),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("disable_apps"), Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("disable_performance"),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("disable_security"), Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("disable_zaraz"), Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("edge_cache_ttl"), Schema.Null]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("email_obfuscation"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("explicit_cache_control"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("forwarding_url"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  statusCode: Schema.optional(
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["301", "302"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  url: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({ statusCode: "status_code", url: "url" }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("host_header_override"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("ip_geolocation"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("mirage"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("opportunistic_encryption"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("origin_error_page_pass_thru"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("polish"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["off", "lossless", "lossy"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("resolve_override"), Schema.Null]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("respect_strong_etag"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("response_buffering"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("rocket_loader"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("security_level"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals([
+                    "off",
+                    "essentially_off",
+                    "low",
+                    "medium",
+                    "high",
+                    "under_attack",
+                  ]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("sort_query_string_for_cache"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("ssl"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals([
+                    "off",
+                    "flexible",
+                    "full",
+                    "strict",
+                    "origin_pull",
+                  ]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("true_client_ip_header"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("waf"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+        ]),
+      ),
+      createdOn: Schema.String,
+      modifiedOn: Schema.String,
+      priority: Schema.Number,
+      status: Schema.Union([
+        Schema.Literals(["active", "disabled"]),
+        Schema.String,
       ]),
-    ),
-    createdOn: Schema.String,
-    modifiedOn: Schema.String,
-    priority: Schema.Number,
-    status: Schema.Union([
-      Schema.Literals(["active", "disabled"]),
-      Schema.String,
-    ]),
-    targets: Schema.Array(
-      Schema.Struct({
-        constraint: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              operator: Schema.Union([
-                Schema.Literals([
-                  "matches",
-                  "contains",
-                  "equals",
-                  "not_equal",
-                  "not_contain",
+      targets: Schema.Array(
+        Schema.Struct({
+          constraint: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                operator: Schema.Union([
+                  Schema.Literals([
+                    "matches",
+                    "contains",
+                    "equals",
+                    "not_equal",
+                    "not_contain",
+                  ]),
+                  Schema.String,
                 ]),
-                Schema.String,
-              ]),
-              value: Schema.String,
-            }),
-            Schema.Null,
-          ]),
-        ),
-        target: Schema.optional(
-          Schema.Union([Schema.Literal("url"), Schema.Null]),
-        ),
-      }),
-    ),
-  },
-)
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      actions: "actions",
-      createdOn: "created_on",
-      modifiedOn: "modified_on",
-      priority: "priority",
-      status: "status",
-      targets: "targets",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
+                value: Schema.String,
+              }),
+              Schema.Null,
+            ]),
+          ),
+          target: Schema.optional(
+            Schema.Union([Schema.Literal("url"), Schema.Null]),
+          ),
+        }),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          actions: "actions",
+          createdOn: "created_on",
+          modifiedOn: "modified_on",
+          priority: "priority",
+          status: "status",
+          targets: "targets",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<CreatePageRuleResponse>;
 
 export type CreatePageRuleError = DefaultErrors | Forbidden;
@@ -2803,317 +2921,330 @@ export interface UpdatePageRuleRequest {
   status?: "active" | "disabled" | (string & {});
 }
 
-export const UpdatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  pageruleId: Schema.String.pipe(T.HttpPath("pageruleId")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  actions: Schema.Array(
-    Schema.Union([
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("always_use_https")),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("automatic_https_rewrites")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("browser_cache_ttl")),
-        value: Schema.optional(Schema.Number),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("browser_check")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("bypass_cache_on_cookie")),
-        value: Schema.optional(Schema.String),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("cache_by_device_type")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("cache_deception_armor")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("cache_key_fields")),
-        value: Schema.optional(
+export const UpdatePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      pageruleId: Schema.String.pipe(T.HttpPath("pageruleId")),
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      actions: Schema.Array(
+        Schema.Union([
           Schema.Struct({
-            cookie: Schema.optional(
+            id: Schema.optional(Schema.Literal("always_use_https")),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("automatic_https_rewrites")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("browser_cache_ttl")),
+            value: Schema.optional(Schema.Number),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("browser_check")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("bypass_cache_on_cookie")),
+            value: Schema.optional(Schema.String),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("cache_by_device_type")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("cache_deception_armor")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("cache_key_fields")),
+            value: Schema.optional(
               Schema.Struct({
-                checkPresence: Schema.optional(Schema.Array(Schema.String)),
-                include: Schema.optional(Schema.Array(Schema.String)),
+                cookie: Schema.optional(
+                  Schema.Struct({
+                    checkPresence: Schema.optional(Schema.Array(Schema.String)),
+                    include: Schema.optional(Schema.Array(Schema.String)),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      checkPresence: "check_presence",
+                      include: "include",
+                    }),
+                  ),
+                ),
+                header: Schema.optional(
+                  Schema.Struct({
+                    checkPresence: Schema.optional(Schema.Array(Schema.String)),
+                    exclude: Schema.optional(Schema.Array(Schema.String)),
+                    include: Schema.optional(Schema.Array(Schema.String)),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      checkPresence: "check_presence",
+                      exclude: "exclude",
+                      include: "include",
+                    }),
+                  ),
+                ),
+                host: Schema.optional(
+                  Schema.Struct({
+                    resolved: Schema.optional(Schema.Boolean),
+                  }),
+                ),
+                queryString: Schema.optional(
+                  Schema.Struct({
+                    exclude: Schema.optional(
+                      Schema.Union([
+                        Schema.Literal("*"),
+                        Schema.Array(Schema.String),
+                      ]),
+                    ),
+                    include: Schema.optional(
+                      Schema.Union([
+                        Schema.Literal("*"),
+                        Schema.Array(Schema.String),
+                      ]),
+                    ),
+                  }),
+                ),
+                user: Schema.optional(
+                  Schema.Struct({
+                    deviceType: Schema.optional(Schema.Boolean),
+                    geo: Schema.optional(Schema.Boolean),
+                    lang: Schema.optional(Schema.Boolean),
+                  }).pipe(
+                    Schema.encodeKeys({
+                      deviceType: "device_type",
+                      geo: "geo",
+                      lang: "lang",
+                    }),
+                  ),
+                ),
               }).pipe(
                 Schema.encodeKeys({
-                  checkPresence: "check_presence",
-                  include: "include",
+                  cookie: "cookie",
+                  header: "header",
+                  host: "host",
+                  queryString: "query_string",
+                  user: "user",
                 }),
               ),
             ),
-            header: Schema.optional(
-              Schema.Struct({
-                checkPresence: Schema.optional(Schema.Array(Schema.String)),
-                exclude: Schema.optional(Schema.Array(Schema.String)),
-                include: Schema.optional(Schema.Array(Schema.String)),
-              }).pipe(
-                Schema.encodeKeys({
-                  checkPresence: "check_presence",
-                  exclude: "exclude",
-                  include: "include",
-                }),
-              ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("cache_level")),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "bypass",
+                  "basic",
+                  "simplified",
+                  "aggressive",
+                  "cache_everything",
+                ]),
+                Schema.String,
+              ]),
             ),
-            host: Schema.optional(
-              Schema.Struct({
-                resolved: Schema.optional(Schema.Boolean),
-              }),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("cache_on_cookie")),
+            value: Schema.optional(Schema.String),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("cache_ttl_by_status")),
+            value: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
             ),
-            queryString: Schema.optional(
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("disable_apps")),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("disable_performance")),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("disable_security")),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("disable_zaraz")),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("edge_cache_ttl")),
+            value: Schema.optional(Schema.Number),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("email_obfuscation")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("explicit_cache_control")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("forwarding_url")),
+            value: Schema.optional(
               Schema.Struct({
-                exclude: Schema.optional(
+                statusCode: Schema.optional(
                   Schema.Union([
-                    Schema.Literal("*"),
-                    Schema.Array(Schema.String),
+                    Schema.Literals(["301", "302"]),
+                    Schema.String,
                   ]),
                 ),
-                include: Schema.optional(
-                  Schema.Union([
-                    Schema.Literal("*"),
-                    Schema.Array(Schema.String),
-                  ]),
-                ),
-              }),
-            ),
-            user: Schema.optional(
-              Schema.Struct({
-                deviceType: Schema.optional(Schema.Boolean),
-                geo: Schema.optional(Schema.Boolean),
-                lang: Schema.optional(Schema.Boolean),
+                url: Schema.optional(Schema.String),
               }).pipe(
-                Schema.encodeKeys({
-                  deviceType: "device_type",
-                  geo: "geo",
-                  lang: "lang",
-                }),
+                Schema.encodeKeys({ statusCode: "status_code", url: "url" }),
               ),
             ),
-          }).pipe(
-            Schema.encodeKeys({
-              cookie: "cookie",
-              header: "header",
-              host: "host",
-              queryString: "query_string",
-              user: "user",
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("host_header_override")),
+            value: Schema.optional(Schema.String),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("ip_geolocation")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("mirage")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("opportunistic_encryption")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("origin_error_page_pass_thru")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("polish")),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["off", "lossless", "lossy"]),
+                Schema.String,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("resolve_override")),
+            value: Schema.optional(Schema.String),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("respect_strong_etag")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("response_buffering")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("rocket_loader")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("security_level")),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "off",
+                  "essentially_off",
+                  "low",
+                  "medium",
+                  "high",
+                  "under_attack",
+                ]),
+                Schema.String,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("sort_query_string_for_cache")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("ssl")),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Literals([
+                  "off",
+                  "flexible",
+                  "full",
+                  "strict",
+                  "origin_pull",
+                ]),
+                Schema.String,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("true_client_ip_header")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(Schema.Literal("waf")),
+            value: Schema.optional(
+              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+            ),
+          }),
+        ]),
+      ),
+      targets: Schema.Array(
+        Schema.Struct({
+          constraint: Schema.optional(
+            Schema.Struct({
+              operator: Schema.Union([
+                Schema.Literals([
+                  "matches",
+                  "contains",
+                  "equals",
+                  "not_equal",
+                  "not_contain",
+                ]),
+                Schema.String,
+              ]),
+              value: Schema.String,
             }),
           ),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("cache_level")),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Literals([
-              "bypass",
-              "basic",
-              "simplified",
-              "aggressive",
-              "cache_everything",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("cache_on_cookie")),
-        value: Schema.optional(Schema.String),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("cache_ttl_by_status")),
-        value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("disable_apps")),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("disable_performance")),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("disable_security")),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("disable_zaraz")),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("edge_cache_ttl")),
-        value: Schema.optional(Schema.Number),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("email_obfuscation")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("explicit_cache_control")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("forwarding_url")),
-        value: Schema.optional(
-          Schema.Struct({
-            statusCode: Schema.optional(
-              Schema.Union([Schema.Literals(["301", "302"]), Schema.String]),
-            ),
-            url: Schema.optional(Schema.String),
-          }).pipe(Schema.encodeKeys({ statusCode: "status_code", url: "url" })),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("host_header_override")),
-        value: Schema.optional(Schema.String),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("ip_geolocation")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("mirage")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("opportunistic_encryption")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("origin_error_page_pass_thru")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("polish")),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["off", "lossless", "lossy"]),
-            Schema.String,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("resolve_override")),
-        value: Schema.optional(Schema.String),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("respect_strong_etag")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("response_buffering")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("rocket_loader")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("security_level")),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Literals([
-              "off",
-              "essentially_off",
-              "low",
-              "medium",
-              "high",
-              "under_attack",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("sort_query_string_for_cache")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("ssl")),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Literals([
-              "off",
-              "flexible",
-              "full",
-              "strict",
-              "origin_pull",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("true_client_ip_header")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Literal("waf")),
-        value: Schema.optional(
-          Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-        ),
-      }),
-    ]),
-  ),
-  targets: Schema.Array(
-    Schema.Struct({
-      constraint: Schema.optional(
-        Schema.Struct({
-          operator: Schema.Union([
-            Schema.Literals([
-              "matches",
-              "contains",
-              "equals",
-              "not_equal",
-              "not_contain",
-            ]),
-            Schema.String,
-          ]),
-          value: Schema.String,
+          target: Schema.optional(Schema.Literal("url")),
         }),
       ),
-      target: Schema.optional(Schema.Literal("url")),
-    }),
-  ),
-  priority: Schema.optional(Schema.Number),
-  status: Schema.optional(
-    Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
-  ),
-}).pipe(
-  T.Http({ method: "PUT", path: "/zones/{zone_id}/pagerules/{pageruleId}" }),
+      priority: Schema.optional(Schema.Number),
+      status: Schema.optional(
+        Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
+      ),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        path: "/zones/{zone_id}/pagerules/{pageruleId}",
+      }),
+    ),
 ) as unknown as Schema.Schema<UpdatePageRuleRequest>;
 
 export interface UpdatePageRuleResponse {
@@ -3288,565 +3419,579 @@ export interface UpdatePageRuleResponse {
   }[];
 }
 
-export const UpdatePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String,
-    actions: Schema.Array(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("always_use_https"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("automatic_https_rewrites"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("browser_cache_ttl"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("browser_check"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("bypass_cache_on_cookie"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("cache_by_device_type"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("cache_deception_armor"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("cache_key_fields"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                cookie: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      checkPresence: Schema.optional(
-                        Schema.Union([
-                          Schema.Array(Schema.String),
-                          Schema.Null,
-                        ]),
-                      ),
-                      include: Schema.optional(
-                        Schema.Union([
-                          Schema.Array(Schema.String),
-                          Schema.Null,
-                        ]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        checkPresence: "check_presence",
-                        include: "include",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                header: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      checkPresence: Schema.optional(
-                        Schema.Union([
-                          Schema.Array(Schema.String),
-                          Schema.Null,
-                        ]),
-                      ),
-                      exclude: Schema.optional(
-                        Schema.Union([
-                          Schema.Array(Schema.String),
-                          Schema.Null,
-                        ]),
-                      ),
-                      include: Schema.optional(
-                        Schema.Union([
-                          Schema.Array(Schema.String),
-                          Schema.Null,
-                        ]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        checkPresence: "check_presence",
-                        exclude: "exclude",
-                        include: "include",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-                host: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      resolved: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-                queryString: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      exclude: Schema.optional(
-                        Schema.Union([
-                          Schema.Union([
-                            Schema.Literal("*"),
-                            Schema.Array(Schema.String),
-                          ]),
-                          Schema.Null,
-                        ]),
-                      ),
-                      include: Schema.optional(
-                        Schema.Union([
-                          Schema.Union([
-                            Schema.Literal("*"),
-                            Schema.Array(Schema.String),
-                          ]),
-                          Schema.Null,
-                        ]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-                user: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      deviceType: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      geo: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                      lang: Schema.optional(
-                        Schema.Union([Schema.Boolean, Schema.Null]),
-                      ),
-                    }).pipe(
-                      Schema.encodeKeys({
-                        deviceType: "device_type",
-                        geo: "geo",
-                        lang: "lang",
-                      }),
-                    ),
-                    Schema.Null,
-                  ]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  cookie: "cookie",
-                  header: "header",
-                  host: "host",
-                  queryString: "query_string",
-                  user: "user",
-                }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("cache_level"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
+export const UpdatePageRuleResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      actions: Schema.Array(
+        Schema.Union([
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("always_use_https"), Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "bypass",
-                  "basic",
-                  "simplified",
-                  "aggressive",
-                  "cache_everything",
-                ]),
-                Schema.String,
+                Schema.Literal("automatic_https_rewrites"),
+                Schema.Null,
               ]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("cache_on_cookie"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("cache_ttl_by_status"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Record(Schema.String, Schema.Unknown),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("disable_apps"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("disable_performance"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("disable_security"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("disable_zaraz"), Schema.Null]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("edge_cache_ttl"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("email_obfuscation"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("explicit_cache_control"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("forwarding_url"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                statusCode: Schema.optional(
-                  Schema.Union([
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("browser_cache_ttl"), Schema.Null]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("browser_check"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("bypass_cache_on_cookie"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("cache_by_device_type"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("cache_deception_armor"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("cache_key_fields"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  cookie: Schema.optional(
                     Schema.Union([
-                      Schema.Literals(["301", "302"]),
-                      Schema.String,
+                      Schema.Struct({
+                        checkPresence: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                        include: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          checkPresence: "check_presence",
+                          include: "include",
+                        }),
+                      ),
+                      Schema.Null,
                     ]),
-                    Schema.Null,
+                  ),
+                  header: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        checkPresence: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                        exclude: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                        include: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          checkPresence: "check_presence",
+                          exclude: "exclude",
+                          include: "include",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  host: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        resolved: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
+                  queryString: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        exclude: Schema.optional(
+                          Schema.Union([
+                            Schema.Union([
+                              Schema.Literal("*"),
+                              Schema.Array(Schema.String),
+                            ]),
+                            Schema.Null,
+                          ]),
+                        ),
+                        include: Schema.optional(
+                          Schema.Union([
+                            Schema.Union([
+                              Schema.Literal("*"),
+                              Schema.Array(Schema.String),
+                            ]),
+                            Schema.Null,
+                          ]),
+                        ),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
+                  user: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        deviceType: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                        geo: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                        lang: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          deviceType: "device_type",
+                          geo: "geo",
+                          lang: "lang",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    cookie: "cookie",
+                    header: "header",
+                    host: "host",
+                    queryString: "query_string",
+                    user: "user",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("cache_level"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals([
+                    "bypass",
+                    "basic",
+                    "simplified",
+                    "aggressive",
+                    "cache_everything",
                   ]),
-                ),
-                url: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({ statusCode: "status_code", url: "url" }),
-              ),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("host_header_override"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("ip_geolocation"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("mirage"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("opportunistic_encryption"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("origin_error_page_pass_thru"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("polish"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals(["off", "lossless", "lossy"]),
-                Schema.String,
-              ]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("resolve_override"), Schema.Null]),
-          ),
-          value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("respect_strong_etag"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("response_buffering"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("rocket_loader"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("security_level"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([
-                Schema.Literals([
-                  "off",
-                  "essentially_off",
-                  "low",
-                  "medium",
-                  "high",
-                  "under_attack",
+                  Schema.String,
                 ]),
-                Schema.String,
+                Schema.Null,
               ]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("sort_query_string_for_cache"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("ssl"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("cache_on_cookie"), Schema.Null]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
               Schema.Union([
-                Schema.Literals([
-                  "off",
-                  "flexible",
-                  "full",
-                  "strict",
-                  "origin_pull",
-                ]),
-                Schema.String,
+                Schema.Literal("cache_ttl_by_status"),
+                Schema.Null,
               ]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([
-              Schema.Literal("true_client_ip_header"),
-              Schema.Null,
-            ]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(
-            Schema.Union([Schema.Literal("waf"), Schema.Null]),
-          ),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-              Schema.Null,
-            ]),
-          ),
-        }),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Record(Schema.String, Schema.Unknown),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("disable_apps"), Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("disable_performance"),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("disable_security"), Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("disable_zaraz"), Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("edge_cache_ttl"), Schema.Null]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("email_obfuscation"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("explicit_cache_control"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("forwarding_url"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  statusCode: Schema.optional(
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["301", "302"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  url: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({ statusCode: "status_code", url: "url" }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("host_header_override"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("ip_geolocation"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("mirage"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("opportunistic_encryption"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("origin_error_page_pass_thru"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("polish"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["off", "lossless", "lossy"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("resolve_override"), Schema.Null]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("respect_strong_etag"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("response_buffering"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("rocket_loader"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("security_level"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals([
+                    "off",
+                    "essentially_off",
+                    "low",
+                    "medium",
+                    "high",
+                    "under_attack",
+                  ]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("sort_query_string_for_cache"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("ssl"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals([
+                    "off",
+                    "flexible",
+                    "full",
+                    "strict",
+                    "origin_pull",
+                  ]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("true_client_ip_header"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("waf"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+        ]),
+      ),
+      createdOn: Schema.String,
+      modifiedOn: Schema.String,
+      priority: Schema.Number,
+      status: Schema.Union([
+        Schema.Literals(["active", "disabled"]),
+        Schema.String,
       ]),
-    ),
-    createdOn: Schema.String,
-    modifiedOn: Schema.String,
-    priority: Schema.Number,
-    status: Schema.Union([
-      Schema.Literals(["active", "disabled"]),
-      Schema.String,
-    ]),
-    targets: Schema.Array(
-      Schema.Struct({
-        constraint: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              operator: Schema.Union([
-                Schema.Literals([
-                  "matches",
-                  "contains",
-                  "equals",
-                  "not_equal",
-                  "not_contain",
+      targets: Schema.Array(
+        Schema.Struct({
+          constraint: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                operator: Schema.Union([
+                  Schema.Literals([
+                    "matches",
+                    "contains",
+                    "equals",
+                    "not_equal",
+                    "not_contain",
+                  ]),
+                  Schema.String,
                 ]),
-                Schema.String,
-              ]),
-              value: Schema.String,
-            }),
-            Schema.Null,
-          ]),
-        ),
-        target: Schema.optional(
-          Schema.Union([Schema.Literal("url"), Schema.Null]),
-        ),
-      }),
-    ),
-  },
-)
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      actions: "actions",
-      createdOn: "created_on",
-      modifiedOn: "modified_on",
-      priority: "priority",
-      status: "status",
-      targets: "targets",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
+                value: Schema.String,
+              }),
+              Schema.Null,
+            ]),
+          ),
+          target: Schema.optional(
+            Schema.Union([Schema.Literal("url"), Schema.Null]),
+          ),
+        }),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          actions: "actions",
+          createdOn: "created_on",
+          modifiedOn: "modified_on",
+          priority: "priority",
+          status: "status",
+          targets: "targets",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<UpdatePageRuleResponse>;
 
 export type UpdatePageRuleError = DefaultErrors | PageRuleNotFound | Forbidden;
@@ -3973,323 +4118,342 @@ export interface PatchPageRuleRequest {
   }[];
 }
 
-export const PatchPageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  pageruleId: Schema.String.pipe(T.HttpPath("pageruleId")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  actions: Schema.optional(
-    Schema.Array(
-      Schema.Union([
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("always_use_https")),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("automatic_https_rewrites")),
-          value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("browser_cache_ttl")),
-          value: Schema.optional(Schema.Number),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("browser_check")),
-          value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("bypass_cache_on_cookie")),
-          value: Schema.optional(Schema.String),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("cache_by_device_type")),
-          value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("cache_deception_armor")),
-          value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("cache_key_fields")),
-          value: Schema.optional(
+export const PatchPageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      pageruleId: Schema.String.pipe(T.HttpPath("pageruleId")),
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      actions: Schema.optional(
+        Schema.Array(
+          Schema.Union([
             Schema.Struct({
-              cookie: Schema.optional(
+              id: Schema.optional(Schema.Literal("always_use_https")),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("automatic_https_rewrites")),
+              value: Schema.optional(
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("browser_cache_ttl")),
+              value: Schema.optional(Schema.Number),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("browser_check")),
+              value: Schema.optional(
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("bypass_cache_on_cookie")),
+              value: Schema.optional(Schema.String),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("cache_by_device_type")),
+              value: Schema.optional(
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("cache_deception_armor")),
+              value: Schema.optional(
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("cache_key_fields")),
+              value: Schema.optional(
                 Schema.Struct({
-                  checkPresence: Schema.optional(Schema.Array(Schema.String)),
-                  include: Schema.optional(Schema.Array(Schema.String)),
+                  cookie: Schema.optional(
+                    Schema.Struct({
+                      checkPresence: Schema.optional(
+                        Schema.Array(Schema.String),
+                      ),
+                      include: Schema.optional(Schema.Array(Schema.String)),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        checkPresence: "check_presence",
+                        include: "include",
+                      }),
+                    ),
+                  ),
+                  header: Schema.optional(
+                    Schema.Struct({
+                      checkPresence: Schema.optional(
+                        Schema.Array(Schema.String),
+                      ),
+                      exclude: Schema.optional(Schema.Array(Schema.String)),
+                      include: Schema.optional(Schema.Array(Schema.String)),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        checkPresence: "check_presence",
+                        exclude: "exclude",
+                        include: "include",
+                      }),
+                    ),
+                  ),
+                  host: Schema.optional(
+                    Schema.Struct({
+                      resolved: Schema.optional(Schema.Boolean),
+                    }),
+                  ),
+                  queryString: Schema.optional(
+                    Schema.Struct({
+                      exclude: Schema.optional(
+                        Schema.Union([
+                          Schema.Literal("*"),
+                          Schema.Array(Schema.String),
+                        ]),
+                      ),
+                      include: Schema.optional(
+                        Schema.Union([
+                          Schema.Literal("*"),
+                          Schema.Array(Schema.String),
+                        ]),
+                      ),
+                    }),
+                  ),
+                  user: Schema.optional(
+                    Schema.Struct({
+                      deviceType: Schema.optional(Schema.Boolean),
+                      geo: Schema.optional(Schema.Boolean),
+                      lang: Schema.optional(Schema.Boolean),
+                    }).pipe(
+                      Schema.encodeKeys({
+                        deviceType: "device_type",
+                        geo: "geo",
+                        lang: "lang",
+                      }),
+                    ),
+                  ),
                 }).pipe(
                   Schema.encodeKeys({
-                    checkPresence: "check_presence",
-                    include: "include",
+                    cookie: "cookie",
+                    header: "header",
+                    host: "host",
+                    queryString: "query_string",
+                    user: "user",
                   }),
                 ),
               ),
-              header: Schema.optional(
-                Schema.Struct({
-                  checkPresence: Schema.optional(Schema.Array(Schema.String)),
-                  exclude: Schema.optional(Schema.Array(Schema.String)),
-                  include: Schema.optional(Schema.Array(Schema.String)),
-                }).pipe(
-                  Schema.encodeKeys({
-                    checkPresence: "check_presence",
-                    exclude: "exclude",
-                    include: "include",
-                  }),
-                ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("cache_level")),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Literals([
+                    "bypass",
+                    "basic",
+                    "simplified",
+                    "aggressive",
+                    "cache_everything",
+                  ]),
+                  Schema.String,
+                ]),
               ),
-              host: Schema.optional(
-                Schema.Struct({
-                  resolved: Schema.optional(Schema.Boolean),
-                }),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("cache_on_cookie")),
+              value: Schema.optional(Schema.String),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("cache_ttl_by_status")),
+              value: Schema.optional(
+                Schema.Record(Schema.String, Schema.Unknown),
               ),
-              queryString: Schema.optional(
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("disable_apps")),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("disable_performance")),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("disable_security")),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("disable_zaraz")),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("edge_cache_ttl")),
+              value: Schema.optional(Schema.Number),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("email_obfuscation")),
+              value: Schema.optional(
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("explicit_cache_control")),
+              value: Schema.optional(
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("forwarding_url")),
+              value: Schema.optional(
                 Schema.Struct({
-                  exclude: Schema.optional(
+                  statusCode: Schema.optional(
                     Schema.Union([
-                      Schema.Literal("*"),
-                      Schema.Array(Schema.String),
+                      Schema.Literals(["301", "302"]),
+                      Schema.String,
                     ]),
                   ),
-                  include: Schema.optional(
-                    Schema.Union([
-                      Schema.Literal("*"),
-                      Schema.Array(Schema.String),
-                    ]),
-                  ),
-                }),
-              ),
-              user: Schema.optional(
-                Schema.Struct({
-                  deviceType: Schema.optional(Schema.Boolean),
-                  geo: Schema.optional(Schema.Boolean),
-                  lang: Schema.optional(Schema.Boolean),
+                  url: Schema.optional(Schema.String),
                 }).pipe(
-                  Schema.encodeKeys({
-                    deviceType: "device_type",
-                    geo: "geo",
-                    lang: "lang",
-                  }),
+                  Schema.encodeKeys({ statusCode: "status_code", url: "url" }),
                 ),
               ),
-            }).pipe(
-              Schema.encodeKeys({
-                cookie: "cookie",
-                header: "header",
-                host: "host",
-                queryString: "query_string",
-                user: "user",
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("host_header_override")),
+              value: Schema.optional(Schema.String),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("ip_geolocation")),
+              value: Schema.optional(
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("mirage")),
+              value: Schema.optional(
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("opportunistic_encryption")),
+              value: Schema.optional(
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Literal("origin_error_page_pass_thru"),
+              ),
+              value: Schema.optional(
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("polish")),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Literals(["off", "lossless", "lossy"]),
+                  Schema.String,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("resolve_override")),
+              value: Schema.optional(Schema.String),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("respect_strong_etag")),
+              value: Schema.optional(
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("response_buffering")),
+              value: Schema.optional(
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("rocket_loader")),
+              value: Schema.optional(
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("security_level")),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Literals([
+                    "off",
+                    "essentially_off",
+                    "low",
+                    "medium",
+                    "high",
+                    "under_attack",
+                  ]),
+                  Schema.String,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(
+                Schema.Literal("sort_query_string_for_cache"),
+              ),
+              value: Schema.optional(
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("ssl")),
+              value: Schema.optional(
+                Schema.Union([
+                  Schema.Literals([
+                    "off",
+                    "flexible",
+                    "full",
+                    "strict",
+                    "origin_pull",
+                  ]),
+                  Schema.String,
+                ]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("true_client_ip_header")),
+              value: Schema.optional(
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              ),
+            }),
+            Schema.Struct({
+              id: Schema.optional(Schema.Literal("waf")),
+              value: Schema.optional(
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+              ),
+            }),
+          ]),
+        ),
+      ),
+      priority: Schema.optional(Schema.Number),
+      status: Schema.optional(
+        Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
+      ),
+      targets: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            constraint: Schema.optional(
+              Schema.Struct({
+                operator: Schema.Union([
+                  Schema.Literals([
+                    "matches",
+                    "contains",
+                    "equals",
+                    "not_equal",
+                    "not_contain",
+                  ]),
+                  Schema.String,
+                ]),
+                value: Schema.String,
               }),
             ),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("cache_level")),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "bypass",
-                "basic",
-                "simplified",
-                "aggressive",
-                "cache_everything",
-              ]),
-              Schema.String,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("cache_on_cookie")),
-          value: Schema.optional(Schema.String),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("cache_ttl_by_status")),
-          value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("disable_apps")),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("disable_performance")),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("disable_security")),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("disable_zaraz")),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("edge_cache_ttl")),
-          value: Schema.optional(Schema.Number),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("email_obfuscation")),
-          value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("explicit_cache_control")),
-          value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("forwarding_url")),
-          value: Schema.optional(
-            Schema.Struct({
-              statusCode: Schema.optional(
-                Schema.Union([Schema.Literals(["301", "302"]), Schema.String]),
-              ),
-              url: Schema.optional(Schema.String),
-            }).pipe(
-              Schema.encodeKeys({ statusCode: "status_code", url: "url" }),
-            ),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("host_header_override")),
-          value: Schema.optional(Schema.String),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("ip_geolocation")),
-          value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("mirage")),
-          value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("opportunistic_encryption")),
-          value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("origin_error_page_pass_thru")),
-          value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("polish")),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["off", "lossless", "lossy"]),
-              Schema.String,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("resolve_override")),
-          value: Schema.optional(Schema.String),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("respect_strong_etag")),
-          value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("response_buffering")),
-          value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("rocket_loader")),
-          value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("security_level")),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "off",
-                "essentially_off",
-                "low",
-                "medium",
-                "high",
-                "under_attack",
-              ]),
-              Schema.String,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("sort_query_string_for_cache")),
-          value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("ssl")),
-          value: Schema.optional(
-            Schema.Union([
-              Schema.Literals([
-                "off",
-                "flexible",
-                "full",
-                "strict",
-                "origin_pull",
-              ]),
-              Schema.String,
-            ]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("true_client_ip_header")),
-          value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-          ),
-        }),
-        Schema.Struct({
-          id: Schema.optional(Schema.Literal("waf")),
-          value: Schema.optional(
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-          ),
-        }),
-      ]),
-    ),
-  ),
-  priority: Schema.optional(Schema.Number),
-  status: Schema.optional(
-    Schema.Union([Schema.Literals(["active", "disabled"]), Schema.String]),
-  ),
-  targets: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        constraint: Schema.optional(
-          Schema.Struct({
-            operator: Schema.Union([
-              Schema.Literals([
-                "matches",
-                "contains",
-                "equals",
-                "not_equal",
-                "not_contain",
-              ]),
-              Schema.String,
-            ]),
-            value: Schema.String,
+            target: Schema.optional(Schema.Literal("url")),
           }),
         ),
-        target: Schema.optional(Schema.Literal("url")),
+      ),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        path: "/zones/{zone_id}/pagerules/{pageruleId}",
       }),
     ),
-  ),
-}).pipe(
-  T.Http({ method: "PATCH", path: "/zones/{zone_id}/pagerules/{pageruleId}" }),
 ) as unknown as Schema.Schema<PatchPageRuleRequest>;
 
 export interface PatchPageRuleResponse {
@@ -4464,531 +4628,580 @@ export interface PatchPageRuleResponse {
   }[];
 }
 
-export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
-  actions: Schema.Array(
-    Schema.Union([
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("always_use_https"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([
-            Schema.Literal("automatic_https_rewrites"),
-            Schema.Null,
-          ]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("browser_cache_ttl"), Schema.Null]),
-        ),
-        value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("browser_check"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("bypass_cache_on_cookie"), Schema.Null]),
-        ),
-        value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("cache_by_device_type"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("cache_deception_armor"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("cache_key_fields"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              cookie: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    checkPresence: Schema.optional(
-                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                    ),
-                    include: Schema.optional(
-                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      checkPresence: "check_presence",
-                      include: "include",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              header: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    checkPresence: Schema.optional(
-                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                    ),
-                    exclude: Schema.optional(
-                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                    ),
-                    include: Schema.optional(
-                      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      checkPresence: "check_presence",
-                      exclude: "exclude",
-                      include: "include",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-              host: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    resolved: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              queryString: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    exclude: Schema.optional(
-                      Schema.Union([
-                        Schema.Union([
-                          Schema.Literal("*"),
-                          Schema.Array(Schema.String),
-                        ]),
-                        Schema.Null,
-                      ]),
-                    ),
-                    include: Schema.optional(
-                      Schema.Union([
-                        Schema.Union([
-                          Schema.Literal("*"),
-                          Schema.Array(Schema.String),
-                        ]),
-                        Schema.Null,
-                      ]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              user: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    deviceType: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    geo: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                    lang: Schema.optional(
-                      Schema.Union([Schema.Boolean, Schema.Null]),
-                    ),
-                  }).pipe(
-                    Schema.encodeKeys({
-                      deviceType: "device_type",
-                      geo: "geo",
-                      lang: "lang",
-                    }),
-                  ),
-                  Schema.Null,
-                ]),
-              ),
-            }).pipe(
-              Schema.encodeKeys({
-                cookie: "cookie",
-                header: "header",
-                host: "host",
-                queryString: "query_string",
-                user: "user",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("cache_level"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals([
-                "bypass",
-                "basic",
-                "simplified",
-                "aggressive",
-                "cache_everything",
-              ]),
-              Schema.String,
-            ]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("cache_on_cookie"), Schema.Null]),
-        ),
-        value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("cache_ttl_by_status"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Record(Schema.String, Schema.Unknown),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("disable_apps"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("disable_performance"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("disable_security"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("disable_zaraz"), Schema.Null]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("edge_cache_ttl"), Schema.Null]),
-        ),
-        value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("email_obfuscation"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("explicit_cache_control"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("forwarding_url"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              statusCode: Schema.optional(
-                Schema.Union([
-                  Schema.Union([
-                    Schema.Literals(["301", "302"]),
-                    Schema.String,
-                  ]),
-                  Schema.Null,
-                ]),
-              ),
-              url: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            }).pipe(
-              Schema.encodeKeys({ statusCode: "status_code", url: "url" }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("host_header_override"), Schema.Null]),
-        ),
-        value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("ip_geolocation"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("mirage"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([
-            Schema.Literal("opportunistic_encryption"),
-            Schema.Null,
-          ]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([
-            Schema.Literal("origin_error_page_pass_thru"),
-            Schema.Null,
-          ]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("polish"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals(["off", "lossless", "lossy"]),
-              Schema.String,
-            ]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("resolve_override"), Schema.Null]),
-        ),
-        value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("respect_strong_etag"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("response_buffering"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("rocket_loader"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("security_level"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals([
-                "off",
-                "essentially_off",
-                "low",
-                "medium",
-                "high",
-                "under_attack",
-              ]),
-              Schema.String,
-            ]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([
-            Schema.Literal("sort_query_string_for_cache"),
-            Schema.Null,
-          ]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.Literal("ssl"), Schema.Null])),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([
-              Schema.Literals([
-                "off",
-                "flexible",
-                "full",
-                "strict",
-                "origin_pull",
-              ]),
-              Schema.String,
-            ]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(
-          Schema.Union([Schema.Literal("true_client_ip_header"), Schema.Null]),
-        ),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.Literal("waf"), Schema.Null])),
-        value: Schema.optional(
-          Schema.Union([
-            Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-    ]),
-  ),
-  createdOn: Schema.String,
-  modifiedOn: Schema.String,
-  priority: Schema.Number,
-  status: Schema.Union([
-    Schema.Literals(["active", "disabled"]),
-    Schema.String,
-  ]),
-  targets: Schema.Array(
+export const PatchPageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      constraint: Schema.optional(
+      id: Schema.String,
+      actions: Schema.Array(
         Schema.Union([
           Schema.Struct({
-            operator: Schema.Union([
-              Schema.Literals([
-                "matches",
-                "contains",
-                "equals",
-                "not_equal",
-                "not_contain",
-              ]),
-              Schema.String,
-            ]),
-            value: Schema.String,
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("always_use_https"), Schema.Null]),
+            ),
           }),
-          Schema.Null,
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("automatic_https_rewrites"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("browser_cache_ttl"), Schema.Null]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("browser_check"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("bypass_cache_on_cookie"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("cache_by_device_type"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("cache_deception_armor"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("cache_key_fields"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  cookie: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        checkPresence: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                        include: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          checkPresence: "check_presence",
+                          include: "include",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  header: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        checkPresence: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                        exclude: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                        include: Schema.optional(
+                          Schema.Union([
+                            Schema.Array(Schema.String),
+                            Schema.Null,
+                          ]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          checkPresence: "check_presence",
+                          exclude: "exclude",
+                          include: "include",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                  host: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        resolved: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
+                  queryString: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        exclude: Schema.optional(
+                          Schema.Union([
+                            Schema.Union([
+                              Schema.Literal("*"),
+                              Schema.Array(Schema.String),
+                            ]),
+                            Schema.Null,
+                          ]),
+                        ),
+                        include: Schema.optional(
+                          Schema.Union([
+                            Schema.Union([
+                              Schema.Literal("*"),
+                              Schema.Array(Schema.String),
+                            ]),
+                            Schema.Null,
+                          ]),
+                        ),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
+                  user: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        deviceType: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                        geo: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                        lang: Schema.optional(
+                          Schema.Union([Schema.Boolean, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({
+                          deviceType: "device_type",
+                          geo: "geo",
+                          lang: "lang",
+                        }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    cookie: "cookie",
+                    header: "header",
+                    host: "host",
+                    queryString: "query_string",
+                    user: "user",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("cache_level"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals([
+                    "bypass",
+                    "basic",
+                    "simplified",
+                    "aggressive",
+                    "cache_everything",
+                  ]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("cache_on_cookie"), Schema.Null]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("cache_ttl_by_status"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Record(Schema.String, Schema.Unknown),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("disable_apps"), Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("disable_performance"),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("disable_security"), Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("disable_zaraz"), Schema.Null]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("edge_cache_ttl"), Schema.Null]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("email_obfuscation"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("explicit_cache_control"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("forwarding_url"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  statusCode: Schema.optional(
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals(["301", "302"]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  url: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({ statusCode: "status_code", url: "url" }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("host_header_override"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("ip_geolocation"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("mirage"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("opportunistic_encryption"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("origin_error_page_pass_thru"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("polish"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals(["off", "lossless", "lossy"]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("resolve_override"), Schema.Null]),
+            ),
+            value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("respect_strong_etag"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("response_buffering"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("rocket_loader"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("security_level"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals([
+                    "off",
+                    "essentially_off",
+                    "low",
+                    "medium",
+                    "high",
+                    "under_attack",
+                  ]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("sort_query_string_for_cache"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("ssl"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals([
+                    "off",
+                    "flexible",
+                    "full",
+                    "strict",
+                    "origin_pull",
+                  ]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([
+                Schema.Literal("true_client_ip_header"),
+                Schema.Null,
+              ]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
+          Schema.Struct({
+            id: Schema.optional(
+              Schema.Union([Schema.Literal("waf"), Schema.Null]),
+            ),
+            value: Schema.optional(
+              Schema.Union([
+                Schema.Union([Schema.Literals(["on", "off"]), Schema.String]),
+                Schema.Null,
+              ]),
+            ),
+          }),
         ]),
       ),
-      target: Schema.optional(
-        Schema.Union([Schema.Literal("url"), Schema.Null]),
+      createdOn: Schema.String,
+      modifiedOn: Schema.String,
+      priority: Schema.Number,
+      status: Schema.Union([
+        Schema.Literals(["active", "disabled"]),
+        Schema.String,
+      ]),
+      targets: Schema.Array(
+        Schema.Struct({
+          constraint: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                operator: Schema.Union([
+                  Schema.Literals([
+                    "matches",
+                    "contains",
+                    "equals",
+                    "not_equal",
+                    "not_contain",
+                  ]),
+                  Schema.String,
+                ]),
+                value: Schema.String,
+              }),
+              Schema.Null,
+            ]),
+          ),
+          target: Schema.optional(
+            Schema.Union([Schema.Literal("url"), Schema.Null]),
+          ),
+        }),
       ),
-    }),
-  ),
-})
-  .pipe(
-    Schema.encodeKeys({
-      id: "id",
-      actions: "actions",
-      createdOn: "created_on",
-      modifiedOn: "modified_on",
-      priority: "priority",
-      status: "status",
-      targets: "targets",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<PatchPageRuleResponse>;
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          actions: "actions",
+          createdOn: "created_on",
+          modifiedOn: "modified_on",
+          priority: "priority",
+          status: "status",
+          targets: "targets",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<PatchPageRuleResponse>;
 
 export type PatchPageRuleError = DefaultErrors | PageRuleNotFound | Forbidden;
 
@@ -5009,11 +5222,17 @@ export interface DeletePageRuleRequest {
   zoneId: string;
 }
 
-export const DeletePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  pageruleId: Schema.String.pipe(T.HttpPath("pageruleId")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-}).pipe(
-  T.Http({ method: "DELETE", path: "/zones/{zone_id}/pagerules/{pageruleId}" }),
+export const DeletePageRuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      pageruleId: Schema.String.pipe(T.HttpPath("pageruleId")),
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/zones/{zone_id}/pagerules/{pageruleId}",
+      }),
+    ),
 ) as unknown as Schema.Schema<DeletePageRuleRequest>;
 
 export interface DeletePageRuleResponse {
@@ -5021,13 +5240,12 @@ export interface DeletePageRuleResponse {
   id: string;
 }
 
-export const DeletePageRuleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    id: Schema.String,
-  },
-).pipe(
-  T.ResponsePath("result"),
-) as unknown as Schema.Schema<DeletePageRuleResponse>;
+export const DeletePageRuleResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+    }).pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<DeletePageRuleResponse>;
 
 export type DeletePageRuleError = DefaultErrors | PageRuleNotFound | Forbidden;
 

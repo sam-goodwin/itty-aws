@@ -22,13 +22,15 @@ export interface SubmitBrandProtectionRequest {
 }
 
 export const SubmitBrandProtectionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/brand-protection/submit",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/brand-protection/submit",
+      }),
+    ),
   ) as unknown as Schema.Schema<SubmitBrandProtectionRequest>;
 
 export interface SubmitBrandProtectionResponse {
@@ -37,24 +39,26 @@ export interface SubmitBrandProtectionResponse {
 }
 
 export const SubmitBrandProtectionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    skippedUrls: Schema.optional(
-      Schema.Union([
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-        Schema.Null,
-      ]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      skippedUrls: Schema.optional(
+        Schema.Union([
+          Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+          Schema.Null,
+        ]),
+      ),
+      submittedUrls: Schema.optional(
+        Schema.Union([
+          Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        skippedUrls: "skipped_urls",
+        submittedUrls: "submitted_urls",
+      }),
     ),
-    submittedUrls: Schema.optional(
-      Schema.Union([
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-        Schema.Null,
-      ]),
-    ),
-  }).pipe(
-    Schema.encodeKeys({
-      skippedUrls: "skipped_urls",
-      submittedUrls: "submitted_urls",
-    }),
   ) as unknown as Schema.Schema<SubmitBrandProtectionResponse>;
 
 export type SubmitBrandProtectionError = DefaultErrors;
@@ -79,13 +83,15 @@ export interface UrlInfoBrandProtectionRequest {
 }
 
 export const UrlInfoBrandProtectionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/brand-protection/url-info",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/brand-protection/url-info",
+      }),
+    ),
   ) as unknown as Schema.Schema<UrlInfoBrandProtectionRequest>;
 
 export interface UrlInfoBrandProtectionResponse {
@@ -93,9 +99,11 @@ export interface UrlInfoBrandProtectionResponse {
 }
 
 export const UrlInfoBrandProtectionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-  }) as unknown as Schema.Schema<UrlInfoBrandProtectionResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    }),
+  ) as unknown as Schema.Schema<UrlInfoBrandProtectionResponse>;
 
 export type UrlInfoBrandProtectionError = DefaultErrors;
 
@@ -131,18 +139,21 @@ export interface CreateLogoRequest {
   image?: File | Blob;
 }
 
-export const CreateLogoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  matchType: Schema.optional(Schema.String).pipe(T.HttpQuery("match_type")),
-  tag: Schema.optional(Schema.String).pipe(T.HttpQuery("tag")),
-  threshold: Schema.optional(Schema.Number).pipe(T.HttpQuery("threshold")),
-  image: Schema.optional(UploadableSchema.pipe(T.HttpFormDataFile())),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "/accounts/{account_id}/brand-protection/logos",
-    contentType: "multipart",
-  }),
+export const CreateLogoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      matchType: Schema.optional(Schema.String).pipe(T.HttpQuery("match_type")),
+      tag: Schema.optional(Schema.String).pipe(T.HttpQuery("tag")),
+      threshold: Schema.optional(Schema.Number).pipe(T.HttpQuery("threshold")),
+      image: Schema.optional(UploadableSchema.pipe(T.HttpFormDataFile())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/brand-protection/logos",
+        contentType: "multipart",
+      }),
+    ),
 ) as unknown as Schema.Schema<CreateLogoRequest>;
 
 export interface CreateLogoResponse {
@@ -151,12 +162,15 @@ export interface CreateLogoResponse {
   uploadPath?: string | null;
 }
 
-export const CreateLogoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  uploadPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-}).pipe(
-  Schema.encodeKeys({ id: "id", tag: "tag", uploadPath: "upload_path" }),
+export const CreateLogoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      uploadPath: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({ id: "id", tag: "tag", uploadPath: "upload_path" }),
+    ),
 ) as unknown as Schema.Schema<CreateLogoResponse>;
 
 export type CreateLogoError = DefaultErrors;
@@ -177,20 +191,24 @@ export interface DeleteLogoRequest {
   accountId: string;
 }
 
-export const DeleteLogoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  logoId: Schema.String.pipe(T.HttpPath("logoId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "/accounts/{account_id}/brand-protection/logos/{logoId}",
-  }),
+export const DeleteLogoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      logoId: Schema.String.pipe(T.HttpPath("logoId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/brand-protection/logos/{logoId}",
+      }),
+    ),
 ) as unknown as Schema.Schema<DeleteLogoRequest>;
 
 export type DeleteLogoResponse = unknown;
 
-export const DeleteLogoResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteLogoResponse>;
+export const DeleteLogoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () => Schema.Unknown,
+) as unknown as Schema.Schema<DeleteLogoResponse>;
 
 export type DeleteLogoError = DefaultErrors;
 
@@ -220,18 +238,21 @@ export interface GetLogoMatchRequest {
   offset?: string;
 }
 
-export const GetLogoMatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  limit: Schema.optional(Schema.String).pipe(T.HttpQuery("limit")),
-  logoId: Schema.optional(Schema.Array(Schema.String)).pipe(
-    T.HttpQuery("logo_id"),
-  ),
-  offset: Schema.optional(Schema.String).pipe(T.HttpQuery("offset")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/brand-protection/logo-matches",
-  }),
+export const GetLogoMatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      limit: Schema.optional(Schema.String).pipe(T.HttpQuery("limit")),
+      logoId: Schema.optional(Schema.Array(Schema.String)).pipe(
+        T.HttpQuery("logo_id"),
+      ),
+      offset: Schema.optional(Schema.String).pipe(T.HttpQuery("offset")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/brand-protection/logo-matches",
+      }),
+    ),
 ) as unknown as Schema.Schema<GetLogoMatchRequest>;
 
 export interface GetLogoMatchResponse {
@@ -239,15 +260,18 @@ export interface GetLogoMatchResponse {
   total?: number | null;
 }
 
-export const GetLogoMatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  matches: Schema.optional(
-    Schema.Union([
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      Schema.Null,
-    ]),
-  ),
-  total: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-}) as unknown as Schema.Schema<GetLogoMatchResponse>;
+export const GetLogoMatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      matches: Schema.optional(
+        Schema.Union([
+          Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+          Schema.Null,
+        ]),
+      ),
+      total: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }),
+) as unknown as Schema.Schema<GetLogoMatchResponse>;
 
 export type GetLogoMatchError = DefaultErrors;
 
@@ -274,18 +298,20 @@ export interface DownloadLogoMatchRequest {
 }
 
 export const DownloadLogoMatchRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    limit: Schema.optional(Schema.String).pipe(T.HttpQuery("limit")),
-    logoId: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("logo_id"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      limit: Schema.optional(Schema.String).pipe(T.HttpQuery("limit")),
+      logoId: Schema.optional(Schema.Array(Schema.String)).pipe(
+        T.HttpQuery("logo_id"),
+      ),
+      offset: Schema.optional(Schema.String).pipe(T.HttpQuery("offset")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/brand-protection/logo-matches/download",
+      }),
     ),
-    offset: Schema.optional(Schema.String).pipe(T.HttpQuery("offset")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/brand-protection/logo-matches/download",
-    }),
   ) as unknown as Schema.Schema<DownloadLogoMatchRequest>;
 
 export interface DownloadLogoMatchResponse {
@@ -294,15 +320,17 @@ export interface DownloadLogoMatchResponse {
 }
 
 export const DownloadLogoMatchResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    matches: Schema.optional(
-      Schema.Union([
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-        Schema.Null,
-      ]),
-    ),
-    total: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  }) as unknown as Schema.Schema<DownloadLogoMatchResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      matches: Schema.optional(
+        Schema.Union([
+          Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+          Schema.Null,
+        ]),
+      ),
+      total: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }),
+  ) as unknown as Schema.Schema<DownloadLogoMatchResponse>;
 
 export type DownloadLogoMatchError = DefaultErrors;
 
@@ -334,19 +362,21 @@ export interface GetMatchRequest {
   offset?: number;
 }
 
-export const GetMatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
-  includeDomainId: Schema.optional(Schema.Boolean).pipe(
-    T.HttpQuery("include_domain_id"),
+export const GetMatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
+    includeDomainId: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("include_domain_id"),
+    ),
+    limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
+    offset: Schema.optional(Schema.Number).pipe(T.HttpQuery("offset")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/brand-protection/matches",
+    }),
   ),
-  limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
-  offset: Schema.optional(Schema.Number).pipe(T.HttpQuery("offset")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/brand-protection/matches",
-  }),
 ) as unknown as Schema.Schema<GetMatchRequest>;
 
 export interface GetMatchResponse {
@@ -354,15 +384,17 @@ export interface GetMatchResponse {
   total?: number | null;
 }
 
-export const GetMatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  matches: Schema.optional(
-    Schema.Union([
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      Schema.Null,
-    ]),
-  ),
-  total: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-}) as unknown as Schema.Schema<GetMatchResponse>;
+export const GetMatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    matches: Schema.optional(
+      Schema.Union([
+        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+        Schema.Null,
+      ]),
+    ),
+    total: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }),
+) as unknown as Schema.Schema<GetMatchResponse>;
 
 export type GetMatchError = DefaultErrors;
 
@@ -390,19 +422,22 @@ export interface DownloadMatchRequest {
   offset?: number;
 }
 
-export const DownloadMatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
-  includeDomainId: Schema.optional(Schema.Boolean).pipe(
-    T.HttpQuery("include_domain_id"),
-  ),
-  limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
-  offset: Schema.optional(Schema.Number).pipe(T.HttpQuery("offset")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/brand-protection/matches/download",
-  }),
+export const DownloadMatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
+      includeDomainId: Schema.optional(Schema.Boolean).pipe(
+        T.HttpQuery("include_domain_id"),
+      ),
+      limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
+      offset: Schema.optional(Schema.Number).pipe(T.HttpQuery("offset")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/brand-protection/matches/download",
+      }),
+    ),
 ) as unknown as Schema.Schema<DownloadMatchRequest>;
 
 export interface DownloadMatchResponse {
@@ -410,15 +445,18 @@ export interface DownloadMatchResponse {
   total?: number | null;
 }
 
-export const DownloadMatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  matches: Schema.optional(
-    Schema.Union([
-      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      Schema.Null,
-    ]),
-  ),
-  total: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-}) as unknown as Schema.Schema<DownloadMatchResponse>;
+export const DownloadMatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      matches: Schema.optional(
+        Schema.Union([
+          Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+          Schema.Null,
+        ]),
+      ),
+      total: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }),
+) as unknown as Schema.Schema<DownloadMatchResponse>;
 
 export type DownloadMatchError = DefaultErrors;
 
@@ -458,34 +496,40 @@ export interface CreateQueryRequest {
   bodyTag?: string;
 }
 
-export const CreateQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
-  queryScan: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("query_scan")),
-  queryTag: Schema.optional(Schema.String).pipe(T.HttpQuery("query_tag")),
-  maxTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  minTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  bodyScan: Schema.optional(Schema.Boolean),
-  stringMatches: Schema.optional(Schema.Unknown),
-  bodyTag: Schema.optional(Schema.String),
-}).pipe(
-  Schema.encodeKeys({
-    maxTime: "max_time",
-    minTime: "min_time",
-    bodyScan: "body_scan",
-    stringMatches: "string_matches",
-    bodyTag: "body_tag",
-  }),
-  T.Http({
-    method: "POST",
-    path: "/accounts/{account_id}/brand-protection/queries",
-  }),
+export const CreateQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
+      queryScan: Schema.optional(Schema.Boolean).pipe(
+        T.HttpQuery("query_scan"),
+      ),
+      queryTag: Schema.optional(Schema.String).pipe(T.HttpQuery("query_tag")),
+      maxTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      minTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      bodyScan: Schema.optional(Schema.Boolean),
+      stringMatches: Schema.optional(Schema.Unknown),
+      bodyTag: Schema.optional(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        maxTime: "max_time",
+        minTime: "min_time",
+        bodyScan: "body_scan",
+        stringMatches: "string_matches",
+        bodyTag: "body_tag",
+      }),
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/brand-protection/queries",
+      }),
+    ),
 ) as unknown as Schema.Schema<CreateQueryRequest>;
 
 export type CreateQueryResponse = unknown;
 
-export const CreateQueryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<CreateQueryResponse>;
+export const CreateQueryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () => Schema.Unknown,
+) as unknown as Schema.Schema<CreateQueryResponse>;
 
 export type CreateQueryError = DefaultErrors;
 
@@ -511,22 +555,26 @@ export interface DeleteQueryRequest {
   tag?: string;
 }
 
-export const DeleteQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
-  scan: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("scan")),
-  tag: Schema.optional(Schema.String).pipe(T.HttpQuery("tag")),
-}).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "/accounts/{account_id}/brand-protection/queries",
-  }),
+export const DeleteQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
+      scan: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("scan")),
+      tag: Schema.optional(Schema.String).pipe(T.HttpQuery("tag")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/brand-protection/queries",
+      }),
+    ),
 ) as unknown as Schema.Schema<DeleteQueryRequest>;
 
 export type DeleteQueryResponse = unknown;
 
-export const DeleteQueryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<DeleteQueryResponse>;
+export const DeleteQueryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () => Schema.Unknown,
+) as unknown as Schema.Schema<DeleteQueryResponse>;
 
 export type DeleteQueryError = DefaultErrors;
 
@@ -548,22 +596,25 @@ export interface BulkQueryRequest {
   queries?: Record<string, unknown>[];
 }
 
-export const BulkQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  queries: Schema.optional(
-    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+export const BulkQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    queries: Schema.optional(
+      Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/brand-protection/queries/bulk",
+    }),
   ),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "/accounts/{account_id}/brand-protection/queries/bulk",
-  }),
 ) as unknown as Schema.Schema<BulkQueryRequest>;
 
 export type BulkQueryResponse = unknown;
 
-export const BulkQueryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<BulkQueryResponse>;
+export const BulkQueryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () => Schema.Unknown,
+) as unknown as Schema.Schema<BulkQueryResponse>;
 
 export type BulkQueryError = DefaultErrors;
 
@@ -591,15 +642,17 @@ export interface GetV2LogoRequest {
   download?: string;
 }
 
-export const GetV2LogoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
-  download: Schema.optional(Schema.String).pipe(T.HttpQuery("download")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries",
-  }),
+export const GetV2LogoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
+    download: Schema.optional(Schema.String).pipe(T.HttpQuery("download")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries",
+    }),
+  ),
 ) as unknown as Schema.Schema<GetV2LogoRequest>;
 
 export type GetV2LogoResponse = {
@@ -612,26 +665,31 @@ export type GetV2LogoResponse = {
   imageData?: string | null;
 }[];
 
-export const GetV2LogoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    id: Schema.Number,
-    r2Path: Schema.String,
-    similarityThreshold: Schema.Number,
-    tag: Schema.String,
-    uploadedAt: Schema.Union([Schema.String, Schema.Null]),
-    contentType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    imageData: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    Schema.encodeKeys({
-      id: "id",
-      r2Path: "r2_path",
-      similarityThreshold: "similarity_threshold",
-      tag: "tag",
-      uploadedAt: "uploaded_at",
-      contentType: "content_type",
-      imageData: "image_data",
-    }),
-  ),
+export const GetV2LogoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.Number,
+        r2Path: Schema.String,
+        similarityThreshold: Schema.Number,
+        tag: Schema.String,
+        uploadedAt: Schema.Union([Schema.String, Schema.Null]),
+        contentType: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        imageData: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          r2Path: "r2_path",
+          similarityThreshold: "similarity_threshold",
+          tag: "tag",
+          uploadedAt: "uploaded_at",
+          contentType: "content_type",
+          imageData: "image_data",
+        }),
+      ),
+    ),
 ) as unknown as Schema.Schema<GetV2LogoResponse>;
 
 export type GetV2LogoError = DefaultErrors;
@@ -660,23 +718,26 @@ export interface CreateV2LogoRequest {
   searchLookback?: boolean;
 }
 
-export const CreateV2LogoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  imageData: Schema.String,
-  similarityThreshold: Schema.Number,
-  tag: Schema.String,
-  searchLookback: Schema.optional(Schema.Boolean),
-}).pipe(
-  Schema.encodeKeys({
-    imageData: "image_data",
-    similarityThreshold: "similarity_threshold",
-    tag: "tag",
-    searchLookback: "search_lookback",
-  }),
-  T.Http({
-    method: "POST",
-    path: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries",
-  }),
+export const CreateV2LogoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      imageData: Schema.String,
+      similarityThreshold: Schema.Number,
+      tag: Schema.String,
+      searchLookback: Schema.optional(Schema.Boolean),
+    }).pipe(
+      Schema.encodeKeys({
+        imageData: "image_data",
+        similarityThreshold: "similarity_threshold",
+        tag: "tag",
+        searchLookback: "search_lookback",
+      }),
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries",
+      }),
+    ),
 ) as unknown as Schema.Schema<CreateV2LogoRequest>;
 
 export interface CreateV2LogoResponse {
@@ -685,16 +746,19 @@ export interface CreateV2LogoResponse {
   queryId?: number | null;
 }
 
-export const CreateV2LogoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  message: Schema.String,
-  success: Schema.Boolean,
-  queryId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-}).pipe(
-  Schema.encodeKeys({
-    message: "message",
-    success: "success",
-    queryId: "query_id",
-  }),
+export const CreateV2LogoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      message: Schema.String,
+      success: Schema.Boolean,
+      queryId: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        message: "message",
+        success: "success",
+        queryId: "query_id",
+      }),
+    ),
 ) as unknown as Schema.Schema<CreateV2LogoResponse>;
 
 export type CreateV2LogoError = DefaultErrors;
@@ -715,14 +779,17 @@ export interface DeleteV2LogoRequest {
   accountId: string;
 }
 
-export const DeleteV2LogoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  queryId: Schema.String.pipe(T.HttpPath("queryId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries/{queryId}",
-  }),
+export const DeleteV2LogoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      queryId: Schema.String.pipe(T.HttpPath("queryId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries/{queryId}",
+      }),
+    ),
 ) as unknown as Schema.Schema<DeleteV2LogoRequest>;
 
 export interface DeleteV2LogoResponse {
@@ -730,10 +797,13 @@ export interface DeleteV2LogoResponse {
   success: boolean;
 }
 
-export const DeleteV2LogoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  message: Schema.String,
-  success: Schema.Boolean,
-}) as unknown as Schema.Schema<DeleteV2LogoResponse>;
+export const DeleteV2LogoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      message: Schema.String,
+      success: Schema.Boolean,
+    }),
+) as unknown as Schema.Schema<DeleteV2LogoResponse>;
 
 export type DeleteV2LogoError = DefaultErrors;
 
@@ -774,26 +844,34 @@ export interface GetV2LogoMatchRequest {
     | (string & {});
 }
 
-export const GetV2LogoMatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  queryId: Schema.String.pipe(T.HttpQuery("query_id")),
-  download: Schema.optional(Schema.String).pipe(T.HttpQuery("download")),
-  limit: Schema.optional(Schema.String).pipe(T.HttpQuery("limit")),
-  offset: Schema.optional(Schema.String).pipe(T.HttpQuery("offset")),
-  order: Schema.optional(
-    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-  ).pipe(T.HttpQuery("order")),
-  orderBy: Schema.optional(
-    Schema.Union([
-      Schema.Literals(["matchedAt", "domain", "similarityScore", "registrar"]),
-      Schema.String,
-    ]),
-  ).pipe(T.HttpQuery("orderBy")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/matches",
-  }),
+export const GetV2LogoMatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      queryId: Schema.String.pipe(T.HttpQuery("query_id")),
+      download: Schema.optional(Schema.String).pipe(T.HttpQuery("download")),
+      limit: Schema.optional(Schema.String).pipe(T.HttpQuery("limit")),
+      offset: Schema.optional(Schema.String).pipe(T.HttpQuery("offset")),
+      order: Schema.optional(
+        Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+      ).pipe(T.HttpQuery("order")),
+      orderBy: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "matchedAt",
+            "domain",
+            "similarityScore",
+            "registrar",
+          ]),
+          Schema.String,
+        ]),
+      ).pipe(T.HttpQuery("orderBy")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/matches",
+      }),
+    ),
 ) as unknown as Schema.Schema<GetV2LogoMatchRequest>;
 
 export interface GetV2LogoMatchResponse {
@@ -811,38 +889,41 @@ export interface GetV2LogoMatchResponse {
   total: number;
 }
 
-export const GetV2LogoMatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    matches: Schema.Array(
-      Schema.Struct({
-        id: Schema.Number,
-        domain: Schema.Union([Schema.String, Schema.Null]),
-        matchedAt: Schema.Union([Schema.String, Schema.Null]),
-        queryId: Schema.Number,
-        registrar: Schema.Union([Schema.String, Schema.Null]),
-        similarityScore: Schema.Number,
-        urlScanId: Schema.Union([Schema.String, Schema.Null]),
-        contentType: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+export const GetV2LogoMatchResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      matches: Schema.Array(
+        Schema.Struct({
+          id: Schema.Number,
+          domain: Schema.Union([Schema.String, Schema.Null]),
+          matchedAt: Schema.Union([Schema.String, Schema.Null]),
+          queryId: Schema.Number,
+          registrar: Schema.Union([Schema.String, Schema.Null]),
+          similarityScore: Schema.Number,
+          urlScanId: Schema.Union([Schema.String, Schema.Null]),
+          contentType: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          imageData: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            domain: "domain",
+            matchedAt: "matched_at",
+            queryId: "query_id",
+            registrar: "registrar",
+            similarityScore: "similarity_score",
+            urlScanId: "url_scan_id",
+            contentType: "content_type",
+            imageData: "image_data",
+          }),
         ),
-        imageData: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          id: "id",
-          domain: "domain",
-          matchedAt: "matched_at",
-          queryId: "query_id",
-          registrar: "registrar",
-          similarityScore: "similarity_score",
-          urlScanId: "url_scan_id",
-          contentType: "content_type",
-          imageData: "image_data",
-        }),
       ),
-    ),
-    total: Schema.Number,
-  },
-) as unknown as Schema.Schema<GetV2LogoMatchResponse>;
+      total: Schema.Number,
+    }),
+  ) as unknown as Schema.Schema<GetV2LogoMatchResponse>;
 
 export type GetV2LogoMatchError = DefaultErrors;
 
@@ -882,34 +963,37 @@ export interface GetV2MatchRequest {
   orderBy?: "domain" | "first_seen" | "registrar" | (string & {});
 }
 
-export const GetV2MatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  queryId: Schema.Array(Schema.String).pipe(T.HttpQuery("query_id")),
-  domainSearch: Schema.optional(Schema.String).pipe(
-    T.HttpQuery("domain_search"),
-  ),
-  includeDismissed: Schema.optional(Schema.String).pipe(
-    T.HttpQuery("include_dismissed"),
-  ),
-  includeDomainId: Schema.optional(Schema.String).pipe(
-    T.HttpQuery("include_domain_id"),
-  ),
-  limit: Schema.optional(Schema.String).pipe(T.HttpQuery("limit")),
-  offset: Schema.optional(Schema.String).pipe(T.HttpQuery("offset")),
-  order: Schema.optional(
-    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-  ).pipe(T.HttpQuery("order")),
-  orderBy: Schema.optional(
-    Schema.Union([
-      Schema.Literals(["domain", "first_seen", "registrar"]),
-      Schema.String,
-    ]),
-  ).pipe(T.HttpQuery("orderBy")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/matches",
-  }),
+export const GetV2MatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      queryId: Schema.Array(Schema.String).pipe(T.HttpQuery("query_id")),
+      domainSearch: Schema.optional(Schema.String).pipe(
+        T.HttpQuery("domain_search"),
+      ),
+      includeDismissed: Schema.optional(Schema.String).pipe(
+        T.HttpQuery("include_dismissed"),
+      ),
+      includeDomainId: Schema.optional(Schema.String).pipe(
+        T.HttpQuery("include_domain_id"),
+      ),
+      limit: Schema.optional(Schema.String).pipe(T.HttpQuery("limit")),
+      offset: Schema.optional(Schema.String).pipe(T.HttpQuery("offset")),
+      order: Schema.optional(
+        Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+      ).pipe(T.HttpQuery("order")),
+      orderBy: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["domain", "first_seen", "registrar"]),
+          Schema.String,
+        ]),
+      ).pipe(T.HttpQuery("orderBy")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/matches",
+      }),
+    ),
 ) as unknown as Schema.Schema<GetV2MatchRequest>;
 
 export interface GetV2MatchResponse {
@@ -934,58 +1018,63 @@ export interface GetV2MatchResponse {
   total: number;
 }
 
-export const GetV2MatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  matches: Schema.Array(
+export const GetV2MatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      domain: Schema.String,
-      firstSeen: Schema.String,
-      publicScans: Schema.Union([
+      matches: Schema.Array(
         Schema.Struct({
-          submissionId: Schema.String,
-        }).pipe(Schema.encodeKeys({ submissionId: "submission_id" })),
-        Schema.Null,
-      ]),
-      registrar: Schema.Union([Schema.String, Schema.Null]),
-      scanStatus: Schema.String,
-      scanSubmissionId: Schema.Union([Schema.Number, Schema.Null]),
-      source: Schema.Union([Schema.String, Schema.Null]),
-      dismissed: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      matchDetails: Schema.optional(
-        Schema.Union([
-          Schema.Array(
+          domain: Schema.String,
+          firstSeen: Schema.String,
+          publicScans: Schema.Union([
             Schema.Struct({
-              dismissed: Schema.Boolean,
-              matchId: Schema.Number,
-              queryId: Schema.Number,
-              queryTag: Schema.Union([Schema.String, Schema.Null]),
-            }).pipe(
-              Schema.encodeKeys({
-                dismissed: "dismissed",
-                matchId: "match_id",
-                queryId: "query_id",
-                queryTag: "query_tag",
-              }),
-            ),
+              submissionId: Schema.String,
+            }).pipe(Schema.encodeKeys({ submissionId: "submission_id" })),
+            Schema.Null,
+          ]),
+          registrar: Schema.Union([Schema.String, Schema.Null]),
+          scanStatus: Schema.String,
+          scanSubmissionId: Schema.Union([Schema.Number, Schema.Null]),
+          source: Schema.Union([Schema.String, Schema.Null]),
+          dismissed: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
           ),
-          Schema.Null,
-        ]),
+          matchDetails: Schema.optional(
+            Schema.Union([
+              Schema.Array(
+                Schema.Struct({
+                  dismissed: Schema.Boolean,
+                  matchId: Schema.Number,
+                  queryId: Schema.Number,
+                  queryTag: Schema.Union([Schema.String, Schema.Null]),
+                }).pipe(
+                  Schema.encodeKeys({
+                    dismissed: "dismissed",
+                    matchId: "match_id",
+                    queryId: "query_id",
+                    queryTag: "query_tag",
+                  }),
+                ),
+              ),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            domain: "domain",
+            firstSeen: "first_seen",
+            publicScans: "public_scans",
+            registrar: "registrar",
+            scanStatus: "scan_status",
+            scanSubmissionId: "scan_submission_id",
+            source: "source",
+            dismissed: "dismissed",
+            matchDetails: "match_details",
+          }),
+        ),
       ),
-    }).pipe(
-      Schema.encodeKeys({
-        domain: "domain",
-        firstSeen: "first_seen",
-        publicScans: "public_scans",
-        registrar: "registrar",
-        scanStatus: "scan_status",
-        scanSubmissionId: "scan_submission_id",
-        source: "source",
-        dismissed: "dismissed",
-        matchDetails: "match_details",
-      }),
-    ),
-  ),
-  total: Schema.Number,
-}) as unknown as Schema.Schema<GetV2MatchResponse>;
+      total: Schema.Number,
+    }),
+) as unknown as Schema.Schema<GetV2MatchResponse>;
 
 export type GetV2MatchError = DefaultErrors;
 
@@ -1011,14 +1100,17 @@ export interface GetV2QueryRequest {
   id?: string;
 }
 
-export const GetV2QueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries",
-  }),
+export const GetV2QueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/domain/queries",
+      }),
+    ),
 ) as unknown as Schema.Schema<GetV2QueryRequest>;
 
 export type GetV2QueryResponse = {
@@ -1034,47 +1126,54 @@ export type GetV2QueryResponse = {
   updated: string;
 }[];
 
-export const GetV2QueryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    created: Schema.String,
-    parameters: Schema.Union([
+export const GetV2QueryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Array(
       Schema.Struct({
-        stringMatches: Schema.Array(
+        created: Schema.String,
+        parameters: Schema.Union([
           Schema.Struct({
-            maxEditDistance: Schema.Number,
-            pattern: Schema.String,
+            stringMatches: Schema.Array(
+              Schema.Struct({
+                maxEditDistance: Schema.Number,
+                pattern: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  maxEditDistance: "max_edit_distance",
+                  pattern: "pattern",
+                }),
+              ),
+            ),
+            maxTime: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            minTime: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
           }).pipe(
             Schema.encodeKeys({
-              maxEditDistance: "max_edit_distance",
-              pattern: "pattern",
+              stringMatches: "string_matches",
+              maxTime: "max_time",
+              minTime: "min_time",
             }),
           ),
-        ),
-        maxTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        minTime: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          Schema.Null,
+        ]),
+        queryId: Schema.Number,
+        queryTag: Schema.String,
+        scan: Schema.Boolean,
+        updated: Schema.String,
       }).pipe(
         Schema.encodeKeys({
-          stringMatches: "string_matches",
-          maxTime: "max_time",
-          minTime: "min_time",
+          created: "created",
+          parameters: "parameters",
+          queryId: "query_id",
+          queryTag: "query_tag",
+          scan: "scan",
+          updated: "updated",
         }),
       ),
-      Schema.Null,
-    ]),
-    queryId: Schema.Number,
-    queryTag: Schema.String,
-    scan: Schema.Boolean,
-    updated: Schema.String,
-  }).pipe(
-    Schema.encodeKeys({
-      created: "created",
-      parameters: "parameters",
-      queryId: "query_id",
-      queryTag: "query_tag",
-      scan: "scan",
-      updated: "updated",
-    }),
-  ),
+    ),
 ) as unknown as Schema.Schema<GetV2QueryResponse>;
 
 export type GetV2QueryError = DefaultErrors;

@@ -22,20 +22,24 @@ export interface GetResponsRequest {
   accountId: string;
 }
 
-export const GetResponsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  responseId: Schema.String.pipe(T.HttpPath("responseId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/urlscanner/v2/responses/{responseId}",
-  }),
+export const GetResponsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      responseId: Schema.String.pipe(T.HttpPath("responseId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/urlscanner/v2/responses/{responseId}",
+      }),
+    ),
 ) as unknown as Schema.Schema<GetResponsRequest>;
 
 export type GetResponsResponse = string;
 
-export const GetResponsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Schema<GetResponsResponse>;
+export const GetResponsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () => Schema.String,
+) as unknown as Schema.Schema<GetResponsResponse>;
 
 export type GetResponsError = DefaultErrors;
 
@@ -60,14 +64,16 @@ export interface GetScanRequest {
   accountId: string;
 }
 
-export const GetScanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  scanId: Schema.String.pipe(T.HttpPath("scanId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/urlscanner/v2/result/{scanId}",
-  }),
+export const GetScanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scanId: Schema.String.pipe(T.HttpPath("scanId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/urlscanner/v2/result/{scanId}",
+    }),
+  ),
 ) as unknown as Schema.Schema<GetScanRequest>;
 
 export interface GetScanResponse {
@@ -972,282 +978,132 @@ export interface GetScanResponse {
   };
 }
 
-export const GetScanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  data: Schema.Struct({
-    console: Schema.Array(
-      Schema.Struct({
-        message: Schema.Struct({
-          level: Schema.String,
-          source: Schema.String,
-          text: Schema.String,
-          url: Schema.String,
+export const GetScanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    data: Schema.Struct({
+      console: Schema.Array(
+        Schema.Struct({
+          message: Schema.Struct({
+            level: Schema.String,
+            source: Schema.String,
+            text: Schema.String,
+            url: Schema.String,
+          }),
         }),
-      }),
-    ),
-    cookies: Schema.Array(
-      Schema.Struct({
-        domain: Schema.String,
-        expires: Schema.Number,
-        httpOnly: Schema.Boolean,
-        name: Schema.String,
-        path: Schema.String,
-        priority: Schema.String,
-        sameParty: Schema.Boolean,
-        secure: Schema.Boolean,
-        session: Schema.Boolean,
-        size: Schema.Number,
-        sourcePort: Schema.Number,
-        sourceScheme: Schema.String,
-        value: Schema.String,
-      }),
-    ),
-    globals: Schema.Array(
-      Schema.Struct({
-        prop: Schema.String,
-        type: Schema.String,
-      }),
-    ),
-    links: Schema.Array(
-      Schema.Struct({
-        href: Schema.String,
-        text: Schema.String,
-      }),
-    ),
-    performance: Schema.Array(
-      Schema.Struct({
-        duration: Schema.Number,
-        entryType: Schema.String,
-        name: Schema.String,
-        startTime: Schema.Number,
-      }),
-    ),
-    requests: Schema.Array(
-      Schema.Struct({
-        request: Schema.Struct({
-          documentURL: Schema.String,
-          hasUserGesture: Schema.Boolean,
-          initiator: Schema.Struct({
-            host: Schema.String,
-            type: Schema.String,
-            url: Schema.String,
-          }),
-          redirectHasExtraInfo: Schema.Boolean,
-          request: Schema.Struct({
-            initialPriority: Schema.String,
-            isSameSite: Schema.Boolean,
-            method: Schema.String,
-            mixedContentType: Schema.String,
-            referrerPolicy: Schema.String,
-            url: Schema.String,
-            headers: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
-            ),
-          }),
-          requestId: Schema.String,
-          type: Schema.String,
-          wallTime: Schema.Number,
-          frameId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          loaderId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          primaryRequest: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          redirectResponse: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                charset: Schema.String,
-                mimeType: Schema.String,
-                protocol: Schema.String,
-                remoteIPAddress: Schema.String,
-                remotePort: Schema.Number,
-                securityHeaders: Schema.Array(
-                  Schema.Struct({
-                    name: Schema.String,
-                    value: Schema.String,
-                  }),
-                ),
-                securityState: Schema.String,
-                status: Schema.Number,
-                statusText: Schema.String,
-                url: Schema.String,
-                headers: Schema.optional(
-                  Schema.Union([Schema.Unknown, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }),
-        response: Schema.Struct({
-          asn: Schema.Struct({
-            asn: Schema.String,
-            country: Schema.String,
-            description: Schema.String,
-            ip: Schema.String,
-            name: Schema.String,
-            org: Schema.String,
-          }),
-          dataLength: Schema.Number,
-          encodedDataLength: Schema.Number,
-          geoip: Schema.Struct({
-            city: Schema.String,
-            country: Schema.String,
-            countryName: Schema.String,
-            geonameId: Schema.String,
-            ll: Schema.Array(Schema.Number),
-            region: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({
-              city: "city",
-              country: "country",
-              countryName: "country_name",
-              geonameId: "geonameId",
-              ll: "ll",
-              region: "region",
-            }),
-          ),
-          hasExtraInfo: Schema.Boolean,
-          requestId: Schema.String,
-          response: Schema.Struct({
-            charset: Schema.String,
-            mimeType: Schema.String,
-            protocol: Schema.String,
-            remoteIPAddress: Schema.String,
-            remotePort: Schema.Number,
-            securityDetails: Schema.Struct({
-              certificateId: Schema.Number,
-              certificateTransparencyCompliance: Schema.String,
-              cipher: Schema.String,
-              encryptedClientHello: Schema.Boolean,
-              issuer: Schema.String,
-              keyExchange: Schema.String,
-              keyExchangeGroup: Schema.String,
-              protocol: Schema.String,
-              sanList: Schema.Array(Schema.String),
-              serverSignatureAlgorithm: Schema.Number,
-              subjectName: Schema.String,
-              validFrom: Schema.Number,
-              validTo: Schema.Number,
-            }),
-            securityHeaders: Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                value: Schema.String,
-              }),
-            ),
-            securityState: Schema.String,
-            status: Schema.Number,
-            statusText: Schema.String,
-            url: Schema.String,
-            headers: Schema.optional(
-              Schema.Union([Schema.Unknown, Schema.Null]),
-            ),
-          }),
+      ),
+      cookies: Schema.Array(
+        Schema.Struct({
+          domain: Schema.String,
+          expires: Schema.Number,
+          httpOnly: Schema.Boolean,
+          name: Schema.String,
+          path: Schema.String,
+          priority: Schema.String,
+          sameParty: Schema.Boolean,
+          secure: Schema.Boolean,
+          session: Schema.Boolean,
           size: Schema.Number,
-          type: Schema.String,
-          contentAvailable: Schema.optional(
-            Schema.Union([Schema.Boolean, Schema.Null]),
-          ),
-          hash: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          sourcePort: Schema.Number,
+          sourceScheme: Schema.String,
+          value: Schema.String,
         }),
-        requests: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                documentURL: Schema.String,
-                frameId: Schema.String,
-                hasUserGesture: Schema.Boolean,
-                initiator: Schema.Struct({
-                  type: Schema.String,
-                }),
-                loaderId: Schema.String,
-                redirectHasExtraInfo: Schema.Boolean,
-                request: Schema.Struct({
-                  headers: Schema.Struct({
-                    name: Schema.String,
-                  }),
-                  initialPriority: Schema.String,
-                  isSameSite: Schema.Boolean,
-                  method: Schema.String,
-                  mixedContentType: Schema.String,
-                  referrerPolicy: Schema.String,
-                  url: Schema.String,
-                }),
-                requestId: Schema.String,
-                type: Schema.String,
-                wallTime: Schema.Number,
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-      }),
-    ),
-  }),
-  lists: Schema.Struct({
-    asns: Schema.Array(Schema.String),
-    certificates: Schema.Array(
-      Schema.Struct({
-        issuer: Schema.String,
-        subjectName: Schema.String,
-        validFrom: Schema.Number,
-        validTo: Schema.Number,
-      }),
-    ),
-    continents: Schema.Array(Schema.String),
-    countries: Schema.Array(Schema.String),
-    domains: Schema.Array(Schema.String),
-    hashes: Schema.Array(Schema.String),
-    ips: Schema.Array(Schema.String),
-    linkDomains: Schema.Array(Schema.String),
-    servers: Schema.Array(Schema.String),
-    urls: Schema.Array(Schema.String),
-  }),
-  meta: Schema.Struct({
-    processors: Schema.Struct({
-      asn: Schema.Struct({
-        data: Schema.Array(
-          Schema.Struct({
-            asn: Schema.String,
-            country: Schema.String,
-            description: Schema.String,
-            ip: Schema.String,
-            name: Schema.String,
-          }),
-        ),
-      }),
-      dns: Schema.Struct({
-        data: Schema.Array(
-          Schema.Struct({
-            address: Schema.String,
-            dnssecValid: Schema.Boolean,
-            name: Schema.String,
-            type: Schema.String,
-          }).pipe(
-            Schema.encodeKeys({
-              address: "address",
-              dnssecValid: "dnssec_valid",
-              name: "name",
-              type: "type",
+      ),
+      globals: Schema.Array(
+        Schema.Struct({
+          prop: Schema.String,
+          type: Schema.String,
+        }),
+      ),
+      links: Schema.Array(
+        Schema.Struct({
+          href: Schema.String,
+          text: Schema.String,
+        }),
+      ),
+      performance: Schema.Array(
+        Schema.Struct({
+          duration: Schema.Number,
+          entryType: Schema.String,
+          name: Schema.String,
+          startTime: Schema.Number,
+        }),
+      ),
+      requests: Schema.Array(
+        Schema.Struct({
+          request: Schema.Struct({
+            documentURL: Schema.String,
+            hasUserGesture: Schema.Boolean,
+            initiator: Schema.Struct({
+              host: Schema.String,
+              type: Schema.String,
+              url: Schema.String,
             }),
-          ),
-        ),
-      }),
-      domainCategories: Schema.Struct({
-        data: Schema.Array(
-          Schema.Struct({
-            inherited: Schema.Unknown,
-            isPrimary: Schema.Boolean,
-            name: Schema.String,
+            redirectHasExtraInfo: Schema.Boolean,
+            request: Schema.Struct({
+              initialPriority: Schema.String,
+              isSameSite: Schema.Boolean,
+              method: Schema.String,
+              mixedContentType: Schema.String,
+              referrerPolicy: Schema.String,
+              url: Schema.String,
+              headers: Schema.optional(
+                Schema.Union([Schema.Unknown, Schema.Null]),
+              ),
+            }),
+            requestId: Schema.String,
+            type: Schema.String,
+            wallTime: Schema.Number,
+            frameId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            loaderId: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            primaryRequest: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
+            ),
+            redirectResponse: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  charset: Schema.String,
+                  mimeType: Schema.String,
+                  protocol: Schema.String,
+                  remoteIPAddress: Schema.String,
+                  remotePort: Schema.Number,
+                  securityHeaders: Schema.Array(
+                    Schema.Struct({
+                      name: Schema.String,
+                      value: Schema.String,
+                    }),
+                  ),
+                  securityState: Schema.String,
+                  status: Schema.Number,
+                  statusText: Schema.String,
+                  url: Schema.String,
+                  headers: Schema.optional(
+                    Schema.Union([Schema.Unknown, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
           }),
-        ),
-      }),
-      geoip: Schema.Struct({
-        data: Schema.Array(
-          Schema.Struct({
+          response: Schema.Struct({
+            asn: Schema.Struct({
+              asn: Schema.String,
+              country: Schema.String,
+              description: Schema.String,
+              ip: Schema.String,
+              name: Schema.String,
+              org: Schema.String,
+            }),
+            dataLength: Schema.Number,
+            encodedDataLength: Schema.Number,
             geoip: Schema.Struct({
               city: Schema.String,
               country: Schema.String,
               countryName: Schema.String,
+              geonameId: Schema.String,
               ll: Schema.Array(Schema.Number),
               region: Schema.String,
             }).pipe(
@@ -1255,1403 +1111,1544 @@ export const GetScanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                 city: "city",
                 country: "country",
                 countryName: "country_name",
+                geonameId: "geonameId",
                 ll: "ll",
                 region: "region",
               }),
             ),
-            ip: Schema.String,
-          }),
-        ),
-      }),
-      phishing: Schema.Struct({
-        data: Schema.Array(Schema.String),
-      }),
-      radarRank: Schema.Struct({
-        data: Schema.Array(
-          Schema.Struct({
-            bucket: Schema.String,
-            hostname: Schema.String,
-            rank: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-          }),
-        ),
-      }),
-      wappa: Schema.Struct({
-        data: Schema.Array(
-          Schema.Struct({
-            app: Schema.String,
-            categories: Schema.Array(
-              Schema.Struct({
-                name: Schema.String,
-                priority: Schema.Number,
+            hasExtraInfo: Schema.Boolean,
+            requestId: Schema.String,
+            response: Schema.Struct({
+              charset: Schema.String,
+              mimeType: Schema.String,
+              protocol: Schema.String,
+              remoteIPAddress: Schema.String,
+              remotePort: Schema.Number,
+              securityDetails: Schema.Struct({
+                certificateId: Schema.Number,
+                certificateTransparencyCompliance: Schema.String,
+                cipher: Schema.String,
+                encryptedClientHello: Schema.Boolean,
+                issuer: Schema.String,
+                keyExchange: Schema.String,
+                keyExchangeGroup: Schema.String,
+                protocol: Schema.String,
+                sanList: Schema.Array(Schema.String),
+                serverSignatureAlgorithm: Schema.Number,
+                subjectName: Schema.String,
+                validFrom: Schema.Number,
+                validTo: Schema.Number,
               }),
-            ),
-            confidence: Schema.Array(
-              Schema.Struct({
-                confidence: Schema.Number,
-                name: Schema.String,
-                pattern: Schema.String,
-                patternType: Schema.String,
-              }),
-            ),
-            confidenceTotal: Schema.Number,
-            icon: Schema.String,
-            website: Schema.String,
-          }),
-        ),
-      }),
-      agentReadiness: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            checks: Schema.Struct({
-              botAccessControl: Schema.Struct({
-                contentSignals: Schema.Struct({
-                  status: Schema.String,
-                  details: Schema.optional(
-                    Schema.Union([Schema.Unknown, Schema.Null]),
-                  ),
-                  durationMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  evidence: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Struct({
-                          action: Schema.String,
-                          label: Schema.String,
-                          finding: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                outcome: Schema.String,
-                                summary: Schema.String,
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          request: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                method: Schema.String,
-                                url: Schema.String,
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          response: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                status: Schema.Number,
-                                statusText: Schema.String,
-                                bodyPreview: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                bodySize: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                                redirectedTo: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  message: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-                robotsTxtAiRules: Schema.Struct({
-                  status: Schema.String,
-                  details: Schema.optional(
-                    Schema.Union([Schema.Unknown, Schema.Null]),
-                  ),
-                  durationMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  evidence: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Struct({
-                          action: Schema.String,
-                          label: Schema.String,
-                          finding: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                outcome: Schema.String,
-                                summary: Schema.String,
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          request: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                method: Schema.String,
-                                url: Schema.String,
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          response: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                status: Schema.Number,
-                                statusText: Schema.String,
-                                bodyPreview: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                bodySize: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                                redirectedTo: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  message: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-                webBotAuth: Schema.Struct({
-                  status: Schema.String,
-                  details: Schema.optional(
-                    Schema.Union([Schema.Unknown, Schema.Null]),
-                  ),
-                  durationMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  evidence: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Struct({
-                          action: Schema.String,
-                          label: Schema.String,
-                          finding: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                outcome: Schema.String,
-                                summary: Schema.String,
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          request: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                method: Schema.String,
-                                url: Schema.String,
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          response: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                status: Schema.Number,
-                                statusText: Schema.String,
-                                bodyPreview: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                bodySize: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                                redirectedTo: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  message: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-              }),
-              commerce: Schema.Struct({
-                acp: Schema.Struct({
-                  status: Schema.String,
-                  details: Schema.optional(
-                    Schema.Union([Schema.Unknown, Schema.Null]),
-                  ),
-                  durationMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  evidence: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Struct({
-                          action: Schema.String,
-                          label: Schema.String,
-                          finding: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                outcome: Schema.String,
-                                summary: Schema.String,
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          request: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                method: Schema.String,
-                                url: Schema.String,
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          response: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                status: Schema.Number,
-                                statusText: Schema.String,
-                                bodyPreview: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                bodySize: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                                redirectedTo: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  message: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-                ap2: Schema.Struct({
-                  status: Schema.String,
-                  details: Schema.optional(
-                    Schema.Union([Schema.Unknown, Schema.Null]),
-                  ),
-                  durationMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  evidence: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Struct({
-                          action: Schema.String,
-                          label: Schema.String,
-                          finding: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                outcome: Schema.String,
-                                summary: Schema.String,
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          request: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                method: Schema.String,
-                                url: Schema.String,
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          response: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                status: Schema.Number,
-                                statusText: Schema.String,
-                                bodyPreview: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                bodySize: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                                redirectedTo: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  message: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-                mpp: Schema.Struct({
-                  status: Schema.String,
-                  details: Schema.optional(
-                    Schema.Union([Schema.Unknown, Schema.Null]),
-                  ),
-                  durationMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  evidence: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Struct({
-                          action: Schema.String,
-                          label: Schema.String,
-                          finding: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                outcome: Schema.String,
-                                summary: Schema.String,
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          request: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                method: Schema.String,
-                                url: Schema.String,
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          response: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                status: Schema.Number,
-                                statusText: Schema.String,
-                                bodyPreview: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                bodySize: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                                redirectedTo: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  message: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-                ucp: Schema.Struct({
-                  status: Schema.String,
-                  details: Schema.optional(
-                    Schema.Union([Schema.Unknown, Schema.Null]),
-                  ),
-                  durationMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  evidence: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Struct({
-                          action: Schema.String,
-                          label: Schema.String,
-                          finding: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                outcome: Schema.String,
-                                summary: Schema.String,
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          request: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                method: Schema.String,
-                                url: Schema.String,
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          response: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                status: Schema.Number,
-                                statusText: Schema.String,
-                                bodyPreview: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                bodySize: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                                redirectedTo: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  message: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-                x402: Schema.Struct({
-                  status: Schema.String,
-                  details: Schema.optional(
-                    Schema.Union([Schema.Unknown, Schema.Null]),
-                  ),
-                  durationMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  evidence: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Struct({
-                          action: Schema.String,
-                          label: Schema.String,
-                          finding: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                outcome: Schema.String,
-                                summary: Schema.String,
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          request: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                method: Schema.String,
-                                url: Schema.String,
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          response: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                status: Schema.Number,
-                                statusText: Schema.String,
-                                bodyPreview: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                bodySize: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                                redirectedTo: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  message: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-              }),
-              contentAccessibility: Schema.Struct({
-                markdownNegotiation: Schema.Struct({
-                  status: Schema.String,
-                  details: Schema.optional(
-                    Schema.Union([Schema.Unknown, Schema.Null]),
-                  ),
-                  durationMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  evidence: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Struct({
-                          action: Schema.String,
-                          label: Schema.String,
-                          finding: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                outcome: Schema.String,
-                                summary: Schema.String,
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          request: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                method: Schema.String,
-                                url: Schema.String,
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          response: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                status: Schema.Number,
-                                statusText: Schema.String,
-                                bodyPreview: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                bodySize: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                                redirectedTo: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  message: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-              }),
-              discoverability: Schema.Struct({
-                linkHeaders: Schema.Struct({
-                  status: Schema.String,
-                  details: Schema.optional(
-                    Schema.Union([Schema.Unknown, Schema.Null]),
-                  ),
-                  durationMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  evidence: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Struct({
-                          action: Schema.String,
-                          label: Schema.String,
-                          finding: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                outcome: Schema.String,
-                                summary: Schema.String,
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          request: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                method: Schema.String,
-                                url: Schema.String,
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          response: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                status: Schema.Number,
-                                statusText: Schema.String,
-                                bodyPreview: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                bodySize: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                                redirectedTo: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  message: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-                robotsTxt: Schema.Struct({
-                  status: Schema.String,
-                  details: Schema.optional(
-                    Schema.Union([Schema.Unknown, Schema.Null]),
-                  ),
-                  durationMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  evidence: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Struct({
-                          action: Schema.String,
-                          label: Schema.String,
-                          finding: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                outcome: Schema.String,
-                                summary: Schema.String,
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          request: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                method: Schema.String,
-                                url: Schema.String,
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          response: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                status: Schema.Number,
-                                statusText: Schema.String,
-                                bodyPreview: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                bodySize: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                                redirectedTo: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  message: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-                sitemap: Schema.Struct({
-                  status: Schema.String,
-                  details: Schema.optional(
-                    Schema.Union([Schema.Unknown, Schema.Null]),
-                  ),
-                  durationMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  evidence: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Struct({
-                          action: Schema.String,
-                          label: Schema.String,
-                          finding: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                outcome: Schema.String,
-                                summary: Schema.String,
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          request: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                method: Schema.String,
-                                url: Schema.String,
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          response: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                status: Schema.Number,
-                                statusText: Schema.String,
-                                bodyPreview: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                bodySize: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                                redirectedTo: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  message: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-              }),
-              discovery: Schema.Struct({
-                a2aAgentCard: Schema.Struct({
-                  status: Schema.String,
-                  details: Schema.optional(
-                    Schema.Union([Schema.Unknown, Schema.Null]),
-                  ),
-                  durationMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  evidence: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Struct({
-                          action: Schema.String,
-                          label: Schema.String,
-                          finding: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                outcome: Schema.String,
-                                summary: Schema.String,
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          request: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                method: Schema.String,
-                                url: Schema.String,
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          response: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                status: Schema.Number,
-                                statusText: Schema.String,
-                                bodyPreview: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                bodySize: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                                redirectedTo: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  message: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-                agentSkills: Schema.Struct({
-                  status: Schema.String,
-                  details: Schema.optional(
-                    Schema.Union([Schema.Unknown, Schema.Null]),
-                  ),
-                  durationMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  evidence: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Struct({
-                          action: Schema.String,
-                          label: Schema.String,
-                          finding: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                outcome: Schema.String,
-                                summary: Schema.String,
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          request: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                method: Schema.String,
-                                url: Schema.String,
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          response: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                status: Schema.Number,
-                                statusText: Schema.String,
-                                bodyPreview: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                bodySize: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                                redirectedTo: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  message: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-                apiCatalog: Schema.Struct({
-                  status: Schema.String,
-                  details: Schema.optional(
-                    Schema.Union([Schema.Unknown, Schema.Null]),
-                  ),
-                  durationMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  evidence: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Struct({
-                          action: Schema.String,
-                          label: Schema.String,
-                          finding: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                outcome: Schema.String,
-                                summary: Schema.String,
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          request: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                method: Schema.String,
-                                url: Schema.String,
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          response: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                status: Schema.Number,
-                                statusText: Schema.String,
-                                bodyPreview: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                bodySize: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                                redirectedTo: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  message: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-                mcpServerCard: Schema.Struct({
-                  status: Schema.String,
-                  details: Schema.optional(
-                    Schema.Union([Schema.Unknown, Schema.Null]),
-                  ),
-                  durationMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  evidence: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Struct({
-                          action: Schema.String,
-                          label: Schema.String,
-                          finding: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                outcome: Schema.String,
-                                summary: Schema.String,
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          request: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                method: Schema.String,
-                                url: Schema.String,
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          response: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                status: Schema.Number,
-                                statusText: Schema.String,
-                                bodyPreview: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                bodySize: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                                redirectedTo: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  message: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-                oauthDiscovery: Schema.Struct({
-                  status: Schema.String,
-                  details: Schema.optional(
-                    Schema.Union([Schema.Unknown, Schema.Null]),
-                  ),
-                  durationMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  evidence: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Struct({
-                          action: Schema.String,
-                          label: Schema.String,
-                          finding: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                outcome: Schema.String,
-                                summary: Schema.String,
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          request: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                method: Schema.String,
-                                url: Schema.String,
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          response: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                status: Schema.Number,
-                                statusText: Schema.String,
-                                bodyPreview: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                bodySize: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                                redirectedTo: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  message: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-                oauthProtectedResource: Schema.Struct({
-                  status: Schema.String,
-                  details: Schema.optional(
-                    Schema.Union([Schema.Unknown, Schema.Null]),
-                  ),
-                  durationMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  evidence: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Struct({
-                          action: Schema.String,
-                          label: Schema.String,
-                          finding: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                outcome: Schema.String,
-                                summary: Schema.String,
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          request: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                method: Schema.String,
-                                url: Schema.String,
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          response: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                status: Schema.Number,
-                                statusText: Schema.String,
-                                bodyPreview: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                bodySize: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                                redirectedTo: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  message: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-                webMcp: Schema.Struct({
-                  status: Schema.String,
-                  details: Schema.optional(
-                    Schema.Union([Schema.Unknown, Schema.Null]),
-                  ),
-                  durationMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                  evidence: Schema.optional(
-                    Schema.Union([
-                      Schema.Array(
-                        Schema.Struct({
-                          action: Schema.String,
-                          label: Schema.String,
-                          finding: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                outcome: Schema.String,
-                                summary: Schema.String,
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          request: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                method: Schema.String,
-                                url: Schema.String,
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                          response: Schema.optional(
-                            Schema.Union([
-                              Schema.Struct({
-                                status: Schema.Number,
-                                statusText: Schema.String,
-                                bodyPreview: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                bodySize: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                headers: Schema.optional(
-                                  Schema.Union([Schema.Unknown, Schema.Null]),
-                                ),
-                                redirectedTo: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                              }),
-                              Schema.Null,
-                            ]),
-                          ),
-                        }),
-                      ),
-                      Schema.Null,
-                    ]),
-                  ),
-                  message: Schema.optional(
-                    Schema.Union([Schema.String, Schema.Null]),
-                  ),
-                }),
-              }),
-            }),
-            level: Schema.Number,
-            levelName: Schema.String,
-            commerceSignals: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            isCommerce: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            nextLevel: Schema.optional(
-              Schema.Union([
+              securityHeaders: Schema.Array(
                 Schema.Struct({
                   name: Schema.String,
-                  requirements: Schema.Array(
-                    Schema.Struct({
-                      check: Schema.String,
-                      description: Schema.String,
-                      prompt: Schema.String,
-                      skillUrl: Schema.String,
-                      specUrls: Schema.Array(Schema.String),
-                    }),
-                  ),
-                  target: Schema.Number,
+                  value: Schema.String,
                 }),
-                Schema.Null,
-              ]),
+              ),
+              securityState: Schema.String,
+              status: Schema.Number,
+              statusText: Schema.String,
+              url: Schema.String,
+              headers: Schema.optional(
+                Schema.Union([Schema.Unknown, Schema.Null]),
+              ),
+            }),
+            size: Schema.Number,
+            type: Schema.String,
+            contentAvailable: Schema.optional(
+              Schema.Union([Schema.Boolean, Schema.Null]),
             ),
+            hash: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
           }),
-          Schema.Null,
-        ]),
+          requests: Schema.optional(
+            Schema.Union([
+              Schema.Array(
+                Schema.Struct({
+                  documentURL: Schema.String,
+                  frameId: Schema.String,
+                  hasUserGesture: Schema.Boolean,
+                  initiator: Schema.Struct({
+                    type: Schema.String,
+                  }),
+                  loaderId: Schema.String,
+                  redirectHasExtraInfo: Schema.Boolean,
+                  request: Schema.Struct({
+                    headers: Schema.Struct({
+                      name: Schema.String,
+                    }),
+                    initialPriority: Schema.String,
+                    isSameSite: Schema.Boolean,
+                    method: Schema.String,
+                    mixedContentType: Schema.String,
+                    referrerPolicy: Schema.String,
+                    url: Schema.String,
+                  }),
+                  requestId: Schema.String,
+                  type: Schema.String,
+                  wallTime: Schema.Number,
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+        }),
       ),
-      phishingV2: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            data: Schema.Array(Schema.String),
-          }),
-          Schema.Null,
-        ]),
+    }),
+    lists: Schema.Struct({
+      asns: Schema.Array(Schema.String),
+      certificates: Schema.Array(
+        Schema.Struct({
+          issuer: Schema.String,
+          subjectName: Schema.String,
+          validFrom: Schema.Number,
+          validTo: Schema.Number,
+        }),
       ),
-      robotsTxt: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            data: Schema.Array(
-              Schema.Struct({
-                rules: Schema.Struct({
-                  "*": Schema.Struct({
-                    allow: Schema.Array(Schema.String),
-                    disallow: Schema.Array(Schema.String),
-                    contentSignal: Schema.optional(
+      continents: Schema.Array(Schema.String),
+      countries: Schema.Array(Schema.String),
+      domains: Schema.Array(Schema.String),
+      hashes: Schema.Array(Schema.String),
+      ips: Schema.Array(Schema.String),
+      linkDomains: Schema.Array(Schema.String),
+      servers: Schema.Array(Schema.String),
+      urls: Schema.Array(Schema.String),
+    }),
+    meta: Schema.Struct({
+      processors: Schema.Struct({
+        asn: Schema.Struct({
+          data: Schema.Array(
+            Schema.Struct({
+              asn: Schema.String,
+              country: Schema.String,
+              description: Schema.String,
+              ip: Schema.String,
+              name: Schema.String,
+            }),
+          ),
+        }),
+        dns: Schema.Struct({
+          data: Schema.Array(
+            Schema.Struct({
+              address: Schema.String,
+              dnssecValid: Schema.Boolean,
+              name: Schema.String,
+              type: Schema.String,
+            }).pipe(
+              Schema.encodeKeys({
+                address: "address",
+                dnssecValid: "dnssec_valid",
+                name: "name",
+                type: "type",
+              }),
+            ),
+          ),
+        }),
+        domainCategories: Schema.Struct({
+          data: Schema.Array(
+            Schema.Struct({
+              inherited: Schema.Unknown,
+              isPrimary: Schema.Boolean,
+              name: Schema.String,
+            }),
+          ),
+        }),
+        geoip: Schema.Struct({
+          data: Schema.Array(
+            Schema.Struct({
+              geoip: Schema.Struct({
+                city: Schema.String,
+                country: Schema.String,
+                countryName: Schema.String,
+                ll: Schema.Array(Schema.Number),
+                region: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  city: "city",
+                  country: "country",
+                  countryName: "country_name",
+                  ll: "ll",
+                  region: "region",
+                }),
+              ),
+              ip: Schema.String,
+            }),
+          ),
+        }),
+        phishing: Schema.Struct({
+          data: Schema.Array(Schema.String),
+        }),
+        radarRank: Schema.Struct({
+          data: Schema.Array(
+            Schema.Struct({
+              bucket: Schema.String,
+              hostname: Schema.String,
+              rank: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            }),
+          ),
+        }),
+        wappa: Schema.Struct({
+          data: Schema.Array(
+            Schema.Struct({
+              app: Schema.String,
+              categories: Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  priority: Schema.Number,
+                }),
+              ),
+              confidence: Schema.Array(
+                Schema.Struct({
+                  confidence: Schema.Number,
+                  name: Schema.String,
+                  pattern: Schema.String,
+                  patternType: Schema.String,
+                }),
+              ),
+              confidenceTotal: Schema.Number,
+              icon: Schema.String,
+              website: Schema.String,
+            }),
+          ),
+        }),
+        agentReadiness: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              checks: Schema.Struct({
+                botAccessControl: Schema.Struct({
+                  contentSignals: Schema.Struct({
+                    status: Schema.String,
+                    details: Schema.optional(
+                      Schema.Union([Schema.Unknown, Schema.Null]),
+                    ),
+                    durationMs: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    evidence: Schema.optional(
                       Schema.Union([
-                        Schema.Struct({
-                          aiInput: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                          aiTrain: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                          search: Schema.optional(
-                            Schema.Union([Schema.String, Schema.Null]),
-                          ),
-                        }).pipe(
-                          Schema.encodeKeys({
-                            aiInput: "ai-input",
-                            aiTrain: "ai-train",
-                            search: "search",
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            label: Schema.String,
+                            finding: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  outcome: Schema.String,
+                                  summary: Schema.String,
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            request: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  method: Schema.String,
+                                  url: Schema.String,
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            response: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  status: Schema.Number,
+                                  statusText: Schema.String,
+                                  bodyPreview: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                  bodySize: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                  redirectedTo: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
                           }),
                         ),
                         Schema.Null,
                       ]),
                     ),
-                    crawlDelay: Schema.optional(
+                    message: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  robotsTxtAiRules: Schema.Struct({
+                    status: Schema.String,
+                    details: Schema.optional(
+                      Schema.Union([Schema.Unknown, Schema.Null]),
+                    ),
+                    durationMs: Schema.optional(
                       Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    evidence: Schema.optional(
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            label: Schema.String,
+                            finding: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  outcome: Schema.String,
+                                  summary: Schema.String,
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            request: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  method: Schema.String,
+                                  url: Schema.String,
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            response: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  status: Schema.Number,
+                                  statusText: Schema.String,
+                                  bodyPreview: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                  bodySize: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                  redirectedTo: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    message: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  webBotAuth: Schema.Struct({
+                    status: Schema.String,
+                    details: Schema.optional(
+                      Schema.Union([Schema.Unknown, Schema.Null]),
+                    ),
+                    durationMs: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    evidence: Schema.optional(
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            label: Schema.String,
+                            finding: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  outcome: Schema.String,
+                                  summary: Schema.String,
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            request: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  method: Schema.String,
+                                  url: Schema.String,
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            response: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  status: Schema.Number,
+                                  statusText: Schema.String,
+                                  bodyPreview: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                  bodySize: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                  redirectedTo: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    message: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
                     ),
                   }),
                 }),
-                sitemaps: Schema.Array(Schema.String),
-                hash: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
+                commerce: Schema.Struct({
+                  acp: Schema.Struct({
+                    status: Schema.String,
+                    details: Schema.optional(
+                      Schema.Union([Schema.Unknown, Schema.Null]),
+                    ),
+                    durationMs: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    evidence: Schema.optional(
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            label: Schema.String,
+                            finding: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  outcome: Schema.String,
+                                  summary: Schema.String,
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            request: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  method: Schema.String,
+                                  url: Schema.String,
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            response: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  status: Schema.Number,
+                                  statusText: Schema.String,
+                                  bodyPreview: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                  bodySize: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                  redirectedTo: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    message: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  ap2: Schema.Struct({
+                    status: Schema.String,
+                    details: Schema.optional(
+                      Schema.Union([Schema.Unknown, Schema.Null]),
+                    ),
+                    durationMs: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    evidence: Schema.optional(
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            label: Schema.String,
+                            finding: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  outcome: Schema.String,
+                                  summary: Schema.String,
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            request: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  method: Schema.String,
+                                  url: Schema.String,
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            response: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  status: Schema.Number,
+                                  statusText: Schema.String,
+                                  bodyPreview: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                  bodySize: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                  redirectedTo: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    message: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  mpp: Schema.Struct({
+                    status: Schema.String,
+                    details: Schema.optional(
+                      Schema.Union([Schema.Unknown, Schema.Null]),
+                    ),
+                    durationMs: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    evidence: Schema.optional(
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            label: Schema.String,
+                            finding: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  outcome: Schema.String,
+                                  summary: Schema.String,
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            request: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  method: Schema.String,
+                                  url: Schema.String,
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            response: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  status: Schema.Number,
+                                  statusText: Schema.String,
+                                  bodyPreview: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                  bodySize: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                  redirectedTo: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    message: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  ucp: Schema.Struct({
+                    status: Schema.String,
+                    details: Schema.optional(
+                      Schema.Union([Schema.Unknown, Schema.Null]),
+                    ),
+                    durationMs: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    evidence: Schema.optional(
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            label: Schema.String,
+                            finding: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  outcome: Schema.String,
+                                  summary: Schema.String,
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            request: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  method: Schema.String,
+                                  url: Schema.String,
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            response: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  status: Schema.Number,
+                                  statusText: Schema.String,
+                                  bodyPreview: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                  bodySize: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                  redirectedTo: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    message: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  x402: Schema.Struct({
+                    status: Schema.String,
+                    details: Schema.optional(
+                      Schema.Union([Schema.Unknown, Schema.Null]),
+                    ),
+                    durationMs: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    evidence: Schema.optional(
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            label: Schema.String,
+                            finding: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  outcome: Schema.String,
+                                  summary: Schema.String,
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            request: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  method: Schema.String,
+                                  url: Schema.String,
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            response: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  status: Schema.Number,
+                                  statusText: Schema.String,
+                                  bodyPreview: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                  bodySize: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                  redirectedTo: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    message: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                }),
+                contentAccessibility: Schema.Struct({
+                  markdownNegotiation: Schema.Struct({
+                    status: Schema.String,
+                    details: Schema.optional(
+                      Schema.Union([Schema.Unknown, Schema.Null]),
+                    ),
+                    durationMs: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    evidence: Schema.optional(
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            label: Schema.String,
+                            finding: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  outcome: Schema.String,
+                                  summary: Schema.String,
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            request: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  method: Schema.String,
+                                  url: Schema.String,
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            response: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  status: Schema.Number,
+                                  statusText: Schema.String,
+                                  bodyPreview: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                  bodySize: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                  redirectedTo: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    message: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                }),
+                discoverability: Schema.Struct({
+                  linkHeaders: Schema.Struct({
+                    status: Schema.String,
+                    details: Schema.optional(
+                      Schema.Union([Schema.Unknown, Schema.Null]),
+                    ),
+                    durationMs: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    evidence: Schema.optional(
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            label: Schema.String,
+                            finding: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  outcome: Schema.String,
+                                  summary: Schema.String,
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            request: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  method: Schema.String,
+                                  url: Schema.String,
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            response: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  status: Schema.Number,
+                                  statusText: Schema.String,
+                                  bodyPreview: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                  bodySize: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                  redirectedTo: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    message: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  robotsTxt: Schema.Struct({
+                    status: Schema.String,
+                    details: Schema.optional(
+                      Schema.Union([Schema.Unknown, Schema.Null]),
+                    ),
+                    durationMs: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    evidence: Schema.optional(
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            label: Schema.String,
+                            finding: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  outcome: Schema.String,
+                                  summary: Schema.String,
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            request: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  method: Schema.String,
+                                  url: Schema.String,
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            response: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  status: Schema.Number,
+                                  statusText: Schema.String,
+                                  bodyPreview: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                  bodySize: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                  redirectedTo: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    message: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  sitemap: Schema.Struct({
+                    status: Schema.String,
+                    details: Schema.optional(
+                      Schema.Union([Schema.Unknown, Schema.Null]),
+                    ),
+                    durationMs: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    evidence: Schema.optional(
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            label: Schema.String,
+                            finding: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  outcome: Schema.String,
+                                  summary: Schema.String,
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            request: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  method: Schema.String,
+                                  url: Schema.String,
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            response: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  status: Schema.Number,
+                                  statusText: Schema.String,
+                                  bodyPreview: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                  bodySize: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                  redirectedTo: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    message: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                }),
+                discovery: Schema.Struct({
+                  a2aAgentCard: Schema.Struct({
+                    status: Schema.String,
+                    details: Schema.optional(
+                      Schema.Union([Schema.Unknown, Schema.Null]),
+                    ),
+                    durationMs: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    evidence: Schema.optional(
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            label: Schema.String,
+                            finding: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  outcome: Schema.String,
+                                  summary: Schema.String,
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            request: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  method: Schema.String,
+                                  url: Schema.String,
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            response: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  status: Schema.Number,
+                                  statusText: Schema.String,
+                                  bodyPreview: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                  bodySize: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                  redirectedTo: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    message: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  agentSkills: Schema.Struct({
+                    status: Schema.String,
+                    details: Schema.optional(
+                      Schema.Union([Schema.Unknown, Schema.Null]),
+                    ),
+                    durationMs: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    evidence: Schema.optional(
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            label: Schema.String,
+                            finding: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  outcome: Schema.String,
+                                  summary: Schema.String,
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            request: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  method: Schema.String,
+                                  url: Schema.String,
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            response: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  status: Schema.Number,
+                                  statusText: Schema.String,
+                                  bodyPreview: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                  bodySize: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                  redirectedTo: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    message: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  apiCatalog: Schema.Struct({
+                    status: Schema.String,
+                    details: Schema.optional(
+                      Schema.Union([Schema.Unknown, Schema.Null]),
+                    ),
+                    durationMs: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    evidence: Schema.optional(
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            label: Schema.String,
+                            finding: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  outcome: Schema.String,
+                                  summary: Schema.String,
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            request: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  method: Schema.String,
+                                  url: Schema.String,
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            response: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  status: Schema.Number,
+                                  statusText: Schema.String,
+                                  bodyPreview: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                  bodySize: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                  redirectedTo: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    message: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  mcpServerCard: Schema.Struct({
+                    status: Schema.String,
+                    details: Schema.optional(
+                      Schema.Union([Schema.Unknown, Schema.Null]),
+                    ),
+                    durationMs: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    evidence: Schema.optional(
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            label: Schema.String,
+                            finding: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  outcome: Schema.String,
+                                  summary: Schema.String,
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            request: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  method: Schema.String,
+                                  url: Schema.String,
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            response: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  status: Schema.Number,
+                                  statusText: Schema.String,
+                                  bodyPreview: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                  bodySize: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                  redirectedTo: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    message: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  oauthDiscovery: Schema.Struct({
+                    status: Schema.String,
+                    details: Schema.optional(
+                      Schema.Union([Schema.Unknown, Schema.Null]),
+                    ),
+                    durationMs: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    evidence: Schema.optional(
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            label: Schema.String,
+                            finding: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  outcome: Schema.String,
+                                  summary: Schema.String,
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            request: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  method: Schema.String,
+                                  url: Schema.String,
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            response: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  status: Schema.Number,
+                                  statusText: Schema.String,
+                                  bodyPreview: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                  bodySize: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                  redirectedTo: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    message: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  oauthProtectedResource: Schema.Struct({
+                    status: Schema.String,
+                    details: Schema.optional(
+                      Schema.Union([Schema.Unknown, Schema.Null]),
+                    ),
+                    durationMs: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    evidence: Schema.optional(
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            label: Schema.String,
+                            finding: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  outcome: Schema.String,
+                                  summary: Schema.String,
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            request: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  method: Schema.String,
+                                  url: Schema.String,
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            response: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  status: Schema.Number,
+                                  statusText: Schema.String,
+                                  bodyPreview: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                  bodySize: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                  redirectedTo: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    message: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                  webMcp: Schema.Struct({
+                    status: Schema.String,
+                    details: Schema.optional(
+                      Schema.Union([Schema.Unknown, Schema.Null]),
+                    ),
+                    durationMs: Schema.optional(
+                      Schema.Union([Schema.Number, Schema.Null]),
+                    ),
+                    evidence: Schema.optional(
+                      Schema.Union([
+                        Schema.Array(
+                          Schema.Struct({
+                            action: Schema.String,
+                            label: Schema.String,
+                            finding: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  outcome: Schema.String,
+                                  summary: Schema.String,
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            request: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  method: Schema.String,
+                                  url: Schema.String,
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                            response: Schema.optional(
+                              Schema.Union([
+                                Schema.Struct({
+                                  status: Schema.Number,
+                                  statusText: Schema.String,
+                                  bodyPreview: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                  bodySize: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  headers: Schema.optional(
+                                    Schema.Union([Schema.Unknown, Schema.Null]),
+                                  ),
+                                  redirectedTo: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                }),
+                                Schema.Null,
+                              ]),
+                            ),
+                          }),
+                        ),
+                        Schema.Null,
+                      ]),
+                    ),
+                    message: Schema.optional(
+                      Schema.Union([Schema.String, Schema.Null]),
+                    ),
+                  }),
+                }),
               }),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
-      urlCategories: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            data: Schema.Array(
-              Schema.Struct({
-                content: Schema.Array(
+              level: Schema.Number,
+              levelName: Schema.String,
+              commerceSignals: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              isCommerce: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              nextLevel: Schema.optional(
+                Schema.Union([
                   Schema.Struct({
-                    id: Schema.Number,
                     name: Schema.String,
-                    superCategoryId: Schema.Number,
-                  }).pipe(
-                    Schema.encodeKeys({
-                      id: "id",
-                      name: "name",
-                      superCategoryId: "super_category_id",
+                    requirements: Schema.Array(
+                      Schema.Struct({
+                        check: Schema.String,
+                        description: Schema.String,
+                        prompt: Schema.String,
+                        skillUrl: Schema.String,
+                        specUrls: Schema.Array(Schema.String),
+                      }),
+                    ),
+                    target: Schema.Number,
+                  }),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+        phishingV2: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              data: Schema.Array(Schema.String),
+            }),
+            Schema.Null,
+          ]),
+        ),
+        robotsTxt: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              data: Schema.Array(
+                Schema.Struct({
+                  rules: Schema.Struct({
+                    "*": Schema.Struct({
+                      allow: Schema.Array(Schema.String),
+                      disallow: Schema.Array(Schema.String),
+                      contentSignal: Schema.optional(
+                        Schema.Union([
+                          Schema.Struct({
+                            aiInput: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                            aiTrain: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                            search: Schema.optional(
+                              Schema.Union([Schema.String, Schema.Null]),
+                            ),
+                          }).pipe(
+                            Schema.encodeKeys({
+                              aiInput: "ai-input",
+                              aiTrain: "ai-train",
+                              search: "search",
+                            }),
+                          ),
+                          Schema.Null,
+                        ]),
+                      ),
+                      crawlDelay: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
                     }),
+                  }),
+                  sitemaps: Schema.Array(Schema.String),
+                  hash: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
                   ),
-                ),
-                inherited: Schema.Struct({
+                }),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+        urlCategories: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              data: Schema.Array(
+                Schema.Struct({
                   content: Schema.Array(
                     Schema.Struct({
                       id: Schema.Number,
@@ -2665,7 +2662,36 @@ export const GetScanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                       }),
                     ),
                   ),
-                  from: Schema.String,
+                  inherited: Schema.Struct({
+                    content: Schema.Array(
+                      Schema.Struct({
+                        id: Schema.Number,
+                        name: Schema.String,
+                        superCategoryId: Schema.Number,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          id: "id",
+                          name: "name",
+                          superCategoryId: "super_category_id",
+                        }),
+                      ),
+                    ),
+                    from: Schema.String,
+                    risks: Schema.Array(
+                      Schema.Struct({
+                        id: Schema.Number,
+                        name: Schema.String,
+                        superCategoryId: Schema.Number,
+                      }).pipe(
+                        Schema.encodeKeys({
+                          id: "id",
+                          name: "name",
+                          superCategoryId: "super_category_id",
+                        }),
+                      ),
+                    ),
+                  }),
+                  name: Schema.String,
                   risks: Schema.Array(
                     Schema.Struct({
                       id: Schema.Number,
@@ -2680,230 +2706,216 @@ export const GetScanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
                     ),
                   ),
                 }),
-                name: Schema.String,
-                risks: Schema.Array(
-                  Schema.Struct({
-                    id: Schema.Number,
-                    name: Schema.String,
-                    superCategoryId: Schema.Number,
-                  }).pipe(
-                    Schema.encodeKeys({
-                      id: "id",
-                      name: "name",
-                      superCategoryId: "super_category_id",
-                    }),
-                  ),
-                ),
-              }),
-            ),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          asn: "asn",
+          dns: "dns",
+          domainCategories: "domainCategories",
+          geoip: "geoip",
+          phishing: "phishing",
+          radarRank: "radarRank",
+          wappa: "wappa",
+          agentReadiness: "agentReadiness",
+          phishingV2: "phishing_v2",
+          robotsTxt: "robotsTxt",
+          urlCategories: "urlCategories",
+        }),
+      ),
+    }),
+    page: Schema.Struct({
+      apexDomain: Schema.String,
+      asn: Schema.String,
+      asnname: Schema.String,
+      city: Schema.String,
+      country: Schema.String,
+      domain: Schema.String,
+      ip: Schema.String,
+      mimeType: Schema.String,
+      server: Schema.String,
+      status: Schema.String,
+      title: Schema.String,
+      tlsAgeDays: Schema.Number,
+      tlsIssuer: Schema.String,
+      tlsValidDays: Schema.Number,
+      tlsValidFrom: Schema.String,
+      url: Schema.String,
+      screenshot: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            dhash: Schema.String,
+            mm3Hash: Schema.Number,
+            name: Schema.String,
+            phash: Schema.String,
           }),
           Schema.Null,
         ]),
       ),
+    }),
+    scanner: Schema.Struct({
+      colo: Schema.String,
+      country: Schema.String,
+    }),
+    stats: Schema.Struct({
+      domainStats: Schema.Array(
+        Schema.Struct({
+          count: Schema.Number,
+          countries: Schema.Array(Schema.String),
+          domain: Schema.String,
+          encodedSize: Schema.Number,
+          index: Schema.Number,
+          initiators: Schema.Array(Schema.String),
+          ips: Schema.Array(Schema.String),
+          redirects: Schema.Number,
+          size: Schema.Number,
+        }),
+      ),
+      ipStats: Schema.Array(
+        Schema.Struct({
+          asn: Schema.Struct({
+            asn: Schema.String,
+            country: Schema.String,
+            description: Schema.String,
+            ip: Schema.String,
+            name: Schema.String,
+            org: Schema.String,
+          }),
+          countries: Schema.Array(Schema.String),
+          domains: Schema.Array(Schema.String),
+          encodedSize: Schema.Number,
+          geoip: Schema.Struct({
+            city: Schema.String,
+            country: Schema.String,
+            countryName: Schema.String,
+            ll: Schema.Array(Schema.Number),
+            region: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              city: "city",
+              country: "country",
+              countryName: "country_name",
+              ll: "ll",
+              region: "region",
+            }),
+          ),
+          index: Schema.Number,
+          ip: Schema.String,
+          ipv6: Schema.Boolean,
+          redirects: Schema.Number,
+          requests: Schema.Number,
+          size: Schema.Number,
+          count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        }),
+      ),
+      ipv6Percentage: Schema.Number,
+      malicious: Schema.Number,
+      protocolStats: Schema.Array(
+        Schema.Struct({
+          count: Schema.Number,
+          countries: Schema.Array(Schema.String),
+          encodedSize: Schema.Number,
+          ips: Schema.Array(Schema.String),
+          protocol: Schema.String,
+          size: Schema.Number,
+        }),
+      ),
+      resourceStats: Schema.Array(
+        Schema.Struct({
+          compression: Schema.Number,
+          count: Schema.Number,
+          countries: Schema.Array(Schema.String),
+          encodedSize: Schema.Number,
+          ips: Schema.Array(Schema.String),
+          percentage: Schema.Number,
+          size: Schema.Number,
+          type: Schema.String,
+        }),
+      ),
+      securePercentage: Schema.Number,
+      secureRequests: Schema.Number,
+      serverStats: Schema.Array(
+        Schema.Struct({
+          count: Schema.Number,
+          countries: Schema.Array(Schema.String),
+          encodedSize: Schema.Number,
+          ips: Schema.Array(Schema.String),
+          server: Schema.String,
+          size: Schema.Number,
+        }),
+      ),
+      tlsStats: Schema.Array(
+        Schema.Struct({
+          count: Schema.Number,
+          countries: Schema.Array(Schema.String),
+          encodedSize: Schema.Number,
+          ips: Schema.Array(Schema.String),
+          protocols: Schema.Struct({
+            "tls 1.3 / AES_128GCM": Schema.Number,
+          }).pipe(
+            Schema.encodeKeys({
+              "tls 1.3 / AES_128GCM": "TLS 1.3 / AES_128_GCM",
+            }),
+          ),
+          securityState: Schema.String,
+          size: Schema.Number,
+        }),
+      ),
+      totalLinks: Schema.Number,
+      uniqASNs: Schema.Number,
+      uniqCountries: Schema.Number,
     }).pipe(
       Schema.encodeKeys({
-        asn: "asn",
-        dns: "dns",
-        domainCategories: "domainCategories",
-        geoip: "geoip",
-        phishing: "phishing",
-        radarRank: "radarRank",
-        wappa: "wappa",
-        agentReadiness: "agentReadiness",
-        phishingV2: "phishing_v2",
-        robotsTxt: "robotsTxt",
-        urlCategories: "urlCategories",
+        domainStats: "domainStats",
+        ipStats: "ipStats",
+        ipv6Percentage: "IPv6Percentage",
+        malicious: "malicious",
+        protocolStats: "protocolStats",
+        resourceStats: "resourceStats",
+        securePercentage: "securePercentage",
+        secureRequests: "secureRequests",
+        serverStats: "serverStats",
+        tlsStats: "tlsStats",
+        totalLinks: "totalLinks",
+        uniqASNs: "uniqASNs",
+        uniqCountries: "uniqCountries",
       }),
     ),
-  }),
-  page: Schema.Struct({
-    apexDomain: Schema.String,
-    asn: Schema.String,
-    asnname: Schema.String,
-    city: Schema.String,
-    country: Schema.String,
-    domain: Schema.String,
-    ip: Schema.String,
-    mimeType: Schema.String,
-    server: Schema.String,
-    status: Schema.String,
-    title: Schema.String,
-    tlsAgeDays: Schema.Number,
-    tlsIssuer: Schema.String,
-    tlsValidDays: Schema.Number,
-    tlsValidFrom: Schema.String,
-    url: Schema.String,
-    screenshot: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          dhash: Schema.String,
-          mm3Hash: Schema.Number,
-          name: Schema.String,
-          phash: Schema.String,
-        }),
-        Schema.Null,
-      ]),
-    ),
-  }),
-  scanner: Schema.Struct({
-    colo: Schema.String,
-    country: Schema.String,
-  }),
-  stats: Schema.Struct({
-    domainStats: Schema.Array(
-      Schema.Struct({
-        count: Schema.Number,
-        countries: Schema.Array(Schema.String),
-        domain: Schema.String,
-        encodedSize: Schema.Number,
-        index: Schema.Number,
-        initiators: Schema.Array(Schema.String),
-        ips: Schema.Array(Schema.String),
-        redirects: Schema.Number,
-        size: Schema.Number,
-      }),
-    ),
-    ipStats: Schema.Array(
-      Schema.Struct({
-        asn: Schema.Struct({
-          asn: Schema.String,
-          country: Schema.String,
-          description: Schema.String,
-          ip: Schema.String,
-          name: Schema.String,
-          org: Schema.String,
-        }),
-        countries: Schema.Array(Schema.String),
-        domains: Schema.Array(Schema.String),
-        encodedSize: Schema.Number,
-        geoip: Schema.Struct({
-          city: Schema.String,
-          country: Schema.String,
-          countryName: Schema.String,
-          ll: Schema.Array(Schema.Number),
-          region: Schema.String,
-        }).pipe(
-          Schema.encodeKeys({
-            city: "city",
-            country: "country",
-            countryName: "country_name",
-            ll: "ll",
-            region: "region",
-          }),
+    task: Schema.Struct({
+      apexDomain: Schema.String,
+      domain: Schema.String,
+      domURL: Schema.String,
+      method: Schema.String,
+      options: Schema.Struct({
+        customHeaders: Schema.optional(
+          Schema.Union([Schema.Unknown, Schema.Null]),
         ),
-        index: Schema.Number,
-        ip: Schema.String,
-        ipv6: Schema.Boolean,
-        redirects: Schema.Number,
-        requests: Schema.Number,
-        size: Schema.Number,
-        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }),
-    ),
-    ipv6Percentage: Schema.Number,
-    malicious: Schema.Number,
-    protocolStats: Schema.Array(
-      Schema.Struct({
-        count: Schema.Number,
-        countries: Schema.Array(Schema.String),
-        encodedSize: Schema.Number,
-        ips: Schema.Array(Schema.String),
-        protocol: Schema.String,
-        size: Schema.Number,
-      }),
-    ),
-    resourceStats: Schema.Array(
-      Schema.Struct({
-        compression: Schema.Number,
-        count: Schema.Number,
-        countries: Schema.Array(Schema.String),
-        encodedSize: Schema.Number,
-        ips: Schema.Array(Schema.String),
-        percentage: Schema.Number,
-        size: Schema.Number,
-        type: Schema.String,
-      }),
-    ),
-    securePercentage: Schema.Number,
-    secureRequests: Schema.Number,
-    serverStats: Schema.Array(
-      Schema.Struct({
-        count: Schema.Number,
-        countries: Schema.Array(Schema.String),
-        encodedSize: Schema.Number,
-        ips: Schema.Array(Schema.String),
-        server: Schema.String,
-        size: Schema.Number,
-      }),
-    ),
-    tlsStats: Schema.Array(
-      Schema.Struct({
-        count: Schema.Number,
-        countries: Schema.Array(Schema.String),
-        encodedSize: Schema.Number,
-        ips: Schema.Array(Schema.String),
-        protocols: Schema.Struct({
-          "tls 1.3 / AES_128GCM": Schema.Number,
-        }).pipe(
-          Schema.encodeKeys({
-            "tls 1.3 / AES_128GCM": "TLS 1.3 / AES_128_GCM",
-          }),
+        screenshotsResolutions: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
         ),
-        securityState: Schema.String,
-        size: Schema.Number,
       }),
-    ),
-    totalLinks: Schema.Number,
-    uniqASNs: Schema.Number,
-    uniqCountries: Schema.Number,
-  }).pipe(
-    Schema.encodeKeys({
-      domainStats: "domainStats",
-      ipStats: "ipStats",
-      ipv6Percentage: "IPv6Percentage",
-      malicious: "malicious",
-      protocolStats: "protocolStats",
-      resourceStats: "resourceStats",
-      securePercentage: "securePercentage",
-      secureRequests: "secureRequests",
-      serverStats: "serverStats",
-      tlsStats: "tlsStats",
-      totalLinks: "totalLinks",
-      uniqASNs: "uniqASNs",
-      uniqCountries: "uniqCountries",
+      reportURL: Schema.String,
+      screenshotURL: Schema.String,
+      source: Schema.String,
+      success: Schema.Boolean,
+      time: Schema.String,
+      url: Schema.String,
+      uuid: Schema.String,
+      visibility: Schema.String,
     }),
-  ),
-  task: Schema.Struct({
-    apexDomain: Schema.String,
-    domain: Schema.String,
-    domURL: Schema.String,
-    method: Schema.String,
-    options: Schema.Struct({
-      customHeaders: Schema.optional(
-        Schema.Union([Schema.Unknown, Schema.Null]),
-      ),
-      screenshotsResolutions: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-    }),
-    reportURL: Schema.String,
-    screenshotURL: Schema.String,
-    source: Schema.String,
-    success: Schema.Boolean,
-    time: Schema.String,
-    url: Schema.String,
-    uuid: Schema.String,
-    visibility: Schema.String,
-  }),
-  verdicts: Schema.Struct({
-    overall: Schema.Struct({
-      categories: Schema.Array(Schema.String),
-      hasVerdicts: Schema.Boolean,
-      malicious: Schema.Boolean,
-      tags: Schema.Array(Schema.String),
+    verdicts: Schema.Struct({
+      overall: Schema.Struct({
+        categories: Schema.Array(Schema.String),
+        hasVerdicts: Schema.Boolean,
+        malicious: Schema.Boolean,
+        tags: Schema.Array(Schema.String),
+      }),
     }),
   }),
-}) as unknown as Schema.Schema<GetScanResponse>;
+) as unknown as Schema.Schema<GetScanResponse>;
 
 export type GetScanError = DefaultErrors;
 
@@ -2927,15 +2939,17 @@ export interface ListScansRequest {
   size?: number;
 }
 
-export const ListScansRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  q: Schema.optional(Schema.String).pipe(T.HttpQuery("q")),
-  size: Schema.optional(Schema.Number).pipe(T.HttpQuery("size")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/urlscanner/v2/search",
-  }),
+export const ListScansRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    q: Schema.optional(Schema.String).pipe(T.HttpQuery("q")),
+    size: Schema.optional(Schema.Number).pipe(T.HttpQuery("size")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/urlscanner/v2/search",
+    }),
+  ),
 ) as unknown as Schema.Schema<ListScansRequest>;
 
 export interface ListScansResponse {
@@ -2954,44 +2968,47 @@ export interface ListScansResponse {
   }[];
 }
 
-export const ListScansResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  results: Schema.Array(
+export const ListScansResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      id: Schema.String,
-      page: Schema.Struct({
-        asn: Schema.String,
-        country: Schema.String,
-        ip: Schema.String,
-        url: Schema.String,
-      }),
-      result: Schema.String,
-      stats: Schema.Struct({
-        dataLength: Schema.Number,
-        requests: Schema.Number,
-        uniqCountries: Schema.Number,
-        uniqIPs: Schema.Number,
-      }),
-      task: Schema.Struct({
-        time: Schema.String,
-        url: Schema.String,
-        uuid: Schema.String,
-        visibility: Schema.String,
-      }),
-      verdicts: Schema.Struct({
-        malicious: Schema.Boolean,
-      }),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "_id",
-        page: "page",
-        result: "result",
-        stats: "stats",
-        task: "task",
-        verdicts: "verdicts",
-      }),
-    ),
-  ),
-}) as unknown as Schema.Schema<ListScansResponse>;
+      results: Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          page: Schema.Struct({
+            asn: Schema.String,
+            country: Schema.String,
+            ip: Schema.String,
+            url: Schema.String,
+          }),
+          result: Schema.String,
+          stats: Schema.Struct({
+            dataLength: Schema.Number,
+            requests: Schema.Number,
+            uniqCountries: Schema.Number,
+            uniqIPs: Schema.Number,
+          }),
+          task: Schema.Struct({
+            time: Schema.String,
+            url: Schema.String,
+            uuid: Schema.String,
+            visibility: Schema.String,
+          }),
+          verdicts: Schema.Struct({
+            malicious: Schema.Boolean,
+          }),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "_id",
+            page: "page",
+            result: "result",
+            stats: "stats",
+            task: "task",
+            verdicts: "verdicts",
+          }),
+        ),
+      ),
+    }),
+) as unknown as Schema.Schema<ListScansResponse>;
 
 export type ListScansError = DefaultErrors;
 
@@ -3223,228 +3240,236 @@ export interface CreateScanRequest {
   visibility?: "Public" | "Unlisted" | (string & {});
 }
 
-export const CreateScanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  url: Schema.String,
-  agentReadiness: Schema.optional(Schema.Boolean),
-  country: Schema.optional(
-    Schema.Union([
-      Schema.Literals([
-        "AF",
-        "AL",
-        "DZ",
-        "AD",
-        "AO",
-        "AG",
-        "AR",
-        "AM",
-        "AU",
-        "AT",
-        "AZ",
-        "BH",
-        "BD",
-        "BB",
-        "BY",
-        "BE",
-        "BZ",
-        "BJ",
-        "BM",
-        "BT",
-        "BO",
-        "BA",
-        "BW",
-        "BR",
-        "BN",
-        "BG",
-        "BF",
-        "BI",
-        "KH",
-        "CM",
-        "CA",
-        "CV",
-        "KY",
-        "CF",
-        "TD",
-        "CL",
-        "CN",
-        "CO",
-        "KM",
-        "CG",
-        "CR",
-        "CI",
-        "HR",
-        "CU",
-        "CY",
-        "CZ",
-        "CD",
-        "DK",
-        "DJ",
-        "DM",
-        "DO",
-        "EC",
-        "EG",
-        "SV",
-        "GQ",
-        "ER",
-        "EE",
-        "SZ",
-        "ET",
-        "FJ",
-        "FI",
-        "FR",
-        "GA",
-        "GE",
-        "DE",
-        "GH",
-        "GR",
-        "GL",
-        "GD",
-        "GT",
-        "GN",
-        "GW",
-        "GY",
-        "HT",
-        "HN",
-        "HU",
-        "IS",
-        "IN",
-        "ID",
-        "IR",
-        "IQ",
-        "IE",
-        "IL",
-        "IT",
-        "JM",
-        "JP",
-        "JO",
-        "KZ",
-        "KE",
-        "KI",
-        "KW",
-        "KG",
-        "LA",
-        "LV",
-        "LB",
-        "LS",
-        "LR",
-        "LY",
-        "LI",
-        "LT",
-        "LU",
-        "MO",
-        "MG",
-        "MW",
-        "MY",
-        "MV",
-        "ML",
-        "MR",
-        "MU",
-        "MX",
-        "FM",
-        "MD",
-        "MC",
-        "MN",
-        "MS",
-        "MA",
-        "MZ",
-        "MM",
-        "NA",
-        "NR",
-        "NP",
-        "NL",
-        "NZ",
-        "NI",
-        "NE",
-        "NG",
-        "KP",
-        "MK",
-        "NO",
-        "OM",
-        "PK",
-        "PS",
-        "PA",
-        "PG",
-        "PY",
-        "PE",
-        "PH",
-        "PL",
-        "PT",
-        "QA",
-        "RO",
-        "RU",
-        "RW",
-        "SH",
-        "KN",
-        "LC",
-        "VC",
-        "WS",
-        "SM",
-        "ST",
-        "SA",
-        "SN",
-        "RS",
-        "SC",
-        "SL",
-        "SK",
-        "SI",
-        "SB",
-        "SO",
-        "ZA",
-        "KR",
-        "SS",
-        "ES",
-        "LK",
-        "SD",
-        "SR",
-        "SE",
-        "CH",
-        "SY",
-        "TW",
-        "TJ",
-        "TZ",
-        "TH",
-        "BS",
-        "GM",
-        "TL",
-        "TG",
-        "TO",
-        "TT",
-        "TN",
-        "TR",
-        "TM",
-        "UG",
-        "UA",
-        "AE",
-        "GB",
-        "US",
-        "UY",
-        "UZ",
-        "VU",
-        "VE",
-        "VN",
-        "YE",
-        "ZM",
-        "ZW",
-      ]),
-      Schema.String,
-    ]),
-  ),
-  customagent: Schema.optional(Schema.String),
-  customHeaders: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  referer: Schema.optional(Schema.String),
-  screenshotsResolutions: Schema.optional(
-    Schema.Array(
-      Schema.Union([
-        Schema.Literals(["desktop", "mobile", "tablet"]),
-        Schema.String,
-      ]),
+export const CreateScanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      url: Schema.String,
+      agentReadiness: Schema.optional(Schema.Boolean),
+      country: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "AF",
+            "AL",
+            "DZ",
+            "AD",
+            "AO",
+            "AG",
+            "AR",
+            "AM",
+            "AU",
+            "AT",
+            "AZ",
+            "BH",
+            "BD",
+            "BB",
+            "BY",
+            "BE",
+            "BZ",
+            "BJ",
+            "BM",
+            "BT",
+            "BO",
+            "BA",
+            "BW",
+            "BR",
+            "BN",
+            "BG",
+            "BF",
+            "BI",
+            "KH",
+            "CM",
+            "CA",
+            "CV",
+            "KY",
+            "CF",
+            "TD",
+            "CL",
+            "CN",
+            "CO",
+            "KM",
+            "CG",
+            "CR",
+            "CI",
+            "HR",
+            "CU",
+            "CY",
+            "CZ",
+            "CD",
+            "DK",
+            "DJ",
+            "DM",
+            "DO",
+            "EC",
+            "EG",
+            "SV",
+            "GQ",
+            "ER",
+            "EE",
+            "SZ",
+            "ET",
+            "FJ",
+            "FI",
+            "FR",
+            "GA",
+            "GE",
+            "DE",
+            "GH",
+            "GR",
+            "GL",
+            "GD",
+            "GT",
+            "GN",
+            "GW",
+            "GY",
+            "HT",
+            "HN",
+            "HU",
+            "IS",
+            "IN",
+            "ID",
+            "IR",
+            "IQ",
+            "IE",
+            "IL",
+            "IT",
+            "JM",
+            "JP",
+            "JO",
+            "KZ",
+            "KE",
+            "KI",
+            "KW",
+            "KG",
+            "LA",
+            "LV",
+            "LB",
+            "LS",
+            "LR",
+            "LY",
+            "LI",
+            "LT",
+            "LU",
+            "MO",
+            "MG",
+            "MW",
+            "MY",
+            "MV",
+            "ML",
+            "MR",
+            "MU",
+            "MX",
+            "FM",
+            "MD",
+            "MC",
+            "MN",
+            "MS",
+            "MA",
+            "MZ",
+            "MM",
+            "NA",
+            "NR",
+            "NP",
+            "NL",
+            "NZ",
+            "NI",
+            "NE",
+            "NG",
+            "KP",
+            "MK",
+            "NO",
+            "OM",
+            "PK",
+            "PS",
+            "PA",
+            "PG",
+            "PY",
+            "PE",
+            "PH",
+            "PL",
+            "PT",
+            "QA",
+            "RO",
+            "RU",
+            "RW",
+            "SH",
+            "KN",
+            "LC",
+            "VC",
+            "WS",
+            "SM",
+            "ST",
+            "SA",
+            "SN",
+            "RS",
+            "SC",
+            "SL",
+            "SK",
+            "SI",
+            "SB",
+            "SO",
+            "ZA",
+            "KR",
+            "SS",
+            "ES",
+            "LK",
+            "SD",
+            "SR",
+            "SE",
+            "CH",
+            "SY",
+            "TW",
+            "TJ",
+            "TZ",
+            "TH",
+            "BS",
+            "GM",
+            "TL",
+            "TG",
+            "TO",
+            "TT",
+            "TN",
+            "TR",
+            "TM",
+            "UG",
+            "UA",
+            "AE",
+            "GB",
+            "US",
+            "UY",
+            "UZ",
+            "VU",
+            "VE",
+            "VN",
+            "YE",
+            "ZM",
+            "ZW",
+          ]),
+          Schema.String,
+        ]),
+      ),
+      customagent: Schema.optional(Schema.String),
+      customHeaders: Schema.optional(
+        Schema.Record(Schema.String, Schema.Unknown),
+      ),
+      referer: Schema.optional(Schema.String),
+      screenshotsResolutions: Schema.optional(
+        Schema.Array(
+          Schema.Union([
+            Schema.Literals(["desktop", "mobile", "tablet"]),
+            Schema.String,
+          ]),
+        ),
+      ),
+      visibility: Schema.optional(
+        Schema.Union([Schema.Literals(["Public", "Unlisted"]), Schema.String]),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/urlscanner/v2/scan",
+      }),
     ),
-  ),
-  visibility: Schema.optional(
-    Schema.Union([Schema.Literals(["Public", "Unlisted"]), Schema.String]),
-  ),
-}).pipe(
-  T.Http({ method: "POST", path: "/accounts/{account_id}/urlscanner/v2/scan" }),
 ) as unknown as Schema.Schema<CreateScanRequest>;
 
 export interface CreateScanResponse {
@@ -3462,25 +3487,30 @@ export interface CreateScanResponse {
   options?: { useragent?: string | null } | null;
 }
 
-export const CreateScanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  api: Schema.String,
-  message: Schema.String,
-  result: Schema.String,
-  url: Schema.String,
-  uuid: Schema.String,
-  visibility: Schema.Union([
-    Schema.Literals(["public", "unlisted"]),
-    Schema.String,
-  ]),
-  options: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        useragent: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-      Schema.Null,
-    ]),
-  ),
-}) as unknown as Schema.Schema<CreateScanResponse>;
+export const CreateScanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      api: Schema.String,
+      message: Schema.String,
+      result: Schema.String,
+      url: Schema.String,
+      uuid: Schema.String,
+      visibility: Schema.Union([
+        Schema.Literals(["public", "unlisted"]),
+        Schema.String,
+      ]),
+      options: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            useragent: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }),
+          Schema.Null,
+        ]),
+      ),
+    }),
+) as unknown as Schema.Schema<CreateScanResponse>;
 
 export type CreateScanError = DefaultErrors;
 
@@ -3515,40 +3545,44 @@ export interface BulkCreateScansRequest {
   }[];
 }
 
-export const BulkCreateScansRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    body: Schema.optional(
-      Schema.Array(
-        Schema.Struct({
-          url: Schema.String,
-          agentReadiness: Schema.optional(Schema.Boolean),
-          customagent: Schema.optional(Schema.String),
-          customHeaders: Schema.optional(
-            Schema.Record(Schema.String, Schema.Unknown),
-          ),
-          referer: Schema.optional(Schema.String),
-          screenshotsResolutions: Schema.optional(
-            Schema.Array(
+export const BulkCreateScansRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      body: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            url: Schema.String,
+            agentReadiness: Schema.optional(Schema.Boolean),
+            customagent: Schema.optional(Schema.String),
+            customHeaders: Schema.optional(
+              Schema.Record(Schema.String, Schema.Unknown),
+            ),
+            referer: Schema.optional(Schema.String),
+            screenshotsResolutions: Schema.optional(
+              Schema.Array(
+                Schema.Union([
+                  Schema.Literals(["desktop", "mobile", "tablet"]),
+                  Schema.String,
+                ]),
+              ),
+            ),
+            visibility: Schema.optional(
               Schema.Union([
-                Schema.Literals(["desktop", "mobile", "tablet"]),
+                Schema.Literals(["Public", "Unlisted"]),
                 Schema.String,
               ]),
             ),
-          ),
-          visibility: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["Public", "Unlisted"]),
-              Schema.String,
-            ]),
-          ),
-        }),
-      ),
-    ).pipe(T.HttpBody()),
-  },
-).pipe(
-  T.Http({ method: "POST", path: "/accounts/{account_id}/urlscanner/v2/bulk" }),
-) as unknown as Schema.Schema<BulkCreateScansRequest>;
+          }),
+        ),
+      ).pipe(T.HttpBody()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/urlscanner/v2/bulk",
+      }),
+    ),
+  ) as unknown as Schema.Schema<BulkCreateScansRequest>;
 
 export type BulkCreateScansResponse = {
   api: string;
@@ -3559,28 +3593,31 @@ export type BulkCreateScansResponse = {
   options?: { useragent?: string | null } | null;
 }[];
 
-export const BulkCreateScansResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-  Schema.Struct({
-    api: Schema.String,
-    result: Schema.String,
-    url: Schema.String,
-    uuid: Schema.String,
-    visibility: Schema.Union([
-      Schema.Literals(["public", "unlisted"]),
-      Schema.String,
-    ]),
-    options: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          useragent: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }),
-        Schema.Null,
-      ]),
+export const BulkCreateScansResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Array(
+      Schema.Struct({
+        api: Schema.String,
+        result: Schema.String,
+        url: Schema.String,
+        uuid: Schema.String,
+        visibility: Schema.Union([
+          Schema.Literals(["public", "unlisted"]),
+          Schema.String,
+        ]),
+        options: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              useragent: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+      }),
     ),
-  }),
-) as unknown as Schema.Schema<BulkCreateScansResponse>;
+  ) as unknown as Schema.Schema<BulkCreateScansResponse>;
 
 export type BulkCreateScansError = DefaultErrors;
 
@@ -3601,20 +3638,23 @@ export interface DomScanRequest {
   accountId: string;
 }
 
-export const DomScanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  scanId: Schema.String.pipe(T.HttpPath("scanId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/urlscanner/v2/dom/{scanId}",
-  }),
+export const DomScanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scanId: Schema.String.pipe(T.HttpPath("scanId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/urlscanner/v2/dom/{scanId}",
+    }),
+  ),
 ) as unknown as Schema.Schema<DomScanRequest>;
 
 export type DomScanResponse = string;
 
-export const DomScanResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.String as unknown as Schema.Schema<DomScanResponse>;
+export const DomScanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () => Schema.String,
+) as unknown as Schema.Schema<DomScanResponse>;
 
 export type DomScanError = DefaultErrors;
 
@@ -3635,14 +3675,16 @@ export interface HarScanRequest {
   accountId: string;
 }
 
-export const HarScanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  scanId: Schema.String.pipe(T.HttpPath("scanId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/urlscanner/v2/har/{scanId}",
-  }),
+export const HarScanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scanId: Schema.String.pipe(T.HttpPath("scanId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/urlscanner/v2/har/{scanId}",
+    }),
+  ),
 ) as unknown as Schema.Schema<HarScanRequest>;
 
 export interface HarScanResponse {
@@ -3695,107 +3737,109 @@ export interface HarScanResponse {
   };
 }
 
-export const HarScanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  log: Schema.Struct({
-    creator: Schema.Struct({
-      comment: Schema.String,
-      name: Schema.String,
-      version: Schema.String,
-    }),
-    entries: Schema.Array(
-      Schema.Struct({
-        initialPriority: Schema.String,
-        initiatorType: Schema.String,
-        priority: Schema.String,
-        requestId: Schema.String,
-        requestTime: Schema.Number,
-        resourceType: Schema.String,
-        cache: Schema.Unknown,
-        connection: Schema.String,
-        pageref: Schema.String,
-        request: Schema.Struct({
-          bodySize: Schema.Number,
-          headers: Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              value: Schema.String,
-            }),
-          ),
-          headersSize: Schema.Number,
-          httpVersion: Schema.String,
-          method: Schema.String,
-          url: Schema.String,
-        }),
-        response: Schema.Struct({
-          transferSize: Schema.Number,
-          bodySize: Schema.Number,
-          content: Schema.Struct({
-            mimeType: Schema.String,
-            size: Schema.Number,
-            compression: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
+export const HarScanResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    log: Schema.Struct({
+      creator: Schema.Struct({
+        comment: Schema.String,
+        name: Schema.String,
+        version: Schema.String,
+      }),
+      entries: Schema.Array(
+        Schema.Struct({
+          initialPriority: Schema.String,
+          initiatorType: Schema.String,
+          priority: Schema.String,
+          requestId: Schema.String,
+          requestTime: Schema.Number,
+          resourceType: Schema.String,
+          cache: Schema.Unknown,
+          connection: Schema.String,
+          pageref: Schema.String,
+          request: Schema.Struct({
+            bodySize: Schema.Number,
+            headers: Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                value: Schema.String,
+              }),
             ),
+            headersSize: Schema.Number,
+            httpVersion: Schema.String,
+            method: Schema.String,
+            url: Schema.String,
           }),
-          headers: Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              value: Schema.String,
+          response: Schema.Struct({
+            transferSize: Schema.Number,
+            bodySize: Schema.Number,
+            content: Schema.Struct({
+              mimeType: Schema.String,
+              size: Schema.Number,
+              compression: Schema.optional(
+                Schema.Union([Schema.Number, Schema.Null]),
+              ),
+            }),
+            headers: Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                value: Schema.String,
+              }),
+            ),
+            headersSize: Schema.Number,
+            httpVersion: Schema.String,
+            redirectURL: Schema.String,
+            status: Schema.Number,
+            statusText: Schema.String,
+          }).pipe(
+            Schema.encodeKeys({
+              transferSize: "_transferSize",
+              bodySize: "bodySize",
+              content: "content",
+              headers: "headers",
+              headersSize: "headersSize",
+              httpVersion: "httpVersion",
+              redirectURL: "redirectURL",
+              status: "status",
+              statusText: "statusText",
             }),
           ),
-          headersSize: Schema.Number,
-          httpVersion: Schema.String,
-          redirectURL: Schema.String,
-          status: Schema.Number,
-          statusText: Schema.String,
+          serverIPAddress: Schema.String,
+          startedDateTime: Schema.String,
+          time: Schema.Number,
         }).pipe(
           Schema.encodeKeys({
-            transferSize: "_transferSize",
-            bodySize: "bodySize",
-            content: "content",
-            headers: "headers",
-            headersSize: "headersSize",
-            httpVersion: "httpVersion",
-            redirectURL: "redirectURL",
-            status: "status",
-            statusText: "statusText",
+            initialPriority: "_initialPriority",
+            initiatorType: "_initiator_type",
+            priority: "_priority",
+            requestId: "_requestId",
+            requestTime: "_requestTime",
+            resourceType: "_resourceType",
+            cache: "cache",
+            connection: "connection",
+            pageref: "pageref",
+            request: "request",
+            response: "response",
+            serverIPAddress: "serverIPAddress",
+            startedDateTime: "startedDateTime",
+            time: "time",
           }),
         ),
-        serverIPAddress: Schema.String,
-        startedDateTime: Schema.String,
-        time: Schema.Number,
-      }).pipe(
-        Schema.encodeKeys({
-          initialPriority: "_initialPriority",
-          initiatorType: "_initiator_type",
-          priority: "_priority",
-          requestId: "_requestId",
-          requestTime: "_requestTime",
-          resourceType: "_resourceType",
-          cache: "cache",
-          connection: "connection",
-          pageref: "pageref",
-          request: "request",
-          response: "response",
-          serverIPAddress: "serverIPAddress",
-          startedDateTime: "startedDateTime",
-          time: "time",
+      ),
+      pages: Schema.Array(
+        Schema.Struct({
+          id: Schema.String,
+          pageTimings: Schema.Struct({
+            onContentLoad: Schema.Number,
+            onLoad: Schema.Number,
+          }),
+          startedDateTime: Schema.String,
+          title: Schema.String,
         }),
       ),
-    ),
-    pages: Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        pageTimings: Schema.Struct({
-          onContentLoad: Schema.Number,
-          onLoad: Schema.Number,
-        }),
-        startedDateTime: Schema.String,
-        title: Schema.String,
-      }),
-    ),
-    version: Schema.String,
+      version: Schema.String,
+    }),
   }),
-}) as unknown as Schema.Schema<HarScanResponse>;
+) as unknown as Schema.Schema<HarScanResponse>;
 
 export type HarScanError = DefaultErrors;
 
@@ -3818,26 +3862,31 @@ export interface ScreenshotScanRequest {
   resolution?: "desktop" | "mobile" | "tablet" | (string & {});
 }
 
-export const ScreenshotScanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  scanId: Schema.String.pipe(T.HttpPath("scanId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  resolution: Schema.optional(
-    Schema.Union([
-      Schema.Literals(["desktop", "mobile", "tablet"]),
-      Schema.String,
-    ]),
-  ).pipe(T.HttpQuery("resolution")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/urlscanner/v2/screenshots/{scanId}.png",
-  }),
+export const ScreenshotScanRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      scanId: Schema.String.pipe(T.HttpPath("scanId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      resolution: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["desktop", "mobile", "tablet"]),
+          Schema.String,
+        ]),
+      ).pipe(T.HttpQuery("resolution")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/urlscanner/v2/screenshots/{scanId}.png",
+      }),
+    ),
 ) as unknown as Schema.Schema<ScreenshotScanRequest>;
 
 export type ScreenshotScanResponse = unknown;
 
 export const ScreenshotScanResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown as unknown as Schema.Schema<ScreenshotScanResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+    () => Schema.Unknown,
+  ) as unknown as Schema.Schema<ScreenshotScanResponse>;
 
 export type ScreenshotScanError = DefaultErrors;
 

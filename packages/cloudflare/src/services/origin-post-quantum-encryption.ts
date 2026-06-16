@@ -46,13 +46,15 @@ export interface GetOriginPostQuantumEncryptionRequest {
 }
 
 export const GetOriginPostQuantumEncryptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/zones/{zone_id}/cache/origin_post_quantum_encryption",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/zones/{zone_id}/cache/origin_post_quantum_encryption",
+      }),
+    ),
   ) as unknown as Schema.Schema<GetOriginPostQuantumEncryptionRequest>;
 
 export interface GetOriginPostQuantumEncryptionResponse {
@@ -67,26 +69,26 @@ export interface GetOriginPostQuantumEncryptionResponse {
 }
 
 export const GetOriginPostQuantumEncryptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("origin_pqe"),
-    editable: Schema.Boolean,
-    value: Schema.Union([
-      Schema.Literals(["preferred", "supported", "off"]),
-      Schema.String,
-    ]),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetOriginPostQuantumEncryptionResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("origin_pqe"),
+      editable: Schema.Boolean,
+      value: Schema.Union([
+        Schema.Literals(["preferred", "supported", "off"]),
+        Schema.String,
+      ]),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          editable: "editable",
+          value: "value",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetOriginPostQuantumEncryptionResponse>;
 
 export type GetOriginPostQuantumEncryptionError =
   | DefaultErrors
@@ -112,17 +114,19 @@ export interface PutOriginPostQuantumEncryptionRequest {
 }
 
 export const PutOriginPostQuantumEncryptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    value: Schema.Union([
-      Schema.Literals(["preferred", "supported", "off"]),
-      Schema.String,
-    ]),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/zones/{zone_id}/cache/origin_post_quantum_encryption",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      value: Schema.Union([
+        Schema.Literals(["preferred", "supported", "off"]),
+        Schema.String,
+      ]),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        path: "/zones/{zone_id}/cache/origin_post_quantum_encryption",
+      }),
+    ),
   ) as unknown as Schema.Schema<PutOriginPostQuantumEncryptionRequest>;
 
 export interface PutOriginPostQuantumEncryptionResponse {
@@ -137,26 +141,26 @@ export interface PutOriginPostQuantumEncryptionResponse {
 }
 
 export const PutOriginPostQuantumEncryptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.Literal("origin_pqe"),
-    editable: Schema.Boolean,
-    value: Schema.Union([
-      Schema.Literals(["preferred", "supported", "off"]),
-      Schema.String,
-    ]),
-    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        editable: "editable",
-        value: "value",
-        modifiedOn: "modified_on",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<PutOriginPostQuantumEncryptionResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.Literal("origin_pqe"),
+      editable: Schema.Boolean,
+      value: Schema.Union([
+        Schema.Literals(["preferred", "supported", "off"]),
+        Schema.String,
+      ]),
+      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          editable: "editable",
+          value: "value",
+          modifiedOn: "modified_on",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<PutOriginPostQuantumEncryptionResponse>;
 
 export type PutOriginPostQuantumEncryptionError =
   | DefaultErrors

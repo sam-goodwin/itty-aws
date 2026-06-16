@@ -50,22 +50,23 @@ export interface GetDomainRequest {
   accountId: string;
 }
 
-export const GetDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  domainName: Schema.String.pipe(T.HttpPath("domainName")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/registrar/domains/{domainName}",
-  }),
+export const GetDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    domainName: Schema.String.pipe(T.HttpPath("domainName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/registrar/domains/{domainName}",
+    }),
+  ),
 ) as unknown as Schema.Schema<GetDomainRequest>;
 
 export type GetDomainResponse = unknown;
 
-export const GetDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetDomainResponse>;
+export const GetDomainResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () => Schema.Unknown.pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<GetDomainResponse>;
 
 export type GetDomainError = DefaultErrors | Forbidden;
 
@@ -85,10 +86,16 @@ export interface ListDomainsRequest {
   accountId: string;
 }
 
-export const ListDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/registrar/domains" }),
+export const ListDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/registrar/domains",
+      }),
+    ),
 ) as unknown as Schema.Schema<ListDomainsRequest>;
 
 export interface ListDomainsResponse {
@@ -154,170 +161,189 @@ export interface ListDomainsResponse {
   }[];
 }
 
-export const ListDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
+export const ListDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      available: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      canRegister: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      currentRegistrar: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      expiresAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      locked: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      registrantContact: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            address: Schema.String,
-            city: Schema.String,
-            country: Schema.Union([Schema.String, Schema.Null]),
-            firstName: Schema.Union([Schema.String, Schema.Null]),
-            lastName: Schema.Union([Schema.String, Schema.Null]),
-            organization: Schema.String,
-            phone: Schema.Union([Schema.String, Schema.Null]),
-            state: Schema.String,
-            zip: Schema.Union([Schema.String, Schema.Null]),
-            id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            address2: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            email: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-            fax: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          }).pipe(
-            Schema.encodeKeys({
-              address: "address",
-              city: "city",
-              country: "country",
-              firstName: "first_name",
-              lastName: "last_name",
-              organization: "organization",
-              phone: "phone",
-              state: "state",
-              zip: "zip",
-              id: "id",
-              address2: "address2",
-              email: "email",
-              fax: "fax",
-            }),
+      result: Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          available: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
           ),
-          Schema.Null,
-        ]),
-      ),
-      registryStatuses: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      supportedTld: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-      transferIn: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            acceptFoa: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["needed", "ok"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            approveTransfer: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals([
-                    "needed",
-                    "ok",
-                    "pending",
-                    "trying",
-                    "rejected",
-                    "unknown",
-                  ]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            canCancelTransfer: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            disablePrivacy: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["needed", "ok", "unknown"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            enterAuthCode: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals([
-                    "needed",
-                    "ok",
-                    "pending",
-                    "trying",
-                    "rejected",
-                  ]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            unlockDomain: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals([
-                    "needed",
-                    "ok",
-                    "pending",
-                    "trying",
-                    "unknown",
-                  ]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              acceptFoa: "accept_foa",
-              approveTransfer: "approve_transfer",
-              canCancelTransfer: "can_cancel_transfer",
-              disablePrivacy: "disable_privacy",
-              enterAuthCode: "enter_auth_code",
-              unlockDomain: "unlock_domain",
-            }),
+          canRegister: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
           ),
-          Schema.Null,
-        ]),
+          createdAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          currentRegistrar: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          expiresAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          locked: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+          registrantContact: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                address: Schema.String,
+                city: Schema.String,
+                country: Schema.Union([Schema.String, Schema.Null]),
+                firstName: Schema.Union([Schema.String, Schema.Null]),
+                lastName: Schema.Union([Schema.String, Schema.Null]),
+                organization: Schema.String,
+                phone: Schema.Union([Schema.String, Schema.Null]),
+                state: Schema.String,
+                zip: Schema.Union([Schema.String, Schema.Null]),
+                id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+                address2: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                email: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                fax: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  address: "address",
+                  city: "city",
+                  country: "country",
+                  firstName: "first_name",
+                  lastName: "last_name",
+                  organization: "organization",
+                  phone: "phone",
+                  state: "state",
+                  zip: "zip",
+                  id: "id",
+                  address2: "address2",
+                  email: "email",
+                  fax: "fax",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          registryStatuses: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          supportedTld: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          transferIn: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                acceptFoa: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["needed", "ok"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+                approveTransfer: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals([
+                        "needed",
+                        "ok",
+                        "pending",
+                        "trying",
+                        "rejected",
+                        "unknown",
+                      ]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+                canCancelTransfer: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                disablePrivacy: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["needed", "ok", "unknown"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+                enterAuthCode: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals([
+                        "needed",
+                        "ok",
+                        "pending",
+                        "trying",
+                        "rejected",
+                      ]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+                unlockDomain: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals([
+                        "needed",
+                        "ok",
+                        "pending",
+                        "trying",
+                        "unknown",
+                      ]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  acceptFoa: "accept_foa",
+                  approveTransfer: "approve_transfer",
+                  canCancelTransfer: "can_cancel_transfer",
+                  disablePrivacy: "disable_privacy",
+                  enterAuthCode: "enter_auth_code",
+                  unlockDomain: "unlock_domain",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          updatedAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          autoRenew: Schema.optional(
+            Schema.Union([Schema.Boolean, Schema.Null]),
+          ),
+          privacy: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            available: "available",
+            canRegister: "can_register",
+            createdAt: "created_at",
+            currentRegistrar: "current_registrar",
+            expiresAt: "expires_at",
+            locked: "locked",
+            registrantContact: "registrant_contact",
+            registryStatuses: "registry_statuses",
+            supportedTld: "supported_tld",
+            transferIn: "transfer_in",
+            updatedAt: "updated_at",
+            name: "name",
+            autoRenew: "auto_renew",
+            privacy: "privacy",
+          }),
+        ),
       ),
-      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      autoRenew: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      privacy: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        available: "available",
-        canRegister: "can_register",
-        createdAt: "created_at",
-        currentRegistrar: "current_registrar",
-        expiresAt: "expires_at",
-        locked: "locked",
-        registrantContact: "registrant_contact",
-        registryStatuses: "registry_statuses",
-        supportedTld: "supported_tld",
-        transferIn: "transfer_in",
-        updatedAt: "updated_at",
-        name: "name",
-        autoRenew: "auto_renew",
-        privacy: "privacy",
-      }),
-    ),
-  ),
-}) as unknown as Schema.Schema<ListDomainsResponse>;
+    }),
+) as unknown as Schema.Schema<ListDomainsResponse>;
 
 export type ListDomainsError = DefaultErrors | Forbidden;
 
@@ -348,30 +374,31 @@ export interface PutDomainRequest {
   privacy?: boolean;
 }
 
-export const PutDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  domainName: Schema.String.pipe(T.HttpPath("domainName")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  autoRenew: Schema.optional(Schema.Boolean),
-  locked: Schema.optional(Schema.Boolean),
-  privacy: Schema.optional(Schema.Boolean),
-}).pipe(
-  Schema.encodeKeys({
-    autoRenew: "auto_renew",
-    locked: "locked",
-    privacy: "privacy",
-  }),
-  T.Http({
-    method: "PUT",
-    path: "/accounts/{account_id}/registrar/domains/{domainName}",
-  }),
+export const PutDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    domainName: Schema.String.pipe(T.HttpPath("domainName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    autoRenew: Schema.optional(Schema.Boolean),
+    locked: Schema.optional(Schema.Boolean),
+    privacy: Schema.optional(Schema.Boolean),
+  }).pipe(
+    Schema.encodeKeys({
+      autoRenew: "auto_renew",
+      locked: "locked",
+      privacy: "privacy",
+    }),
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/registrar/domains/{domainName}",
+    }),
+  ),
 ) as unknown as Schema.Schema<PutDomainRequest>;
 
 export type PutDomainResponse = unknown;
 
-export const PutDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<PutDomainResponse>;
+export const PutDomainResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () => Schema.Unknown.pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<PutDomainResponse>;
 
 export type PutDomainError =
   | DefaultErrors
@@ -401,14 +428,17 @@ export interface CheckRegistrarRequest {
   domains: string[];
 }
 
-export const CheckRegistrarRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  domains: Schema.Array(Schema.String),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "/accounts/{account_id}/registrar/domain-check",
-  }),
+export const CheckRegistrarRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      domains: Schema.Array(Schema.String),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/registrar/domain-check",
+      }),
+    ),
 ) as unknown as Schema.Schema<CheckRegistrarRequest>;
 
 export interface CheckRegistrarResponse {
@@ -433,58 +463,57 @@ export interface CheckRegistrarResponse {
   }[];
 }
 
-export const CheckRegistrarResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    domains: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        registrable: Schema.Boolean,
-        pricing: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              currency: Schema.String,
-              registrationCost: Schema.String,
-              renewalCost: Schema.String,
-            }).pipe(
-              Schema.encodeKeys({
-                currency: "currency",
-                registrationCost: "registration_cost",
-                renewalCost: "renewal_cost",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        reason: Schema.optional(
-          Schema.Union([
+export const CheckRegistrarResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      domains: Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          registrable: Schema.Boolean,
+          pricing: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "extension_not_supported_via_api",
-                "extension_not_supported",
-                "extension_disallows_registration",
-                "domain_premium",
-                "domain_unavailable",
+              Schema.Struct({
+                currency: Schema.String,
+                registrationCost: Schema.String,
+                renewalCost: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  currency: "currency",
+                  registrationCost: "registration_cost",
+                  renewalCost: "renewal_cost",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          reason: Schema.optional(
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals([
+                  "extension_not_supported_via_api",
+                  "extension_not_supported",
+                  "extension_disallows_registration",
+                  "domain_premium",
+                  "domain_unavailable",
+                ]),
+                Schema.String,
               ]),
-              Schema.String,
+              Schema.Null,
             ]),
-            Schema.Null,
-          ]),
-        ),
-        tier: Schema.optional(
-          Schema.Union([
+          ),
+          tier: Schema.optional(
             Schema.Union([
-              Schema.Literals(["standard", "premium"]),
-              Schema.String,
+              Schema.Union([
+                Schema.Literals(["standard", "premium"]),
+                Schema.String,
+              ]),
+              Schema.Null,
             ]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-    ),
-  },
-).pipe(
-  T.ResponsePath("result"),
-) as unknown as Schema.Schema<CheckRegistrarResponse>;
+          ),
+        }),
+      ),
+    }).pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<CheckRegistrarResponse>;
 
 export type CheckRegistrarError = DefaultErrors;
 
@@ -510,21 +539,22 @@ export interface SearchRegistrarRequest {
   limit?: number;
 }
 
-export const SearchRegistrarRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    q: Schema.String.pipe(T.HttpQuery("q")),
-    extensions: Schema.optional(Schema.Array(Schema.String)).pipe(
-      T.HttpQuery("extensions"),
+export const SearchRegistrarRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      q: Schema.String.pipe(T.HttpQuery("q")),
+      extensions: Schema.optional(Schema.Array(Schema.String)).pipe(
+        T.HttpQuery("extensions"),
+      ),
+      limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/registrar/domain-search",
+      }),
     ),
-    limit: Schema.optional(Schema.Number).pipe(T.HttpQuery("limit")),
-  },
-).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/registrar/domain-search",
-  }),
-) as unknown as Schema.Schema<SearchRegistrarRequest>;
+  ) as unknown as Schema.Schema<SearchRegistrarRequest>;
 
 export interface SearchRegistrarResponse {
   /** Array of domain suggestions sorted by relevance. May be empty if no domains match the search criteria. */
@@ -549,55 +579,55 @@ export interface SearchRegistrarResponse {
 }
 
 export const SearchRegistrarResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    domains: Schema.Array(
-      Schema.Struct({
-        name: Schema.String,
-        registrable: Schema.Boolean,
-        pricing: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              currency: Schema.String,
-              registrationCost: Schema.String,
-              renewalCost: Schema.String,
-            }).pipe(
-              Schema.encodeKeys({
-                currency: "currency",
-                registrationCost: "registration_cost",
-                renewalCost: "renewal_cost",
-              }),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        reason: Schema.optional(
-          Schema.Union([
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      domains: Schema.Array(
+        Schema.Struct({
+          name: Schema.String,
+          registrable: Schema.Boolean,
+          pricing: Schema.optional(
             Schema.Union([
-              Schema.Literals([
-                "extension_not_supported_via_api",
-                "extension_not_supported",
-                "extension_disallows_registration",
-                "domain_premium",
-                "domain_unavailable",
+              Schema.Struct({
+                currency: Schema.String,
+                registrationCost: Schema.String,
+                renewalCost: Schema.String,
+              }).pipe(
+                Schema.encodeKeys({
+                  currency: "currency",
+                  registrationCost: "registration_cost",
+                  renewalCost: "renewal_cost",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          reason: Schema.optional(
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals([
+                  "extension_not_supported_via_api",
+                  "extension_not_supported",
+                  "extension_disallows_registration",
+                  "domain_premium",
+                  "domain_unavailable",
+                ]),
+                Schema.String,
               ]),
-              Schema.String,
+              Schema.Null,
             ]),
-            Schema.Null,
-          ]),
-        ),
-        tier: Schema.optional(
-          Schema.Union([
+          ),
+          tier: Schema.optional(
             Schema.Union([
-              Schema.Literals(["standard", "premium"]),
-              Schema.String,
+              Schema.Union([
+                Schema.Literals(["standard", "premium"]),
+                Schema.String,
+              ]),
+              Schema.Null,
             ]),
-            Schema.Null,
-          ]),
-        ),
-      }),
-    ),
-  }).pipe(
-    T.ResponsePath("result"),
+          ),
+        }),
+      ),
+    }).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<SearchRegistrarResponse>;
 
 export type SearchRegistrarError = DefaultErrors;
@@ -624,14 +654,16 @@ export interface GetRegistrationStatusRequest {
 }
 
 export const GetRegistrationStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    domainName: Schema.String.pipe(T.HttpPath("domainName")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/registrar/registrations/{domainName}/registration-status",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      domainName: Schema.String.pipe(T.HttpPath("domainName")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/registrar/registrations/{domainName}/registration-status",
+      }),
+    ),
   ) as unknown as Schema.Schema<GetRegistrationStatusRequest>;
 
 export interface GetRegistrationStatusResponse {
@@ -656,52 +688,55 @@ export interface GetRegistrationStatusResponse {
 }
 
 export const GetRegistrationStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    completed: Schema.Boolean,
-    createdAt: Schema.String,
-    links: Schema.Struct({
-      self: Schema.String,
-      resource: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
-    state: Schema.Union([
-      Schema.Literals([
-        "pending",
-        "in_progress",
-        "action_required",
-        "blocked",
-        "succeeded",
-        "failed",
-      ]),
-      Schema.String,
-    ]),
-    updatedAt: Schema.String,
-    context: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-    error: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          code: Schema.String,
-          message: Schema.String,
-        }),
-        Schema.Null,
-      ]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        completed: "completed",
-        createdAt: "created_at",
-        links: "links",
-        state: "state",
-        updatedAt: "updated_at",
-        context: "context",
-        error: "error",
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      completed: Schema.Boolean,
+      createdAt: Schema.String,
+      links: Schema.Struct({
+        self: Schema.String,
+        resource: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetRegistrationStatusResponse>;
+      state: Schema.Union([
+        Schema.Literals([
+          "pending",
+          "in_progress",
+          "action_required",
+          "blocked",
+          "succeeded",
+          "failed",
+        ]),
+        Schema.String,
+      ]),
+      updatedAt: Schema.String,
+      context: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
+      error: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            code: Schema.String,
+            message: Schema.String,
+          }),
+          Schema.Null,
+        ]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          completed: "completed",
+          createdAt: "created_at",
+          links: "links",
+          state: "state",
+          updatedAt: "updated_at",
+          context: "context",
+          error: "error",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetRegistrationStatusResponse>;
 
 export type GetRegistrationStatusError = DefaultErrors;
 
@@ -726,17 +761,18 @@ export interface GetUpdateStatusRequest {
   accountId: string;
 }
 
-export const GetUpdateStatusRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    domainName: Schema.String.pipe(T.HttpPath("domainName")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  },
-).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/registrar/registrations/{domainName}/update-status",
-  }),
-) as unknown as Schema.Schema<GetUpdateStatusRequest>;
+export const GetUpdateStatusRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      domainName: Schema.String.pipe(T.HttpPath("domainName")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/registrar/registrations/{domainName}/update-status",
+      }),
+    ),
+  ) as unknown as Schema.Schema<GetUpdateStatusRequest>;
 
 export interface GetUpdateStatusResponse {
   /** Whether the workflow has reached a terminal state. `true` when `state` is `succeeded` or `failed`. `false` for `pending`, `in_progress`, `action_required`, and `blocked`. */
@@ -760,52 +796,55 @@ export interface GetUpdateStatusResponse {
 }
 
 export const GetUpdateStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    completed: Schema.Boolean,
-    createdAt: Schema.String,
-    links: Schema.Struct({
-      self: Schema.String,
-      resource: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
-    state: Schema.Union([
-      Schema.Literals([
-        "pending",
-        "in_progress",
-        "action_required",
-        "blocked",
-        "succeeded",
-        "failed",
-      ]),
-      Schema.String,
-    ]),
-    updatedAt: Schema.String,
-    context: Schema.optional(
-      Schema.Union([Schema.Record(Schema.String, Schema.Unknown), Schema.Null]),
-    ),
-    error: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          code: Schema.String,
-          message: Schema.String,
-        }),
-        Schema.Null,
-      ]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        completed: "completed",
-        createdAt: "created_at",
-        links: "links",
-        state: "state",
-        updatedAt: "updated_at",
-        context: "context",
-        error: "error",
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      completed: Schema.Boolean,
+      createdAt: Schema.String,
+      links: Schema.Struct({
+        self: Schema.String,
+        resource: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetUpdateStatusResponse>;
+      state: Schema.Union([
+        Schema.Literals([
+          "pending",
+          "in_progress",
+          "action_required",
+          "blocked",
+          "succeeded",
+          "failed",
+        ]),
+        Schema.String,
+      ]),
+      updatedAt: Schema.String,
+      context: Schema.optional(
+        Schema.Union([
+          Schema.Record(Schema.String, Schema.Unknown),
+          Schema.Null,
+        ]),
+      ),
+      error: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            code: Schema.String,
+            message: Schema.String,
+          }),
+          Schema.Null,
+        ]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          completed: "completed",
+          createdAt: "created_at",
+          links: "links",
+          state: "state",
+          updatedAt: "updated_at",
+          context: "context",
+          error: "error",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetUpdateStatusResponse>;
 
 export type GetUpdateStatusError = DefaultErrors;
 

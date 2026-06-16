@@ -45,14 +45,16 @@ export interface GetEndpointHealthcheckRequest {
 }
 
 export const GetEndpointHealthcheckRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.HttpPath("id")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String.pipe(T.HttpPath("id")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}",
+      }),
+    ),
   ) as unknown as Schema.Schema<GetEndpointHealthcheckRequest>;
 
 export interface GetEndpointHealthcheckResponse {
@@ -67,23 +69,23 @@ export interface GetEndpointHealthcheckResponse {
 }
 
 export const GetEndpointHealthcheckResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    checkType: Schema.Literal("icmp"),
-    endpoint: Schema.String,
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        checkType: "check_type",
-        endpoint: "endpoint",
-        id: "id",
-        name: "name",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetEndpointHealthcheckResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      checkType: Schema.Literal("icmp"),
+      endpoint: Schema.String,
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          checkType: "check_type",
+          endpoint: "endpoint",
+          id: "id",
+          name: "name",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetEndpointHealthcheckResponse>;
 
 export type GetEndpointHealthcheckError =
   | DefaultErrors
@@ -107,13 +109,15 @@ export interface ListEndpointHealthchecksRequest {
 }
 
 export const ListEndpointHealthchecksRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/diagnostics/endpoint-healthchecks",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/diagnostics/endpoint-healthchecks",
+      }),
+    ),
   ) as unknown as Schema.Schema<ListEndpointHealthchecksRequest>;
 
 export type ListEndpointHealthchecksResponse = {
@@ -124,22 +128,22 @@ export type ListEndpointHealthchecksResponse = {
 }[];
 
 export const ListEndpointHealthchecksResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      checkType: Schema.Literal("icmp"),
-      endpoint: Schema.String,
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        checkType: "check_type",
-        endpoint: "endpoint",
-        id: "id",
-        name: "name",
-      }),
-    ),
-  ).pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Array(
+      Schema.Struct({
+        checkType: Schema.Literal("icmp"),
+        endpoint: Schema.String,
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }).pipe(
+        Schema.encodeKeys({
+          checkType: "check_type",
+          endpoint: "endpoint",
+          id: "id",
+          name: "name",
+        }),
+      ),
+    ).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<ListEndpointHealthchecksResponse>;
 
 export type ListEndpointHealthchecksError = DefaultErrors | Forbidden;
@@ -167,21 +171,23 @@ export interface CreateEndpointHealthcheckRequest {
 }
 
 export const CreateEndpointHealthcheckRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    checkType: Schema.Literal("icmp"),
-    endpoint: Schema.String,
-    name: Schema.optional(Schema.String),
-  }).pipe(
-    Schema.encodeKeys({
-      checkType: "check_type",
-      endpoint: "endpoint",
-      name: "name",
-    }),
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/diagnostics/endpoint-healthchecks",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      checkType: Schema.Literal("icmp"),
+      endpoint: Schema.String,
+      name: Schema.optional(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        checkType: "check_type",
+        endpoint: "endpoint",
+        name: "name",
+      }),
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/diagnostics/endpoint-healthchecks",
+      }),
+    ),
   ) as unknown as Schema.Schema<CreateEndpointHealthcheckRequest>;
 
 export interface CreateEndpointHealthcheckResponse {
@@ -196,23 +202,23 @@ export interface CreateEndpointHealthcheckResponse {
 }
 
 export const CreateEndpointHealthcheckResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    checkType: Schema.Literal("icmp"),
-    endpoint: Schema.String,
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        checkType: "check_type",
-        endpoint: "endpoint",
-        id: "id",
-        name: "name",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateEndpointHealthcheckResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      checkType: Schema.Literal("icmp"),
+      endpoint: Schema.String,
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          checkType: "check_type",
+          endpoint: "endpoint",
+          id: "id",
+          name: "name",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<CreateEndpointHealthcheckResponse>;
 
 export type CreateEndpointHealthcheckError =
   | DefaultErrors
@@ -243,22 +249,24 @@ export interface UpdateEndpointHealthcheckRequest {
 }
 
 export const UpdateEndpointHealthcheckRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.HttpPath("id")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    checkType: Schema.Literal("icmp"),
-    endpoint: Schema.String,
-    name: Schema.optional(Schema.String),
-  }).pipe(
-    Schema.encodeKeys({
-      checkType: "check_type",
-      endpoint: "endpoint",
-      name: "name",
-    }),
-    T.Http({
-      method: "PUT",
-      path: "/accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String.pipe(T.HttpPath("id")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      checkType: Schema.Literal("icmp"),
+      endpoint: Schema.String,
+      name: Schema.optional(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        checkType: "check_type",
+        endpoint: "endpoint",
+        name: "name",
+      }),
+      T.Http({
+        method: "PUT",
+        path: "/accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}",
+      }),
+    ),
   ) as unknown as Schema.Schema<UpdateEndpointHealthcheckRequest>;
 
 export interface UpdateEndpointHealthcheckResponse {
@@ -273,23 +281,23 @@ export interface UpdateEndpointHealthcheckResponse {
 }
 
 export const UpdateEndpointHealthcheckResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    checkType: Schema.Literal("icmp"),
-    endpoint: Schema.String,
-    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        checkType: "check_type",
-        endpoint: "endpoint",
-        id: "id",
-        name: "name",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<UpdateEndpointHealthcheckResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      checkType: Schema.Literal("icmp"),
+      endpoint: Schema.String,
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          checkType: "check_type",
+          endpoint: "endpoint",
+          id: "id",
+          name: "name",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<UpdateEndpointHealthcheckResponse>;
 
 export type UpdateEndpointHealthcheckError =
   | DefaultErrors
@@ -315,14 +323,16 @@ export interface DeleteEndpointHealthcheckRequest {
 }
 
 export const DeleteEndpointHealthcheckRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String.pipe(T.HttpPath("id")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String.pipe(T.HttpPath("id")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}",
+      }),
+    ),
   ) as unknown as Schema.Schema<DeleteEndpointHealthcheckRequest>;
 
 export interface DeleteEndpointHealthcheckResponse {
@@ -343,61 +353,63 @@ export interface DeleteEndpointHealthcheckResponse {
 }
 
 export const DeleteEndpointHealthcheckResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    errors: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      errors: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    messages: Schema.Array(
-      Schema.Struct({
-        code: Schema.Number,
-        message: Schema.String,
-        documentationUrl: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
+      messages: Schema.Array(
+        Schema.Struct({
+          code: Schema.Number,
+          message: Schema.String,
+          documentationUrl: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          source: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                pointer: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            code: "code",
+            message: "message",
+            documentationUrl: "documentation_url",
+            source: "source",
+          }),
         ),
-        source: Schema.optional(
-          Schema.Union([
-            Schema.Struct({
-              pointer: Schema.optional(
-                Schema.Union([Schema.String, Schema.Null]),
-              ),
-            }),
-            Schema.Null,
-          ]),
-        ),
-      }).pipe(
-        Schema.encodeKeys({
-          code: "code",
-          message: "message",
-          documentationUrl: "documentation_url",
-          source: "source",
-        }),
       ),
-    ),
-    success: Schema.Literal(true),
-  }) as unknown as Schema.Schema<DeleteEndpointHealthcheckResponse>;
+      success: Schema.Literal(true),
+    }),
+  ) as unknown as Schema.Schema<DeleteEndpointHealthcheckResponse>;
 
 export type DeleteEndpointHealthcheckError =
   | DefaultErrors
@@ -437,37 +449,39 @@ export interface CreateTracerouteRequest {
 }
 
 export const CreateTracerouteRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    targets: Schema.Array(Schema.String),
-    colos: Schema.optional(Schema.Array(Schema.String)),
-    options: Schema.optional(
-      Schema.Struct({
-        maxTtl: Schema.optional(Schema.Number),
-        packetType: Schema.optional(
-          Schema.Union([
-            Schema.Literals(["icmp", "tcp", "udp", "gre", "gre+icmp"]),
-            Schema.String,
-          ]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      targets: Schema.Array(Schema.String),
+      colos: Schema.optional(Schema.Array(Schema.String)),
+      options: Schema.optional(
+        Schema.Struct({
+          maxTtl: Schema.optional(Schema.Number),
+          packetType: Schema.optional(
+            Schema.Union([
+              Schema.Literals(["icmp", "tcp", "udp", "gre", "gre+icmp"]),
+              Schema.String,
+            ]),
+          ),
+          packetsPerTtl: Schema.optional(Schema.Number),
+          port: Schema.optional(Schema.Number),
+          waitTime: Schema.optional(Schema.Number),
+        }).pipe(
+          Schema.encodeKeys({
+            maxTtl: "max_ttl",
+            packetType: "packet_type",
+            packetsPerTtl: "packets_per_ttl",
+            port: "port",
+            waitTime: "wait_time",
+          }),
         ),
-        packetsPerTtl: Schema.optional(Schema.Number),
-        port: Schema.optional(Schema.Number),
-        waitTime: Schema.optional(Schema.Number),
-      }).pipe(
-        Schema.encodeKeys({
-          maxTtl: "max_ttl",
-          packetType: "packet_type",
-          packetsPerTtl: "packets_per_ttl",
-          port: "port",
-          waitTime: "wait_time",
-        }),
       ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/diagnostics/traceroute",
+      }),
     ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/diagnostics/traceroute",
-    }),
   ) as unknown as Schema.Schema<CreateTracerouteRequest>;
 
 export interface CreateTracerouteResponse {
@@ -512,140 +526,142 @@ export interface CreateTracerouteResponse {
 }
 
 export const CreateTracerouteResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    result: Schema.Array(
-      Schema.Struct({
-        colos: Schema.optional(
-          Schema.Union([
-            Schema.Array(
-              Schema.Struct({
-                colo: Schema.optional(
-                  Schema.Union([
-                    Schema.Struct({
-                      city: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                      name: Schema.optional(
-                        Schema.Union([Schema.String, Schema.Null]),
-                      ),
-                    }),
-                    Schema.Null,
-                  ]),
-                ),
-                error: Schema.optional(
-                  Schema.Union([
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          colos: Schema.optional(
+            Schema.Union([
+              Schema.Array(
+                Schema.Struct({
+                  colo: Schema.optional(
                     Schema.Union([
-                      Schema.Literals([
-                        "",
-                        "Could not gather traceroute data: Code 1",
-                        "Could not gather traceroute data: Code 2",
-                        "Could not gather traceroute data: Code 3",
-                        "Could not gather traceroute data: Code 4",
-                      ]),
-                      Schema.String,
-                    ]),
-                    Schema.Null,
-                  ]),
-                ),
-                hops: Schema.optional(
-                  Schema.Union([
-                    Schema.Array(
                       Schema.Struct({
-                        nodes: Schema.optional(
-                          Schema.Union([
-                            Schema.Array(
-                              Schema.Struct({
-                                asn: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
+                        city: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
+                        name: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
+                  error: Schema.optional(
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals([
+                          "",
+                          "Could not gather traceroute data: Code 1",
+                          "Could not gather traceroute data: Code 2",
+                          "Could not gather traceroute data: Code 3",
+                          "Could not gather traceroute data: Code 4",
+                        ]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  hops: Schema.optional(
+                    Schema.Union([
+                      Schema.Array(
+                        Schema.Struct({
+                          nodes: Schema.optional(
+                            Schema.Union([
+                              Schema.Array(
+                                Schema.Struct({
+                                  asn: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                  ip: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                  labels: Schema.optional(
+                                    Schema.Union([
+                                      Schema.Array(Schema.String),
+                                      Schema.Null,
+                                    ]),
+                                  ),
+                                  maxRttMs: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  meanRttMs: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  minRttMs: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  name: Schema.optional(
+                                    Schema.Union([Schema.String, Schema.Null]),
+                                  ),
+                                  packetCount: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                  stdDevRttMs: Schema.optional(
+                                    Schema.Union([Schema.Number, Schema.Null]),
+                                  ),
+                                }).pipe(
+                                  Schema.encodeKeys({
+                                    asn: "asn",
+                                    ip: "ip",
+                                    labels: "labels",
+                                    maxRttMs: "max_rtt_ms",
+                                    meanRttMs: "mean_rtt_ms",
+                                    minRttMs: "min_rtt_ms",
+                                    name: "name",
+                                    packetCount: "packet_count",
+                                    stdDevRttMs: "std_dev_rtt_ms",
+                                  }),
                                 ),
-                                ip: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                labels: Schema.optional(
-                                  Schema.Union([
-                                    Schema.Array(Schema.String),
-                                    Schema.Null,
-                                  ]),
-                                ),
-                                maxRttMs: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                meanRttMs: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                minRttMs: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                name: Schema.optional(
-                                  Schema.Union([Schema.String, Schema.Null]),
-                                ),
-                                packetCount: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                                stdDevRttMs: Schema.optional(
-                                  Schema.Union([Schema.Number, Schema.Null]),
-                                ),
-                              }).pipe(
-                                Schema.encodeKeys({
-                                  asn: "asn",
-                                  ip: "ip",
-                                  labels: "labels",
-                                  maxRttMs: "max_rtt_ms",
-                                  meanRttMs: "mean_rtt_ms",
-                                  minRttMs: "min_rtt_ms",
-                                  name: "name",
-                                  packetCount: "packet_count",
-                                  stdDevRttMs: "std_dev_rtt_ms",
-                                }),
                               ),
-                            ),
-                            Schema.Null,
-                          ]),
+                              Schema.Null,
+                            ]),
+                          ),
+                          packetsLost: Schema.optional(
+                            Schema.Union([Schema.Number, Schema.Null]),
+                          ),
+                          packetsSent: Schema.optional(
+                            Schema.Union([Schema.Number, Schema.Null]),
+                          ),
+                          packetsTtl: Schema.optional(
+                            Schema.Union([Schema.Number, Schema.Null]),
+                          ),
+                        }).pipe(
+                          Schema.encodeKeys({
+                            nodes: "nodes",
+                            packetsLost: "packets_lost",
+                            packetsSent: "packets_sent",
+                            packetsTtl: "packets_ttl",
+                          }),
                         ),
-                        packetsLost: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        packetsSent: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                        packetsTtl: Schema.optional(
-                          Schema.Union([Schema.Number, Schema.Null]),
-                        ),
-                      }).pipe(
-                        Schema.encodeKeys({
-                          nodes: "nodes",
-                          packetsLost: "packets_lost",
-                          packetsSent: "packets_sent",
-                          packetsTtl: "packets_ttl",
-                        }),
                       ),
-                    ),
-                    Schema.Null,
-                  ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  targetSummary: Schema.optional(
+                    Schema.Union([Schema.Unknown, Schema.Null]),
+                  ),
+                  tracerouteTimeMs: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    colo: "colo",
+                    error: "error",
+                    hops: "hops",
+                    targetSummary: "target_summary",
+                    tracerouteTimeMs: "traceroute_time_ms",
+                  }),
                 ),
-                targetSummary: Schema.optional(
-                  Schema.Union([Schema.Unknown, Schema.Null]),
-                ),
-                tracerouteTimeMs: Schema.optional(
-                  Schema.Union([Schema.Number, Schema.Null]),
-                ),
-              }).pipe(
-                Schema.encodeKeys({
-                  colo: "colo",
-                  error: "error",
-                  hops: "hops",
-                  targetSummary: "target_summary",
-                  tracerouteTimeMs: "traceroute_time_ms",
-                }),
               ),
-            ),
-            Schema.Null,
-          ]),
-        ),
-        target: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-    ),
-  }) as unknown as Schema.Schema<CreateTracerouteResponse>;
+              Schema.Null,
+            ]),
+          ),
+          target: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }),
+      ),
+    }),
+  ) as unknown as Schema.Schema<CreateTracerouteResponse>;
 
 export type CreateTracerouteError = DefaultErrors;
 

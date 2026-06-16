@@ -44,14 +44,17 @@ export interface GetSettingTlsRequest {
   settingId: string;
 }
 
-export const GetSettingTlsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  settingId: Schema.String.pipe(T.HttpPath("settingId")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/zones/{zone_id}/hostnames/settings/{settingId}",
-  }),
+export const GetSettingTlsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      settingId: Schema.String.pipe(T.HttpPath("settingId")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/zones/{zone_id}/hostnames/settings/{settingId}",
+      }),
+    ),
 ) as unknown as Schema.Schema<GetSettingTlsRequest>;
 
 export interface GetSettingTlsResponse {
@@ -64,38 +67,45 @@ export interface GetSettingTlsResponse {
   }[];
 }
 
-export const GetSettingTlsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
+export const GetSettingTlsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      hostname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      value: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literal("1.0"),
-            Schema.Literal("1.1"),
-            Schema.Literal("1.2"),
-            Schema.Literal("1.3"),
-            Schema.Literal("on"),
-            Schema.Literal("off"),
-            Schema.Array(Schema.String),
-          ]),
-          Schema.Null,
-        ]),
+      result: Schema.Array(
+        Schema.Struct({
+          createdAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          hostname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          updatedAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          value: Schema.optional(
+            Schema.Union([
+              Schema.Union([
+                Schema.Literal("1.0"),
+                Schema.Literal("1.1"),
+                Schema.Literal("1.2"),
+                Schema.Literal("1.3"),
+                Schema.Literal("on"),
+                Schema.Literal("off"),
+                Schema.Array(Schema.String),
+              ]),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            createdAt: "created_at",
+            hostname: "hostname",
+            status: "status",
+            updatedAt: "updated_at",
+            value: "value",
+          }),
+        ),
       ),
-    }).pipe(
-      Schema.encodeKeys({
-        createdAt: "created_at",
-        hostname: "hostname",
-        status: "status",
-        updatedAt: "updated_at",
-        value: "value",
-      }),
-    ),
-  ),
-}) as unknown as Schema.Schema<GetSettingTlsResponse>;
+    }),
+) as unknown as Schema.Schema<GetSettingTlsResponse>;
 
 export type GetSettingTlsError =
   | DefaultErrors
@@ -126,24 +136,27 @@ export interface PutSettingTlsRequest {
   value: "1.0" | "1.1" | "1.2" | "1.3" | "on" | "off" | string[];
 }
 
-export const PutSettingTlsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  hostname: Schema.String.pipe(T.HttpPath("hostname")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  settingId: Schema.String.pipe(T.HttpPath("settingId")),
-  value: Schema.Union([
-    Schema.Literal("1.0"),
-    Schema.Literal("1.1"),
-    Schema.Literal("1.2"),
-    Schema.Literal("1.3"),
-    Schema.Literal("on"),
-    Schema.Literal("off"),
-    Schema.Array(Schema.String),
-  ]),
-}).pipe(
-  T.Http({
-    method: "PUT",
-    path: "/zones/{zone_id}/hostnames/settings/{settingId}/{hostname}",
-  }),
+export const PutSettingTlsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      hostname: Schema.String.pipe(T.HttpPath("hostname")),
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      settingId: Schema.String.pipe(T.HttpPath("settingId")),
+      value: Schema.Union([
+        Schema.Literal("1.0"),
+        Schema.Literal("1.1"),
+        Schema.Literal("1.2"),
+        Schema.Literal("1.3"),
+        Schema.Literal("on"),
+        Schema.Literal("off"),
+        Schema.Array(Schema.String),
+      ]),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        path: "/zones/{zone_id}/hostnames/settings/{settingId}/{hostname}",
+      }),
+    ),
 ) as unknown as Schema.Schema<PutSettingTlsRequest>;
 
 export interface PutSettingTlsResponse {
@@ -159,38 +172,39 @@ export interface PutSettingTlsResponse {
   value?: "1.0" | "1.1" | "1.2" | "1.3" | "on" | "off" | string[] | null;
 }
 
-export const PutSettingTlsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  hostname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  value: Schema.optional(
-    Schema.Union([
-      Schema.Union([
-        Schema.Literal("1.0"),
-        Schema.Literal("1.1"),
-        Schema.Literal("1.2"),
-        Schema.Literal("1.3"),
-        Schema.Literal("on"),
-        Schema.Literal("off"),
-        Schema.Array(Schema.String),
-      ]),
-      Schema.Null,
-    ]),
-  ),
-})
-  .pipe(
-    Schema.encodeKeys({
-      createdAt: "created_at",
-      hostname: "hostname",
-      status: "status",
-      updatedAt: "updated_at",
-      value: "value",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<PutSettingTlsResponse>;
+export const PutSettingTlsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      hostname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      value: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literal("1.0"),
+            Schema.Literal("1.1"),
+            Schema.Literal("1.2"),
+            Schema.Literal("1.3"),
+            Schema.Literal("on"),
+            Schema.Literal("off"),
+            Schema.Array(Schema.String),
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          createdAt: "created_at",
+          hostname: "hostname",
+          status: "status",
+          updatedAt: "updated_at",
+          value: "value",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<PutSettingTlsResponse>;
 
 export type PutSettingTlsError =
   | DefaultErrors
@@ -216,15 +230,17 @@ export interface DeleteSettingTlsRequest {
 }
 
 export const DeleteSettingTlsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    hostname: Schema.String.pipe(T.HttpPath("hostname")),
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    settingId: Schema.String.pipe(T.HttpPath("settingId")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/zones/{zone_id}/hostnames/settings/{settingId}/{hostname}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      hostname: Schema.String.pipe(T.HttpPath("hostname")),
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      settingId: Schema.String.pipe(T.HttpPath("settingId")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/zones/{zone_id}/hostnames/settings/{settingId}/{hostname}",
+      }),
+    ),
   ) as unknown as Schema.Schema<DeleteSettingTlsRequest>;
 
 export interface DeleteSettingTlsResponse {
@@ -241,38 +257,38 @@ export interface DeleteSettingTlsResponse {
 }
 
 export const DeleteSettingTlsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    hostname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    value: Schema.optional(
-      Schema.Union([
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      hostname: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      updatedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      value: Schema.optional(
         Schema.Union([
-          Schema.Literal("1.0"),
-          Schema.Literal("1.1"),
-          Schema.Literal("1.2"),
-          Schema.Literal("1.3"),
-          Schema.Literal("on"),
-          Schema.Literal("off"),
-          Schema.Array(Schema.String),
+          Schema.Union([
+            Schema.Literal("1.0"),
+            Schema.Literal("1.1"),
+            Schema.Literal("1.2"),
+            Schema.Literal("1.3"),
+            Schema.Literal("on"),
+            Schema.Literal("off"),
+            Schema.Array(Schema.String),
+          ]),
+          Schema.Null,
         ]),
-        Schema.Null,
-      ]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        createdAt: "created_at",
-        hostname: "hostname",
-        status: "status",
-        updatedAt: "updated_at",
-        value: "value",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<DeleteSettingTlsResponse>;
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          createdAt: "created_at",
+          hostname: "hostname",
+          status: "status",
+          updatedAt: "updated_at",
+          value: "value",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<DeleteSettingTlsResponse>;
 
 export type DeleteSettingTlsError =
   | DefaultErrors

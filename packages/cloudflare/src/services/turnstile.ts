@@ -41,16 +41,18 @@ export interface RotateSecretWidgetRequest {
 }
 
 export const RotateSecretWidgetRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    sitekey: Schema.String.pipe(T.HttpPath("sitekey")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    invalidateImmediately: Schema.optional(Schema.Boolean),
-  }).pipe(
-    Schema.encodeKeys({ invalidateImmediately: "invalidate_immediately" }),
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/challenges/widgets/{sitekey}/rotate_secret",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      sitekey: Schema.String.pipe(T.HttpPath("sitekey")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      invalidateImmediately: Schema.optional(Schema.Boolean),
+    }).pipe(
+      Schema.encodeKeys({ invalidateImmediately: "invalidate_immediately" }),
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/challenges/widgets/{sitekey}/rotate_secret",
+      }),
+    ),
   ) as unknown as Schema.Schema<RotateSecretWidgetRequest>;
 
 export interface RotateSecretWidgetResponse {
@@ -85,50 +87,53 @@ export interface RotateSecretWidgetResponse {
 }
 
 export const RotateSecretWidgetResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    botFightMode: Schema.Boolean,
-    clearanceLevel: Schema.Union([
-      Schema.Literals([
-        "no_clearance",
-        "jschallenge",
-        "managed",
-        "interactive",
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      botFightMode: Schema.Boolean,
+      clearanceLevel: Schema.Union([
+        Schema.Literals([
+          "no_clearance",
+          "jschallenge",
+          "managed",
+          "interactive",
+        ]),
+        Schema.String,
       ]),
-      Schema.String,
-    ]),
-    createdOn: Schema.String,
-    domains: Schema.Array(Schema.String),
-    ephemeralId: Schema.Boolean,
-    mode: Schema.Union([
-      Schema.Literals(["non-interactive", "invisible", "managed"]),
-      Schema.String,
-    ]),
-    modifiedOn: Schema.String,
-    name: Schema.String,
-    offlabel: Schema.Boolean,
-    region: Schema.Union([Schema.Literals(["world", "china"]), Schema.String]),
-    secret: Schema.String,
-    sitekey: Schema.String,
-  })
-    .pipe(
-      Schema.encodeKeys({
-        botFightMode: "bot_fight_mode",
-        clearanceLevel: "clearance_level",
-        createdOn: "created_on",
-        domains: "domains",
-        ephemeralId: "ephemeral_id",
-        mode: "mode",
-        modifiedOn: "modified_on",
-        name: "name",
-        offlabel: "offlabel",
-        region: "region",
-        secret: "secret",
-        sitekey: "sitekey",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<RotateSecretWidgetResponse>;
+      createdOn: Schema.String,
+      domains: Schema.Array(Schema.String),
+      ephemeralId: Schema.Boolean,
+      mode: Schema.Union([
+        Schema.Literals(["non-interactive", "invisible", "managed"]),
+        Schema.String,
+      ]),
+      modifiedOn: Schema.String,
+      name: Schema.String,
+      offlabel: Schema.Boolean,
+      region: Schema.Union([
+        Schema.Literals(["world", "china"]),
+        Schema.String,
+      ]),
+      secret: Schema.String,
+      sitekey: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          botFightMode: "bot_fight_mode",
+          clearanceLevel: "clearance_level",
+          createdOn: "created_on",
+          domains: "domains",
+          ephemeralId: "ephemeral_id",
+          mode: "mode",
+          modifiedOn: "modified_on",
+          name: "name",
+          offlabel: "offlabel",
+          region: "region",
+          secret: "secret",
+          sitekey: "sitekey",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<RotateSecretWidgetResponse>;
 
 export type RotateSecretWidgetError = DefaultErrors;
 
@@ -153,14 +158,16 @@ export interface GetWidgetRequest {
   accountId: string;
 }
 
-export const GetWidgetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sitekey: Schema.String.pipe(T.HttpPath("sitekey")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/challenges/widgets/{sitekey}",
-  }),
+export const GetWidgetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    sitekey: Schema.String.pipe(T.HttpPath("sitekey")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/challenges/widgets/{sitekey}",
+    }),
+  ),
 ) as unknown as Schema.Schema<GetWidgetRequest>;
 
 export interface GetWidgetResponse {
@@ -194,45 +201,54 @@ export interface GetWidgetResponse {
   sitekey: string;
 }
 
-export const GetWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  botFightMode: Schema.Boolean,
-  clearanceLevel: Schema.Union([
-    Schema.Literals(["no_clearance", "jschallenge", "managed", "interactive"]),
-    Schema.String,
-  ]),
-  createdOn: Schema.String,
-  domains: Schema.Array(Schema.String),
-  ephemeralId: Schema.Boolean,
-  mode: Schema.Union([
-    Schema.Literals(["non-interactive", "invisible", "managed"]),
-    Schema.String,
-  ]),
-  modifiedOn: Schema.String,
-  name: Schema.String,
-  offlabel: Schema.Boolean,
-  region: Schema.Union([Schema.Literals(["world", "china"]), Schema.String]),
-  secret: Schema.String,
-  sitekey: Schema.String,
-})
-  .pipe(
-    Schema.encodeKeys({
-      botFightMode: "bot_fight_mode",
-      clearanceLevel: "clearance_level",
-      createdOn: "created_on",
-      domains: "domains",
-      ephemeralId: "ephemeral_id",
-      mode: "mode",
-      modifiedOn: "modified_on",
-      name: "name",
-      offlabel: "offlabel",
-      region: "region",
-      secret: "secret",
-      sitekey: "sitekey",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetWidgetResponse>;
+export const GetWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      botFightMode: Schema.Boolean,
+      clearanceLevel: Schema.Union([
+        Schema.Literals([
+          "no_clearance",
+          "jschallenge",
+          "managed",
+          "interactive",
+        ]),
+        Schema.String,
+      ]),
+      createdOn: Schema.String,
+      domains: Schema.Array(Schema.String),
+      ephemeralId: Schema.Boolean,
+      mode: Schema.Union([
+        Schema.Literals(["non-interactive", "invisible", "managed"]),
+        Schema.String,
+      ]),
+      modifiedOn: Schema.String,
+      name: Schema.String,
+      offlabel: Schema.Boolean,
+      region: Schema.Union([
+        Schema.Literals(["world", "china"]),
+        Schema.String,
+      ]),
+      secret: Schema.String,
+      sitekey: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          botFightMode: "bot_fight_mode",
+          clearanceLevel: "clearance_level",
+          createdOn: "created_on",
+          domains: "domains",
+          ephemeralId: "ephemeral_id",
+          mode: "mode",
+          modifiedOn: "modified_on",
+          name: "name",
+          offlabel: "offlabel",
+          region: "region",
+          secret: "secret",
+          sitekey: "sitekey",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<GetWidgetResponse>;
 
 export type GetWidgetError = DefaultErrors | WidgetNotFound | Forbidden;
 
@@ -266,22 +282,34 @@ export interface ListWidgetsRequest {
     | (string & {});
 }
 
-export const ListWidgetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  direction: Schema.optional(
-    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-  ).pipe(T.HttpQuery("direction")),
-  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-  order: Schema.optional(
-    Schema.Union([
-      Schema.Literals(["id", "sitekey", "name", "created_on", "modified_on"]),
-      Schema.String,
-    ]),
-  ).pipe(T.HttpQuery("order")),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/challenges/widgets" }),
+export const ListWidgetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+      direction: Schema.optional(
+        Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+      ).pipe(T.HttpQuery("direction")),
+      filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+      order: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "id",
+            "sitekey",
+            "name",
+            "created_on",
+            "modified_on",
+          ]),
+          Schema.String,
+        ]),
+      ).pipe(T.HttpQuery("order")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/challenges/widgets",
+      }),
+    ),
 ) as unknown as Schema.Schema<ListWidgetsRequest>;
 
 export interface ListWidgetsResponse {
@@ -311,70 +339,75 @@ export interface ListWidgetsResponse {
   } | null;
 }
 
-export const ListWidgetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
+export const ListWidgetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      botFightMode: Schema.Boolean,
-      clearanceLevel: Schema.Union([
-        Schema.Literals([
-          "no_clearance",
-          "jschallenge",
-          "managed",
-          "interactive",
-        ]),
-        Schema.String,
-      ]),
-      createdOn: Schema.String,
-      domains: Schema.Array(Schema.String),
-      ephemeralId: Schema.Boolean,
-      mode: Schema.Union([
-        Schema.Literals(["non-interactive", "invisible", "managed"]),
-        Schema.String,
-      ]),
-      modifiedOn: Schema.String,
-      name: Schema.String,
-      offlabel: Schema.Boolean,
-      region: Schema.Union([
-        Schema.Literals(["world", "china"]),
-        Schema.String,
-      ]),
-      sitekey: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({
-        botFightMode: "bot_fight_mode",
-        clearanceLevel: "clearance_level",
-        createdOn: "created_on",
-        domains: "domains",
-        ephemeralId: "ephemeral_id",
-        mode: "mode",
-        modifiedOn: "modified_on",
-        name: "name",
-        offlabel: "offlabel",
-        region: "region",
-        sitekey: "sitekey",
-      }),
-    ),
-  ),
-  resultInfo: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          count: "count",
-          page: "page",
-          perPage: "per_page",
-          totalCount: "total_count",
-        }),
+      result: Schema.Array(
+        Schema.Struct({
+          botFightMode: Schema.Boolean,
+          clearanceLevel: Schema.Union([
+            Schema.Literals([
+              "no_clearance",
+              "jschallenge",
+              "managed",
+              "interactive",
+            ]),
+            Schema.String,
+          ]),
+          createdOn: Schema.String,
+          domains: Schema.Array(Schema.String),
+          ephemeralId: Schema.Boolean,
+          mode: Schema.Union([
+            Schema.Literals(["non-interactive", "invisible", "managed"]),
+            Schema.String,
+          ]),
+          modifiedOn: Schema.String,
+          name: Schema.String,
+          offlabel: Schema.Boolean,
+          region: Schema.Union([
+            Schema.Literals(["world", "china"]),
+            Schema.String,
+          ]),
+          sitekey: Schema.String,
+        }).pipe(
+          Schema.encodeKeys({
+            botFightMode: "bot_fight_mode",
+            clearanceLevel: "clearance_level",
+            createdOn: "created_on",
+            domains: "domains",
+            ephemeralId: "ephemeral_id",
+            mode: "mode",
+            modifiedOn: "modified_on",
+            name: "name",
+            offlabel: "offlabel",
+            region: "region",
+            sitekey: "sitekey",
+          }),
+        ),
       ),
-      Schema.Null,
-    ]),
-  ),
-}).pipe(
-  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+      resultInfo: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            perPage: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            totalCount: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              count: "count",
+              page: "page",
+              perPage: "per_page",
+              totalCount: "total_count",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Schema<ListWidgetsResponse>;
 
 export type ListWidgetsError = DefaultErrors;
@@ -439,55 +472,67 @@ export interface CreateWidgetRequest {
   region?: "world" | "china" | (string & {});
 }
 
-export const CreateWidgetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  direction: Schema.optional(
-    Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-  ).pipe(T.HttpQuery("direction")),
-  filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
-  order: Schema.optional(
-    Schema.Union([
-      Schema.Literals(["id", "sitekey", "name", "created_on", "modified_on"]),
-      Schema.String,
-    ]),
-  ).pipe(T.HttpQuery("order")),
-  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  domains: Schema.Array(Schema.String),
-  mode: Schema.Union([
-    Schema.Literals(["non-interactive", "invisible", "managed"]),
-    Schema.String,
-  ]),
-  name: Schema.String,
-  botFightMode: Schema.optional(Schema.Boolean),
-  clearanceLevel: Schema.optional(
-    Schema.Union([
-      Schema.Literals([
-        "no_clearance",
-        "jschallenge",
-        "managed",
-        "interactive",
+export const CreateWidgetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      direction: Schema.optional(
+        Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+      ).pipe(T.HttpQuery("direction")),
+      filter: Schema.optional(Schema.String).pipe(T.HttpQuery("filter")),
+      order: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "id",
+            "sitekey",
+            "name",
+            "created_on",
+            "modified_on",
+          ]),
+          Schema.String,
+        ]),
+      ).pipe(T.HttpQuery("order")),
+      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+      domains: Schema.Array(Schema.String),
+      mode: Schema.Union([
+        Schema.Literals(["non-interactive", "invisible", "managed"]),
+        Schema.String,
       ]),
-      Schema.String,
-    ]),
-  ),
-  ephemeralId: Schema.optional(Schema.Boolean),
-  offlabel: Schema.optional(Schema.Boolean),
-  region: Schema.optional(
-    Schema.Union([Schema.Literals(["world", "china"]), Schema.String]),
-  ),
-}).pipe(
-  Schema.encodeKeys({
-    domains: "domains",
-    mode: "mode",
-    name: "name",
-    botFightMode: "bot_fight_mode",
-    clearanceLevel: "clearance_level",
-    ephemeralId: "ephemeral_id",
-    offlabel: "offlabel",
-    region: "region",
-  }),
-  T.Http({ method: "POST", path: "/accounts/{account_id}/challenges/widgets" }),
+      name: Schema.String,
+      botFightMode: Schema.optional(Schema.Boolean),
+      clearanceLevel: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "no_clearance",
+            "jschallenge",
+            "managed",
+            "interactive",
+          ]),
+          Schema.String,
+        ]),
+      ),
+      ephemeralId: Schema.optional(Schema.Boolean),
+      offlabel: Schema.optional(Schema.Boolean),
+      region: Schema.optional(
+        Schema.Union([Schema.Literals(["world", "china"]), Schema.String]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        domains: "domains",
+        mode: "mode",
+        name: "name",
+        botFightMode: "bot_fight_mode",
+        clearanceLevel: "clearance_level",
+        ephemeralId: "ephemeral_id",
+        offlabel: "offlabel",
+        region: "region",
+      }),
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/challenges/widgets",
+      }),
+    ),
 ) as unknown as Schema.Schema<CreateWidgetRequest>;
 
 export interface CreateWidgetResponse {
@@ -521,45 +566,54 @@ export interface CreateWidgetResponse {
   sitekey: string;
 }
 
-export const CreateWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  botFightMode: Schema.Boolean,
-  clearanceLevel: Schema.Union([
-    Schema.Literals(["no_clearance", "jschallenge", "managed", "interactive"]),
-    Schema.String,
-  ]),
-  createdOn: Schema.String,
-  domains: Schema.Array(Schema.String),
-  ephemeralId: Schema.Boolean,
-  mode: Schema.Union([
-    Schema.Literals(["non-interactive", "invisible", "managed"]),
-    Schema.String,
-  ]),
-  modifiedOn: Schema.String,
-  name: Schema.String,
-  offlabel: Schema.Boolean,
-  region: Schema.Union([Schema.Literals(["world", "china"]), Schema.String]),
-  secret: Schema.String,
-  sitekey: Schema.String,
-})
-  .pipe(
-    Schema.encodeKeys({
-      botFightMode: "bot_fight_mode",
-      clearanceLevel: "clearance_level",
-      createdOn: "created_on",
-      domains: "domains",
-      ephemeralId: "ephemeral_id",
-      mode: "mode",
-      modifiedOn: "modified_on",
-      name: "name",
-      offlabel: "offlabel",
-      region: "region",
-      secret: "secret",
-      sitekey: "sitekey",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<CreateWidgetResponse>;
+export const CreateWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      botFightMode: Schema.Boolean,
+      clearanceLevel: Schema.Union([
+        Schema.Literals([
+          "no_clearance",
+          "jschallenge",
+          "managed",
+          "interactive",
+        ]),
+        Schema.String,
+      ]),
+      createdOn: Schema.String,
+      domains: Schema.Array(Schema.String),
+      ephemeralId: Schema.Boolean,
+      mode: Schema.Union([
+        Schema.Literals(["non-interactive", "invisible", "managed"]),
+        Schema.String,
+      ]),
+      modifiedOn: Schema.String,
+      name: Schema.String,
+      offlabel: Schema.Boolean,
+      region: Schema.Union([
+        Schema.Literals(["world", "china"]),
+        Schema.String,
+      ]),
+      secret: Schema.String,
+      sitekey: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          botFightMode: "bot_fight_mode",
+          clearanceLevel: "clearance_level",
+          createdOn: "created_on",
+          domains: "domains",
+          ephemeralId: "ephemeral_id",
+          mode: "mode",
+          modifiedOn: "modified_on",
+          name: "name",
+          offlabel: "offlabel",
+          region: "region",
+          secret: "secret",
+          sitekey: "sitekey",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<CreateWidgetResponse>;
 
 export type CreateWidgetError = DefaultErrors;
 
@@ -601,47 +655,50 @@ export interface UpdateWidgetRequest {
   region?: "world" | "china" | (string & {});
 }
 
-export const UpdateWidgetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sitekey: Schema.String.pipe(T.HttpPath("sitekey")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  domains: Schema.Array(Schema.String),
-  mode: Schema.Union([
-    Schema.Literals(["non-interactive", "invisible", "managed"]),
-    Schema.String,
-  ]),
-  name: Schema.String,
-  botFightMode: Schema.optional(Schema.Boolean),
-  clearanceLevel: Schema.optional(
-    Schema.Union([
-      Schema.Literals([
-        "no_clearance",
-        "jschallenge",
-        "managed",
-        "interactive",
+export const UpdateWidgetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      sitekey: Schema.String.pipe(T.HttpPath("sitekey")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      domains: Schema.Array(Schema.String),
+      mode: Schema.Union([
+        Schema.Literals(["non-interactive", "invisible", "managed"]),
+        Schema.String,
       ]),
-      Schema.String,
-    ]),
-  ),
-  ephemeralId: Schema.optional(Schema.Boolean),
-  offlabel: Schema.optional(Schema.Boolean),
-  region: Schema.optional(
-    Schema.Union([Schema.Literals(["world", "china"]), Schema.String]),
-  ),
-}).pipe(
-  Schema.encodeKeys({
-    domains: "domains",
-    mode: "mode",
-    name: "name",
-    botFightMode: "bot_fight_mode",
-    clearanceLevel: "clearance_level",
-    ephemeralId: "ephemeral_id",
-    offlabel: "offlabel",
-    region: "region",
-  }),
-  T.Http({
-    method: "PUT",
-    path: "/accounts/{account_id}/challenges/widgets/{sitekey}",
-  }),
+      name: Schema.String,
+      botFightMode: Schema.optional(Schema.Boolean),
+      clearanceLevel: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "no_clearance",
+            "jschallenge",
+            "managed",
+            "interactive",
+          ]),
+          Schema.String,
+        ]),
+      ),
+      ephemeralId: Schema.optional(Schema.Boolean),
+      offlabel: Schema.optional(Schema.Boolean),
+      region: Schema.optional(
+        Schema.Union([Schema.Literals(["world", "china"]), Schema.String]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        domains: "domains",
+        mode: "mode",
+        name: "name",
+        botFightMode: "bot_fight_mode",
+        clearanceLevel: "clearance_level",
+        ephemeralId: "ephemeral_id",
+        offlabel: "offlabel",
+        region: "region",
+      }),
+      T.Http({
+        method: "PUT",
+        path: "/accounts/{account_id}/challenges/widgets/{sitekey}",
+      }),
+    ),
 ) as unknown as Schema.Schema<UpdateWidgetRequest>;
 
 export interface UpdateWidgetResponse {
@@ -675,45 +732,54 @@ export interface UpdateWidgetResponse {
   sitekey: string;
 }
 
-export const UpdateWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  botFightMode: Schema.Boolean,
-  clearanceLevel: Schema.Union([
-    Schema.Literals(["no_clearance", "jschallenge", "managed", "interactive"]),
-    Schema.String,
-  ]),
-  createdOn: Schema.String,
-  domains: Schema.Array(Schema.String),
-  ephemeralId: Schema.Boolean,
-  mode: Schema.Union([
-    Schema.Literals(["non-interactive", "invisible", "managed"]),
-    Schema.String,
-  ]),
-  modifiedOn: Schema.String,
-  name: Schema.String,
-  offlabel: Schema.Boolean,
-  region: Schema.Union([Schema.Literals(["world", "china"]), Schema.String]),
-  secret: Schema.String,
-  sitekey: Schema.String,
-})
-  .pipe(
-    Schema.encodeKeys({
-      botFightMode: "bot_fight_mode",
-      clearanceLevel: "clearance_level",
-      createdOn: "created_on",
-      domains: "domains",
-      ephemeralId: "ephemeral_id",
-      mode: "mode",
-      modifiedOn: "modified_on",
-      name: "name",
-      offlabel: "offlabel",
-      region: "region",
-      secret: "secret",
-      sitekey: "sitekey",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<UpdateWidgetResponse>;
+export const UpdateWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      botFightMode: Schema.Boolean,
+      clearanceLevel: Schema.Union([
+        Schema.Literals([
+          "no_clearance",
+          "jschallenge",
+          "managed",
+          "interactive",
+        ]),
+        Schema.String,
+      ]),
+      createdOn: Schema.String,
+      domains: Schema.Array(Schema.String),
+      ephemeralId: Schema.Boolean,
+      mode: Schema.Union([
+        Schema.Literals(["non-interactive", "invisible", "managed"]),
+        Schema.String,
+      ]),
+      modifiedOn: Schema.String,
+      name: Schema.String,
+      offlabel: Schema.Boolean,
+      region: Schema.Union([
+        Schema.Literals(["world", "china"]),
+        Schema.String,
+      ]),
+      secret: Schema.String,
+      sitekey: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          botFightMode: "bot_fight_mode",
+          clearanceLevel: "clearance_level",
+          createdOn: "created_on",
+          domains: "domains",
+          ephemeralId: "ephemeral_id",
+          mode: "mode",
+          modifiedOn: "modified_on",
+          name: "name",
+          offlabel: "offlabel",
+          region: "region",
+          secret: "secret",
+          sitekey: "sitekey",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<UpdateWidgetResponse>;
 
 export type UpdateWidgetError = DefaultErrors;
 
@@ -734,14 +800,17 @@ export interface DeleteWidgetRequest {
   accountId: string;
 }
 
-export const DeleteWidgetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  sitekey: Schema.String.pipe(T.HttpPath("sitekey")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "/accounts/{account_id}/challenges/widgets/{sitekey}",
-  }),
+export const DeleteWidgetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      sitekey: Schema.String.pipe(T.HttpPath("sitekey")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/challenges/widgets/{sitekey}",
+      }),
+    ),
 ) as unknown as Schema.Schema<DeleteWidgetRequest>;
 
 export interface DeleteWidgetResponse {
@@ -775,45 +844,54 @@ export interface DeleteWidgetResponse {
   sitekey: string;
 }
 
-export const DeleteWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  botFightMode: Schema.Boolean,
-  clearanceLevel: Schema.Union([
-    Schema.Literals(["no_clearance", "jschallenge", "managed", "interactive"]),
-    Schema.String,
-  ]),
-  createdOn: Schema.String,
-  domains: Schema.Array(Schema.String),
-  ephemeralId: Schema.Boolean,
-  mode: Schema.Union([
-    Schema.Literals(["non-interactive", "invisible", "managed"]),
-    Schema.String,
-  ]),
-  modifiedOn: Schema.String,
-  name: Schema.String,
-  offlabel: Schema.Boolean,
-  region: Schema.Union([Schema.Literals(["world", "china"]), Schema.String]),
-  secret: Schema.String,
-  sitekey: Schema.String,
-})
-  .pipe(
-    Schema.encodeKeys({
-      botFightMode: "bot_fight_mode",
-      clearanceLevel: "clearance_level",
-      createdOn: "created_on",
-      domains: "domains",
-      ephemeralId: "ephemeral_id",
-      mode: "mode",
-      modifiedOn: "modified_on",
-      name: "name",
-      offlabel: "offlabel",
-      region: "region",
-      secret: "secret",
-      sitekey: "sitekey",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<DeleteWidgetResponse>;
+export const DeleteWidgetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      botFightMode: Schema.Boolean,
+      clearanceLevel: Schema.Union([
+        Schema.Literals([
+          "no_clearance",
+          "jschallenge",
+          "managed",
+          "interactive",
+        ]),
+        Schema.String,
+      ]),
+      createdOn: Schema.String,
+      domains: Schema.Array(Schema.String),
+      ephemeralId: Schema.Boolean,
+      mode: Schema.Union([
+        Schema.Literals(["non-interactive", "invisible", "managed"]),
+        Schema.String,
+      ]),
+      modifiedOn: Schema.String,
+      name: Schema.String,
+      offlabel: Schema.Boolean,
+      region: Schema.Union([
+        Schema.Literals(["world", "china"]),
+        Schema.String,
+      ]),
+      secret: Schema.String,
+      sitekey: Schema.String,
+    })
+      .pipe(
+        Schema.encodeKeys({
+          botFightMode: "bot_fight_mode",
+          clearanceLevel: "clearance_level",
+          createdOn: "created_on",
+          domains: "domains",
+          ephemeralId: "ephemeral_id",
+          mode: "mode",
+          modifiedOn: "modified_on",
+          name: "name",
+          offlabel: "offlabel",
+          region: "region",
+          secret: "secret",
+          sitekey: "sitekey",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<DeleteWidgetResponse>;
 
 export type DeleteWidgetError = DefaultErrors | WidgetNotFound | Forbidden;
 

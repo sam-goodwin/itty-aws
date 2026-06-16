@@ -83,15 +83,17 @@ export interface GetBookmarkDatabaseTimeTravelRequest {
 }
 
 export const GetBookmarkDatabaseTimeTravelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    timestamp: Schema.optional(Schema.String).pipe(T.HttpQuery("timestamp")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/d1/database/{databaseId}/time_travel/bookmark",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      timestamp: Schema.optional(Schema.String).pipe(T.HttpQuery("timestamp")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/d1/database/{databaseId}/time_travel/bookmark",
+      }),
+    ),
   ) as unknown as Schema.Schema<GetBookmarkDatabaseTimeTravelRequest>;
 
 export interface GetBookmarkDatabaseTimeTravelResponse {
@@ -100,10 +102,10 @@ export interface GetBookmarkDatabaseTimeTravelResponse {
 }
 
 export const GetBookmarkDatabaseTimeTravelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bookmark: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      bookmark: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<GetBookmarkDatabaseTimeTravelResponse>;
 
 export type GetBookmarkDatabaseTimeTravelError =
@@ -142,13 +144,16 @@ export interface ListDatabasesRequest {
   name?: string;
 }
 
-export const ListDatabasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
-}).pipe(
-  T.Http({ method: "GET", path: "/accounts/{account_id}/d1/database" }),
+export const ListDatabasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+      name: Schema.optional(Schema.String).pipe(T.HttpQuery("name")),
+    }).pipe(
+      T.Http({ method: "GET", path: "/accounts/{account_id}/d1/database" }),
+    ),
 ) as unknown as Schema.Schema<ListDatabasesRequest>;
 
 export interface ListDatabasesResponse {
@@ -167,50 +172,57 @@ export interface ListDatabasesResponse {
   } | null;
 }
 
-export const ListDatabasesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
+export const ListDatabasesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      jurisdiction: Schema.optional(
+      result: Schema.Array(
+        Schema.Struct({
+          createdAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          jurisdiction: Schema.optional(
+            Schema.Union([
+              Schema.Literal("eu"),
+              Schema.Literal("fedramp"),
+              Schema.Null,
+            ]),
+          ),
+          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          uuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          version: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }).pipe(
+          Schema.encodeKeys({
+            createdAt: "created_at",
+            jurisdiction: "jurisdiction",
+            name: "name",
+            uuid: "uuid",
+            version: "version",
+          }),
+        ),
+      ),
+      resultInfo: Schema.optional(
         Schema.Union([
-          Schema.Literal("eu"),
-          Schema.Literal("fedramp"),
+          Schema.Struct({
+            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            perPage: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            totalCount: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              count: "count",
+              page: "page",
+              perPage: "per_page",
+              totalCount: "total_count",
+            }),
+          ),
           Schema.Null,
         ]),
       ),
-      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      uuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      version: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        createdAt: "created_at",
-        jurisdiction: "jurisdiction",
-        name: "name",
-        uuid: "uuid",
-        version: "version",
-      }),
-    ),
-  ),
-  resultInfo: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          count: "count",
-          page: "page",
-          perPage: "per_page",
-          totalCount: "total_count",
-        }),
-      ),
-      Schema.Null,
-    ]),
-  ),
-}).pipe(
-  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Schema<ListDatabasesResponse>;
 
 export type ListDatabasesError = DefaultErrors;
@@ -256,32 +268,35 @@ export interface GetDatabaseRequest {
   )[];
 }
 
-export const GetDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  fields: Schema.optional(
-    Schema.Array(
-      Schema.Union([
-        Schema.Literals([
-          "uuid",
-          "name",
-          "created_at",
-          "version",
-          "jurisdiction",
-          "num_tables",
-          "file_size",
-          "running_in_region",
-          "read_replication",
-        ]),
-        Schema.String,
-      ]),
+export const GetDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      fields: Schema.optional(
+        Schema.Array(
+          Schema.Union([
+            Schema.Literals([
+              "uuid",
+              "name",
+              "created_at",
+              "version",
+              "jurisdiction",
+              "num_tables",
+              "file_size",
+              "running_in_region",
+              "read_replication",
+            ]),
+            Schema.String,
+          ]),
+        ),
+      ).pipe(T.HttpQuery("fields")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/d1/database/{databaseId}",
+      }),
     ),
-  ).pipe(T.HttpQuery("fields")),
-}).pipe(
-  T.Http({
-    method: "GET",
-    path: "/accounts/{account_id}/d1/database/{databaseId}",
-  }),
 ) as unknown as Schema.Schema<GetDatabaseRequest>;
 
 export interface GetDatabaseResponse {
@@ -301,47 +316,48 @@ export interface GetDatabaseResponse {
   version?: string | null;
 }
 
-export const GetDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  fileSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  jurisdiction: Schema.optional(
-    Schema.Union([
-      Schema.Literal("eu"),
-      Schema.Literal("fedramp"),
-      Schema.Null,
-    ]),
-  ),
-  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  numTables: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  readReplication: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        mode: Schema.Union([
-          Schema.Literals(["auto", "disabled"]),
-          Schema.String,
+export const GetDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      fileSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      jurisdiction: Schema.optional(
+        Schema.Union([
+          Schema.Literal("eu"),
+          Schema.Literal("fedramp"),
+          Schema.Null,
         ]),
-      }),
-      Schema.Null,
-    ]),
-  ),
-  uuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  version: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-})
-  .pipe(
-    Schema.encodeKeys({
-      createdAt: "created_at",
-      fileSize: "file_size",
-      jurisdiction: "jurisdiction",
-      name: "name",
-      numTables: "num_tables",
-      readReplication: "read_replication",
-      uuid: "uuid",
-      version: "version",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<GetDatabaseResponse>;
+      ),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      numTables: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      readReplication: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            mode: Schema.Union([
+              Schema.Literals(["auto", "disabled"]),
+              Schema.String,
+            ]),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      uuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      version: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          createdAt: "created_at",
+          fileSize: "file_size",
+          jurisdiction: "jurisdiction",
+          name: "name",
+          numTables: "num_tables",
+          readReplication: "read_replication",
+          uuid: "uuid",
+          version: "version",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<GetDatabaseResponse>;
 
 export type GetDatabaseError =
   | DefaultErrors
@@ -380,34 +396,37 @@ export interface CreateDatabaseRequest {
   readReplication?: { mode: "auto" | "disabled" | (string & {}) };
 }
 
-export const CreateDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  name: Schema.String,
-  jurisdiction: Schema.optional(
-    Schema.Union([Schema.Literals(["eu", "fedramp"]), Schema.String]),
-  ),
-  primaryLocationHint: Schema.optional(
-    Schema.Union([
-      Schema.Literals(["wnam", "enam", "weur", "eeur", "apac", "oc"]),
-      Schema.String,
-    ]),
-  ),
-  readReplication: Schema.optional(
+export const CreateDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      mode: Schema.Union([
-        Schema.Literals(["auto", "disabled"]),
-        Schema.String,
-      ]),
-    }),
-  ),
-}).pipe(
-  Schema.encodeKeys({
-    name: "name",
-    jurisdiction: "jurisdiction",
-    primaryLocationHint: "primary_location_hint",
-    readReplication: "read_replication",
-  }),
-  T.Http({ method: "POST", path: "/accounts/{account_id}/d1/database" }),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      name: Schema.String,
+      jurisdiction: Schema.optional(
+        Schema.Union([Schema.Literals(["eu", "fedramp"]), Schema.String]),
+      ),
+      primaryLocationHint: Schema.optional(
+        Schema.Union([
+          Schema.Literals(["wnam", "enam", "weur", "eeur", "apac", "oc"]),
+          Schema.String,
+        ]),
+      ),
+      readReplication: Schema.optional(
+        Schema.Struct({
+          mode: Schema.Union([
+            Schema.Literals(["auto", "disabled"]),
+            Schema.String,
+          ]),
+        }),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        name: "name",
+        jurisdiction: "jurisdiction",
+        primaryLocationHint: "primary_location_hint",
+        readReplication: "read_replication",
+      }),
+      T.Http({ method: "POST", path: "/accounts/{account_id}/d1/database" }),
+    ),
 ) as unknown as Schema.Schema<CreateDatabaseRequest>;
 
 export interface CreateDatabaseResponse {
@@ -427,48 +446,47 @@ export interface CreateDatabaseResponse {
   version?: string | null;
 }
 
-export const CreateDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    fileSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    jurisdiction: Schema.optional(
-      Schema.Union([
-        Schema.Literal("eu"),
-        Schema.Literal("fedramp"),
-        Schema.Null,
-      ]),
-    ),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    numTables: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    readReplication: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          mode: Schema.Union([
-            Schema.Literals(["auto", "disabled"]),
-            Schema.String,
-          ]),
+export const CreateDatabaseResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      fileSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      jurisdiction: Schema.optional(
+        Schema.Union([
+          Schema.Literal("eu"),
+          Schema.Literal("fedramp"),
+          Schema.Null,
+        ]),
+      ),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      numTables: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      readReplication: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            mode: Schema.Union([
+              Schema.Literals(["auto", "disabled"]),
+              Schema.String,
+            ]),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      uuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      version: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          createdAt: "created_at",
+          fileSize: "file_size",
+          jurisdiction: "jurisdiction",
+          name: "name",
+          numTables: "num_tables",
+          readReplication: "read_replication",
+          uuid: "uuid",
+          version: "version",
         }),
-        Schema.Null,
-      ]),
-    ),
-    uuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    version: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  },
-)
-  .pipe(
-    Schema.encodeKeys({
-      createdAt: "created_at",
-      fileSize: "file_size",
-      jurisdiction: "jurisdiction",
-      name: "name",
-      numTables: "num_tables",
-      readReplication: "read_replication",
-      uuid: "uuid",
-      version: "version",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
+      )
+      .pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<CreateDatabaseResponse>;
 
 export type CreateDatabaseError =
@@ -496,18 +514,24 @@ export interface UpdateDatabaseRequest {
   readReplication: { mode: "auto" | "disabled" | (string & {}) };
 }
 
-export const UpdateDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  readReplication: Schema.Struct({
-    mode: Schema.Union([Schema.Literals(["auto", "disabled"]), Schema.String]),
-  }),
-}).pipe(
-  Schema.encodeKeys({ readReplication: "read_replication" }),
-  T.Http({
-    method: "PUT",
-    path: "/accounts/{account_id}/d1/database/{databaseId}",
-  }),
+export const UpdateDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      readReplication: Schema.Struct({
+        mode: Schema.Union([
+          Schema.Literals(["auto", "disabled"]),
+          Schema.String,
+        ]),
+      }),
+    }).pipe(
+      Schema.encodeKeys({ readReplication: "read_replication" }),
+      T.Http({
+        method: "PUT",
+        path: "/accounts/{account_id}/d1/database/{databaseId}",
+      }),
+    ),
 ) as unknown as Schema.Schema<UpdateDatabaseRequest>;
 
 export interface UpdateDatabaseResponse {
@@ -527,48 +551,47 @@ export interface UpdateDatabaseResponse {
   version?: string | null;
 }
 
-export const UpdateDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    fileSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    jurisdiction: Schema.optional(
-      Schema.Union([
-        Schema.Literal("eu"),
-        Schema.Literal("fedramp"),
-        Schema.Null,
-      ]),
-    ),
-    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    numTables: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    readReplication: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          mode: Schema.Union([
-            Schema.Literals(["auto", "disabled"]),
-            Schema.String,
-          ]),
+export const UpdateDatabaseResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      fileSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      jurisdiction: Schema.optional(
+        Schema.Union([
+          Schema.Literal("eu"),
+          Schema.Literal("fedramp"),
+          Schema.Null,
+        ]),
+      ),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      numTables: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      readReplication: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            mode: Schema.Union([
+              Schema.Literals(["auto", "disabled"]),
+              Schema.String,
+            ]),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      uuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      version: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          createdAt: "created_at",
+          fileSize: "file_size",
+          jurisdiction: "jurisdiction",
+          name: "name",
+          numTables: "num_tables",
+          readReplication: "read_replication",
+          uuid: "uuid",
+          version: "version",
         }),
-        Schema.Null,
-      ]),
-    ),
-    uuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    version: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  },
-)
-  .pipe(
-    Schema.encodeKeys({
-      createdAt: "created_at",
-      fileSize: "file_size",
-      jurisdiction: "jurisdiction",
-      name: "name",
-      numTables: "num_tables",
-      readReplication: "read_replication",
-      uuid: "uuid",
-      version: "version",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
+      )
+      .pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<UpdateDatabaseResponse>;
 
 export type UpdateDatabaseError =
@@ -596,23 +619,26 @@ export interface PatchDatabaseRequest {
   readReplication?: { mode: "auto" | "disabled" | (string & {}) };
 }
 
-export const PatchDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  readReplication: Schema.optional(
+export const PatchDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      mode: Schema.Union([
-        Schema.Literals(["auto", "disabled"]),
-        Schema.String,
-      ]),
-    }),
-  ),
-}).pipe(
-  Schema.encodeKeys({ readReplication: "read_replication" }),
-  T.Http({
-    method: "PATCH",
-    path: "/accounts/{account_id}/d1/database/{databaseId}",
-  }),
+      databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      readReplication: Schema.optional(
+        Schema.Struct({
+          mode: Schema.Union([
+            Schema.Literals(["auto", "disabled"]),
+            Schema.String,
+          ]),
+        }),
+      ),
+    }).pipe(
+      Schema.encodeKeys({ readReplication: "read_replication" }),
+      T.Http({
+        method: "PATCH",
+        path: "/accounts/{account_id}/d1/database/{databaseId}",
+      }),
+    ),
 ) as unknown as Schema.Schema<PatchDatabaseRequest>;
 
 export interface PatchDatabaseResponse {
@@ -632,47 +658,48 @@ export interface PatchDatabaseResponse {
   version?: string | null;
 }
 
-export const PatchDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  fileSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  jurisdiction: Schema.optional(
-    Schema.Union([
-      Schema.Literal("eu"),
-      Schema.Literal("fedramp"),
-      Schema.Null,
-    ]),
-  ),
-  name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  numTables: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  readReplication: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        mode: Schema.Union([
-          Schema.Literals(["auto", "disabled"]),
-          Schema.String,
+export const PatchDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      createdAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      fileSize: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      jurisdiction: Schema.optional(
+        Schema.Union([
+          Schema.Literal("eu"),
+          Schema.Literal("fedramp"),
+          Schema.Null,
         ]),
-      }),
-      Schema.Null,
-    ]),
-  ),
-  uuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  version: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-})
-  .pipe(
-    Schema.encodeKeys({
-      createdAt: "created_at",
-      fileSize: "file_size",
-      jurisdiction: "jurisdiction",
-      name: "name",
-      numTables: "num_tables",
-      readReplication: "read_replication",
-      uuid: "uuid",
-      version: "version",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<PatchDatabaseResponse>;
+      ),
+      name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      numTables: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      readReplication: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            mode: Schema.Union([
+              Schema.Literals(["auto", "disabled"]),
+              Schema.String,
+            ]),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      uuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      version: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          createdAt: "created_at",
+          fileSize: "file_size",
+          jurisdiction: "jurisdiction",
+          name: "name",
+          numTables: "num_tables",
+          readReplication: "read_replication",
+          uuid: "uuid",
+          version: "version",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<PatchDatabaseResponse>;
 
 export type PatchDatabaseError =
   | DefaultErrors
@@ -697,21 +724,24 @@ export interface DeleteDatabaseRequest {
   accountId: string;
 }
 
-export const DeleteDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-}).pipe(
-  T.Http({
-    method: "DELETE",
-    path: "/accounts/{account_id}/d1/database/{databaseId}",
-  }),
+export const DeleteDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/d1/database/{databaseId}",
+      }),
+    ),
 ) as unknown as Schema.Schema<DeleteDatabaseRequest>;
 
 export type DeleteDatabaseResponse = unknown;
 
 export const DeleteDatabaseResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<DeleteDatabaseResponse>;
 
 export type DeleteDatabaseError =
@@ -743,34 +773,37 @@ export interface ExportDatabaseRequest {
   dumpOptions?: { noData?: boolean; noSchema?: boolean; tables?: string[] };
 }
 
-export const ExportDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  outputFormat: Schema.Literal("polling"),
-  currentBookmark: Schema.optional(Schema.String),
-  dumpOptions: Schema.optional(
+export const ExportDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      noData: Schema.optional(Schema.Boolean),
-      noSchema: Schema.optional(Schema.Boolean),
-      tables: Schema.optional(Schema.Array(Schema.String)),
+      databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      outputFormat: Schema.Literal("polling"),
+      currentBookmark: Schema.optional(Schema.String),
+      dumpOptions: Schema.optional(
+        Schema.Struct({
+          noData: Schema.optional(Schema.Boolean),
+          noSchema: Schema.optional(Schema.Boolean),
+          tables: Schema.optional(Schema.Array(Schema.String)),
+        }).pipe(
+          Schema.encodeKeys({
+            noData: "no_data",
+            noSchema: "no_schema",
+            tables: "tables",
+          }),
+        ),
+      ),
     }).pipe(
       Schema.encodeKeys({
-        noData: "no_data",
-        noSchema: "no_schema",
-        tables: "tables",
+        outputFormat: "output_format",
+        currentBookmark: "current_bookmark",
+        dumpOptions: "dump_options",
+      }),
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/d1/database/{databaseId}/export",
       }),
     ),
-  ),
-}).pipe(
-  Schema.encodeKeys({
-    outputFormat: "output_format",
-    currentBookmark: "current_bookmark",
-    dumpOptions: "dump_options",
-  }),
-  T.Http({
-    method: "POST",
-    path: "/accounts/{account_id}/d1/database/{databaseId}/export",
-  }),
 ) as unknown as Schema.Schema<ExportDatabaseRequest>;
 
 export interface ExportDatabaseResponse {
@@ -787,54 +820,58 @@ export interface ExportDatabaseResponse {
   type?: "export" | null;
 }
 
-export const ExportDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    atBookmark: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    messages: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    result: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          filename: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          signedUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({ filename: "filename", signedUrl: "signed_url" }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    status: Schema.optional(
-      Schema.Union([
+export const ExportDatabaseResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      atBookmark: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      messages: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      result: Schema.optional(
         Schema.Union([
-          Schema.Literals(["complete", "error", "active"]),
-          Schema.String,
+          Schema.Struct({
+            filename: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            signedUrl: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              filename: "filename",
+              signedUrl: "signed_url",
+            }),
+          ),
+          Schema.Null,
         ]),
-        Schema.Null,
-      ]),
-    ),
-    success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    type: Schema.optional(
-      Schema.Union([Schema.Literal("export"), Schema.Null]),
-    ),
-  },
-)
-  .pipe(
-    Schema.encodeKeys({
-      atBookmark: "at_bookmark",
-      error: "error",
-      messages: "messages",
-      result: "result",
-      status: "status",
-      success: "success",
-      type: "type",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
+      ),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["complete", "error", "active"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+      success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("export"), Schema.Null]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          atBookmark: "at_bookmark",
+          error: "error",
+          messages: "messages",
+          result: "result",
+          status: "status",
+          success: "success",
+          type: "type",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<ExportDatabaseResponse>;
 
 export type ExportDatabaseError =
@@ -868,27 +905,30 @@ export interface ImportDatabaseRequest {
   currentBookmark?: string;
 }
 
-export const ImportDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  action: Schema.Union([
-    Schema.Literals(["init", "ingest", "poll"]),
-    Schema.String,
-  ]),
-  etag: Schema.optional(Schema.String),
-  filename: Schema.optional(Schema.String),
-  currentBookmark: Schema.optional(Schema.String),
-}).pipe(
-  Schema.encodeKeys({
-    action: "action",
-    etag: "etag",
-    filename: "filename",
-    currentBookmark: "current_bookmark",
-  }),
-  T.Http({
-    method: "POST",
-    path: "/accounts/{account_id}/d1/database/{databaseId}/import",
-  }),
+export const ImportDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      action: Schema.Union([
+        Schema.Literals(["init", "ingest", "poll"]),
+        Schema.String,
+      ]),
+      etag: Schema.optional(Schema.String),
+      filename: Schema.optional(Schema.String),
+      currentBookmark: Schema.optional(Schema.String),
+    }).pipe(
+      Schema.encodeKeys({
+        action: "action",
+        etag: "etag",
+        filename: "filename",
+        currentBookmark: "current_bookmark",
+      }),
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/d1/database/{databaseId}/import",
+      }),
+    ),
 ) as unknown as Schema.Schema<ImportDatabaseRequest>;
 
 export interface ImportDatabaseResponse {
@@ -933,20 +973,219 @@ export interface ImportDatabaseResponse {
   uploadUrl?: string | null;
 }
 
-export const ImportDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    atBookmark: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    filename: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    messages: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    result: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          finalBookmark: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
+export const ImportDatabaseResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      atBookmark: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      error: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      filename: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      messages: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      result: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            finalBookmark: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            meta: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  changedDb: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  changes: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  duration: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  lastRowId: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  rowsRead: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  rowsWritten: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  servedByColo: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  servedByPrimary: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  servedByRegion: Schema.optional(
+                    Schema.Union([
+                      Schema.Union([
+                        Schema.Literals([
+                          "WNAM",
+                          "ENAM",
+                          "WEUR",
+                          "EEUR",
+                          "APAC",
+                          "OC",
+                        ]),
+                        Schema.String,
+                      ]),
+                      Schema.Null,
+                    ]),
+                  ),
+                  sizeAfter: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  timings: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        sqlDurationMs: Schema.optional(
+                          Schema.Union([Schema.Number, Schema.Null]),
+                        ),
+                      }).pipe(
+                        Schema.encodeKeys({ sqlDurationMs: "sql_duration_ms" }),
+                      ),
+                      Schema.Null,
+                    ]),
+                  ),
+                }).pipe(
+                  Schema.encodeKeys({
+                    changedDb: "changed_db",
+                    changes: "changes",
+                    duration: "duration",
+                    lastRowId: "last_row_id",
+                    rowsRead: "rows_read",
+                    rowsWritten: "rows_written",
+                    servedByColo: "served_by_colo",
+                    servedByPrimary: "served_by_primary",
+                    servedByRegion: "served_by_region",
+                    sizeAfter: "size_after",
+                    timings: "timings",
+                  }),
+                ),
+                Schema.Null,
+              ]),
+            ),
+            numQueries: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              finalBookmark: "final_bookmark",
+              meta: "meta",
+              numQueries: "num_queries",
+            }),
           ),
+          Schema.Null,
+        ]),
+      ),
+      status: Schema.optional(
+        Schema.Union([
+          Schema.Union([Schema.Literals(["complete", "error"]), Schema.String]),
+          Schema.Null,
+        ]),
+      ),
+      success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      type: Schema.optional(
+        Schema.Union([Schema.Literal("import"), Schema.Null]),
+      ),
+      uploadUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          atBookmark: "at_bookmark",
+          error: "error",
+          filename: "filename",
+          messages: "messages",
+          result: "result",
+          status: "status",
+          success: "success",
+          type: "type",
+          uploadUrl: "upload_url",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<ImportDatabaseResponse>;
+
+export type ImportDatabaseError = DefaultErrors | InvalidObjectIdentifier;
+
+export const importDatabase: API.OperationMethod<
+  ImportDatabaseRequest,
+  ImportDatabaseResponse,
+  ImportDatabaseError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ImportDatabaseRequest,
+  output: ImportDatabaseResponse,
+  errors: [InvalidObjectIdentifier],
+}));
+
+export interface QueryDatabaseRequest {
+  databaseId: string;
+  /** Path param: Account identifier tag. */
+  accountId: string;
+  /** Body param: Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
+  sql?: string;
+  /** Body param */
+  params?: string[];
+  /** Body param */
+  batch?: { sql: string; params?: string[] }[];
+}
+
+export const QueryDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      sql: Schema.optional(Schema.String),
+      params: Schema.optional(Schema.Array(Schema.String)),
+      batch: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            sql: Schema.String,
+            params: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/d1/database/{databaseId}/query",
+      }),
+    ),
+) as unknown as Schema.Schema<QueryDatabaseRequest>;
+
+export interface QueryDatabaseResponse {
+  result: {
+    meta?: {
+      changedDb?: boolean | null;
+      changes?: number | null;
+      duration?: number | null;
+      lastRowId?: number | null;
+      rowsRead?: number | null;
+      rowsWritten?: number | null;
+      servedByColo?: string | null;
+      servedByPrimary?: boolean | null;
+      servedByRegion?:
+        | "WNAM"
+        | "ENAM"
+        | "WEUR"
+        | "EEUR"
+        | "APAC"
+        | "OC"
+        | (string & {})
+        | null;
+      sizeAfter?: number | null;
+      timings?: { sqlDurationMs?: number | null } | null;
+    } | null;
+    results?: unknown[] | null;
+    success?: boolean | null;
+  }[];
+}
+
+export const QueryDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
           meta: Schema.optional(
             Schema.Union([
               Schema.Struct({
@@ -1023,208 +1262,14 @@ export const ImportDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
               Schema.Null,
             ]),
           ),
-          numQueries: Schema.optional(
-            Schema.Union([Schema.Number, Schema.Null]),
+          results: Schema.optional(
+            Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
           ),
-        }).pipe(
-          Schema.encodeKeys({
-            finalBookmark: "final_bookmark",
-            meta: "meta",
-            numQueries: "num_queries",
-          }),
-        ),
-        Schema.Null,
-      ]),
-    ),
-    status: Schema.optional(
-      Schema.Union([
-        Schema.Union([Schema.Literals(["complete", "error"]), Schema.String]),
-        Schema.Null,
-      ]),
-    ),
-    success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-    type: Schema.optional(
-      Schema.Union([Schema.Literal("import"), Schema.Null]),
-    ),
-    uploadUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  },
-)
-  .pipe(
-    Schema.encodeKeys({
-      atBookmark: "at_bookmark",
-      error: "error",
-      filename: "filename",
-      messages: "messages",
-      result: "result",
-      status: "status",
-      success: "success",
-      type: "type",
-      uploadUrl: "upload_url",
-    }),
-  )
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<ImportDatabaseResponse>;
-
-export type ImportDatabaseError = DefaultErrors | InvalidObjectIdentifier;
-
-export const importDatabase: API.OperationMethod<
-  ImportDatabaseRequest,
-  ImportDatabaseResponse,
-  ImportDatabaseError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: ImportDatabaseRequest,
-  output: ImportDatabaseResponse,
-  errors: [InvalidObjectIdentifier],
-}));
-
-export interface QueryDatabaseRequest {
-  databaseId: string;
-  /** Path param: Account identifier tag. */
-  accountId: string;
-  /** Body param: Your SQL query. Supports multiple statements, joined by semicolons, which will be executed as a batch. */
-  sql?: string;
-  /** Body param */
-  params?: string[];
-  /** Body param */
-  batch?: { sql: string; params?: string[] }[];
-}
-
-export const QueryDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  sql: Schema.optional(Schema.String),
-  params: Schema.optional(Schema.Array(Schema.String)),
-  batch: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        sql: Schema.String,
-        params: Schema.optional(Schema.Array(Schema.String)),
-      }),
-    ),
-  ),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "/accounts/{account_id}/d1/database/{databaseId}/query",
-  }),
-) as unknown as Schema.Schema<QueryDatabaseRequest>;
-
-export interface QueryDatabaseResponse {
-  result: {
-    meta?: {
-      changedDb?: boolean | null;
-      changes?: number | null;
-      duration?: number | null;
-      lastRowId?: number | null;
-      rowsRead?: number | null;
-      rowsWritten?: number | null;
-      servedByColo?: string | null;
-      servedByPrimary?: boolean | null;
-      servedByRegion?:
-        | "WNAM"
-        | "ENAM"
-        | "WEUR"
-        | "EEUR"
-        | "APAC"
-        | "OC"
-        | (string & {})
-        | null;
-      sizeAfter?: number | null;
-      timings?: { sqlDurationMs?: number | null } | null;
-    } | null;
-    results?: unknown[] | null;
-    success?: boolean | null;
-  }[];
-}
-
-export const QueryDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
-    Schema.Struct({
-      meta: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            changedDb: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            changes: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            duration: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            lastRowId: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            rowsRead: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            rowsWritten: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            servedByColo: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            servedByPrimary: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            servedByRegion: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals([
-                    "WNAM",
-                    "ENAM",
-                    "WEUR",
-                    "EEUR",
-                    "APAC",
-                    "OC",
-                  ]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            sizeAfter: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            timings: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  sqlDurationMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({ sqlDurationMs: "sql_duration_ms" }),
-                ),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              changedDb: "changed_db",
-              changes: "changes",
-              duration: "duration",
-              lastRowId: "last_row_id",
-              rowsRead: "rows_read",
-              rowsWritten: "rows_written",
-              servedByColo: "served_by_colo",
-              servedByPrimary: "served_by_primary",
-              servedByRegion: "served_by_region",
-              sizeAfter: "size_after",
-              timings: "timings",
-            }),
-          ),
-          Schema.Null,
-        ]),
+          success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        }),
       ),
-      results: Schema.optional(
-        Schema.Union([Schema.Array(Schema.Unknown), Schema.Null]),
-      ),
-      success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     }),
-  ),
-}) as unknown as Schema.Schema<QueryDatabaseResponse>;
+) as unknown as Schema.Schema<QueryDatabaseResponse>;
 
 export type QueryDatabaseError = DefaultErrors;
 
@@ -1255,24 +1300,27 @@ export interface RawDatabaseRequest {
   batch?: { sql: string; params?: string[] }[];
 }
 
-export const RawDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  sql: Schema.optional(Schema.String),
-  params: Schema.optional(Schema.Array(Schema.String)),
-  batch: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        sql: Schema.String,
-        params: Schema.optional(Schema.Array(Schema.String)),
+export const RawDatabaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      sql: Schema.optional(Schema.String),
+      params: Schema.optional(Schema.Array(Schema.String)),
+      batch: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            sql: Schema.String,
+            params: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/d1/database/{databaseId}/raw",
       }),
     ),
-  ),
-}).pipe(
-  T.Http({
-    method: "POST",
-    path: "/accounts/{account_id}/d1/database/{databaseId}/raw",
-  }),
 ) as unknown as Schema.Schema<RawDatabaseRequest>;
 
 export interface RawDatabaseResponse {
@@ -1303,105 +1351,108 @@ export interface RawDatabaseResponse {
   }[];
 }
 
-export const RawDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
+export const RawDatabaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      meta: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            changedDb: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            changes: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            duration: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            lastRowId: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            rowsRead: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            rowsWritten: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            servedByColo: Schema.optional(
-              Schema.Union([Schema.String, Schema.Null]),
-            ),
-            servedByPrimary: Schema.optional(
-              Schema.Union([Schema.Boolean, Schema.Null]),
-            ),
-            servedByRegion: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals([
-                    "WNAM",
-                    "ENAM",
-                    "WEUR",
-                    "EEUR",
-                    "APAC",
-                    "OC",
-                  ]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            sizeAfter: Schema.optional(
-              Schema.Union([Schema.Number, Schema.Null]),
-            ),
-            timings: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  sqlDurationMs: Schema.optional(
-                    Schema.Union([Schema.Number, Schema.Null]),
-                  ),
-                }).pipe(
-                  Schema.encodeKeys({ sqlDurationMs: "sql_duration_ms" }),
+      result: Schema.Array(
+        Schema.Struct({
+          meta: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                changedDb: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
                 ),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              changedDb: "changed_db",
-              changes: "changes",
-              duration: "duration",
-              lastRowId: "last_row_id",
-              rowsRead: "rows_read",
-              rowsWritten: "rows_written",
-              servedByColo: "served_by_colo",
-              servedByPrimary: "served_by_primary",
-              servedByRegion: "served_by_region",
-              sizeAfter: "size_after",
-              timings: "timings",
-            }),
+                changes: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                duration: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                lastRowId: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                rowsRead: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                rowsWritten: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                servedByColo: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                servedByPrimary: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                servedByRegion: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals([
+                        "WNAM",
+                        "ENAM",
+                        "WEUR",
+                        "EEUR",
+                        "APAC",
+                        "OC",
+                      ]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+                sizeAfter: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                timings: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      sqlDurationMs: Schema.optional(
+                        Schema.Union([Schema.Number, Schema.Null]),
+                      ),
+                    }).pipe(
+                      Schema.encodeKeys({ sqlDurationMs: "sql_duration_ms" }),
+                    ),
+                    Schema.Null,
+                  ]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  changedDb: "changed_db",
+                  changes: "changes",
+                  duration: "duration",
+                  lastRowId: "last_row_id",
+                  rowsRead: "rows_read",
+                  rowsWritten: "rows_written",
+                  servedByColo: "served_by_colo",
+                  servedByPrimary: "served_by_primary",
+                  servedByRegion: "served_by_region",
+                  sizeAfter: "size_after",
+                  timings: "timings",
+                }),
+              ),
+              Schema.Null,
+            ]),
           ),
-          Schema.Null,
-        ]),
+          results: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                columns: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                rows: Schema.optional(
+                  Schema.Union([
+                    Schema.Array(Schema.Array(Schema.Unknown)),
+                    Schema.Null,
+                  ]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+          success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+        }),
       ),
-      results: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            columns: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            rows: Schema.optional(
-              Schema.Union([
-                Schema.Array(Schema.Array(Schema.Unknown)),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
-      success: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
     }),
-  ),
-}) as unknown as Schema.Schema<RawDatabaseResponse>;
+) as unknown as Schema.Schema<RawDatabaseResponse>;
 
 export type RawDatabaseError = DefaultErrors;
 
@@ -1435,16 +1486,18 @@ export interface RestoreDatabaseTimeTravelRequest {
 }
 
 export const RestoreDatabaseTimeTravelRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    bookmark: Schema.optional(Schema.String).pipe(T.HttpQuery("bookmark")),
-    timestamp: Schema.optional(Schema.String).pipe(T.HttpQuery("timestamp")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/d1/database/{databaseId}/time_travel/restore",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      databaseId: Schema.String.pipe(T.HttpPath("databaseId")),
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      bookmark: Schema.optional(Schema.String).pipe(T.HttpQuery("bookmark")),
+      timestamp: Schema.optional(Schema.String).pipe(T.HttpQuery("timestamp")),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/d1/database/{databaseId}/time_travel/restore",
+      }),
+    ),
   ) as unknown as Schema.Schema<RestoreDatabaseTimeTravelRequest>;
 
 export interface RestoreDatabaseTimeTravelResponse {
@@ -1457,23 +1510,23 @@ export interface RestoreDatabaseTimeTravelResponse {
 }
 
 export const RestoreDatabaseTimeTravelResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    bookmark: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    message: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    previousBookmark: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        bookmark: "bookmark",
-        message: "message",
-        previousBookmark: "previous_bookmark",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<RestoreDatabaseTimeTravelResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      bookmark: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      message: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      previousBookmark: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          bookmark: "bookmark",
+          message: "message",
+          previousBookmark: "previous_bookmark",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<RestoreDatabaseTimeTravelResponse>;
 
 export type RestoreDatabaseTimeTravelError =
   | DefaultErrors

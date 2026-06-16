@@ -63,14 +63,16 @@ export interface GetContainerApplicationRequest {
 }
 
 export const GetContainerApplicationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    applicationId: Schema.String.pipe(T.HttpPath("application_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/containers/applications/{application_id}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      applicationId: Schema.String.pipe(T.HttpPath("application_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/containers/applications/{application_id}",
+      }),
+    ),
   ) as unknown as Schema.Schema<GetContainerApplicationRequest>;
 
 export interface GetContainerApplicationResponse {
@@ -154,415 +156,7 @@ export interface GetContainerApplicationResponse {
 }
 
 export const GetContainerApplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    accountId: Schema.String,
-    name: Schema.String,
-    schedulingPolicy: Schema.Union([
-      Schema.Literals(["moon", "gpu", "regional", "fill_metals", "default"]),
-      Schema.String,
-    ]),
-    instances: Schema.Number,
-    maxInstances: Schema.Number,
-    constraints: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          tier: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    affinities: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          colocation: Schema.optional(
-            Schema.Union([Schema.Literal("datacenter"), Schema.Null]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    configuration: Schema.Struct({
-      image: Schema.String,
-      instanceType: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "lite",
-              "dev",
-              "basic",
-              "standard",
-              "standard-1",
-              "standard-2",
-              "standard-3",
-              "standard-4",
-            ]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      observability: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            logs: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  enabled: Schema.Boolean,
-                }),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
-      sshPublicKeyIds: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      secrets: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("env"),
-              secret: SensitiveString,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      vcpu: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      memory: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      disk: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            size: Schema.String,
-          }),
-          Schema.Null,
-        ]),
-      ),
-      environmentVariables: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              value: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      labels: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              value: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      network: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            assignIpv4: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["none", "predefined", "account"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            assignIpv6: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["none", "predefined", "account"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            mode: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["public", "private"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              assignIpv4: "assign_ipv4",
-              assignIpv6: "assign_ipv6",
-              mode: "mode",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      command: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      entrypoint: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      dns: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            servers: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            searches: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
-      ports: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      checks: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              type: Schema.Union([
-                Schema.Literals(["http", "tcp"]),
-                Schema.String,
-              ]),
-              tls: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-              port: Schema.String,
-              http: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    method: Schema.optional(
-                      Schema.Union([
-                        Schema.Union([
-                          Schema.Literals([
-                            "GET",
-                            "POST",
-                            "PUT",
-                            "PATCH",
-                            "DELETE",
-                            "OPTIONS",
-                            "HEAD",
-                          ]),
-                          Schema.String,
-                        ]),
-                        Schema.Null,
-                      ]),
-                    ),
-                    body: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    path: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Union([Schema.Unknown, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              interval: Schema.String,
-              timeout: Schema.String,
-              retries: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              kind: Schema.Union([
-                Schema.Literals(["health", "ready"]),
-                Schema.String,
-              ]),
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        image: "image",
-        instanceType: "instance_type",
-        observability: "observability",
-        sshPublicKeyIds: "ssh_public_key_ids",
-        secrets: "secrets",
-        vcpu: "vcpu",
-        memory: "memory",
-        disk: "disk",
-        environmentVariables: "environment_variables",
-        labels: "labels",
-        network: "network",
-        command: "command",
-        entrypoint: "entrypoint",
-        dns: "dns",
-        ports: "ports",
-        checks: "checks",
-      }),
-    ),
-    durableObjects: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          namespaceId: Schema.String,
-        }).pipe(Schema.encodeKeys({ namespaceId: "namespace_id" })),
-        Schema.Null,
-      ]),
-    ),
-    createdAt: Schema.String,
-    version: Schema.Number,
-    durableObjectNamespaceId: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    health: Schema.Struct({
-      instances: Schema.Unknown,
-    }),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        accountId: "account_id",
-        name: "name",
-        schedulingPolicy: "scheduling_policy",
-        instances: "instances",
-        maxInstances: "max_instances",
-        constraints: "constraints",
-        affinities: "affinities",
-        configuration: "configuration",
-        durableObjects: "durable_objects",
-        createdAt: "created_at",
-        version: "version",
-        durableObjectNamespaceId: "durable_object_namespace_id",
-        health: "health",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetContainerApplicationResponse>;
-
-export type GetContainerApplicationError =
-  | DefaultErrors
-  | InvalidRoute
-  | ContainerApplicationNotFound;
-
-export const getContainerApplication: API.OperationMethod<
-  GetContainerApplicationRequest,
-  GetContainerApplicationResponse,
-  GetContainerApplicationError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: GetContainerApplicationRequest,
-  output: GetContainerApplicationResponse,
-  errors: [InvalidRoute, ContainerApplicationNotFound],
-}));
-
-export interface ListContainerApplicationsRequest {
-  accountId: string;
-}
-
-export const ListContainerApplicationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/containers/applications",
-    }),
-  ) as unknown as Schema.Schema<ListContainerApplicationsRequest>;
-
-export type ListContainerApplicationsResponse = {
-  id: string;
-  accountId: string;
-  name: string;
-  schedulingPolicy:
-    | "moon"
-    | "gpu"
-    | "regional"
-    | "fill_metals"
-    | "default"
-    | (string & {});
-  instances: number;
-  maxInstances: number;
-  constraints?: { tier?: number | null } | null;
-  affinities?: { colocation?: "datacenter" | null } | null;
-  configuration: {
-    image: string;
-    instanceType?:
-      | "lite"
-      | "dev"
-      | "basic"
-      | "standard"
-      | "standard-1"
-      | "standard-2"
-      | "standard-3"
-      | "standard-4"
-      | (string & {})
-      | null;
-    observability?: { logs?: { enabled: boolean } | null } | null;
-    sshPublicKeyIds?: string[] | null;
-    secrets?: { name: string; type: "env"; secret: string }[] | null;
-    vcpu?: number | null;
-    memory?: string | null;
-    disk?: { size: string } | null;
-    environmentVariables?: { name: string; value: string }[] | null;
-    labels?: { name: string; value: string }[] | null;
-    network?: {
-      assignIpv4?: "none" | "predefined" | "account" | (string & {}) | null;
-      assignIpv6?: "none" | "predefined" | "account" | (string & {}) | null;
-      mode?: "public" | "private" | (string & {}) | null;
-    } | null;
-    command?: string[] | null;
-    entrypoint?: string[] | null;
-    dns?: { servers?: string[] | null; searches?: string[] | null } | null;
-    ports?: { name: string; port?: number | null }[] | null;
-    checks?:
-      | {
-          name?: string | null;
-          type: "http" | "tcp" | (string & {});
-          tls?: boolean | null;
-          port: string;
-          http?: {
-            method?:
-              | "GET"
-              | "POST"
-              | "PUT"
-              | "PATCH"
-              | "DELETE"
-              | "OPTIONS"
-              | "HEAD"
-              | (string & {})
-              | null;
-            body?: string | null;
-            path?: string | null;
-            headers?: unknown | null;
-          } | null;
-          interval: string;
-          timeout: string;
-          retries?: number | null;
-          kind: "health" | "ready" | (string & {});
-        }[]
-      | null;
-  };
-  durableObjects?: { namespaceId: string } | null;
-  createdAt: string;
-  version: number;
-  durableObjectNamespaceId?: string | null;
-  health: { instances: unknown };
-}[];
-
-export const ListContainerApplicationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
     Schema.Struct({
       id: Schema.String,
       accountId: Schema.String,
@@ -843,26 +437,448 @@ export const ListContainerApplicationsResponse =
       health: Schema.Struct({
         instances: Schema.Unknown,
       }),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          accountId: "account_id",
+          name: "name",
+          schedulingPolicy: "scheduling_policy",
+          instances: "instances",
+          maxInstances: "max_instances",
+          constraints: "constraints",
+          affinities: "affinities",
+          configuration: "configuration",
+          durableObjects: "durable_objects",
+          createdAt: "created_at",
+          version: "version",
+          durableObjectNamespaceId: "durable_object_namespace_id",
+          health: "health",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetContainerApplicationResponse>;
+
+export type GetContainerApplicationError =
+  | DefaultErrors
+  | InvalidRoute
+  | ContainerApplicationNotFound;
+
+export const getContainerApplication: API.OperationMethod<
+  GetContainerApplicationRequest,
+  GetContainerApplicationResponse,
+  GetContainerApplicationError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetContainerApplicationRequest,
+  output: GetContainerApplicationResponse,
+  errors: [InvalidRoute, ContainerApplicationNotFound],
+}));
+
+export interface ListContainerApplicationsRequest {
+  accountId: string;
+}
+
+export const ListContainerApplicationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
     }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        accountId: "account_id",
-        name: "name",
-        schedulingPolicy: "scheduling_policy",
-        instances: "instances",
-        maxInstances: "max_instances",
-        constraints: "constraints",
-        affinities: "affinities",
-        configuration: "configuration",
-        durableObjects: "durable_objects",
-        createdAt: "created_at",
-        version: "version",
-        durableObjectNamespaceId: "durable_object_namespace_id",
-        health: "health",
+      T.Http({
+        method: "GET",
+        path: "/accounts/{account_id}/containers/applications",
       }),
     ),
-  ).pipe(
-    T.ResponsePath("result"),
+  ) as unknown as Schema.Schema<ListContainerApplicationsRequest>;
+
+export type ListContainerApplicationsResponse = {
+  id: string;
+  accountId: string;
+  name: string;
+  schedulingPolicy:
+    | "moon"
+    | "gpu"
+    | "regional"
+    | "fill_metals"
+    | "default"
+    | (string & {});
+  instances: number;
+  maxInstances: number;
+  constraints?: { tier?: number | null } | null;
+  affinities?: { colocation?: "datacenter" | null } | null;
+  configuration: {
+    image: string;
+    instanceType?:
+      | "lite"
+      | "dev"
+      | "basic"
+      | "standard"
+      | "standard-1"
+      | "standard-2"
+      | "standard-3"
+      | "standard-4"
+      | (string & {})
+      | null;
+    observability?: { logs?: { enabled: boolean } | null } | null;
+    sshPublicKeyIds?: string[] | null;
+    secrets?: { name: string; type: "env"; secret: string }[] | null;
+    vcpu?: number | null;
+    memory?: string | null;
+    disk?: { size: string } | null;
+    environmentVariables?: { name: string; value: string }[] | null;
+    labels?: { name: string; value: string }[] | null;
+    network?: {
+      assignIpv4?: "none" | "predefined" | "account" | (string & {}) | null;
+      assignIpv6?: "none" | "predefined" | "account" | (string & {}) | null;
+      mode?: "public" | "private" | (string & {}) | null;
+    } | null;
+    command?: string[] | null;
+    entrypoint?: string[] | null;
+    dns?: { servers?: string[] | null; searches?: string[] | null } | null;
+    ports?: { name: string; port?: number | null }[] | null;
+    checks?:
+      | {
+          name?: string | null;
+          type: "http" | "tcp" | (string & {});
+          tls?: boolean | null;
+          port: string;
+          http?: {
+            method?:
+              | "GET"
+              | "POST"
+              | "PUT"
+              | "PATCH"
+              | "DELETE"
+              | "OPTIONS"
+              | "HEAD"
+              | (string & {})
+              | null;
+            body?: string | null;
+            path?: string | null;
+            headers?: unknown | null;
+          } | null;
+          interval: string;
+          timeout: string;
+          retries?: number | null;
+          kind: "health" | "ready" | (string & {});
+        }[]
+      | null;
+  };
+  durableObjects?: { namespaceId: string } | null;
+  createdAt: string;
+  version: number;
+  durableObjectNamespaceId?: string | null;
+  health: { instances: unknown };
+}[];
+
+export const ListContainerApplicationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.String,
+        accountId: Schema.String,
+        name: Schema.String,
+        schedulingPolicy: Schema.Union([
+          Schema.Literals([
+            "moon",
+            "gpu",
+            "regional",
+            "fill_metals",
+            "default",
+          ]),
+          Schema.String,
+        ]),
+        instances: Schema.Number,
+        maxInstances: Schema.Number,
+        constraints: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              tier: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            }),
+            Schema.Null,
+          ]),
+        ),
+        affinities: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              colocation: Schema.optional(
+                Schema.Union([Schema.Literal("datacenter"), Schema.Null]),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+        configuration: Schema.Struct({
+          image: Schema.String,
+          instanceType: Schema.optional(
+            Schema.Union([
+              Schema.Union([
+                Schema.Literals([
+                  "lite",
+                  "dev",
+                  "basic",
+                  "standard",
+                  "standard-1",
+                  "standard-2",
+                  "standard-3",
+                  "standard-4",
+                ]),
+                Schema.String,
+              ]),
+              Schema.Null,
+            ]),
+          ),
+          observability: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                logs: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      enabled: Schema.Boolean,
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+          sshPublicKeyIds: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+          secrets: Schema.optional(
+            Schema.Union([
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  type: Schema.Literal("env"),
+                  secret: SensitiveString,
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          vcpu: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          memory: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          disk: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                size: Schema.String,
+              }),
+              Schema.Null,
+            ]),
+          ),
+          environmentVariables: Schema.optional(
+            Schema.Union([
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  value: Schema.String,
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          labels: Schema.optional(
+            Schema.Union([
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  value: Schema.String,
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          network: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                assignIpv4: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["none", "predefined", "account"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+                assignIpv6: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["none", "predefined", "account"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+                mode: Schema.optional(
+                  Schema.Union([
+                    Schema.Union([
+                      Schema.Literals(["public", "private"]),
+                      Schema.String,
+                    ]),
+                    Schema.Null,
+                  ]),
+                ),
+              }).pipe(
+                Schema.encodeKeys({
+                  assignIpv4: "assign_ipv4",
+                  assignIpv6: "assign_ipv6",
+                  mode: "mode",
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          command: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+          entrypoint: Schema.optional(
+            Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+          ),
+          dns: Schema.optional(
+            Schema.Union([
+              Schema.Struct({
+                servers: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+                searches: Schema.optional(
+                  Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+                ),
+              }),
+              Schema.Null,
+            ]),
+          ),
+          ports: Schema.optional(
+            Schema.Union([
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.String,
+                  port: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+          checks: Schema.optional(
+            Schema.Union([
+              Schema.Array(
+                Schema.Struct({
+                  name: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                  type: Schema.Union([
+                    Schema.Literals(["http", "tcp"]),
+                    Schema.String,
+                  ]),
+                  tls: Schema.optional(
+                    Schema.Union([Schema.Boolean, Schema.Null]),
+                  ),
+                  port: Schema.String,
+                  http: Schema.optional(
+                    Schema.Union([
+                      Schema.Struct({
+                        method: Schema.optional(
+                          Schema.Union([
+                            Schema.Union([
+                              Schema.Literals([
+                                "GET",
+                                "POST",
+                                "PUT",
+                                "PATCH",
+                                "DELETE",
+                                "OPTIONS",
+                                "HEAD",
+                              ]),
+                              Schema.String,
+                            ]),
+                            Schema.Null,
+                          ]),
+                        ),
+                        body: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
+                        path: Schema.optional(
+                          Schema.Union([Schema.String, Schema.Null]),
+                        ),
+                        headers: Schema.optional(
+                          Schema.Union([Schema.Unknown, Schema.Null]),
+                        ),
+                      }),
+                      Schema.Null,
+                    ]),
+                  ),
+                  interval: Schema.String,
+                  timeout: Schema.String,
+                  retries: Schema.optional(
+                    Schema.Union([Schema.Number, Schema.Null]),
+                  ),
+                  kind: Schema.Union([
+                    Schema.Literals(["health", "ready"]),
+                    Schema.String,
+                  ]),
+                }),
+              ),
+              Schema.Null,
+            ]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            image: "image",
+            instanceType: "instance_type",
+            observability: "observability",
+            sshPublicKeyIds: "ssh_public_key_ids",
+            secrets: "secrets",
+            vcpu: "vcpu",
+            memory: "memory",
+            disk: "disk",
+            environmentVariables: "environment_variables",
+            labels: "labels",
+            network: "network",
+            command: "command",
+            entrypoint: "entrypoint",
+            dns: "dns",
+            ports: "ports",
+            checks: "checks",
+          }),
+        ),
+        durableObjects: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              namespaceId: Schema.String,
+            }).pipe(Schema.encodeKeys({ namespaceId: "namespace_id" })),
+            Schema.Null,
+          ]),
+        ),
+        createdAt: Schema.String,
+        version: Schema.Number,
+        durableObjectNamespaceId: Schema.optional(
+          Schema.Union([Schema.String, Schema.Null]),
+        ),
+        health: Schema.Struct({
+          instances: Schema.Unknown,
+        }),
+      }).pipe(
+        Schema.encodeKeys({
+          id: "id",
+          accountId: "account_id",
+          name: "name",
+          schedulingPolicy: "scheduling_policy",
+          instances: "instances",
+          maxInstances: "max_instances",
+          constraints: "constraints",
+          affinities: "affinities",
+          configuration: "configuration",
+          durableObjects: "durable_objects",
+          createdAt: "created_at",
+          version: "version",
+          durableObjectNamespaceId: "durable_object_namespace_id",
+          health: "health",
+        }),
+      ),
+    ).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<ListContainerApplicationsResponse>;
 
 export type ListContainerApplicationsError = DefaultErrors | InvalidRoute;
@@ -950,795 +966,12 @@ export interface CreateContainerApplicationRequest {
 }
 
 export const CreateContainerApplicationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    name: Schema.String,
-    maxInstances: Schema.Number,
-    configuration: Schema.Struct({
-      image: Schema.String,
-      instanceType: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "lite",
-            "dev",
-            "basic",
-            "standard",
-            "standard-1",
-            "standard-2",
-            "standard-3",
-            "standard-4",
-          ]),
-          Schema.String,
-        ]),
-      ),
-      observability: Schema.optional(
-        Schema.Struct({
-          logs: Schema.optional(
-            Schema.Struct({
-              enabled: Schema.Boolean,
-            }),
-          ),
-        }),
-      ),
-      sshPublicKeyIds: Schema.optional(Schema.Array(Schema.String)),
-      secrets: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            type: Schema.Literal("env"),
-            secret: SensitiveString,
-          }),
-        ),
-      ),
-      vcpu: Schema.optional(Schema.Number),
-      memory: Schema.optional(Schema.String),
-      disk: Schema.optional(
-        Schema.Struct({
-          size: Schema.String,
-        }),
-      ),
-      environmentVariables: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            value: Schema.String,
-          }),
-        ),
-      ),
-      labels: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            value: Schema.String,
-          }),
-        ),
-      ),
-      network: Schema.optional(
-        Schema.Struct({
-          assignIpv4: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["none", "predefined", "account"]),
-              Schema.String,
-            ]),
-          ),
-          assignIpv6: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["none", "predefined", "account"]),
-              Schema.String,
-            ]),
-          ),
-          mode: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["public", "private"]),
-              Schema.String,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            assignIpv4: "assign_ipv4",
-            assignIpv6: "assign_ipv6",
-            mode: "mode",
-          }),
-        ),
-      ),
-      command: Schema.optional(Schema.Array(Schema.String)),
-      entrypoint: Schema.optional(Schema.Array(Schema.String)),
-      dns: Schema.optional(
-        Schema.Struct({
-          servers: Schema.optional(Schema.Array(Schema.String)),
-          searches: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-      ports: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            port: Schema.optional(Schema.Number),
-          }),
-        ),
-      ),
-      checks: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            type: Schema.Union([
-              Schema.Literals(["http", "tcp"]),
-              Schema.String,
-            ]),
-            tls: Schema.optional(Schema.Boolean),
-            port: Schema.String,
-            http: Schema.optional(
-              Schema.Struct({
-                method: Schema.optional(
-                  Schema.Union([
-                    Schema.Literals([
-                      "GET",
-                      "POST",
-                      "PUT",
-                      "PATCH",
-                      "DELETE",
-                      "OPTIONS",
-                      "HEAD",
-                    ]),
-                    Schema.String,
-                  ]),
-                ),
-                body: Schema.optional(Schema.String),
-                path: Schema.optional(Schema.String),
-                headers: Schema.optional(Schema.Unknown),
-              }),
-            ),
-            interval: Schema.String,
-            timeout: Schema.String,
-            retries: Schema.optional(Schema.Number),
-            kind: Schema.Union([
-              Schema.Literals(["health", "ready"]),
-              Schema.String,
-            ]),
-          }),
-        ),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        image: "image",
-        instanceType: "instance_type",
-        observability: "observability",
-        sshPublicKeyIds: "ssh_public_key_ids",
-        secrets: "secrets",
-        vcpu: "vcpu",
-        memory: "memory",
-        disk: "disk",
-        environmentVariables: "environment_variables",
-        labels: "labels",
-        network: "network",
-        command: "command",
-        entrypoint: "entrypoint",
-        dns: "dns",
-        ports: "ports",
-        checks: "checks",
-      }),
-    ),
-    durableObjects: Schema.optional(
-      Schema.Struct({
-        namespaceId: Schema.String,
-      }).pipe(Schema.encodeKeys({ namespaceId: "namespace_id" })),
-    ),
-    instances: Schema.optional(Schema.Number),
-    schedulingPolicy: Schema.optional(
-      Schema.Union([
-        Schema.Literals(["moon", "gpu", "regional", "fill_metals", "default"]),
-        Schema.String,
-      ]),
-    ),
-    constraints: Schema.optional(
-      Schema.Struct({
-        tier: Schema.optional(Schema.Number),
-      }),
-    ),
-    affinities: Schema.optional(
-      Schema.Struct({
-        colocation: Schema.optional(Schema.Literal("datacenter")),
-      }),
-    ),
-  }).pipe(
-    Schema.encodeKeys({
-      name: "name",
-      maxInstances: "max_instances",
-      configuration: "configuration",
-      durableObjects: "durable_objects",
-      instances: "instances",
-      schedulingPolicy: "scheduling_policy",
-      constraints: "constraints",
-      affinities: "affinities",
-    }),
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/containers/applications",
-    }),
-  ) as unknown as Schema.Schema<CreateContainerApplicationRequest>;
-
-export interface CreateContainerApplicationResponse {
-  id: string;
-  accountId: string;
-  name: string;
-  schedulingPolicy:
-    | "moon"
-    | "gpu"
-    | "regional"
-    | "fill_metals"
-    | "default"
-    | (string & {});
-  instances: number;
-  maxInstances: number;
-  constraints?: { tier?: number | null } | null;
-  affinities?: { colocation?: "datacenter" | null } | null;
-  configuration: {
-    image: string;
-    instanceType?:
-      | "lite"
-      | "dev"
-      | "basic"
-      | "standard"
-      | "standard-1"
-      | "standard-2"
-      | "standard-3"
-      | "standard-4"
-      | (string & {})
-      | null;
-    observability?: { logs?: { enabled: boolean } | null } | null;
-    sshPublicKeyIds?: string[] | null;
-    secrets?: { name: string; type: "env"; secret: string }[] | null;
-    vcpu?: number | null;
-    memory?: string | null;
-    disk?: { size: string } | null;
-    environmentVariables?: { name: string; value: string }[] | null;
-    labels?: { name: string; value: string }[] | null;
-    network?: {
-      assignIpv4?: "none" | "predefined" | "account" | (string & {}) | null;
-      assignIpv6?: "none" | "predefined" | "account" | (string & {}) | null;
-      mode?: "public" | "private" | (string & {}) | null;
-    } | null;
-    command?: string[] | null;
-    entrypoint?: string[] | null;
-    dns?: { servers?: string[] | null; searches?: string[] | null } | null;
-    ports?: { name: string; port?: number | null }[] | null;
-    checks?:
-      | {
-          name?: string | null;
-          type: "http" | "tcp" | (string & {});
-          tls?: boolean | null;
-          port: string;
-          http?: {
-            method?:
-              | "GET"
-              | "POST"
-              | "PUT"
-              | "PATCH"
-              | "DELETE"
-              | "OPTIONS"
-              | "HEAD"
-              | (string & {})
-              | null;
-            body?: string | null;
-            path?: string | null;
-            headers?: unknown | null;
-          } | null;
-          interval: string;
-          timeout: string;
-          retries?: number | null;
-          kind: "health" | "ready" | (string & {});
-        }[]
-      | null;
-  };
-  durableObjects?: { namespaceId: string } | null;
-  createdAt: string;
-  version: number;
-  durableObjectNamespaceId?: string | null;
-  health: { instances: unknown };
-}
-
-export const CreateContainerApplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    accountId: Schema.String,
-    name: Schema.String,
-    schedulingPolicy: Schema.Union([
-      Schema.Literals(["moon", "gpu", "regional", "fill_metals", "default"]),
-      Schema.String,
-    ]),
-    instances: Schema.Number,
-    maxInstances: Schema.Number,
-    constraints: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          tier: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    affinities: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          colocation: Schema.optional(
-            Schema.Union([Schema.Literal("datacenter"), Schema.Null]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    configuration: Schema.Struct({
-      image: Schema.String,
-      instanceType: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "lite",
-              "dev",
-              "basic",
-              "standard",
-              "standard-1",
-              "standard-2",
-              "standard-3",
-              "standard-4",
-            ]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      observability: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            logs: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  enabled: Schema.Boolean,
-                }),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
-      sshPublicKeyIds: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      secrets: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("env"),
-              secret: SensitiveString,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      vcpu: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      memory: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      disk: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            size: Schema.String,
-          }),
-          Schema.Null,
-        ]),
-      ),
-      environmentVariables: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              value: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      labels: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              value: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      network: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            assignIpv4: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["none", "predefined", "account"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            assignIpv6: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["none", "predefined", "account"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            mode: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["public", "private"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              assignIpv4: "assign_ipv4",
-              assignIpv6: "assign_ipv6",
-              mode: "mode",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      command: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      entrypoint: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      dns: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            servers: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            searches: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
-      ports: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      checks: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              type: Schema.Union([
-                Schema.Literals(["http", "tcp"]),
-                Schema.String,
-              ]),
-              tls: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-              port: Schema.String,
-              http: Schema.optional(
-                Schema.Union([
-                  Schema.Struct({
-                    method: Schema.optional(
-                      Schema.Union([
-                        Schema.Union([
-                          Schema.Literals([
-                            "GET",
-                            "POST",
-                            "PUT",
-                            "PATCH",
-                            "DELETE",
-                            "OPTIONS",
-                            "HEAD",
-                          ]),
-                          Schema.String,
-                        ]),
-                        Schema.Null,
-                      ]),
-                    ),
-                    body: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    path: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Union([Schema.Unknown, Schema.Null]),
-                    ),
-                  }),
-                  Schema.Null,
-                ]),
-              ),
-              interval: Schema.String,
-              timeout: Schema.String,
-              retries: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              kind: Schema.Union([
-                Schema.Literals(["health", "ready"]),
-                Schema.String,
-              ]),
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        image: "image",
-        instanceType: "instance_type",
-        observability: "observability",
-        sshPublicKeyIds: "ssh_public_key_ids",
-        secrets: "secrets",
-        vcpu: "vcpu",
-        memory: "memory",
-        disk: "disk",
-        environmentVariables: "environment_variables",
-        labels: "labels",
-        network: "network",
-        command: "command",
-        entrypoint: "entrypoint",
-        dns: "dns",
-        ports: "ports",
-        checks: "checks",
-      }),
-    ),
-    durableObjects: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          namespaceId: Schema.String,
-        }).pipe(Schema.encodeKeys({ namespaceId: "namespace_id" })),
-        Schema.Null,
-      ]),
-    ),
-    createdAt: Schema.String,
-    version: Schema.Number,
-    durableObjectNamespaceId: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    health: Schema.Struct({
-      instances: Schema.Unknown,
-    }),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        accountId: "account_id",
-        name: "name",
-        schedulingPolicy: "scheduling_policy",
-        instances: "instances",
-        maxInstances: "max_instances",
-        constraints: "constraints",
-        affinities: "affinities",
-        configuration: "configuration",
-        durableObjects: "durable_objects",
-        createdAt: "created_at",
-        version: "version",
-        durableObjectNamespaceId: "durable_object_namespace_id",
-        health: "health",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateContainerApplicationResponse>;
-
-export type CreateContainerApplicationError =
-  | DefaultErrors
-  | InvalidRoute
-  | DurableObjectAlreadyHasApplication
-  | DurableObjectNotContainerEnabled;
-
-export const createContainerApplication: API.OperationMethod<
-  CreateContainerApplicationRequest,
-  CreateContainerApplicationResponse,
-  CreateContainerApplicationError,
-  Credentials | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: CreateContainerApplicationRequest,
-  output: CreateContainerApplicationResponse,
-  errors: [
-    InvalidRoute,
-    DurableObjectAlreadyHasApplication,
-    DurableObjectNotContainerEnabled,
-  ],
-}));
-
-export interface UpdateContainerApplicationRequest {
-  accountId: string;
-  applicationId: string;
-  instances?: number;
-  maxInstances?: number;
-  affinities?: { colocation?: "datacenter" };
-  schedulingPolicy?:
-    | "moon"
-    | "gpu"
-    | "regional"
-    | "fill_metals"
-    | "default"
-    | (string & {});
-  constraints?: {
-    tier?: number;
-    region?:
-      | "AFR"
-      | "APAC"
-      | "EEUR"
-      | "ENAM"
-      | "WNAM"
-      | "ME"
-      | "OC"
-      | "SAM"
-      | "WEUR"
-      | (string & {});
-    regions?: (
-      | "AFR"
-      | "APAC"
-      | "EEUR"
-      | "ENAM"
-      | "WNAM"
-      | "ME"
-      | "OC"
-      | "SAM"
-      | "WEUR"
-      | (string & {})
-    )[];
-    cities?: (
-      | "AFR"
-      | "APAC"
-      | "EEUR"
-      | "ENAM"
-      | "WNAM"
-      | "ME"
-      | "OC"
-      | "SAM"
-      | "WEUR"
-      | (string & {})
-    )[];
-  };
-  configuration?: {
-    image: string;
-    instanceType?:
-      | "lite"
-      | "dev"
-      | "basic"
-      | "standard"
-      | "standard-1"
-      | "standard-2"
-      | "standard-3"
-      | "standard-4"
-      | (string & {});
-    observability?: { logs?: { enabled: boolean } };
-    sshPublicKeyIds?: string[];
-    secrets?: { name: string; type: "env"; secret: string }[];
-    vcpu?: number;
-    memory?: string;
-    disk?: { size: string };
-    environmentVariables?: { name: string; value: string }[];
-    labels?: { name: string; value: string }[];
-    network?: {
-      assignIpv4?: "none" | "predefined" | "account" | (string & {});
-      assignIpv6?: "none" | "predefined" | "account" | (string & {});
-      mode?: "public" | "private" | (string & {});
-    };
-    command?: string[];
-    entrypoint?: string[];
-    dns?: { servers?: string[]; searches?: string[] };
-    ports?: { name: string; port?: number }[];
-    checks?: {
-      name?: string;
-      type: "http" | "tcp" | (string & {});
-      tls?: boolean;
-      port: string;
-      http?: {
-        method?:
-          | "GET"
-          | "POST"
-          | "PUT"
-          | "PATCH"
-          | "DELETE"
-          | "OPTIONS"
-          | "HEAD"
-          | (string & {});
-        body?: string;
-        path?: string;
-        headers?: unknown;
-      };
-      interval: string;
-      timeout: string;
-      retries?: number;
-      kind: "health" | "ready" | (string & {});
-    }[];
-  };
-}
-
-export const UpdateContainerApplicationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    applicationId: Schema.String.pipe(T.HttpPath("application_id")),
-    instances: Schema.optional(Schema.Number),
-    maxInstances: Schema.optional(Schema.Number),
-    affinities: Schema.optional(
-      Schema.Struct({
-        colocation: Schema.optional(Schema.Literal("datacenter")),
-      }),
-    ),
-    schedulingPolicy: Schema.optional(
-      Schema.Union([
-        Schema.Literals(["moon", "gpu", "regional", "fill_metals", "default"]),
-        Schema.String,
-      ]),
-    ),
-    constraints: Schema.optional(
-      Schema.Struct({
-        tier: Schema.optional(Schema.Number),
-        region: Schema.optional(
-          Schema.Union([
-            Schema.Literals([
-              "AFR",
-              "APAC",
-              "EEUR",
-              "ENAM",
-              "WNAM",
-              "ME",
-              "OC",
-              "SAM",
-              "WEUR",
-            ]),
-            Schema.String,
-          ]),
-        ),
-        regions: Schema.optional(
-          Schema.Array(
-            Schema.Union([
-              Schema.Literals([
-                "AFR",
-                "APAC",
-                "EEUR",
-                "ENAM",
-                "WNAM",
-                "ME",
-                "OC",
-                "SAM",
-                "WEUR",
-              ]),
-              Schema.String,
-            ]),
-          ),
-        ),
-        cities: Schema.optional(
-          Schema.Array(
-            Schema.Union([
-              Schema.Literals([
-                "AFR",
-                "APAC",
-                "EEUR",
-                "ENAM",
-                "WNAM",
-                "ME",
-                "OC",
-                "SAM",
-                "WEUR",
-              ]),
-              Schema.String,
-            ]),
-          ),
-        ),
-      }),
-    ),
-    configuration: Schema.optional(
-      Schema.Struct({
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      name: Schema.String,
+      maxInstances: Schema.Number,
+      configuration: Schema.Struct({
         image: Schema.String,
         instanceType: Schema.optional(
           Schema.Union([
@@ -1902,20 +1135,825 @@ export const UpdateContainerApplicationRequest =
           checks: "checks",
         }),
       ),
+      durableObjects: Schema.optional(
+        Schema.Struct({
+          namespaceId: Schema.String,
+        }).pipe(Schema.encodeKeys({ namespaceId: "namespace_id" })),
+      ),
+      instances: Schema.optional(Schema.Number),
+      schedulingPolicy: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "moon",
+            "gpu",
+            "regional",
+            "fill_metals",
+            "default",
+          ]),
+          Schema.String,
+        ]),
+      ),
+      constraints: Schema.optional(
+        Schema.Struct({
+          tier: Schema.optional(Schema.Number),
+        }),
+      ),
+      affinities: Schema.optional(
+        Schema.Struct({
+          colocation: Schema.optional(Schema.Literal("datacenter")),
+        }),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        name: "name",
+        maxInstances: "max_instances",
+        configuration: "configuration",
+        durableObjects: "durable_objects",
+        instances: "instances",
+        schedulingPolicy: "scheduling_policy",
+        constraints: "constraints",
+        affinities: "affinities",
+      }),
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/containers/applications",
+      }),
     ),
-  }).pipe(
-    Schema.encodeKeys({
-      instances: "instances",
-      maxInstances: "max_instances",
-      affinities: "affinities",
-      schedulingPolicy: "scheduling_policy",
-      constraints: "constraints",
-      configuration: "configuration",
-    }),
-    T.Http({
-      method: "PATCH",
-      path: "/accounts/{account_id}/containers/applications/{application_id}",
-    }),
+  ) as unknown as Schema.Schema<CreateContainerApplicationRequest>;
+
+export interface CreateContainerApplicationResponse {
+  id: string;
+  accountId: string;
+  name: string;
+  schedulingPolicy:
+    | "moon"
+    | "gpu"
+    | "regional"
+    | "fill_metals"
+    | "default"
+    | (string & {});
+  instances: number;
+  maxInstances: number;
+  constraints?: { tier?: number | null } | null;
+  affinities?: { colocation?: "datacenter" | null } | null;
+  configuration: {
+    image: string;
+    instanceType?:
+      | "lite"
+      | "dev"
+      | "basic"
+      | "standard"
+      | "standard-1"
+      | "standard-2"
+      | "standard-3"
+      | "standard-4"
+      | (string & {})
+      | null;
+    observability?: { logs?: { enabled: boolean } | null } | null;
+    sshPublicKeyIds?: string[] | null;
+    secrets?: { name: string; type: "env"; secret: string }[] | null;
+    vcpu?: number | null;
+    memory?: string | null;
+    disk?: { size: string } | null;
+    environmentVariables?: { name: string; value: string }[] | null;
+    labels?: { name: string; value: string }[] | null;
+    network?: {
+      assignIpv4?: "none" | "predefined" | "account" | (string & {}) | null;
+      assignIpv6?: "none" | "predefined" | "account" | (string & {}) | null;
+      mode?: "public" | "private" | (string & {}) | null;
+    } | null;
+    command?: string[] | null;
+    entrypoint?: string[] | null;
+    dns?: { servers?: string[] | null; searches?: string[] | null } | null;
+    ports?: { name: string; port?: number | null }[] | null;
+    checks?:
+      | {
+          name?: string | null;
+          type: "http" | "tcp" | (string & {});
+          tls?: boolean | null;
+          port: string;
+          http?: {
+            method?:
+              | "GET"
+              | "POST"
+              | "PUT"
+              | "PATCH"
+              | "DELETE"
+              | "OPTIONS"
+              | "HEAD"
+              | (string & {})
+              | null;
+            body?: string | null;
+            path?: string | null;
+            headers?: unknown | null;
+          } | null;
+          interval: string;
+          timeout: string;
+          retries?: number | null;
+          kind: "health" | "ready" | (string & {});
+        }[]
+      | null;
+  };
+  durableObjects?: { namespaceId: string } | null;
+  createdAt: string;
+  version: number;
+  durableObjectNamespaceId?: string | null;
+  health: { instances: unknown };
+}
+
+export const CreateContainerApplicationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      accountId: Schema.String,
+      name: Schema.String,
+      schedulingPolicy: Schema.Union([
+        Schema.Literals(["moon", "gpu", "regional", "fill_metals", "default"]),
+        Schema.String,
+      ]),
+      instances: Schema.Number,
+      maxInstances: Schema.Number,
+      constraints: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            tier: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      affinities: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            colocation: Schema.optional(
+              Schema.Union([Schema.Literal("datacenter"), Schema.Null]),
+            ),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      configuration: Schema.Struct({
+        image: Schema.String,
+        instanceType: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals([
+                "lite",
+                "dev",
+                "basic",
+                "standard",
+                "standard-1",
+                "standard-2",
+                "standard-3",
+                "standard-4",
+              ]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        observability: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              logs: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    enabled: Schema.Boolean,
+                  }),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+        sshPublicKeyIds: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        secrets: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("env"),
+                secret: SensitiveString,
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        vcpu: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        memory: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        disk: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              size: Schema.String,
+            }),
+            Schema.Null,
+          ]),
+        ),
+        environmentVariables: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                value: Schema.String,
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        labels: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                value: Schema.String,
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        network: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              assignIpv4: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["none", "predefined", "account"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              assignIpv6: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["none", "predefined", "account"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              mode: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["public", "private"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                assignIpv4: "assign_ipv4",
+                assignIpv6: "assign_ipv6",
+                mode: "mode",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        command: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        entrypoint: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        dns: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              servers: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              searches: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+        ports: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                port: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        checks: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                type: Schema.Union([
+                  Schema.Literals(["http", "tcp"]),
+                  Schema.String,
+                ]),
+                tls: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                port: Schema.String,
+                http: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      method: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals([
+                              "GET",
+                              "POST",
+                              "PUT",
+                              "PATCH",
+                              "DELETE",
+                              "OPTIONS",
+                              "HEAD",
+                            ]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      body: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      path: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      headers: Schema.optional(
+                        Schema.Union([Schema.Unknown, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                interval: Schema.String,
+                timeout: Schema.String,
+                retries: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                kind: Schema.Union([
+                  Schema.Literals(["health", "ready"]),
+                  Schema.String,
+                ]),
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          image: "image",
+          instanceType: "instance_type",
+          observability: "observability",
+          sshPublicKeyIds: "ssh_public_key_ids",
+          secrets: "secrets",
+          vcpu: "vcpu",
+          memory: "memory",
+          disk: "disk",
+          environmentVariables: "environment_variables",
+          labels: "labels",
+          network: "network",
+          command: "command",
+          entrypoint: "entrypoint",
+          dns: "dns",
+          ports: "ports",
+          checks: "checks",
+        }),
+      ),
+      durableObjects: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            namespaceId: Schema.String,
+          }).pipe(Schema.encodeKeys({ namespaceId: "namespace_id" })),
+          Schema.Null,
+        ]),
+      ),
+      createdAt: Schema.String,
+      version: Schema.Number,
+      durableObjectNamespaceId: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      health: Schema.Struct({
+        instances: Schema.Unknown,
+      }),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          accountId: "account_id",
+          name: "name",
+          schedulingPolicy: "scheduling_policy",
+          instances: "instances",
+          maxInstances: "max_instances",
+          constraints: "constraints",
+          affinities: "affinities",
+          configuration: "configuration",
+          durableObjects: "durable_objects",
+          createdAt: "created_at",
+          version: "version",
+          durableObjectNamespaceId: "durable_object_namespace_id",
+          health: "health",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<CreateContainerApplicationResponse>;
+
+export type CreateContainerApplicationError =
+  | DefaultErrors
+  | InvalidRoute
+  | DurableObjectAlreadyHasApplication
+  | DurableObjectNotContainerEnabled;
+
+export const createContainerApplication: API.OperationMethod<
+  CreateContainerApplicationRequest,
+  CreateContainerApplicationResponse,
+  CreateContainerApplicationError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateContainerApplicationRequest,
+  output: CreateContainerApplicationResponse,
+  errors: [
+    InvalidRoute,
+    DurableObjectAlreadyHasApplication,
+    DurableObjectNotContainerEnabled,
+  ],
+}));
+
+export interface UpdateContainerApplicationRequest {
+  accountId: string;
+  applicationId: string;
+  instances?: number;
+  maxInstances?: number;
+  affinities?: { colocation?: "datacenter" };
+  schedulingPolicy?:
+    | "moon"
+    | "gpu"
+    | "regional"
+    | "fill_metals"
+    | "default"
+    | (string & {});
+  constraints?: {
+    tier?: number;
+    region?:
+      | "AFR"
+      | "APAC"
+      | "EEUR"
+      | "ENAM"
+      | "WNAM"
+      | "ME"
+      | "OC"
+      | "SAM"
+      | "WEUR"
+      | (string & {});
+    regions?: (
+      | "AFR"
+      | "APAC"
+      | "EEUR"
+      | "ENAM"
+      | "WNAM"
+      | "ME"
+      | "OC"
+      | "SAM"
+      | "WEUR"
+      | (string & {})
+    )[];
+    cities?: (
+      | "AFR"
+      | "APAC"
+      | "EEUR"
+      | "ENAM"
+      | "WNAM"
+      | "ME"
+      | "OC"
+      | "SAM"
+      | "WEUR"
+      | (string & {})
+    )[];
+  };
+  configuration?: {
+    image: string;
+    instanceType?:
+      | "lite"
+      | "dev"
+      | "basic"
+      | "standard"
+      | "standard-1"
+      | "standard-2"
+      | "standard-3"
+      | "standard-4"
+      | (string & {});
+    observability?: { logs?: { enabled: boolean } };
+    sshPublicKeyIds?: string[];
+    secrets?: { name: string; type: "env"; secret: string }[];
+    vcpu?: number;
+    memory?: string;
+    disk?: { size: string };
+    environmentVariables?: { name: string; value: string }[];
+    labels?: { name: string; value: string }[];
+    network?: {
+      assignIpv4?: "none" | "predefined" | "account" | (string & {});
+      assignIpv6?: "none" | "predefined" | "account" | (string & {});
+      mode?: "public" | "private" | (string & {});
+    };
+    command?: string[];
+    entrypoint?: string[];
+    dns?: { servers?: string[]; searches?: string[] };
+    ports?: { name: string; port?: number }[];
+    checks?: {
+      name?: string;
+      type: "http" | "tcp" | (string & {});
+      tls?: boolean;
+      port: string;
+      http?: {
+        method?:
+          | "GET"
+          | "POST"
+          | "PUT"
+          | "PATCH"
+          | "DELETE"
+          | "OPTIONS"
+          | "HEAD"
+          | (string & {});
+        body?: string;
+        path?: string;
+        headers?: unknown;
+      };
+      interval: string;
+      timeout: string;
+      retries?: number;
+      kind: "health" | "ready" | (string & {});
+    }[];
+  };
+}
+
+export const UpdateContainerApplicationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      applicationId: Schema.String.pipe(T.HttpPath("application_id")),
+      instances: Schema.optional(Schema.Number),
+      maxInstances: Schema.optional(Schema.Number),
+      affinities: Schema.optional(
+        Schema.Struct({
+          colocation: Schema.optional(Schema.Literal("datacenter")),
+        }),
+      ),
+      schedulingPolicy: Schema.optional(
+        Schema.Union([
+          Schema.Literals([
+            "moon",
+            "gpu",
+            "regional",
+            "fill_metals",
+            "default",
+          ]),
+          Schema.String,
+        ]),
+      ),
+      constraints: Schema.optional(
+        Schema.Struct({
+          tier: Schema.optional(Schema.Number),
+          region: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "AFR",
+                "APAC",
+                "EEUR",
+                "ENAM",
+                "WNAM",
+                "ME",
+                "OC",
+                "SAM",
+                "WEUR",
+              ]),
+              Schema.String,
+            ]),
+          ),
+          regions: Schema.optional(
+            Schema.Array(
+              Schema.Union([
+                Schema.Literals([
+                  "AFR",
+                  "APAC",
+                  "EEUR",
+                  "ENAM",
+                  "WNAM",
+                  "ME",
+                  "OC",
+                  "SAM",
+                  "WEUR",
+                ]),
+                Schema.String,
+              ]),
+            ),
+          ),
+          cities: Schema.optional(
+            Schema.Array(
+              Schema.Union([
+                Schema.Literals([
+                  "AFR",
+                  "APAC",
+                  "EEUR",
+                  "ENAM",
+                  "WNAM",
+                  "ME",
+                  "OC",
+                  "SAM",
+                  "WEUR",
+                ]),
+                Schema.String,
+              ]),
+            ),
+          ),
+        }),
+      ),
+      configuration: Schema.optional(
+        Schema.Struct({
+          image: Schema.String,
+          instanceType: Schema.optional(
+            Schema.Union([
+              Schema.Literals([
+                "lite",
+                "dev",
+                "basic",
+                "standard",
+                "standard-1",
+                "standard-2",
+                "standard-3",
+                "standard-4",
+              ]),
+              Schema.String,
+            ]),
+          ),
+          observability: Schema.optional(
+            Schema.Struct({
+              logs: Schema.optional(
+                Schema.Struct({
+                  enabled: Schema.Boolean,
+                }),
+              ),
+            }),
+          ),
+          sshPublicKeyIds: Schema.optional(Schema.Array(Schema.String)),
+          secrets: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("env"),
+                secret: SensitiveString,
+              }),
+            ),
+          ),
+          vcpu: Schema.optional(Schema.Number),
+          memory: Schema.optional(Schema.String),
+          disk: Schema.optional(
+            Schema.Struct({
+              size: Schema.String,
+            }),
+          ),
+          environmentVariables: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                value: Schema.String,
+              }),
+            ),
+          ),
+          labels: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                value: Schema.String,
+              }),
+            ),
+          ),
+          network: Schema.optional(
+            Schema.Struct({
+              assignIpv4: Schema.optional(
+                Schema.Union([
+                  Schema.Literals(["none", "predefined", "account"]),
+                  Schema.String,
+                ]),
+              ),
+              assignIpv6: Schema.optional(
+                Schema.Union([
+                  Schema.Literals(["none", "predefined", "account"]),
+                  Schema.String,
+                ]),
+              ),
+              mode: Schema.optional(
+                Schema.Union([
+                  Schema.Literals(["public", "private"]),
+                  Schema.String,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                assignIpv4: "assign_ipv4",
+                assignIpv6: "assign_ipv6",
+                mode: "mode",
+              }),
+            ),
+          ),
+          command: Schema.optional(Schema.Array(Schema.String)),
+          entrypoint: Schema.optional(Schema.Array(Schema.String)),
+          dns: Schema.optional(
+            Schema.Struct({
+              servers: Schema.optional(Schema.Array(Schema.String)),
+              searches: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
+          ports: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                port: Schema.optional(Schema.Number),
+              }),
+            ),
+          ),
+          checks: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(Schema.String),
+                type: Schema.Union([
+                  Schema.Literals(["http", "tcp"]),
+                  Schema.String,
+                ]),
+                tls: Schema.optional(Schema.Boolean),
+                port: Schema.String,
+                http: Schema.optional(
+                  Schema.Struct({
+                    method: Schema.optional(
+                      Schema.Union([
+                        Schema.Literals([
+                          "GET",
+                          "POST",
+                          "PUT",
+                          "PATCH",
+                          "DELETE",
+                          "OPTIONS",
+                          "HEAD",
+                        ]),
+                        Schema.String,
+                      ]),
+                    ),
+                    body: Schema.optional(Schema.String),
+                    path: Schema.optional(Schema.String),
+                    headers: Schema.optional(Schema.Unknown),
+                  }),
+                ),
+                interval: Schema.String,
+                timeout: Schema.String,
+                retries: Schema.optional(Schema.Number),
+                kind: Schema.Union([
+                  Schema.Literals(["health", "ready"]),
+                  Schema.String,
+                ]),
+              }),
+            ),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            image: "image",
+            instanceType: "instance_type",
+            observability: "observability",
+            sshPublicKeyIds: "ssh_public_key_ids",
+            secrets: "secrets",
+            vcpu: "vcpu",
+            memory: "memory",
+            disk: "disk",
+            environmentVariables: "environment_variables",
+            labels: "labels",
+            network: "network",
+            command: "command",
+            entrypoint: "entrypoint",
+            dns: "dns",
+            ports: "ports",
+            checks: "checks",
+          }),
+        ),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        instances: "instances",
+        maxInstances: "max_instances",
+        affinities: "affinities",
+        schedulingPolicy: "scheduling_policy",
+        constraints: "constraints",
+        configuration: "configuration",
+      }),
+      T.Http({
+        method: "PATCH",
+        path: "/accounts/{account_id}/containers/applications/{application_id}",
+      }),
+    ),
   ) as unknown as Schema.Schema<UpdateContainerApplicationRequest>;
 
 export interface UpdateContainerApplicationResponse {
@@ -1999,302 +2037,308 @@ export interface UpdateContainerApplicationResponse {
 }
 
 export const UpdateContainerApplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    accountId: Schema.String,
-    name: Schema.String,
-    schedulingPolicy: Schema.Union([
-      Schema.Literals(["moon", "gpu", "regional", "fill_metals", "default"]),
-      Schema.String,
-    ]),
-    instances: Schema.Number,
-    maxInstances: Schema.Number,
-    constraints: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          tier: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        }),
-        Schema.Null,
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      accountId: Schema.String,
+      name: Schema.String,
+      schedulingPolicy: Schema.Union([
+        Schema.Literals(["moon", "gpu", "regional", "fill_metals", "default"]),
+        Schema.String,
       ]),
-    ),
-    affinities: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          colocation: Schema.optional(
-            Schema.Union([Schema.Literal("datacenter"), Schema.Null]),
-          ),
-        }),
-        Schema.Null,
-      ]),
-    ),
-    configuration: Schema.Struct({
-      image: Schema.String,
-      instanceType: Schema.optional(
+      instances: Schema.Number,
+      maxInstances: Schema.Number,
+      constraints: Schema.optional(
         Schema.Union([
+          Schema.Struct({
+            tier: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      affinities: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            colocation: Schema.optional(
+              Schema.Union([Schema.Literal("datacenter"), Schema.Null]),
+            ),
+          }),
+          Schema.Null,
+        ]),
+      ),
+      configuration: Schema.Struct({
+        image: Schema.String,
+        instanceType: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "lite",
-              "dev",
-              "basic",
-              "standard",
-              "standard-1",
-              "standard-2",
-              "standard-3",
-              "standard-4",
+            Schema.Union([
+              Schema.Literals([
+                "lite",
+                "dev",
+                "basic",
+                "standard",
+                "standard-1",
+                "standard-2",
+                "standard-3",
+                "standard-4",
+              ]),
+              Schema.String,
             ]),
-            Schema.String,
+            Schema.Null,
           ]),
-          Schema.Null,
-        ]),
-      ),
-      observability: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            logs: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  enabled: Schema.Boolean,
-                }),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
-      sshPublicKeyIds: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      secrets: Schema.optional(
-        Schema.Union([
-          Schema.Array(
+        ),
+        observability: Schema.optional(
+          Schema.Union([
             Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("env"),
-              secret: SensitiveString,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      vcpu: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      memory: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      disk: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            size: Schema.String,
-          }),
-          Schema.Null,
-        ]),
-      ),
-      environmentVariables: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              value: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      labels: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              value: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      network: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            assignIpv4: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["none", "predefined", "account"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            assignIpv6: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["none", "predefined", "account"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            mode: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["public", "private"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              assignIpv4: "assign_ipv4",
-              assignIpv6: "assign_ipv6",
-              mode: "mode",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      command: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      entrypoint: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      dns: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            servers: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            searches: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
-      ports: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      checks: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              type: Schema.Union([
-                Schema.Literals(["http", "tcp"]),
-                Schema.String,
-              ]),
-              tls: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-              port: Schema.String,
-              http: Schema.optional(
+              logs: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    method: Schema.optional(
-                      Schema.Union([
-                        Schema.Union([
-                          Schema.Literals([
-                            "GET",
-                            "POST",
-                            "PUT",
-                            "PATCH",
-                            "DELETE",
-                            "OPTIONS",
-                            "HEAD",
-                          ]),
-                          Schema.String,
-                        ]),
-                        Schema.Null,
-                      ]),
-                    ),
-                    body: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    path: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Union([Schema.Unknown, Schema.Null]),
-                    ),
+                    enabled: Schema.Boolean,
                   }),
                   Schema.Null,
                 ]),
               ),
-              interval: Schema.String,
-              timeout: Schema.String,
-              retries: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              kind: Schema.Union([
-                Schema.Literals(["health", "ready"]),
-                Schema.String,
-              ]),
             }),
-          ),
+            Schema.Null,
+          ]),
+        ),
+        sshPublicKeyIds: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        secrets: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("env"),
+                secret: SensitiveString,
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        vcpu: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        memory: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        disk: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              size: Schema.String,
+            }),
+            Schema.Null,
+          ]),
+        ),
+        environmentVariables: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                value: Schema.String,
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        labels: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                value: Schema.String,
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        network: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              assignIpv4: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["none", "predefined", "account"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              assignIpv6: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["none", "predefined", "account"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              mode: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["public", "private"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                assignIpv4: "assign_ipv4",
+                assignIpv6: "assign_ipv6",
+                mode: "mode",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        command: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        entrypoint: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        dns: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              servers: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              searches: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+        ports: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                port: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        checks: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                type: Schema.Union([
+                  Schema.Literals(["http", "tcp"]),
+                  Schema.String,
+                ]),
+                tls: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                port: Schema.String,
+                http: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      method: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals([
+                              "GET",
+                              "POST",
+                              "PUT",
+                              "PATCH",
+                              "DELETE",
+                              "OPTIONS",
+                              "HEAD",
+                            ]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      body: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      path: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      headers: Schema.optional(
+                        Schema.Union([Schema.Unknown, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                interval: Schema.String,
+                timeout: Schema.String,
+                retries: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                kind: Schema.Union([
+                  Schema.Literals(["health", "ready"]),
+                  Schema.String,
+                ]),
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          image: "image",
+          instanceType: "instance_type",
+          observability: "observability",
+          sshPublicKeyIds: "ssh_public_key_ids",
+          secrets: "secrets",
+          vcpu: "vcpu",
+          memory: "memory",
+          disk: "disk",
+          environmentVariables: "environment_variables",
+          labels: "labels",
+          network: "network",
+          command: "command",
+          entrypoint: "entrypoint",
+          dns: "dns",
+          ports: "ports",
+          checks: "checks",
+        }),
+      ),
+      durableObjects: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            namespaceId: Schema.String,
+          }).pipe(Schema.encodeKeys({ namespaceId: "namespace_id" })),
           Schema.Null,
         ]),
       ),
-    }).pipe(
-      Schema.encodeKeys({
-        image: "image",
-        instanceType: "instance_type",
-        observability: "observability",
-        sshPublicKeyIds: "ssh_public_key_ids",
-        secrets: "secrets",
-        vcpu: "vcpu",
-        memory: "memory",
-        disk: "disk",
-        environmentVariables: "environment_variables",
-        labels: "labels",
-        network: "network",
-        command: "command",
-        entrypoint: "entrypoint",
-        dns: "dns",
-        ports: "ports",
-        checks: "checks",
+      createdAt: Schema.String,
+      version: Schema.Number,
+      durableObjectNamespaceId: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      health: Schema.Struct({
+        instances: Schema.Unknown,
       }),
-    ),
-    durableObjects: Schema.optional(
-      Schema.Union([
-        Schema.Struct({
-          namespaceId: Schema.String,
-        }).pipe(Schema.encodeKeys({ namespaceId: "namespace_id" })),
-        Schema.Null,
-      ]),
-    ),
-    createdAt: Schema.String,
-    version: Schema.Number,
-    durableObjectNamespaceId: Schema.optional(
-      Schema.Union([Schema.String, Schema.Null]),
-    ),
-    health: Schema.Struct({
-      instances: Schema.Unknown,
-    }),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        accountId: "account_id",
-        name: "name",
-        schedulingPolicy: "scheduling_policy",
-        instances: "instances",
-        maxInstances: "max_instances",
-        constraints: "constraints",
-        affinities: "affinities",
-        configuration: "configuration",
-        durableObjects: "durable_objects",
-        createdAt: "created_at",
-        version: "version",
-        durableObjectNamespaceId: "durable_object_namespace_id",
-        health: "health",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<UpdateContainerApplicationResponse>;
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          accountId: "account_id",
+          name: "name",
+          schedulingPolicy: "scheduling_policy",
+          instances: "instances",
+          maxInstances: "max_instances",
+          constraints: "constraints",
+          affinities: "affinities",
+          configuration: "configuration",
+          durableObjects: "durable_objects",
+          createdAt: "created_at",
+          version: "version",
+          durableObjectNamespaceId: "durable_object_namespace_id",
+          health: "health",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<UpdateContainerApplicationResponse>;
 
 export type UpdateContainerApplicationError =
   | DefaultErrors
@@ -2318,21 +2362,23 @@ export interface DeleteContainerApplicationRequest {
 }
 
 export const DeleteContainerApplicationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    applicationId: Schema.String.pipe(T.HttpPath("application_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      path: "/accounts/{account_id}/containers/applications/{application_id}",
-    }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      applicationId: Schema.String.pipe(T.HttpPath("application_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        path: "/accounts/{account_id}/containers/applications/{application_id}",
+      }),
+    ),
   ) as unknown as Schema.Schema<DeleteContainerApplicationRequest>;
 
 export type DeleteContainerApplicationResponse = unknown;
 
 export const DeleteContainerApplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown.pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Unknown.pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<DeleteContainerApplicationResponse>;
 
 export type DeleteContainerApplicationError =
@@ -2419,189 +2465,191 @@ export interface CreateContainerApplicationRolloutRequest {
 }
 
 export const CreateContainerApplicationRolloutRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    applicationId: Schema.String.pipe(T.HttpPath("application_id")),
-    description: Schema.String,
-    strategy: Schema.Literal("rolling"),
-    kind: Schema.optional(Schema.Literal("full_auto")),
-    stepPercentage: Schema.Number,
-    targetConfiguration: Schema.Struct({
-      image: Schema.String,
-      instanceType: Schema.optional(
-        Schema.Union([
-          Schema.Literals([
-            "lite",
-            "dev",
-            "basic",
-            "standard",
-            "standard-1",
-            "standard-2",
-            "standard-3",
-            "standard-4",
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      applicationId: Schema.String.pipe(T.HttpPath("application_id")),
+      description: Schema.String,
+      strategy: Schema.Literal("rolling"),
+      kind: Schema.optional(Schema.Literal("full_auto")),
+      stepPercentage: Schema.Number,
+      targetConfiguration: Schema.Struct({
+        image: Schema.String,
+        instanceType: Schema.optional(
+          Schema.Union([
+            Schema.Literals([
+              "lite",
+              "dev",
+              "basic",
+              "standard",
+              "standard-1",
+              "standard-2",
+              "standard-3",
+              "standard-4",
+            ]),
+            Schema.String,
           ]),
-          Schema.String,
-        ]),
-      ),
-      observability: Schema.optional(
-        Schema.Struct({
-          logs: Schema.optional(
-            Schema.Struct({
-              enabled: Schema.Boolean,
-            }),
-          ),
-        }),
-      ),
-      sshPublicKeyIds: Schema.optional(Schema.Array(Schema.String)),
-      secrets: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            type: Schema.Literal("env"),
-            secret: SensitiveString,
-          }),
         ),
-      ),
-      vcpu: Schema.optional(Schema.Number),
-      memory: Schema.optional(Schema.String),
-      disk: Schema.optional(
-        Schema.Struct({
-          size: Schema.String,
-        }),
-      ),
-      environmentVariables: Schema.optional(
-        Schema.Array(
+        observability: Schema.optional(
           Schema.Struct({
-            name: Schema.String,
-            value: Schema.String,
-          }),
-        ),
-      ),
-      labels: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            value: Schema.String,
-          }),
-        ),
-      ),
-      network: Schema.optional(
-        Schema.Struct({
-          assignIpv4: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["none", "predefined", "account"]),
-              Schema.String,
-            ]),
-          ),
-          assignIpv6: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["none", "predefined", "account"]),
-              Schema.String,
-            ]),
-          ),
-          mode: Schema.optional(
-            Schema.Union([
-              Schema.Literals(["public", "private"]),
-              Schema.String,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            assignIpv4: "assign_ipv4",
-            assignIpv6: "assign_ipv6",
-            mode: "mode",
-          }),
-        ),
-      ),
-      command: Schema.optional(Schema.Array(Schema.String)),
-      entrypoint: Schema.optional(Schema.Array(Schema.String)),
-      dns: Schema.optional(
-        Schema.Struct({
-          servers: Schema.optional(Schema.Array(Schema.String)),
-          searches: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-      ports: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.String,
-            port: Schema.optional(Schema.Number),
-          }),
-        ),
-      ),
-      checks: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            type: Schema.Union([
-              Schema.Literals(["http", "tcp"]),
-              Schema.String,
-            ]),
-            tls: Schema.optional(Schema.Boolean),
-            port: Schema.String,
-            http: Schema.optional(
+            logs: Schema.optional(
               Schema.Struct({
-                method: Schema.optional(
-                  Schema.Union([
-                    Schema.Literals([
-                      "GET",
-                      "POST",
-                      "PUT",
-                      "PATCH",
-                      "DELETE",
-                      "OPTIONS",
-                      "HEAD",
-                    ]),
-                    Schema.String,
-                  ]),
-                ),
-                body: Schema.optional(Schema.String),
-                path: Schema.optional(Schema.String),
-                headers: Schema.optional(Schema.Unknown),
+                enabled: Schema.Boolean,
               }),
             ),
-            interval: Schema.String,
-            timeout: Schema.String,
-            retries: Schema.optional(Schema.Number),
-            kind: Schema.Union([
-              Schema.Literals(["health", "ready"]),
-              Schema.String,
-            ]),
           }),
         ),
+        sshPublicKeyIds: Schema.optional(Schema.Array(Schema.String)),
+        secrets: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              type: Schema.Literal("env"),
+              secret: SensitiveString,
+            }),
+          ),
+        ),
+        vcpu: Schema.optional(Schema.Number),
+        memory: Schema.optional(Schema.String),
+        disk: Schema.optional(
+          Schema.Struct({
+            size: Schema.String,
+          }),
+        ),
+        environmentVariables: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              value: Schema.String,
+            }),
+          ),
+        ),
+        labels: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              value: Schema.String,
+            }),
+          ),
+        ),
+        network: Schema.optional(
+          Schema.Struct({
+            assignIpv4: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["none", "predefined", "account"]),
+                Schema.String,
+              ]),
+            ),
+            assignIpv6: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["none", "predefined", "account"]),
+                Schema.String,
+              ]),
+            ),
+            mode: Schema.optional(
+              Schema.Union([
+                Schema.Literals(["public", "private"]),
+                Schema.String,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              assignIpv4: "assign_ipv4",
+              assignIpv6: "assign_ipv6",
+              mode: "mode",
+            }),
+          ),
+        ),
+        command: Schema.optional(Schema.Array(Schema.String)),
+        entrypoint: Schema.optional(Schema.Array(Schema.String)),
+        dns: Schema.optional(
+          Schema.Struct({
+            servers: Schema.optional(Schema.Array(Schema.String)),
+            searches: Schema.optional(Schema.Array(Schema.String)),
+          }),
+        ),
+        ports: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.String,
+              port: Schema.optional(Schema.Number),
+            }),
+          ),
+        ),
+        checks: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              name: Schema.optional(Schema.String),
+              type: Schema.Union([
+                Schema.Literals(["http", "tcp"]),
+                Schema.String,
+              ]),
+              tls: Schema.optional(Schema.Boolean),
+              port: Schema.String,
+              http: Schema.optional(
+                Schema.Struct({
+                  method: Schema.optional(
+                    Schema.Union([
+                      Schema.Literals([
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "PATCH",
+                        "DELETE",
+                        "OPTIONS",
+                        "HEAD",
+                      ]),
+                      Schema.String,
+                    ]),
+                  ),
+                  body: Schema.optional(Schema.String),
+                  path: Schema.optional(Schema.String),
+                  headers: Schema.optional(Schema.Unknown),
+                }),
+              ),
+              interval: Schema.String,
+              timeout: Schema.String,
+              retries: Schema.optional(Schema.Number),
+              kind: Schema.Union([
+                Schema.Literals(["health", "ready"]),
+                Schema.String,
+              ]),
+            }),
+          ),
+        ),
+      }).pipe(
+        Schema.encodeKeys({
+          image: "image",
+          instanceType: "instance_type",
+          observability: "observability",
+          sshPublicKeyIds: "ssh_public_key_ids",
+          secrets: "secrets",
+          vcpu: "vcpu",
+          memory: "memory",
+          disk: "disk",
+          environmentVariables: "environment_variables",
+          labels: "labels",
+          network: "network",
+          command: "command",
+          entrypoint: "entrypoint",
+          dns: "dns",
+          ports: "ports",
+          checks: "checks",
+        }),
       ),
     }).pipe(
       Schema.encodeKeys({
-        image: "image",
-        instanceType: "instance_type",
-        observability: "observability",
-        sshPublicKeyIds: "ssh_public_key_ids",
-        secrets: "secrets",
-        vcpu: "vcpu",
-        memory: "memory",
-        disk: "disk",
-        environmentVariables: "environment_variables",
-        labels: "labels",
-        network: "network",
-        command: "command",
-        entrypoint: "entrypoint",
-        dns: "dns",
-        ports: "ports",
-        checks: "checks",
+        description: "description",
+        strategy: "strategy",
+        kind: "kind",
+        stepPercentage: "step_percentage",
+        targetConfiguration: "target_configuration",
+      }),
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/containers/applications/{application_id}/rollouts",
       }),
     ),
-  }).pipe(
-    Schema.encodeKeys({
-      description: "description",
-      strategy: "strategy",
-      kind: "kind",
-      stepPercentage: "step_percentage",
-      targetConfiguration: "target_configuration",
-    }),
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/containers/applications/{application_id}/rollouts",
-    }),
   ) as unknown as Schema.Schema<CreateContainerApplicationRolloutRequest>;
 
 export interface CreateContainerApplicationRolloutResponse {
@@ -2700,332 +2748,340 @@ export interface CreateContainerApplicationRolloutResponse {
 }
 
 export const CreateContainerApplicationRolloutResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    id: Schema.String,
-    createdAt: Schema.String,
-    lastUpdatedAt: Schema.String,
-    description: Schema.String,
-    status: Schema.Union([
-      Schema.Literals(["progressing", "completed", "failed"]),
-      Schema.String,
-    ]),
-    health: Schema.Struct({
-      instances: Schema.Struct({
-        healthy: Schema.Number,
-        failed: Schema.Number,
-        starting: Schema.Number,
-        scheduling: Schema.Number,
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      id: Schema.String,
+      createdAt: Schema.String,
+      lastUpdatedAt: Schema.String,
+      description: Schema.String,
+      status: Schema.Union([
+        Schema.Literals(["progressing", "completed", "failed"]),
+        Schema.String,
+      ]),
+      health: Schema.Struct({
+        instances: Schema.Struct({
+          healthy: Schema.Number,
+          failed: Schema.Number,
+          starting: Schema.Number,
+          scheduling: Schema.Number,
+        }),
       }),
-    }),
-    kind: Schema.Literal("full_auto"),
-    strategy: Schema.Literal("rolling"),
-    currentConfiguration: Schema.Struct({
-      image: Schema.String,
-      observability: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            logs: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  enabled: Schema.Boolean,
-                }),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
-    }),
-    targetConfiguration: Schema.Struct({
-      image: Schema.String,
-      instanceType: Schema.optional(
-        Schema.Union([
+      kind: Schema.Literal("full_auto"),
+      strategy: Schema.Literal("rolling"),
+      currentConfiguration: Schema.Struct({
+        image: Schema.String,
+        observability: Schema.optional(
           Schema.Union([
-            Schema.Literals([
-              "lite",
-              "dev",
-              "basic",
-              "standard",
-              "standard-1",
-              "standard-2",
-              "standard-3",
-              "standard-4",
-            ]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      observability: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            logs: Schema.optional(
-              Schema.Union([
-                Schema.Struct({
-                  enabled: Schema.Boolean,
-                }),
-                Schema.Null,
-              ]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
-      sshPublicKeyIds: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      secrets: Schema.optional(
-        Schema.Union([
-          Schema.Array(
             Schema.Struct({
-              name: Schema.String,
-              type: Schema.Literal("env"),
-              secret: SensitiveString,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      vcpu: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      memory: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      disk: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            size: Schema.String,
-          }),
-          Schema.Null,
-        ]),
-      ),
-      environmentVariables: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              value: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      labels: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              value: Schema.String,
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      network: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            assignIpv4: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["none", "predefined", "account"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            assignIpv6: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["none", "predefined", "account"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-            mode: Schema.optional(
-              Schema.Union([
-                Schema.Union([
-                  Schema.Literals(["public", "private"]),
-                  Schema.String,
-                ]),
-                Schema.Null,
-              ]),
-            ),
-          }).pipe(
-            Schema.encodeKeys({
-              assignIpv4: "assign_ipv4",
-              assignIpv6: "assign_ipv6",
-              mode: "mode",
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      command: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      entrypoint: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      dns: Schema.optional(
-        Schema.Union([
-          Schema.Struct({
-            servers: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-            searches: Schema.optional(
-              Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-            ),
-          }),
-          Schema.Null,
-        ]),
-      ),
-      ports: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.String,
-              port: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-            }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      checks: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Struct({
-              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-              type: Schema.Union([
-                Schema.Literals(["http", "tcp"]),
-                Schema.String,
-              ]),
-              tls: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-              port: Schema.String,
-              http: Schema.optional(
+              logs: Schema.optional(
                 Schema.Union([
                   Schema.Struct({
-                    method: Schema.optional(
-                      Schema.Union([
-                        Schema.Union([
-                          Schema.Literals([
-                            "GET",
-                            "POST",
-                            "PUT",
-                            "PATCH",
-                            "DELETE",
-                            "OPTIONS",
-                            "HEAD",
-                          ]),
-                          Schema.String,
-                        ]),
-                        Schema.Null,
-                      ]),
-                    ),
-                    body: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    path: Schema.optional(
-                      Schema.Union([Schema.String, Schema.Null]),
-                    ),
-                    headers: Schema.optional(
-                      Schema.Union([Schema.Unknown, Schema.Null]),
-                    ),
+                    enabled: Schema.Boolean,
                   }),
                   Schema.Null,
                 ]),
               ),
-              interval: Schema.String,
-              timeout: Schema.String,
-              retries: Schema.optional(
-                Schema.Union([Schema.Number, Schema.Null]),
-              ),
-              kind: Schema.Union([
-                Schema.Literals(["health", "ready"]),
-                Schema.String,
-              ]),
             }),
-          ),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        image: "image",
-        instanceType: "instance_type",
-        observability: "observability",
-        sshPublicKeyIds: "ssh_public_key_ids",
-        secrets: "secrets",
-        vcpu: "vcpu",
-        memory: "memory",
-        disk: "disk",
-        environmentVariables: "environment_variables",
-        labels: "labels",
-        network: "network",
-        command: "command",
-        entrypoint: "entrypoint",
-        dns: "dns",
-        ports: "ports",
-        checks: "checks",
+            Schema.Null,
+          ]),
+        ),
       }),
-    ),
-    currentVersion: Schema.Number,
-    targetVersion: Schema.Number,
-    steps: Schema.Array(
-      Schema.Struct({
-        id: Schema.Number,
-        status: Schema.Union([
-          Schema.Literals(["progressing", "pending", "completed", "failed"]),
-          Schema.String,
-        ]),
-        stepSize: Schema.Struct({
-          percentage: Schema.Number,
-        }),
-        description: Schema.String,
-        startedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      targetConfiguration: Schema.Struct({
+        image: Schema.String,
+        instanceType: Schema.optional(
+          Schema.Union([
+            Schema.Union([
+              Schema.Literals([
+                "lite",
+                "dev",
+                "basic",
+                "standard",
+                "standard-1",
+                "standard-2",
+                "standard-3",
+                "standard-4",
+              ]),
+              Schema.String,
+            ]),
+            Schema.Null,
+          ]),
+        ),
+        observability: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              logs: Schema.optional(
+                Schema.Union([
+                  Schema.Struct({
+                    enabled: Schema.Boolean,
+                  }),
+                  Schema.Null,
+                ]),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+        sshPublicKeyIds: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        secrets: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                type: Schema.Literal("env"),
+                secret: SensitiveString,
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        vcpu: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+        memory: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        disk: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              size: Schema.String,
+            }),
+            Schema.Null,
+          ]),
+        ),
+        environmentVariables: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                value: Schema.String,
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        labels: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                value: Schema.String,
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        network: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              assignIpv4: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["none", "predefined", "account"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              assignIpv6: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["none", "predefined", "account"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              mode: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals(["public", "private"]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                assignIpv4: "assign_ipv4",
+                assignIpv6: "assign_ipv6",
+                mode: "mode",
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        command: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        entrypoint: Schema.optional(
+          Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+        ),
+        dns: Schema.optional(
+          Schema.Union([
+            Schema.Struct({
+              servers: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+              searches: Schema.optional(
+                Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+              ),
+            }),
+            Schema.Null,
+          ]),
+        ),
+        ports: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.String,
+                port: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
+        checks: Schema.optional(
+          Schema.Union([
+            Schema.Array(
+              Schema.Struct({
+                name: Schema.optional(
+                  Schema.Union([Schema.String, Schema.Null]),
+                ),
+                type: Schema.Union([
+                  Schema.Literals(["http", "tcp"]),
+                  Schema.String,
+                ]),
+                tls: Schema.optional(
+                  Schema.Union([Schema.Boolean, Schema.Null]),
+                ),
+                port: Schema.String,
+                http: Schema.optional(
+                  Schema.Union([
+                    Schema.Struct({
+                      method: Schema.optional(
+                        Schema.Union([
+                          Schema.Union([
+                            Schema.Literals([
+                              "GET",
+                              "POST",
+                              "PUT",
+                              "PATCH",
+                              "DELETE",
+                              "OPTIONS",
+                              "HEAD",
+                            ]),
+                            Schema.String,
+                          ]),
+                          Schema.Null,
+                        ]),
+                      ),
+                      body: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      path: Schema.optional(
+                        Schema.Union([Schema.String, Schema.Null]),
+                      ),
+                      headers: Schema.optional(
+                        Schema.Union([Schema.Unknown, Schema.Null]),
+                      ),
+                    }),
+                    Schema.Null,
+                  ]),
+                ),
+                interval: Schema.String,
+                timeout: Schema.String,
+                retries: Schema.optional(
+                  Schema.Union([Schema.Number, Schema.Null]),
+                ),
+                kind: Schema.Union([
+                  Schema.Literals(["health", "ready"]),
+                  Schema.String,
+                ]),
+              }),
+            ),
+            Schema.Null,
+          ]),
+        ),
       }).pipe(
         Schema.encodeKeys({
-          id: "id",
-          status: "status",
-          stepSize: "step_size",
-          description: "description",
-          startedAt: "started_at",
+          image: "image",
+          instanceType: "instance_type",
+          observability: "observability",
+          sshPublicKeyIds: "ssh_public_key_ids",
+          secrets: "secrets",
+          vcpu: "vcpu",
+          memory: "memory",
+          disk: "disk",
+          environmentVariables: "environment_variables",
+          labels: "labels",
+          network: "network",
+          command: "command",
+          entrypoint: "entrypoint",
+          dns: "dns",
+          ports: "ports",
+          checks: "checks",
         }),
       ),
-    ),
-    progress: Schema.Struct({
-      totalSteps: Schema.Number,
-      currentStep: Schema.Number,
-      updatedInstances: Schema.Number,
-      totalInstances: Schema.Number,
-    }).pipe(
-      Schema.encodeKeys({
-        totalSteps: "total_steps",
-        currentStep: "current_step",
-        updatedInstances: "updated_instances",
-        totalInstances: "total_instances",
-      }),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdAt: "created_at",
-        lastUpdatedAt: "last_updated_at",
-        description: "description",
-        status: "status",
-        health: "health",
-        kind: "kind",
-        strategy: "strategy",
-        currentConfiguration: "current_configuration",
-        targetConfiguration: "target_configuration",
-        currentVersion: "current_version",
-        targetVersion: "target_version",
-        steps: "steps",
-        progress: "progress",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<CreateContainerApplicationRolloutResponse>;
+      currentVersion: Schema.Number,
+      targetVersion: Schema.Number,
+      steps: Schema.Array(
+        Schema.Struct({
+          id: Schema.Number,
+          status: Schema.Union([
+            Schema.Literals(["progressing", "pending", "completed", "failed"]),
+            Schema.String,
+          ]),
+          stepSize: Schema.Struct({
+            percentage: Schema.Number,
+          }),
+          description: Schema.String,
+          startedAt: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+        }).pipe(
+          Schema.encodeKeys({
+            id: "id",
+            status: "status",
+            stepSize: "step_size",
+            description: "description",
+            startedAt: "started_at",
+          }),
+        ),
+      ),
+      progress: Schema.Struct({
+        totalSteps: Schema.Number,
+        currentStep: Schema.Number,
+        updatedInstances: Schema.Number,
+        totalInstances: Schema.Number,
+      }).pipe(
+        Schema.encodeKeys({
+          totalSteps: "total_steps",
+          currentStep: "current_step",
+          updatedInstances: "updated_instances",
+          totalInstances: "total_instances",
+        }),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          id: "id",
+          createdAt: "created_at",
+          lastUpdatedAt: "last_updated_at",
+          description: "description",
+          status: "status",
+          health: "health",
+          kind: "kind",
+          strategy: "strategy",
+          currentConfiguration: "current_configuration",
+          targetConfiguration: "target_configuration",
+          currentVersion: "current_version",
+          targetVersion: "target_version",
+          steps: "steps",
+          progress: "progress",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<CreateContainerApplicationRolloutResponse>;
 
 export type CreateContainerApplicationRolloutError =
   | DefaultErrors
@@ -3052,10 +3108,12 @@ export interface GetContainerIdentityRequest {
 }
 
 export const GetContainerIdentityRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  }).pipe(
-    T.Http({ method: "GET", path: "/accounts/{account_id}/containers/me" }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    }).pipe(
+      T.Http({ method: "GET", path: "/accounts/{account_id}/containers/me" }),
+    ),
   ) as unknown as Schema.Schema<GetContainerIdentityRequest>;
 
 export interface GetContainerIdentityResponse {
@@ -3088,73 +3146,73 @@ export interface GetContainerIdentityResponse {
 }
 
 export const GetContainerIdentityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    externalAccountId: Schema.String,
-    legacyIdentity: Schema.String,
-    capabilities: Schema.optional(
-      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-    ),
-    limits: Schema.Struct({
-      accountId: Schema.String,
-      vcpuPerDeployment: Schema.Number,
-      memoryMibPerDeployment: Schema.Number,
-      memoryPerDeployment: Schema.String,
-      diskPerDeployment: Schema.String,
-      diskMbPerDeployment: Schema.Number,
-      totalVcpu: Schema.Number,
-      totalMemoryMib: Schema.Number,
-      nodeGroup: Schema.String,
-      ipv4s: Schema.Number,
-      networkModes: Schema.Array(Schema.String),
-      totalDiskMb: Schema.Number,
-      totalMemory: Schema.String,
-    }).pipe(
-      Schema.encodeKeys({
-        accountId: "account_id",
-        vcpuPerDeployment: "vcpu_per_deployment",
-        memoryMibPerDeployment: "memory_mib_per_deployment",
-        memoryPerDeployment: "memory_per_deployment",
-        diskPerDeployment: "disk_per_deployment",
-        diskMbPerDeployment: "disk_mb_per_deployment",
-        totalVcpu: "total_vcpu",
-        totalMemoryMib: "total_memory_mib",
-        nodeGroup: "node_group",
-        ipv4s: "ipv4s",
-        networkModes: "network_modes",
-        totalDiskMb: "total_disk_mb",
-        totalMemory: "total_memory",
-      }),
-    ),
-    locations: Schema.Array(Schema.Unknown),
-    defaults: Schema.Struct({
-      vcpus: Schema.Number,
-      memoryMib: Schema.Number,
-      memory: Schema.String,
-      diskMb: Schema.Number,
-    }).pipe(
-      Schema.encodeKeys({
-        vcpus: "vcpus",
-        memoryMib: "memory_mib",
-        memory: "memory",
-        diskMb: "disk_mb",
-      }),
-    ),
-  })
-    .pipe(
-      Schema.encodeKeys({
-        accountId: "account_id",
-        externalAccountId: "external_account_id",
-        legacyIdentity: "legacy_identity",
-        capabilities: "capabilities",
-        limits: "limits",
-        locations: "locations",
-        defaults: "defaults",
-      }),
-    )
-    .pipe(
-      T.ResponsePath("result"),
-    ) as unknown as Schema.Schema<GetContainerIdentityResponse>;
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      externalAccountId: Schema.String,
+      legacyIdentity: Schema.String,
+      capabilities: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+      limits: Schema.Struct({
+        accountId: Schema.String,
+        vcpuPerDeployment: Schema.Number,
+        memoryMibPerDeployment: Schema.Number,
+        memoryPerDeployment: Schema.String,
+        diskPerDeployment: Schema.String,
+        diskMbPerDeployment: Schema.Number,
+        totalVcpu: Schema.Number,
+        totalMemoryMib: Schema.Number,
+        nodeGroup: Schema.String,
+        ipv4s: Schema.Number,
+        networkModes: Schema.Array(Schema.String),
+        totalDiskMb: Schema.Number,
+        totalMemory: Schema.String,
+      }).pipe(
+        Schema.encodeKeys({
+          accountId: "account_id",
+          vcpuPerDeployment: "vcpu_per_deployment",
+          memoryMibPerDeployment: "memory_mib_per_deployment",
+          memoryPerDeployment: "memory_per_deployment",
+          diskPerDeployment: "disk_per_deployment",
+          diskMbPerDeployment: "disk_mb_per_deployment",
+          totalVcpu: "total_vcpu",
+          totalMemoryMib: "total_memory_mib",
+          nodeGroup: "node_group",
+          ipv4s: "ipv4s",
+          networkModes: "network_modes",
+          totalDiskMb: "total_disk_mb",
+          totalMemory: "total_memory",
+        }),
+      ),
+      locations: Schema.Array(Schema.Unknown),
+      defaults: Schema.Struct({
+        vcpus: Schema.Number,
+        memoryMib: Schema.Number,
+        memory: Schema.String,
+        diskMb: Schema.Number,
+      }).pipe(
+        Schema.encodeKeys({
+          vcpus: "vcpus",
+          memoryMib: "memory_mib",
+          memory: "memory",
+          diskMb: "disk_mb",
+        }),
+      ),
+    })
+      .pipe(
+        Schema.encodeKeys({
+          accountId: "account_id",
+          externalAccountId: "external_account_id",
+          legacyIdentity: "legacy_identity",
+          capabilities: "capabilities",
+          limits: "limits",
+          locations: "locations",
+          defaults: "defaults",
+        }),
+      )
+      .pipe(T.ResponsePath("result")),
+  ) as unknown as Schema.Schema<GetContainerIdentityResponse>;
 
 export type GetContainerIdentityError = DefaultErrors | InvalidRoute;
 
@@ -3181,22 +3239,24 @@ export interface CreateContainerRegistryCredentialsRequest {
 }
 
 export const CreateContainerRegistryCredentialsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    registryId: Schema.String.pipe(T.HttpPath("registry_id")),
-    permissions: Schema.Array(
-      Schema.Union([Schema.Literals(["pull", "push"]), Schema.String]),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      registryId: Schema.String.pipe(T.HttpPath("registry_id")),
+      permissions: Schema.Array(
+        Schema.Union([Schema.Literals(["pull", "push"]), Schema.String]),
+      ),
+      expirationMinutes: Schema.Number,
+    }).pipe(
+      Schema.encodeKeys({
+        permissions: "permissions",
+        expirationMinutes: "expiration_minutes",
+      }),
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/containers/registries/{registry_id}/credentials",
+      }),
     ),
-    expirationMinutes: Schema.Number,
-  }).pipe(
-    Schema.encodeKeys({
-      permissions: "permissions",
-      expirationMinutes: "expiration_minutes",
-    }),
-    T.Http({
-      method: "POST",
-      path: "/accounts/{account_id}/containers/registries/{registry_id}/credentials",
-    }),
   ) as unknown as Schema.Schema<CreateContainerRegistryCredentialsRequest>;
 
 export interface CreateContainerRegistryCredentialsResponse {
@@ -3206,12 +3266,12 @@ export interface CreateContainerRegistryCredentialsResponse {
 }
 
 export const CreateContainerRegistryCredentialsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    user: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    username: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    password: Schema.String,
-  }).pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      user: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      username: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      password: Schema.String,
+    }).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<CreateContainerRegistryCredentialsResponse>;
 
 export type CreateContainerRegistryCredentialsError =

@@ -22,11 +22,13 @@ export interface GetFilterRequest {
   zoneId: string;
 }
 
-export const GetFilterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  filterId: Schema.String.pipe(T.HttpPath("filterId")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-}).pipe(
-  T.Http({ method: "GET", path: "/zones/{zone_id}/filters/{filterId}" }),
+export const GetFilterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    filterId: Schema.String.pipe(T.HttpPath("filterId")),
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/zones/{zone_id}/filters/{filterId}" }),
+  ),
 ) as unknown as Schema.Schema<GetFilterRequest>;
 
 export interface GetFilterResponse {
@@ -42,14 +44,15 @@ export interface GetFilterResponse {
   ref?: string | null;
 }
 
-export const GetFilterResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-  ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-}).pipe(
-  T.ResponsePath("result"),
+export const GetFilterResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Schema<GetFilterResponse>;
 
 export type GetFilterError = DefaultErrors;
@@ -82,17 +85,22 @@ export interface ListFiltersRequest {
   ref?: string;
 }
 
-export const ListFiltersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-  perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-  id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
-  description: Schema.optional(Schema.String).pipe(T.HttpQuery("description")),
-  expression: Schema.optional(Schema.String).pipe(T.HttpQuery("expression")),
-  paused: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("paused")),
-  ref: Schema.optional(Schema.String).pipe(T.HttpQuery("ref")),
-}).pipe(
-  T.Http({ method: "GET", path: "/zones/{zone_id}/filters" }),
+export const ListFiltersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+      id: Schema.optional(Schema.String).pipe(T.HttpQuery("id")),
+      description: Schema.optional(Schema.String).pipe(
+        T.HttpQuery("description"),
+      ),
+      expression: Schema.optional(Schema.String).pipe(
+        T.HttpQuery("expression"),
+      ),
+      paused: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("paused")),
+      ref: Schema.optional(Schema.String).pipe(T.HttpQuery("ref")),
+    }).pipe(T.Http({ method: "GET", path: "/zones/{zone_id}/filters" })),
 ) as unknown as Schema.Schema<ListFiltersRequest>;
 
 export interface ListFiltersResponse {
@@ -111,36 +119,45 @@ export interface ListFiltersResponse {
   } | null;
 }
 
-export const ListFiltersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
+export const ListFiltersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
-  ),
-  resultInfo: Schema.optional(
-    Schema.Union([
-      Schema.Struct({
-        count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-        totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      }).pipe(
-        Schema.encodeKeys({
-          count: "count",
-          page: "page",
-          perPage: "per_page",
-          totalCount: "total_count",
+      result: Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          expression: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+          ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
         }),
       ),
-      Schema.Null,
-    ]),
-  ),
-}).pipe(
-  Schema.encodeKeys({ result: "result", resultInfo: "result_info" }),
+      resultInfo: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+            perPage: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+            totalCount: Schema.optional(
+              Schema.Union([Schema.Number, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              count: "count",
+              page: "page",
+              perPage: "per_page",
+              totalCount: "total_count",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
 ) as unknown as Schema.Schema<ListFiltersResponse>;
 
 export type ListFiltersError = DefaultErrors;
@@ -175,18 +192,19 @@ export interface CreateFilterRequest {
   }[];
 }
 
-export const CreateFilterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  body: Schema.Array(
+export const CreateFilterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      description: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-      paused: Schema.optional(Schema.Boolean),
-      ref: Schema.optional(Schema.String),
-    }),
-  ).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({ method: "POST", path: "/zones/{zone_id}/filters" }),
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      body: Schema.Array(
+        Schema.Struct({
+          description: Schema.optional(Schema.String),
+          expression: Schema.optional(Schema.String),
+          paused: Schema.optional(Schema.Boolean),
+          ref: Schema.optional(Schema.String),
+        }),
+      ).pipe(T.HttpBody()),
+    }).pipe(T.Http({ method: "POST", path: "/zones/{zone_id}/filters" })),
 ) as unknown as Schema.Schema<CreateFilterRequest>;
 
 export interface CreateFilterResponse {
@@ -199,17 +217,24 @@ export interface CreateFilterResponse {
   }[];
 }
 
-export const CreateFilterResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  result: Schema.Array(
+export const CreateFilterResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      result: Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          expression: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+          ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }),
+      ),
     }),
-  ),
-}) as unknown as Schema.Schema<CreateFilterResponse>;
+) as unknown as Schema.Schema<CreateFilterResponse>;
 
 export type CreateFilterError = DefaultErrors;
 
@@ -242,15 +267,18 @@ export interface UpdateFilterRequest {
   ref?: string;
 }
 
-export const UpdateFilterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  filterId: Schema.String.pipe(T.HttpPath("filterId")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  description: Schema.optional(Schema.String),
-  expression: Schema.optional(Schema.String),
-  paused: Schema.optional(Schema.Boolean),
-  ref: Schema.optional(Schema.String),
-}).pipe(
-  T.Http({ method: "PUT", path: "/zones/{zone_id}/filters/{filterId}" }),
+export const UpdateFilterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      filterId: Schema.String.pipe(T.HttpPath("filterId")),
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      description: Schema.optional(Schema.String),
+      expression: Schema.optional(Schema.String),
+      paused: Schema.optional(Schema.Boolean),
+      ref: Schema.optional(Schema.String),
+    }).pipe(
+      T.Http({ method: "PUT", path: "/zones/{zone_id}/filters/{filterId}" }),
+    ),
 ) as unknown as Schema.Schema<UpdateFilterRequest>;
 
 export interface UpdateFilterResponse {
@@ -266,14 +294,15 @@ export interface UpdateFilterResponse {
   ref?: string | null;
 }
 
-export const UpdateFilterResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-  ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-}).pipe(
-  T.ResponsePath("result"),
+export const UpdateFilterResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      description: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+      ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Schema<UpdateFilterResponse>;
 
 export type UpdateFilterError = DefaultErrors;
@@ -295,11 +324,14 @@ export interface DeleteFilterRequest {
   zoneId: string;
 }
 
-export const DeleteFilterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  filterId: Schema.String.pipe(T.HttpPath("filterId")),
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-}).pipe(
-  T.Http({ method: "DELETE", path: "/zones/{zone_id}/filters/{filterId}" }),
+export const DeleteFilterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      filterId: Schema.String.pipe(T.HttpPath("filterId")),
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(
+      T.Http({ method: "DELETE", path: "/zones/{zone_id}/filters/{filterId}" }),
+    ),
 ) as unknown as Schema.Schema<DeleteFilterRequest>;
 
 export interface DeleteFilterResponse {
@@ -307,10 +339,11 @@ export interface DeleteFilterResponse {
   id: string;
 }
 
-export const DeleteFilterResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  id: Schema.String,
-}).pipe(
-  T.ResponsePath("result"),
+export const DeleteFilterResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      id: Schema.String,
+    }).pipe(T.ResponsePath("result")),
 ) as unknown as Schema.Schema<DeleteFilterResponse>;
 
 export type DeleteFilterError = DefaultErrors;
@@ -334,22 +367,22 @@ export interface BulkDeleteFiltersRequest {
 }
 
 export const BulkDeleteFiltersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-    id: Schema.Array(Schema.String).pipe(T.HttpQuery("id")),
-  }).pipe(
-    T.Http({ method: "DELETE", path: "/zones/{zone_id}/filters" }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      id: Schema.Array(Schema.String).pipe(T.HttpQuery("id")),
+    }).pipe(T.Http({ method: "DELETE", path: "/zones/{zone_id}/filters" })),
   ) as unknown as Schema.Schema<BulkDeleteFiltersRequest>;
 
 export type BulkDeleteFiltersResponse = { id?: string | null }[];
 
 export const BulkDeleteFiltersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }),
-  ).pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+      }),
+    ).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<BulkDeleteFiltersResponse>;
 
 export type BulkDeleteFiltersError = DefaultErrors;
@@ -381,18 +414,19 @@ export interface BulkPutFiltersRequest {
   }[];
 }
 
-export const BulkPutFiltersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  body: Schema.Array(
+export const BulkPutFiltersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      description: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-      paused: Schema.optional(Schema.Boolean),
-      ref: Schema.optional(Schema.String),
-    }),
-  ).pipe(T.HttpBody()),
-}).pipe(
-  T.Http({ method: "PUT", path: "/zones/{zone_id}/filters" }),
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+      body: Schema.Array(
+        Schema.Struct({
+          description: Schema.optional(Schema.String),
+          expression: Schema.optional(Schema.String),
+          paused: Schema.optional(Schema.Boolean),
+          ref: Schema.optional(Schema.String),
+        }),
+      ).pipe(T.HttpBody()),
+    }).pipe(T.Http({ method: "PUT", path: "/zones/{zone_id}/filters" })),
 ) as unknown as Schema.Schema<BulkPutFiltersRequest>;
 
 export interface BulkPutFiltersResponse {
@@ -405,21 +439,24 @@ export interface BulkPutFiltersResponse {
   }[];
 }
 
-export const BulkPutFiltersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
-  {
-    result: Schema.Array(
-      Schema.Struct({
-        id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        description: Schema.optional(
-          Schema.Union([Schema.String, Schema.Null]),
-        ),
-        expression: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-        ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      }),
-    ),
-  },
-) as unknown as Schema.Schema<BulkPutFiltersResponse>;
+export const BulkPutFiltersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      result: Schema.Array(
+        Schema.Struct({
+          id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+          description: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          expression: Schema.optional(
+            Schema.Union([Schema.String, Schema.Null]),
+          ),
+          paused: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+          ref: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+        }),
+      ),
+    }),
+  ) as unknown as Schema.Schema<BulkPutFiltersResponse>;
 
 export type BulkPutFiltersError = DefaultErrors;
 

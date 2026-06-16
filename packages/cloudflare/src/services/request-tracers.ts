@@ -54,83 +54,86 @@ export interface CreateTraceRequest {
   skipResponse?: boolean;
 }
 
-export const CreateTraceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  accountId: Schema.String.pipe(T.HttpPath("account_id")),
-  method: Schema.String,
-  url: Schema.String,
-  body: Schema.optional(
+export const CreateTraceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
-      base64: Schema.optional(Schema.String),
-      json: Schema.optional(Schema.Unknown),
-      plainText: Schema.optional(SensitiveString),
-    }).pipe(
-      Schema.encodeKeys({
-        base64: "base64",
-        json: "json",
-        plainText: "plain_text",
-      }),
-    ),
-  ),
-  context: Schema.optional(
-    Schema.Struct({
-      botScore: Schema.optional(Schema.Number),
-      geoloc: Schema.optional(
+      accountId: Schema.String.pipe(T.HttpPath("account_id")),
+      method: Schema.String,
+      url: Schema.String,
+      body: Schema.optional(
         Schema.Struct({
-          city: Schema.optional(Schema.String),
-          continent: Schema.optional(Schema.String),
-          isEuCountry: Schema.optional(Schema.Boolean),
-          isoCode: Schema.optional(Schema.String),
-          latitude: Schema.optional(Schema.Number),
-          longitude: Schema.optional(Schema.Number),
-          postalCode: Schema.optional(Schema.String),
-          regionCode: Schema.optional(Schema.String),
-          subdivision_2IsoCode: Schema.optional(Schema.String),
-          timezone: Schema.optional(Schema.String),
+          base64: Schema.optional(Schema.String),
+          json: Schema.optional(Schema.Unknown),
+          plainText: Schema.optional(SensitiveString),
         }).pipe(
           Schema.encodeKeys({
-            city: "city",
-            continent: "continent",
-            isEuCountry: "is_eu_country",
-            isoCode: "iso_code",
-            latitude: "latitude",
-            longitude: "longitude",
-            postalCode: "postal_code",
-            regionCode: "region_code",
-            subdivision_2IsoCode: "subdivision_2_iso_code",
-            timezone: "timezone",
+            base64: "base64",
+            json: "json",
+            plainText: "plain_text",
           }),
         ),
       ),
-      skipChallenge: Schema.optional(Schema.Boolean),
-      threatScore: Schema.optional(Schema.Number),
+      context: Schema.optional(
+        Schema.Struct({
+          botScore: Schema.optional(Schema.Number),
+          geoloc: Schema.optional(
+            Schema.Struct({
+              city: Schema.optional(Schema.String),
+              continent: Schema.optional(Schema.String),
+              isEuCountry: Schema.optional(Schema.Boolean),
+              isoCode: Schema.optional(Schema.String),
+              latitude: Schema.optional(Schema.Number),
+              longitude: Schema.optional(Schema.Number),
+              postalCode: Schema.optional(Schema.String),
+              regionCode: Schema.optional(Schema.String),
+              subdivision_2IsoCode: Schema.optional(Schema.String),
+              timezone: Schema.optional(Schema.String),
+            }).pipe(
+              Schema.encodeKeys({
+                city: "city",
+                continent: "continent",
+                isEuCountry: "is_eu_country",
+                isoCode: "iso_code",
+                latitude: "latitude",
+                longitude: "longitude",
+                postalCode: "postal_code",
+                regionCode: "region_code",
+                subdivision_2IsoCode: "subdivision_2_iso_code",
+                timezone: "timezone",
+              }),
+            ),
+          ),
+          skipChallenge: Schema.optional(Schema.Boolean),
+          threatScore: Schema.optional(Schema.Number),
+        }).pipe(
+          Schema.encodeKeys({
+            botScore: "bot_score",
+            geoloc: "geoloc",
+            skipChallenge: "skip_challenge",
+            threatScore: "threat_score",
+          }),
+        ),
+      ),
+      cookies: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+      headers: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+      protocol: Schema.optional(Schema.String),
+      skipResponse: Schema.optional(Schema.Boolean),
     }).pipe(
       Schema.encodeKeys({
-        botScore: "bot_score",
-        geoloc: "geoloc",
-        skipChallenge: "skip_challenge",
-        threatScore: "threat_score",
+        method: "method",
+        url: "url",
+        body: "body",
+        context: "context",
+        cookies: "cookies",
+        headers: "headers",
+        protocol: "protocol",
+        skipResponse: "skip_response",
+      }),
+      T.Http({
+        method: "POST",
+        path: "/accounts/{account_id}/request-tracer/trace",
       }),
     ),
-  ),
-  cookies: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  headers: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-  protocol: Schema.optional(Schema.String),
-  skipResponse: Schema.optional(Schema.Boolean),
-}).pipe(
-  Schema.encodeKeys({
-    method: "method",
-    url: "url",
-    body: "body",
-    context: "context",
-    cookies: "cookies",
-    headers: "headers",
-    protocol: "protocol",
-    skipResponse: "skip_response",
-  }),
-  T.Http({
-    method: "POST",
-    path: "/accounts/{account_id}/request-tracer/trace",
-  }),
 ) as unknown as Schema.Schema<CreateTraceRequest>;
 
 export interface CreateTraceResponse {
@@ -152,51 +155,60 @@ export interface CreateTraceResponse {
     | null;
 }
 
-export const CreateTraceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-  statusCode: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-  trace: Schema.optional(
-    Schema.Union([
-      Schema.Array(
-        Schema.Struct({
-          action: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          actionParameters: Schema.optional(
-            Schema.Union([Schema.Unknown, Schema.Null]),
+export const CreateTraceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      statusCode: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      trace: Schema.optional(
+        Schema.Union([
+          Schema.Array(
+            Schema.Struct({
+              action: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              actionParameters: Schema.optional(
+                Schema.Union([Schema.Unknown, Schema.Null]),
+              ),
+              description: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              expression: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              kind: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              matched: Schema.optional(
+                Schema.Union([Schema.Boolean, Schema.Null]),
+              ),
+              name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+              stepName: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+              trace: Schema.optional(
+                Schema.Union([Schema.Unknown, Schema.Null]),
+              ),
+              type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+            }).pipe(
+              Schema.encodeKeys({
+                action: "action",
+                actionParameters: "action_parameters",
+                description: "description",
+                expression: "expression",
+                kind: "kind",
+                matched: "matched",
+                name: "name",
+                stepName: "step_name",
+                trace: "trace",
+                type: "type",
+              }),
+            ),
           ),
-          description: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          expression: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
-          ),
-          kind: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          matched: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-          name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          stepName: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-          trace: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
-          type: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-        }).pipe(
-          Schema.encodeKeys({
-            action: "action",
-            actionParameters: "action_parameters",
-            description: "description",
-            expression: "expression",
-            kind: "kind",
-            matched: "matched",
-            name: "name",
-            stepName: "step_name",
-            trace: "trace",
-            type: "type",
-          }),
-        ),
+          Schema.Null,
+        ]),
       ),
-      Schema.Null,
-    ]),
-  ),
-})
-  .pipe(Schema.encodeKeys({ statusCode: "status_code", trace: "trace" }))
-  .pipe(
-    T.ResponsePath("result"),
-  ) as unknown as Schema.Schema<CreateTraceResponse>;
+    })
+      .pipe(Schema.encodeKeys({ statusCode: "status_code", trace: "trace" }))
+      .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Schema<CreateTraceResponse>;
 
 export type CreateTraceError = DefaultErrors;
 

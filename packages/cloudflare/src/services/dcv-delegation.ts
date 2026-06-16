@@ -22,10 +22,12 @@ export interface GetDcvDelegationRequest {
 }
 
 export const GetDcvDelegationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
-  }).pipe(
-    T.Http({ method: "GET", path: "/zones/{zone_id}/dcv_delegation/uuid" }),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    }).pipe(
+      T.Http({ method: "GET", path: "/zones/{zone_id}/dcv_delegation/uuid" }),
+    ),
   ) as unknown as Schema.Schema<GetDcvDelegationRequest>;
 
 export interface GetDcvDelegationResponse {
@@ -34,10 +36,10 @@ export interface GetDcvDelegationResponse {
 }
 
 export const GetDcvDelegationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
-    uuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-  }).pipe(
-    T.ResponsePath("result"),
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      uuid: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<GetDcvDelegationResponse>;
 
 export type GetDcvDelegationError = DefaultErrors;
