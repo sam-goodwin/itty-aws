@@ -115,9 +115,14 @@ const resolveSigningKey = (
  *
  * The JWT includes:
  * - header: { alg, kid, typ: "JWT", nonce }
- * - payload: { sub, iss: "cdp", iat, nbf, exp }
+ * - payload: { sub, iss: "cdp", aud, nbf, exp, uri }
  */
-const generateJwt = (apiKeyId: string, apiKeySecret: string): string => {
+const generateJwt = (
+  apiKeyId: string,
+  apiKeySecret: string,
+  method: string,
+  uri: string,
+): string => {
   const { jwsAlg, key } = resolveSigningKey(apiKeySecret);
 
   const now = Math.floor(Date.now() / 1000);
@@ -130,9 +135,10 @@ const generateJwt = (apiKeyId: string, apiKeySecret: string): string => {
   const payload = {
     sub: apiKeyId,
     iss: "cdp",
-    iat: now,
+    aud: ["cdp_service"],
     nbf: now,
     exp: now + 120,
+    uri: `${method} ${uri}`,
   };
 
   const headerB64 = base64url(Buffer.from(JSON.stringify(header)));
@@ -218,7 +224,15 @@ const matchError = (
   errorBody: unknown,
   _errors?: readonly unknown[],
   headers?: Record<string, string | undefined>,
-): Effect.Effect<never, unknown> => {
+): Effect.Effect<unknown, unknown> => {
+  if (
+    errorBody &&
+    typeof errorBody === "object" &&
+    ("isValid" in errorBody || "success" in errorBody)
+  ) {
+    return Effect.succeed(errorBody);
+  }
+
   try {
     const parsed = Schema.decodeUnknownSync(CoinbaseErrorResponse)(errorBody);
     const errorProps = {
@@ -289,9 +303,17 @@ const matchError = (
 export const API = makeAPI<Credentials>({
   credentials: Credentials as any,
   getBaseUrl: (creds: any) => (creds as Config).apiBaseUrl,
-  getAuthHeaders: (creds: any) => {
-    const c = creds as Config;
-    const jwt = generateJwt(c.apiKeyId, Redacted.value(c.apiKeySecret));
+  getAuthHeaders: () => ({}),
+  getRequestHeaders: (_requestOptions, { method, parts, credentials }) => {
+    const c = credentials as Config;
+    const baseUrl = new URL(c.apiBaseUrl);
+    const uri = `${baseUrl.host}${baseUrl.pathname}${parts.path}`;
+    const jwt = generateJwt(
+      c.apiKeyId,
+      Redacted.value(c.apiKeySecret),
+      method,
+      uri,
+    );
     return {
       Authorization: `Bearer ${jwt}`,
     };
