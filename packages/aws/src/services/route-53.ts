@@ -2935,8 +2935,8 @@ export const HealthChecks = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   }),
 );
 export interface ListHealthChecksResponse {
-  HealthChecks: HealthCheck[];
-  Marker: string;
+  HealthChecks?: HealthCheck[];
+  Marker?: string;
   IsTruncated: boolean;
   NextMarker?: string;
   MaxItems: number;
@@ -2944,8 +2944,8 @@ export interface ListHealthChecksResponse {
 export const ListHealthChecksResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      HealthChecks: HealthChecks,
-      Marker: S.String,
+      HealthChecks: S.optional(HealthChecks),
+      Marker: S.optional(S.String),
       IsTruncated: S.Boolean,
       NextMarker: S.optional(S.String),
       MaxItems: S.Number,
@@ -2993,8 +2993,8 @@ export const HostedZones = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   }),
 );
 export interface ListHostedZonesResponse {
-  HostedZones: HostedZone[];
-  Marker: string;
+  HostedZones?: HostedZone[];
+  Marker?: string;
   IsTruncated: boolean;
   NextMarker?: string;
   MaxItems: number;
@@ -3002,8 +3002,8 @@ export interface ListHostedZonesResponse {
 export const ListHostedZonesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      HostedZones: HostedZones,
-      Marker: S.String,
+      HostedZones: S.optional(HostedZones),
+      Marker: S.optional(S.String),
       IsTruncated: S.Boolean,
       NextMarker: S.optional(S.String),
       MaxItems: S.Number,
@@ -3037,7 +3037,7 @@ export const ListHostedZonesByNameRequest =
     identifier: "ListHostedZonesByNameRequest",
   }) as any as S.Schema<ListHostedZonesByNameRequest>;
 export interface ListHostedZonesByNameResponse {
-  HostedZones: HostedZone[];
+  HostedZones?: HostedZone[];
   DNSName?: string;
   HostedZoneId?: string;
   IsTruncated: boolean;
@@ -3048,7 +3048,7 @@ export interface ListHostedZonesByNameResponse {
 export const ListHostedZonesByNameResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
-      HostedZones: HostedZones,
+      HostedZones: S.optional(HostedZones),
       DNSName: S.optional(S.String),
       HostedZoneId: S.optional(S.String),
       IsTruncated: S.Boolean,
@@ -3214,7 +3214,7 @@ export const ResourceRecordSets = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   }),
 );
 export interface ListResourceRecordSetsResponse {
-  ResourceRecordSets: ResourceRecordSet[];
+  ResourceRecordSets?: ResourceRecordSet[];
   IsTruncated: boolean;
   NextRecordName?: string;
   NextRecordType?: RRType;
@@ -3224,7 +3224,7 @@ export interface ListResourceRecordSetsResponse {
 export const ListResourceRecordSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
-      ResourceRecordSets: ResourceRecordSets,
+      ResourceRecordSets: S.optional(ResourceRecordSets),
       IsTruncated: S.Boolean,
       NextRecordName: S.optional(S.String),
       NextRecordType: S.optional(RRType),

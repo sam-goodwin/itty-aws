@@ -2,5 +2,41 @@
   "errorCategories": {
     "PriorRequestNotComplete": ["ConflictError", "RetryableError"],
     "ThrottlingException": ["ThrottlingError", "RetryableError"]
+  },
+  "structures": {
+    "ListResourceRecordSetsResponse": {
+      "members": {
+        "ResourceRecordSets": {
+          "optional": true
+        }
+      }
+    },
+    "ListHostedZonesResponse": {
+      "members": {
+        "HostedZones": {
+          "optional": true
+        },
+        "Marker": {
+          "optional": true
+        }
+      }
+    },
+    "ListHealthChecksResponse": {
+      "members": {
+        "HealthChecks": {
+          "optional": true
+        },
+        "Marker": {
+          "optional": true
+        }
+      }
+    },
+    "ListHostedZonesByNameResponse": {
+      "members": {
+        "HostedZones": {
+          "optional": true
+        }
+      }
+    }
   }
 }
