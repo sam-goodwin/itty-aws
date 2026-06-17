@@ -8781,18 +8781,18 @@ export const VpcOriginSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
 export interface VpcOriginList {
   Marker?: string;
   NextMarker?: string;
-  MaxItems: number;
-  IsTruncated: boolean;
-  Quantity: number;
+  MaxItems?: number;
+  IsTruncated?: boolean;
+  Quantity?: number;
   Items?: VpcOriginSummary[];
 }
 export const VpcOriginList = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     Marker: S.optional(S.String),
     NextMarker: S.optional(S.String),
-    MaxItems: S.Number,
-    IsTruncated: S.Boolean,
-    Quantity: S.Number,
+    MaxItems: S.optional(S.Number),
+    IsTruncated: S.optional(S.Boolean),
+    Quantity: S.optional(S.Number),
     Items: S.optional(VpcOriginSummaryList),
   }),
 ).annotate({ identifier: "VpcOriginList" }) as any as S.Schema<VpcOriginList>;
