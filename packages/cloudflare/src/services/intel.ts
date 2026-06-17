@@ -16,30 +16,34 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class IndicatorFeedNotFound extends Schema.TaggedErrorClass<IndicatorFeedNotFound>()(
-  "IndicatorFeedNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class IndicatorFeedNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<IndicatorFeedNotFound>()("IndicatorFeedNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403, message: { includes: "does not exist" } }],
 ) {}
-T.applyErrorMatchers(IndicatorFeedNotFound, [
-  { status: 403, message: { includes: "does not exist" } },
-]);
 
-export class IndicatorFeedsNotEntitled extends Schema.TaggedErrorClass<IndicatorFeedsNotEntitled>()(
-  "IndicatorFeedsNotEntitled",
-  { code: Schema.Number, message: Schema.String },
+export class IndicatorFeedsNotEntitled extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<IndicatorFeedsNotEntitled>()(
+    "IndicatorFeedsNotEntitled",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [
+    {
+      status: 403,
+      message: { includes: "does not have permission to create a feed" },
+    },
+  ],
 ) {}
-T.applyErrorMatchers(IndicatorFeedsNotEntitled, [
-  {
-    status: 403,
-    message: { includes: "does not have permission to create a feed" },
-  },
-]);
 
 // =============================================================================
 // Asn

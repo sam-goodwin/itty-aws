@@ -16,30 +16,32 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class CertificateAlreadyDeleted extends Schema.TaggedErrorClass<CertificateAlreadyDeleted>()(
-  "CertificateAlreadyDeleted",
-  { code: Schema.Number, message: Schema.String },
+export class CertificateAlreadyDeleted extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CertificateAlreadyDeleted>()(
+    "CertificateAlreadyDeleted",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 400, message: { includes: "already deleted" } }],
 ) {}
-T.applyErrorMatchers(CertificateAlreadyDeleted, [
-  { status: 400, message: { includes: "already deleted" } },
-]);
 
-export class CertificateAlreadyExists extends Schema.TaggedErrorClass<CertificateAlreadyExists>()(
-  "CertificateAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class CertificateAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CertificateAlreadyExists>()(
+    "CertificateAlreadyExists",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1471, message: { includes: "already exists" } }],
 ) {}
-T.applyErrorMatchers(CertificateAlreadyExists, [
-  { code: 1471, message: { includes: "already exists" } },
-]);
 
-export class CertificateNotFound extends Schema.TaggedErrorClass<CertificateNotFound>()(
-  "CertificateNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class CertificateNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CertificateNotFound>()("CertificateNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [
+    { code: 1472, message: { includes: "Certificate not found" } },
+    { status: 404 },
+  ],
 ) {}
-T.applyErrorMatchers(CertificateNotFound, [
-  { code: 1472, message: { includes: "Certificate not found" } },
-  { status: 404 },
-]);
 
 // =============================================================================
 // Association

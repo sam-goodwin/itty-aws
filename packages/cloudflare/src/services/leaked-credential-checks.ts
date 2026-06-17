@@ -17,29 +17,37 @@ import { SensitiveString } from "../sensitive.ts";
 // Errors
 // =============================================================================
 
-export class DetectionNotFound extends Schema.TaggedErrorClass<DetectionNotFound>()(
-  "DetectionNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class DetectionNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DetectionNotFound>()("DetectionNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 11002 }],
 ) {}
-T.applyErrorMatchers(DetectionNotFound, [{ code: 11002 }]);
 
-export class DetectionQuotaExceeded extends Schema.TaggedErrorClass<DetectionQuotaExceeded>()(
-  "DetectionQuotaExceeded",
-  { code: Schema.Number, message: Schema.String },
+export class DetectionQuotaExceeded extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DetectionQuotaExceeded>()("DetectionQuotaExceeded", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 50001 }],
 ) {}
-T.applyErrorMatchers(DetectionQuotaExceeded, [{ code: 50001 }]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class LeakedCredentialChecksDisabled extends Schema.TaggedErrorClass<LeakedCredentialChecksDisabled>()(
-  "LeakedCredentialChecksDisabled",
-  { code: Schema.Number, message: Schema.String },
+export class LeakedCredentialChecksDisabled extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<LeakedCredentialChecksDisabled>()(
+    "LeakedCredentialChecksDisabled",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 11001 }],
 ) {}
-T.applyErrorMatchers(LeakedCredentialChecksDisabled, [{ code: 11001 }]);
 
 // =============================================================================
 // Detection

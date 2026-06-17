@@ -17,59 +17,77 @@ import { UploadableSchema } from "../schemas.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class InvalidObjectIdentifier extends Schema.TaggedErrorClass<InvalidObjectIdentifier>()(
-  "InvalidObjectIdentifier",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidObjectIdentifier extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidObjectIdentifier>()(
+    "InvalidObjectIdentifier",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 7003 }],
 ) {}
-T.applyErrorMatchers(InvalidObjectIdentifier, [{ code: 7003 }]);
 
-export class LabelAlreadyExists extends Schema.TaggedErrorClass<LabelAlreadyExists>()(
-  "LabelAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class LabelAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<LabelAlreadyExists>()("LabelAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 70009 }],
 ) {}
-T.applyErrorMatchers(LabelAlreadyExists, [{ code: 70009 }]);
 
-export class LabelNotFound extends Schema.TaggedErrorClass<LabelNotFound>()(
-  "LabelNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class LabelNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<LabelNotFound>()("LabelNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 70014 }],
 ) {}
-T.applyErrorMatchers(LabelNotFound, [{ code: 70014 }]);
 
-export class NotEntitled extends Schema.TaggedErrorClass<NotEntitled>()(
-  "NotEntitled",
-  { code: Schema.Number, message: Schema.String },
+export class NotEntitled extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<NotEntitled>()("NotEntitled", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10403 }, { code: 10404 }],
 ) {}
-T.applyErrorMatchers(NotEntitled, [{ code: 10403 }, { code: 10404 }]);
 
-export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
-  code: Schema.Number,
-  message: Schema.String,
-}) {}
-T.applyErrorMatchers(NotFound, [{ status: 404 }]);
-
-export class OperationNotFound extends Schema.TaggedErrorClass<OperationNotFound>()(
-  "OperationNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class NotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<NotFound>()("NotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(OperationNotFound, [{ code: 10404 }]);
 
-export class SchemaNotFound extends Schema.TaggedErrorClass<SchemaNotFound>()(
-  "SchemaNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class OperationNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<OperationNotFound>()("OperationNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10404 }],
 ) {}
-T.applyErrorMatchers(SchemaNotFound, [{ code: 19400 }]);
 
-export class ZonePurged extends Schema.TaggedErrorClass<ZonePurged>()(
-  "ZonePurged",
-  { code: Schema.Number, message: Schema.String },
+export class SchemaNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SchemaNotFound>()("SchemaNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 19400 }],
 ) {}
-T.applyErrorMatchers(ZonePurged, [{ code: 10410 }]);
+
+export class ZonePurged extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ZonePurged>()("ZonePurged", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10410 }],
+) {}
 
 // =============================================================================
 // Configuration

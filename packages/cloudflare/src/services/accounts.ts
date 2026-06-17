@@ -16,123 +16,141 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class AccountCreationForbidden extends Schema.TaggedErrorClass<AccountCreationForbidden>()(
-  "AccountCreationForbidden",
-  { code: Schema.Number, message: Schema.String },
+export class AccountCreationForbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AccountCreationForbidden>()(
+    "AccountCreationForbidden",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1002 }],
 ) {}
-T.applyErrorMatchers(AccountCreationForbidden, [{ code: 1002 }]);
 
-export class AccountMemberAlreadyExists extends Schema.TaggedErrorClass<AccountMemberAlreadyExists>()(
-  "AccountMemberAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class AccountMemberAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AccountMemberAlreadyExists>()(
+    "AccountMemberAlreadyExists",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 400, message: { includes: "already exists" } }],
 ) {}
-T.applyErrorMatchers(AccountMemberAlreadyExists, [
-  { status: 400, message: { includes: "already exists" } },
-]);
 
-export class AccountNameTooLong extends Schema.TaggedErrorClass<AccountNameTooLong>()(
-  "AccountNameTooLong",
-  { code: Schema.Number, message: Schema.String },
+export class AccountNameTooLong extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AccountNameTooLong>()("AccountNameTooLong", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1001, message: { includes: "too long" } }],
 ) {}
-T.applyErrorMatchers(AccountNameTooLong, [
-  { code: 1001, message: { includes: "too long" } },
-]);
 
-export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
-  "BadRequest",
-  { code: Schema.Number, message: Schema.String },
+export class BadRequest extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<BadRequest>()("BadRequest", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 400 }],
 ) {}
-T.applyErrorMatchers(BadRequest, [{ code: 400 }]);
 
-export class EndpointNotFound extends Schema.TaggedErrorClass<EndpointNotFound>()(
-  "EndpointNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class EndpointNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<EndpointNotFound>()("EndpointNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1199 }],
 ) {}
-T.applyErrorMatchers(EndpointNotFound, [{ code: 1199 }]);
 
-export class InvalidAccountName extends Schema.TaggedErrorClass<InvalidAccountName>()(
-  "InvalidAccountName",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidAccountName extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidAccountName>()("InvalidAccountName", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1001, message: { includes: "invalid character" } }],
 ) {}
-T.applyErrorMatchers(InvalidAccountName, [
-  { code: 1001, message: { includes: "invalid character" } },
-]);
 
-export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
-  "InvalidRoute",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidRoute extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7003 }],
 ) {}
-T.applyErrorMatchers(InvalidRoute, [{ code: 7003 }]);
 
-export class InvalidTokenName extends Schema.TaggedErrorClass<InvalidTokenName>()(
-  "InvalidTokenName",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidTokenName extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidTokenName>()("InvalidTokenName", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 400, message: { includes: "name must have a length" } }],
 ) {}
-T.applyErrorMatchers(InvalidTokenName, [
-  { code: 400, message: { includes: "name must have a length" } },
-]);
 
-export class JsonDecodeFailure extends Schema.TaggedErrorClass<JsonDecodeFailure>()(
-  "JsonDecodeFailure",
-  { code: Schema.Number, message: Schema.String },
+export class JsonDecodeFailure extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<JsonDecodeFailure>()("JsonDecodeFailure", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1198 }],
 ) {}
-T.applyErrorMatchers(JsonDecodeFailure, [{ code: 1198 }]);
 
-export class MemberNotFound extends Schema.TaggedErrorClass<MemberNotFound>()(
-  "MemberNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class MemberNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MemberNotFound>()("MemberNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1003 }],
 ) {}
-T.applyErrorMatchers(MemberNotFound, [{ code: 1003 }]);
 
-export class MethodNotAllowed extends Schema.TaggedErrorClass<MethodNotAllowed>()(
-  "MethodNotAllowed",
-  { code: Schema.Number, message: Schema.String },
+export class MethodNotAllowed extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MethodNotAllowed>()("MethodNotAllowed", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7001 }, { code: 10000 }, { code: 10405 }],
 ) {}
-T.applyErrorMatchers(MethodNotAllowed, [
-  { code: 7001 },
-  { code: 10000 },
-  { code: 10405 },
-]);
 
-export class MissingAuthenticationToken extends Schema.TaggedErrorClass<MissingAuthenticationToken>()(
-  "MissingAuthenticationToken",
-  { code: Schema.Number, message: Schema.String },
+export class MissingAuthenticationToken extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MissingAuthenticationToken>()(
+    "MissingAuthenticationToken",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1001 }],
 ) {}
-T.applyErrorMatchers(MissingAuthenticationToken, [{ code: 1001 }]);
 
-export class MissingName extends Schema.TaggedErrorClass<MissingName>()(
-  "MissingName",
-  { code: Schema.Number, message: Schema.String },
+export class MissingName extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MissingName>()("MissingName", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1001 }],
 ) {}
-T.applyErrorMatchers(MissingName, [{ code: 1001 }]);
 
-export class PermissionGroupNotFound extends Schema.TaggedErrorClass<PermissionGroupNotFound>()(
-  "PermissionGroupNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class PermissionGroupNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<PermissionGroupNotFound>()(
+    "PermissionGroupNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1001, message: { includes: "Permission group" } }],
 ) {}
-T.applyErrorMatchers(PermissionGroupNotFound, [
-  { code: 1001, message: { includes: "Permission group" } },
-]);
 
-export class TokenNotFound extends Schema.TaggedErrorClass<TokenNotFound>()(
-  "TokenNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class TokenNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TokenNotFound>()("TokenNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1003 }],
 ) {}
-T.applyErrorMatchers(TokenNotFound, [{ code: 1003 }]);
 
-export class UpdateAccountTypeNotSupported extends Schema.TaggedErrorClass<UpdateAccountTypeNotSupported>()(
-  "UpdateAccountTypeNotSupported",
-  { code: Schema.Number, message: Schema.String },
+export class UpdateAccountTypeNotSupported extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<UpdateAccountTypeNotSupported>()(
+    "UpdateAccountTypeNotSupported",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1001, message: { includes: "account type is not supported" } }],
 ) {}
-T.applyErrorMatchers(UpdateAccountTypeNotSupported, [
-  { code: 1001, message: { includes: "account type is not supported" } },
-]);
 
-export class ValidationError extends Schema.TaggedErrorClass<ValidationError>()(
-  "ValidationError",
-  { code: Schema.Number, message: Schema.String },
+export class ValidationError extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ValidationError>()("ValidationError", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1001 }],
 ) {}
-T.applyErrorMatchers(ValidationError, [{ code: 1001 }]);
 
 // =============================================================================
 // Account

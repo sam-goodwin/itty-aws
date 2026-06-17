@@ -17,11 +17,13 @@ import { UploadableSchema } from "../schemas.ts";
 // Errors
 // =============================================================================
 
-export class ScanConfigNotFound extends Schema.TaggedErrorClass<ScanConfigNotFound>()(
-  "ScanConfigNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ScanConfigNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ScanConfigNotFound>()("ScanConfigNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(ScanConfigNotFound, [{ status: 404 }]);
 
 // =============================================================================
 // BinaryStorage

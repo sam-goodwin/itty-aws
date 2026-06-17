@@ -16,27 +16,29 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class KeylessCertificateNotFound extends Schema.TaggedErrorClass<KeylessCertificateNotFound>()(
-  "KeylessCertificateNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class KeylessCertificateNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<KeylessCertificateNotFound>()(
+    "KeylessCertificateNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1005, message: { includes: "Invalid or missing Keyless SSL" } }],
 ) {}
-T.applyErrorMatchers(KeylessCertificateNotFound, [
-  { code: 1005, message: { includes: "Invalid or missing Keyless SSL" } },
-]);
 
-export class KeylessSslNotAvailable extends Schema.TaggedErrorClass<KeylessSslNotAvailable>()(
-  "KeylessSslNotAvailable",
-  { code: Schema.Number, message: Schema.String },
+export class KeylessSslNotAvailable extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<KeylessSslNotAvailable>()("KeylessSslNotAvailable", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1067, message: { includes: "Keyless SSL is not available" } }],
 ) {}
-T.applyErrorMatchers(KeylessSslNotAvailable, [
-  { code: 1067, message: { includes: "Keyless SSL is not available" } },
-]);
 
 // =============================================================================
 // KeylessCertificate

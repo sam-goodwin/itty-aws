@@ -16,27 +16,29 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class AiSecurityNotEntitled extends Schema.TaggedErrorClass<AiSecurityNotEntitled>()(
-  "AiSecurityNotEntitled",
-  { code: Schema.Number, message: Schema.String },
+export class AiSecurityNotEntitled extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AiSecurityNotEntitled>()("AiSecurityNotEntitled", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 13101, message: { includes: "not entitled" } }],
 ) {}
-T.applyErrorMatchers(AiSecurityNotEntitled, [
-  { code: 13101, message: { includes: "not entitled" } },
-]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class ZoneNotAuthorized extends Schema.TaggedErrorClass<ZoneNotAuthorized>()(
-  "ZoneNotAuthorized",
-  { code: Schema.Number, message: Schema.String },
+export class ZoneNotAuthorized extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ZoneNotAuthorized>()("ZoneNotAuthorized", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10000, message: { includes: "Authentication error" } }],
 ) {}
-T.applyErrorMatchers(ZoneNotAuthorized, [
-  { code: 10000, message: { includes: "Authentication error" } },
-]);
 
 // =============================================================================
 // AiSecurity

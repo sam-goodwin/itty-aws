@@ -16,29 +16,37 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class TokenConfigurationNotFound extends Schema.TaggedErrorClass<TokenConfigurationNotFound>()(
-  "TokenConfigurationNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class TokenConfigurationNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TokenConfigurationNotFound>()(
+    "TokenConfigurationNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(TokenConfigurationNotFound, [{ status: 404 }]);
 
-export class TokenValidationNotEntitled extends Schema.TaggedErrorClass<TokenValidationNotEntitled>()(
-  "TokenValidationNotEntitled",
-  { code: Schema.Number, message: Schema.String },
+export class TokenValidationNotEntitled extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TokenValidationNotEntitled>()(
+    "TokenValidationNotEntitled",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 10403 }],
 ) {}
-T.applyErrorMatchers(TokenValidationNotEntitled, [{ code: 10403 }]);
 
-export class TokenValidationRuleNotFound extends Schema.TaggedErrorClass<TokenValidationRuleNotFound>()(
-  "TokenValidationRuleNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class TokenValidationRuleNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TokenValidationRuleNotFound>()(
+    "TokenValidationRuleNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(TokenValidationRuleNotFound, [{ status: 404 }]);
 
 // =============================================================================
 // Configuration

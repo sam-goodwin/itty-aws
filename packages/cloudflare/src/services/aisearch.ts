@@ -17,84 +17,101 @@ import { UploadableSchema } from "../schemas.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class InstanceAlreadyExists extends Schema.TaggedErrorClass<InstanceAlreadyExists>()(
-  "InstanceAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class InstanceAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InstanceAlreadyExists>()("InstanceAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 400, message: { includes: "already_exist" } }],
 ) {}
-T.applyErrorMatchers(InstanceAlreadyExists, [
-  { status: 400, message: { includes: "already_exist" } },
-]);
 
-export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
-  "InvalidRoute",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidRoute extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7003 }],
 ) {}
-T.applyErrorMatchers(InvalidRoute, [{ code: 7003 }]);
 
-export class InvalidTokenCredentials extends Schema.TaggedErrorClass<InvalidTokenCredentials>()(
-  "InvalidTokenCredentials",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidTokenCredentials extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidTokenCredentials>()(
+    "InvalidTokenCredentials",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 7012 }, { status: 400, message: { includes: "invalid_token" } }],
 ) {}
-T.applyErrorMatchers(InvalidTokenCredentials, [
-  { code: 7012 },
-  { status: 400, message: { includes: "invalid_token" } },
-]);
 
-export class NamespaceAlreadyExists extends Schema.TaggedErrorClass<NamespaceAlreadyExists>()(
-  "NamespaceAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class NamespaceAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<NamespaceAlreadyExists>()("NamespaceAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7064 }],
 ) {}
-T.applyErrorMatchers(NamespaceAlreadyExists, [{ code: 7064 }]);
 
-export class NamespaceNotFound extends Schema.TaggedErrorClass<NamespaceNotFound>()(
-  "NamespaceNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class NamespaceNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<NamespaceNotFound>()("NamespaceNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7063 }],
 ) {}
-T.applyErrorMatchers(NamespaceNotFound, [{ code: 7063 }]);
 
-export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
-  code: Schema.Number,
-  message: Schema.String,
-}) {}
-T.applyErrorMatchers(NotFound, [{ code: 7002 }]);
-
-export class SyncInCooldown extends Schema.TaggedErrorClass<SyncInCooldown>()(
-  "SyncInCooldown",
-  { code: Schema.Number, message: Schema.String },
+export class NotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<NotFound>()("NotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7002 }],
 ) {}
-T.applyErrorMatchers(SyncInCooldown, [{ code: 7020 }]);
 
-export class TokenInUseByInstances extends Schema.TaggedErrorClass<TokenInUseByInstances>()(
-  "TokenInUseByInstances",
-  { code: Schema.Number, message: Schema.String },
+export class SyncInCooldown extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SyncInCooldown>()("SyncInCooldown", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7020 }],
 ) {}
-T.applyErrorMatchers(TokenInUseByInstances, [
-  { status: 409, message: { includes: "token_in_use_by_instances" } },
-]);
 
-export class TokenNotFound extends Schema.TaggedErrorClass<TokenNotFound>()(
-  "TokenNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class TokenInUseByInstances extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TokenInUseByInstances>()("TokenInUseByInstances", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 409, message: { includes: "token_in_use_by_instances" } }],
 ) {}
-T.applyErrorMatchers(TokenNotFound, [{ code: 7075 }]);
 
-export class UnableToConnect extends Schema.TaggedErrorClass<UnableToConnect>()(
-  "UnableToConnect",
-  { code: Schema.Number, message: Schema.String },
+export class TokenNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TokenNotFound>()("TokenNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7075 }],
 ) {}
-T.applyErrorMatchers(UnableToConnect, [{ code: 7017 }]);
 
-export class ValidationError extends Schema.TaggedErrorClass<ValidationError>()(
-  "ValidationError",
-  { code: Schema.Number, message: Schema.String },
+export class UnableToConnect extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<UnableToConnect>()("UnableToConnect", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7017 }],
 ) {}
-T.applyErrorMatchers(ValidationError, [{ code: 7001 }]);
+
+export class ValidationError extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ValidationError>()("ValidationError", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7001 }],
+) {}
 
 // =============================================================================
 // CompletionsInstance

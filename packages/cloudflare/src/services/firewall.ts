@@ -16,68 +16,77 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class AccessRuleNotFound extends Schema.TaggedErrorClass<AccessRuleNotFound>()(
-  "AccessRuleNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class AccessRuleNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AccessRuleNotFound>()("AccessRuleNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10001, message: { includes: "not_found" } }, { status: 404 }],
 ) {}
-T.applyErrorMatchers(AccessRuleNotFound, [
-  { code: 10001, message: { includes: "not_found" } },
-  { status: 404 },
-]);
 
-export class DuplicateAccessRule extends Schema.TaggedErrorClass<DuplicateAccessRule>()(
-  "DuplicateAccessRule",
-  { code: Schema.Number, message: Schema.String },
+export class DuplicateAccessRule extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DuplicateAccessRule>()("DuplicateAccessRule", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10009, message: { includes: "duplicate_of_existing" } }],
 ) {}
-T.applyErrorMatchers(DuplicateAccessRule, [
-  { code: 10009, message: { includes: "duplicate_of_existing" } },
-]);
 
-export class DuplicateLockdown extends Schema.TaggedErrorClass<DuplicateLockdown>()(
-  "DuplicateLockdown",
-  { code: Schema.Number, message: Schema.String },
+export class DuplicateLockdown extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DuplicateLockdown>()("DuplicateLockdown", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [
+    {
+      code: 10009,
+      message: { includes: "zonelockdown.api.duplicate_of_existing" },
+    },
+  ],
 ) {}
-T.applyErrorMatchers(DuplicateLockdown, [
-  {
-    code: 10009,
-    message: { includes: "zonelockdown.api.duplicate_of_existing" },
-  },
-]);
 
-export class DuplicateUaRule extends Schema.TaggedErrorClass<DuplicateUaRule>()(
-  "DuplicateUaRule",
-  { code: Schema.Number, message: Schema.String },
+export class DuplicateUaRule extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DuplicateUaRule>()("DuplicateUaRule", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [
+    {
+      code: 10009,
+      message: { includes: "firewalluablock.api.duplicate_of_existing" },
+    },
+  ],
 ) {}
-T.applyErrorMatchers(DuplicateUaRule, [
-  {
-    code: 10009,
-    message: { includes: "firewalluablock.api.duplicate_of_existing" },
-  },
-]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class LockdownNotFound extends Schema.TaggedErrorClass<LockdownNotFound>()(
-  "LockdownNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class LockdownNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<LockdownNotFound>()("LockdownNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [
+    { code: 10001, message: { includes: "zonelockdown.api.not_found" } },
+    { status: 404 },
+  ],
 ) {}
-T.applyErrorMatchers(LockdownNotFound, [
-  { code: 10001, message: { includes: "zonelockdown.api.not_found" } },
-  { status: 404 },
-]);
 
-export class UaRuleNotFound extends Schema.TaggedErrorClass<UaRuleNotFound>()(
-  "UaRuleNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class UaRuleNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<UaRuleNotFound>()("UaRuleNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [
+    { code: 10001, message: { includes: "firewalluablock.api.not_found" } },
+    { status: 404 },
+  ],
 ) {}
-T.applyErrorMatchers(UaRuleNotFound, [
-  { code: 10001, message: { includes: "firewalluablock.api.not_found" } },
-  { status: 404 },
-]);
 
 // =============================================================================
 // AccessRule

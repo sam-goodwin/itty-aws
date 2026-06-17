@@ -16,23 +16,29 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class SendingSubdomainAlreadyExists extends Schema.TaggedErrorClass<SendingSubdomainAlreadyExists>()(
-  "SendingSubdomainAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class SendingSubdomainAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SendingSubdomainAlreadyExists>()(
+    "SendingSubdomainAlreadyExists",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 2040 }],
 ) {}
-T.applyErrorMatchers(SendingSubdomainAlreadyExists, [{ code: 2040 }]);
 
-export class SendingSubdomainNotFound extends Schema.TaggedErrorClass<SendingSubdomainNotFound>()(
-  "SendingSubdomainNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class SendingSubdomainNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SendingSubdomainNotFound>()(
+    "SendingSubdomainNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 2033 }],
 ) {}
-T.applyErrorMatchers(SendingSubdomainNotFound, [{ code: 2033 }]);
 
 // =============================================================================
 // EmailSending

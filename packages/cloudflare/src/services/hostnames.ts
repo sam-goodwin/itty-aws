@@ -16,23 +16,29 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class AdvancedCertificateManagerRequired extends Schema.TaggedErrorClass<AdvancedCertificateManagerRequired>()(
-  "AdvancedCertificateManagerRequired",
-  { code: Schema.Number, message: Schema.String },
+export class AdvancedCertificateManagerRequired extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AdvancedCertificateManagerRequired>()(
+    "AdvancedCertificateManagerRequired",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1450 }],
 ) {}
-T.applyErrorMatchers(AdvancedCertificateManagerRequired, [{ code: 1450 }]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class HostnameTlsSettingNotFound extends Schema.TaggedErrorClass<HostnameTlsSettingNotFound>()(
-  "HostnameTlsSettingNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class HostnameTlsSettingNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<HostnameTlsSettingNotFound>()(
+    "HostnameTlsSettingNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(HostnameTlsSettingNotFound, [{ status: 404 }]);
 
 // =============================================================================
 // SettingTl

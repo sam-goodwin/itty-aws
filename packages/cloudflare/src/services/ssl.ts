@@ -16,26 +16,29 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class AdvancedCertificateManagerRequired extends Schema.TaggedErrorClass<AdvancedCertificateManagerRequired>()(
-  "AdvancedCertificateManagerRequired",
-  { code: Schema.Number, message: Schema.String },
+export class AdvancedCertificateManagerRequired extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AdvancedCertificateManagerRequired>()(
+    "AdvancedCertificateManagerRequired",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1450 }],
 ) {}
-T.applyErrorMatchers(AdvancedCertificateManagerRequired, [{ code: 1450 }]);
 
-export class CertificatePackNotFound extends Schema.TaggedErrorClass<CertificatePackNotFound>()(
-  "CertificatePackNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class CertificatePackNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CertificatePackNotFound>()(
+    "CertificatePackNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1408 }, { status: 404 }],
 ) {}
-T.applyErrorMatchers(CertificatePackNotFound, [
-  { code: 1408 },
-  { status: 404 },
-]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
 // =============================================================================
 // Analyze

@@ -16,59 +16,77 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class DatabaseAlreadyExists extends Schema.TaggedErrorClass<DatabaseAlreadyExists>()(
-  "DatabaseAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class DatabaseAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DatabaseAlreadyExists>()("DatabaseAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7502 }],
 ) {}
-T.applyErrorMatchers(DatabaseAlreadyExists, [{ code: 7502 }]);
 
-export class DatabaseNotFound extends Schema.TaggedErrorClass<DatabaseNotFound>()(
-  "DatabaseNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class DatabaseNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DatabaseNotFound>()("DatabaseNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7404 }],
 ) {}
-T.applyErrorMatchers(DatabaseNotFound, [{ code: 7404 }]);
 
-export class InternalError extends Schema.TaggedErrorClass<InternalError>()(
-  "InternalError",
-  { code: Schema.Number, message: Schema.String },
+export class InternalError extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InternalError>()("InternalError", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7500 }],
 ) {}
-T.applyErrorMatchers(InternalError, [{ code: 7500 }]);
 
-export class InvalidObjectIdentifier extends Schema.TaggedErrorClass<InvalidObjectIdentifier>()(
-  "InvalidObjectIdentifier",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidObjectIdentifier extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidObjectIdentifier>()(
+    "InvalidObjectIdentifier",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 7003 }],
 ) {}
-T.applyErrorMatchers(InvalidObjectIdentifier, [{ code: 7003 }]);
 
-export class InvalidProperty extends Schema.TaggedErrorClass<InvalidProperty>()(
-  "InvalidProperty",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidProperty extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidProperty>()("InvalidProperty", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7400 }],
 ) {}
-T.applyErrorMatchers(InvalidProperty, [{ code: 7400 }]);
 
-export class InvalidRequest extends Schema.TaggedErrorClass<InvalidRequest>()(
-  "InvalidRequest",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidRequest extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidRequest>()("InvalidRequest", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7400 }],
 ) {}
-T.applyErrorMatchers(InvalidRequest, [{ code: 7400 }]);
 
-export class NoHistoryAvailable extends Schema.TaggedErrorClass<NoHistoryAvailable>()(
-  "NoHistoryAvailable",
-  { code: Schema.Number, message: Schema.String },
+export class NoHistoryAvailable extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<NoHistoryAvailable>()("NoHistoryAvailable", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7500 }],
 ) {}
-T.applyErrorMatchers(NoHistoryAvailable, [{ code: 7500 }]);
 
-export class TimestampTooOld extends Schema.TaggedErrorClass<TimestampTooOld>()(
-  "TimestampTooOld",
-  { code: Schema.Number, message: Schema.String },
+export class TimestampTooOld extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TimestampTooOld>()("TimestampTooOld", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7400 }],
 ) {}
-T.applyErrorMatchers(TimestampTooOld, [{ code: 7400 }]);
 
-export class UnknownError extends Schema.TaggedErrorClass<UnknownError>()(
-  "UnknownError",
-  { code: Schema.Number, message: Schema.String },
+export class UnknownError extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<UnknownError>()("UnknownError", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 0 }],
 ) {}
-T.applyErrorMatchers(UnknownError, [{ code: 0 }]);
 
 // =============================================================================
 // BookmarkDatabaseTimeTravel

@@ -16,35 +16,45 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class CertificateAlreadyRevoked extends Schema.TaggedErrorClass<CertificateAlreadyRevoked>()(
-  "CertificateAlreadyRevoked",
-  { code: Schema.Number, message: Schema.String },
+export class CertificateAlreadyRevoked extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CertificateAlreadyRevoked>()(
+    "CertificateAlreadyRevoked",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1014 }],
 ) {}
-T.applyErrorMatchers(CertificateAlreadyRevoked, [{ code: 1014 }]);
 
-export class CertificateNotFound extends Schema.TaggedErrorClass<CertificateNotFound>()(
-  "CertificateNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class CertificateNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CertificateNotFound>()("CertificateNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1101 }],
 ) {}
-T.applyErrorMatchers(CertificateNotFound, [{ code: 1101 }]);
 
-export class CertificateRevocationFailed extends Schema.TaggedErrorClass<CertificateRevocationFailed>()(
-  "CertificateRevocationFailed",
-  { code: Schema.Number, message: Schema.String },
+export class CertificateRevocationFailed extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CertificateRevocationFailed>()(
+    "CertificateRevocationFailed",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1000 }],
 ) {}
-T.applyErrorMatchers(CertificateRevocationFailed, [{ code: 1000 }]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class HostnameNotAuthorized extends Schema.TaggedErrorClass<HostnameNotAuthorized>()(
-  "HostnameNotAuthorized",
-  { code: Schema.Number, message: Schema.String },
+export class HostnameNotAuthorized extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<HostnameNotAuthorized>()("HostnameNotAuthorized", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1010 }],
 ) {}
-T.applyErrorMatchers(HostnameNotAuthorized, [{ code: 1010 }]);
 
 // =============================================================================
 // OriginCaCertificate

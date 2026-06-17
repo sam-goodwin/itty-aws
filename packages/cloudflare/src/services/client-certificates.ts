@@ -16,28 +16,32 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class ClientCertificateAlreadyRevoked extends Schema.TaggedErrorClass<ClientCertificateAlreadyRevoked>()(
-  "ClientCertificateAlreadyRevoked",
-  { code: Schema.Number, message: Schema.String },
+export class ClientCertificateAlreadyRevoked extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ClientCertificateAlreadyRevoked>()(
+    "ClientCertificateAlreadyRevoked",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1407, message: { includes: "already deleted" } }],
 ) {}
-T.applyErrorMatchers(ClientCertificateAlreadyRevoked, [
-  { code: 1407, message: { includes: "already deleted" } },
-]);
 
-export class ClientCertificateNotFound extends Schema.TaggedErrorClass<ClientCertificateNotFound>()(
-  "ClientCertificateNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ClientCertificateNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ClientCertificateNotFound>()(
+    "ClientCertificateNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [
+    { code: 1415, message: { includes: "Invalid Certificate ID" } },
+    { status: 404 },
+  ],
 ) {}
-T.applyErrorMatchers(ClientCertificateNotFound, [
-  { code: 1415, message: { includes: "Invalid Certificate ID" } },
-  { status: 404 },
-]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
 // =============================================================================
 // ClientCertificate

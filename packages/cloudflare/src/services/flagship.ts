@@ -16,29 +16,29 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class FlagshipAppNotFound extends Schema.TaggedErrorClass<FlagshipAppNotFound>()(
-  "FlagshipAppNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class FlagshipAppNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<FlagshipAppNotFound>()("FlagshipAppNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404, message: { includes: "App not found" } }],
 ) {}
-T.applyErrorMatchers(FlagshipAppNotFound, [
-  { status: 404, message: { includes: "App not found" } },
-]);
 
-export class FlagshipFlagAlreadyExists extends Schema.TaggedErrorClass<FlagshipFlagAlreadyExists>()(
-  "FlagshipFlagAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class FlagshipFlagAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<FlagshipFlagAlreadyExists>()(
+    "FlagshipFlagAlreadyExists",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 409, message: { includes: "Flag already exists" } }],
 ) {}
-T.applyErrorMatchers(FlagshipFlagAlreadyExists, [
-  { status: 409, message: { includes: "Flag already exists" } },
-]);
 
-export class FlagshipFlagNotFound extends Schema.TaggedErrorClass<FlagshipFlagNotFound>()(
-  "FlagshipFlagNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class FlagshipFlagNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<FlagshipFlagNotFound>()("FlagshipFlagNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404, message: { includes: "Flag not found" } }],
 ) {}
-T.applyErrorMatchers(FlagshipFlagNotFound, [
-  { status: 404, message: { includes: "Flag not found" } },
-]);
 
 // =============================================================================
 // App

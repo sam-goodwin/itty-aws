@@ -22,16 +22,33 @@ export interface ErrorMatcher {
 }
 
 /**
- * Apply error matchers directly to a class's AST annotations.
- * Used for TaggedErrorClass where .pipe() on a class returns a schema
- * (not a class), breaking `extends ... .pipe(...)`.
+ * Apply error matchers to a class's AST annotations, returning the class so it
+ * can be used directly in an `extends` clause:
+ *
+ * ```ts
+ * export class Foo extends T.applyErrorMatchers(
+ *   Schema.TaggedErrorClass<Foo>()("Foo", { ... }),
+ *   [{ code: 1234 }],
+ * ) {}
+ * ```
+ *
+ * Mutating the base class's annotations propagates to the subclass — Effect's
+ * Class API reuses the same AST reference — so matchers stay readable via
+ * `getErrorMatchers(Foo.ast)`. Returning the class (instead of running as a
+ * void top-level statement) keeps the module free of bare side-effect
+ * statements, so the bundler can tree-shake unused error classes out of Worker
+ * bundles.
+ *
+ * `.pipe()` is deliberately not used: piping a class returns a schema (not a
+ * class), which can't appear in an `extends` clause.
  */
-export const applyErrorMatchers = (
-  cls: { ast: AST.AST },
+export const applyErrorMatchers = <C extends { ast: AST.AST }>(
+  cls: C,
   matchers: ErrorMatcher[],
-): void => {
+): C => {
   const annotations = cls.ast.annotations as Record<symbol, unknown>;
   annotations[errorMatchersSymbol] = matchers;
+  return cls;
 };
 
 export const getErrorMatchers = (ast: AST.AST) =>

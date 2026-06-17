@@ -17,47 +17,61 @@ import { UploadableSchema } from "../schemas.ts";
 // Errors
 // =============================================================================
 
-export class ActiveProductionDeployment extends Schema.TaggedErrorClass<ActiveProductionDeployment>()(
-  "ActiveProductionDeployment",
-  { code: Schema.Number, message: Schema.String },
+export class ActiveProductionDeployment extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ActiveProductionDeployment>()(
+    "ActiveProductionDeployment",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 8000034 }],
 ) {}
-T.applyErrorMatchers(ActiveProductionDeployment, [{ code: 8000034 }]);
 
-export class DeploymentNotFound extends Schema.TaggedErrorClass<DeploymentNotFound>()(
-  "DeploymentNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class DeploymentNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DeploymentNotFound>()("DeploymentNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 8000009 }],
 ) {}
-T.applyErrorMatchers(DeploymentNotFound, [{ code: 8000009 }]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class PagesDomainAlreadyExists extends Schema.TaggedErrorClass<PagesDomainAlreadyExists>()(
-  "PagesDomainAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class PagesDomainAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<PagesDomainAlreadyExists>()(
+    "PagesDomainAlreadyExists",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 8000018 }],
 ) {}
-T.applyErrorMatchers(PagesDomainAlreadyExists, [{ code: 8000018 }]);
 
-export class PagesDomainNotFound extends Schema.TaggedErrorClass<PagesDomainNotFound>()(
-  "PagesDomainNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class PagesDomainNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<PagesDomainNotFound>()("PagesDomainNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 8000021 }],
 ) {}
-T.applyErrorMatchers(PagesDomainNotFound, [{ code: 8000021 }]);
 
-export class ProjectAlreadyExists extends Schema.TaggedErrorClass<ProjectAlreadyExists>()(
-  "ProjectAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class ProjectAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ProjectAlreadyExists>()("ProjectAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 8000002 }],
 ) {}
-T.applyErrorMatchers(ProjectAlreadyExists, [{ code: 8000002 }]);
 
-export class ProjectNotFound extends Schema.TaggedErrorClass<ProjectNotFound>()(
-  "ProjectNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ProjectNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ProjectNotFound>()("ProjectNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 8000007 }],
 ) {}
-T.applyErrorMatchers(ProjectNotFound, [{ code: 8000007 }]);
 
 // =============================================================================
 // BuildCacheProject

@@ -16,25 +16,29 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class HealthcheckAlreadyExists extends Schema.TaggedErrorClass<HealthcheckAlreadyExists>()(
-  "HealthcheckAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class HealthcheckAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<HealthcheckAlreadyExists>()(
+    "HealthcheckAlreadyExists",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ message: { includes: "already exists" } }],
 ) {}
-T.applyErrorMatchers(HealthcheckAlreadyExists, [
-  { message: { includes: "already exists" } },
-]);
 
-export class HealthcheckNotFound extends Schema.TaggedErrorClass<HealthcheckNotFound>()(
-  "HealthcheckNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class HealthcheckNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<HealthcheckNotFound>()("HealthcheckNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(HealthcheckNotFound, [{ status: 404 }]);
 
 // =============================================================================
 // Healthcheck

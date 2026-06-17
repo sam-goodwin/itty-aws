@@ -16,45 +16,53 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
-  "InvalidRoute",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidRoute extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7003 }],
 ) {}
-T.applyErrorMatchers(InvalidRoute, [{ code: 7003 }]);
 
-export class InvalidTokenName extends Schema.TaggedErrorClass<InvalidTokenName>()(
-  "InvalidTokenName",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidTokenName extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidTokenName>()("InvalidTokenName", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 400, message: { includes: "name must have a length" } }],
 ) {}
-T.applyErrorMatchers(InvalidTokenName, [
-  { code: 400, message: { includes: "name must have a length" } },
-]);
 
-export class MethodNotAllowed extends Schema.TaggedErrorClass<MethodNotAllowed>()(
-  "MethodNotAllowed",
-  { code: Schema.Number, message: Schema.String },
+export class MethodNotAllowed extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MethodNotAllowed>()("MethodNotAllowed", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7001 }],
 ) {}
-T.applyErrorMatchers(MethodNotAllowed, [{ code: 7001 }]);
 
-export class PermissionGroupNotFound extends Schema.TaggedErrorClass<PermissionGroupNotFound>()(
-  "PermissionGroupNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class PermissionGroupNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<PermissionGroupNotFound>()(
+    "PermissionGroupNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1001, message: { includes: "Permission group" } }],
 ) {}
-T.applyErrorMatchers(PermissionGroupNotFound, [
-  { code: 1001, message: { includes: "Permission group" } },
-]);
 
-export class TokenNotFound extends Schema.TaggedErrorClass<TokenNotFound>()(
-  "TokenNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class TokenNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TokenNotFound>()("TokenNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1003 }],
 ) {}
-T.applyErrorMatchers(TokenNotFound, [{ code: 1003 }]);
 
 // =============================================================================
 // AuditLog

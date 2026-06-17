@@ -16,31 +16,37 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class InvalidWeb3HostnameTarget extends Schema.TaggedErrorClass<InvalidWeb3HostnameTarget>()(
-  "InvalidWeb3HostnameTarget",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidWeb3HostnameTarget extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidWeb3HostnameTarget>()(
+    "InvalidWeb3HostnameTarget",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1006 }],
 ) {}
-T.applyErrorMatchers(InvalidWeb3HostnameTarget, [{ code: 1006 }]);
 
-export class Web3HostnameNotEntitled extends Schema.TaggedErrorClass<Web3HostnameNotEntitled>()(
-  "Web3HostnameNotEntitled",
-  { code: Schema.Number, message: Schema.String },
+export class Web3HostnameNotEntitled extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Web3HostnameNotEntitled>()(
+    "Web3HostnameNotEntitled",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1010, message: { includes: "not entitled" } }],
 ) {}
-T.applyErrorMatchers(Web3HostnameNotEntitled, [
-  { code: 1010, message: { includes: "not entitled" } },
-]);
 
-export class Web3HostnameNotFound extends Schema.TaggedErrorClass<Web3HostnameNotFound>()(
-  "Web3HostnameNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class Web3HostnameNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Web3HostnameNotFound>()("Web3HostnameNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1002 }],
 ) {}
-T.applyErrorMatchers(Web3HostnameNotFound, [{ code: 1002 }]);
 
 // =============================================================================
 // Hostname

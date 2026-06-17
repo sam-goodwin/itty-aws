@@ -17,169 +17,206 @@ import { UploadableSchema } from "../schemas.ts";
 // Errors
 // =============================================================================
 
-export class ContentTypeRequired extends Schema.TaggedErrorClass<ContentTypeRequired>()(
-  "ContentTypeRequired",
-  { code: Schema.Number, message: Schema.String },
+export class ContentTypeRequired extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ContentTypeRequired>()("ContentTypeRequired", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10001 }],
 ) {}
-T.applyErrorMatchers(ContentTypeRequired, [{ code: 10001 }]);
 
-export class DeploymentNotFound extends Schema.TaggedErrorClass<DeploymentNotFound>()(
-  "DeploymentNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class DeploymentNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DeploymentNotFound>()("DeploymentNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10336 }],
 ) {}
-T.applyErrorMatchers(DeploymentNotFound, [{ code: 10336 }]);
 
-export class DomainNotFound extends Schema.TaggedErrorClass<DomainNotFound>()(
-  "DomainNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class DomainNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DomainNotFound>()("DomainNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 100114 }],
 ) {}
-T.applyErrorMatchers(DomainNotFound, [{ code: 100114 }]);
 
-export class DuplicateMigrationTarget extends Schema.TaggedErrorClass<DuplicateMigrationTarget>()(
-  "DuplicateMigrationTarget",
-  { code: Schema.Number, message: Schema.String },
+export class DuplicateMigrationTarget extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DuplicateMigrationTarget>()(
+    "DuplicateMigrationTarget",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [
+    {
+      code: 10074,
+      message: { includes: "cannot be the target of more than one migration" },
+    },
+  ],
 ) {}
-T.applyErrorMatchers(DuplicateMigrationTarget, [
-  {
-    code: 10074,
-    message: { includes: "cannot be the target of more than one migration" },
-  },
-]);
 
-export class DurableObjectMustBeSqlite extends Schema.TaggedErrorClass<DurableObjectMustBeSqlite>()(
-  "DurableObjectMustBeSqlite",
-  { code: Schema.Number, message: Schema.String },
+export class DurableObjectMustBeSqlite extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DurableObjectMustBeSqlite>()(
+    "DurableObjectMustBeSqlite",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 10074, message: { includes: "not a SQLite Durable Object" } }],
 ) {}
-T.applyErrorMatchers(DurableObjectMustBeSqlite, [
-  { code: 10074, message: { includes: "not a SQLite Durable Object" } },
-]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class HostnameAlreadyInUse extends Schema.TaggedErrorClass<HostnameAlreadyInUse>()(
-  "HostnameAlreadyInUse",
-  { code: Schema.Number, message: Schema.String },
+export class HostnameAlreadyInUse extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<HostnameAlreadyInUse>()("HostnameAlreadyInUse", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 100116 }],
 ) {}
-T.applyErrorMatchers(HostnameAlreadyInUse, [{ code: 100116 }]);
 
 T.applyErrorMatchers(InternalServerError, [
   { code: 10002, message: { includes: "An unknown error has occurred" } },
 ]);
 
-export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
-  "InvalidRoute",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidRoute extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7003 }, { code: 7003, message: { includes: "Could not route" } }],
 ) {}
-T.applyErrorMatchers(InvalidRoute, [
-  { code: 7003 },
-  { code: 7003, message: { includes: "Could not route" } },
-]);
 
-export class InvalidRoutePattern extends Schema.TaggedErrorClass<InvalidRoutePattern>()(
-  "InvalidRoutePattern",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidRoutePattern extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidRoutePattern>()("InvalidRoutePattern", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10022 }],
 ) {}
-T.applyErrorMatchers(InvalidRoutePattern, [{ code: 10022 }]);
 
-export class InvalidWorkerScript extends Schema.TaggedErrorClass<InvalidWorkerScript>()(
-  "InvalidWorkerScript",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidWorkerScript extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidWorkerScript>()("InvalidWorkerScript", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10068 }],
 ) {}
-T.applyErrorMatchers(InvalidWorkerScript, [{ code: 10068 }]);
 
-export class ObservabilityDestinationCreateFailed extends Schema.TaggedErrorClass<ObservabilityDestinationCreateFailed>()(
-  "ObservabilityDestinationCreateFailed",
-  { code: Schema.Number, message: Schema.String },
+export class ObservabilityDestinationCreateFailed extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ObservabilityDestinationCreateFailed>()(
+    "ObservabilityDestinationCreateFailed",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 400, message: "Bad Request" }],
 ) {}
-T.applyErrorMatchers(ObservabilityDestinationCreateFailed, [
-  { status: 400, message: "Bad Request" },
-]);
 
-export class ObservabilityDestinationNotFound extends Schema.TaggedErrorClass<ObservabilityDestinationNotFound>()(
-  "ObservabilityDestinationNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ObservabilityDestinationNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ObservabilityDestinationNotFound>()(
+    "ObservabilityDestinationNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(ObservabilityDestinationNotFound, [{ status: 404 }]);
 
-export class ObservabilityDestinationPreflightFailed extends Schema.TaggedErrorClass<ObservabilityDestinationPreflightFailed>()(
-  "ObservabilityDestinationPreflightFailed",
-  { code: Schema.Number, message: Schema.String },
+export class ObservabilityDestinationPreflightFailed extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ObservabilityDestinationPreflightFailed>()(
+    "ObservabilityDestinationPreflightFailed",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 400, message: "Bad Request" }],
 ) {}
-T.applyErrorMatchers(ObservabilityDestinationPreflightFailed, [
-  { status: 400, message: "Bad Request" },
-]);
 
-export class QueueConsumerConflict extends Schema.TaggedErrorClass<QueueConsumerConflict>()(
-  "QueueConsumerConflict",
-  { code: Schema.Number, message: Schema.String },
+export class QueueConsumerConflict extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<QueueConsumerConflict>()("QueueConsumerConflict", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10064 }],
 ) {}
-T.applyErrorMatchers(QueueConsumerConflict, [{ code: 10064 }]);
 
-export class RouteNotFound extends Schema.TaggedErrorClass<RouteNotFound>()(
-  "RouteNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class RouteNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<RouteNotFound>()("RouteNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10009 }, { status: 404 }],
 ) {}
-T.applyErrorMatchers(RouteNotFound, [{ code: 10009 }, { status: 404 }]);
 
-export class ScriptModuleNotFound extends Schema.TaggedErrorClass<ScriptModuleNotFound>()(
-  "ScriptModuleNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ScriptModuleNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ScriptModuleNotFound>()("ScriptModuleNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10021, message: { includes: "No such module" } }],
 ) {}
-T.applyErrorMatchers(ScriptModuleNotFound, [
-  { code: 10021, message: { includes: "No such module" } },
-]);
 
-export class ScriptStartupError extends Schema.TaggedErrorClass<ScriptStartupError>()(
-  "ScriptStartupError",
-  { code: Schema.Number, message: Schema.String },
+export class ScriptStartupError extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ScriptStartupError>()("ScriptStartupError", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10021 }],
 ) {}
-T.applyErrorMatchers(ScriptStartupError, [{ code: 10021 }]);
 
-export class SecretNotFound extends Schema.TaggedErrorClass<SecretNotFound>()(
-  "SecretNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class SecretNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SecretNotFound>()("SecretNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10056 }],
 ) {}
-T.applyErrorMatchers(SecretNotFound, [{ code: 10056 }]);
 
-export class ServiceBindingConflict extends Schema.TaggedErrorClass<ServiceBindingConflict>()(
-  "ServiceBindingConflict",
-  { code: Schema.Number, message: Schema.String },
+export class ServiceBindingConflict extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ServiceBindingConflict>()("ServiceBindingConflict", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10142 }],
 ) {}
-T.applyErrorMatchers(ServiceBindingConflict, [{ code: 10142 }]);
 
-export class SubdomainAlreadyExists extends Schema.TaggedErrorClass<SubdomainAlreadyExists>()(
-  "SubdomainAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class SubdomainAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SubdomainAlreadyExists>()("SubdomainAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10036 }],
 ) {}
-T.applyErrorMatchers(SubdomainAlreadyExists, [{ code: 10036 }]);
 
-export class SubdomainNotFound extends Schema.TaggedErrorClass<SubdomainNotFound>()(
-  "SubdomainNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class SubdomainNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SubdomainNotFound>()("SubdomainNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(SubdomainNotFound, [{ status: 404 }]);
 
-export class VersionNotFound extends Schema.TaggedErrorClass<VersionNotFound>()(
-  "VersionNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class VersionNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<VersionNotFound>()("VersionNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 100146 }],
 ) {}
-T.applyErrorMatchers(VersionNotFound, [{ code: 100146 }]);
 
-export class WorkerNotFound extends Schema.TaggedErrorClass<WorkerNotFound>()(
-  "WorkerNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class WorkerNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<WorkerNotFound>()("WorkerNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10007 }],
 ) {}
-T.applyErrorMatchers(WorkerNotFound, [{ code: 10007 }]);
 
-export class WorkerVersionNotFound extends Schema.TaggedErrorClass<WorkerVersionNotFound>()(
-  "WorkerVersionNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class WorkerVersionNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<WorkerVersionNotFound>()("WorkerVersionNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10071 }],
 ) {}
-T.applyErrorMatchers(WorkerVersionNotFound, [{ code: 10071 }]);
 
 // =============================================================================
 // AccountSetting

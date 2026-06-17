@@ -3219,11 +3219,19 @@ function generateServiceFile(
           `T.applyErrorMatchers(${tag}, ${JSON.stringify(matchers)});`,
         );
       } else {
-        lines.push(`export class ${tag} extends Schema.TaggedErrorClass<${tag}>()(
-  "${tag}",
-  { code: Schema.Number, message: Schema.String },
-) {}
-T.applyErrorMatchers(${tag}, ${JSON.stringify(matchers)});`);
+        // Wrap the base class with `applyErrorMatchers` inside the `extends`
+        // clause rather than emitting a separate top-level
+        // `applyErrorMatchers(Tag, ...)` statement. A bare top-level call is a
+        // module side effect that keeps the whole service module (and its
+        // distilled imports) alive in Worker bundles even when none of its
+        // exports are used; wrapping keeps the module tree-shakeable.
+        lines.push(`export class ${tag} extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<${tag}>()(
+    "${tag}",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  ${JSON.stringify(matchers)},
+) {}`);
       }
       lines.push("");
     }

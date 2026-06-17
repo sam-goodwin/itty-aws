@@ -16,91 +16,101 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class DatasetNameAlreadyExists extends Schema.TaggedErrorClass<DatasetNameAlreadyExists>()(
-  "DatasetNameAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class DatasetNameAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DatasetNameAlreadyExists>()(
+    "DatasetNameAlreadyExists",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 400, message: { includes: "already exists" } }],
 ) {}
-T.applyErrorMatchers(DatasetNameAlreadyExists, [
-  { status: 400, message: { includes: "already exists" } },
-]);
 
-export class DatasetNotFound extends Schema.TaggedErrorClass<DatasetNotFound>()(
-  "DatasetNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class DatasetNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DatasetNotFound>()("DatasetNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7002 }],
 ) {}
-T.applyErrorMatchers(DatasetNotFound, [{ code: 7002 }]);
 
-export class EvaluationNameAlreadyExists extends Schema.TaggedErrorClass<EvaluationNameAlreadyExists>()(
-  "EvaluationNameAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class EvaluationNameAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<EvaluationNameAlreadyExists>()(
+    "EvaluationNameAlreadyExists",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 400, message: { includes: "already exists" } }],
 ) {}
-T.applyErrorMatchers(EvaluationNameAlreadyExists, [
-  { status: 400, message: { includes: "already exists" } },
-]);
 
-export class EvaluationNotFound extends Schema.TaggedErrorClass<EvaluationNotFound>()(
-  "EvaluationNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class EvaluationNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<EvaluationNotFound>()("EvaluationNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7002 }],
 ) {}
-T.applyErrorMatchers(EvaluationNotFound, [{ code: 7002 }]);
 
-export class GatewayAlreadyExists extends Schema.TaggedErrorClass<GatewayAlreadyExists>()(
-  "GatewayAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class GatewayAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<GatewayAlreadyExists>()("GatewayAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7001 }, { status: 504 }],
 ) {}
-T.applyErrorMatchers(GatewayAlreadyExists, [{ code: 7001 }, { status: 504 }]);
 
-export class GatewayNotFound extends Schema.TaggedErrorClass<GatewayNotFound>()(
-  "GatewayNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class GatewayNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<GatewayNotFound>()("GatewayNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7002 }],
 ) {}
-T.applyErrorMatchers(GatewayNotFound, [{ code: 7002 }]);
 
-export class NoManualTopup extends Schema.TaggedErrorClass<NoManualTopup>()(
-  "NoManualTopup",
-  { code: Schema.Number, message: Schema.String },
+export class NoManualTopup extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<NoManualTopup>()("NoManualTopup", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1000, message: { includes: "NO_MANUAL_TOPUP" } }],
 ) {}
-T.applyErrorMatchers(NoManualTopup, [
-  { code: 1000, message: { includes: "NO_MANUAL_TOPUP" } },
-]);
 
-export class ProviderConfigAlreadyExists extends Schema.TaggedErrorClass<ProviderConfigAlreadyExists>()(
-  "ProviderConfigAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class ProviderConfigAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ProviderConfigAlreadyExists>()(
+    "ProviderConfigAlreadyExists",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 7001, message: { includes: "already exists" } }],
 ) {}
-T.applyErrorMatchers(ProviderConfigAlreadyExists, [
-  { code: 7001, message: { includes: "already exists" } },
-]);
 
-export class ProviderConfigNotFound extends Schema.TaggedErrorClass<ProviderConfigNotFound>()(
-  "ProviderConfigNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ProviderConfigNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ProviderConfigNotFound>()("ProviderConfigNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7002 }],
 ) {}
-T.applyErrorMatchers(ProviderConfigNotFound, [{ code: 7002 }]);
 
-export class ProviderConfigSecretNotFound extends Schema.TaggedErrorClass<ProviderConfigSecretNotFound>()(
-  "ProviderConfigSecretNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ProviderConfigSecretNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ProviderConfigSecretNotFound>()(
+    "ProviderConfigSecretNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 7001, message: { includes: "was not found" } }],
 ) {}
-T.applyErrorMatchers(ProviderConfigSecretNotFound, [
-  { code: 7001, message: { includes: "was not found" } },
-]);
 
-export class RouteAlreadyExists extends Schema.TaggedErrorClass<RouteAlreadyExists>()(
-  "RouteAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class RouteAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<RouteAlreadyExists>()("RouteAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7005, message: { includes: "already exists" } }],
 ) {}
-T.applyErrorMatchers(RouteAlreadyExists, [
-  { code: 7005, message: { includes: "already exists" } },
-]);
 
-export class RouteNotFound extends Schema.TaggedErrorClass<RouteNotFound>()(
-  "RouteNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class RouteNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<RouteNotFound>()("RouteNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7005, message: { includes: "not found" } }],
 ) {}
-T.applyErrorMatchers(RouteNotFound, [
-  { code: 7005, message: { includes: "not found" } },
-]);
 
 // =============================================================================
 // AiGateway

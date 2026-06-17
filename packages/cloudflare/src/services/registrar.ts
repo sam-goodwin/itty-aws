@@ -16,29 +16,35 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class RegistrarDomainNotOwned extends Schema.TaggedErrorClass<RegistrarDomainNotOwned>()(
-  "RegistrarDomainNotOwned",
-  { code: Schema.Number, message: Schema.String },
+export class RegistrarDomainNotOwned extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<RegistrarDomainNotOwned>()(
+    "RegistrarDomainNotOwned",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [
+    {
+      code: 10000,
+      status: 403,
+      message: { includes: "Domain doesn't belong to the user" },
+    },
+  ],
 ) {}
-T.applyErrorMatchers(RegistrarDomainNotOwned, [
-  {
-    code: 10000,
-    status: 403,
-    message: { includes: "Domain doesn't belong to the user" },
-  },
-]);
 
-export class RegistrarUpdateNotAllowed extends Schema.TaggedErrorClass<RegistrarUpdateNotAllowed>()(
-  "RegistrarUpdateNotAllowed",
-  { code: Schema.Number, message: Schema.String },
+export class RegistrarUpdateNotAllowed extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<RegistrarUpdateNotAllowed>()(
+    "RegistrarUpdateNotAllowed",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 422 }],
 ) {}
-T.applyErrorMatchers(RegistrarUpdateNotAllowed, [{ status: 422 }]);
 
 // =============================================================================
 // Domain

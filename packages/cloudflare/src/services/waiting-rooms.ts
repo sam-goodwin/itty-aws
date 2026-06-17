@@ -16,23 +16,29 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class WaitingRoomNotFound extends Schema.TaggedErrorClass<WaitingRoomNotFound>()(
-  "WaitingRoomNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class WaitingRoomNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<WaitingRoomNotFound>()("WaitingRoomNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1001 }],
 ) {}
-T.applyErrorMatchers(WaitingRoomNotFound, [{ code: 1001 }]);
 
-export class ZoneNotEntitled extends Schema.TaggedErrorClass<ZoneNotEntitled>()(
-  "ZoneNotEntitled",
-  { code: Schema.Number, message: Schema.String },
+export class ZoneNotEntitled extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ZoneNotEntitled>()("ZoneNotEntitled", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1034 }],
 ) {}
-T.applyErrorMatchers(ZoneNotEntitled, [{ code: 1034 }]);
 
 // =============================================================================
 // Event

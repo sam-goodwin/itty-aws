@@ -16,26 +16,29 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class JobNotFound extends Schema.TaggedErrorClass<JobNotFound>()(
-  "JobNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class JobNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<JobNotFound>()("JobNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1000, message: { includes: "job not found" } }, { status: 404 }],
 ) {}
-T.applyErrorMatchers(JobNotFound, [
-  { code: 1000, message: { includes: "job not found" } },
-  { status: 404 },
-]);
 
-export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
-  code: Schema.Number,
-  message: Schema.String,
-}) {}
-T.applyErrorMatchers(NotFound, [{ status: 404 }]);
+export class NotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<NotFound>()("NotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
+) {}
 
 // =============================================================================
 // DatasetField

@@ -16,41 +16,53 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class AdvancedCertificateManagerRequired extends Schema.TaggedErrorClass<AdvancedCertificateManagerRequired>()(
-  "AdvancedCertificateManagerRequired",
-  { code: Schema.Number, message: Schema.String },
+export class AdvancedCertificateManagerRequired extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AdvancedCertificateManagerRequired>()(
+    "AdvancedCertificateManagerRequired",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1450 }],
 ) {}
-T.applyErrorMatchers(AdvancedCertificateManagerRequired, [{ code: 1450 }]);
 
-export class CustomTrustStoreNotFound extends Schema.TaggedErrorClass<CustomTrustStoreNotFound>()(
-  "CustomTrustStoreNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class CustomTrustStoreNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CustomTrustStoreNotFound>()(
+    "CustomTrustStoreNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(CustomTrustStoreNotFound, [{ status: 404 }]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class InvalidObjectIdentifier extends Schema.TaggedErrorClass<InvalidObjectIdentifier>()(
-  "InvalidObjectIdentifier",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidObjectIdentifier extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidObjectIdentifier>()(
+    "InvalidObjectIdentifier",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 7003 }],
 ) {}
-T.applyErrorMatchers(InvalidObjectIdentifier, [{ code: 7003 }]);
 
-export class NoStateChange extends Schema.TaggedErrorClass<NoStateChange>()(
-  "NoStateChange",
-  { code: Schema.Number, message: Schema.String },
+export class NoStateChange extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<NoStateChange>()("NoStateChange", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1467 }],
 ) {}
-T.applyErrorMatchers(NoStateChange, [{ code: 1467 }]);
 
-export class PreviousJobInProgress extends Schema.TaggedErrorClass<PreviousJobInProgress>()(
-  "PreviousJobInProgress",
-  { code: Schema.Number, message: Schema.String },
+export class PreviousJobInProgress extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<PreviousJobInProgress>()("PreviousJobInProgress", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1482 }],
 ) {}
-T.applyErrorMatchers(PreviousJobInProgress, [{ code: 1482 }]);
 
 // =============================================================================
 // CustomTrustStore

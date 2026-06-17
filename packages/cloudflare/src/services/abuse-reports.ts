@@ -16,23 +16,29 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class AbuseReportNotFound extends Schema.TaggedErrorClass<AbuseReportNotFound>()(
-  "AbuseReportNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class AbuseReportNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AbuseReportNotFound>()("AbuseReportNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 0 }],
 ) {}
-T.applyErrorMatchers(AbuseReportNotFound, [{ code: 0 }]);
 
-export class InvalidAccountId extends Schema.TaggedErrorClass<InvalidAccountId>()(
-  "InvalidAccountId",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidAccountId extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidAccountId>()("InvalidAccountId", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7003 }],
 ) {}
-T.applyErrorMatchers(InvalidAccountId, [{ code: 7003 }]);
 
-export class InvalidRequest extends Schema.TaggedErrorClass<InvalidRequest>()(
-  "InvalidRequest",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidRequest extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidRequest>()("InvalidRequest", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7003 }],
 ) {}
-T.applyErrorMatchers(InvalidRequest, [{ code: 7003 }]);
 
 // =============================================================================
 // AbuseReport

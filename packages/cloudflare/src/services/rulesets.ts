@@ -17,26 +17,29 @@ import { SensitiveString } from "../sensitive.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class PhaseNotEntitled extends Schema.TaggedErrorClass<PhaseNotEntitled>()(
-  "PhaseNotEntitled",
-  { code: Schema.Number, message: Schema.String },
+export class PhaseNotEntitled extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<PhaseNotEntitled>()("PhaseNotEntitled", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 50002 }, { status: 400, message: { includes: "not entitled" } }],
 ) {}
-T.applyErrorMatchers(PhaseNotEntitled, [
-  { code: 50002 },
-  { status: 400, message: { includes: "not entitled" } },
-]);
 
-export class RulesetNotFound extends Schema.TaggedErrorClass<RulesetNotFound>()(
-  "RulesetNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class RulesetNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<RulesetNotFound>()("RulesetNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10003 }, { code: 10001 }],
 ) {}
-T.applyErrorMatchers(RulesetNotFound, [{ code: 10003 }, { code: 10001 }]);
 
 // =============================================================================
 // Pha

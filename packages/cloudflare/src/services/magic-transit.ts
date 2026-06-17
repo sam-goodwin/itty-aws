@@ -16,71 +16,93 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class AppNotFound extends Schema.TaggedErrorClass<AppNotFound>()(
-  "AppNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class AppNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AppNotFound>()("AppNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(AppNotFound, [{ status: 404 }]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class GreTunnelNotFound extends Schema.TaggedErrorClass<GreTunnelNotFound>()(
-  "GreTunnelNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class GreTunnelNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<GreTunnelNotFound>()("GreTunnelNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1029 }],
 ) {}
-T.applyErrorMatchers(GreTunnelNotFound, [{ code: 1029 }]);
 
-export class IpsecTunnelNotFound extends Schema.TaggedErrorClass<IpsecTunnelNotFound>()(
-  "IpsecTunnelNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class IpsecTunnelNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<IpsecTunnelNotFound>()("IpsecTunnelNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1032 }],
 ) {}
-T.applyErrorMatchers(IpsecTunnelNotFound, [{ code: 1032 }]);
 
-export class MagicTransitNotOnboarded extends Schema.TaggedErrorClass<MagicTransitNotOnboarded>()(
-  "MagicTransitNotOnboarded",
-  { code: Schema.Number, message: Schema.String },
+export class MagicTransitNotOnboarded extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MagicTransitNotOnboarded>()(
+    "MagicTransitNotOnboarded",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1012 }],
 ) {}
-T.applyErrorMatchers(MagicTransitNotOnboarded, [{ code: 1012 }]);
 
-export class MagicWanUnauthorized extends Schema.TaggedErrorClass<MagicWanUnauthorized>()(
-  "MagicWanUnauthorized",
-  { code: Schema.Number, message: Schema.String },
+export class MagicWanUnauthorized extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MagicWanUnauthorized>()("MagicWanUnauthorized", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1025 }],
 ) {}
-T.applyErrorMatchers(MagicWanUnauthorized, [{ code: 1025 }]);
 
-export class RouteNotFound extends Schema.TaggedErrorClass<RouteNotFound>()(
-  "RouteNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class RouteNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<RouteNotFound>()("RouteNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1020 }],
 ) {}
-T.applyErrorMatchers(RouteNotFound, [{ code: 1020 }]);
 
-export class SiteAclNotFound extends Schema.TaggedErrorClass<SiteAclNotFound>()(
-  "SiteAclNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class SiteAclNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SiteAclNotFound>()("SiteAclNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(SiteAclNotFound, [{ status: 404 }]);
 
-export class SiteLanNotFound extends Schema.TaggedErrorClass<SiteLanNotFound>()(
-  "SiteLanNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class SiteLanNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SiteLanNotFound>()("SiteLanNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(SiteLanNotFound, [{ status: 404 }]);
 
-export class SiteNotFound extends Schema.TaggedErrorClass<SiteNotFound>()(
-  "SiteNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class SiteNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SiteNotFound>()("SiteNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(SiteNotFound, [{ status: 404 }]);
 
-export class SiteWanNotFound extends Schema.TaggedErrorClass<SiteWanNotFound>()(
-  "SiteWanNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class SiteWanNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SiteWanNotFound>()("SiteWanNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(SiteWanNotFound, [{ status: 404 }]);
 
 // =============================================================================
 // App

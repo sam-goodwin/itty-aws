@@ -16,47 +16,61 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class InvalidCredential extends Schema.TaggedErrorClass<InvalidCredential>()(
-  "InvalidCredential",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidCredential extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidCredential>()("InvalidCredential", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 30004 }, { code: 30005 }],
 ) {}
-T.applyErrorMatchers(InvalidCredential, [{ code: 30004 }, { code: 30005 }]);
 
-export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
-  "InvalidRoute",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidRoute extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7003 }],
 ) {}
-T.applyErrorMatchers(InvalidRoute, [{ code: 7003 }]);
 
-export class NoSuchBucket extends Schema.TaggedErrorClass<NoSuchBucket>()(
-  "NoSuchBucket",
-  { code: Schema.Number, message: Schema.String },
+export class NoSuchBucket extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<NoSuchBucket>()("NoSuchBucket", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10006 }, { code: 40406 }],
 ) {}
-T.applyErrorMatchers(NoSuchBucket, [{ code: 10006 }, { code: 40406 }]);
 
-export class TableNotFound extends Schema.TaggedErrorClass<TableNotFound>()(
-  "TableNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class TableNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TableNotFound>()("TableNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10001 }, { code: 40403 }],
 ) {}
-T.applyErrorMatchers(TableNotFound, [{ code: 10001 }, { code: 40403 }]);
 
-export class WarehouseInactive extends Schema.TaggedErrorClass<WarehouseInactive>()(
-  "WarehouseInactive",
-  { code: Schema.Number, message: Schema.String },
+export class WarehouseInactive extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<WarehouseInactive>()("WarehouseInactive", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 40402 }],
 ) {}
-T.applyErrorMatchers(WarehouseInactive, [{ code: 40402 }]);
 
-export class WarehouseNotFound extends Schema.TaggedErrorClass<WarehouseNotFound>()(
-  "WarehouseNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class WarehouseNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<WarehouseNotFound>()("WarehouseNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 40401 }],
 ) {}
-T.applyErrorMatchers(WarehouseNotFound, [{ code: 40401 }]);
 
 // =============================================================================
 // Credential

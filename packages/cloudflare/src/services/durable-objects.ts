@@ -16,23 +16,29 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class InvalidIdentifier extends Schema.TaggedErrorClass<InvalidIdentifier>()(
-  "InvalidIdentifier",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidIdentifier extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidIdentifier>()("InvalidIdentifier", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7003 }],
 ) {}
-T.applyErrorMatchers(InvalidIdentifier, [{ code: 7003 }]);
 
-export class MalformedParameter extends Schema.TaggedErrorClass<MalformedParameter>()(
-  "MalformedParameter",
-  { code: Schema.Number, message: Schema.String },
+export class MalformedParameter extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MalformedParameter>()("MalformedParameter", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10077 }],
 ) {}
-T.applyErrorMatchers(MalformedParameter, [{ code: 10077 }]);
 
-export class NamespaceNotFound extends Schema.TaggedErrorClass<NamespaceNotFound>()(
-  "NamespaceNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class NamespaceNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<NamespaceNotFound>()("NamespaceNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10066 }],
 ) {}
-T.applyErrorMatchers(NamespaceNotFound, [{ code: 10066 }]);
 
 // =============================================================================
 // Namespace

@@ -16,121 +16,145 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class ConsumerAlreadyExists extends Schema.TaggedErrorClass<ConsumerAlreadyExists>()(
-  "ConsumerAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class ConsumerAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ConsumerAlreadyExists>()("ConsumerAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 11004 }],
 ) {}
-T.applyErrorMatchers(ConsumerAlreadyExists, [{ code: 11004 }]);
 
-export class ConsumerNotFound extends Schema.TaggedErrorClass<ConsumerNotFound>()(
-  "ConsumerNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ConsumerNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ConsumerNotFound>()("ConsumerNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10013 }, { code: 10105 }, { code: 11006 }],
 ) {}
-T.applyErrorMatchers(ConsumerNotFound, [
-  { code: 10013 },
-  { code: 10105 },
-  { code: 11006 },
-]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class InvalidMessageBody extends Schema.TaggedErrorClass<InvalidMessageBody>()(
-  "InvalidMessageBody",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidMessageBody extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidMessageBody>()("InvalidMessageBody", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10207 }, { code: 10013 }],
 ) {}
-T.applyErrorMatchers(InvalidMessageBody, [{ code: 10207 }, { code: 10013 }]);
 
-export class InvalidQueueId extends Schema.TaggedErrorClass<InvalidQueueId>()(
-  "InvalidQueueId",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidQueueId extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidQueueId>()("InvalidQueueId", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10107 }],
 ) {}
-T.applyErrorMatchers(InvalidQueueId, [{ code: 10107 }]);
 
-export class InvalidQueueName extends Schema.TaggedErrorClass<InvalidQueueName>()(
-  "InvalidQueueName",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidQueueName extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidQueueName>()("InvalidQueueName", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 11003 }],
 ) {}
-T.applyErrorMatchers(InvalidQueueName, [{ code: 11003 }]);
 
-export class InvalidRequestBody extends Schema.TaggedErrorClass<InvalidRequestBody>()(
-  "InvalidRequestBody",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidRequestBody extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidRequestBody>()("InvalidRequestBody", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10026 }],
 ) {}
-T.applyErrorMatchers(InvalidRequestBody, [{ code: 10026 }]);
 
-export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
-  "InvalidRoute",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidRoute extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7003 }],
 ) {}
-T.applyErrorMatchers(InvalidRoute, [{ code: 7003 }]);
 
-export class QueueAlreadyExists extends Schema.TaggedErrorClass<QueueAlreadyExists>()(
-  "QueueAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class QueueAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<QueueAlreadyExists>()("QueueAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 11009 }],
 ) {}
-T.applyErrorMatchers(QueueAlreadyExists, [{ code: 11009 }]);
 
-export class QueueHandlerMissing extends Schema.TaggedErrorClass<QueueHandlerMissing>()(
-  "QueueHandlerMissing",
-  { code: Schema.Number, message: Schema.String },
+export class QueueHandlerMissing extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<QueueHandlerMissing>()("QueueHandlerMissing", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [
+    { code: 11001 },
+    { status: 400, message: { includes: "queue handler is missing" } },
+  ],
 ) {}
-T.applyErrorMatchers(QueueHandlerMissing, [
-  { code: 11001 },
-  { status: 400, message: { includes: "queue handler is missing" } },
-]);
 
-export class QueueInUseByEventNotification extends Schema.TaggedErrorClass<QueueInUseByEventNotification>()(
-  "QueueInUseByEventNotification",
-  { code: Schema.Number, message: Schema.String },
+export class QueueInUseByEventNotification extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<QueueInUseByEventNotification>()(
+    "QueueInUseByEventNotification",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 11017 }],
 ) {}
-T.applyErrorMatchers(QueueInUseByEventNotification, [{ code: 11017 }]);
 
-export class QueueNotFound extends Schema.TaggedErrorClass<QueueNotFound>()(
-  "QueueNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class QueueNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<QueueNotFound>()("QueueNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [
+    { code: 11000 },
+    { code: 0, message: { includes: "Queue does not exist" } },
+    { status: 404, message: { includes: "Queue does not exist" } },
+  ],
 ) {}
-T.applyErrorMatchers(QueueNotFound, [
-  { code: 11000 },
-  { code: 0, message: { includes: "Queue does not exist" } },
-  { status: 404, message: { includes: "Queue does not exist" } },
-]);
 
-export class SubscriptionAlreadyExists extends Schema.TaggedErrorClass<SubscriptionAlreadyExists>()(
-  "SubscriptionAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class SubscriptionAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SubscriptionAlreadyExists>()(
+    "SubscriptionAlreadyExists",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [
+    {
+      status: 405,
+      message: { includes: "do not support multiple subscriptions" },
+    },
+  ],
 ) {}
-T.applyErrorMatchers(SubscriptionAlreadyExists, [
-  {
-    status: 405,
-    message: { includes: "do not support multiple subscriptions" },
-  },
-]);
 
-export class SubscriptionNotFound extends Schema.TaggedErrorClass<SubscriptionNotFound>()(
-  "SubscriptionNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class SubscriptionNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SubscriptionNotFound>()("SubscriptionNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404, message: { includes: "No subscription with this ID" } }],
 ) {}
-T.applyErrorMatchers(SubscriptionNotFound, [
-  { status: 404, message: { includes: "No subscription with this ID" } },
-]);
 
-export class UnrecognizedEventType extends Schema.TaggedErrorClass<UnrecognizedEventType>()(
-  "UnrecognizedEventType",
-  { code: Schema.Number, message: Schema.String },
+export class UnrecognizedEventType extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<UnrecognizedEventType>()("UnrecognizedEventType", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 0, message: { includes: "Unrecognized event types" } }],
 ) {}
-T.applyErrorMatchers(UnrecognizedEventType, [
-  { code: 0, message: { includes: "Unrecognized event types" } },
-]);
 
-export class WorkerNotFound extends Schema.TaggedErrorClass<WorkerNotFound>()(
-  "WorkerNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class WorkerNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<WorkerNotFound>()("WorkerNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10007 }],
 ) {}
-T.applyErrorMatchers(WorkerNotFound, [{ code: 10007 }]);
 
 // =============================================================================
 // Consumer

@@ -16,17 +16,21 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class FraudDetectionNotEntitled extends Schema.TaggedErrorClass<FraudDetectionNotEntitled>()(
-  "FraudDetectionNotEntitled",
-  { code: Schema.Number, message: Schema.String },
+export class FraudDetectionNotEntitled extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<FraudDetectionNotEntitled>()(
+    "FraudDetectionNotEntitled",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 10400 }],
 ) {}
-T.applyErrorMatchers(FraudDetectionNotEntitled, [{ code: 10400 }]);
 
 // =============================================================================
 // Fraud

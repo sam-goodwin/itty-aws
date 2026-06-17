@@ -16,41 +16,45 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class NotEntitled extends Schema.TaggedErrorClass<NotEntitled>()(
-  "NotEntitled",
-  { code: Schema.Number, message: Schema.String },
+export class NotEntitled extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<NotEntitled>()("NotEntitled", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403, message: { includes: "not entitled" } }],
 ) {}
-T.applyErrorMatchers(NotEntitled, [
-  { status: 403, message: { includes: "not entitled" } },
-]);
 
-export class PolicyNotFound extends Schema.TaggedErrorClass<PolicyNotFound>()(
-  "PolicyNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class PolicyNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<PolicyNotFound>()("PolicyNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404, message: { includes: "Could not find Policy" } }],
 ) {}
-T.applyErrorMatchers(PolicyNotFound, [
-  { status: 404, message: { includes: "Could not find Policy" } },
-]);
 
-export class PolicyQuotaExceeded extends Schema.TaggedErrorClass<PolicyQuotaExceeded>()(
-  "PolicyQuotaExceeded",
-  { code: Schema.Number, message: Schema.String },
-) {}
-T.applyErrorMatchers(PolicyQuotaExceeded, [
-  {
-    status: 400,
-    message: {
-      includes:
-        "exceeded the maximum number of rules in the phase http_response_page_shield",
+export class PolicyQuotaExceeded extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<PolicyQuotaExceeded>()("PolicyQuotaExceeded", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [
+    {
+      status: 400,
+      message: {
+        includes:
+          "exceeded the maximum number of rules in the phase http_response_page_shield",
+      },
     },
-  },
-]);
+  ],
+) {}
 
 // =============================================================================
 // Connection

@@ -17,56 +17,69 @@ import { UploadableSchema } from "../schemas.ts";
 // Errors
 // =============================================================================
 
-export class Gone extends Schema.TaggedErrorClass<Gone>()("Gone", {
-  code: Schema.Number,
-  message: Schema.String,
-}) {}
-T.applyErrorMatchers(Gone, [
-  { code: 3005 },
-  { message: { includes: "index deleted" } },
-]);
-
-export class IndexAlreadyExists extends Schema.TaggedErrorClass<IndexAlreadyExists>()(
-  "IndexAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class Gone extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Gone>()("Gone", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 3005 }, { message: { includes: "index deleted" } }],
 ) {}
-T.applyErrorMatchers(IndexAlreadyExists, [{ code: 3002 }]);
 
-export class IndexInvalidConfig extends Schema.TaggedErrorClass<IndexInvalidConfig>()(
-  "IndexInvalidConfig",
-  { code: Schema.Number, message: Schema.String },
+export class IndexAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<IndexAlreadyExists>()("IndexAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 3002 }],
 ) {}
-T.applyErrorMatchers(IndexInvalidConfig, [{ code: 3003 }]);
 
-export class IndexInvalidName extends Schema.TaggedErrorClass<IndexInvalidName>()(
-  "IndexInvalidName",
-  { code: Schema.Number, message: Schema.String },
+export class IndexInvalidConfig extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<IndexInvalidConfig>()("IndexInvalidConfig", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 3003 }],
 ) {}
-T.applyErrorMatchers(IndexInvalidName, [{ code: 3001 }]);
 
-export class MetadataIndexAlreadyExists extends Schema.TaggedErrorClass<MetadataIndexAlreadyExists>()(
-  "MetadataIndexAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class IndexInvalidName extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<IndexInvalidName>()("IndexInvalidName", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 3001 }],
 ) {}
-T.applyErrorMatchers(MetadataIndexAlreadyExists, [{ code: 40004 }]);
 
-export class MetadataIndexInvalidType extends Schema.TaggedErrorClass<MetadataIndexInvalidType>()(
-  "MetadataIndexInvalidType",
-  { code: Schema.Number, message: Schema.String },
+export class MetadataIndexAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MetadataIndexAlreadyExists>()(
+    "MetadataIndexAlreadyExists",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 40004 }],
 ) {}
-T.applyErrorMatchers(MetadataIndexInvalidType, [{ code: 40026 }]);
 
-export class MetadataIndexNotFound extends Schema.TaggedErrorClass<MetadataIndexNotFound>()(
-  "MetadataIndexNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class MetadataIndexInvalidType extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MetadataIndexInvalidType>()(
+    "MetadataIndexInvalidType",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 40026 }],
 ) {}
-T.applyErrorMatchers(MetadataIndexNotFound, [{ code: 40005 }]);
 
-export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
-  code: Schema.Number,
-  message: Schema.String,
-}) {}
-T.applyErrorMatchers(NotFound, [{ code: 3000 }]);
+export class MetadataIndexNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MetadataIndexNotFound>()("MetadataIndexNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 40005 }],
+) {}
+
+export class NotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<NotFound>()("NotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 3000 }],
+) {}
 
 // =============================================================================
 // ByIdsIndex

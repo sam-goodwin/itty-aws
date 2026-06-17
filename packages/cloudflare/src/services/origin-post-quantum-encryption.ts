@@ -16,25 +16,29 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class InvalidSettingValue extends Schema.TaggedErrorClass<InvalidSettingValue>()(
-  "InvalidSettingValue",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidSettingValue extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidSettingValue>()("InvalidSettingValue", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1146, message: { includes: "origin_post_quantum_encryption" } }],
 ) {}
-T.applyErrorMatchers(InvalidSettingValue, [
-  { code: 1146, message: { includes: "origin_post_quantum_encryption" } },
-]);
 
-export class InvalidZoneIdentifier extends Schema.TaggedErrorClass<InvalidZoneIdentifier>()(
-  "InvalidZoneIdentifier",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidZoneIdentifier extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidZoneIdentifier>()("InvalidZoneIdentifier", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7003 }],
 ) {}
-T.applyErrorMatchers(InvalidZoneIdentifier, [{ code: 7003 }]);
 
 // =============================================================================
 // OriginPostQuantumEncryption

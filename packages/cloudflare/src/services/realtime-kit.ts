@@ -17,35 +17,45 @@ import { SensitiveString } from "../sensitive.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class RealtimeKitPresetExists extends Schema.TaggedErrorClass<RealtimeKitPresetExists>()(
-  "RealtimeKitPresetExists",
-  { code: Schema.Number, message: Schema.String },
+export class RealtimeKitPresetExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<RealtimeKitPresetExists>()(
+    "RealtimeKitPresetExists",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 409 }],
 ) {}
-T.applyErrorMatchers(RealtimeKitPresetExists, [{ status: 409 }]);
 
-export class RealtimeKitPresetNotFound extends Schema.TaggedErrorClass<RealtimeKitPresetNotFound>()(
-  "RealtimeKitPresetNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class RealtimeKitPresetNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<RealtimeKitPresetNotFound>()(
+    "RealtimeKitPresetNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(RealtimeKitPresetNotFound, [{ status: 404 }]);
 
-export class RealtimeKitWebhookExists extends Schema.TaggedErrorClass<RealtimeKitWebhookExists>()(
-  "RealtimeKitWebhookExists",
-  { code: Schema.Number, message: Schema.String },
+export class RealtimeKitWebhookExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<RealtimeKitWebhookExists>()(
+    "RealtimeKitWebhookExists",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 409 }],
 ) {}
-T.applyErrorMatchers(RealtimeKitWebhookExists, [{ status: 409 }]);
 
-export class RealtimeKitWebhookNotFound extends Schema.TaggedErrorClass<RealtimeKitWebhookNotFound>()(
-  "RealtimeKitWebhookNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class RealtimeKitWebhookNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<RealtimeKitWebhookNotFound>()(
+    "RealtimeKitWebhookNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(RealtimeKitWebhookNotFound, [{ status: 404 }]);
 
 // =============================================================================
 // ActiveLivestreamsForLivestreamIdLivestream

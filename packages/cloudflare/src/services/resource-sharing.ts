@@ -16,29 +16,37 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class ShareNotFound extends Schema.TaggedErrorClass<ShareNotFound>()(
-  "ShareNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ShareNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ShareNotFound>()("ShareNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1004 }, { status: 404 }],
 ) {}
-T.applyErrorMatchers(ShareNotFound, [{ code: 1004 }, { status: 404 }]);
 
-export class ShareRecipientNotFound extends Schema.TaggedErrorClass<ShareRecipientNotFound>()(
-  "ShareRecipientNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ShareRecipientNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ShareRecipientNotFound>()("ShareRecipientNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1004 }, { status: 404 }],
 ) {}
-T.applyErrorMatchers(ShareRecipientNotFound, [{ code: 1004 }, { status: 404 }]);
 
-export class ShareResourceNotFound extends Schema.TaggedErrorClass<ShareResourceNotFound>()(
-  "ShareResourceNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ShareResourceNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ShareResourceNotFound>()("ShareResourceNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1004 }, { status: 404 }],
 ) {}
-T.applyErrorMatchers(ShareResourceNotFound, [{ code: 1004 }, { status: 404 }]);
 
 // =============================================================================
 // Recipient

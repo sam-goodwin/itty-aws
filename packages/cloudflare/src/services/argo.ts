@@ -16,31 +16,37 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class InvalidObjectIdentifier extends Schema.TaggedErrorClass<InvalidObjectIdentifier>()(
-  "InvalidObjectIdentifier",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidObjectIdentifier extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidObjectIdentifier>()(
+    "InvalidObjectIdentifier",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 7003 }],
 ) {}
-T.applyErrorMatchers(InvalidObjectIdentifier, [{ code: 7003 }]);
 
-export class NotAuthorized extends Schema.TaggedErrorClass<NotAuthorized>()(
-  "NotAuthorized",
-  { code: Schema.Number, message: Schema.String },
+export class NotAuthorized extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<NotAuthorized>()("NotAuthorized", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1015 }],
 ) {}
-T.applyErrorMatchers(NotAuthorized, [{ code: 1015 }]);
 
-export class ZoneNotFound extends Schema.TaggedErrorClass<ZoneNotFound>()(
-  "ZoneNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ZoneNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ZoneNotFound>()("ZoneNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404, message: { includes: "Invalid or missing zone" } }],
 ) {}
-T.applyErrorMatchers(ZoneNotFound, [
-  { status: 404, message: { includes: "Invalid or missing zone" } },
-]);
 
 // =============================================================================
 // SmartRouting

@@ -16,70 +16,89 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class CustomNameserverSetNotFound extends Schema.TaggedErrorClass<CustomNameserverSetNotFound>()(
-  "CustomNameserverSetNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class CustomNameserverSetNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CustomNameserverSetNotFound>()(
+    "CustomNameserverSetNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [
+    {
+      code: 1001,
+      message: { includes: "Custom Nameserver set doesn't exist" },
+    },
+  ],
 ) {}
-T.applyErrorMatchers(CustomNameserverSetNotFound, [
-  { code: 1001, message: { includes: "Custom Nameserver set doesn't exist" } },
-]);
 
-export class DomainNotRegistered extends Schema.TaggedErrorClass<DomainNotRegistered>()(
-  "DomainNotRegistered",
-  { code: Schema.Number, message: Schema.String },
+export class DomainNotRegistered extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DomainNotRegistered>()("DomainNotRegistered", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1099 }],
 ) {}
-T.applyErrorMatchers(DomainNotRegistered, [{ code: 1099 }]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class InvalidDomain extends Schema.TaggedErrorClass<InvalidDomain>()(
-  "InvalidDomain",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidDomain extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidDomain>()("InvalidDomain", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1002 }],
 ) {}
-T.applyErrorMatchers(InvalidDomain, [{ code: 1002 }]);
 
-export class InvalidZoneIdentifier extends Schema.TaggedErrorClass<InvalidZoneIdentifier>()(
-  "InvalidZoneIdentifier",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidZoneIdentifier extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidZoneIdentifier>()("InvalidZoneIdentifier", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 9109, message: { includes: "Invalid zone identifier" } }],
 ) {}
-T.applyErrorMatchers(InvalidZoneIdentifier, [
-  { code: 9109, message: { includes: "Invalid zone identifier" } },
-]);
 
-export class SubdomainNotAllowed extends Schema.TaggedErrorClass<SubdomainNotAllowed>()(
-  "SubdomainNotAllowed",
-  { code: Schema.Number, message: Schema.String },
+export class SubdomainNotAllowed extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SubdomainNotAllowed>()("SubdomainNotAllowed", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1116 }],
 ) {}
-T.applyErrorMatchers(SubdomainNotAllowed, [{ code: 1116 }]);
 
-export class ZoneAlreadyExists extends Schema.TaggedErrorClass<ZoneAlreadyExists>()(
-  "ZoneAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class ZoneAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ZoneAlreadyExists>()("ZoneAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1061 }],
 ) {}
-T.applyErrorMatchers(ZoneAlreadyExists, [{ code: 1061 }]);
 
-export class ZoneHoldNotFound extends Schema.TaggedErrorClass<ZoneHoldNotFound>()(
-  "ZoneHoldNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ZoneHoldNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ZoneHoldNotFound>()("ZoneHoldNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1003, message: { includes: "No Zone Hold Found" } }],
 ) {}
-T.applyErrorMatchers(ZoneHoldNotFound, [
-  { code: 1003, message: { includes: "No Zone Hold Found" } },
-]);
 
-export class ZoneHoldsRequireEnterprise extends Schema.TaggedErrorClass<ZoneHoldsRequireEnterprise>()(
-  "ZoneHoldsRequireEnterprise",
-  { code: Schema.Number, message: Schema.String },
+export class ZoneHoldsRequireEnterprise extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ZoneHoldsRequireEnterprise>()(
+    "ZoneHoldsRequireEnterprise",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [
+    {
+      code: 1005,
+      message: {
+        includes: "Zone holds are only available on Enterprise zones",
+      },
+    },
+  ],
 ) {}
-T.applyErrorMatchers(ZoneHoldsRequireEnterprise, [
-  {
-    code: 1005,
-    message: { includes: "Zone holds are only available on Enterprise zones" },
-  },
-]);
 
 // =============================================================================
 // ActivationCheck

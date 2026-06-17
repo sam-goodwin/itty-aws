@@ -16,34 +16,40 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class OriginCloudRegionNotFound extends Schema.TaggedErrorClass<OriginCloudRegionNotFound>()(
-  "OriginCloudRegionNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class OriginCloudRegionNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<OriginCloudRegionNotFound>()(
+    "OriginCloudRegionNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(OriginCloudRegionNotFound, [{ status: 404 }]);
 
-export class SettingUnavailableForPlan extends Schema.TaggedErrorClass<SettingUnavailableForPlan>()(
-  "SettingUnavailableForPlan",
-  { code: Schema.Number, message: Schema.String },
+export class SettingUnavailableForPlan extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SettingUnavailableForPlan>()(
+    "SettingUnavailableForPlan",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [
+    { status: 403, message: { includes: "not available for your plan" } },
+    { code: 1135, message: { includes: "not available for your plan" } },
+  ],
 ) {}
-T.applyErrorMatchers(SettingUnavailableForPlan, [
-  { status: 403, message: { includes: "not available for your plan" } },
-  { code: 1135, message: { includes: "not available for your plan" } },
-]);
 
-export class VariantsNotConfigured extends Schema.TaggedErrorClass<VariantsNotConfigured>()(
-  "VariantsNotConfigured",
-  { code: Schema.Number, message: Schema.String },
+export class VariantsNotConfigured extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<VariantsNotConfigured>()("VariantsNotConfigured", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404, message: { includes: "zone setting does not exist" } }],
 ) {}
-T.applyErrorMatchers(VariantsNotConfigured, [
-  { status: 404, message: { includes: "zone setting does not exist" } },
-]);
 
 // =============================================================================
 // Cache

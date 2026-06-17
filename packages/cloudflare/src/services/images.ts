@@ -17,56 +17,69 @@ import { UploadableSchema } from "../schemas.ts";
 // Errors
 // =============================================================================
 
-export class ImageAlreadyExists extends Schema.TaggedErrorClass<ImageAlreadyExists>()(
-  "ImageAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class ImageAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ImageAlreadyExists>()("ImageAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 5409 }],
 ) {}
-T.applyErrorMatchers(ImageAlreadyExists, [{ code: 5409 }]);
 
-export class ImageNotFound extends Schema.TaggedErrorClass<ImageNotFound>()(
-  "ImageNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ImageNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ImageNotFound>()("ImageNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 5404 }],
 ) {}
-T.applyErrorMatchers(ImageNotFound, [{ code: 5404 }]);
 
-export class ImagesAccessNotEnabled extends Schema.TaggedErrorClass<ImagesAccessNotEnabled>()(
-  "ImagesAccessNotEnabled",
-  { code: Schema.Number, message: Schema.String },
+export class ImagesAccessNotEnabled extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ImagesAccessNotEnabled>()("ImagesAccessNotEnabled", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 5403 }],
 ) {}
-T.applyErrorMatchers(ImagesAccessNotEnabled, [{ code: 5403 }]);
 
-export class InvalidUploadFormat extends Schema.TaggedErrorClass<InvalidUploadFormat>()(
-  "InvalidUploadFormat",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidUploadFormat extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidUploadFormat>()("InvalidUploadFormat", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 5415 }],
 ) {}
-T.applyErrorMatchers(InvalidUploadFormat, [{ code: 5415 }]);
 
-export class KeyNotFound extends Schema.TaggedErrorClass<KeyNotFound>()(
-  "KeyNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class KeyNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<KeyNotFound>()("KeyNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 5404 }],
 ) {}
-T.applyErrorMatchers(KeyNotFound, [{ code: 5404 }]);
 
-export class VariantAlreadyExists extends Schema.TaggedErrorClass<VariantAlreadyExists>()(
-  "VariantAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class VariantAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<VariantAlreadyExists>()("VariantAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 5409 }],
 ) {}
-T.applyErrorMatchers(VariantAlreadyExists, [{ code: 5409 }]);
 
-export class VariantNameNotAllowed extends Schema.TaggedErrorClass<VariantNameNotAllowed>()(
-  "VariantNameNotAllowed",
-  { code: Schema.Number, message: Schema.String },
+export class VariantNameNotAllowed extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<VariantNameNotAllowed>()("VariantNameNotAllowed", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 5400 }],
 ) {}
-T.applyErrorMatchers(VariantNameNotAllowed, [{ code: 5400 }]);
 
-export class VariantNotFound extends Schema.TaggedErrorClass<VariantNotFound>()(
-  "VariantNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class VariantNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<VariantNotFound>()("VariantNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 5401 }, { status: 404, message: { includes: "not found" } }],
 ) {}
-T.applyErrorMatchers(VariantNotFound, [
-  { code: 5401 },
-  { status: 404, message: { includes: "not found" } },
-]);
 
 // =============================================================================
 // V1

@@ -16,81 +16,85 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class InvalidAccountId extends Schema.TaggedErrorClass<InvalidAccountId>()(
-  "InvalidAccountId",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidAccountId extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidAccountId>()("InvalidAccountId", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7003 }],
 ) {}
-T.applyErrorMatchers(InvalidAccountId, [{ code: 7003 }]);
 
-export class InvalidJsonBody extends Schema.TaggedErrorClass<InvalidJsonBody>()(
-  "InvalidJsonBody",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidJsonBody extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidJsonBody>()("InvalidJsonBody", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1001, message: { includes: "invalid_json_body" } }],
 ) {}
-T.applyErrorMatchers(InvalidJsonBody, [
-  { code: 1001, message: { includes: "invalid_json_body" } },
-]);
 
-export class MaximumStoresExceeded extends Schema.TaggedErrorClass<MaximumStoresExceeded>()(
-  "MaximumStoresExceeded",
-  { code: Schema.Number, message: Schema.String },
+export class MaximumStoresExceeded extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MaximumStoresExceeded>()("MaximumStoresExceeded", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1003, message: { includes: "maximum_stores_exceeded" } }],
 ) {}
-T.applyErrorMatchers(MaximumStoresExceeded, [
-  { code: 1003, message: { includes: "maximum_stores_exceeded" } },
-]);
 
-export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
-  code: Schema.Number,
-  message: Schema.String,
-}) {}
-T.applyErrorMatchers(NotFound, [{ code: 1000 }]);
-
-export class SecretNameAlreadyExists extends Schema.TaggedErrorClass<SecretNameAlreadyExists>()(
-  "SecretNameAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class NotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<NotFound>()("NotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1000 }],
 ) {}
-T.applyErrorMatchers(SecretNameAlreadyExists, [
-  { code: 1003, message: { includes: "secret_name_already_exists" } },
-]);
 
-export class SecretNameEmpty extends Schema.TaggedErrorClass<SecretNameEmpty>()(
-  "SecretNameEmpty",
-  { code: Schema.Number, message: Schema.String },
+export class SecretNameAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SecretNameAlreadyExists>()(
+    "SecretNameAlreadyExists",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1003, message: { includes: "secret_name_already_exists" } }],
 ) {}
-T.applyErrorMatchers(SecretNameEmpty, [
-  { code: 1001, message: { includes: "secret_name_empty" } },
-]);
 
-export class SecretNotFound extends Schema.TaggedErrorClass<SecretNotFound>()(
-  "SecretNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class SecretNameEmpty extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SecretNameEmpty>()("SecretNameEmpty", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1001, message: { includes: "secret_name_empty" } }],
 ) {}
-T.applyErrorMatchers(SecretNotFound, [
-  { code: 1001, message: { includes: "secret_not_found" } },
-]);
 
-export class SecretScopeInvalid extends Schema.TaggedErrorClass<SecretScopeInvalid>()(
-  "SecretScopeInvalid",
-  { code: Schema.Number, message: Schema.String },
+export class SecretNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SecretNotFound>()("SecretNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1001, message: { includes: "secret_not_found" } }],
 ) {}
-T.applyErrorMatchers(SecretScopeInvalid, [
-  { code: 1001, message: { includes: "secret_scope_invalid" } },
-]);
 
-export class SecretScopesEmpty extends Schema.TaggedErrorClass<SecretScopesEmpty>()(
-  "SecretScopesEmpty",
-  { code: Schema.Number, message: Schema.String },
+export class SecretScopeInvalid extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SecretScopeInvalid>()("SecretScopeInvalid", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1001, message: { includes: "secret_scope_invalid" } }],
 ) {}
-T.applyErrorMatchers(SecretScopesEmpty, [
-  { code: 1001, message: { includes: "secret_scopes_empty" } },
-]);
 
-export class StoreNotFound extends Schema.TaggedErrorClass<StoreNotFound>()(
-  "StoreNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class SecretScopesEmpty extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SecretScopesEmpty>()("SecretScopesEmpty", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1001, message: { includes: "secret_scopes_empty" } }],
 ) {}
-T.applyErrorMatchers(StoreNotFound, [
-  { code: 1001, message: { includes: "store_not_found" } },
-]);
+
+export class StoreNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<StoreNotFound>()("StoreNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1001, message: { includes: "store_not_found" } }],
+) {}
 
 // =============================================================================
 // Quota

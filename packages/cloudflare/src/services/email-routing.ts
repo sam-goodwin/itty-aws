@@ -16,23 +16,29 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class DestinationNotVerified extends Schema.TaggedErrorClass<DestinationNotVerified>()(
-  "DestinationNotVerified",
-  { code: Schema.Number, message: Schema.String },
+export class DestinationNotVerified extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DestinationNotVerified>()("DestinationNotVerified", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 2054 }],
 ) {}
-T.applyErrorMatchers(DestinationNotVerified, [{ code: 2054 }]);
 
-export class EmailRoutingRuleNotFound extends Schema.TaggedErrorClass<EmailRoutingRuleNotFound>()(
-  "EmailRoutingRuleNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class EmailRoutingRuleNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<EmailRoutingRuleNotFound>()(
+    "EmailRoutingRuleNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(EmailRoutingRuleNotFound, [{ status: 404 }]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
 // =============================================================================
 // Address

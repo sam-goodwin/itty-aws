@@ -16,49 +16,53 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class InvalidMember extends Schema.TaggedErrorClass<InvalidMember>()(
-  "InvalidMember",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidMember extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidMember>()("InvalidMember", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 400 }],
 ) {}
-T.applyErrorMatchers(InvalidMember, [{ code: 400 }]);
 
-export class ResourceGroupNotFound extends Schema.TaggedErrorClass<ResourceGroupNotFound>()(
-  "ResourceGroupNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ResourceGroupNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ResourceGroupNotFound>()("ResourceGroupNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 404, message: { includes: "Resource group" } }],
 ) {}
-T.applyErrorMatchers(ResourceGroupNotFound, [
-  { code: 404, message: { includes: "Resource group" } },
-]);
 
-export class UserGroupMemberNotFound extends Schema.TaggedErrorClass<UserGroupMemberNotFound>()(
-  "UserGroupMemberNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class UserGroupMemberNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<UserGroupMemberNotFound>()(
+    "UserGroupMemberNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 404, message: { includes: "not found in user group" } }],
 ) {}
-T.applyErrorMatchers(UserGroupMemberNotFound, [
-  { code: 404, message: { includes: "not found in user group" } },
-]);
 
-export class UserGroupNameInUse extends Schema.TaggedErrorClass<UserGroupNameInUse>()(
-  "UserGroupNameInUse",
-  { code: Schema.Number, message: Schema.String },
+export class UserGroupNameInUse extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<UserGroupNameInUse>()("UserGroupNameInUse", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 400, message: { includes: "already in use" } }],
 ) {}
-T.applyErrorMatchers(UserGroupNameInUse, [
-  { code: 400, message: { includes: "already in use" } },
-]);
 
-export class UserGroupNotFound extends Schema.TaggedErrorClass<UserGroupNotFound>()(
-  "UserGroupNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class UserGroupNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<UserGroupNotFound>()("UserGroupNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 404, message: { includes: "User group" } }],
 ) {}
-T.applyErrorMatchers(UserGroupNotFound, [
-  { code: 404, message: { includes: "User group" } },
-]);
 
 // =============================================================================
 // OauthClient

@@ -16,33 +16,37 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class CustomNameserverAlreadyExists extends Schema.TaggedErrorClass<CustomNameserverAlreadyExists>()(
-  "CustomNameserverAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class CustomNameserverAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CustomNameserverAlreadyExists>()(
+    "CustomNameserverAlreadyExists",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ message: { includes: "already exist" } }],
 ) {}
-T.applyErrorMatchers(CustomNameserverAlreadyExists, [
-  { message: { includes: "already exist" } },
-]);
 
-export class CustomNameserverNotFound extends Schema.TaggedErrorClass<CustomNameserverNotFound>()(
-  "CustomNameserverNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class CustomNameserverNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CustomNameserverNotFound>()(
+    "CustomNameserverNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(CustomNameserverNotFound, [{ status: 404 }]);
 
-export class CustomNameserversNotEnabled extends Schema.TaggedErrorClass<CustomNameserversNotEnabled>()(
-  "CustomNameserversNotEnabled",
-  { code: Schema.Number, message: Schema.String },
+export class CustomNameserversNotEnabled extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CustomNameserversNotEnabled>()(
+    "CustomNameserversNotEnabled",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1002, message: { includes: "not enabled" } }],
 ) {}
-T.applyErrorMatchers(CustomNameserversNotEnabled, [
-  { code: 1002, message: { includes: "not enabled" } },
-]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
 // =============================================================================
 // CustomNameserver

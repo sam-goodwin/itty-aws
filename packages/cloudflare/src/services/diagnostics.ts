@@ -16,23 +16,29 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class EndpointHealthcheckNotFound extends Schema.TaggedErrorClass<EndpointHealthcheckNotFound>()(
-  "EndpointHealthcheckNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class EndpointHealthcheckNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<EndpointHealthcheckNotFound>()(
+    "EndpointHealthcheckNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1022 }],
 ) {}
-T.applyErrorMatchers(EndpointHealthcheckNotFound, [{ code: 1022 }]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class InvalidHealthcheckEndpoint extends Schema.TaggedErrorClass<InvalidHealthcheckEndpoint>()(
-  "InvalidHealthcheckEndpoint",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidHealthcheckEndpoint extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidHealthcheckEndpoint>()(
+    "InvalidHealthcheckEndpoint",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1002 }],
 ) {}
-T.applyErrorMatchers(InvalidHealthcheckEndpoint, [{ code: 1002 }]);
 
 // =============================================================================
 // EndpointHealthcheck

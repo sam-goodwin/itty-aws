@@ -16,23 +16,29 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class TagPreconditionFailed extends Schema.TaggedErrorClass<TagPreconditionFailed>()(
-  "TagPreconditionFailed",
-  { code: Schema.Number, message: Schema.String },
+export class TagPreconditionFailed extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TagPreconditionFailed>()("TagPreconditionFailed", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 412 }],
 ) {}
-T.applyErrorMatchers(TagPreconditionFailed, [{ status: 412 }]);
 
-export class ZoneTagResourceNotFound extends Schema.TaggedErrorClass<ZoneTagResourceNotFound>()(
-  "ZoneTagResourceNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ZoneTagResourceNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ZoneTagResourceNotFound>()(
+    "ZoneTagResourceNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(ZoneTagResourceNotFound, [{ status: 404 }]);
 
 // =============================================================================
 // AccountTag

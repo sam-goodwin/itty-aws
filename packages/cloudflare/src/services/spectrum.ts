@@ -16,23 +16,29 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class SpectrumAppNotFound extends Schema.TaggedErrorClass<SpectrumAppNotFound>()(
-  "SpectrumAppNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class SpectrumAppNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SpectrumAppNotFound>()("SpectrumAppNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10006 }],
 ) {}
-T.applyErrorMatchers(SpectrumAppNotFound, [{ code: 10006 }]);
 
-export class SpectrumProtocolNotAvailable extends Schema.TaggedErrorClass<SpectrumProtocolNotAvailable>()(
-  "SpectrumProtocolNotAvailable",
-  { code: Schema.Number, message: Schema.String },
+export class SpectrumProtocolNotAvailable extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SpectrumProtocolNotAvailable>()(
+    "SpectrumProtocolNotAvailable",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 13002 }],
 ) {}
-T.applyErrorMatchers(SpectrumProtocolNotAvailable, [{ code: 13002 }]);
 
 // =============================================================================
 // AnalyticAggregateCurrent

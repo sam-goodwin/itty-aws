@@ -16,17 +16,21 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class WidgetNotFound extends Schema.TaggedErrorClass<WidgetNotFound>()(
-  "WidgetNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class WidgetNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<WidgetNotFound>()("WidgetNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10404 }, { code: 10407 }],
 ) {}
-T.applyErrorMatchers(WidgetNotFound, [{ code: 10404 }, { code: 10407 }]);
 
 // =============================================================================
 // SecretWidget

@@ -16,23 +16,29 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class DnsFirewallNotEntitled extends Schema.TaggedErrorClass<DnsFirewallNotEntitled>()(
-  "DnsFirewallNotEntitled",
-  { code: Schema.Number, message: Schema.String },
+export class DnsFirewallNotEntitled extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DnsFirewallNotEntitled>()("DnsFirewallNotEntitled", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10101 }],
 ) {}
-T.applyErrorMatchers(DnsFirewallNotEntitled, [{ code: 10101 }]);
 
-export class DnsFirewallNotFound extends Schema.TaggedErrorClass<DnsFirewallNotFound>()(
-  "DnsFirewallNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class DnsFirewallNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DnsFirewallNotFound>()("DnsFirewallNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 11001 }],
 ) {}
-T.applyErrorMatchers(DnsFirewallNotFound, [{ code: 11001 }]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
 // =============================================================================
 // AnalyticReport

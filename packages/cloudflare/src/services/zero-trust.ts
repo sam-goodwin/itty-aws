@@ -17,278 +17,355 @@ import { SensitiveString } from "../sensitive.ts";
 // Errors
 // =============================================================================
 
-export class AccessBookmarkNotFound extends Schema.TaggedErrorClass<AccessBookmarkNotFound>()(
-  "AccessBookmarkNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class AccessBookmarkNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AccessBookmarkNotFound>()("AccessBookmarkNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 12045 }, { code: 12135 }, { code: 11021 }],
 ) {}
-T.applyErrorMatchers(AccessBookmarkNotFound, [
-  { code: 12045 },
-  { code: 12135 },
-  { code: 11021 },
-]);
 
-export class AccessCertificateNotFound extends Schema.TaggedErrorClass<AccessCertificateNotFound>()(
-  "AccessCertificateNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class AccessCertificateNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AccessCertificateNotFound>()(
+    "AccessCertificateNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 12135 }],
 ) {}
-T.applyErrorMatchers(AccessCertificateNotFound, [{ code: 12135 }]);
 
-export class AccessCertificateQuotaExceeded extends Schema.TaggedErrorClass<AccessCertificateQuotaExceeded>()(
-  "AccessCertificateQuotaExceeded",
-  { code: Schema.Number, message: Schema.String },
+export class AccessCertificateQuotaExceeded extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AccessCertificateQuotaExceeded>()(
+    "AccessCertificateQuotaExceeded",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 12130, message: { includes: "maximum number of certificates" } }],
 ) {}
-T.applyErrorMatchers(AccessCertificateQuotaExceeded, [
-  { code: 12130, message: { includes: "maximum number of certificates" } },
-]);
 
-export class AccessCustomPageNotFound extends Schema.TaggedErrorClass<AccessCustomPageNotFound>()(
-  "AccessCustomPageNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class AccessCustomPageNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AccessCustomPageNotFound>()(
+    "AccessCustomPageNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 12135 }],
 ) {}
-T.applyErrorMatchers(AccessCustomPageNotFound, [{ code: 12135 }]);
 
-export class AccessCustomPagesNotEntitled extends Schema.TaggedErrorClass<AccessCustomPagesNotEntitled>()(
-  "AccessCustomPagesNotEntitled",
-  { code: Schema.Number, message: Schema.String },
-) {}
-T.applyErrorMatchers(AccessCustomPagesNotEntitled, [
-  {
-    code: 12133,
-    message: { includes: "does not have permission for custom pages" },
-  },
-]);
-
-export class AccessGroupNotFound extends Schema.TaggedErrorClass<AccessGroupNotFound>()(
-  "AccessGroupNotFound",
-  { code: Schema.Number, message: Schema.String },
-) {}
-T.applyErrorMatchers(AccessGroupNotFound, [{ code: 12152 }]);
-
-export class AccessIdentityProviderNotFound extends Schema.TaggedErrorClass<AccessIdentityProviderNotFound>()(
-  "AccessIdentityProviderNotFound",
-  { code: Schema.Number, message: Schema.String },
-) {}
-T.applyErrorMatchers(AccessIdentityProviderNotFound, [{ code: 12135 }]);
-
-export class AccessServiceTokenNotFound extends Schema.TaggedErrorClass<AccessServiceTokenNotFound>()(
-  "AccessServiceTokenNotFound",
-  { code: Schema.Number, message: Schema.String },
-) {}
-T.applyErrorMatchers(AccessServiceTokenNotFound, [{ code: 12135 }]);
-
-export class AccessTagNotFound extends Schema.TaggedErrorClass<AccessTagNotFound>()(
-  "AccessTagNotFound",
-  { code: Schema.Number, message: Schema.String },
-) {}
-T.applyErrorMatchers(AccessTagNotFound, [{ code: 12135 }]);
-
-export class CannotDeleteDefaultGatewayLocation extends Schema.TaggedErrorClass<CannotDeleteDefaultGatewayLocation>()(
-  "CannotDeleteDefaultGatewayLocation",
-  { code: Schema.Number, message: Schema.String },
-) {}
-T.applyErrorMatchers(CannotDeleteDefaultGatewayLocation, [{ code: 1217 }]);
-
-export class CannotDemoteDefaultGatewayLocation extends Schema.TaggedErrorClass<CannotDemoteDefaultGatewayLocation>()(
-  "CannotDemoteDefaultGatewayLocation",
-  { code: Schema.Number, message: Schema.String },
-) {}
-T.applyErrorMatchers(CannotDemoteDefaultGatewayLocation, [{ code: 1216 }]);
-
-export class DeviceNetworkNotFound extends Schema.TaggedErrorClass<DeviceNetworkNotFound>()(
-  "DeviceNetworkNotFound",
-  { code: Schema.Number, message: Schema.String },
-) {}
-T.applyErrorMatchers(DeviceNetworkNotFound, [{ code: 2053 }]);
-
-export class DevicePolicyNotFound extends Schema.TaggedErrorClass<DevicePolicyNotFound>()(
-  "DevicePolicyNotFound",
-  { code: Schema.Number, message: Schema.String },
-) {}
-T.applyErrorMatchers(DevicePolicyNotFound, [{ code: 2052 }]);
-
-export class DevicePostureIntegrationNotFound extends Schema.TaggedErrorClass<DevicePostureIntegrationNotFound>()(
-  "DevicePostureIntegrationNotFound",
-  { code: Schema.Number, message: Schema.String },
-) {}
-T.applyErrorMatchers(DevicePostureIntegrationNotFound, [{ status: 404 }]);
-
-export class DexTestNotFound extends Schema.TaggedErrorClass<DexTestNotFound>()(
-  "DexTestNotFound",
-  { code: Schema.Number, message: Schema.String },
-) {}
-T.applyErrorMatchers(DexTestNotFound, [{ status: 404 }]);
-
-export class DlpEntryNotFound extends Schema.TaggedErrorClass<DlpEntryNotFound>()(
-  "DlpEntryNotFound",
-  { code: Schema.Number, message: Schema.String },
-) {}
-T.applyErrorMatchers(DlpEntryNotFound, [{ status: 404 }]);
-
-export class DlpProfileNotFound extends Schema.TaggedErrorClass<DlpProfileNotFound>()(
-  "DlpProfileNotFound",
-  { code: Schema.Number, message: Schema.String },
-) {}
-T.applyErrorMatchers(DlpProfileNotFound, [{ status: 404 }]);
-
-export class DuplicateTunnelName extends Schema.TaggedErrorClass<DuplicateTunnelName>()(
-  "DuplicateTunnelName",
-  { code: Schema.Number, message: Schema.String },
-) {}
-T.applyErrorMatchers(DuplicateTunnelName, [{ code: 1013 }]);
-
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
-) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
-
-export class GatewayCertificateInUse extends Schema.TaggedErrorClass<GatewayCertificateInUse>()(
-  "GatewayCertificateInUse",
-  { code: Schema.Number, message: Schema.String },
-) {}
-T.applyErrorMatchers(GatewayCertificateInUse, [{ code: 2118 }]);
-
-export class GatewayCertificateNotFound extends Schema.TaggedErrorClass<GatewayCertificateNotFound>()(
-  "GatewayCertificateNotFound",
-  { code: Schema.Number, message: Schema.String },
-) {}
-T.applyErrorMatchers(GatewayCertificateNotFound, [{ code: 2027 }]);
-
-export class GatewayCertificateQuotaReached extends Schema.TaggedErrorClass<GatewayCertificateQuotaReached>()(
-  "GatewayCertificateQuotaReached",
-  { code: Schema.Number, message: Schema.String },
-) {}
-T.applyErrorMatchers(GatewayCertificateQuotaReached, [
-  {
-    status: 400,
-    message: {
-      includes: "Up to 3 certificates may be created in a 24 hour period",
+export class AccessCustomPagesNotEntitled extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AccessCustomPagesNotEntitled>()(
+    "AccessCustomPagesNotEntitled",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [
+    {
+      code: 12133,
+      message: { includes: "does not have permission for custom pages" },
     },
-  },
-]);
-
-export class GatewayListNotFound extends Schema.TaggedErrorClass<GatewayListNotFound>()(
-  "GatewayListNotFound",
-  { code: Schema.Number, message: Schema.String },
+  ],
 ) {}
-T.applyErrorMatchers(GatewayListNotFound, [{ code: 2218 }]);
 
-export class GatewayLocationNotFound extends Schema.TaggedErrorClass<GatewayLocationNotFound>()(
-  "GatewayLocationNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class AccessGroupNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AccessGroupNotFound>()("AccessGroupNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 12152 }],
 ) {}
-T.applyErrorMatchers(GatewayLocationNotFound, [{ code: 1103 }]);
 
-export class HostnameRouteAlreadyRouted extends Schema.TaggedErrorClass<HostnameRouteAlreadyRouted>()(
-  "HostnameRouteAlreadyRouted",
-  { code: Schema.Number, message: Schema.String },
+export class AccessIdentityProviderNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AccessIdentityProviderNotFound>()(
+    "AccessIdentityProviderNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 12135 }],
 ) {}
-T.applyErrorMatchers(HostnameRouteAlreadyRouted, [
-  { status: 409, message: { includes: "already routed to another tunnel" } },
-]);
 
-export class HostnameRouteNotFound extends Schema.TaggedErrorClass<HostnameRouteNotFound>()(
-  "HostnameRouteNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class AccessServiceTokenNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AccessServiceTokenNotFound>()(
+    "AccessServiceTokenNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 12135 }],
 ) {}
-T.applyErrorMatchers(HostnameRouteNotFound, [{ status: 404 }]);
 
-export class InvalidPostureIntegrationConfig extends Schema.TaggedErrorClass<InvalidPostureIntegrationConfig>()(
-  "InvalidPostureIntegrationConfig",
-  { code: Schema.Number, message: Schema.String },
+export class AccessTagNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AccessTagNotFound>()("AccessTagNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 12135 }],
 ) {}
-T.applyErrorMatchers(InvalidPostureIntegrationConfig, [
-  { status: 400, message: { includes: "invalid posture integration request" } },
-]);
 
-export class IpProxyEndpointsRequireEnterprise extends Schema.TaggedErrorClass<IpProxyEndpointsRequireEnterprise>()(
-  "IpProxyEndpointsRequireEnterprise",
-  { code: Schema.Number, message: Schema.String },
+export class CannotDeleteDefaultGatewayLocation extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CannotDeleteDefaultGatewayLocation>()(
+    "CannotDeleteDefaultGatewayLocation",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1217 }],
 ) {}
-T.applyErrorMatchers(IpProxyEndpointsRequireEnterprise, [{ code: 2009 }]);
 
-export class McpPortalHostnameInUse extends Schema.TaggedErrorClass<McpPortalHostnameInUse>()(
-  "McpPortalHostnameInUse",
-  { code: Schema.Number, message: Schema.String },
+export class CannotDemoteDefaultGatewayLocation extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CannotDemoteDefaultGatewayLocation>()(
+    "CannotDemoteDefaultGatewayLocation",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1216 }],
 ) {}
-T.applyErrorMatchers(McpPortalHostnameInUse, [
-  {
-    status: 400,
-    message: { includes: "already in use in a different MCP Portal" },
-  },
-]);
 
-export class McpPortalNotFound extends Schema.TaggedErrorClass<McpPortalNotFound>()(
-  "McpPortalNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class DeviceNetworkNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DeviceNetworkNotFound>()("DeviceNetworkNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 2053 }],
 ) {}
-T.applyErrorMatchers(McpPortalNotFound, [{ status: 404 }]);
 
-export class OrganizationAlreadyExists extends Schema.TaggedErrorClass<OrganizationAlreadyExists>()(
-  "OrganizationAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class DevicePolicyNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DevicePolicyNotFound>()("DevicePolicyNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 2052 }],
 ) {}
-T.applyErrorMatchers(OrganizationAlreadyExists, [{ code: 11002 }]);
 
-export class OrganizationNotFound extends Schema.TaggedErrorClass<OrganizationNotFound>()(
-  "OrganizationNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class DevicePostureIntegrationNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DevicePostureIntegrationNotFound>()(
+    "DevicePostureIntegrationNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(OrganizationNotFound, [{ status: 404 }]);
 
-export class PostureRuleNotFound extends Schema.TaggedErrorClass<PostureRuleNotFound>()(
-  "PostureRuleNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class DexTestNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DexTestNotFound>()("DexTestNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(PostureRuleNotFound, [{ code: 6024 }]);
 
-export class ProxyEndpointNotFound extends Schema.TaggedErrorClass<ProxyEndpointNotFound>()(
-  "ProxyEndpointNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class DlpEntryNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DlpEntryNotFound>()("DlpEntryNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(ProxyEndpointNotFound, [{ code: 2002 }]);
 
-export class RiskScoringIntegrationNotFound extends Schema.TaggedErrorClass<RiskScoringIntegrationNotFound>()(
-  "RiskScoringIntegrationNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class DlpProfileNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DlpProfileNotFound>()("DlpProfileNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(RiskScoringIntegrationNotFound, [{ status: 404 }]);
 
-export class TargetNotFound extends Schema.TaggedErrorClass<TargetNotFound>()(
-  "TargetNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class DuplicateTunnelName extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DuplicateTunnelName>()("DuplicateTunnelName", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1013 }],
 ) {}
-T.applyErrorMatchers(TargetNotFound, [{ status: 404 }]);
 
-export class TunnelConfigurationNotFound extends Schema.TaggedErrorClass<TunnelConfigurationNotFound>()(
-  "TunnelConfigurationNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(TunnelConfigurationNotFound, [{ code: 1055 }]);
 
-export class TunnelNotFound extends Schema.TaggedErrorClass<TunnelNotFound>()(
-  "TunnelNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class GatewayCertificateInUse extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<GatewayCertificateInUse>()(
+    "GatewayCertificateInUse",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 2118 }],
 ) {}
-T.applyErrorMatchers(TunnelNotFound, [{ code: 1002 }, { status: 404 }]);
 
-export class TunnelTokenNotFound extends Schema.TaggedErrorClass<TunnelTokenNotFound>()(
-  "TunnelTokenNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class GatewayCertificateNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<GatewayCertificateNotFound>()(
+    "GatewayCertificateNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 2027 }],
 ) {}
-T.applyErrorMatchers(TunnelTokenNotFound, [{ code: 1054 }]);
 
-export class VirtualNetworkConflict extends Schema.TaggedErrorClass<VirtualNetworkConflict>()(
-  "VirtualNetworkConflict",
-  { code: Schema.Number, message: Schema.String },
+export class GatewayCertificateQuotaReached extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<GatewayCertificateQuotaReached>()(
+    "GatewayCertificateQuotaReached",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [
+    {
+      status: 400,
+      message: {
+        includes: "Up to 3 certificates may be created in a 24 hour period",
+      },
+    },
+  ],
 ) {}
-T.applyErrorMatchers(VirtualNetworkConflict, [{ code: 1014 }]);
 
-export class VirtualNetworkNotFound extends Schema.TaggedErrorClass<VirtualNetworkNotFound>()(
-  "VirtualNetworkNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class GatewayListNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<GatewayListNotFound>()("GatewayListNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 2218 }],
 ) {}
-T.applyErrorMatchers(VirtualNetworkNotFound, [{ code: 1046 }]);
+
+export class GatewayLocationNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<GatewayLocationNotFound>()(
+    "GatewayLocationNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1103 }],
+) {}
+
+export class HostnameRouteAlreadyRouted extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<HostnameRouteAlreadyRouted>()(
+    "HostnameRouteAlreadyRouted",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 409, message: { includes: "already routed to another tunnel" } }],
+) {}
+
+export class HostnameRouteNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<HostnameRouteNotFound>()("HostnameRouteNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
+) {}
+
+export class InvalidPostureIntegrationConfig extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidPostureIntegrationConfig>()(
+    "InvalidPostureIntegrationConfig",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [
+    {
+      status: 400,
+      message: { includes: "invalid posture integration request" },
+    },
+  ],
+) {}
+
+export class IpProxyEndpointsRequireEnterprise extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<IpProxyEndpointsRequireEnterprise>()(
+    "IpProxyEndpointsRequireEnterprise",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 2009 }],
+) {}
+
+export class McpPortalHostnameInUse extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<McpPortalHostnameInUse>()("McpPortalHostnameInUse", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [
+    {
+      status: 400,
+      message: { includes: "already in use in a different MCP Portal" },
+    },
+  ],
+) {}
+
+export class McpPortalNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<McpPortalNotFound>()("McpPortalNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
+) {}
+
+export class OrganizationAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<OrganizationAlreadyExists>()(
+    "OrganizationAlreadyExists",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 11002 }],
+) {}
+
+export class OrganizationNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<OrganizationNotFound>()("OrganizationNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
+) {}
+
+export class PostureRuleNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<PostureRuleNotFound>()("PostureRuleNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 6024 }],
+) {}
+
+export class ProxyEndpointNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ProxyEndpointNotFound>()("ProxyEndpointNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 2002 }],
+) {}
+
+export class RiskScoringIntegrationNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<RiskScoringIntegrationNotFound>()(
+    "RiskScoringIntegrationNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 404 }],
+) {}
+
+export class TargetNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TargetNotFound>()("TargetNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
+) {}
+
+export class TunnelConfigurationNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TunnelConfigurationNotFound>()(
+    "TunnelConfigurationNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1055 }],
+) {}
+
+export class TunnelNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TunnelNotFound>()("TunnelNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1002 }, { status: 404 }],
+) {}
+
+export class TunnelTokenNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TunnelTokenNotFound>()("TunnelTokenNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1054 }],
+) {}
+
+export class VirtualNetworkConflict extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<VirtualNetworkConflict>()("VirtualNetworkConflict", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1014 }],
+) {}
+
+export class VirtualNetworkNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<VirtualNetworkNotFound>()("VirtualNetworkNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1046 }],
+) {}
 
 // =============================================================================
 // AccessAiControlMcpPortal

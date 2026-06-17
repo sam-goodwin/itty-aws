@@ -16,33 +16,37 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class VpcServiceNameAlreadyExists extends Schema.TaggedErrorClass<VpcServiceNameAlreadyExists>()(
-  "VpcServiceNameAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class VpcServiceNameAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<VpcServiceNameAlreadyExists>()(
+    "VpcServiceNameAlreadyExists",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 5101, message: { includes: "already exists" } }],
 ) {}
-T.applyErrorMatchers(VpcServiceNameAlreadyExists, [
-  { code: 5101, message: { includes: "already exists" } },
-]);
 
-export class VpcServiceNotFound extends Schema.TaggedErrorClass<VpcServiceNotFound>()(
-  "VpcServiceNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class VpcServiceNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<VpcServiceNotFound>()("VpcServiceNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 5104 }],
 ) {}
-T.applyErrorMatchers(VpcServiceNotFound, [{ code: 5104 }]);
 
-export class VpcTunnelNotFound extends Schema.TaggedErrorClass<VpcTunnelNotFound>()(
-  "VpcTunnelNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class VpcTunnelNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<VpcTunnelNotFound>()("VpcTunnelNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 5101, message: { includes: "Tunnel ID Not Found" } }],
 ) {}
-T.applyErrorMatchers(VpcTunnelNotFound, [
-  { code: 5101, message: { includes: "Tunnel ID Not Found" } },
-]);
 
 // =============================================================================
 // DirectoryService

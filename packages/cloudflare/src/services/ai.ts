@@ -17,29 +17,37 @@ import { UploadableSchema } from "../schemas.ts";
 // Errors
 // =============================================================================
 
-export class AccountNotFound extends Schema.TaggedErrorClass<AccountNotFound>()(
-  "AccountNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class AccountNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AccountNotFound>()("AccountNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7003 }],
 ) {}
-T.applyErrorMatchers(AccountNotFound, [{ code: 7003 }]);
 
-export class ModelNotFound extends Schema.TaggedErrorClass<ModelNotFound>()(
-  "ModelNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ModelNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ModelNotFound>()("ModelNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7003 }, { code: 7000 }],
 ) {}
-T.applyErrorMatchers(ModelNotFound, [{ code: 7003 }, { code: 7000 }]);
 
-export class ModelNotSupported extends Schema.TaggedErrorClass<ModelNotSupported>()(
-  "ModelNotSupported",
-  { code: Schema.Number, message: Schema.String },
+export class ModelNotSupported extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ModelNotSupported>()("ModelNotSupported", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1000 }],
 ) {}
-T.applyErrorMatchers(ModelNotSupported, [{ code: 1000 }]);
 
-export class ModelSchemaNotFound extends Schema.TaggedErrorClass<ModelSchemaNotFound>()(
-  "ModelSchemaNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ModelSchemaNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ModelSchemaNotFound>()("ModelSchemaNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 6002 }],
 ) {}
-T.applyErrorMatchers(ModelSchemaNotFound, [{ code: 6002 }]);
 
 // =============================================================================
 // Ai

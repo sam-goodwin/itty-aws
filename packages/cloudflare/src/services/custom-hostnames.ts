@@ -16,35 +16,45 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class CustomHostnameNotFound extends Schema.TaggedErrorClass<CustomHostnameNotFound>()(
-  "CustomHostnameNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class CustomHostnameNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CustomHostnameNotFound>()("CustomHostnameNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1436 }, { status: 404 }],
 ) {}
-T.applyErrorMatchers(CustomHostnameNotFound, [{ code: 1436 }, { status: 404 }]);
 
-export class FallbackOriginNotFound extends Schema.TaggedErrorClass<FallbackOriginNotFound>()(
-  "FallbackOriginNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class FallbackOriginNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<FallbackOriginNotFound>()("FallbackOriginNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(FallbackOriginNotFound, [{ status: 404 }]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class SaasAccessNotGranted extends Schema.TaggedErrorClass<SaasAccessNotGranted>()(
-  "SaasAccessNotGranted",
-  { code: Schema.Number, message: Schema.String },
+export class SaasAccessNotGranted extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SaasAccessNotGranted>()("SaasAccessNotGranted", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1456 }],
 ) {}
-T.applyErrorMatchers(SaasAccessNotGranted, [{ code: 1456 }]);
 
-export class SaasQuotaNotAllocated extends Schema.TaggedErrorClass<SaasQuotaNotAllocated>()(
-  "SaasQuotaNotAllocated",
-  { code: Schema.Number, message: Schema.String },
+export class SaasQuotaNotAllocated extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SaasQuotaNotAllocated>()("SaasQuotaNotAllocated", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1404, status: 403 }],
 ) {}
-T.applyErrorMatchers(SaasQuotaNotAllocated, [{ code: 1404, status: 403 }]);
 
 // =============================================================================
 // CertificatePackCertificate

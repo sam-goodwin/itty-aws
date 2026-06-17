@@ -16,52 +16,66 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class AllowPolicyNotFound extends Schema.TaggedErrorClass<AllowPolicyNotFound>()(
-  "AllowPolicyNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class AllowPolicyNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AllowPolicyNotFound>()("AllowPolicyNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(AllowPolicyNotFound, [{ status: 404 }]);
 
-export class BlockSenderNotFound extends Schema.TaggedErrorClass<BlockSenderNotFound>()(
-  "BlockSenderNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class BlockSenderNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<BlockSenderNotFound>()("BlockSenderNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(BlockSenderNotFound, [{ status: 404 }]);
 
-export class EmailSecurityDomainNotFound extends Schema.TaggedErrorClass<EmailSecurityDomainNotFound>()(
-  "EmailSecurityDomainNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class EmailSecurityDomainNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<EmailSecurityDomainNotFound>()(
+    "EmailSecurityDomainNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(EmailSecurityDomainNotFound, [{ status: 404 }]);
 
-export class EmailSecurityNotEntitled extends Schema.TaggedErrorClass<EmailSecurityNotEntitled>()(
-  "EmailSecurityNotEntitled",
-  { code: Schema.Number, message: Schema.String },
+export class EmailSecurityNotEntitled extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<EmailSecurityNotEntitled>()(
+    "EmailSecurityNotEntitled",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [
+    {
+      status: 403,
+      message: { includes: "not available in the current subscription" },
+    },
+  ],
 ) {}
-T.applyErrorMatchers(EmailSecurityNotEntitled, [
-  {
-    status: 403,
-    message: { includes: "not available in the current subscription" },
-  },
-]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class ImpersonationRegistryEntryNotFound extends Schema.TaggedErrorClass<ImpersonationRegistryEntryNotFound>()(
-  "ImpersonationRegistryEntryNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ImpersonationRegistryEntryNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ImpersonationRegistryEntryNotFound>()(
+    "ImpersonationRegistryEntryNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(ImpersonationRegistryEntryNotFound, [{ status: 404 }]);
 
-export class TrustedDomainNotFound extends Schema.TaggedErrorClass<TrustedDomainNotFound>()(
-  "TrustedDomainNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class TrustedDomainNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TrustedDomainNotFound>()("TrustedDomainNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(TrustedDomainNotFound, [{ status: 404 }]);
 
 // =============================================================================
 // Investigate

@@ -17,41 +17,50 @@ import { SensitiveString } from "../sensitive.ts";
 // Errors
 // =============================================================================
 
-export class ContainerApplicationNotFound extends Schema.TaggedErrorClass<ContainerApplicationNotFound>()(
-  "ContainerApplicationNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ContainerApplicationNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ContainerApplicationNotFound>()(
+    "ContainerApplicationNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [
+    { code: 1609, message: { includes: "Container application not found" } },
+    { code: 1609, message: { includes: "APPLICATION_NOT_FOUND" } },
+  ],
 ) {}
-T.applyErrorMatchers(ContainerApplicationNotFound, [
-  { code: 1609, message: { includes: "Container application not found" } },
-  { code: 1609, message: { includes: "APPLICATION_NOT_FOUND" } },
-]);
 
-export class DurableObjectAlreadyHasApplication extends Schema.TaggedErrorClass<DurableObjectAlreadyHasApplication>()(
-  "DurableObjectAlreadyHasApplication",
-  { code: Schema.Number, message: Schema.String },
+export class DurableObjectAlreadyHasApplication extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DurableObjectAlreadyHasApplication>()(
+    "DurableObjectAlreadyHasApplication",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [
+    {
+      code: 1608,
+      message: { includes: "DURABLE_OBJECT_ALREADY_HAS_APPLICATION" },
+    },
+  ],
 ) {}
-T.applyErrorMatchers(DurableObjectAlreadyHasApplication, [
-  {
-    code: 1608,
-    message: { includes: "DURABLE_OBJECT_ALREADY_HAS_APPLICATION" },
-  },
-]);
 
-export class DurableObjectNotContainerEnabled extends Schema.TaggedErrorClass<DurableObjectNotContainerEnabled>()(
-  "DurableObjectNotContainerEnabled",
-  { code: Schema.Number, message: Schema.String },
+export class DurableObjectNotContainerEnabled extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DurableObjectNotContainerEnabled>()(
+    "DurableObjectNotContainerEnabled",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [
+    {
+      code: 1607,
+      message: { includes: "DURABLE_OBJECT_NOT_CONTAINER_ENABLED" },
+    },
+  ],
 ) {}
-T.applyErrorMatchers(DurableObjectNotContainerEnabled, [
-  { code: 1607, message: { includes: "DURABLE_OBJECT_NOT_CONTAINER_ENABLED" } },
-]);
 
-export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
-  "InvalidRoute",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidRoute extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7003, message: { includes: "Could not route" } }],
 ) {}
-T.applyErrorMatchers(InvalidRoute, [
-  { code: 7003, message: { includes: "Could not route" } },
-]);
 
 // =============================================================================
 // ContainerApplication

@@ -16,85 +16,95 @@ import { type DefaultErrors, InternalServerError } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class FiltersRequired extends Schema.TaggedErrorClass<FiltersRequired>()(
-  "FiltersRequired",
-  { code: Schema.Number, message: Schema.String },
+export class FiltersRequired extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<FiltersRequired>()("FiltersRequired", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 17103 }],
 ) {}
-T.applyErrorMatchers(FiltersRequired, [{ code: 17103 }]);
 
 T.applyErrorMatchers(InternalServerError, [{ code: 15000 }]);
 
-export class InvalidAlertType extends Schema.TaggedErrorClass<InvalidAlertType>()(
-  "InvalidAlertType",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidAlertType extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidAlertType>()("InvalidAlertType", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 17004 }],
 ) {}
-T.applyErrorMatchers(InvalidAlertType, [{ code: 17004 }]);
 
-export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
-  "InvalidRoute",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidRoute extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7003 }],
 ) {}
-T.applyErrorMatchers(InvalidRoute, [{ code: 7003 }]);
 
-export class InvalidSilence extends Schema.TaggedErrorClass<InvalidSilence>()(
-  "InvalidSilence",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidSilence extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidSilence>()("InvalidSilence", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 0, message: { includes: "invalid silence" } }],
 ) {}
-T.applyErrorMatchers(InvalidSilence, [
-  { code: 0, message: { includes: "invalid silence" } },
-]);
 
-export class InvalidWebhookId extends Schema.TaggedErrorClass<InvalidWebhookId>()(
-  "InvalidWebhookId",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidWebhookId extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidWebhookId>()("InvalidWebhookId", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 0, message: { includes: "invalid Webhook ID" } }],
 ) {}
-T.applyErrorMatchers(InvalidWebhookId, [
-  { code: 0, message: { includes: "invalid Webhook ID" } },
-]);
 
-export class MechanismRequired extends Schema.TaggedErrorClass<MechanismRequired>()(
-  "MechanismRequired",
-  { code: Schema.Number, message: Schema.String },
+export class MechanismRequired extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MechanismRequired>()("MechanismRequired", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 17102 }],
 ) {}
-T.applyErrorMatchers(MechanismRequired, [{ code: 17102 }]);
 
-export class PolicyNotFound extends Schema.TaggedErrorClass<PolicyNotFound>()(
-  "PolicyNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class PolicyNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<PolicyNotFound>()("PolicyNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 0, message: { includes: "Policy not found" } }],
 ) {}
-T.applyErrorMatchers(PolicyNotFound, [
-  { code: 0, message: { includes: "Policy not found" } },
-]);
 
-export class SilenceAlreadyExists extends Schema.TaggedErrorClass<SilenceAlreadyExists>()(
-  "SilenceAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class SilenceAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SilenceAlreadyExists>()("SilenceAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 15000 }],
 ) {}
-T.applyErrorMatchers(SilenceAlreadyExists, [{ code: 15000 }]);
 
-export class SilenceNotFound extends Schema.TaggedErrorClass<SilenceNotFound>()(
-  "SilenceNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class SilenceNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SilenceNotFound>()("SilenceNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 0, message: { includes: "silence not found" } }],
 ) {}
-T.applyErrorMatchers(SilenceNotFound, [
-  { code: 0, message: { includes: "silence not found" } },
-]);
 
-export class WebhookNotFound extends Schema.TaggedErrorClass<WebhookNotFound>()(
-  "WebhookNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class WebhookNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<WebhookNotFound>()("WebhookNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 0, message: { includes: "Webhook not found" } }],
 ) {}
-T.applyErrorMatchers(WebhookNotFound, [
-  { code: 0, message: { includes: "Webhook not found" } },
-]);
 
-export class WebhookTestFailed extends Schema.TaggedErrorClass<WebhookTestFailed>()(
-  "WebhookTestFailed",
-  { code: Schema.Number, message: Schema.String },
+export class WebhookTestFailed extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<WebhookTestFailed>()("WebhookTestFailed", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 0, message: { includes: "Webhook test failed" } }],
 ) {}
-T.applyErrorMatchers(WebhookTestFailed, [
-  { code: 0, message: { includes: "Webhook test failed" } },
-]);
 
 // =============================================================================
 // AvailableAlert

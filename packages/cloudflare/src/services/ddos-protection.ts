@@ -16,47 +16,61 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class AdvancedTcpProtectionNotEntitled extends Schema.TaggedErrorClass<AdvancedTcpProtectionNotEntitled>()(
-  "AdvancedTcpProtectionNotEntitled",
-  { code: Schema.Number, message: Schema.String },
+export class AdvancedTcpProtectionNotEntitled extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AdvancedTcpProtectionNotEntitled>()(
+    "AdvancedTcpProtectionNotEntitled",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 8888 }],
 ) {}
-T.applyErrorMatchers(AdvancedTcpProtectionNotEntitled, [{ code: 8888 }]);
 
-export class AllowlistEntryNotFound extends Schema.TaggedErrorClass<AllowlistEntryNotFound>()(
-  "AllowlistEntryNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class AllowlistEntryNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AllowlistEntryNotFound>()("AllowlistEntryNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(AllowlistEntryNotFound, [{ status: 404 }]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class SynProtectionFilterNotFound extends Schema.TaggedErrorClass<SynProtectionFilterNotFound>()(
-  "SynProtectionFilterNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class SynProtectionFilterNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SynProtectionFilterNotFound>()(
+    "SynProtectionFilterNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(SynProtectionFilterNotFound, [{ status: 404 }]);
 
-export class SynProtectionRuleNotFound extends Schema.TaggedErrorClass<SynProtectionRuleNotFound>()(
-  "SynProtectionRuleNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class SynProtectionRuleNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SynProtectionRuleNotFound>()(
+    "SynProtectionRuleNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(SynProtectionRuleNotFound, [{ status: 404 }]);
 
-export class TcpFlowProtectionFilterNotFound extends Schema.TaggedErrorClass<TcpFlowProtectionFilterNotFound>()(
-  "TcpFlowProtectionFilterNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class TcpFlowProtectionFilterNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TcpFlowProtectionFilterNotFound>()(
+    "TcpFlowProtectionFilterNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(TcpFlowProtectionFilterNotFound, [{ status: 404 }]);
 
-export class TcpFlowProtectionRuleNotFound extends Schema.TaggedErrorClass<TcpFlowProtectionRuleNotFound>()(
-  "TcpFlowProtectionRuleNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class TcpFlowProtectionRuleNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TcpFlowProtectionRuleNotFound>()(
+    "TcpFlowProtectionRuleNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(TcpFlowProtectionRuleNotFound, [{ status: 404 }]);
 
 // =============================================================================
 // AdvancedTcpProtectionAllowlist

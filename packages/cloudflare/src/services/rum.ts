@@ -16,37 +16,45 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class MaxRulesExceeded extends Schema.TaggedErrorClass<MaxRulesExceeded>()(
-  "MaxRulesExceeded",
-  { code: Schema.Number, message: Schema.String },
+export class MaxRulesExceeded extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MaxRulesExceeded>()("MaxRulesExceeded", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 409, message: { includes: "maxRulesError" } }],
 ) {}
-T.applyErrorMatchers(MaxRulesExceeded, [
-  { status: 409, message: { includes: "maxRulesError" } },
-]);
 
-export class RuleNotFound extends Schema.TaggedErrorClass<RuleNotFound>()(
-  "RuleNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class RuleNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<RuleNotFound>()("RuleNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10003 }],
 ) {}
-T.applyErrorMatchers(RuleNotFound, [{ code: 10003 }]);
 
-export class RulesetNotFound extends Schema.TaggedErrorClass<RulesetNotFound>()(
-  "RulesetNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class RulesetNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<RulesetNotFound>()("RulesetNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(RulesetNotFound, [{ status: 404 }]);
 
-export class SiteNotFound extends Schema.TaggedErrorClass<SiteNotFound>()(
-  "SiteNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class SiteNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SiteNotFound>()("SiteNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10015 }],
 ) {}
-T.applyErrorMatchers(SiteNotFound, [{ code: 10015 }]);
 
 // =============================================================================
 // Rule

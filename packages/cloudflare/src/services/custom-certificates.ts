@@ -16,34 +16,40 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class CustomCertificateNotFound extends Schema.TaggedErrorClass<CustomCertificateNotFound>()(
-  "CustomCertificateNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class CustomCertificateNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CustomCertificateNotFound>()(
+    "CustomCertificateNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [
+    { status: 404 },
+    { code: 1002, message: { includes: "Invalid certificate" } },
+  ],
 ) {}
-T.applyErrorMatchers(CustomCertificateNotFound, [
-  { status: 404 },
-  { code: 1002, message: { includes: "Invalid certificate" } },
-]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class PlanLevelNotAllowed extends Schema.TaggedErrorClass<PlanLevelNotAllowed>()(
-  "PlanLevelNotAllowed",
-  { code: Schema.Number, message: Schema.String },
+export class PlanLevelNotAllowed extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<PlanLevelNotAllowed>()("PlanLevelNotAllowed", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1011 }],
 ) {}
-T.applyErrorMatchers(PlanLevelNotAllowed, [{ code: 1011 }]);
 
-export class ZoneNotFound extends Schema.TaggedErrorClass<ZoneNotFound>()(
-  "ZoneNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ZoneNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ZoneNotFound>()("ZoneNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 400, message: { includes: "Cannot find a valid zone" } }],
 ) {}
-T.applyErrorMatchers(ZoneNotFound, [
-  { status: 400, message: { includes: "Cannot find a valid zone" } },
-]);
 
 // =============================================================================
 // CustomCertificate

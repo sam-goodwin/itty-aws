@@ -16,25 +16,29 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class CmbConfigNotFound extends Schema.TaggedErrorClass<CmbConfigNotFound>()(
-  "CmbConfigNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class CmbConfigNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CmbConfigNotFound>()("CmbConfigNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(CmbConfigNotFound, [{ status: 404 }]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class LogsControlNotAuthorized extends Schema.TaggedErrorClass<LogsControlNotAuthorized>()(
-  "LogsControlNotAuthorized",
-  { code: Schema.Number, message: Schema.String },
+export class LogsControlNotAuthorized extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<LogsControlNotAuthorized>()(
+    "LogsControlNotAuthorized",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 10000, message: { includes: "Unauthorized" } }],
 ) {}
-T.applyErrorMatchers(LogsControlNotAuthorized, [
-  { code: 10000, message: { includes: "Unauthorized" } },
-]);
 
 // =============================================================================
 // ControlCmbConfig

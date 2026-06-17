@@ -16,35 +16,45 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class InvalidSchema extends Schema.TaggedErrorClass<InvalidSchema>()(
-  "InvalidSchema",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidSchema extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidSchema>()("InvalidSchema", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 50010 }],
 ) {}
-T.applyErrorMatchers(InvalidSchema, [{ code: 50010 }]);
 
-export class OperationNotFound extends Schema.TaggedErrorClass<OperationNotFound>()(
-  "OperationNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class OperationNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<OperationNotFound>()("OperationNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10404 }],
 ) {}
-T.applyErrorMatchers(OperationNotFound, [{ code: 10404 }]);
 
-export class SchemaNotFound extends Schema.TaggedErrorClass<SchemaNotFound>()(
-  "SchemaNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class SchemaNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SchemaNotFound>()("SchemaNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 19400 }],
 ) {}
-T.applyErrorMatchers(SchemaNotFound, [{ code: 19400 }]);
 
-export class UnentitledMitigationAction extends Schema.TaggedErrorClass<UnentitledMitigationAction>()(
-  "UnentitledMitigationAction",
-  { code: Schema.Number, message: Schema.String },
+export class UnentitledMitigationAction extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<UnentitledMitigationAction>()(
+    "UnentitledMitigationAction",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 11400 }],
 ) {}
-T.applyErrorMatchers(UnentitledMitigationAction, [{ code: 11400 }]);
 
 // =============================================================================
 // Schema

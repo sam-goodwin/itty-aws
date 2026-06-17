@@ -17,29 +17,37 @@ import { UploadableSchema } from "../schemas.ts";
 // Errors
 // =============================================================================
 
-export class DispatchNamespaceAlreadyExists extends Schema.TaggedErrorClass<DispatchNamespaceAlreadyExists>()(
-  "DispatchNamespaceAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class DispatchNamespaceAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DispatchNamespaceAlreadyExists>()(
+    "DispatchNamespaceAlreadyExists",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 100120 }],
 ) {}
-T.applyErrorMatchers(DispatchNamespaceAlreadyExists, [{ code: 100120 }]);
 
-export class DispatchNamespaceNotFound extends Schema.TaggedErrorClass<DispatchNamespaceNotFound>()(
-  "DispatchNamespaceNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class DispatchNamespaceNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DispatchNamespaceNotFound>()(
+    "DispatchNamespaceNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 100119 }],
 ) {}
-T.applyErrorMatchers(DispatchNamespaceNotFound, [{ code: 100119 }]);
 
-export class DispatchNamespaceScriptNotFound extends Schema.TaggedErrorClass<DispatchNamespaceScriptNotFound>()(
-  "DispatchNamespaceScriptNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class DispatchNamespaceScriptNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DispatchNamespaceScriptNotFound>()(
+    "DispatchNamespaceScriptNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 10007 }],
 ) {}
-T.applyErrorMatchers(DispatchNamespaceScriptNotFound, [{ code: 10007 }]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
 // =============================================================================
 // DispatchNamespace

@@ -16,19 +16,21 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class CloudConnectorRulesNotFound extends Schema.TaggedErrorClass<CloudConnectorRulesNotFound>()(
-  "CloudConnectorRulesNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class CloudConnectorRulesNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CloudConnectorRulesNotFound>()(
+    "CloudConnectorRulesNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 10003, message: { includes: "could not find entrypoint ruleset" } }],
 ) {}
-T.applyErrorMatchers(CloudConnectorRulesNotFound, [
-  { code: 10003, message: { includes: "could not find entrypoint ruleset" } },
-]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
 // =============================================================================
 // Rule

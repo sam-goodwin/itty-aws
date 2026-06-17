@@ -16,23 +16,29 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class ListAlreadyExists extends Schema.TaggedErrorClass<ListAlreadyExists>()(
-  "ListAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class ListAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ListAlreadyExists>()("ListAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10021 }],
 ) {}
-T.applyErrorMatchers(ListAlreadyExists, [{ code: 10021 }]);
 
-export class ListNotFound extends Schema.TaggedErrorClass<ListNotFound>()(
-  "ListNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ListNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ListNotFound>()("ListNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10001 }],
 ) {}
-T.applyErrorMatchers(ListNotFound, [{ code: 10001 }]);
 
 // =============================================================================
 // List

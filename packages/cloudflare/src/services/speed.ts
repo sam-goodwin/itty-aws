@@ -16,36 +16,37 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class TestScheduleAlreadyExists extends Schema.TaggedErrorClass<TestScheduleAlreadyExists>()(
-  "TestScheduleAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class TestScheduleAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TestScheduleAlreadyExists>()(
+    "TestScheduleAlreadyExists",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 400, message: { includes: "scheduled_test_already_exists" } }],
 ) {}
-T.applyErrorMatchers(TestScheduleAlreadyExists, [
-  { code: 400, message: { includes: "scheduled_test_already_exists" } },
-]);
 
-export class TestScheduleNotFound extends Schema.TaggedErrorClass<TestScheduleNotFound>()(
-  "TestScheduleNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class TestScheduleNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TestScheduleNotFound>()("TestScheduleNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 404, message: { includes: "schedule_not_found" } }, { status: 404 }],
 ) {}
-T.applyErrorMatchers(TestScheduleNotFound, [
-  { code: 404, message: { includes: "schedule_not_found" } },
-  { status: 404 },
-]);
 
-export class TestScheduleQuotaReached extends Schema.TaggedErrorClass<TestScheduleQuotaReached>()(
-  "TestScheduleQuotaReached",
-  { code: Schema.Number, message: Schema.String },
+export class TestScheduleQuotaReached extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TestScheduleQuotaReached>()(
+    "TestScheduleQuotaReached",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 429, message: { includes: "quota reached" } }],
 ) {}
-T.applyErrorMatchers(TestScheduleQuotaReached, [
-  { code: 429, message: { includes: "quota reached" } },
-]);
 
 // =============================================================================
 // Availability

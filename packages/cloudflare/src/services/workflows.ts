@@ -16,53 +16,69 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class InstanceAlreadyExists extends Schema.TaggedErrorClass<InstanceAlreadyExists>()(
-  "InstanceAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class InstanceAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InstanceAlreadyExists>()("InstanceAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10405 }],
 ) {}
-T.applyErrorMatchers(InstanceAlreadyExists, [{ code: 10405 }]);
 
-export class InstanceCannotTerminate extends Schema.TaggedErrorClass<InstanceCannotTerminate>()(
-  "InstanceCannotTerminate",
-  { code: Schema.Number, message: Schema.String },
+export class InstanceCannotTerminate extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InstanceCannotTerminate>()(
+    "InstanceCannotTerminate",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 10401 }],
 ) {}
-T.applyErrorMatchers(InstanceCannotTerminate, [{ code: 10401 }]);
 
-export class InstanceNotFound extends Schema.TaggedErrorClass<InstanceNotFound>()(
-  "InstanceNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class InstanceNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InstanceNotFound>()("InstanceNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10201 }, { code: 10400 }],
 ) {}
-T.applyErrorMatchers(InstanceNotFound, [{ code: 10201 }, { code: 10400 }]);
 
-export class InvalidBody extends Schema.TaggedErrorClass<InvalidBody>()(
-  "InvalidBody",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidBody extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidBody>()("InvalidBody", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10002 }],
 ) {}
-T.applyErrorMatchers(InvalidBody, [{ code: 10002 }]);
 
-export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
-  "InvalidRoute",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidRoute extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7003 }],
 ) {}
-T.applyErrorMatchers(InvalidRoute, [{ code: 7003 }]);
 
-export class VersionNotFound extends Schema.TaggedErrorClass<VersionNotFound>()(
-  "VersionNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class VersionNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<VersionNotFound>()("VersionNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10300 }],
 ) {}
-T.applyErrorMatchers(VersionNotFound, [{ code: 10300 }]);
 
-export class WorkflowInternalError extends Schema.TaggedErrorClass<WorkflowInternalError>()(
-  "WorkflowInternalError",
-  { code: Schema.Number, message: Schema.String },
+export class WorkflowInternalError extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<WorkflowInternalError>()("WorkflowInternalError", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10001 }],
 ) {}
-T.applyErrorMatchers(WorkflowInternalError, [{ code: 10001 }]);
 
-export class WorkflowNotFound extends Schema.TaggedErrorClass<WorkflowNotFound>()(
-  "WorkflowNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class WorkflowNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<WorkflowNotFound>()("WorkflowNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10200 }],
 ) {}
-T.applyErrorMatchers(WorkflowNotFound, [{ code: 10200 }]);
 
 // =============================================================================
 // Instance

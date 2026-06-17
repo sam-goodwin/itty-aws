@@ -17,62 +17,80 @@ import { UploadableSchema } from "../schemas.ts";
 // Errors
 // =============================================================================
 
-export class InvalidExpirationTtl extends Schema.TaggedErrorClass<InvalidExpirationTtl>()(
-  "InvalidExpirationTtl",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidExpirationTtl extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidExpirationTtl>()("InvalidExpirationTtl", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10034 }],
 ) {}
-T.applyErrorMatchers(InvalidExpirationTtl, [{ code: 10034 }]);
 
-export class InvalidObjectIdentifier extends Schema.TaggedErrorClass<InvalidObjectIdentifier>()(
-  "InvalidObjectIdentifier",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidObjectIdentifier extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidObjectIdentifier>()(
+    "InvalidObjectIdentifier",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 7003 }],
 ) {}
-T.applyErrorMatchers(InvalidObjectIdentifier, [{ code: 7003 }]);
 
-export class InvalidRequestBody extends Schema.TaggedErrorClass<InvalidRequestBody>()(
-  "InvalidRequestBody",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidRequestBody extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidRequestBody>()("InvalidRequestBody", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10012 }],
 ) {}
-T.applyErrorMatchers(InvalidRequestBody, [{ code: 10012 }]);
 
-export class KeyNotFound extends Schema.TaggedErrorClass<KeyNotFound>()(
-  "KeyNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class KeyNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<KeyNotFound>()("KeyNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10009 }],
 ) {}
-T.applyErrorMatchers(KeyNotFound, [{ code: 10009 }]);
 
-export class MethodNotAllowed extends Schema.TaggedErrorClass<MethodNotAllowed>()(
-  "MethodNotAllowed",
-  { code: Schema.Number, message: Schema.String },
+export class MethodNotAllowed extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MethodNotAllowed>()("MethodNotAllowed", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [
+    { code: 10405, message: { includes: "not allowed" } },
+    { code: 10000, message: { includes: "not allowed" } },
+  ],
 ) {}
-T.applyErrorMatchers(MethodNotAllowed, [
-  { code: 10405, message: { includes: "not allowed" } },
-  { code: 10000, message: { includes: "not allowed" } },
-]);
 
-export class MinimumKeysRequired extends Schema.TaggedErrorClass<MinimumKeysRequired>()(
-  "MinimumKeysRequired",
-  { code: Schema.Number, message: Schema.String },
+export class MinimumKeysRequired extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MinimumKeysRequired>()("MinimumKeysRequired", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10029 }],
 ) {}
-T.applyErrorMatchers(MinimumKeysRequired, [{ code: 10029 }]);
 
-export class NamespaceNotFound extends Schema.TaggedErrorClass<NamespaceNotFound>()(
-  "NamespaceNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class NamespaceNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<NamespaceNotFound>()("NamespaceNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10013 }],
 ) {}
-T.applyErrorMatchers(NamespaceNotFound, [{ code: 10013 }]);
 
-export class NamespaceTitleAlreadyExists extends Schema.TaggedErrorClass<NamespaceTitleAlreadyExists>()(
-  "NamespaceTitleAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class NamespaceTitleAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<NamespaceTitleAlreadyExists>()(
+    "NamespaceTitleAlreadyExists",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 10014 }],
 ) {}
-T.applyErrorMatchers(NamespaceTitleAlreadyExists, [{ code: 10014 }]);
 
-export class TitleRequired extends Schema.TaggedErrorClass<TitleRequired>()(
-  "TitleRequired",
-  { code: Schema.Number, message: Schema.String },
+export class TitleRequired extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TitleRequired>()("TitleRequired", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10019 }],
 ) {}
-T.applyErrorMatchers(TitleRequired, [{ code: 10019 }]);
 
 // =============================================================================
 // Namespace

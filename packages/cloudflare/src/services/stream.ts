@@ -16,47 +16,61 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class LiveInputNotFound extends Schema.TaggedErrorClass<LiveInputNotFound>()(
-  "LiveInputNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class LiveInputNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<LiveInputNotFound>()("LiveInputNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10003 }],
 ) {}
-T.applyErrorMatchers(LiveInputNotFound, [{ code: 10003 }]);
 
-export class OutputNotFound extends Schema.TaggedErrorClass<OutputNotFound>()(
-  "OutputNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class OutputNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<OutputNotFound>()("OutputNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10003 }],
 ) {}
-T.applyErrorMatchers(OutputNotFound, [{ code: 10003 }]);
 
-export class SigningKeyNotFound extends Schema.TaggedErrorClass<SigningKeyNotFound>()(
-  "SigningKeyNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class SigningKeyNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SigningKeyNotFound>()("SigningKeyNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10003 }],
 ) {}
-T.applyErrorMatchers(SigningKeyNotFound, [{ code: 10003 }]);
 
-export class WatermarkImageInvalid extends Schema.TaggedErrorClass<WatermarkImageInvalid>()(
-  "WatermarkImageInvalid",
-  { code: Schema.Number, message: Schema.String },
+export class WatermarkImageInvalid extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<WatermarkImageInvalid>()("WatermarkImageInvalid", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10004 }],
 ) {}
-T.applyErrorMatchers(WatermarkImageInvalid, [{ code: 10004 }]);
 
-export class WatermarkNotFound extends Schema.TaggedErrorClass<WatermarkNotFound>()(
-  "WatermarkNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class WatermarkNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<WatermarkNotFound>()("WatermarkNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10003 }],
 ) {}
-T.applyErrorMatchers(WatermarkNotFound, [{ code: 10003 }]);
 
-export class WebhookNotFound extends Schema.TaggedErrorClass<WebhookNotFound>()(
-  "WebhookNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class WebhookNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<WebhookNotFound>()("WebhookNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10003 }],
 ) {}
-T.applyErrorMatchers(WebhookNotFound, [{ code: 10003 }]);
 
 // =============================================================================
 // AudioTrack

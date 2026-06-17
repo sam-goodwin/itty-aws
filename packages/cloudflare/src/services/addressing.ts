@@ -16,154 +16,172 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class AddressMapNotFound extends Schema.TaggedErrorClass<AddressMapNotFound>()(
-  "AddressMapNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class AddressMapNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AddressMapNotFound>()("AddressMapNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1000 }, { code: 1000, message: { includes: "not_found" } }],
 ) {}
-T.applyErrorMatchers(AddressMapNotFound, [
-  { code: 1000 },
-  { code: 1000, message: { includes: "not_found" } },
-]);
 
-export class BgpPrefixNotFound extends Schema.TaggedErrorClass<BgpPrefixNotFound>()(
-  "BgpPrefixNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class BgpPrefixNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<BgpPrefixNotFound>()("BgpPrefixNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1002 }],
 ) {}
-T.applyErrorMatchers(BgpPrefixNotFound, [{ code: 1002 }]);
 
-export class BindingNotFound extends Schema.TaggedErrorClass<BindingNotFound>()(
-  "BindingNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class BindingNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<BindingNotFound>()("BindingNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1002 }],
 ) {}
-T.applyErrorMatchers(BindingNotFound, [{ code: 1002 }]);
 
-export class DelegationNotFound extends Schema.TaggedErrorClass<DelegationNotFound>()(
-  "DelegationNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class DelegationNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DelegationNotFound>()("DelegationNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1000 }],
 ) {}
-T.applyErrorMatchers(DelegationNotFound, [{ code: 1000 }]);
 
-export class FeatureNotEnabled extends Schema.TaggedErrorClass<FeatureNotEnabled>()(
-  "FeatureNotEnabled",
-  { code: Schema.Number, message: Schema.String },
+export class FeatureNotEnabled extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<FeatureNotEnabled>()("FeatureNotEnabled", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1002, message: { includes: "address_maps_not_enabled" } }],
 ) {}
-T.applyErrorMatchers(FeatureNotEnabled, [
-  { code: 1002, message: { includes: "address_maps_not_enabled" } },
-]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class InvalidAccountId extends Schema.TaggedErrorClass<InvalidAccountId>()(
-  "InvalidAccountId",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidAccountId extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidAccountId>()("InvalidAccountId", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7003, message: { includes: "Could not route" } }],
 ) {}
-T.applyErrorMatchers(InvalidAccountId, [
-  { code: 7003, message: { includes: "Could not route" } },
-]);
 
-export class InvalidHostname extends Schema.TaggedErrorClass<InvalidHostname>()(
-  "InvalidHostname",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidHostname extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidHostname>()("InvalidHostname", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1002, message: { includes: "forbidden" } }],
 ) {}
-T.applyErrorMatchers(InvalidHostname, [
-  { code: 1002, message: { includes: "forbidden" } },
-]);
 
-export class InvalidLoaForm extends Schema.TaggedErrorClass<InvalidLoaForm>()(
-  "InvalidLoaForm",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidLoaForm extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidLoaForm>()("InvalidLoaForm", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1001, message: { includes: "invalid_loa_form" } }, { code: 1001 }],
 ) {}
-T.applyErrorMatchers(InvalidLoaForm, [
-  { code: 1001, message: { includes: "invalid_loa_form" } },
-  { code: 1001 },
-]);
 
-export class InvalidNetworkCidr extends Schema.TaggedErrorClass<InvalidNetworkCidr>()(
-  "InvalidNetworkCidr",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidNetworkCidr extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidNetworkCidr>()("InvalidNetworkCidr", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1001, message: { includes: "invalid_network_cidr" } }],
 ) {}
-T.applyErrorMatchers(InvalidNetworkCidr, [
-  { code: 1001, message: { includes: "invalid_network_cidr" } },
-]);
 
-export class InvalidZoneId extends Schema.TaggedErrorClass<InvalidZoneId>()(
-  "InvalidZoneId",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidZoneId extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidZoneId>()("InvalidZoneId", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7003, message: { includes: "Could not route" } }],
 ) {}
-T.applyErrorMatchers(InvalidZoneId, [
-  { code: 7003, message: { includes: "Could not route" } },
-]);
 
-export class IrrEntryNotFound extends Schema.TaggedErrorClass<IrrEntryNotFound>()(
-  "IrrEntryNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class IrrEntryNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<IrrEntryNotFound>()("IrrEntryNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1003, message: { includes: "irr_entry_not_found" } }],
 ) {}
-T.applyErrorMatchers(IrrEntryNotFound, [
-  { code: 1003, message: { includes: "irr_entry_not_found" } },
-]);
 
-export class LoaDocumentNotFound extends Schema.TaggedErrorClass<LoaDocumentNotFound>()(
-  "LoaDocumentNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class LoaDocumentNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<LoaDocumentNotFound>()("LoaDocumentNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1000 }],
 ) {}
-T.applyErrorMatchers(LoaDocumentNotFound, [{ code: 1000 }]);
 
-export class MethodNotAllowed extends Schema.TaggedErrorClass<MethodNotAllowed>()(
-  "MethodNotAllowed",
-  { code: Schema.Number, message: Schema.String },
+export class MethodNotAllowed extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MethodNotAllowed>()("MethodNotAllowed", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [
+    { code: 10405, message: { includes: "not allowed" } },
+    { code: 10000, message: { includes: "not allowed" } },
+  ],
 ) {}
-T.applyErrorMatchers(MethodNotAllowed, [
-  { code: 10405, message: { includes: "not allowed" } },
-  { code: 10000, message: { includes: "not allowed" } },
-]);
 
-export class MissingAccountId extends Schema.TaggedErrorClass<MissingAccountId>()(
-  "MissingAccountId",
-  { code: Schema.Number, message: Schema.String },
+export class MissingAccountId extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MissingAccountId>()("MissingAccountId", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1001 }],
 ) {}
-T.applyErrorMatchers(MissingAccountId, [{ code: 1001 }]);
 
-export class NonexistentAccountPrefix extends Schema.TaggedErrorClass<NonexistentAccountPrefix>()(
-  "NonexistentAccountPrefix",
-  { code: Schema.Number, message: Schema.String },
+export class NonexistentAccountPrefix extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<NonexistentAccountPrefix>()(
+    "NonexistentAccountPrefix",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1003 }],
 ) {}
-T.applyErrorMatchers(NonexistentAccountPrefix, [{ code: 1003 }]);
 
-export class PrefixNotFound extends Schema.TaggedErrorClass<PrefixNotFound>()(
-  "PrefixNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class PrefixNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<PrefixNotFound>()("PrefixNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [
+    { code: 1000 },
+    { code: 1000, message: { includes: "not_found" } },
+    { code: 1002, message: { includes: "forbidden" } },
+  ],
 ) {}
-T.applyErrorMatchers(PrefixNotFound, [
-  { code: 1000 },
-  { code: 1000, message: { includes: "not_found" } },
-  { code: 1002, message: { includes: "forbidden" } },
-]);
 
-export class RegionalHostnameEmpty extends Schema.TaggedErrorClass<RegionalHostnameEmpty>()(
-  "RegionalHostnameEmpty",
-  { code: Schema.Number, message: Schema.String },
+export class RegionalHostnameEmpty extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<RegionalHostnameEmpty>()("RegionalHostnameEmpty", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1000, message: { includes: "not_found" } }],
 ) {}
-T.applyErrorMatchers(RegionalHostnameEmpty, [
-  { code: 1000, message: { includes: "not_found" } },
-]);
 
-export class RegionalHostnameNotFound extends Schema.TaggedErrorClass<RegionalHostnameNotFound>()(
-  "RegionalHostnameNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class RegionalHostnameNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<RegionalHostnameNotFound>()(
+    "RegionalHostnameNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1002, message: { includes: "forbidden" } }],
 ) {}
-T.applyErrorMatchers(RegionalHostnameNotFound, [
-  { code: 1002, message: { includes: "forbidden" } },
-]);
 
-export class UnsupportedBindingConfiguration extends Schema.TaggedErrorClass<UnsupportedBindingConfiguration>()(
-  "UnsupportedBindingConfiguration",
-  { code: Schema.Number, message: Schema.String },
+export class UnsupportedBindingConfiguration extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<UnsupportedBindingConfiguration>()(
+    "UnsupportedBindingConfiguration",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1003 }],
 ) {}
-T.applyErrorMatchers(UnsupportedBindingConfiguration, [{ code: 1003 }]);
 
 // =============================================================================
 // AddressMap

@@ -16,19 +16,21 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class SecurityTxtInvalid extends Schema.TaggedErrorClass<SecurityTxtInvalid>()(
-  "SecurityTxtInvalid",
-  { code: Schema.Number, message: Schema.String },
+export class SecurityTxtInvalid extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SecurityTxtInvalid>()("SecurityTxtInvalid", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10400, message: { includes: "invalid or missing values" } }],
 ) {}
-T.applyErrorMatchers(SecurityTxtInvalid, [
-  { code: 10400, message: { includes: "invalid or missing values" } },
-]);
 
 // =============================================================================
 // SecurityTxt

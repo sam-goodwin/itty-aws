@@ -17,103 +17,125 @@ import { SensitiveString } from "../sensitive.ts";
 // Errors
 // =============================================================================
 
-export class InvalidSinkConfig extends Schema.TaggedErrorClass<InvalidSinkConfig>()(
-  "InvalidSinkConfig",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidSinkConfig extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidSinkConfig>()("InvalidSinkConfig", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1012 }],
 ) {}
-T.applyErrorMatchers(InvalidSinkConfig, [{ code: 1012 }]);
 
-export class InvalidSinkId extends Schema.TaggedErrorClass<InvalidSinkId>()(
-  "InvalidSinkId",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidSinkId extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidSinkId>()("InvalidSinkId", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 2 }],
 ) {}
-T.applyErrorMatchers(InvalidSinkId, [{ code: 2 }]);
 
-export class InvalidSql extends Schema.TaggedErrorClass<InvalidSql>()(
-  "InvalidSql",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidSql extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidSql>()("InvalidSql", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1014 }],
 ) {}
-T.applyErrorMatchers(InvalidSql, [{ code: 1014 }]);
 
-export class InvalidStreamId extends Schema.TaggedErrorClass<InvalidStreamId>()(
-  "InvalidStreamId",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidStreamId extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidStreamId>()("InvalidStreamId", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 2 }],
 ) {}
-T.applyErrorMatchers(InvalidStreamId, [{ code: 2 }]);
 
-export class InvalidStreamName extends Schema.TaggedErrorClass<InvalidStreamName>()(
-  "InvalidStreamName",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidStreamName extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidStreamName>()("InvalidStreamName", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 2 }],
 ) {}
-T.applyErrorMatchers(InvalidStreamName, [{ code: 2 }]);
 
-export class PipelineAlreadyExists extends Schema.TaggedErrorClass<PipelineAlreadyExists>()(
-  "PipelineAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class PipelineAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<PipelineAlreadyExists>()("PipelineAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1003 }],
 ) {}
-T.applyErrorMatchers(PipelineAlreadyExists, [{ code: 1003 }]);
 
-export class PipelineNotExists extends Schema.TaggedErrorClass<PipelineNotExists>()(
-  "PipelineNotExists",
-  { code: Schema.Number, message: Schema.String },
+export class PipelineNotExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<PipelineNotExists>()("PipelineNotExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1000 }],
 ) {}
-T.applyErrorMatchers(PipelineNotExists, [{ code: 1000 }]);
 
-export class SinkAlreadyExists extends Schema.TaggedErrorClass<SinkAlreadyExists>()(
-  "SinkAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class SinkAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SinkAlreadyExists>()("SinkAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1003 }],
 ) {}
-T.applyErrorMatchers(SinkAlreadyExists, [{ code: 1003 }]);
 
-export class SinkAuthFailed extends Schema.TaggedErrorClass<SinkAuthFailed>()(
-  "SinkAuthFailed",
-  { code: Schema.Number, message: Schema.String },
+export class SinkAuthFailed extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SinkAuthFailed>()("SinkAuthFailed", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1012, message: { includes: "could not authenticate" } }],
 ) {}
-T.applyErrorMatchers(SinkAuthFailed, [
-  { code: 1012, message: { includes: "could not authenticate" } },
-]);
 
-export class SinkInUse extends Schema.TaggedErrorClass<SinkInUse>()(
-  "SinkInUse",
-  { code: Schema.Number, message: Schema.String },
+export class SinkInUse extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SinkInUse>()("SinkInUse", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 422, message: { includes: "in use" } }],
 ) {}
-T.applyErrorMatchers(SinkInUse, [
-  { status: 422, message: { includes: "in use" } },
-]);
 
-export class SinkNotFound extends Schema.TaggedErrorClass<SinkNotFound>()(
-  "SinkNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class SinkNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SinkNotFound>()("SinkNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1015 }],
 ) {}
-T.applyErrorMatchers(SinkNotFound, [{ code: 1015 }]);
 
-export class StreamAlreadyExists extends Schema.TaggedErrorClass<StreamAlreadyExists>()(
-  "StreamAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class StreamAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<StreamAlreadyExists>()("StreamAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1003 }],
 ) {}
-T.applyErrorMatchers(StreamAlreadyExists, [{ code: 1003 }]);
 
-export class StreamInUse extends Schema.TaggedErrorClass<StreamInUse>()(
-  "StreamInUse",
-  { code: Schema.Number, message: Schema.String },
+export class StreamInUse extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<StreamInUse>()("StreamInUse", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 422, message: { includes: "in use" } }],
 ) {}
-T.applyErrorMatchers(StreamInUse, [
-  { status: 422, message: { includes: "in use" } },
-]);
 
-export class StreamNotFound extends Schema.TaggedErrorClass<StreamNotFound>()(
-  "StreamNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class StreamNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<StreamNotFound>()("StreamNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1016 }],
 ) {}
-T.applyErrorMatchers(StreamNotFound, [{ code: 1016 }]);
 
-export class TableNotFound extends Schema.TaggedErrorClass<TableNotFound>()(
-  "TableNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class TableNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TableNotFound>()("TableNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1014, message: { includes: "not found" } }],
 ) {}
-T.applyErrorMatchers(TableNotFound, [
-  { code: 1014, message: { includes: "not found" } },
-]);
 
 // =============================================================================
 // Pipeline

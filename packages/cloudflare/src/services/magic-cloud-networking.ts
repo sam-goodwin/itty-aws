@@ -16,35 +16,45 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class CatalogSyncNotFound extends Schema.TaggedErrorClass<CatalogSyncNotFound>()(
-  "CatalogSyncNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class CatalogSyncNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CatalogSyncNotFound>()("CatalogSyncNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(CatalogSyncNotFound, [{ status: 404 }]);
 
-export class CloudIntegrationNotFound extends Schema.TaggedErrorClass<CloudIntegrationNotFound>()(
-  "CloudIntegrationNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class CloudIntegrationNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CloudIntegrationNotFound>()(
+    "CloudIntegrationNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(CloudIntegrationNotFound, [{ status: 404 }]);
 
-export class FeatureNotEnabled extends Schema.TaggedErrorClass<FeatureNotEnabled>()(
-  "FeatureNotEnabled",
-  { code: Schema.Number, message: Schema.String },
+export class FeatureNotEnabled extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<FeatureNotEnabled>()("FeatureNotEnabled", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1012, status: 403 }],
 ) {}
-T.applyErrorMatchers(FeatureNotEnabled, [{ code: 1012, status: 403 }]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class OnRampNotFound extends Schema.TaggedErrorClass<OnRampNotFound>()(
-  "OnRampNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class OnRampNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<OnRampNotFound>()("OnRampNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(OnRampNotFound, [{ status: 404 }]);
 
 // =============================================================================
 // AllCloudIntegration

@@ -17,75 +17,97 @@ import { SensitiveString } from "../sensitive.ts";
 // Errors
 // =============================================================================
 
-export class AclNotFound extends Schema.TaggedErrorClass<AclNotFound>()(
-  "AclNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class AclNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<AclNotFound>()("AclNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(AclNotFound, [{ status: 404 }]);
 
-export class DnsRecordAlreadyExists extends Schema.TaggedErrorClass<DnsRecordAlreadyExists>()(
-  "DnsRecordAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class DnsRecordAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DnsRecordAlreadyExists>()("DnsRecordAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [
+    { code: 81057 },
+    { code: 81058 },
+    { status: 400, message: { includes: "identical record already exists" } },
+  ],
 ) {}
-T.applyErrorMatchers(DnsRecordAlreadyExists, [
-  { code: 81057 },
-  { code: 81058 },
-  { status: 400, message: { includes: "identical record already exists" } },
-]);
 
-export class DnsSettingNotAvailable extends Schema.TaggedErrorClass<DnsSettingNotAvailable>()(
-  "DnsSettingNotAvailable",
-  { code: Schema.Number, message: Schema.String },
+export class DnsSettingNotAvailable extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DnsSettingNotAvailable>()("DnsSettingNotAvailable", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1003 }],
 ) {}
-T.applyErrorMatchers(DnsSettingNotAvailable, [{ code: 1003 }]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class IncomingZoneTransferNotFound extends Schema.TaggedErrorClass<IncomingZoneTransferNotFound>()(
-  "IncomingZoneTransferNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class IncomingZoneTransferNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<IncomingZoneTransferNotFound>()(
+    "IncomingZoneTransferNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(IncomingZoneTransferNotFound, [{ status: 404 }]);
 
-export class InternalDnsNotAvailable extends Schema.TaggedErrorClass<InternalDnsNotAvailable>()(
-  "InternalDnsNotAvailable",
-  { code: Schema.Number, message: Schema.String },
+export class InternalDnsNotAvailable extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InternalDnsNotAvailable>()(
+    "InternalDnsNotAvailable",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1029 }],
 ) {}
-T.applyErrorMatchers(InternalDnsNotAvailable, [{ code: 1029 }]);
 
-export class OutgoingZoneTransferNotFound extends Schema.TaggedErrorClass<OutgoingZoneTransferNotFound>()(
-  "OutgoingZoneTransferNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class OutgoingZoneTransferNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<OutgoingZoneTransferNotFound>()(
+    "OutgoingZoneTransferNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(OutgoingZoneTransferNotFound, [{ status: 404 }]);
 
-export class OutgoingZoneTransfersNotAllowed extends Schema.TaggedErrorClass<OutgoingZoneTransfersNotAllowed>()(
-  "OutgoingZoneTransfersNotAllowed",
-  { code: Schema.Number, message: Schema.String },
+export class OutgoingZoneTransfersNotAllowed extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<OutgoingZoneTransfersNotAllowed>()(
+    "OutgoingZoneTransfersNotAllowed",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 401 }],
 ) {}
-T.applyErrorMatchers(OutgoingZoneTransfersNotAllowed, [{ status: 401 }]);
 
-export class PeerNotFound extends Schema.TaggedErrorClass<PeerNotFound>()(
-  "PeerNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class PeerNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<PeerNotFound>()("PeerNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(PeerNotFound, [{ status: 404 }]);
 
-export class TsigNotFound extends Schema.TaggedErrorClass<TsigNotFound>()(
-  "TsigNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class TsigNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TsigNotFound>()("TsigNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(TsigNotFound, [{ status: 404 }]);
 
-export class ViewNotFound extends Schema.TaggedErrorClass<ViewNotFound>()(
-  "ViewNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class ViewNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ViewNotFound>()("ViewNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1015 }, { status: 404 }],
 ) {}
-T.applyErrorMatchers(ViewNotFound, [{ code: 1015 }, { status: 404 }]);
 
 // =============================================================================
 // AnalyticReport

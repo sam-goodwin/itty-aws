@@ -16,58 +16,66 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class DuplicateMnmRuleName extends Schema.TaggedErrorClass<DuplicateMnmRuleName>()(
-  "DuplicateMnmRuleName",
-  { code: Schema.Number, message: Schema.String },
+export class DuplicateMnmRuleName extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DuplicateMnmRuleName>()("DuplicateMnmRuleName", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1008, message: { includes: "rule name must be unique" } }],
 ) {}
-T.applyErrorMatchers(DuplicateMnmRuleName, [
-  { code: 1008, message: { includes: "rule name must be unique" } },
-]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class InvalidMnmConfig extends Schema.TaggedErrorClass<InvalidMnmConfig>()(
-  "InvalidMnmConfig",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidMnmConfig extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidMnmConfig>()("InvalidMnmConfig", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1003 }],
 ) {}
-T.applyErrorMatchers(InvalidMnmConfig, [{ code: 1003 }]);
 
-export class MnmConfigAlreadyExists extends Schema.TaggedErrorClass<MnmConfigAlreadyExists>()(
-  "MnmConfigAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class MnmConfigAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MnmConfigAlreadyExists>()("MnmConfigAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1005, message: { includes: "already exists" } }],
 ) {}
-T.applyErrorMatchers(MnmConfigAlreadyExists, [
-  { code: 1005, message: { includes: "already exists" } },
-]);
 
-export class MnmConfigMissing extends Schema.TaggedErrorClass<MnmConfigMissing>()(
-  "MnmConfigMissing",
-  { code: Schema.Number, message: Schema.String },
+export class MnmConfigMissing extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MnmConfigMissing>()("MnmConfigMissing", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [
+    {
+      code: 1008,
+      message: { includes: "without initial account configuration" },
+    },
+  ],
 ) {}
-T.applyErrorMatchers(MnmConfigMissing, [
-  {
-    code: 1008,
-    message: { includes: "without initial account configuration" },
-  },
-]);
 
-export class MnmConfigNotFound extends Schema.TaggedErrorClass<MnmConfigNotFound>()(
-  "MnmConfigNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class MnmConfigNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MnmConfigNotFound>()("MnmConfigNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1004, message: { includes: "not found" } }],
 ) {}
-T.applyErrorMatchers(MnmConfigNotFound, [
-  { code: 1004, message: { includes: "not found" } },
-]);
 
-export class MnmRuleNotFound extends Schema.TaggedErrorClass<MnmRuleNotFound>()(
-  "MnmRuleNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class MnmRuleNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MnmRuleNotFound>()("MnmRuleNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1009 }],
 ) {}
-T.applyErrorMatchers(MnmRuleNotFound, [{ code: 1009 }]);
 
 // =============================================================================
 // Config

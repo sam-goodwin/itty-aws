@@ -16,17 +16,21 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class OrganizationNotFound extends Schema.TaggedErrorClass<OrganizationNotFound>()(
-  "OrganizationNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class OrganizationNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<OrganizationNotFound>()("OrganizationNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(OrganizationNotFound, [{ status: 404 }]);
 
 // =============================================================================
 // BillingUsage

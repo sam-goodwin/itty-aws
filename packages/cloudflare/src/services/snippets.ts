@@ -17,35 +17,43 @@ import { UploadableSchema } from "../schemas.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class SnippetInUse extends Schema.TaggedErrorClass<SnippetInUse>()(
-  "SnippetInUse",
-  { code: Schema.Number, message: Schema.String },
+export class SnippetInUse extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SnippetInUse>()("SnippetInUse", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [
+    { status: 400, message: { includes: "still used" } },
+    { status: 409, message: { includes: "still used" } },
+  ],
 ) {}
-T.applyErrorMatchers(SnippetInUse, [
-  { status: 400, message: { includes: "still used" } },
-  { status: 409, message: { includes: "still used" } },
-]);
 
-export class SnippetNotFound extends Schema.TaggedErrorClass<SnippetNotFound>()(
-  "SnippetNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class SnippetNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SnippetNotFound>()("SnippetNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [
+    { status: 400, message: { includes: "snippet not found" } },
+    { status: 404 },
+  ],
 ) {}
-T.applyErrorMatchers(SnippetNotFound, [
-  { status: 400, message: { includes: "snippet not found" } },
-  { status: 404 },
-]);
 
-export class SnippetRulesNotFound extends Schema.TaggedErrorClass<SnippetRulesNotFound>()(
-  "SnippetRulesNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class SnippetRulesNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SnippetRulesNotFound>()("SnippetRulesNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(SnippetRulesNotFound, [{ status: 404 }]);
 
 // =============================================================================
 // Content

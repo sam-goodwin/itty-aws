@@ -17,115 +17,126 @@ import { SensitiveString } from "../sensitive.ts";
 // Errors
 // =============================================================================
 
-export class CertificateAlreadyDeleted extends Schema.TaggedErrorClass<CertificateAlreadyDeleted>()(
-  "CertificateAlreadyDeleted",
-  { code: Schema.Number, message: Schema.String },
+export class CertificateAlreadyDeleted extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CertificateAlreadyDeleted>()(
+    "CertificateAlreadyDeleted",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 400, message: { includes: "already deleted" } }],
 ) {}
-T.applyErrorMatchers(CertificateAlreadyDeleted, [
-  { status: 400, message: { includes: "already deleted" } },
-]);
 
-export class CertificateAlreadyExists extends Schema.TaggedErrorClass<CertificateAlreadyExists>()(
-  "CertificateAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class CertificateAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CertificateAlreadyExists>()(
+    "CertificateAlreadyExists",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1406, message: { includes: "already exists" } }],
 ) {}
-T.applyErrorMatchers(CertificateAlreadyExists, [
-  { code: 1406, message: { includes: "already exists" } },
-]);
 
-export class CertificateNotFound extends Schema.TaggedErrorClass<CertificateNotFound>()(
-  "CertificateNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class CertificateNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CertificateNotFound>()("CertificateNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [
+    { code: 1552, message: { includes: "certificate not found" } },
+    { status: 404 },
+  ],
 ) {}
-T.applyErrorMatchers(CertificateNotFound, [
-  { code: 1552, message: { includes: "certificate not found" } },
-  { status: 404 },
-]);
 
-export class CertificatePendingDeletion extends Schema.TaggedErrorClass<CertificatePendingDeletion>()(
-  "CertificatePendingDeletion",
-  { code: Schema.Number, message: Schema.String },
+export class CertificatePendingDeletion extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CertificatePendingDeletion>()(
+    "CertificatePendingDeletion",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1414, message: { includes: "pending deletion" } }],
 ) {}
-T.applyErrorMatchers(CertificatePendingDeletion, [
-  { code: 1414, message: { includes: "pending deletion" } },
-]);
 
-export class CertificatePendingDeployment extends Schema.TaggedErrorClass<CertificatePendingDeployment>()(
-  "CertificatePendingDeployment",
-  { code: Schema.Number, message: Schema.String },
+export class CertificatePendingDeployment extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CertificatePendingDeployment>()(
+    "CertificatePendingDeployment",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1434, message: { includes: "pending deployment" } }],
 ) {}
-T.applyErrorMatchers(CertificatePendingDeployment, [
-  { code: 1434, message: { includes: "pending deployment" } },
-]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class HostnameAssociationNotFound extends Schema.TaggedErrorClass<HostnameAssociationNotFound>()(
-  "HostnameAssociationNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class HostnameAssociationNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<HostnameAssociationNotFound>()(
+    "HostnameAssociationNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [
+    {
+      code: 1553,
+      message: { includes: "setting for this hostname not found" },
+    },
+    { status: 404 },
+  ],
 ) {}
-T.applyErrorMatchers(HostnameAssociationNotFound, [
-  { code: 1553, message: { includes: "setting for this hostname not found" } },
-  { status: 404 },
-]);
 
-export class HostnameCertificateIdRequired extends Schema.TaggedErrorClass<HostnameCertificateIdRequired>()(
-  "HostnameCertificateIdRequired",
-  { code: Schema.Number, message: Schema.String },
+export class HostnameCertificateIdRequired extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<HostnameCertificateIdRequired>()(
+    "HostnameCertificateIdRequired",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1404, message: { includes: "Certificate ID required" } }],
 ) {}
-T.applyErrorMatchers(HostnameCertificateIdRequired, [
-  { code: 1404, message: { includes: "Certificate ID required" } },
-]);
 
-export class HostnameCertificateInUse extends Schema.TaggedErrorClass<HostnameCertificateInUse>()(
-  "HostnameCertificateInUse",
-  { code: Schema.Number, message: Schema.String },
+export class HostnameCertificateInUse extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<HostnameCertificateInUse>()(
+    "HostnameCertificateInUse",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1433, message: { includes: "in use" } }],
 ) {}
-T.applyErrorMatchers(HostnameCertificateInUse, [
-  { code: 1433, message: { includes: "in use" } },
-]);
 
-export class HostnameCertificateNotFound extends Schema.TaggedErrorClass<HostnameCertificateNotFound>()(
-  "HostnameCertificateNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class HostnameCertificateNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<HostnameCertificateNotFound>()(
+    "HostnameCertificateNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1552 }, { code: 1551 }, { status: 404 }],
 ) {}
-T.applyErrorMatchers(HostnameCertificateNotFound, [
-  { code: 1552 },
-  { code: 1551 },
-  { status: 404 },
-]);
 
-export class InvalidCertificate extends Schema.TaggedErrorClass<InvalidCertificate>()(
-  "InvalidCertificate",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidCertificate extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidCertificate>()("InvalidCertificate", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1408, message: { includes: "Unable to parse certificate" } }],
 ) {}
-T.applyErrorMatchers(InvalidCertificate, [
-  { code: 1408, message: { includes: "Unable to parse certificate" } },
-]);
 
-export class InvalidCertificateId extends Schema.TaggedErrorClass<InvalidCertificateId>()(
-  "InvalidCertificateId",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidCertificateId extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidCertificateId>()("InvalidCertificateId", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1415, message: { includes: "Invalid Certificate ID" } }],
 ) {}
-T.applyErrorMatchers(InvalidCertificateId, [
-  { code: 1415, message: { includes: "Invalid Certificate ID" } },
-]);
 
-export class InvalidHostnameConfig extends Schema.TaggedErrorClass<InvalidHostnameConfig>()(
-  "InvalidHostnameConfig",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidHostnameConfig extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidHostnameConfig>()("InvalidHostnameConfig", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1415 }],
 ) {}
-T.applyErrorMatchers(InvalidHostnameConfig, [{ code: 1415 }]);
 
-export class ZoneClientCertConflict extends Schema.TaggedErrorClass<ZoneClientCertConflict>()(
-  "ZoneClientCertConflict",
-  { code: Schema.Number, message: Schema.String },
+export class ZoneClientCertConflict extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ZoneClientCertConflict>()("ZoneClientCertConflict", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 409 }],
 ) {}
-T.applyErrorMatchers(ZoneClientCertConflict, [{ status: 409 }]);
 
 // =============================================================================
 // Hostname

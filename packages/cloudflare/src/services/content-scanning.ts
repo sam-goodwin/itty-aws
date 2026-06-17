@@ -16,27 +16,29 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class ContentScanningNotEnabled extends Schema.TaggedErrorClass<ContentScanningNotEnabled>()(
-  "ContentScanningNotEnabled",
-  { code: Schema.Number, message: Schema.String },
+export class ContentScanningNotEnabled extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ContentScanningNotEnabled>()(
+    "ContentScanningNotEnabled",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 400, message: { includes: "File Upload Scan not enabled" } }],
 ) {}
-T.applyErrorMatchers(ContentScanningNotEnabled, [
-  { status: 400, message: { includes: "File Upload Scan not enabled" } },
-]);
 
-export class ContentScanningNotEntitled extends Schema.TaggedErrorClass<ContentScanningNotEntitled>()(
-  "ContentScanningNotEntitled",
-  { code: Schema.Number, message: Schema.String },
+export class ContentScanningNotEntitled extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ContentScanningNotEntitled>()(
+    "ContentScanningNotEntitled",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ status: 400, message: { includes: "not entitled" } }],
 ) {}
-T.applyErrorMatchers(ContentScanningNotEntitled, [
-  { status: 400, message: { includes: "not entitled" } },
-]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
 // =============================================================================
 // ContentScanning

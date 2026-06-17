@@ -17,41 +17,48 @@ import { SensitiveString } from "../sensitive.ts";
 // Errors
 // =============================================================================
 
-export class HyperdriveConfigNotFound extends Schema.TaggedErrorClass<HyperdriveConfigNotFound>()(
-  "HyperdriveConfigNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class HyperdriveConfigNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<HyperdriveConfigNotFound>()(
+    "HyperdriveConfigNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 2006 }, { status: 404 }],
 ) {}
-T.applyErrorMatchers(HyperdriveConfigNotFound, [
-  { code: 2006 },
-  { status: 404 },
-]);
 
-export class InvalidHyperdriveConfig extends Schema.TaggedErrorClass<InvalidHyperdriveConfig>()(
-  "InvalidHyperdriveConfig",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidHyperdriveConfig extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidHyperdriveConfig>()(
+    "InvalidHyperdriveConfig",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 2007 }],
 ) {}
-T.applyErrorMatchers(InvalidHyperdriveConfig, [{ code: 2007 }]);
 
-export class InvalidObjectIdentifier extends Schema.TaggedErrorClass<InvalidObjectIdentifier>()(
-  "InvalidObjectIdentifier",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidObjectIdentifier extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidObjectIdentifier>()(
+    "InvalidObjectIdentifier",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 7003 }],
 ) {}
-T.applyErrorMatchers(InvalidObjectIdentifier, [{ code: 7003 }]);
 
-export class MethodNotAllowed extends Schema.TaggedErrorClass<MethodNotAllowed>()(
-  "MethodNotAllowed",
-  { code: Schema.Number, message: Schema.String },
+export class MethodNotAllowed extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MethodNotAllowed>()("MethodNotAllowed", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [
+    { code: 10000, message: { includes: "method not allowed" } },
+    { code: 10405, message: { includes: "Method not allowed" } },
+  ],
 ) {}
-T.applyErrorMatchers(MethodNotAllowed, [
-  { code: 10000, message: { includes: "method not allowed" } },
-  { code: 10405, message: { includes: "Method not allowed" } },
-]);
 
-export class PrivateHostNotAllowed extends Schema.TaggedErrorClass<PrivateHostNotAllowed>()(
-  "PrivateHostNotAllowed",
-  { code: Schema.Number, message: Schema.String },
+export class PrivateHostNotAllowed extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<PrivateHostNotAllowed>()("PrivateHostNotAllowed", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 2009 }],
 ) {}
-T.applyErrorMatchers(PrivateHostNotAllowed, [{ code: 2009 }]);
 
 // =============================================================================
 // Config

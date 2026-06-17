@@ -16,23 +16,29 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class CallsAppNotFound extends Schema.TaggedErrorClass<CallsAppNotFound>()(
-  "CallsAppNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class CallsAppNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CallsAppNotFound>()("CallsAppNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 20007 }],
 ) {}
-T.applyErrorMatchers(CallsAppNotFound, [{ code: 20007 }]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class TurnKeyNotFound extends Schema.TaggedErrorClass<TurnKeyNotFound>()(
-  "TurnKeyNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class TurnKeyNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<TurnKeyNotFound>()("TurnKeyNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 20008 }],
 ) {}
-T.applyErrorMatchers(TurnKeyNotFound, [{ code: 20008 }]);
 
 // =============================================================================
 // Sfu

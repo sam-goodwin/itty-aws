@@ -16,17 +16,21 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class PageRuleNotFound extends Schema.TaggedErrorClass<PageRuleNotFound>()(
-  "PageRuleNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class PageRuleNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<PageRuleNotFound>()("PageRuleNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 404 }],
 ) {}
-T.applyErrorMatchers(PageRuleNotFound, [{ status: 404 }]);
 
 // =============================================================================
 // PageRule

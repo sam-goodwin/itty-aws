@@ -16,91 +16,101 @@ import { type DefaultErrors } from "../errors.ts";
 // Errors
 // =============================================================================
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class LoadBalancerNotFound extends Schema.TaggedErrorClass<LoadBalancerNotFound>()(
-  "LoadBalancerNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class LoadBalancerNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<LoadBalancerNotFound>()("LoadBalancerNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1001 }],
 ) {}
-T.applyErrorMatchers(LoadBalancerNotFound, [{ code: 1001 }]);
 
-export class LoadBalancingNotEnabledForZone extends Schema.TaggedErrorClass<LoadBalancingNotEnabledForZone>()(
-  "LoadBalancingNotEnabledForZone",
-  { code: Schema.Number, message: Schema.String },
+export class LoadBalancingNotEnabledForZone extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<LoadBalancingNotEnabledForZone>()(
+    "LoadBalancingNotEnabledForZone",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1002, message: { includes: "load balancing not enabled" } }],
 ) {}
-T.applyErrorMatchers(LoadBalancingNotEnabledForZone, [
-  { code: 1002, message: { includes: "load balancing not enabled" } },
-]);
 
-export class MonitorGroupInUse extends Schema.TaggedErrorClass<MonitorGroupInUse>()(
-  "MonitorGroupInUse",
-  { code: Schema.Number, message: Schema.String },
+export class MonitorGroupInUse extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MonitorGroupInUse>()("MonitorGroupInUse", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1002, message: { includes: "still referenced" } }],
 ) {}
-T.applyErrorMatchers(MonitorGroupInUse, [
-  { code: 1002, message: { includes: "still referenced" } },
-]);
 
-export class MonitorGroupNotFound extends Schema.TaggedErrorClass<MonitorGroupNotFound>()(
-  "MonitorGroupNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class MonitorGroupNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MonitorGroupNotFound>()("MonitorGroupNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1001 }],
 ) {}
-T.applyErrorMatchers(MonitorGroupNotFound, [{ code: 1001 }]);
 
-export class MonitorGroupsNotEnabled extends Schema.TaggedErrorClass<MonitorGroupsNotEnabled>()(
-  "MonitorGroupsNotEnabled",
-  { code: Schema.Number, message: Schema.String },
+export class MonitorGroupsNotEnabled extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MonitorGroupsNotEnabled>()(
+    "MonitorGroupsNotEnabled",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1002, message: { includes: "monitor groups not enabled" } }],
 ) {}
-T.applyErrorMatchers(MonitorGroupsNotEnabled, [
-  { code: 1002, message: { includes: "monitor groups not enabled" } },
-]);
 
-export class MonitorIntervalOutOfRange extends Schema.TaggedErrorClass<MonitorIntervalOutOfRange>()(
-  "MonitorIntervalOutOfRange",
-  { code: Schema.Number, message: Schema.String },
+export class MonitorIntervalOutOfRange extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MonitorIntervalOutOfRange>()(
+    "MonitorIntervalOutOfRange",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 1002, message: { includes: "interval is not in range" } }],
 ) {}
-T.applyErrorMatchers(MonitorIntervalOutOfRange, [
-  { code: 1002, message: { includes: "interval is not in range" } },
-]);
 
-export class MonitorInUse extends Schema.TaggedErrorClass<MonitorInUse>()(
-  "MonitorInUse",
-  { code: Schema.Number, message: Schema.String },
+export class MonitorInUse extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MonitorInUse>()("MonitorInUse", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1002, message: { includes: "still referenced" } }],
 ) {}
-T.applyErrorMatchers(MonitorInUse, [
-  { code: 1002, message: { includes: "still referenced" } },
-]);
 
-export class MonitorNotFound extends Schema.TaggedErrorClass<MonitorNotFound>()(
-  "MonitorNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class MonitorNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MonitorNotFound>()("MonitorNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1001 }],
 ) {}
-T.applyErrorMatchers(MonitorNotFound, [{ code: 1001 }]);
 
-export class PoolAccessFailed extends Schema.TaggedErrorClass<PoolAccessFailed>()(
-  "PoolAccessFailed",
-  { code: Schema.Number, message: Schema.String },
+export class PoolAccessFailed extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<PoolAccessFailed>()("PoolAccessFailed", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1002, message: { includes: "Access Failed" } }],
 ) {}
-T.applyErrorMatchers(PoolAccessFailed, [
-  { code: 1002, message: { includes: "Access Failed" } },
-]);
 
-export class PoolInUse extends Schema.TaggedErrorClass<PoolInUse>()(
-  "PoolInUse",
-  { code: Schema.Number, message: Schema.String },
+export class PoolInUse extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<PoolInUse>()("PoolInUse", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1002, message: { includes: "still referenced" } }],
 ) {}
-T.applyErrorMatchers(PoolInUse, [
-  { code: 1002, message: { includes: "still referenced" } },
-]);
 
-export class PoolNotFound extends Schema.TaggedErrorClass<PoolNotFound>()(
-  "PoolNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class PoolNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<PoolNotFound>()("PoolNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 1001 }],
 ) {}
-T.applyErrorMatchers(PoolNotFound, [{ code: 1001 }]);
 
 // =============================================================================
 // LoadBalancer

@@ -21,106 +21,133 @@ import { SensitiveString } from "../sensitive.ts";
 // Errors
 // =============================================================================
 
-export class BucketAlreadyExists extends Schema.TaggedErrorClass<BucketAlreadyExists>()(
-  "BucketAlreadyExists",
-  { code: Schema.Number, message: Schema.String },
+export class BucketAlreadyExists extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<BucketAlreadyExists>()("BucketAlreadyExists", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10004 }],
 ) {}
-T.applyErrorMatchers(BucketAlreadyExists, [{ code: 10004 }]);
 
-export class BucketNotFound extends Schema.TaggedErrorClass<BucketNotFound>()(
-  "BucketNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class BucketNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<BucketNotFound>()("BucketNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10085 }],
 ) {}
-T.applyErrorMatchers(BucketNotFound, [{ code: 10085 }]);
 
-export class CustomDomainInUse extends Schema.TaggedErrorClass<CustomDomainInUse>()(
-  "CustomDomainInUse",
-  { code: Schema.Number, message: Schema.String },
+export class CustomDomainInUse extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<CustomDomainInUse>()("CustomDomainInUse", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 409, message: { includes: "in use" } }],
 ) {}
-T.applyErrorMatchers(CustomDomainInUse, [
-  { status: 409, message: { includes: "in use" } },
-]);
 
-export class DomainNotFound extends Schema.TaggedErrorClass<DomainNotFound>()(
-  "DomainNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class DomainNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DomainNotFound>()("DomainNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10053 }],
 ) {}
-T.applyErrorMatchers(DomainNotFound, [{ code: 10053 }]);
 
-export class EventNotificationConfigNotFound extends Schema.TaggedErrorClass<EventNotificationConfigNotFound>()(
-  "EventNotificationConfigNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class EventNotificationConfigNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<EventNotificationConfigNotFound>()(
+    "EventNotificationConfigNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 11011 }],
 ) {}
-T.applyErrorMatchers(EventNotificationConfigNotFound, [{ code: 11011 }]);
 
-export class EventNotificationRuleConflict extends Schema.TaggedErrorClass<EventNotificationRuleConflict>()(
-  "EventNotificationRuleConflict",
-  { code: Schema.Number, message: Schema.String },
+export class EventNotificationRuleConflict extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<EventNotificationRuleConflict>()(
+    "EventNotificationRuleConflict",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 11020 }],
 ) {}
-T.applyErrorMatchers(EventNotificationRuleConflict, [{ code: 11020 }]);
 
-export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
-  "Forbidden",
-  { code: Schema.Number, message: Schema.String },
+export class Forbidden extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ status: 403 }],
 ) {}
-T.applyErrorMatchers(Forbidden, [{ status: 403 }]);
 
-export class InvalidBucketName extends Schema.TaggedErrorClass<InvalidBucketName>()(
-  "InvalidBucketName",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidBucketName extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidBucketName>()("InvalidBucketName", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10005 }],
 ) {}
-T.applyErrorMatchers(InvalidBucketName, [{ code: 10005 }]);
 
-export class InvalidEventNotificationConfig extends Schema.TaggedErrorClass<InvalidEventNotificationConfig>()(
-  "InvalidEventNotificationConfig",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidEventNotificationConfig extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidEventNotificationConfig>()(
+    "InvalidEventNotificationConfig",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 11014 }, { code: 11019 }],
 ) {}
-T.applyErrorMatchers(InvalidEventNotificationConfig, [
-  { code: 11014 },
-  { code: 11019 },
-]);
 
-export class InvalidRoute extends Schema.TaggedErrorClass<InvalidRoute>()(
-  "InvalidRoute",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidRoute extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 7003 }],
 ) {}
-T.applyErrorMatchers(InvalidRoute, [{ code: 7003 }]);
 
-export class InvalidUpstreamCredentials extends Schema.TaggedErrorClass<InvalidUpstreamCredentials>()(
-  "InvalidUpstreamCredentials",
-  { code: Schema.Number, message: Schema.String },
+export class InvalidUpstreamCredentials extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<InvalidUpstreamCredentials>()(
+    "InvalidUpstreamCredentials",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 10063 }],
 ) {}
-T.applyErrorMatchers(InvalidUpstreamCredentials, [{ code: 10063 }]);
 
-export class NoCorsConfiguration extends Schema.TaggedErrorClass<NoCorsConfiguration>()(
-  "NoCorsConfiguration",
-  { code: Schema.Number, message: Schema.String },
+export class NoCorsConfiguration extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<NoCorsConfiguration>()("NoCorsConfiguration", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10059 }],
 ) {}
-T.applyErrorMatchers(NoCorsConfiguration, [{ code: 10059 }]);
 
-export class NoEventNotificationConfig extends Schema.TaggedErrorClass<NoEventNotificationConfig>()(
-  "NoEventNotificationConfig",
-  { code: Schema.Number, message: Schema.String },
+export class NoEventNotificationConfig extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<NoEventNotificationConfig>()(
+    "NoEventNotificationConfig",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 11015 }],
 ) {}
-T.applyErrorMatchers(NoEventNotificationConfig, [{ code: 11015 }]);
 
-export class NoRoute extends Schema.TaggedErrorClass<NoRoute>()("NoRoute", {
-  code: Schema.Number,
-  message: Schema.String,
-}) {}
-T.applyErrorMatchers(NoRoute, [{ code: 10015 }]);
-
-export class NoSuchBucket extends Schema.TaggedErrorClass<NoSuchBucket>()(
-  "NoSuchBucket",
-  { code: Schema.Number, message: Schema.String },
+export class NoRoute extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<NoRoute>()("NoRoute", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10015 }],
 ) {}
-T.applyErrorMatchers(NoSuchBucket, [{ code: 10006 }]);
 
-export class QueueNotFound extends Schema.TaggedErrorClass<QueueNotFound>()(
-  "QueueNotFound",
-  { code: Schema.Number, message: Schema.String },
+export class NoSuchBucket extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<NoSuchBucket>()("NoSuchBucket", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10006 }],
 ) {}
-T.applyErrorMatchers(QueueNotFound, [{ code: 11000 }]);
+
+export class QueueNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<QueueNotFound>()("QueueNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 11000 }],
+) {}
 
 // =============================================================================
 // AllSuperSlurperJob
