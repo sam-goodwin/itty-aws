@@ -1,7 +1,8 @@
-import { describe, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import * as Effect from "effect/Effect";
 import * as Redacted from "effect/Redacted";
 import * as Schedule from "effect/Schedule";
+import * as Schema from "effect/Schema";
 import { test, getAccountId, testRunId } from "./test.ts";
 import { formatHeaders, resolveFromEnv } from "~/credentials";
 import * as AISearch from "~/services/aisearch";
@@ -189,6 +190,30 @@ const withInstance = <A, E, R>(
 // ============================================================================
 
 describe("AISearch", () => {
+  describe("schema decoding", () => {
+    it("decodes namespace instance responses with numeric TTL fields", () => {
+      const response = {
+        id: "distilled-cf-aisearch-instance",
+        created_at: "2026-06-17T20:51:39.000Z",
+        modified_at: "2026-06-18T14:53:49.000Z",
+        type: "r2",
+        source: "distilled-cf-aisearch-source",
+        cache_ttl: 172800,
+        sync_interval: 21600,
+        status: "waiting",
+      };
+
+      expect(
+        Schema.decodeUnknownSync(AISearch.ReadNamespaceInstanceResponse)(response),
+      ).toMatchObject({
+        id: "distilled-cf-aisearch-instance",
+        cacheTtl: 172800,
+        syncInterval: 21600,
+        status: "waiting",
+      });
+    });
+  });
+
   // --------------------------------------------------------------------------
   // listTokens
   // --------------------------------------------------------------------------
