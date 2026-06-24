@@ -1,0 +1,152 @@
+openapi: 3.1.0
+info:
+  title: Cloudflare Provisioning API
+  version: 0.0.0
+servers:
+  - url: https://api.cloudflare.com/client/v4
+x-distilled-service: provisioning
+paths:
+  /provisioning/previews:
+    post:
+      operationId: createTemporaryAccount
+      summary: Create a temporary preview account
+      description: Redeems a solved proof-of-work challenge for a short-lived
+        temporary preview account. Returns an account-scoped API token and a
+        claim URL a human can use to convert the temporary account into a
+        permanent one. The account and claim both expire (typically after ~60
+        minutes).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                termsOfService:
+                  type: string
+                  description: URL of the Cloudflare Terms of Service the caller is accepting.
+                privacyPolicy:
+                  type: string
+                  description: URL of the Cloudflare Privacy Policy the caller is accepting.
+                acceptTermsOfService:
+                  type: string
+                  description: Must be the literal string `"yes"` to indicate acceptance of the
+                    terms.
+                challengeToken:
+                  type: string
+                  description: The `challengeToken` returned by createTemporaryAccountChallenge.
+                solution:
+                  type: object
+                  properties:
+                    checkpoints:
+                      type: string
+                      description: Standard base64 encoding of the concatenated (k+1) 32-byte
+                        checkpoint hashes produced by solving the proof-of-work
+                        chain.
+                  required:
+                    - checkpoints
+              required:
+                - acceptTermsOfService
+                - challengeToken
+                - solution
+      responses:
+        "200":
+          description: Temporary preview account
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: The temporary account's ID.
+                      name:
+                        type: string
+                        description: The temporary account's display name.
+                      type:
+                        type: string
+                        description: The temporary account's type.
+                      apiToken:
+                        type: string
+                        description: API token scoped to the temporary account, used to deploy into it.
+                      tokenId:
+                        type: string
+                        description: The ID of the issued API token.
+                      expiresAt:
+                        type: string
+                        description: ISO 8601 timestamp at which the temporary account (and its token)
+                          expires.
+                    required:
+                      - id
+                      - name
+                      - apiToken
+                      - expiresAt
+                  claim:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+                        description: Opaque claim token embedded in the claim URL.
+                      url:
+                        type: string
+                        description: URL a human can visit to claim and convert the temporary account
+                          into a permanent one.
+                      expiresAt:
+                        type: string
+                        description: ISO 8601 timestamp at which the claim opportunity expires.
+                    required:
+                      - url
+                      - expiresAt
+                required:
+                  - account
+                  - claim
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        RateLimited:
+          - status: 429
+  /provisioning/previews/challenge:
+    post:
+      operationId: createTemporaryAccountChallenge
+      summary: Request a proof-of-work challenge for temporary account provisioning
+      description: Mints a proof-of-work challenge that must be solved before a
+        temporary preview account can be created. The challenge is a sequential
+        SHA-256 chain of `k` segments of `g` hashes each, seeded by `seed`.
+      responses:
+        "200":
+          description: Proof-of-work challenge
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  challengeToken:
+                    type: string
+                    description: Opaque token identifying this challenge; echoed back when redeeming
+                      the solution.
+                  seed:
+                    type: string
+                    description: Base64url-encoded 32-byte seed for the proof-of-work hash chain.
+                  k:
+                    type: number
+                    description: Number of segments in the hash chain (number of checkpoints minus
+                      one).
+                  g:
+                    type: number
+                    description: Number of SHA-256 iterations per segment. Total work is `k * g`
+                      hashes.
+                required:
+                  - challengeToken
+                  - seed
+                  - k
+                  - g
+      x-distilled-response-path: result
+      x-distilled-errors:
+        InvalidRoute:
+          - code: 7003
+        RateLimited:
+          - status: 429
