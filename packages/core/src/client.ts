@@ -974,6 +974,16 @@ export const makeAPI = <Creds, RequestOptions = never>(
             responseBody = (responseBody as Record<string, unknown>).items;
           }
 
+          // A list operation whose schema is an array, but whose `result` came
+          // back `null` (coerced to `{}` above), is simply an empty collection:
+          // Cloudflare returns `result: null` instead of `[]` when there are
+          // zero items. Coerce to `[]` so the list decodes cleanly rather than
+          // failing the array decode and surfacing as a ParseError.
+          if (resultWasNull && isArrayAST(outputAst)) {
+            responseBody = [];
+            resultWasNull = false;
+          }
+
           // Distinguish two very different decode failures:
           //   1. NON-empty body that doesn't match the schema → a genuine
           //      schema gap in the SDK. Surface as `ParseError` (NOT retryable)
