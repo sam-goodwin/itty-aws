@@ -1,3 +1,23 @@
+## v0.27.0
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **cloudflare**:
+  - NoSuchKey for getObject &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(6b29c)</samp>](https://github.com/alchemy-run/distilled/commit/6b29c4104)
+  - AiGatewaySpendingLimitDeprecated, MissingSitemap, WorkerHasNoVersions &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(24a0b)</samp>](https://github.com/alchemy-run/distilled/commit/24a0b1cc5)
+  - Map non-500 internal server error to InternalServerError &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(ba06b)</samp>](https://github.com/alchemy-run/distilled/commit/ba06b9345)
+  - ZonePurged error for api-gateway listUserSchemas &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(1520a)</samp>](https://github.com/alchemy-run/distilled/commit/1520aa14d)
+  - PolicyValidationFailed iam.listUserGroupMembership &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(ede85)</samp>](https://github.com/alchemy-run/distilled/commit/ede85fe1b)
+  - Throw TransportError when null body is received &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(e54dd)</samp>](https://github.com/alchemy-run/distilled/commit/e54dd8d6b)
+  - AccessReferenceNotFound for zero-trust apis &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(b294a)</samp>](https://github.com/alchemy-run/distilled/commit/b294a8dc7)
+  - Handle null result in pagination apis as empty list &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(3f354)</samp>](https://github.com/alchemy-run/distilled/commit/3f354f33e)
+- **core**:
+  - Emit boolean OpenAPI enum literals &nbsp;-&nbsp; by **Lukas Steiner** in https://github.com/alchemy-run/distilled/issues/356 [<samp>(1adb4)</samp>](https://github.com/alchemy-run/distilled/commit/1adb42113)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.26.1...HEAD)
+
+---
+
 ## v0.26.1
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
