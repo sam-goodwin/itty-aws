@@ -9,3 +9,4 @@ export * from "./WriteNamespace.ts";
 export * from "./DeleteNamespace.ts";
 export * from "./QueryNamespace.ts";
 export * from "./ExplainQuery.ts";
+export * from "./manual/index.ts";
