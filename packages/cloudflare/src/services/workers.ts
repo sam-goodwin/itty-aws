@@ -5419,7 +5419,7 @@ export const DeleteDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
     ),
 ) as unknown as Schema.Schema<DeleteDomainRequest>;
 
-export interface DeleteDomainResponse {
+export type DeleteDomainResponse = {
   errors: {
     code: number;
     message: string;
@@ -5432,67 +5432,69 @@ export interface DeleteDomainResponse {
     documentationUrl?: string | null;
     source?: { pointer?: string | null } | null;
   }[];
-  /** Whether the API call was successful. */
   success: true;
-}
+} | null;
 
 export const DeleteDomainResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
   () =>
-    Schema.Struct({
-      errors: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
+    Schema.Union([
+      Schema.Struct({
+        errors: Schema.Array(
+          Schema.Struct({
+            code: Schema.Number,
+            message: Schema.String,
+            documentationUrl: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            source: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  pointer: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              code: "code",
+              message: "message",
+              documentationUrl: "documentation_url",
+              source: "source",
+            }),
           ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
         ),
-      ),
-      messages: Schema.Array(
-        Schema.Struct({
-          code: Schema.Number,
-          message: Schema.String,
-          documentationUrl: Schema.optional(
-            Schema.Union([Schema.String, Schema.Null]),
+        messages: Schema.Array(
+          Schema.Struct({
+            code: Schema.Number,
+            message: Schema.String,
+            documentationUrl: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+            source: Schema.optional(
+              Schema.Union([
+                Schema.Struct({
+                  pointer: Schema.optional(
+                    Schema.Union([Schema.String, Schema.Null]),
+                  ),
+                }),
+                Schema.Null,
+              ]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              code: "code",
+              message: "message",
+              documentationUrl: "documentation_url",
+              source: "source",
+            }),
           ),
-          source: Schema.optional(
-            Schema.Union([
-              Schema.Struct({
-                pointer: Schema.optional(
-                  Schema.Union([Schema.String, Schema.Null]),
-                ),
-              }),
-              Schema.Null,
-            ]),
-          ),
-        }).pipe(
-          Schema.encodeKeys({
-            code: "code",
-            message: "message",
-            documentationUrl: "documentation_url",
-            source: "source",
-          }),
         ),
-      ),
-      success: Schema.Literal(true),
-    }),
+        success: Schema.Literal(true),
+      }),
+      Schema.Null,
+    ]),
 ) as unknown as Schema.Schema<DeleteDomainResponse>;
 
 export type DeleteDomainError = DefaultErrors | DomainNotFound;

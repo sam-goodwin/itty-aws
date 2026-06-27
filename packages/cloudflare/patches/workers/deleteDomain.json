@@ -1,5 +1,10 @@
 {
   "errors": {
     "DomainNotFound": [{ "code": 100114 }]
+  },
+  "response": {
+    "properties": {
+      "$": { "nullable": true }
+    }
   }
 }
