@@ -304,7 +304,7 @@ export const make = <Op extends Operation<any, any, any>>(
         Option.getOrElse(() => makeDefault(lastError)),
       );
 
-      const eff = fn(payload);
+      const eff = fn(payload as any);
       return yield* pipe(
         eff,
         Effect.tapError((error) => Ref.set(lastError, error)),
@@ -360,7 +360,7 @@ export const makePaginated = <Op extends Operation<any, any, any>>(
         // Build the request with the continuation token
         const requestPayload =
           state.token !== undefined
-            ? { ...payload, [pagination.inputToken]: state.token }
+            ? { ...(payload as any), [pagination.inputToken]: state.token }
             : payload;
 
         // Make the API call

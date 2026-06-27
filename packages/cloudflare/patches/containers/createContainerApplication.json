@@ -1,0 +1,10 @@
+{
+  "errors": {
+    "DurableObjectCheckError": [
+      {
+        "code": 1000,
+        "message": { "includes": "checking the application durable object" }
+      }
+    ]
+  }
+}

@@ -1,7 +1,8 @@
 openapi: 3.1.0
 info:
-  title: Cloudflare CONTAINERS API
+  title: Cloudflare Containers API
   version: 0.0.0
+  description: Reverse-engineered low-level Cloudflare Containers API.
 servers:
   - url: https://api.cloudflare.com/client/v4
 x-distilled-service: containers
@@ -1623,6 +1624,10 @@ paths:
           - code: 1607
             message:
               includes: DURABLE_OBJECT_NOT_CONTAINER_ENABLED
+        DurableObjectCheckError:
+          - code: 1000
+            message:
+              includes: checking the application durable object
   /accounts/{account_id}/containers/applications/{application_id}/rollouts:
     post:
       operationId: createContainerApplicationRollout
