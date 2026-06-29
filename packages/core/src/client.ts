@@ -780,15 +780,31 @@ export const makeAPI = <Creds>(config: ClientConfig<Creds>) => {
             ),
           );
 
-          // Some endpoints return a success status with an empty body instead
-          // of `204 No Content` — e.g. Cloudflare's Workers custom-domain
-          // DELETE (`DELETE /accounts/{id}/workers/domains/{id}`) replies
-          // `200` with no body. The generated output schema still declares a
-          // JSON envelope, so decoding the empty body fails — and a retrying
-          // caller treats that decode failure as a transient error and retries
-          // with backoff, hanging for a very long time. Treat an empty success
-          // body as "no content", mirroring the 204 handling above.
-          if (rawBody === "" || rawBody === undefined || rawBody === null) {
+          // Some DELETE endpoints return a success status with an empty body
+          // instead of `204 No Content`. Cloudflare's Workers custom-domain
+          // DELETE (`DELETE /accounts/{account_id}/workers/domains/{domain_id}`)
+          // is documented as returning `200` with a `{ errors, messages,
+          // success }` envelope, but the live endpoint replies `200` with no
+          // body. The generated output schema faithfully encodes the documented
+          // envelope, so decoding the empty body fails the declared schema, and
+          // a retrying caller (e.g. alchemy's default retry policy) classifies
+          // that decode failure as transient and retries with backoff, turning
+          // it into a multi-hour silent hang on every deploy/destroy that
+          // detaches a custom domain.
+          //
+          // Scope this to DELETE so an unexpectedly-empty GET/POST/PUT response
+          // still fails loudly and retries, rather than being silently swallowed
+          // as no-content. DELETE callers already receive `undefined` on the
+          // existing `204`/`Void` paths, and this gate only fires on an empty
+          // body, so DELETEs that do return a real envelope (e.g. DNS record
+          // delete -> `{ result: { id } }`) are unaffected.
+          //
+          // Docs (declared 200 + envelope):
+          //   https://developers.cloudflare.com/api/resources/workers/subresources/domains/methods/delete/
+          if (
+            method === "DELETE" &&
+            (rawBody === "" || rawBody === undefined || rawBody === null)
+          ) {
             return outputSchema.ast._tag === "Unknown" ? "" : undefined;
           }
 
