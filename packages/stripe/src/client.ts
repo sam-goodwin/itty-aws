@@ -5,9 +5,11 @@
  * error matching and credential handling.
  */
 import * as Effect from "effect/Effect";
+import * as Predicate from "effect/Predicate";
 import * as Redacted from "effect/Redacted";
 import * as Schema from "effect/Schema";
 import { makeAPI } from "@distilled.cloud/core/client";
+import type * as Traits from "./traits.ts";
 import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
 import { Retry } from "./retry.ts";
 import {
@@ -39,6 +41,74 @@ export type StripeRequestOptions = {
   readonly idempotencyKey?: string | undefined;
   readonly apiVersion?: string | undefined;
 } & StripeConnectRequestOptions;
+
+const appendQueryValue = (
+  query: Record<string, string | string[]>,
+  key: string,
+  value: unknown,
+): void => {
+  if (Predicate.isNullish(value)) {
+    return;
+  }
+  const encoded = Predicate.isBoolean(value)
+    ? value
+      ? "true"
+      : "false"
+    : String(value);
+  const existing = query[key];
+  if (Predicate.isUndefined(existing)) {
+    query[key] = encoded;
+  } else if (Array.isArray(existing)) {
+    existing.push(encoded);
+  } else {
+    query[key] = [existing, encoded];
+  }
+};
+
+const appendStripeQuery = (
+  query: Record<string, string | string[]>,
+  key: string,
+  value: unknown,
+): void => {
+  if (Predicate.isNullish(value)) {
+    return;
+  }
+  if (Array.isArray(value)) {
+    for (const item of value) {
+      appendQueryValue(query, `${key}[]`, item);
+    }
+    return;
+  }
+  if (Predicate.isObject(value)) {
+    for (const [nestedKey, nestedValue] of Object.entries(value)) {
+      appendStripeQuery(query, `${key}[${nestedKey}]`, nestedValue);
+    }
+    return;
+  }
+  appendQueryValue(query, key, value);
+};
+
+const normalizeStripeGetQuery = ({
+  method,
+  parts,
+}: {
+  method: string;
+  parts: Traits.RequestParts;
+}): Traits.RequestParts => {
+  if (
+    method !== "GET" ||
+    Predicate.isUndefined(parts.body) ||
+    !Predicate.isObject(parts.body)
+  ) {
+    return parts;
+  }
+
+  const query = { ...parts.query };
+  for (const [key, value] of Object.entries(parts.body)) {
+    appendStripeQuery(query, key, value);
+  }
+  return { ...parts, body: undefined, query };
+};
 
 const stripeRequestHeaders = (
   options: StripeRequestOptions | undefined,
@@ -201,6 +271,7 @@ export const API = makeAPI<Credentials, StripeRequestOptions>({
     Authorization: `Bearer ${Redacted.value(creds.apiKey)}`,
   }),
   getRequestHeaders: stripeRequestHeaders,
+  transformRequestParts: normalizeStripeGetQuery,
   matchError,
   ParseError: StripeParseError as any,
   retry: Retry as any,
