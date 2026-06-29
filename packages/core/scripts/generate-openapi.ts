@@ -235,6 +235,25 @@ function operationIdToFunctionName(operationId: string): string {
   return toCamelCase(operationId);
 }
 
+/**
+ * JS reserved words that can't be used as a top-level `const` binding name but
+ * are perfectly valid as an exported name / namespace member (e.g. an operation
+ * named `delete` -> `ns.delete`). For these we bind to a safe internal name and
+ * re-export it under the desired name via `export { binding as name }`.
+ */
+const RESERVED_WORDS = new Set([
+  "break", "case", "catch", "class", "const", "continue", "debugger",
+  "default", "delete", "do", "else", "enum", "export", "extends", "false",
+  "finally", "for", "function", "if", "import", "in", "instanceof", "new",
+  "null", "return", "super", "switch", "this", "throw", "true", "try",
+  "typeof", "var", "void", "while", "with", "yield", "let", "static",
+  "implements", "interface", "package", "private", "protected", "public",
+]);
+
+function isReservedWord(name: string): boolean {
+  return RESERVED_WORDS.has(name);
+}
+
 function escapeStringLiteral(s: string): string {
   return s.replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/`/g, "\\`");
 }
@@ -1731,16 +1750,21 @@ function buildOperationFile(
     ? `\n  pagination: { mode: "${pagination.mode}", inputToken: "${pagination.inputToken}", outputToken: "${pagination.outputToken}", items: "${pagination.items}" },`
     : "";
 
-  const operationCode = jsDoc
-    ? `${jsDoc}
-export const ${functionName} = /*@__PURE__*/ /*#__PURE__*/ API.${factory}(() => ({
+  // A reserved word like `delete` is a legal exported/namespace name but not a
+  // legal `const` binding. Bind to a safe alias and re-export under the name.
+  const reserved = isReservedWord(functionName);
+  const bindingName = reserved ? `${functionName}_` : functionName;
+  const exportPrefix = reserved ? "const" : "export const";
+  const aliasExport = reserved
+    ? `\nexport { ${bindingName} as ${functionName} };`
+    : "";
+
+  const operationBody = `${exportPrefix} ${bindingName} = /*@__PURE__*/ /*#__PURE__*/ API.${factory}(() => ({
   inputSchema: ${inputSchemaName},
   outputSchema: ${outputSchemaName},${errorsLine}${paginationLine}
-}));`
-    : `export const ${functionName} = /*@__PURE__*/ /*#__PURE__*/ API.${factory}(() => ({
-  inputSchema: ${inputSchemaName},
-  outputSchema: ${outputSchemaName},${errorsLine}${paginationLine}
-}));`;
+}));${aliasExport}`;
+
+  const operationCode = jsDoc ? `${jsDoc}\n${operationBody}` : operationBody;
 
   let imports = `import * as Schema from "effect/Schema";
 import { API } from "${clientImport}.ts";

@@ -107,3 +107,6 @@
 	shallow = true
 	ignore = dirty
 	fetchRecurseSubmodules = false
+[submodule "packages/clerk/specs/distilled-spec-clerk"]
+	path = packages/clerk/specs/distilled-spec-clerk
+	url = https://github.com/alchemy-run/distilled-spec-clerk.git
