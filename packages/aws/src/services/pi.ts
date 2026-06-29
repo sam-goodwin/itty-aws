@@ -118,7 +118,7 @@ export interface CreatePerformanceAnalysisReportRequest {
   ServiceType: ServiceType;
   Identifier: string;
   StartTime: Date;
-  EndTime: Date;
+  EndTime?: Date;
   Tags?: Tag[];
 }
 export const CreatePerformanceAnalysisReportRequest =
@@ -127,7 +127,7 @@ export const CreatePerformanceAnalysisReportRequest =
       ServiceType: ServiceType,
       Identifier: S.String,
       StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
       Tags: S.optional(TagList),
     }).pipe(
       T.all(
@@ -424,11 +424,13 @@ export const Severity = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface Recommendation {
   RecommendationId?: string;
   RecommendationDescription?: string | redacted.Redacted<string>;
+  RecommendationDetails?: string | redacted.Redacted<string>;
 }
 export const Recommendation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     RecommendationId: S.optional(S.String),
     RecommendationDescription: S.optional(SensitiveString),
+    RecommendationDetails: S.optional(SensitiveString),
   }),
 ).annotate({ identifier: "Recommendation" }) as any as S.Schema<Recommendation>;
 export type RecommendationList = Recommendation[];
@@ -864,6 +866,54 @@ export const ListAvailableResourceMetricsResponse =
   ).annotate({
     identifier: "ListAvailableResourceMetricsResponse",
   }) as any as S.Schema<ListAvailableResourceMetricsResponse>;
+export type RecommendationIdList = string[];
+export const RecommendationIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export interface ListPerformanceAnalysisReportRecommendationsRequest {
+  ServiceType: ServiceType;
+  Identifier: string;
+  AnalysisReportId: string;
+  RecommendationIds?: string[];
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListPerformanceAnalysisReportRecommendationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ServiceType: ServiceType,
+      Identifier: S.String,
+      AnalysisReportId: S.String,
+      RecommendationIds: S.optional(RecommendationIdList),
+      MaxResults: S.optional(S.Number),
+      NextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListPerformanceAnalysisReportRecommendationsRequest",
+  }) as any as S.Schema<ListPerformanceAnalysisReportRecommendationsRequest>;
+export interface ListPerformanceAnalysisReportRecommendationsResponse {
+  Recommendations?: Recommendation[];
+  NextToken?: string;
+}
+export const ListPerformanceAnalysisReportRecommendationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Recommendations: S.optional(RecommendationList),
+      NextToken: S.optional(S.String),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "ListPerformanceAnalysisReportRecommendationsResponse",
+  }) as any as S.Schema<ListPerformanceAnalysisReportRecommendationsResponse>;
 export interface ListPerformanceAnalysisReportsRequest {
   ServiceType: ServiceType;
   Identifier: string;
@@ -1328,6 +1378,49 @@ export const listAvailableResourceMetrics: API.OperationMethod<
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
+    pageSize: "MaxResults",
+  } as const,
+}));
+export type ListPerformanceAnalysisReportRecommendationsError =
+  | InternalServiceError
+  | InvalidArgumentException
+  | NotAuthorizedException
+  | CommonErrors;
+/**
+ * Retrieves recommendations for a performance analysis report.
+ */
+export const listPerformanceAnalysisReportRecommendations: API.OperationMethod<
+  ListPerformanceAnalysisReportRecommendationsRequest,
+  ListPerformanceAnalysisReportRecommendationsResponse,
+  ListPerformanceAnalysisReportRecommendationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPerformanceAnalysisReportRecommendationsRequest,
+  ) => stream.Stream<
+    ListPerformanceAnalysisReportRecommendationsResponse,
+    ListPerformanceAnalysisReportRecommendationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPerformanceAnalysisReportRecommendationsRequest,
+  ) => stream.Stream<
+    Recommendation,
+    ListPerformanceAnalysisReportRecommendationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListPerformanceAnalysisReportRecommendationsRequest,
+  output: ListPerformanceAnalysisReportRecommendationsResponse,
+  errors: [
+    InternalServiceError,
+    InvalidArgumentException,
+    NotAuthorizedException,
+  ],
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Recommendations",
     pageSize: "MaxResults",
   } as const,
 }));

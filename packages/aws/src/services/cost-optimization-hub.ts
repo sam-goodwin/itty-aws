@@ -191,6 +191,12 @@ export type ResourceType =
   | "DynamoDbReservedCapacity"
   | "MemoryDbReservedInstances"
   | "NatGateway"
+  | "DynamoDBTable"
+  | "ElastiCacheCluster"
+  | "MemoryDBCluster"
+  | "DocumentDBCluster"
+  | "WorkSpaces"
+  | "SageMakerEndpoint"
   | (string & {});
 export const ResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type Source = "ComputeOptimizer" | "CostExplorer" | (string & {});
@@ -1028,6 +1034,50 @@ export const NatGateway = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     costCalculation: S.optional(ResourceCostCalculation),
   }),
 ).annotate({ identifier: "NatGateway" }) as any as S.Schema<NatGateway>;
+export interface DynamoDbTable {
+  costCalculation?: ResourceCostCalculation;
+}
+export const DynamoDbTable = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ costCalculation: S.optional(ResourceCostCalculation) }),
+).annotate({ identifier: "DynamoDbTable" }) as any as S.Schema<DynamoDbTable>;
+export interface ElastiCacheCluster {
+  costCalculation?: ResourceCostCalculation;
+}
+export const ElastiCacheCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ costCalculation: S.optional(ResourceCostCalculation) }),
+).annotate({
+  identifier: "ElastiCacheCluster",
+}) as any as S.Schema<ElastiCacheCluster>;
+export interface MemoryDbCluster {
+  costCalculation?: ResourceCostCalculation;
+}
+export const MemoryDbCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ costCalculation: S.optional(ResourceCostCalculation) }),
+).annotate({
+  identifier: "MemoryDbCluster",
+}) as any as S.Schema<MemoryDbCluster>;
+export interface DocumentDbCluster {
+  costCalculation?: ResourceCostCalculation;
+}
+export const DocumentDbCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ costCalculation: S.optional(ResourceCostCalculation) }),
+).annotate({
+  identifier: "DocumentDbCluster",
+}) as any as S.Schema<DocumentDbCluster>;
+export interface WorkSpaces {
+  costCalculation?: ResourceCostCalculation;
+}
+export const WorkSpaces = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ costCalculation: S.optional(ResourceCostCalculation) }),
+).annotate({ identifier: "WorkSpaces" }) as any as S.Schema<WorkSpaces>;
+export interface SageMakerEndpoint {
+  costCalculation?: ResourceCostCalculation;
+}
+export const SageMakerEndpoint = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ costCalculation: S.optional(ResourceCostCalculation) }),
+).annotate({
+  identifier: "SageMakerEndpoint",
+}) as any as S.Schema<SageMakerEndpoint>;
 export type ResourceDetails =
   | {
       lambdaFunction: LambdaFunction;
@@ -1049,6 +1099,12 @@ export type ResourceDetails =
       dynamoDbReservedCapacity?: never;
       memoryDbReservedInstances?: never;
       natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
     }
   | {
       lambdaFunction?: never;
@@ -1070,6 +1126,12 @@ export type ResourceDetails =
       dynamoDbReservedCapacity?: never;
       memoryDbReservedInstances?: never;
       natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
     }
   | {
       lambdaFunction?: never;
@@ -1091,6 +1153,12 @@ export type ResourceDetails =
       dynamoDbReservedCapacity?: never;
       memoryDbReservedInstances?: never;
       natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
     }
   | {
       lambdaFunction?: never;
@@ -1112,6 +1180,12 @@ export type ResourceDetails =
       dynamoDbReservedCapacity?: never;
       memoryDbReservedInstances?: never;
       natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
     }
   | {
       lambdaFunction?: never;
@@ -1133,6 +1207,12 @@ export type ResourceDetails =
       dynamoDbReservedCapacity?: never;
       memoryDbReservedInstances?: never;
       natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
     }
   | {
       lambdaFunction?: never;
@@ -1154,6 +1234,12 @@ export type ResourceDetails =
       dynamoDbReservedCapacity?: never;
       memoryDbReservedInstances?: never;
       natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
     }
   | {
       lambdaFunction?: never;
@@ -1175,6 +1261,12 @@ export type ResourceDetails =
       dynamoDbReservedCapacity?: never;
       memoryDbReservedInstances?: never;
       natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
     }
   | {
       lambdaFunction?: never;
@@ -1196,6 +1288,12 @@ export type ResourceDetails =
       dynamoDbReservedCapacity?: never;
       memoryDbReservedInstances?: never;
       natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
     }
   | {
       lambdaFunction?: never;
@@ -1217,6 +1315,12 @@ export type ResourceDetails =
       dynamoDbReservedCapacity?: never;
       memoryDbReservedInstances?: never;
       natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
     }
   | {
       lambdaFunction?: never;
@@ -1238,6 +1342,12 @@ export type ResourceDetails =
       dynamoDbReservedCapacity?: never;
       memoryDbReservedInstances?: never;
       natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
     }
   | {
       lambdaFunction?: never;
@@ -1259,6 +1369,12 @@ export type ResourceDetails =
       dynamoDbReservedCapacity?: never;
       memoryDbReservedInstances?: never;
       natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
     }
   | {
       lambdaFunction?: never;
@@ -1280,6 +1396,12 @@ export type ResourceDetails =
       dynamoDbReservedCapacity?: never;
       memoryDbReservedInstances?: never;
       natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
     }
   | {
       lambdaFunction?: never;
@@ -1301,6 +1423,12 @@ export type ResourceDetails =
       dynamoDbReservedCapacity?: never;
       memoryDbReservedInstances?: never;
       natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
     }
   | {
       lambdaFunction?: never;
@@ -1322,6 +1450,12 @@ export type ResourceDetails =
       dynamoDbReservedCapacity?: never;
       memoryDbReservedInstances?: never;
       natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
     }
   | {
       lambdaFunction?: never;
@@ -1343,6 +1477,12 @@ export type ResourceDetails =
       dynamoDbReservedCapacity?: never;
       memoryDbReservedInstances?: never;
       natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
     }
   | {
       lambdaFunction?: never;
@@ -1364,6 +1504,12 @@ export type ResourceDetails =
       dynamoDbReservedCapacity?: never;
       memoryDbReservedInstances?: never;
       natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
     }
   | {
       lambdaFunction?: never;
@@ -1385,6 +1531,12 @@ export type ResourceDetails =
       dynamoDbReservedCapacity: DynamoDbReservedCapacity;
       memoryDbReservedInstances?: never;
       natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
     }
   | {
       lambdaFunction?: never;
@@ -1406,6 +1558,12 @@ export type ResourceDetails =
       dynamoDbReservedCapacity?: never;
       memoryDbReservedInstances: MemoryDbReservedInstances;
       natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
     }
   | {
       lambdaFunction?: never;
@@ -1427,6 +1585,174 @@ export type ResourceDetails =
       dynamoDbReservedCapacity?: never;
       memoryDbReservedInstances?: never;
       natGateway: NatGateway;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
+    }
+  | {
+      lambdaFunction?: never;
+      ecsService?: never;
+      ec2Instance?: never;
+      ebsVolume?: never;
+      ec2AutoScalingGroup?: never;
+      ec2ReservedInstances?: never;
+      rdsReservedInstances?: never;
+      elastiCacheReservedInstances?: never;
+      openSearchReservedInstances?: never;
+      redshiftReservedInstances?: never;
+      ec2InstanceSavingsPlans?: never;
+      computeSavingsPlans?: never;
+      sageMakerSavingsPlans?: never;
+      rdsDbInstance?: never;
+      rdsDbInstanceStorage?: never;
+      auroraDbClusterStorage?: never;
+      dynamoDbReservedCapacity?: never;
+      memoryDbReservedInstances?: never;
+      natGateway?: never;
+      dynamoDbTable: DynamoDbTable;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
+    }
+  | {
+      lambdaFunction?: never;
+      ecsService?: never;
+      ec2Instance?: never;
+      ebsVolume?: never;
+      ec2AutoScalingGroup?: never;
+      ec2ReservedInstances?: never;
+      rdsReservedInstances?: never;
+      elastiCacheReservedInstances?: never;
+      openSearchReservedInstances?: never;
+      redshiftReservedInstances?: never;
+      ec2InstanceSavingsPlans?: never;
+      computeSavingsPlans?: never;
+      sageMakerSavingsPlans?: never;
+      rdsDbInstance?: never;
+      rdsDbInstanceStorage?: never;
+      auroraDbClusterStorage?: never;
+      dynamoDbReservedCapacity?: never;
+      memoryDbReservedInstances?: never;
+      natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster: ElastiCacheCluster;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
+    }
+  | {
+      lambdaFunction?: never;
+      ecsService?: never;
+      ec2Instance?: never;
+      ebsVolume?: never;
+      ec2AutoScalingGroup?: never;
+      ec2ReservedInstances?: never;
+      rdsReservedInstances?: never;
+      elastiCacheReservedInstances?: never;
+      openSearchReservedInstances?: never;
+      redshiftReservedInstances?: never;
+      ec2InstanceSavingsPlans?: never;
+      computeSavingsPlans?: never;
+      sageMakerSavingsPlans?: never;
+      rdsDbInstance?: never;
+      rdsDbInstanceStorage?: never;
+      auroraDbClusterStorage?: never;
+      dynamoDbReservedCapacity?: never;
+      memoryDbReservedInstances?: never;
+      natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster: MemoryDbCluster;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
+    }
+  | {
+      lambdaFunction?: never;
+      ecsService?: never;
+      ec2Instance?: never;
+      ebsVolume?: never;
+      ec2AutoScalingGroup?: never;
+      ec2ReservedInstances?: never;
+      rdsReservedInstances?: never;
+      elastiCacheReservedInstances?: never;
+      openSearchReservedInstances?: never;
+      redshiftReservedInstances?: never;
+      ec2InstanceSavingsPlans?: never;
+      computeSavingsPlans?: never;
+      sageMakerSavingsPlans?: never;
+      rdsDbInstance?: never;
+      rdsDbInstanceStorage?: never;
+      auroraDbClusterStorage?: never;
+      dynamoDbReservedCapacity?: never;
+      memoryDbReservedInstances?: never;
+      natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster: DocumentDbCluster;
+      workSpaces?: never;
+      sageMakerEndpoint?: never;
+    }
+  | {
+      lambdaFunction?: never;
+      ecsService?: never;
+      ec2Instance?: never;
+      ebsVolume?: never;
+      ec2AutoScalingGroup?: never;
+      ec2ReservedInstances?: never;
+      rdsReservedInstances?: never;
+      elastiCacheReservedInstances?: never;
+      openSearchReservedInstances?: never;
+      redshiftReservedInstances?: never;
+      ec2InstanceSavingsPlans?: never;
+      computeSavingsPlans?: never;
+      sageMakerSavingsPlans?: never;
+      rdsDbInstance?: never;
+      rdsDbInstanceStorage?: never;
+      auroraDbClusterStorage?: never;
+      dynamoDbReservedCapacity?: never;
+      memoryDbReservedInstances?: never;
+      natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces: WorkSpaces;
+      sageMakerEndpoint?: never;
+    }
+  | {
+      lambdaFunction?: never;
+      ecsService?: never;
+      ec2Instance?: never;
+      ebsVolume?: never;
+      ec2AutoScalingGroup?: never;
+      ec2ReservedInstances?: never;
+      rdsReservedInstances?: never;
+      elastiCacheReservedInstances?: never;
+      openSearchReservedInstances?: never;
+      redshiftReservedInstances?: never;
+      ec2InstanceSavingsPlans?: never;
+      computeSavingsPlans?: never;
+      sageMakerSavingsPlans?: never;
+      rdsDbInstance?: never;
+      rdsDbInstanceStorage?: never;
+      auroraDbClusterStorage?: never;
+      dynamoDbReservedCapacity?: never;
+      memoryDbReservedInstances?: never;
+      natGateway?: never;
+      dynamoDbTable?: never;
+      elastiCacheCluster?: never;
+      memoryDbCluster?: never;
+      documentDbCluster?: never;
+      workSpaces?: never;
+      sageMakerEndpoint: SageMakerEndpoint;
     };
 export const ResourceDetails = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ lambdaFunction: LambdaFunction }),
@@ -1448,6 +1774,12 @@ export const ResourceDetails = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ dynamoDbReservedCapacity: DynamoDbReservedCapacity }),
   S.Struct({ memoryDbReservedInstances: MemoryDbReservedInstances }),
   S.Struct({ natGateway: NatGateway }),
+  S.Struct({ dynamoDbTable: DynamoDbTable }),
+  S.Struct({ elastiCacheCluster: ElastiCacheCluster }),
+  S.Struct({ memoryDbCluster: MemoryDbCluster }),
+  S.Struct({ documentDbCluster: DocumentDbCluster }),
+  S.Struct({ workSpaces: WorkSpaces }),
+  S.Struct({ sageMakerEndpoint: SageMakerEndpoint }),
 ]);
 export interface Tag {
   key?: string;

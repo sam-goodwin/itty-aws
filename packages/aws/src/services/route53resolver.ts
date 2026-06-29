@@ -109,11 +109,20 @@ export type OutpostArn = string;
 export type OutpostInstanceType = string;
 export type RniEnhancedMetricsEnabled = boolean;
 export type TargetNameServerMetricsEnabled = boolean;
+export type Dns64Enabled = boolean;
+export type Ipv6InternetAccessEnabled = boolean;
 export type ResolverQueryLogConfigAssociationErrorMessage = string;
-export type Unsigned = number;
 export type BlockOverrideDomain = string;
 export type BlockOverrideTtl = number;
 export type Qtype = string;
+export type PartnerValue = string;
+export type FirewallAdvancedContentCategoryValue = string;
+export type FirewallAdvancedThreatCategoryValue = string;
+export type DnsThreatProtectionRuleTypeValue = string;
+export type Unsigned = number;
+export type FirewallRuleStatus = string;
+export type FirewallRuleStatusMessage = string;
+export type Category = string;
 export type AccountId = string;
 export type OutpostResolverName = string;
 export type InstanceCount = number;
@@ -134,6 +143,12 @@ export type NextToken = string;
 export type MaxResults = number;
 export type ListDomainMaxResults = number;
 export type FirewallDomainName = string;
+export type RuleTypeName = string;
+export type RuleTypeValue = string;
+export type DisplayName = string;
+export type RuleTypeDescription = string;
+export type VendorName = string;
+export type ProductId = string;
 export type ListResolverConfigsMaxResult = number;
 export type FilterName = string;
 export type FilterValue = string;
@@ -303,6 +318,8 @@ export interface ResolverEndpoint {
   Protocols?: Protocol[];
   RniEnhancedMetricsEnabled?: boolean;
   TargetNameServerMetricsEnabled?: boolean;
+  Dns64Enabled?: boolean;
+  Ipv6InternetAccessEnabled?: boolean;
 }
 export const ResolverEndpoint = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -324,6 +341,8 @@ export const ResolverEndpoint = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Protocols: S.optional(ProtocolList),
     RniEnhancedMetricsEnabled: S.optional(S.Boolean),
     TargetNameServerMetricsEnabled: S.optional(S.Boolean),
+    Dns64Enabled: S.optional(S.Boolean),
+    Ipv6InternetAccessEnabled: S.optional(S.Boolean),
   }),
 ).annotate({
   identifier: "ResolverEndpoint",
@@ -458,6 +477,370 @@ export const AssociateResolverRuleResponse =
   ).annotate({
     identifier: "AssociateResolverRuleResponse",
   }) as any as S.Schema<AssociateResolverRuleResponse>;
+export type Action = "ALLOW" | "BLOCK" | "ALERT" | (string & {});
+export const Action = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type BlockResponse = "NODATA" | "NXDOMAIN" | "OVERRIDE" | (string & {});
+export const BlockResponse = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type BlockOverrideDnsType = "CNAME" | (string & {});
+export const BlockOverrideDnsType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type FirewallDomainRedirectionAction =
+  | "INSPECT_REDIRECTION_DOMAIN"
+  | "TRUST_REDIRECTION_DOMAIN"
+  | (string & {});
+export const FirewallDomainRedirectionAction =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type DnsThreatProtection =
+  | "DGA"
+  | "DNS_TUNNELING"
+  | "DICTIONARY_DGA"
+  | (string & {});
+export const DnsThreatProtection = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type ConfidenceThreshold = "LOW" | "MEDIUM" | "HIGH" | (string & {});
+export const ConfidenceThreshold = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface PartnerThreatProtectionConfig {
+  Partner: string;
+}
+export const PartnerThreatProtectionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ Partner: S.String }),
+  ).annotate({
+    identifier: "PartnerThreatProtectionConfig",
+  }) as any as S.Schema<PartnerThreatProtectionConfig>;
+export interface FirewallAdvancedContentCategoryConfig {
+  Category: string;
+}
+export const FirewallAdvancedContentCategoryConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ Category: S.String }),
+  ).annotate({
+    identifier: "FirewallAdvancedContentCategoryConfig",
+  }) as any as S.Schema<FirewallAdvancedContentCategoryConfig>;
+export interface FirewallAdvancedThreatCategoryConfig {
+  Category: string;
+}
+export const FirewallAdvancedThreatCategoryConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ Category: S.String }),
+  ).annotate({
+    identifier: "FirewallAdvancedThreatCategoryConfig",
+  }) as any as S.Schema<FirewallAdvancedThreatCategoryConfig>;
+export interface DnsThreatProtectionRuleTypeConfig {
+  Value: string;
+  ConfidenceThreshold: ConfidenceThreshold;
+}
+export const DnsThreatProtectionRuleTypeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ Value: S.String, ConfidenceThreshold: ConfidenceThreshold }),
+  ).annotate({
+    identifier: "DnsThreatProtectionRuleTypeConfig",
+  }) as any as S.Schema<DnsThreatProtectionRuleTypeConfig>;
+export interface FirewallRuleType {
+  PartnerThreatProtection?: PartnerThreatProtectionConfig;
+  FirewallAdvancedContentCategory?: FirewallAdvancedContentCategoryConfig;
+  FirewallAdvancedThreatCategory?: FirewallAdvancedThreatCategoryConfig;
+  DnsThreatProtection?: DnsThreatProtectionRuleTypeConfig;
+}
+export const FirewallRuleType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PartnerThreatProtection: S.optional(PartnerThreatProtectionConfig),
+    FirewallAdvancedContentCategory: S.optional(
+      FirewallAdvancedContentCategoryConfig,
+    ),
+    FirewallAdvancedThreatCategory: S.optional(
+      FirewallAdvancedThreatCategoryConfig,
+    ),
+    DnsThreatProtection: S.optional(DnsThreatProtectionRuleTypeConfig),
+  }),
+).annotate({
+  identifier: "FirewallRuleType",
+}) as any as S.Schema<FirewallRuleType>;
+export interface CreateFirewallRuleEntry {
+  CreatorRequestId: string;
+  FirewallRuleGroupId: string;
+  FirewallDomainListId?: string;
+  Priority: number;
+  Action: Action;
+  BlockResponse?: BlockResponse;
+  BlockOverrideDomain?: string;
+  BlockOverrideDnsType?: BlockOverrideDnsType;
+  BlockOverrideTtl?: number;
+  Name: string;
+  FirewallDomainRedirectionAction?: FirewallDomainRedirectionAction;
+  Qtype?: string;
+  DnsThreatProtection?: DnsThreatProtection;
+  ConfidenceThreshold?: ConfidenceThreshold;
+  FirewallRuleType?: FirewallRuleType;
+}
+export const CreateFirewallRuleEntry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      CreatorRequestId: S.String,
+      FirewallRuleGroupId: S.String,
+      FirewallDomainListId: S.optional(S.String),
+      Priority: S.Number,
+      Action: Action,
+      BlockResponse: S.optional(BlockResponse),
+      BlockOverrideDomain: S.optional(S.String),
+      BlockOverrideDnsType: S.optional(BlockOverrideDnsType),
+      BlockOverrideTtl: S.optional(S.Number),
+      Name: S.String,
+      FirewallDomainRedirectionAction: S.optional(
+        FirewallDomainRedirectionAction,
+      ),
+      Qtype: S.optional(S.String),
+      DnsThreatProtection: S.optional(DnsThreatProtection),
+      ConfidenceThreshold: S.optional(ConfidenceThreshold),
+      FirewallRuleType: S.optional(FirewallRuleType),
+    }),
+).annotate({
+  identifier: "CreateFirewallRuleEntry",
+}) as any as S.Schema<CreateFirewallRuleEntry>;
+export type CreateFirewallRuleEntries = CreateFirewallRuleEntry[];
+export const CreateFirewallRuleEntries = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  CreateFirewallRuleEntry,
+);
+export interface BatchCreateFirewallRuleRequest {
+  CreateFirewallRuleEntries: CreateFirewallRuleEntry[];
+}
+export const BatchCreateFirewallRuleRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ CreateFirewallRuleEntries: CreateFirewallRuleEntries }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "BatchCreateFirewallRuleRequest",
+  }) as any as S.Schema<BatchCreateFirewallRuleRequest>;
+export interface FirewallRule {
+  FirewallRuleGroupId?: string;
+  FirewallDomainListId?: string;
+  FirewallThreatProtectionId?: string;
+  Name?: string;
+  Priority?: number;
+  Action?: Action;
+  BlockResponse?: BlockResponse;
+  BlockOverrideDomain?: string;
+  BlockOverrideDnsType?: BlockOverrideDnsType;
+  BlockOverrideTtl?: number;
+  CreatorRequestId?: string;
+  CreationTime?: string;
+  ModificationTime?: string;
+  FirewallDomainRedirectionAction?: FirewallDomainRedirectionAction;
+  Qtype?: string;
+  DnsThreatProtection?: DnsThreatProtection;
+  ConfidenceThreshold?: ConfidenceThreshold;
+  FirewallRuleType?: FirewallRuleType;
+  Status?: string;
+  StatusMessage?: string;
+}
+export const FirewallRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FirewallRuleGroupId: S.optional(S.String),
+    FirewallDomainListId: S.optional(S.String),
+    FirewallThreatProtectionId: S.optional(S.String),
+    Name: S.optional(S.String),
+    Priority: S.optional(S.Number),
+    Action: S.optional(Action),
+    BlockResponse: S.optional(BlockResponse),
+    BlockOverrideDomain: S.optional(S.String),
+    BlockOverrideDnsType: S.optional(BlockOverrideDnsType),
+    BlockOverrideTtl: S.optional(S.Number),
+    CreatorRequestId: S.optional(S.String),
+    CreationTime: S.optional(S.String),
+    ModificationTime: S.optional(S.String),
+    FirewallDomainRedirectionAction: S.optional(
+      FirewallDomainRedirectionAction,
+    ),
+    Qtype: S.optional(S.String),
+    DnsThreatProtection: S.optional(DnsThreatProtection),
+    ConfidenceThreshold: S.optional(ConfidenceThreshold),
+    FirewallRuleType: S.optional(FirewallRuleType),
+    Status: S.optional(S.String),
+    StatusMessage: S.optional(S.String),
+  }),
+).annotate({ identifier: "FirewallRule" }) as any as S.Schema<FirewallRule>;
+export type FirewallRules = FirewallRule[];
+export const FirewallRules = /*@__PURE__*/ /*#__PURE__*/ S.Array(FirewallRule);
+export interface BatchCreateFirewallRuleError_ {
+  FirewallRule?: CreateFirewallRuleEntry;
+  Code?: string;
+  Message?: string;
+}
+export const BatchCreateFirewallRuleError_ =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      FirewallRule: S.optional(CreateFirewallRuleEntry),
+      Code: S.optional(S.String),
+      Message: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "BatchCreateFirewallRuleError",
+  }) as any as S.Schema<BatchCreateFirewallRuleError_>;
+export type BatchCreateFirewallRuleErrors = BatchCreateFirewallRuleError_[];
+export const BatchCreateFirewallRuleErrors =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(BatchCreateFirewallRuleError_);
+export interface BatchCreateFirewallRuleResponse {
+  CreatedFirewallRules?: FirewallRule[];
+  CreateErrors?: BatchCreateFirewallRuleError_[];
+}
+export const BatchCreateFirewallRuleResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      CreatedFirewallRules: S.optional(FirewallRules),
+      CreateErrors: S.optional(BatchCreateFirewallRuleErrors),
+    }),
+  ).annotate({
+    identifier: "BatchCreateFirewallRuleResponse",
+  }) as any as S.Schema<BatchCreateFirewallRuleResponse>;
+export interface DeleteFirewallRuleEntry {
+  FirewallRuleGroupId: string;
+  FirewallDomainListId?: string;
+  FirewallThreatProtectionId?: string;
+  Qtype?: string;
+}
+export const DeleteFirewallRuleEntry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      FirewallRuleGroupId: S.String,
+      FirewallDomainListId: S.optional(S.String),
+      FirewallThreatProtectionId: S.optional(S.String),
+      Qtype: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "DeleteFirewallRuleEntry",
+}) as any as S.Schema<DeleteFirewallRuleEntry>;
+export type DeleteFirewallRuleEntries = DeleteFirewallRuleEntry[];
+export const DeleteFirewallRuleEntries = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  DeleteFirewallRuleEntry,
+);
+export interface BatchDeleteFirewallRuleRequest {
+  DeleteFirewallRuleEntries: DeleteFirewallRuleEntry[];
+}
+export const BatchDeleteFirewallRuleRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ DeleteFirewallRuleEntries: DeleteFirewallRuleEntries }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "BatchDeleteFirewallRuleRequest",
+  }) as any as S.Schema<BatchDeleteFirewallRuleRequest>;
+export interface BatchDeleteFirewallRuleError_ {
+  FirewallRule?: DeleteFirewallRuleEntry;
+  Code?: string;
+  Message?: string;
+}
+export const BatchDeleteFirewallRuleError_ =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      FirewallRule: S.optional(DeleteFirewallRuleEntry),
+      Code: S.optional(S.String),
+      Message: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "BatchDeleteFirewallRuleError",
+  }) as any as S.Schema<BatchDeleteFirewallRuleError_>;
+export type BatchDeleteFirewallRuleErrors = BatchDeleteFirewallRuleError_[];
+export const BatchDeleteFirewallRuleErrors =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(BatchDeleteFirewallRuleError_);
+export interface BatchDeleteFirewallRuleResponse {
+  DeletedFirewallRules?: FirewallRule[];
+  DeleteErrors?: BatchDeleteFirewallRuleError_[];
+}
+export const BatchDeleteFirewallRuleResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DeletedFirewallRules: S.optional(FirewallRules),
+      DeleteErrors: S.optional(BatchDeleteFirewallRuleErrors),
+    }),
+  ).annotate({
+    identifier: "BatchDeleteFirewallRuleResponse",
+  }) as any as S.Schema<BatchDeleteFirewallRuleResponse>;
+export interface UpdateFirewallRuleEntry {
+  FirewallRuleGroupId: string;
+  FirewallDomainListId?: string;
+  FirewallThreatProtectionId?: string;
+  Priority?: number;
+  Action?: Action;
+  BlockResponse?: BlockResponse;
+  BlockOverrideDomain?: string;
+  BlockOverrideDnsType?: BlockOverrideDnsType;
+  BlockOverrideTtl?: number;
+  Name?: string;
+  FirewallDomainRedirectionAction?: FirewallDomainRedirectionAction;
+  Qtype?: string;
+  DnsThreatProtection?: DnsThreatProtection;
+  ConfidenceThreshold?: ConfidenceThreshold;
+  FirewallRuleType?: FirewallRuleType;
+}
+export const UpdateFirewallRuleEntry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      FirewallRuleGroupId: S.String,
+      FirewallDomainListId: S.optional(S.String),
+      FirewallThreatProtectionId: S.optional(S.String),
+      Priority: S.optional(S.Number),
+      Action: S.optional(Action),
+      BlockResponse: S.optional(BlockResponse),
+      BlockOverrideDomain: S.optional(S.String),
+      BlockOverrideDnsType: S.optional(BlockOverrideDnsType),
+      BlockOverrideTtl: S.optional(S.Number),
+      Name: S.optional(S.String),
+      FirewallDomainRedirectionAction: S.optional(
+        FirewallDomainRedirectionAction,
+      ),
+      Qtype: S.optional(S.String),
+      DnsThreatProtection: S.optional(DnsThreatProtection),
+      ConfidenceThreshold: S.optional(ConfidenceThreshold),
+      FirewallRuleType: S.optional(FirewallRuleType),
+    }),
+).annotate({
+  identifier: "UpdateFirewallRuleEntry",
+}) as any as S.Schema<UpdateFirewallRuleEntry>;
+export type UpdateFirewallRuleEntries = UpdateFirewallRuleEntry[];
+export const UpdateFirewallRuleEntries = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  UpdateFirewallRuleEntry,
+);
+export interface BatchUpdateFirewallRuleRequest {
+  UpdateFirewallRuleEntries: UpdateFirewallRuleEntry[];
+}
+export const BatchUpdateFirewallRuleRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ UpdateFirewallRuleEntries: UpdateFirewallRuleEntries }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "BatchUpdateFirewallRuleRequest",
+  }) as any as S.Schema<BatchUpdateFirewallRuleRequest>;
+export interface BatchUpdateFirewallRuleError_ {
+  FirewallRule?: UpdateFirewallRuleEntry;
+  Code?: string;
+  Message?: string;
+}
+export const BatchUpdateFirewallRuleError_ =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      FirewallRule: S.optional(UpdateFirewallRuleEntry),
+      Code: S.optional(S.String),
+      Message: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "BatchUpdateFirewallRuleError",
+  }) as any as S.Schema<BatchUpdateFirewallRuleError_>;
+export type BatchUpdateFirewallRuleErrors = BatchUpdateFirewallRuleError_[];
+export const BatchUpdateFirewallRuleErrors =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(BatchUpdateFirewallRuleError_);
+export interface BatchUpdateFirewallRuleResponse {
+  UpdatedFirewallRules?: FirewallRule[];
+  UpdateErrors?: BatchUpdateFirewallRuleError_[];
+}
+export const BatchUpdateFirewallRuleResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      UpdatedFirewallRules: S.optional(FirewallRules),
+      UpdateErrors: S.optional(BatchUpdateFirewallRuleErrors),
+    }),
+  ).annotate({
+    identifier: "BatchUpdateFirewallRuleResponse",
+  }) as any as S.Schema<BatchUpdateFirewallRuleResponse>;
 export interface CreateFirewallDomainListRequest {
   CreatorRequestId: string;
   Name: string;
@@ -483,6 +866,8 @@ export type FirewallDomainListStatus =
   | "UPDATING"
   | (string & {});
 export const FirewallDomainListStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type DomainListType = "THREAT" | "CONTENT" | (string & {});
+export const DomainListType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface FirewallDomainList {
   Id?: string;
   Arn?: string;
@@ -494,6 +879,8 @@ export interface FirewallDomainList {
   CreatorRequestId?: string;
   CreationTime?: string;
   ModificationTime?: string;
+  Category?: string;
+  ManagedListType?: DomainListType;
 }
 export const FirewallDomainList = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -507,6 +894,8 @@ export const FirewallDomainList = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     CreatorRequestId: S.optional(S.String),
     CreationTime: S.optional(S.String),
     ModificationTime: S.optional(S.String),
+    Category: S.optional(S.String),
+    ManagedListType: S.optional(DomainListType),
   }),
 ).annotate({
   identifier: "FirewallDomainList",
@@ -520,26 +909,6 @@ export const CreateFirewallDomainListResponse =
   ).annotate({
     identifier: "CreateFirewallDomainListResponse",
   }) as any as S.Schema<CreateFirewallDomainListResponse>;
-export type Action = "ALLOW" | "BLOCK" | "ALERT" | (string & {});
-export const Action = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type BlockResponse = "NODATA" | "NXDOMAIN" | "OVERRIDE" | (string & {});
-export const BlockResponse = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type BlockOverrideDnsType = "CNAME" | (string & {});
-export const BlockOverrideDnsType = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type FirewallDomainRedirectionAction =
-  | "INSPECT_REDIRECTION_DOMAIN"
-  | "TRUST_REDIRECTION_DOMAIN"
-  | (string & {});
-export const FirewallDomainRedirectionAction =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type DnsThreatProtection =
-  | "DGA"
-  | "DNS_TUNNELING"
-  | "DICTIONARY_DGA"
-  | (string & {});
-export const DnsThreatProtection = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type ConfidenceThreshold = "LOW" | "MEDIUM" | "HIGH" | (string & {});
-export const ConfidenceThreshold = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CreateFirewallRuleRequest {
   CreatorRequestId: string;
   FirewallRuleGroupId: string;
@@ -555,6 +924,7 @@ export interface CreateFirewallRuleRequest {
   Qtype?: string;
   DnsThreatProtection?: DnsThreatProtection;
   ConfidenceThreshold?: ConfidenceThreshold;
+  FirewallRuleType?: FirewallRuleType;
 }
 export const CreateFirewallRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -575,54 +945,13 @@ export const CreateFirewallRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       Qtype: S.optional(S.String),
       DnsThreatProtection: S.optional(DnsThreatProtection),
       ConfidenceThreshold: S.optional(ConfidenceThreshold),
+      FirewallRuleType: S.optional(FirewallRuleType),
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
 ).annotate({
   identifier: "CreateFirewallRuleRequest",
 }) as any as S.Schema<CreateFirewallRuleRequest>;
-export interface FirewallRule {
-  FirewallRuleGroupId?: string;
-  FirewallDomainListId?: string;
-  FirewallThreatProtectionId?: string;
-  Name?: string;
-  Priority?: number;
-  Action?: Action;
-  BlockResponse?: BlockResponse;
-  BlockOverrideDomain?: string;
-  BlockOverrideDnsType?: BlockOverrideDnsType;
-  BlockOverrideTtl?: number;
-  CreatorRequestId?: string;
-  CreationTime?: string;
-  ModificationTime?: string;
-  FirewallDomainRedirectionAction?: FirewallDomainRedirectionAction;
-  Qtype?: string;
-  DnsThreatProtection?: DnsThreatProtection;
-  ConfidenceThreshold?: ConfidenceThreshold;
-}
-export const FirewallRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FirewallRuleGroupId: S.optional(S.String),
-    FirewallDomainListId: S.optional(S.String),
-    FirewallThreatProtectionId: S.optional(S.String),
-    Name: S.optional(S.String),
-    Priority: S.optional(S.Number),
-    Action: S.optional(Action),
-    BlockResponse: S.optional(BlockResponse),
-    BlockOverrideDomain: S.optional(S.String),
-    BlockOverrideDnsType: S.optional(BlockOverrideDnsType),
-    BlockOverrideTtl: S.optional(S.Number),
-    CreatorRequestId: S.optional(S.String),
-    CreationTime: S.optional(S.String),
-    ModificationTime: S.optional(S.String),
-    FirewallDomainRedirectionAction: S.optional(
-      FirewallDomainRedirectionAction,
-    ),
-    Qtype: S.optional(S.String),
-    DnsThreatProtection: S.optional(DnsThreatProtection),
-    ConfidenceThreshold: S.optional(ConfidenceThreshold),
-  }),
-).annotate({ identifier: "FirewallRule" }) as any as S.Schema<FirewallRule>;
 export interface CreateFirewallRuleResponse {
   FirewallRule?: FirewallRule;
 }
@@ -801,6 +1130,8 @@ export interface CreateResolverEndpointRequest {
   Protocols?: Protocol[];
   RniEnhancedMetricsEnabled?: boolean;
   TargetNameServerMetricsEnabled?: boolean;
+  Dns64Enabled?: boolean;
+  Ipv6InternetAccessEnabled?: boolean;
 }
 export const CreateResolverEndpointRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -817,6 +1148,8 @@ export const CreateResolverEndpointRequest =
       Protocols: S.optional(ProtocolList),
       RniEnhancedMetricsEnabled: S.optional(S.Boolean),
       TargetNameServerMetricsEnabled: S.optional(S.Boolean),
+      Dns64Enabled: S.optional(S.Boolean),
+      Ipv6InternetAccessEnabled: S.optional(S.Boolean),
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -1696,6 +2029,8 @@ export interface FirewallDomainListMetadata {
   Name?: string;
   CreatorRequestId?: string;
   ManagedOwnerName?: string;
+  ManagedListType?: DomainListType;
+  Category?: string;
 }
 export const FirewallDomainListMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1705,6 +2040,8 @@ export const FirewallDomainListMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       Name: S.optional(S.String),
       CreatorRequestId: S.optional(S.String),
       ManagedOwnerName: S.optional(S.String),
+      ManagedListType: S.optional(DomainListType),
+      Category: S.optional(S.String),
     }),
 ).annotate({
   identifier: "FirewallDomainListMetadata",
@@ -1869,8 +2206,6 @@ export const ListFirewallRulesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListFirewallRulesRequest",
 }) as any as S.Schema<ListFirewallRulesRequest>;
-export type FirewallRules = FirewallRule[];
-export const FirewallRules = /*@__PURE__*/ /*#__PURE__*/ S.Array(FirewallRule);
 export interface ListFirewallRulesResponse {
   NextToken?: string;
   FirewallRules?: FirewallRule[];
@@ -1884,6 +2219,71 @@ export const ListFirewallRulesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListFirewallRulesResponse",
 }) as any as S.Schema<ListFirewallRulesResponse>;
+export interface ListFirewallRuleTypesRequest {
+  RuleType?: string;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListFirewallRuleTypesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      RuleType: S.optional(S.String),
+      MaxResults: S.optional(S.Number),
+      NextToken: S.optional(S.String),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "ListFirewallRuleTypesRequest",
+  }) as any as S.Schema<ListFirewallRuleTypesRequest>;
+export interface SubscriptionInfo {
+  VendorName?: string;
+  ProductId?: string;
+}
+export const SubscriptionInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VendorName: S.optional(S.String),
+    ProductId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SubscriptionInfo",
+}) as any as S.Schema<SubscriptionInfo>;
+export interface FirewallRuleTypeDefinition {
+  RuleType?: string;
+  Value?: string;
+  DisplayName?: string;
+  Description?: string;
+  SubscriptionInfo?: SubscriptionInfo;
+}
+export const FirewallRuleTypeDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      RuleType: S.optional(S.String),
+      Value: S.optional(S.String),
+      DisplayName: S.optional(S.String),
+      Description: S.optional(S.String),
+      SubscriptionInfo: S.optional(SubscriptionInfo),
+    }),
+).annotate({
+  identifier: "FirewallRuleTypeDefinition",
+}) as any as S.Schema<FirewallRuleTypeDefinition>;
+export type FirewallRuleTypeDefinitions = FirewallRuleTypeDefinition[];
+export const FirewallRuleTypeDefinitions = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  FirewallRuleTypeDefinition,
+);
+export interface ListFirewallRuleTypesResponse {
+  FirewallRuleTypes?: FirewallRuleTypeDefinition[];
+  NextToken?: string;
+}
+export const ListFirewallRuleTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      FirewallRuleTypes: S.optional(FirewallRuleTypeDefinitions),
+      NextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListFirewallRuleTypesResponse",
+  }) as any as S.Schema<ListFirewallRuleTypesResponse>;
 export interface ListOutpostResolversRequest {
   OutpostArn?: string;
   MaxResults?: number;
@@ -2012,6 +2412,7 @@ export const ListResolverEndpointIpAddressesRequest =
 export type IpAddressStatus =
   | "CREATING"
   | "FAILED_CREATION"
+  | "FAILED_CREATION_INSUFFICIENT_EC2_CAPACITY_IN_OUTPOST"
   | "ATTACHING"
   | "ATTACHED"
   | "REMAP_DETACHING"
@@ -2466,6 +2867,7 @@ export interface UpdateFirewallRuleRequest {
   Qtype?: string;
   DnsThreatProtection?: DnsThreatProtection;
   ConfidenceThreshold?: ConfidenceThreshold;
+  FirewallRuleType?: FirewallRuleType;
 }
 export const UpdateFirewallRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -2486,6 +2888,7 @@ export const UpdateFirewallRuleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       Qtype: S.optional(S.String),
       DnsThreatProtection: S.optional(DnsThreatProtection),
       ConfidenceThreshold: S.optional(ConfidenceThreshold),
+      FirewallRuleType: S.optional(FirewallRuleType),
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -2635,6 +3038,8 @@ export interface UpdateResolverEndpointRequest {
   Protocols?: Protocol[];
   RniEnhancedMetricsEnabled?: boolean;
   TargetNameServerMetricsEnabled?: boolean;
+  Dns64Enabled?: boolean;
+  Ipv6InternetAccessEnabled?: boolean;
 }
 export const UpdateResolverEndpointRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2646,6 +3051,8 @@ export const UpdateResolverEndpointRequest =
       Protocols: S.optional(ProtocolList),
       RniEnhancedMetricsEnabled: S.optional(S.Boolean),
       TargetNameServerMetricsEnabled: S.optional(S.Boolean),
+      Dns64Enabled: S.optional(S.Boolean),
+      Ipv6InternetAccessEnabled: S.optional(S.Boolean),
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -2778,6 +3185,8 @@ export type AssociateFirewallRuleGroupError =
   | CommonErrors;
 /**
  * Associates a FirewallRuleGroup with a VPC, to provide DNS filtering for the VPC.
+ *
+ * If the rule group contains any rule configured with the `PartnerThreatProtection` rule type, the calling account must hold an active AWS Marketplace subscription to the named partner. If the subscription is missing, the association request is rejected.
  */
 export const associateFirewallRuleGroup: API.OperationMethod<
   AssociateFirewallRuleGroupRequest,
@@ -2905,6 +3314,84 @@ export const associateResolverRule: API.OperationMethod<
     ThrottlingException,
   ],
 }));
+export type BatchCreateFirewallRuleError =
+  | AccessDeniedException
+  | InternalServiceErrorException
+  | LimitExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates multiple DNS Firewall rules in the specified rule group.
+ */
+export const batchCreateFirewallRule: API.OperationMethod<
+  BatchCreateFirewallRuleRequest,
+  BatchCreateFirewallRuleResponse,
+  BatchCreateFirewallRuleError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BatchCreateFirewallRuleRequest,
+  output: BatchCreateFirewallRuleResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServiceErrorException,
+    LimitExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type BatchDeleteFirewallRuleError =
+  | AccessDeniedException
+  | InternalServiceErrorException
+  | LimitExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes multiple DNS Firewall rules from the specified rule group.
+ */
+export const batchDeleteFirewallRule: API.OperationMethod<
+  BatchDeleteFirewallRuleRequest,
+  BatchDeleteFirewallRuleResponse,
+  BatchDeleteFirewallRuleError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BatchDeleteFirewallRuleRequest,
+  output: BatchDeleteFirewallRuleResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServiceErrorException,
+    LimitExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type BatchUpdateFirewallRuleError =
+  | AccessDeniedException
+  | InternalServiceErrorException
+  | LimitExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates multiple DNS Firewall rules in the specified rule group.
+ */
+export const batchUpdateFirewallRule: API.OperationMethod<
+  BatchUpdateFirewallRuleRequest,
+  BatchUpdateFirewallRuleResponse,
+  BatchUpdateFirewallRuleError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BatchUpdateFirewallRuleRequest,
+  output: BatchUpdateFirewallRuleResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServiceErrorException,
+    LimitExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
 export type CreateFirewallDomainListError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -2940,7 +3427,15 @@ export type CreateFirewallRuleError =
   | ValidationException
   | CommonErrors;
 /**
- * Creates a single DNS Firewall rule in the specified rule group, using the specified domain list.
+ * Creates a single DNS Firewall rule in the specified rule group. The rule can use any one of the following match sources, and the chosen source must be supplied through the matching request field — they are mutually exclusive:
+ *
+ * - `FirewallDomainListId` — match a customer-managed or AWS-managed domain list.
+ *
+ * - `DnsThreatProtection` — match a built-in DNS Firewall Advanced threat detector (`DGA`, `DNS_TUNNELING`, or `DICTIONARY_DGA`).
+ *
+ * - `FirewallRuleType` — match one of the rule-type variants returned by ListFirewallRuleTypes: `FirewallAdvancedContentCategory`, `FirewallAdvancedThreatCategory`, `DnsThreatProtection`, or `PartnerThreatProtection`. The `PartnerThreatProtection` variant requires an active AWS Marketplace subscription to the named partner product.
+ *
+ * For rules that require asynchronous provisioning (today, the `PartnerThreatProtection` rule type), the rule's `Status` begins at `CREATING` and transitions to `COMPLETE` once the rule is provisioned and the marketplace entitlement is verified. If provisioning fails, `Status` becomes `CREATION_FAILED` and `StatusMessage` contains a human-readable reason; the rule is then immutable and must be removed with DeleteFirewallRule.
  */
 export const createFirewallRule: API.OperationMethod<
   CreateFirewallRuleRequest,
@@ -3161,7 +3656,9 @@ export type DeleteFirewallRuleError =
   | ValidationException
   | CommonErrors;
 /**
- * Deletes the specified firewall rule.
+ * Deletes the specified firewall rule. Identify the rule using either `FirewallDomainListId` (for domain-list and DNS Firewall Advanced rules) or `FirewallThreatProtectionId` (for partner-managed and DNS Firewall Advanced rules) — together with `FirewallRuleGroupId`.
+ *
+ * `DeleteFirewallRule` is the only operation that succeeds against a rule whose `Status` is `CREATION_FAILED`.
  */
 export const deleteFirewallRule: API.OperationMethod<
   DeleteFirewallRuleRequest,
@@ -3308,6 +3805,7 @@ export const deleteResolverQueryLogConfig: API.OperationMethod<
 export type DeleteResolverRuleError =
   | InternalServiceErrorException
   | InvalidParameterException
+  | InvalidRequestException
   | ResourceInUseException
   | ResourceNotFoundException
   | ThrottlingException
@@ -3328,6 +3826,7 @@ export const deleteResolverRule: API.OperationMethod<
   errors: [
     InternalServiceErrorException,
     InvalidParameterException,
+    InvalidRequestException,
     ResourceInUseException,
     ResourceNotFoundException,
     ThrottlingException,
@@ -3433,6 +3932,7 @@ export const disassociateResolverQueryLogConfig: API.OperationMethod<
 export type DisassociateResolverRuleError =
   | InternalServiceErrorException
   | InvalidParameterException
+  | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
   | CommonErrors;
@@ -3453,6 +3953,7 @@ export const disassociateResolverRule: API.OperationMethod<
   errors: [
     InternalServiceErrorException,
     InvalidParameterException,
+    InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
   ],
@@ -4141,6 +4642,8 @@ export type ListFirewallRulesError =
  * Retrieves the firewall rules that you have defined for the specified firewall rule group. DNS Firewall uses the rules in a rule group to filter DNS network traffic for a VPC.
  *
  * A single call might return only a partial list of the rules. For information, see `MaxResults`.
+ *
+ * For rules that require asynchronous provisioning, the response includes `Status` (see FirewallRuleStatus) and, on failure, `StatusMessage` with the reason.
  */
 export const listFirewallRules: API.OperationMethod<
   ListFirewallRulesRequest,
@@ -4176,6 +4679,53 @@ export const listFirewallRules: API.OperationMethod<
     inputToken: "NextToken",
     outputToken: "NextToken",
     items: "FirewallRules",
+    pageSize: "MaxResults",
+  } as const,
+}));
+export type ListFirewallRuleTypesError =
+  | AccessDeniedException
+  | InternalServiceErrorException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the rule-type variants that can be used in the `FirewallRuleType` field of CreateFirewallRule and UpdateFirewallRule. Each returned FirewallRuleTypeDefinition identifies one variant + value combination — for example, `FirewallAdvancedContentCategory` + `VIOLENCE_AND_HATE_SPEECH`, or `PartnerThreatProtection` + a partner-managed feed.
+ *
+ * The supported `RuleType` filter values are `FirewallAdvancedContentCategory`, `FirewallAdvancedThreatCategory`, `DnsThreatProtection`, and `PartnerThreatProtection`. When a returned definition's variant requires an external subscription (currently only `PartnerThreatProtection`), the response also includes a SubscriptionInfo identifying the AWS Marketplace product that backs it; absence of `SubscriptionInfo` means the variant is fully managed by AWS and requires no separate subscription.
+ */
+export const listFirewallRuleTypes: API.OperationMethod<
+  ListFirewallRuleTypesRequest,
+  ListFirewallRuleTypesResponse,
+  ListFirewallRuleTypesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFirewallRuleTypesRequest,
+  ) => stream.Stream<
+    ListFirewallRuleTypesResponse,
+    ListFirewallRuleTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFirewallRuleTypesRequest,
+  ) => stream.Stream<
+    FirewallRuleTypeDefinition,
+    ListFirewallRuleTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListFirewallRuleTypesRequest,
+  output: ListFirewallRuleTypesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServiceErrorException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "FirewallRuleTypes",
     pageSize: "MaxResults",
   } as const,
 }));
@@ -4869,7 +5419,7 @@ export type UpdateFirewallRuleError =
   | ValidationException
   | CommonErrors;
 /**
- * Updates the specified firewall rule.
+ * Updates the specified firewall rule. The rule's `FirewallRuleType`, `FirewallDomainListId`, and top-level `DnsThreatProtection` match source cannot be changed after creation. Rules whose `Status` is `CREATING` or `CREATION_FAILED` cannot be updated; remove a failed rule with DeleteFirewallRule.
  */
 export const updateFirewallRule: API.OperationMethod<
   UpdateFirewallRuleRequest,

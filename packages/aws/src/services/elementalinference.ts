@@ -88,9 +88,12 @@ export type ResourceArn = string;
 export type TagKey = string;
 export type TagValue = string;
 export type ResourceName = string;
+export type DictionaryEntriesPayload = string;
+export type DictionaryArn = string;
+export type DictionaryId = string;
+export type FeedId = string;
 export type ResourceDescription = string;
 export type FeedArn = string;
-export type FeedId = string;
 export type AssociatedResourceName = string;
 
 //# Schemas
@@ -182,6 +185,273 @@ export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
+export type DictionaryLanguage =
+  | "eng"
+  | "fra"
+  | "ita"
+  | "deu"
+  | "spa"
+  | "por"
+  | (string & {});
+export const DictionaryLanguage = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CreateDictionaryRequest {
+  name: string;
+  language: DictionaryLanguage;
+  entries?: string;
+  tags?: { [key: string]: string | undefined };
+}
+export const CreateDictionaryRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      language: DictionaryLanguage,
+      entries: S.optional(S.String),
+      tags: S.optional(TagMap),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/v1/dictionary" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "CreateDictionaryRequest",
+}) as any as S.Schema<CreateDictionaryRequest>;
+export type DictionaryStatus =
+  | "CREATING"
+  | "AVAILABLE"
+  | "REFERENCED"
+  | "DELETING"
+  | "DELETED"
+  | (string & {});
+export const DictionaryStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type FeedReferences = string[];
+export const FeedReferences = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface CreateDictionaryResponse {
+  name: string;
+  arn: string;
+  id: string;
+  language: DictionaryLanguage;
+  status: DictionaryStatus;
+  references?: string[];
+  tags?: { [key: string]: string | undefined };
+}
+export const CreateDictionaryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      arn: S.String,
+      id: S.String,
+      language: DictionaryLanguage,
+      status: DictionaryStatus,
+      references: S.optional(FeedReferences),
+      tags: S.optional(TagMap),
+    }),
+).annotate({
+  identifier: "CreateDictionaryResponse",
+}) as any as S.Schema<CreateDictionaryResponse>;
+export interface GetDictionaryRequest {
+  id: string;
+}
+export const GetDictionaryRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v1/dictionary/{id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetDictionaryRequest",
+}) as any as S.Schema<GetDictionaryRequest>;
+export interface GetDictionaryResponse {
+  name: string;
+  arn: string;
+  id: string;
+  language: DictionaryLanguage;
+  status: DictionaryStatus;
+  references?: string[];
+  tags?: { [key: string]: string | undefined };
+}
+export const GetDictionaryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    arn: S.String,
+    id: S.String,
+    language: DictionaryLanguage,
+    status: DictionaryStatus,
+    references: S.optional(FeedReferences),
+    tags: S.optional(TagMap),
+  }),
+).annotate({
+  identifier: "GetDictionaryResponse",
+}) as any as S.Schema<GetDictionaryResponse>;
+export interface UpdateDictionaryRequest {
+  id: string;
+  name?: string;
+  language?: DictionaryLanguage;
+  entries?: string;
+}
+export const UpdateDictionaryRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String.pipe(T.HttpLabel("id")),
+      name: S.optional(S.String),
+      language: S.optional(DictionaryLanguage),
+      entries: S.optional(S.String),
+    }).pipe(
+      T.all(
+        T.Http({ method: "PATCH", uri: "/v1/dictionary/{id}" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "UpdateDictionaryRequest",
+}) as any as S.Schema<UpdateDictionaryRequest>;
+export interface UpdateDictionaryResponse {
+  name: string;
+  arn: string;
+  id: string;
+  language: DictionaryLanguage;
+  status: DictionaryStatus;
+  references?: string[];
+  tags?: { [key: string]: string | undefined };
+}
+export const UpdateDictionaryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      arn: S.String,
+      id: S.String,
+      language: DictionaryLanguage,
+      status: DictionaryStatus,
+      references: S.optional(FeedReferences),
+      tags: S.optional(TagMap),
+    }),
+).annotate({
+  identifier: "UpdateDictionaryResponse",
+}) as any as S.Schema<UpdateDictionaryResponse>;
+export interface DeleteDictionaryRequest {
+  id: string;
+}
+export const DeleteDictionaryRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+      T.all(
+        T.Http({ method: "DELETE", uri: "/v1/dictionary/{id}" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "DeleteDictionaryRequest",
+}) as any as S.Schema<DeleteDictionaryRequest>;
+export interface DeleteDictionaryResponse {
+  arn: string;
+  id: string;
+  status: DictionaryStatus;
+}
+export const DeleteDictionaryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ arn: S.String, id: S.String, status: DictionaryStatus }),
+).annotate({
+  identifier: "DeleteDictionaryResponse",
+}) as any as S.Schema<DeleteDictionaryResponse>;
+export interface ListDictionariesRequest {
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListDictionariesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/v1/dictionaries" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListDictionariesRequest",
+}) as any as S.Schema<ListDictionariesRequest>;
+export interface DictionarySummary {
+  arn: string;
+  id: string;
+  name: string;
+  language: DictionaryLanguage;
+  status: DictionaryStatus;
+}
+export const DictionarySummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String,
+    id: S.String,
+    name: S.String,
+    language: DictionaryLanguage,
+    status: DictionaryStatus,
+  }),
+).annotate({
+  identifier: "DictionarySummary",
+}) as any as S.Schema<DictionarySummary>;
+export type DictionarySummaryList = DictionarySummary[];
+export const DictionarySummaryList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DictionarySummary);
+export interface ListDictionariesResponse {
+  dictionaries: DictionarySummary[];
+  nextToken?: string;
+}
+export const ListDictionariesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      dictionaries: DictionarySummaryList,
+      nextToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListDictionariesResponse",
+}) as any as S.Schema<ListDictionariesResponse>;
+export interface ExportDictionaryEntriesRequest {
+  id: string;
+}
+export const ExportDictionaryEntriesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/v1/dictionary/{id}/entries/export" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ExportDictionaryEntriesRequest",
+  }) as any as S.Schema<ExportDictionaryEntriesRequest>;
+export interface ExportDictionaryEntriesResponse {
+  entries?: string;
+}
+export const ExportDictionaryEntriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ entries: S.optional(S.String) }),
+  ).annotate({
+    identifier: "ExportDictionaryEntriesResponse",
+  }) as any as S.Schema<ExportDictionaryEntriesResponse>;
 export interface CroppingConfig {}
 export const CroppingConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({}),
@@ -192,12 +462,55 @@ export interface ClippingConfig {
 export const ClippingConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({ callbackMetadata: S.optional(S.String) }),
 ).annotate({ identifier: "ClippingConfig" }) as any as S.Schema<ClippingConfig>;
+export type TranscriptionLanguage =
+  | "eng"
+  | "eng-au"
+  | "eng-gb"
+  | "eng-us"
+  | "fra"
+  | "ita"
+  | "deu"
+  | "spa"
+  | "por"
+  | (string & {});
+export const TranscriptionLanguage = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AspectRatio {
+  width: number;
+  height: number;
+}
+export const AspectRatio = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ width: S.Number, height: S.Number }),
+).annotate({ identifier: "AspectRatio" }) as any as S.Schema<AspectRatio>;
+export type ProfanityFilterMode =
+  | "DISABLED"
+  | "CENSOR"
+  | "DROP"
+  | (string & {});
+export const ProfanityFilterMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface SubtitlingConfig {
+  language: TranscriptionLanguage;
+  aspectRatio?: AspectRatio;
+  dictionary?: string;
+  profanityFilter?: ProfanityFilterMode;
+}
+export const SubtitlingConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    language: TranscriptionLanguage,
+    aspectRatio: S.optional(AspectRatio),
+    dictionary: S.optional(S.String),
+    profanityFilter: S.optional(ProfanityFilterMode),
+  }),
+).annotate({
+  identifier: "SubtitlingConfig",
+}) as any as S.Schema<SubtitlingConfig>;
 export type OutputConfig =
-  | { cropping: CroppingConfig; clipping?: never }
-  | { cropping?: never; clipping: ClippingConfig };
+  | { cropping: CroppingConfig; clipping?: never; subtitling?: never }
+  | { cropping?: never; clipping: ClippingConfig; subtitling?: never }
+  | { cropping?: never; clipping?: never; subtitling: SubtitlingConfig };
 export const OutputConfig = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ cropping: CroppingConfig }),
   S.Struct({ clipping: ClippingConfig }),
+  S.Struct({ subtitling: SubtitlingConfig }),
 ]);
 export type OutputStatus = "ENABLED" | "DISABLED" | (string & {});
 export const OutputStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -667,6 +980,187 @@ export const untagResource: API.OperationMethod<
     ValidationException,
   ],
 }));
+export type CreateDictionaryError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerErrorException
+  | ServiceQuotaExceededException
+  | TooManyRequestException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a custom dictionary for improving transcription accuracy. A dictionary contains custom words and phrases that the ASR engine might not recognize, such as brand names, technical terms, or proper nouns. You can reference a dictionary when configuring a smart subtitles output.
+ */
+export const createDictionary: API.OperationMethod<
+  CreateDictionaryRequest,
+  CreateDictionaryResponse,
+  CreateDictionaryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateDictionaryRequest,
+  output: CreateDictionaryResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerErrorException,
+    ServiceQuotaExceededException,
+    TooManyRequestException,
+    ValidationException,
+  ],
+}));
+export type GetDictionaryError =
+  | AccessDeniedException
+  | InternalServerErrorException
+  | ResourceNotFoundException
+  | TooManyRequestException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information about the specified dictionary.
+ */
+export const getDictionary: API.OperationMethod<
+  GetDictionaryRequest,
+  GetDictionaryResponse,
+  GetDictionaryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetDictionaryRequest,
+  output: GetDictionaryResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerErrorException,
+    ResourceNotFoundException,
+    TooManyRequestException,
+    ValidationException,
+  ],
+}));
+export type UpdateDictionaryError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerErrorException
+  | ResourceNotFoundException
+  | TooManyRequestException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the specified dictionary.
+ */
+export const updateDictionary: API.OperationMethod<
+  UpdateDictionaryRequest,
+  UpdateDictionaryResponse,
+  UpdateDictionaryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateDictionaryRequest,
+  output: UpdateDictionaryResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerErrorException,
+    ResourceNotFoundException,
+    TooManyRequestException,
+    ValidationException,
+  ],
+}));
+export type DeleteDictionaryError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerErrorException
+  | ResourceNotFoundException
+  | TooManyRequestException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes the specified dictionary. You cannot delete a dictionary that is referenced by a feed. You must first remove the dictionary reference from the feed's subtitling configuration.
+ */
+export const deleteDictionary: API.OperationMethod<
+  DeleteDictionaryRequest,
+  DeleteDictionaryResponse,
+  DeleteDictionaryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteDictionaryRequest,
+  output: DeleteDictionaryResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerErrorException,
+    ResourceNotFoundException,
+    TooManyRequestException,
+    ValidationException,
+  ],
+}));
+export type ListDictionariesError =
+  | AccessDeniedException
+  | InternalServerErrorException
+  | TooManyRequestException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists the dictionaries in your account.
+ */
+export const listDictionaries: API.OperationMethod<
+  ListDictionariesRequest,
+  ListDictionariesResponse,
+  ListDictionariesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDictionariesRequest,
+  ) => stream.Stream<
+    ListDictionariesResponse,
+    ListDictionariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDictionariesRequest,
+  ) => stream.Stream<
+    DictionarySummary,
+    ListDictionariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListDictionariesRequest,
+  output: ListDictionariesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerErrorException,
+    TooManyRequestException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "dictionaries",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ExportDictionaryEntriesError =
+  | AccessDeniedException
+  | InternalServerErrorException
+  | ResourceNotFoundException
+  | TooManyRequestException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Exports the entries from the specified dictionary.
+ */
+export const exportDictionaryEntries: API.OperationMethod<
+  ExportDictionaryEntriesRequest,
+  ExportDictionaryEntriesResponse,
+  ExportDictionaryEntriesError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ExportDictionaryEntriesRequest,
+  output: ExportDictionaryEntriesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerErrorException,
+    ResourceNotFoundException,
+    TooManyRequestException,
+    ValidationException,
+  ],
+}));
 export type CreateFeedError =
   | AccessDeniedException
   | ConflictException
@@ -676,7 +1170,9 @@ export type CreateFeedError =
   | ValidationException
   | CommonErrors;
 /**
- * Creates a feed. The feed is the target for live streams being sent by the calling application. An example of a calling application is AWS Elemental MediaLive. After you create the feed, you can associate a resource with the feed.
+ * Creates a feed. The feed is the target for the live media stream that is being sent by the calling application. An example of a calling application is AWS Elemental MediaLive.
+ *
+ * The key contents of the feed is an array of outputs. Each output represents an Elemental Inference feature. After you create the feed, you must associate a resource with the feed. At that point, you will have a useable feed: resource - feed - output or outputs.
  */
 export const createFeed: API.OperationMethod<
   CreateFeedRequest,
@@ -730,6 +1226,12 @@ export type UpdateFeedError =
   | CommonErrors;
 /**
  * Updates the name and/or outputs in a feed.
+ *
+ * UpdateFeed is a PUT operation, which means that the payload that you specify completely overwrites the existing payload.
+ *
+ * This means that if you want to touch the array of outputs, you must pass in the full new list. So you must omit outputs you want to delete, and include outputs you want to add or modify.
+ *
+ * If you want to patch the array of outputs to make selective additions, use AssociateFeed.
  */
 export const updateFeed: API.OperationMethod<
   UpdateFeedRequest,
@@ -758,7 +1260,7 @@ export type DeleteFeedError =
   | ValidationException
   | CommonErrors;
 /**
- * Deletes the specified feed. The feed can be deleted at any time.
+ * Deletes the specified feed. You can delete the feed at any time. Elemental Inference doesn't block you from deleting a feed when the calling application is calling PutMedia or GetMetadata on that feed, although both these calls will start to fail. For more information about managing inactive feeds, see the Elemental Inference User Guide.
  */
 export const deleteFeed: API.OperationMethod<
   DeleteFeedRequest,
@@ -834,7 +1336,19 @@ export type AssociateFeedError =
   | ValidationException
   | CommonErrors;
 /**
- * Associates a resource with the feed. The resource provides the input that Elemental Inference needs needs in order to perform an Elemental Inference feature, such as cropping video. You always provide the resource by associating it with a feed. You can associate only one resource with each feed.
+ * Associates a resource with the feed. The resource provides the input that Elemental Inference needs in order to perform an Elemental Inference feature, such as cropping video. You always provide the resource by associating it with a feed. You can associate only one resource with each feed. With an association, a specific source media is claiming ownership of the feed.
+ *
+ * AssociateFeed is a PATCH operation, which means that you can include only parameters that you want to change. Parameters that you don't include will not be affected by the operation.
+ *
+ * Specifically:
+ *
+ * - You can add more outputs to the existing outputs. New outputs will be appended.
+ *
+ * - You can't modify an existing output (for example to change its name). Instead, use UpdateFeed.
+ *
+ * - You can't delete an existing output. Instead, use UpdateFeed.
+ *
+ * Also note that you can't change the feed name with AssociateFeed. Instead, use UpdateFeed.
  */
 export const associateFeed: API.OperationMethod<
   AssociateFeedRequest,
@@ -863,7 +1377,7 @@ export type DisassociateFeedError =
   | ValidationException
   | CommonErrors;
 /**
- * Releases the resource (for example, an MediaLive channel) that is associated with this feed. The outputs in the feed become disabled.
+ * Releases the resource (the source media) that is associated with this feed. The outputs in the feed become DISABLED.
  */
 export const disassociateFeed: API.OperationMethod<
   DisassociateFeedRequest,

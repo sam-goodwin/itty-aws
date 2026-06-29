@@ -579,6 +579,12 @@ export const ReplicationGroupOutpostArnList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(
     S.String.pipe(T.XmlName("ReplicationGroupOutpostArn")),
   );
+export type StorageEncryptionType =
+  | "none"
+  | "sse-elasticache"
+  | "sse-kms"
+  | (string & {});
+export const StorageEncryptionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type LogDeliveryConfigurationStatus =
   | "active"
   | "enabling"
@@ -621,6 +627,15 @@ export type NetworkType = "ipv4" | "ipv6" | "dual_stack" | (string & {});
 export const NetworkType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type IpDiscovery = "ipv4" | "ipv6" | (string & {});
 export const IpDiscovery = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type Durability =
+  | "default"
+  | "async"
+  | "sync"
+  | "disabled"
+  | (string & {});
+export const Durability = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type EffectiveDurability = "async" | "sync" | "disabled" | (string & {});
+export const EffectiveDurability = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ReplicationGroup {
   ReplicationGroupId?: string;
   Description?: string;
@@ -643,6 +658,7 @@ export interface ReplicationGroup {
   AtRestEncryptionEnabled?: boolean;
   MemberClustersOutpostArns?: string[];
   KmsKeyId?: string;
+  StorageEncryptionType?: StorageEncryptionType;
   ARN?: string;
   UserGroupIds?: string[];
   LogDeliveryConfigurations?: LogDeliveryConfiguration[];
@@ -654,6 +670,8 @@ export interface ReplicationGroup {
   TransitEncryptionMode?: TransitEncryptionMode;
   ClusterMode?: ClusterMode;
   Engine?: string;
+  Durability?: Durability;
+  EffectiveDurability?: EffectiveDurability;
 }
 export const ReplicationGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -680,6 +698,7 @@ export const ReplicationGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     AtRestEncryptionEnabled: S.optional(S.Boolean),
     MemberClustersOutpostArns: S.optional(ReplicationGroupOutpostArnList),
     KmsKeyId: S.optional(S.String),
+    StorageEncryptionType: S.optional(StorageEncryptionType),
     ARN: S.optional(S.String),
     UserGroupIds: S.optional(UserGroupIdList),
     LogDeliveryConfigurations: S.optional(LogDeliveryConfigurationList),
@@ -693,6 +712,8 @@ export const ReplicationGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     TransitEncryptionMode: S.optional(TransitEncryptionMode),
     ClusterMode: S.optional(ClusterMode),
     Engine: S.optional(S.String),
+    Durability: S.optional(Durability),
+    EffectiveDurability: S.optional(EffectiveDurability),
   }),
 ).annotate({
   identifier: "ReplicationGroup",
@@ -907,6 +928,7 @@ export interface Snapshot {
   KmsKeyId?: string;
   ARN?: string;
   DataTiering?: DataTieringStatus;
+  Durability?: Durability;
 }
 export const Snapshot = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -940,6 +962,7 @@ export const Snapshot = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     KmsKeyId: S.optional(S.String),
     ARN: S.optional(S.String),
     DataTiering: S.optional(DataTieringStatus),
+    Durability: S.optional(Durability),
   }),
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
 export interface CopySnapshotResult {
@@ -1647,6 +1670,7 @@ export interface CreateReplicationGroupMessage {
   TransitEncryptionMode?: TransitEncryptionMode;
   ClusterMode?: ClusterMode;
   ServerlessCacheSnapshotName?: string;
+  Durability?: Durability;
 }
 export const CreateReplicationGroupMessage =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1692,6 +1716,7 @@ export const CreateReplicationGroupMessage =
       TransitEncryptionMode: S.optional(TransitEncryptionMode),
       ClusterMode: S.optional(ClusterMode),
       ServerlessCacheSnapshotName: S.optional(S.String),
+      Durability: S.optional(Durability),
     }).pipe(
       T.all(
         ns,
@@ -1809,6 +1834,7 @@ export interface ServerlessCache {
   FullEngineVersion?: string;
   CacheUsageLimits?: CacheUsageLimits;
   KmsKeyId?: string;
+  StorageEncryptionType?: StorageEncryptionType;
   SecurityGroupIds?: string[];
   Endpoint?: Endpoint;
   ReaderEndpoint?: Endpoint;
@@ -1832,6 +1858,7 @@ export const ServerlessCache = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     FullEngineVersion: S.optional(S.String),
     CacheUsageLimits: S.optional(CacheUsageLimits),
     KmsKeyId: S.optional(S.String),
+    StorageEncryptionType: S.optional(StorageEncryptionType),
     SecurityGroupIds: S.optional(SecurityGroupIdsList),
     Endpoint: S.optional(Endpoint),
     ReaderEndpoint: S.optional(Endpoint),
@@ -4369,6 +4396,7 @@ export interface ModifyReplicationGroupMessage {
   TransitEncryptionEnabled?: boolean;
   TransitEncryptionMode?: TransitEncryptionMode;
   ClusterMode?: ClusterMode;
+  Durability?: Durability;
 }
 export const ModifyReplicationGroupMessage =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -4405,6 +4433,7 @@ export const ModifyReplicationGroupMessage =
       TransitEncryptionEnabled: S.optional(S.Boolean),
       TransitEncryptionMode: S.optional(TransitEncryptionMode),
       ClusterMode: S.optional(ClusterMode),
+      Durability: S.optional(Durability),
     }).pipe(
       T.all(
         ns,

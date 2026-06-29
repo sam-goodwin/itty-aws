@@ -2015,7 +2015,7 @@ export type UpdateCertificateOptionsError =
   | ResourceNotFoundException
   | CommonErrors;
 /**
- * Updates a certificate. You can use this function to specify whether to opt in to or out of recording your certificate in a certificate transparency log and exporting. For more information, see Opting Out of Certificate Transparency Logging and Certificate Manager Exportable Managed Certificates.
+ * Updates a certificate. You can use this function to specify whether to export your certificate. Certificate transparency logging opt-out is no longer available. For more information, see Certificate Transparency Logging and Certificate Manager Exportable Managed Certificates.
  */
 export const updateCertificateOptions: API.OperationMethod<
   UpdateCertificateOptionsRequest,

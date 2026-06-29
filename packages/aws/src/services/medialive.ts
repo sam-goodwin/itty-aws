@@ -97,6 +97,7 @@ export type __integerMin0Max100 = number;
 export type __stringMin1 = string;
 export type __integerMin1Max65535 = number;
 export type __doubleMinNegative59Max0 = number;
+export type __doubleMinNegative8Max0 = number;
 export type __stringMin2Max2 = string;
 export type __stringMin1Max7 = string;
 export type __doubleMin1Max65535 = number;
@@ -167,6 +168,7 @@ export type __integerMin0Max8000000 = number;
 export type __integerMin100 = number;
 export type __doubleMin0Max1 = number;
 export type __integerMin0Max8191 = number;
+export type __doubleMinNegative60Max60 = number;
 export type __integerMin1Max5 = number;
 export type __doubleMin0Max100 = number;
 export type __integerMin32Max8191 = number;
@@ -1572,6 +1574,8 @@ export const __listOfOutputDestination =
 export type AudioNormalizationAlgorithm =
   | "ITU_1770_1"
   | "ITU_1770_2"
+  | "ITU_1770_3"
+  | "ITU_1770_4"
   | (string & {});
 export const AudioNormalizationAlgorithm = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type AudioNormalizationAlgorithmControl =
@@ -1579,10 +1583,18 @@ export type AudioNormalizationAlgorithmControl =
   | (string & {});
 export const AudioNormalizationAlgorithmControl =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type AudioNormalizationPeakCalculation =
+  | "NONE"
+  | "TRUE_PEAK"
+  | (string & {});
+export const AudioNormalizationPeakCalculation =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface AudioNormalizationSettings {
   Algorithm?: AudioNormalizationAlgorithm;
   AlgorithmControl?: AudioNormalizationAlgorithmControl;
   TargetLkfs?: number;
+  PeakCalculation?: AudioNormalizationPeakCalculation;
+  PeakLimiterThreshold?: number;
 }
 export const AudioNormalizationSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1590,11 +1602,15 @@ export const AudioNormalizationSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       Algorithm: S.optional(AudioNormalizationAlgorithm),
       AlgorithmControl: S.optional(AudioNormalizationAlgorithmControl),
       TargetLkfs: S.optional(S.Number),
+      PeakCalculation: S.optional(AudioNormalizationPeakCalculation),
+      PeakLimiterThreshold: S.optional(S.Number),
     }).pipe(
       S.encodeKeys({
         Algorithm: "algorithm",
         AlgorithmControl: "algorithmControl",
         TargetLkfs: "targetLkfs",
+        PeakCalculation: "peakCalculation",
+        PeakLimiterThreshold: "peakLimiterThreshold",
       }),
     ),
 ).annotate({
@@ -6422,25 +6438,6 @@ export const AudioLanguageSelection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AudioLanguageSelection",
 }) as any as S.Schema<AudioLanguageSelection>;
-export interface AudioPidSelection {
-  Pid?: number;
-}
-export const AudioPidSelection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ Pid: S.optional(S.Number) }).pipe(S.encodeKeys({ Pid: "pid" })),
-).annotate({
-  identifier: "AudioPidSelection",
-}) as any as S.Schema<AudioPidSelection>;
-export interface AudioTrack {
-  Track?: number;
-}
-export const AudioTrack = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ Track: S.optional(S.Number) }).pipe(
-    S.encodeKeys({ Track: "track" }),
-  ),
-).annotate({ identifier: "AudioTrack" }) as any as S.Schema<AudioTrack>;
-export type __listOfAudioTrack = AudioTrack[];
-export const __listOfAudioTrack =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AudioTrack);
 export type DolbyEProgramSelection =
   | "ALL_CHANNELS"
   | "PROGRAM_1"
@@ -6463,6 +6460,74 @@ export const AudioDolbyEDecode = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AudioDolbyEDecode",
 }) as any as S.Schema<AudioDolbyEDecode>;
+export interface AudioPreMixerSettings {
+  AudioNormalizationSettings?: AudioNormalizationSettings;
+  Channels?: number;
+  GainDb?: number;
+  RemixSettings?: RemixSettings;
+}
+export const AudioPreMixerSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AudioNormalizationSettings: S.optional(AudioNormalizationSettings),
+    Channels: S.optional(S.Number),
+    GainDb: S.optional(S.Number),
+    RemixSettings: S.optional(RemixSettings),
+  }).pipe(
+    S.encodeKeys({
+      AudioNormalizationSettings: "audioNormalizationSettings",
+      Channels: "channels",
+      GainDb: "gainDb",
+      RemixSettings: "remixSettings",
+    }),
+  ),
+).annotate({
+  identifier: "AudioPreMixerSettings",
+}) as any as S.Schema<AudioPreMixerSettings>;
+export interface AudioPid {
+  DolbyEDecode?: AudioDolbyEDecode;
+  Pid?: number;
+  PremixSettings?: AudioPreMixerSettings;
+}
+export const AudioPid = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DolbyEDecode: S.optional(AudioDolbyEDecode),
+    Pid: S.optional(S.Number),
+    PremixSettings: S.optional(AudioPreMixerSettings),
+  }).pipe(
+    S.encodeKeys({
+      DolbyEDecode: "dolbyEDecode",
+      Pid: "pid",
+      PremixSettings: "premixSettings",
+    }),
+  ),
+).annotate({ identifier: "AudioPid" }) as any as S.Schema<AudioPid>;
+export type __listOfAudioPid = AudioPid[];
+export const __listOfAudioPid = /*@__PURE__*/ /*#__PURE__*/ S.Array(AudioPid);
+export interface AudioPidSelection {
+  Pid?: number;
+  Pids?: AudioPid[];
+}
+export const AudioPidSelection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Pid: S.optional(S.Number),
+    Pids: S.optional(__listOfAudioPid),
+  }).pipe(S.encodeKeys({ Pid: "pid", Pids: "pids" })),
+).annotate({
+  identifier: "AudioPidSelection",
+}) as any as S.Schema<AudioPidSelection>;
+export interface AudioTrack {
+  Track?: number;
+  PremixSettings?: AudioPreMixerSettings;
+}
+export const AudioTrack = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Track: S.optional(S.Number),
+    PremixSettings: S.optional(AudioPreMixerSettings),
+  }).pipe(S.encodeKeys({ Track: "track", PremixSettings: "premixSettings" })),
+).annotate({ identifier: "AudioTrack" }) as any as S.Schema<AudioTrack>;
+export type __listOfAudioTrack = AudioTrack[];
+export const __listOfAudioTrack =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(AudioTrack);
 export interface AudioTrackSelection {
   Tracks?: AudioTrack[];
   DolbyEDecode?: AudioDolbyEDecode;
@@ -6660,6 +6725,29 @@ export const TeletextSourceSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "TeletextSourceSettings",
 }) as any as S.Schema<TeletextSourceSettings>;
+export type CaptionSynchronizationMode =
+  | "NO_VIDEO_DELAY"
+  | "VIDEO_ALIGNED_CAPTIONS"
+  | (string & {});
+export const CaptionSynchronizationMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface SmartSubtitleSourceSettings {
+  CaptionSynchronizationMode?: CaptionSynchronizationMode;
+  InferenceFeedOutput?: string;
+}
+export const SmartSubtitleSourceSettings =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      CaptionSynchronizationMode: S.optional(CaptionSynchronizationMode),
+      InferenceFeedOutput: S.optional(S.String),
+    }).pipe(
+      S.encodeKeys({
+        CaptionSynchronizationMode: "captionSynchronizationMode",
+        InferenceFeedOutput: "inferenceFeedOutput",
+      }),
+    ),
+  ).annotate({
+    identifier: "SmartSubtitleSourceSettings",
+  }) as any as S.Schema<SmartSubtitleSourceSettings>;
 export interface CaptionSelectorSettings {
   AncillarySourceSettings?: AncillarySourceSettings;
   AribSourceSettings?: AribSourceSettings;
@@ -6668,6 +6756,7 @@ export interface CaptionSelectorSettings {
   Scte20SourceSettings?: Scte20SourceSettings;
   Scte27SourceSettings?: Scte27SourceSettings;
   TeletextSourceSettings?: TeletextSourceSettings;
+  SmartSubtitleSourceSettings?: SmartSubtitleSourceSettings;
 }
 export const CaptionSelectorSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -6679,6 +6768,7 @@ export const CaptionSelectorSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       Scte20SourceSettings: S.optional(Scte20SourceSettings),
       Scte27SourceSettings: S.optional(Scte27SourceSettings),
       TeletextSourceSettings: S.optional(TeletextSourceSettings),
+      SmartSubtitleSourceSettings: S.optional(SmartSubtitleSourceSettings),
     }).pipe(
       S.encodeKeys({
         AncillarySourceSettings: "ancillarySourceSettings",
@@ -6688,6 +6778,7 @@ export const CaptionSelectorSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
         Scte20SourceSettings: "scte20SourceSettings",
         Scte27SourceSettings: "scte27SourceSettings",
         TeletextSourceSettings: "teletextSourceSettings",
+        SmartSubtitleSourceSettings: "smartSubtitleSourceSettings",
       }),
     ),
 ).annotate({
@@ -7111,12 +7202,34 @@ export const LinkedChannelSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LinkedChannelSettings",
 }) as any as S.Schema<LinkedChannelSettings>;
+export interface AudioFeedInput {
+  AudioSelectorName?: string;
+  FeedInput?: string;
+}
+export const AudioFeedInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AudioSelectorName: S.optional(S.String),
+    FeedInput: S.optional(S.String),
+  }).pipe(
+    S.encodeKeys({
+      AudioSelectorName: "audioSelectorName",
+      FeedInput: "feedInput",
+    }),
+  ),
+).annotate({ identifier: "AudioFeedInput" }) as any as S.Schema<AudioFeedInput>;
+export type __listOfAudioFeedInput = AudioFeedInput[];
+export const __listOfAudioFeedInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(AudioFeedInput);
 export interface InferenceSettings {
   FeedArn?: string;
+  AudioFeedInputs?: AudioFeedInput[];
 }
 export const InferenceSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ FeedArn: S.optional(S.String) }).pipe(
-    S.encodeKeys({ FeedArn: "feedArn" }),
+  S.Struct({
+    FeedArn: S.optional(S.String),
+    AudioFeedInputs: S.optional(__listOfAudioFeedInput),
+  }).pipe(
+    S.encodeKeys({ FeedArn: "feedArn", AudioFeedInputs: "audioFeedInputs" }),
   ),
 ).annotate({
   identifier: "InferenceSettings",
@@ -7256,6 +7369,25 @@ export const ChannelEngineVersionResponse =
   ).annotate({
     identifier: "ChannelEngineVersionResponse",
   }) as any as S.Schema<ChannelEngineVersionResponse>;
+export interface MediaConnectRouterOutputConnection {
+  RouterInputArn?: string;
+}
+export const MediaConnectRouterOutputConnection =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ RouterInputArn: S.optional(S.String) }).pipe(
+      S.encodeKeys({ RouterInputArn: "routerInputArn" }),
+    ),
+  ).annotate({
+    identifier: "MediaConnectRouterOutputConnection",
+  }) as any as S.Schema<MediaConnectRouterOutputConnection>;
+export type MediaConnectRouterOutputConnections = {
+  [key: string]: MediaConnectRouterOutputConnection | undefined;
+};
+export const MediaConnectRouterOutputConnections =
+  /*@__PURE__*/ /*#__PURE__*/ S.Record(
+    S.String,
+    MediaConnectRouterOutputConnection.pipe(S.optional),
+  );
 export interface PipelineDetail {
   ActiveInputAttachmentName?: string;
   ActiveInputSwitchActionName?: string;
@@ -7263,6 +7395,9 @@ export interface PipelineDetail {
   ActiveMotionGraphicsUri?: string;
   PipelineId?: string;
   ChannelEngineVersion?: ChannelEngineVersionResponse;
+  MediaConnectRouterOutputConnectionMap?: {
+    [key: string]: MediaConnectRouterOutputConnection | undefined;
+  };
 }
 export const PipelineDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7272,6 +7407,9 @@ export const PipelineDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ActiveMotionGraphicsUri: S.optional(S.String),
     PipelineId: S.optional(S.String),
     ChannelEngineVersion: S.optional(ChannelEngineVersionResponse),
+    MediaConnectRouterOutputConnectionMap: S.optional(
+      MediaConnectRouterOutputConnections,
+    ),
   }).pipe(
     S.encodeKeys({
       ActiveInputAttachmentName: "activeInputAttachmentName",
@@ -7280,6 +7418,8 @@ export const PipelineDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       ActiveMotionGraphicsUri: "activeMotionGraphicsUri",
       PipelineId: "pipelineId",
       ChannelEngineVersion: "channelEngineVersion",
+      MediaConnectRouterOutputConnectionMap:
+        "mediaConnectRouterOutputConnectionMap",
     }),
   ),
 ).annotate({ identifier: "PipelineDetail" }) as any as S.Schema<PipelineDetail>;
@@ -7398,11 +7538,15 @@ export const DescribeLinkedChannelSettings =
   }) as any as S.Schema<DescribeLinkedChannelSettings>;
 export interface DescribeInferenceSettings {
   FeedArn?: string;
+  AudioFeedInputs?: AudioFeedInput[];
 }
 export const DescribeInferenceSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
-    S.Struct({ FeedArn: S.optional(S.String) }).pipe(
-      S.encodeKeys({ FeedArn: "feedArn" }),
+    S.Struct({
+      FeedArn: S.optional(S.String),
+      AudioFeedInputs: S.optional(__listOfAudioFeedInput),
+    }).pipe(
+      S.encodeKeys({ FeedArn: "feedArn", AudioFeedInputs: "audioFeedInputs" }),
     ),
 ).annotate({
   identifier: "DescribeInferenceSettings",
@@ -7739,9 +7883,39 @@ export interface CreateChannelResponse {
             };
             AudioPidSelection: AudioPidSelection & {
               Pid: __integerMin0Max8191;
+              Pids: (AudioPid & {
+                Pid: __integerMin0Max8191;
+                DolbyEDecode: AudioDolbyEDecode & {
+                  ProgramSelection: DolbyEProgramSelection;
+                };
+                PremixSettings: AudioPreMixerSettings & {
+                  RemixSettings: RemixSettings & {
+                    ChannelMappings: (AudioChannelMapping & {
+                      InputChannelLevels: (InputChannelLevel & {
+                        Gain: __integerMinNegative60Max6;
+                        InputChannel: __integerMin0Max15;
+                      })[];
+                      OutputChannel: __integerMin0Max7;
+                    })[];
+                  };
+                };
+              })[];
             };
             AudioTrackSelection: AudioTrackSelection & {
-              Tracks: (AudioTrack & { Track: __integerMin1 })[];
+              Tracks: (AudioTrack & {
+                Track: __integerMin1;
+                PremixSettings: AudioPreMixerSettings & {
+                  RemixSettings: RemixSettings & {
+                    ChannelMappings: (AudioChannelMapping & {
+                      InputChannelLevels: (InputChannelLevel & {
+                        Gain: __integerMinNegative60Max6;
+                        InputChannel: __integerMin0Max15;
+                      })[];
+                      OutputChannel: __integerMin0Max7;
+                    })[];
+                  };
+                };
+              })[];
               DolbyEDecode: AudioDolbyEDecode & {
                 ProgramSelection: DolbyEProgramSelection;
               };
@@ -10839,9 +11013,41 @@ export interface DeleteChannelResponse {
           AudioLanguageSelection: AudioLanguageSelection & {
             LanguageCode: string;
           };
-          AudioPidSelection: AudioPidSelection & { Pid: __integerMin0Max8191 };
+          AudioPidSelection: AudioPidSelection & {
+            Pid: __integerMin0Max8191;
+            Pids: (AudioPid & {
+              Pid: __integerMin0Max8191;
+              DolbyEDecode: AudioDolbyEDecode & {
+                ProgramSelection: DolbyEProgramSelection;
+              };
+              PremixSettings: AudioPreMixerSettings & {
+                RemixSettings: RemixSettings & {
+                  ChannelMappings: (AudioChannelMapping & {
+                    InputChannelLevels: (InputChannelLevel & {
+                      Gain: __integerMinNegative60Max6;
+                      InputChannel: __integerMin0Max15;
+                    })[];
+                    OutputChannel: __integerMin0Max7;
+                  })[];
+                };
+              };
+            })[];
+          };
           AudioTrackSelection: AudioTrackSelection & {
-            Tracks: (AudioTrack & { Track: __integerMin1 })[];
+            Tracks: (AudioTrack & {
+              Track: __integerMin1;
+              PremixSettings: AudioPreMixerSettings & {
+                RemixSettings: RemixSettings & {
+                  ChannelMappings: (AudioChannelMapping & {
+                    InputChannelLevels: (InputChannelLevel & {
+                      Gain: __integerMinNegative60Max6;
+                      InputChannel: __integerMin0Max15;
+                    })[];
+                    OutputChannel: __integerMin0Max7;
+                  })[];
+                };
+              };
+            })[];
             DolbyEDecode: AudioDolbyEDecode & {
               ProgramSelection: DolbyEProgramSelection;
             };
@@ -12053,9 +12259,41 @@ export interface DescribeChannelResponse {
           AudioLanguageSelection: AudioLanguageSelection & {
             LanguageCode: string;
           };
-          AudioPidSelection: AudioPidSelection & { Pid: __integerMin0Max8191 };
+          AudioPidSelection: AudioPidSelection & {
+            Pid: __integerMin0Max8191;
+            Pids: (AudioPid & {
+              Pid: __integerMin0Max8191;
+              DolbyEDecode: AudioDolbyEDecode & {
+                ProgramSelection: DolbyEProgramSelection;
+              };
+              PremixSettings: AudioPreMixerSettings & {
+                RemixSettings: RemixSettings & {
+                  ChannelMappings: (AudioChannelMapping & {
+                    InputChannelLevels: (InputChannelLevel & {
+                      Gain: __integerMinNegative60Max6;
+                      InputChannel: __integerMin0Max15;
+                    })[];
+                    OutputChannel: __integerMin0Max7;
+                  })[];
+                };
+              };
+            })[];
+          };
           AudioTrackSelection: AudioTrackSelection & {
-            Tracks: (AudioTrack & { Track: __integerMin1 })[];
+            Tracks: (AudioTrack & {
+              Track: __integerMin1;
+              PremixSettings: AudioPreMixerSettings & {
+                RemixSettings: RemixSettings & {
+                  ChannelMappings: (AudioChannelMapping & {
+                    InputChannelLevels: (InputChannelLevel & {
+                      Gain: __integerMinNegative60Max6;
+                      InputChannel: __integerMin0Max15;
+                    })[];
+                    OutputChannel: __integerMin0Max7;
+                  })[];
+                };
+              };
+            })[];
             DolbyEDecode: AudioDolbyEDecode & {
               ProgramSelection: DolbyEProgramSelection;
             };
@@ -14049,9 +14287,39 @@ export interface ListChannelsResponse {
             };
             AudioPidSelection: AudioPidSelection & {
               Pid: __integerMin0Max8191;
+              Pids: (AudioPid & {
+                Pid: __integerMin0Max8191;
+                DolbyEDecode: AudioDolbyEDecode & {
+                  ProgramSelection: DolbyEProgramSelection;
+                };
+                PremixSettings: AudioPreMixerSettings & {
+                  RemixSettings: RemixSettings & {
+                    ChannelMappings: (AudioChannelMapping & {
+                      InputChannelLevels: (InputChannelLevel & {
+                        Gain: __integerMinNegative60Max6;
+                        InputChannel: __integerMin0Max15;
+                      })[];
+                      OutputChannel: __integerMin0Max7;
+                    })[];
+                  };
+                };
+              })[];
             };
             AudioTrackSelection: AudioTrackSelection & {
-              Tracks: (AudioTrack & { Track: __integerMin1 })[];
+              Tracks: (AudioTrack & {
+                Track: __integerMin1;
+                PremixSettings: AudioPreMixerSettings & {
+                  RemixSettings: RemixSettings & {
+                    ChannelMappings: (AudioChannelMapping & {
+                      InputChannelLevels: (InputChannelLevel & {
+                        Gain: __integerMinNegative60Max6;
+                        InputChannel: __integerMin0Max15;
+                      })[];
+                      OutputChannel: __integerMin0Max7;
+                    })[];
+                  };
+                };
+              })[];
               DolbyEDecode: AudioDolbyEDecode & {
                 ProgramSelection: DolbyEProgramSelection;
               };
@@ -16180,9 +16448,41 @@ export interface RestartChannelPipelinesResponse {
           AudioLanguageSelection: AudioLanguageSelection & {
             LanguageCode: string;
           };
-          AudioPidSelection: AudioPidSelection & { Pid: __integerMin0Max8191 };
+          AudioPidSelection: AudioPidSelection & {
+            Pid: __integerMin0Max8191;
+            Pids: (AudioPid & {
+              Pid: __integerMin0Max8191;
+              DolbyEDecode: AudioDolbyEDecode & {
+                ProgramSelection: DolbyEProgramSelection;
+              };
+              PremixSettings: AudioPreMixerSettings & {
+                RemixSettings: RemixSettings & {
+                  ChannelMappings: (AudioChannelMapping & {
+                    InputChannelLevels: (InputChannelLevel & {
+                      Gain: __integerMinNegative60Max6;
+                      InputChannel: __integerMin0Max15;
+                    })[];
+                    OutputChannel: __integerMin0Max7;
+                  })[];
+                };
+              };
+            })[];
+          };
           AudioTrackSelection: AudioTrackSelection & {
-            Tracks: (AudioTrack & { Track: __integerMin1 })[];
+            Tracks: (AudioTrack & {
+              Track: __integerMin1;
+              PremixSettings: AudioPreMixerSettings & {
+                RemixSettings: RemixSettings & {
+                  ChannelMappings: (AudioChannelMapping & {
+                    InputChannelLevels: (InputChannelLevel & {
+                      Gain: __integerMinNegative60Max6;
+                      InputChannel: __integerMin0Max15;
+                    })[];
+                    OutputChannel: __integerMin0Max7;
+                  })[];
+                };
+              };
+            })[];
             DolbyEDecode: AudioDolbyEDecode & {
               ProgramSelection: DolbyEProgramSelection;
             };
@@ -16551,9 +16851,41 @@ export interface StartChannelResponse {
           AudioLanguageSelection: AudioLanguageSelection & {
             LanguageCode: string;
           };
-          AudioPidSelection: AudioPidSelection & { Pid: __integerMin0Max8191 };
+          AudioPidSelection: AudioPidSelection & {
+            Pid: __integerMin0Max8191;
+            Pids: (AudioPid & {
+              Pid: __integerMin0Max8191;
+              DolbyEDecode: AudioDolbyEDecode & {
+                ProgramSelection: DolbyEProgramSelection;
+              };
+              PremixSettings: AudioPreMixerSettings & {
+                RemixSettings: RemixSettings & {
+                  ChannelMappings: (AudioChannelMapping & {
+                    InputChannelLevels: (InputChannelLevel & {
+                      Gain: __integerMinNegative60Max6;
+                      InputChannel: __integerMin0Max15;
+                    })[];
+                    OutputChannel: __integerMin0Max7;
+                  })[];
+                };
+              };
+            })[];
+          };
           AudioTrackSelection: AudioTrackSelection & {
-            Tracks: (AudioTrack & { Track: __integerMin1 })[];
+            Tracks: (AudioTrack & {
+              Track: __integerMin1;
+              PremixSettings: AudioPreMixerSettings & {
+                RemixSettings: RemixSettings & {
+                  ChannelMappings: (AudioChannelMapping & {
+                    InputChannelLevels: (InputChannelLevel & {
+                      Gain: __integerMinNegative60Max6;
+                      InputChannel: __integerMin0Max15;
+                    })[];
+                    OutputChannel: __integerMin0Max7;
+                  })[];
+                };
+              };
+            })[];
             DolbyEDecode: AudioDolbyEDecode & {
               ProgramSelection: DolbyEProgramSelection;
             };
@@ -17443,9 +17775,41 @@ export interface StopChannelResponse {
           AudioLanguageSelection: AudioLanguageSelection & {
             LanguageCode: string;
           };
-          AudioPidSelection: AudioPidSelection & { Pid: __integerMin0Max8191 };
+          AudioPidSelection: AudioPidSelection & {
+            Pid: __integerMin0Max8191;
+            Pids: (AudioPid & {
+              Pid: __integerMin0Max8191;
+              DolbyEDecode: AudioDolbyEDecode & {
+                ProgramSelection: DolbyEProgramSelection;
+              };
+              PremixSettings: AudioPreMixerSettings & {
+                RemixSettings: RemixSettings & {
+                  ChannelMappings: (AudioChannelMapping & {
+                    InputChannelLevels: (InputChannelLevel & {
+                      Gain: __integerMinNegative60Max6;
+                      InputChannel: __integerMin0Max15;
+                    })[];
+                    OutputChannel: __integerMin0Max7;
+                  })[];
+                };
+              };
+            })[];
+          };
           AudioTrackSelection: AudioTrackSelection & {
-            Tracks: (AudioTrack & { Track: __integerMin1 })[];
+            Tracks: (AudioTrack & {
+              Track: __integerMin1;
+              PremixSettings: AudioPreMixerSettings & {
+                RemixSettings: RemixSettings & {
+                  ChannelMappings: (AudioChannelMapping & {
+                    InputChannelLevels: (InputChannelLevel & {
+                      Gain: __integerMinNegative60Max6;
+                      InputChannel: __integerMin0Max15;
+                    })[];
+                    OutputChannel: __integerMin0Max7;
+                  })[];
+                };
+              };
+            })[];
             DolbyEDecode: AudioDolbyEDecode & {
               ProgramSelection: DolbyEProgramSelection;
             };
@@ -18058,9 +18422,39 @@ export interface UpdateChannelResponse {
             };
             AudioPidSelection: AudioPidSelection & {
               Pid: __integerMin0Max8191;
+              Pids: (AudioPid & {
+                Pid: __integerMin0Max8191;
+                DolbyEDecode: AudioDolbyEDecode & {
+                  ProgramSelection: DolbyEProgramSelection;
+                };
+                PremixSettings: AudioPreMixerSettings & {
+                  RemixSettings: RemixSettings & {
+                    ChannelMappings: (AudioChannelMapping & {
+                      InputChannelLevels: (InputChannelLevel & {
+                        Gain: __integerMinNegative60Max6;
+                        InputChannel: __integerMin0Max15;
+                      })[];
+                      OutputChannel: __integerMin0Max7;
+                    })[];
+                  };
+                };
+              })[];
             };
             AudioTrackSelection: AudioTrackSelection & {
-              Tracks: (AudioTrack & { Track: __integerMin1 })[];
+              Tracks: (AudioTrack & {
+                Track: __integerMin1;
+                PremixSettings: AudioPreMixerSettings & {
+                  RemixSettings: RemixSettings & {
+                    ChannelMappings: (AudioChannelMapping & {
+                      InputChannelLevels: (InputChannelLevel & {
+                        Gain: __integerMinNegative60Max6;
+                        InputChannel: __integerMin0Max15;
+                      })[];
+                      OutputChannel: __integerMin0Max7;
+                    })[];
+                  };
+                };
+              })[];
               DolbyEDecode: AudioDolbyEDecode & {
                 ProgramSelection: DolbyEProgramSelection;
               };
@@ -18379,9 +18773,39 @@ export interface UpdateChannelClassResponse {
             };
             AudioPidSelection: AudioPidSelection & {
               Pid: __integerMin0Max8191;
+              Pids: (AudioPid & {
+                Pid: __integerMin0Max8191;
+                DolbyEDecode: AudioDolbyEDecode & {
+                  ProgramSelection: DolbyEProgramSelection;
+                };
+                PremixSettings: AudioPreMixerSettings & {
+                  RemixSettings: RemixSettings & {
+                    ChannelMappings: (AudioChannelMapping & {
+                      InputChannelLevels: (InputChannelLevel & {
+                        Gain: __integerMinNegative60Max6;
+                        InputChannel: __integerMin0Max15;
+                      })[];
+                      OutputChannel: __integerMin0Max7;
+                    })[];
+                  };
+                };
+              })[];
             };
             AudioTrackSelection: AudioTrackSelection & {
-              Tracks: (AudioTrack & { Track: __integerMin1 })[];
+              Tracks: (AudioTrack & {
+                Track: __integerMin1;
+                PremixSettings: AudioPreMixerSettings & {
+                  RemixSettings: RemixSettings & {
+                    ChannelMappings: (AudioChannelMapping & {
+                      InputChannelLevels: (InputChannelLevel & {
+                        Gain: __integerMinNegative60Max6;
+                        InputChannel: __integerMin0Max15;
+                      })[];
+                      OutputChannel: __integerMin0Max7;
+                    })[];
+                  };
+                };
+              })[];
               DolbyEDecode: AudioDolbyEDecode & {
                 ProgramSelection: DolbyEProgramSelection;
               };

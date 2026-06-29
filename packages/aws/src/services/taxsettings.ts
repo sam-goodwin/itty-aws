@@ -143,6 +143,8 @@ export type DateString = string;
 export type UniqueIdentificationNumber = string;
 export type ContractingAuthorityCode = string;
 export type VatRegistrationNumber = string;
+export type PeppolId = string;
+export type SirenNumber = string;
 export type DateOfBirth = string;
 export type S3BucketName = string;
 export type S3Key = string;
@@ -219,6 +221,8 @@ export type ValidationExceptionErrorCode =
   | "InvalidToken"
   | "FieldValidationFailed"
   | "MissingInput"
+  | "NonIndiaCustomerCanNotSetPAN"
+  | "GSTExistenceBlockSetPAN"
   | (string & {});
 export const ValidationExceptionErrorCode =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -349,25 +353,27 @@ export type TaxRegistrationType =
   | "SST"
   | "TIN"
   | "NRIC"
+  | "PAN"
+  | "NIP"
   | (string & {});
 export const TaxRegistrationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface Address {
-  addressLine1: string;
+  addressLine1?: string;
   addressLine2?: string;
   addressLine3?: string;
   districtOrCounty?: string;
-  city: string;
+  city?: string;
   stateOrRegion?: string;
   postalCode: string;
   countryCode: string;
 }
 export const Address = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
-    addressLine1: S.String,
+    addressLine1: S.optional(S.String),
     addressLine2: S.optional(S.String),
     addressLine3: S.optional(S.String),
     districtOrCounty: S.optional(S.String),
-    city: S.String,
+    city: S.optional(S.String),
     stateOrRegion: S.optional(S.String),
     postalCode: S.String,
     countryCode: S.String,
@@ -510,11 +516,14 @@ export const GeorgiaAdditionalInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GeorgiaAdditionalInfo",
 }) as any as S.Schema<GeorgiaAdditionalInfo>;
+export type CustomerType = "Business" | "Individual" | (string & {});
+export const CustomerType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ItalyAdditionalInfo {
   sdiAccountId?: string;
   cigNumber?: string;
   cupNumber?: string;
   taxCode?: string;
+  customerType?: CustomerType;
 }
 export const ItalyAdditionalInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -522,6 +531,7 @@ export const ItalyAdditionalInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     cigNumber: S.optional(S.String),
     cupNumber: S.optional(S.String),
     taxCode: S.optional(S.String),
+    customerType: S.optional(CustomerType),
   }),
 ).annotate({
   identifier: "ItalyAdditionalInfo",
@@ -549,14 +559,23 @@ export const UkraineAdditionalInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UkraineAdditionalInfo",
 }) as any as S.Schema<UkraineAdditionalInfo>;
+export type PolandTaxRegistrationNumberType =
+  | "EUTaxRegistrationNumber"
+  | "LocalTaxRegistrationNumber"
+  | "LocalRegistrationNumber"
+  | (string & {});
+export const PolandTaxRegistrationNumberType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface PolandAdditionalInfo {
   individualRegistrationNumber?: string;
   isGroupVatEnabled?: boolean;
+  taxRegistrationNumberType?: PolandTaxRegistrationNumberType;
 }
 export const PolandAdditionalInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     individualRegistrationNumber: S.optional(S.String),
     isGroupVatEnabled: S.optional(S.Boolean),
+    taxRegistrationNumberType: S.optional(PolandTaxRegistrationNumberType),
   }),
 ).annotate({
   identifier: "PolandAdditionalInfo",
@@ -661,6 +680,48 @@ export const UzbekistanAdditionalInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UzbekistanAdditionalInfo",
 }) as any as S.Schema<UzbekistanAdditionalInfo>;
+export interface PhilippinesAdditionalInfo {
+  isVatRegistered?: boolean;
+}
+export const PhilippinesAdditionalInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ isVatRegistered: S.optional(S.Boolean) }),
+).annotate({
+  identifier: "PhilippinesAdditionalInfo",
+}) as any as S.Schema<PhilippinesAdditionalInfo>;
+export interface BelgiumAdditionalInfo {
+  peppolId?: string;
+  isMercuriusBoxEnabled?: boolean;
+}
+export const BelgiumAdditionalInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    peppolId: S.optional(S.String),
+    isMercuriusBoxEnabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "BelgiumAdditionalInfo",
+}) as any as S.Schema<BelgiumAdditionalInfo>;
+export type ChileDocumentType = "Invoice" | "Receipt" | (string & {});
+export const ChileDocumentType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ChileAdditionalInfo {
+  documentType?: ChileDocumentType;
+  businessActivity?: string;
+}
+export const ChileAdditionalInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    documentType: S.optional(ChileDocumentType),
+    businessActivity: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ChileAdditionalInfo",
+}) as any as S.Schema<ChileAdditionalInfo>;
+export interface FranceAdditionalInfo {
+  sirenNumber: string;
+}
+export const FranceAdditionalInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ sirenNumber: S.String }),
+).annotate({
+  identifier: "FranceAdditionalInfo",
+}) as any as S.Schema<FranceAdditionalInfo>;
 export interface AdditionalInfoRequest {
   malaysiaAdditionalInfo?: MalaysiaAdditionalInfo;
   israelAdditionalInfo?: IsraelAdditionalInfo;
@@ -681,6 +742,10 @@ export interface AdditionalInfoRequest {
   egyptAdditionalInfo?: EgyptAdditionalInfo;
   greeceAdditionalInfo?: GreeceAdditionalInfo;
   uzbekistanAdditionalInfo?: UzbekistanAdditionalInfo;
+  philippinesAdditionalInfo?: PhilippinesAdditionalInfo;
+  belgiumAdditionalInfo?: BelgiumAdditionalInfo;
+  chileAdditionalInfo?: ChileAdditionalInfo;
+  franceAdditionalInfo?: FranceAdditionalInfo;
 }
 export const AdditionalInfoRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -703,6 +768,10 @@ export const AdditionalInfoRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     egyptAdditionalInfo: S.optional(EgyptAdditionalInfo),
     greeceAdditionalInfo: S.optional(GreeceAdditionalInfo),
     uzbekistanAdditionalInfo: S.optional(UzbekistanAdditionalInfo),
+    philippinesAdditionalInfo: S.optional(PhilippinesAdditionalInfo),
+    belgiumAdditionalInfo: S.optional(BelgiumAdditionalInfo),
+    chileAdditionalInfo: S.optional(ChileAdditionalInfo),
+    franceAdditionalInfo: S.optional(FranceAdditionalInfo),
   }),
 ).annotate({
   identifier: "AdditionalInfoRequest",
@@ -1010,6 +1079,10 @@ export interface AdditionalInfoResponse {
   egyptAdditionalInfo?: EgyptAdditionalInfo;
   greeceAdditionalInfo?: GreeceAdditionalInfo;
   uzbekistanAdditionalInfo?: UzbekistanAdditionalInfo;
+  philippinesAdditionalInfo?: PhilippinesAdditionalInfo;
+  belgiumAdditionalInfo?: BelgiumAdditionalInfo;
+  chileAdditionalInfo?: ChileAdditionalInfo;
+  franceAdditionalInfo?: FranceAdditionalInfo;
 }
 export const AdditionalInfoResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1035,6 +1108,10 @@ export const AdditionalInfoResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       egyptAdditionalInfo: S.optional(EgyptAdditionalInfo),
       greeceAdditionalInfo: S.optional(GreeceAdditionalInfo),
       uzbekistanAdditionalInfo: S.optional(UzbekistanAdditionalInfo),
+      philippinesAdditionalInfo: S.optional(PhilippinesAdditionalInfo),
+      belgiumAdditionalInfo: S.optional(BelgiumAdditionalInfo),
+      chileAdditionalInfo: S.optional(ChileAdditionalInfo),
+      franceAdditionalInfo: S.optional(FranceAdditionalInfo),
     }),
 ).annotate({
   identifier: "AdditionalInfoResponse",
@@ -1525,8 +1602,7 @@ export type BatchDeleteTaxRegistrationError =
   | ValidationException
   | CommonErrors;
 /**
- * Deletes tax registration for multiple accounts in batch. This can be used to delete tax
- * registrations for up to five accounts in one batch.
+ * Deletes tax registration for multiple accounts in batch. This can be used to delete tax registrations for up to five accounts in one batch.
  *
  * This API operation can't be used to delete your tax registration in Brazil. Use the Payment preferences page in the Billing and Cost Management console instead.
  */
@@ -1568,17 +1644,13 @@ export type BatchPutTaxRegistrationError =
   | ValidationException
   | CommonErrors;
 /**
- * Adds or updates tax registration for multiple accounts in batch. This can be used to add
- * or update tax registrations for up to five accounts in one batch. You can't set a TRN if there's a pending TRN. You'll need to delete the pending TRN first.
+ * Adds or updates tax registration for multiple accounts in batch. This can be used to add or update tax registrations for up to five accounts in one batch. You can't set a TRN if there's a pending TRN. You'll need to delete the pending TRN first.
  *
- * To call this API operation for specific countries, see the following country-specific
- * requirements.
+ * To call this API operation for specific countries, see the following country-specific requirements.
  *
  * **Bangladesh**
  *
- * - You must specify the tax registration certificate document in the
- * `taxRegistrationDocuments` field of the `VerificationDetails`
- * object.
+ * - You must specify the tax registration certificate document in the `taxRegistrationDocuments` field of the `VerificationDetails` object.
  *
  * **Brazil**
  *
@@ -1602,16 +1674,13 @@ export type BatchPutTaxRegistrationError =
  *
  * For other `taxRegistrationNumberType` values, `ppnExceptionDesignationCode` must be either `01`, `07`, or `08`.
  *
- * - If `ppnExceptionDesignationCode` is `07`, you must specify the `decisionNumber` in the `indonesiaAdditionalInfo` field of the `additionalTaxInformation` object.
+ * - If `ppnExceptionDesignationCode` is `07` or `08`, you must specify the `decisionNumber` in the `indonesiaAdditionalInfo` field of the `additionalTaxInformation` object.
  *
  * **Kenya**
  *
- * - You must specify the `personType` in the `kenyaAdditionalInfo`
- * field of the `additionalTaxInformation` object.
+ * - You must specify the `personType` in the `kenyaAdditionalInfo` field of the `additionalTaxInformation` object.
  *
- * - If the `personType` is `Physical Person`, you must specify the
- * tax registration certificate document in the `taxRegistrationDocuments` field
- * of the `VerificationDetails` object.
+ * - If the `personType` is `Physical Person`, you must specify the tax registration certificate document in the `taxRegistrationDocuments` field of the `VerificationDetails` object.
  *
  * **Malaysia**
  *
@@ -1627,12 +1696,9 @@ export type BatchPutTaxRegistrationError =
  *
  * - For business resellers with service codes, you must specify `businessRegistrationNumber`, `taxInformationNumber`, and distinct `serviceTaxCodes` in `MalaysiaAdditionalInfo` with a SST type and valid sales and service tax (SST) number. By using this API operation, Amazon Web Services registers your self-declaration that you’re an authorized business reseller registered with the Royal Malaysia Customs Department (RMCD), and have a valid SST number.
  *
- * - Amazon Web Services reserves the right to seek additional information and/or take other actions to
- * support your self-declaration as appropriate.
+ * - Amazon Web Services reserves the right to seek additional information and/or take other actions to support your self-declaration as appropriate.
  *
- * - Amazon Web Services is currently registered under the following service tax codes. You must include
- * at least one of the service tax codes in the service tax code strings to declare yourself
- * as an authorized registered business reseller.
+ * - Amazon Web Services is currently registered under the following service tax codes. You must include at least one of the service tax codes in the service tax code strings to declare yourself as an authorized registered business reseller.
  *
  * Taxable service and service tax codes:
  *
@@ -1644,6 +1710,12 @@ export type BatchPutTaxRegistrationError =
  *
  * Digital services and electronic medium - 9907121690
  *
+ * **Mexico**
+ *
+ * - You must provide a Constancia de Situación fiscal (CSF) document in the **verificationDetails** field.
+ *
+ * - You do not need to provide address and legal name. These will be populated based on your tax registration number.
+ *
  * **Nepal**
  *
  * - The sector valid values are `Business` and `Individual`.
@@ -1654,55 +1726,59 @@ export type BatchPutTaxRegistrationError =
  *
  * **South Korea**
  *
- * - You must specify the `certifiedEmailId` and `legalName` in the
- * `TaxRegistrationEntry` object. Use Korean characters for
- * `legalName`.
+ * - You must specify the `certifiedEmailId` and `legalName` in the `TaxRegistrationEntry` object. Use Korean characters for `legalName`.
  *
- * - You must specify the `businessRepresentativeName`,
- * `itemOfBusiness`, and `lineOfBusiness` in the
- * `southKoreaAdditionalInfo` field of the `additionalTaxInformation`
- * object. Use Korean characters for these fields.
+ * - You must specify the `businessRepresentativeName`, `itemOfBusiness`, and `lineOfBusiness` in the `southKoreaAdditionalInfo` field of the `additionalTaxInformation` object. Use Korean characters for these fields.
  *
- * - You must specify the tax registration certificate document in the
- * `taxRegistrationDocuments` field of the `VerificationDetails`
- * object.
+ * - You must specify the tax registration certificate document in the `taxRegistrationDocuments` field of the `VerificationDetails` object.
  *
- * - For the `address` object, use Korean characters for `addressLine1`, `addressLine2`
- * `city`, `postalCode`, and `stateOrRegion`.
+ * - For the `address` object, use Korean characters for `addressLine1`, `addressLine2` `city`, `postalCode`, and `stateOrRegion`.
  *
  * **Spain**
  *
- * - You must specify the `registrationType` in the
- * `spainAdditionalInfo` field of the `additionalTaxInformation`
- * object.
+ * - You must specify the `registrationType` in the `spainAdditionalInfo` field of the `additionalTaxInformation` object.
  *
- * - If the `registrationType` is `Local`, you must specify the tax
- * registration certificate document in the `taxRegistrationDocuments` field of
- * the `VerificationDetails` object.
+ * - If the `registrationType` is `Local`, you must specify the tax registration certificate document in the `taxRegistrationDocuments` field of the `VerificationDetails` object.
  *
  * **Turkey**
  *
  * - You must specify the `sector` in the `taxRegistrationEntry` object.
  *
- * - If your `sector` is `Business`, `Individual`, or
- * `Government`:
+ * - If your `sector` is `Business`, `Individual`, or `Government`:
  *
- * - Specify the `taxOffice`. If your
- * `sector` is `Individual`, don't enter this value.
+ * - Specify the `taxOffice`. If your `sector` is `Individual`, don't enter this value.
  *
- * - (Optional) Specify the `kepEmailId`. If your
- * `sector` is `Individual`, don't enter this value.
+ * - (Optional) Specify the `kepEmailId`. If your `sector` is `Individual`, don't enter this value.
  *
  * - **Note:** In the **Tax Settings** page of the Billing console, `Government` appears as **Public institutions**
  *
- * - If your `sector` is `Business` and you're subject to KDV tax,
- * you must specify your industry in the `industries` field.
+ * - If your `sector` is `Business` and you're subject to KDV tax, you must specify your industry in the `industries` field.
  *
  * - For `address`, you must specify `districtOrCounty`.
  *
  * **Ukraine**
  *
  * - The sector valid values are `Business` and `Individual`.
+ *
+ * **Philippines**
+ *
+ * - You can optionally specify the `isVatRegistered` in the `philippinesAdditionalInfo` field of the `additionalTaxInformation` object to indicate your VAT registration status with the Bureau of Internal Revenue (BIR).
+ *
+ * **Belgium**
+ *
+ * - You can optionally specify the `peppolId` in the `belgiumAdditionalInfo` field of the `additionalTaxInformation` object.
+ *
+ * **Chile**
+ *
+ * - You can optionally specify the `documentType` and `businessActivity` in the `chileAdditionalInfo` field of the `additionalTaxInformation` object.
+ *
+ * **France**
+ *
+ * - You must specify the `sirenNumber` in the `franceAdditionalInfo` field of the `additionalTaxInformation` object.
+ *
+ * **Poland**
+ *
+ * - You can optionally specify the `taxRegistrationNumberType` in the `polandAdditionalInfo` field of the `additionalTaxInformation` object. Valid values are `EUTaxRegistrationNumber`, `LocalTaxRegistrationNumber`, or `LocalRegistrationNumber`.
  */
 export const batchPutTaxRegistration: API.OperationMethod<
   BatchPutTaxRegistrationRequest,
@@ -1835,8 +1911,7 @@ export type GetTaxRegistrationDocumentError =
   | ValidationException
   | CommonErrors;
 /**
- * Downloads your tax documents to the Amazon S3 bucket that you specify in your
- * request.
+ * Downloads your tax documents to the Amazon S3 bucket that you specify in your request.
  */
 export const getTaxRegistrationDocument: API.OperationMethod<
   GetTaxRegistrationDocumentRequest,
@@ -1940,8 +2015,7 @@ export type ListTaxRegistrationsError =
   | ValidationException
   | CommonErrors;
 /**
- * Retrieves the tax registration of accounts listed in a consolidated billing family. This
- * can be used to retrieve up to 100 accounts' tax registrations in one call (default 50).
+ * Retrieves the tax registration of accounts listed in a consolidated billing family. This can be used to retrieve up to 100 accounts' tax registrations in one call (default 50).
  */
 export const listTaxRegistrations: API.OperationMethod<
   ListTaxRegistrationsRequest,
@@ -2056,14 +2130,11 @@ export type PutTaxRegistrationError =
 /**
  * Adds or updates tax registration for a single account. You can't set a TRN if there's a pending TRN. You'll need to delete the pending TRN first.
  *
- * To call this API operation for specific countries, see the following country-specific
- * requirements.
+ * To call this API operation for specific countries, see the following country-specific requirements.
  *
  * **Bangladesh**
  *
- * - You must specify the tax registration certificate document in the
- * `taxRegistrationDocuments` field of the `VerificationDetails`
- * object.
+ * - You must specify the tax registration certificate document in the `taxRegistrationDocuments` field of the `VerificationDetails` object.
  *
  * **Brazil**
  *
@@ -2087,16 +2158,13 @@ export type PutTaxRegistrationError =
  *
  * For other `taxRegistrationNumberType` values, `ppnExceptionDesignationCode` must be either `01`, `07`, or `08`.
  *
- * - If `ppnExceptionDesignationCode` is `07`, you must specify the `decisionNumber` in the `indonesiaAdditionalInfo` field of the `additionalTaxInformation` object.
+ * - If `ppnExceptionDesignationCode` is `07` or `08`, you must specify the `decisionNumber` in the `indonesiaAdditionalInfo` field of the `additionalTaxInformation` object.
  *
  * **Kenya**
  *
- * - You must specify the `personType` in the `kenyaAdditionalInfo`
- * field of the `additionalTaxInformation` object.
+ * - You must specify the `personType` in the `kenyaAdditionalInfo` field of the `additionalTaxInformation` object.
  *
- * - If the `personType` is `Physical Person`, you must specify the
- * tax registration certificate document in the `taxRegistrationDocuments` field
- * of the `VerificationDetails` object.
+ * - If the `personType` is `Physical Person`, you must specify the tax registration certificate document in the `taxRegistrationDocuments` field of the `VerificationDetails` object.
  *
  * **Malaysia**
  *
@@ -2112,12 +2180,9 @@ export type PutTaxRegistrationError =
  *
  * - For business resellers with service codes, you must specify `businessRegistrationNumber`, `taxInformationNumber`, and distinct `serviceTaxCodes` in `MalaysiaAdditionalInfo` with a SST type and valid sales and service tax (SST) number. By using this API operation, Amazon Web Services registers your self-declaration that you’re an authorized business reseller registered with the Royal Malaysia Customs Department (RMCD), and have a valid SST number.
  *
- * - Amazon Web Services reserves the right to seek additional information and/or take other actions to
- * support your self-declaration as appropriate.
+ * - Amazon Web Services reserves the right to seek additional information and/or take other actions to support your self-declaration as appropriate.
  *
- * - Amazon Web Services is currently registered under the following service tax codes. You must include
- * at least one of the service tax codes in the service tax code strings to declare yourself
- * as an authorized registered business reseller.
+ * - Amazon Web Services is currently registered under the following service tax codes. You must include at least one of the service tax codes in the service tax code strings to declare yourself as an authorized registered business reseller.
  *
  * Taxable service and service tax codes:
  *
@@ -2129,6 +2194,12 @@ export type PutTaxRegistrationError =
  *
  * Digital services and electronic medium - 9907121690
  *
+ * **Mexico**
+ *
+ * - You must provide a Constancia de Situación fiscal (CSF) document in the **verificationDetails** field.
+ *
+ * - You do not need to provide address and legal name. These will be populated based on your tax registration number.
+ *
  * **Nepal**
  *
  * - The sector valid values are `Business` and `Individual`.
@@ -2139,55 +2210,59 @@ export type PutTaxRegistrationError =
  *
  * **South Korea**
  *
- * - You must specify the `certifiedEmailId` and `legalName` in the
- * `TaxRegistrationEntry` object. Use Korean characters for
- * `legalName`.
+ * - You must specify the `certifiedEmailId` and `legalName` in the `TaxRegistrationEntry` object. Use Korean characters for `legalName`.
  *
- * - You must specify the `businessRepresentativeName`,
- * `itemOfBusiness`, and `lineOfBusiness` in the
- * `southKoreaAdditionalInfo` field of the `additionalTaxInformation`
- * object. Use Korean characters for these fields.
+ * - You must specify the `businessRepresentativeName`, `itemOfBusiness`, and `lineOfBusiness` in the `southKoreaAdditionalInfo` field of the `additionalTaxInformation` object. Use Korean characters for these fields.
  *
- * - You must specify the tax registration certificate document in the
- * `taxRegistrationDocuments` field of the `VerificationDetails`
- * object.
+ * - You must specify the tax registration certificate document in the `taxRegistrationDocuments` field of the `VerificationDetails` object.
  *
- * - For the `address` object, use Korean characters for `addressLine1`, `addressLine2`
- * `city`, `postalCode`, and `stateOrRegion`.
+ * - For the `address` object, use Korean characters for `addressLine1`, `addressLine2` `city`, `postalCode`, and `stateOrRegion`.
  *
  * **Spain**
  *
- * - You must specify the `registrationType` in the
- * `spainAdditionalInfo` field of the `additionalTaxInformation`
- * object.
+ * - You must specify the `registrationType` in the `spainAdditionalInfo` field of the `additionalTaxInformation` object.
  *
- * - If the `registrationType` is `Local`, you must specify the tax
- * registration certificate document in the `taxRegistrationDocuments` field of
- * the `VerificationDetails` object.
+ * - If the `registrationType` is `Local`, you must specify the tax registration certificate document in the `taxRegistrationDocuments` field of the `VerificationDetails` object.
  *
  * **Turkey**
  *
  * - You must specify the `sector` in the `taxRegistrationEntry` object.
  *
- * - If your `sector` is `Business`, `Individual`, or
- * `Government`:
+ * - If your `sector` is `Business`, `Individual`, or `Government`:
  *
- * - Specify the `taxOffice`. If your
- * `sector` is `Individual`, don't enter this value.
+ * - Specify the `taxOffice`. If your `sector` is `Individual`, don't enter this value.
  *
- * - (Optional) Specify the `kepEmailId`. If your
- * `sector` is `Individual`, don't enter this value.
+ * - (Optional) Specify the `kepEmailId`. If your `sector` is `Individual`, don't enter this value.
  *
  * - **Note:** In the **Tax Settings** page of the Billing console, `Government` appears as **Public institutions**
  *
- * - If your `sector` is `Business` and you're subject to KDV tax,
- * you must specify your industry in the `industries` field.
+ * - If your `sector` is `Business` and you're subject to KDV tax, you must specify your industry in the `industries` field.
  *
  * - For `address`, you must specify `districtOrCounty`.
  *
  * **Ukraine**
  *
  * - The sector valid values are `Business` and `Individual`.
+ *
+ * **Philippines**
+ *
+ * - You can optionally specify the `isVatRegistered` in the `philippinesAdditionalInfo` field of the `additionalTaxInformation` object to indicate your VAT registration status with the Bureau of Internal Revenue (BIR).
+ *
+ * **Belgium**
+ *
+ * - You can optionally specify the `peppolId` in the `belgiumAdditionalInfo` field of the `additionalTaxInformation` object.
+ *
+ * **Chile**
+ *
+ * - You can optionally specify the `documentType` and `businessActivity` in the `chileAdditionalInfo` field of the `additionalTaxInformation` object.
+ *
+ * **France**
+ *
+ * - You must specify the `sirenNumber` in the `franceAdditionalInfo` field of the `additionalTaxInformation` object.
+ *
+ * **Poland**
+ *
+ * - You can optionally specify the `taxRegistrationNumberType` in the `polandAdditionalInfo` field of the `additionalTaxInformation` object. Valid values are `EUTaxRegistrationNumber`, `LocalTaxRegistrationNumber`, or `LocalRegistrationNumber`.
  */
 export const putTaxRegistration: API.OperationMethod<
   PutTaxRegistrationRequest,

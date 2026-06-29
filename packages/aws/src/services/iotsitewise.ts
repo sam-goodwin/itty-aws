@@ -9201,7 +9201,22 @@ export const listActions: API.OperationMethod<
   ListActionsResponse,
   ListActionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> & {
+  pages: (
+    input: ListActionsRequest,
+  ) => stream.Stream<
+    ListActionsResponse,
+    ListActionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListActionsRequest,
+  ) => stream.Stream<
+    ActionSummary,
+    ListActionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListActionsRequest,
   output: ListActionsResponse,
   errors: [
@@ -9210,6 +9225,12 @@ export const listActions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "actionSummaries",
+    pageSize: "maxResults",
+  } as const,
 }));
 export type ListAssetModelCompositeModelsError =
   | InternalFailureException

@@ -410,12 +410,19 @@ export const StringFilterList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(StringFilter);
 export type DateRangeUnit = "DAYS" | (string & {});
 export const DateRangeUnit = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type DateRangeComparison = "WITHIN" | "OLDER_THAN" | (string & {});
+export const DateRangeComparison = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface DateRange {
   Value?: number;
   Unit?: DateRangeUnit;
+  Comparison?: DateRangeComparison;
 }
 export const DateRange = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ Value: S.optional(S.Number), Unit: S.optional(DateRangeUnit) }),
+  S.Struct({
+    Value: S.optional(S.Number),
+    Unit: S.optional(DateRangeUnit),
+    Comparison: S.optional(DateRangeComparison),
+  }),
 ).annotate({ identifier: "DateRange" }) as any as S.Schema<DateRange>;
 export interface DateFilter {
   Start?: string;
@@ -15674,6 +15681,29 @@ export const EnableSecurityHubV2Response =
   ).annotate({
     identifier: "EnableSecurityHubV2Response",
   }) as any as S.Schema<EnableSecurityHubV2Response>;
+export interface GenerateRecommendedPolicyV2Request {
+  MetadataUid: string;
+}
+export const GenerateRecommendedPolicyV2Request =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ MetadataUid: S.String.pipe(T.HttpLabel("MetadataUid")) }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/recommendedPolicyV2/{MetadataUid}" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GenerateRecommendedPolicyV2Request",
+  }) as any as S.Schema<GenerateRecommendedPolicyV2Request>;
+export interface GenerateRecommendedPolicyV2Response {}
+export const GenerateRecommendedPolicyV2Response =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "GenerateRecommendedPolicyV2Response",
+  }) as any as S.Schema<GenerateRecommendedPolicyV2Response>;
 export interface GetAdministratorAccountRequest {}
 export const GetAdministratorAccountRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -16318,8 +16348,30 @@ export const GroupByRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GroupByRule" }) as any as S.Schema<GroupByRule>;
 export type GroupByRules = GroupByRule[];
 export const GroupByRules = /*@__PURE__*/ /*#__PURE__*/ S.Array(GroupByRule);
+export interface AwsOrganizationScope {
+  OrganizationId?: string;
+  OrganizationalUnitId?: string;
+}
+export const AwsOrganizationScope = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OrganizationId: S.optional(S.String),
+    OrganizationalUnitId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AwsOrganizationScope",
+}) as any as S.Schema<AwsOrganizationScope>;
+export type AwsOrganizationScopeList = AwsOrganizationScope[];
+export const AwsOrganizationScopeList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(AwsOrganizationScope);
+export interface FindingScopes {
+  AwsOrganizations?: AwsOrganizationScope[];
+}
+export const FindingScopes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ AwsOrganizations: S.optional(AwsOrganizationScopeList) }),
+).annotate({ identifier: "FindingScopes" }) as any as S.Schema<FindingScopes>;
 export interface GetFindingStatisticsV2Request {
   GroupByRules?: GroupByRule[];
+  Scopes?: FindingScopes;
   SortOrder?: SortOrder;
   MaxStatisticResults?: number;
 }
@@ -16327,6 +16379,7 @@ export const GetFindingStatisticsV2Request =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       GroupByRules: S.optional(GroupByRules),
+      Scopes: S.optional(FindingScopes),
       SortOrder: S.optional(SortOrder),
       MaxStatisticResults: S.optional(S.Number),
     }).pipe(
@@ -16553,6 +16606,7 @@ export const GetFindingsTrendsV2Response =
   }) as any as S.Schema<GetFindingsTrendsV2Response>;
 export interface GetFindingsV2Request {
   Filters?: OcsfFindingFilters;
+  Scopes?: FindingScopes;
   SortCriteria?: SortCriterion[];
   NextToken?: string;
   MaxResults?: number;
@@ -16560,6 +16614,7 @@ export interface GetFindingsV2Request {
 export const GetFindingsV2Request = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     Filters: S.optional(OcsfFindingFilters),
+    Scopes: S.optional(FindingScopes),
     SortCriteria: S.optional(SortCriteria),
     NextToken: S.optional(S.String),
     MaxResults: S.optional(S.Number),
@@ -16810,6 +16865,100 @@ export const GetMembersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMembersResponse",
 }) as any as S.Schema<GetMembersResponse>;
+export interface GetRecommendedPolicyV2Request {
+  MetadataUid: string;
+  NextToken?: string;
+  MaxResults?: number;
+}
+export const GetRecommendedPolicyV2Request =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MetadataUid: S.String.pipe(T.HttpLabel("MetadataUid")),
+      NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+    }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/recommendedPolicyV2/{MetadataUid}" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetRecommendedPolicyV2Request",
+  }) as any as S.Schema<GetRecommendedPolicyV2Request>;
+export type RecommendationType =
+  | "UNUSED_PERMISSION_RECOMMENDATION"
+  | (string & {});
+export const RecommendationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface UnusedPermissionsRecommendationStep {
+  RecommendedAction?: string;
+  ExistingPolicy?: string;
+  ExistingPolicyId?: string;
+  PolicyUpdatedAt?: Date;
+  RecommendedPolicy?: string;
+}
+export const UnusedPermissionsRecommendationStep =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      RecommendedAction: S.optional(S.String),
+      ExistingPolicy: S.optional(S.String),
+      ExistingPolicyId: S.optional(S.String),
+      PolicyUpdatedAt: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      RecommendedPolicy: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "UnusedPermissionsRecommendationStep",
+  }) as any as S.Schema<UnusedPermissionsRecommendationStep>;
+export type RecommendationStep = {
+  UnusedPermissions: UnusedPermissionsRecommendationStep;
+};
+export const RecommendationStep = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ UnusedPermissions: UnusedPermissionsRecommendationStep }),
+]);
+export type RecommendationSteps = RecommendationStep[];
+export const RecommendationSteps =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(RecommendationStep);
+export interface RecommendationError {
+  Code?: string;
+  Message?: string;
+}
+export const RecommendationError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Code: S.optional(S.String), Message: S.optional(S.String) }),
+).annotate({
+  identifier: "RecommendationError",
+}) as any as S.Schema<RecommendationError>;
+export type RecommendationStatus =
+  | "IN_PROGRESS"
+  | "SUCCEEDED"
+  | "FAILED"
+  | (string & {});
+export const RecommendationStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface GetRecommendedPolicyV2Response {
+  NextToken?: string;
+  RecommendationType?: RecommendationType;
+  RecommendationSteps?: RecommendationStep[];
+  Error?: RecommendationError;
+  Status?: RecommendationStatus;
+  ResourceArn?: string;
+}
+export const GetRecommendedPolicyV2Response =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      NextToken: S.optional(S.String),
+      RecommendationType: S.optional(RecommendationType),
+      RecommendationSteps: S.optional(RecommendationSteps),
+      Error: S.optional(RecommendationError),
+      Status: S.optional(RecommendationStatus),
+      ResourceArn: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GetRecommendedPolicyV2Response",
+  }) as any as S.Schema<GetRecommendedPolicyV2Response>;
 export type ResourceGroupByField =
   | "AccountId"
   | "Region"
@@ -16970,8 +17119,15 @@ export const ResourceGroupByRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type ResourceGroupByRules = ResourceGroupByRule[];
 export const ResourceGroupByRules =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(ResourceGroupByRule);
+export interface ResourceScopes {
+  AwsOrganizations?: AwsOrganizationScope[];
+}
+export const ResourceScopes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ AwsOrganizations: S.optional(AwsOrganizationScopeList) }),
+).annotate({ identifier: "ResourceScopes" }) as any as S.Schema<ResourceScopes>;
 export interface GetResourcesStatisticsV2Request {
   GroupByRules?: ResourceGroupByRule[];
+  Scopes?: ResourceScopes;
   SortOrder?: SortOrder;
   MaxStatisticResults?: number;
 }
@@ -16979,6 +17135,7 @@ export const GetResourcesStatisticsV2Request =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       GroupByRules: S.optional(ResourceGroupByRules),
+      Scopes: S.optional(ResourceScopes),
       SortOrder: S.optional(SortOrder),
       MaxStatisticResults: S.optional(S.Number),
     }).pipe(
@@ -17154,6 +17311,7 @@ export const GetResourcesTrendsV2Response =
   }) as any as S.Schema<GetResourcesTrendsV2Response>;
 export interface GetResourcesV2Request {
   Filters?: ResourcesFilters;
+  Scopes?: ResourceScopes;
   SortCriteria?: SortCriterion[];
   NextToken?: string;
   MaxResults?: number;
@@ -17161,6 +17319,7 @@ export interface GetResourcesV2Request {
 export const GetResourcesV2Request = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     Filters: S.optional(ResourcesFilters),
+    Scopes: S.optional(ResourceScopes),
     SortCriteria: S.optional(SortCriteria),
     NextToken: S.optional(S.String),
     MaxResults: S.optional(S.Number),
@@ -19071,6 +19230,14 @@ export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuo
   "ServiceQuotaExceededException",
   { Message: S.optional(S.String), Code: S.optional(S.String) },
 ).pipe(C.withQuotaError) {}
+export class OrganizationalUnitNotFoundException extends S.TaggedErrorClass<OrganizationalUnitNotFoundException>()(
+  "OrganizationalUnitNotFoundException",
+  { Message: S.optional(S.String), Code: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class OrganizationNotFoundException extends S.TaggedErrorClass<OrganizationNotFoundException>()(
+  "OrganizationNotFoundException",
+  { Message: S.optional(S.String), Code: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
 export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
   "ResourceInUseException",
   { Message: S.optional(S.String), Code: S.optional(S.String) },
@@ -19502,12 +19669,16 @@ export type BatchUpdateFindingsV2Error =
   | ValidationException
   | CommonErrors;
 /**
- * Used by customers to update information about their investigation into a finding.
- * Requested by delegated administrator accounts or member accounts.
- * Delegated administrator accounts can update findings for their account and their member accounts.
- * Member accounts can update findings for their account. `BatchUpdateFindings` and `BatchUpdateFindingV2` both use `securityhub:BatchUpdateFindings` in the `Action` element of an IAM policy statement.
+ * Updates information about a customer's investigation into a finding. Delegated administrator accounts can update findings for their account and their member accounts. Member accounts can update findings for their own account.
+ *
+ * `BatchUpdateFindings` and `BatchUpdateFindingsV2` both use `securityhub:BatchUpdateFindings` in the `Action` element of an IAM policy statement.
  * You must have permission to perform the `securityhub:BatchUpdateFindings` action.
- * Updates from `BatchUpdateFindingsV2` don't affect the value of f`inding_info.modified_time`, `finding_info.modified_time_dt`, `time`, `time_dt for a finding`.
+ * You can configure IAM policies to restrict access to specific finding fields or field values by using the `securityhub:OCSFSyntaxPath/` condition key, where `` is one of the following supported fields: `SeverityId`, `StatusId`, or `Comment`.
+ *
+ * To prevent a user from updating a specific field, use a `Null` condition with `securityhub:OCSFSyntaxPath/` set to `"false"`.
+ * To prevent a user from setting a field to a specific value, use a `StringEquals` condition with `securityhub:OCSFSyntaxPath/` set to the disallowed value or list of values.
+ *
+ * Updates from `BatchUpdateFindingsV2` don't affect the value of `finding_info.modified_time`, `finding_info.modified_time_dt`, `time`, or `time_dt` for a finding.
  */
 export const batchUpdateFindingsV2: API.OperationMethod<
   BatchUpdateFindingsV2Request,
@@ -20820,6 +20991,35 @@ export const enableSecurityHubV2: API.OperationMethod<
     ValidationException,
   ],
 }));
+export type GenerateRecommendedPolicyV2Error =
+  | AccessDeniedException
+  | InternalServerException
+  | InvalidInputException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Begins the recommended policy generation to remediate a Security Hub finding.
+ * `GenerateRecommendedPolicyV2` only supports findings for unused permissions.
+ */
+export const generateRecommendedPolicyV2: API.OperationMethod<
+  GenerateRecommendedPolicyV2Request,
+  GenerateRecommendedPolicyV2Response,
+  GenerateRecommendedPolicyV2Error,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GenerateRecommendedPolicyV2Request,
+  output: GenerateRecommendedPolicyV2Response,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    InvalidInputException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
 export type GetAdministratorAccountError =
   | InternalException
   | InvalidAccessException
@@ -21172,13 +21372,18 @@ export type GetFindingStatisticsV2Error =
   | AccessDeniedException
   | ConflictException
   | InternalServerException
+  | OrganizationalUnitNotFoundException
+  | OrganizationNotFoundException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
  * Returns aggregated statistical data about findings.
- * `GetFindingStatisticsV2` use `securityhub:GetAdhocInsightResults` in the `Action` element of an IAM policy statement.
- * You must have permission to perform the `s` action.
+ *
+ * You can use the `Scopes` parameter to define the data boundary for the query. Currently, `Scopes` supports `AwsOrganizations`, which lets you aggregate findings from your entire organization or from specific organizational units. Only the delegated administrator account can use `Scopes`.
+ *
+ * `GetFindingStatisticsV2` uses `securityhub:GetAdhocInsightResults` in the `Action` element of an IAM policy statement.
+ * You must have permission to perform the `securityhub:GetAdhocInsightResults` action.
  */
 export const getFindingStatisticsV2: API.OperationMethod<
   GetFindingStatisticsV2Request,
@@ -21192,6 +21397,8 @@ export const getFindingStatisticsV2: API.OperationMethod<
     AccessDeniedException,
     ConflictException,
     InternalServerException,
+    OrganizationalUnitNotFoundException,
+    OrganizationNotFoundException,
     ThrottlingException,
     ValidationException,
   ],
@@ -21245,11 +21452,18 @@ export type GetFindingsV2Error =
   | AccessDeniedException
   | ConflictException
   | InternalServerException
+  | OrganizationalUnitNotFoundException
+  | OrganizationNotFoundException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
- * Return a list of findings that match the specified criteria.
+ * Returns a list of findings that match the specified criteria.
+ *
+ * You can use the `Scopes` parameter to define the data boundary for the query. Currently, `Scopes` supports `AwsOrganizations`, which lets you retrieve findings from your entire organization or from specific organizational units. Only the delegated administrator account can use `Scopes`.
+ *
+ * You can use the `Filters` parameter to refine results based on finding attributes. You can use `Scopes` and `Filters` independently or together. When both are provided, `Scopes` narrows the data set first, and then `Filters` refines results within that scoped data set.
+ *
  * `GetFindings` and `GetFindingsV2` both use `securityhub:GetFindings` in the `Action` element of an IAM policy statement.
  * You must have permission to perform the `securityhub:GetFindings` action.
  */
@@ -21280,6 +21494,8 @@ export const getFindingsV2: API.OperationMethod<
     AccessDeniedException,
     ConflictException,
     InternalServerException,
+    OrganizationalUnitNotFoundException,
+    OrganizationNotFoundException,
     ThrottlingException,
     ValidationException,
   ],
@@ -21457,16 +21673,70 @@ export const getMembers: API.OperationMethod<
     ResourceNotFoundException,
   ],
 }));
+export type GetRecommendedPolicyV2Error =
+  | AccessDeniedException
+  | InternalServerException
+  | InvalidInputException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the recommended policy to remediate a Security Hub finding.
+ * `GetRecommendedPolicyV2` only supports findings for unused permissions.
+ */
+export const getRecommendedPolicyV2: API.OperationMethod<
+  GetRecommendedPolicyV2Request,
+  GetRecommendedPolicyV2Response,
+  GetRecommendedPolicyV2Error,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetRecommendedPolicyV2Request,
+  ) => stream.Stream<
+    GetRecommendedPolicyV2Response,
+    GetRecommendedPolicyV2Error,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetRecommendedPolicyV2Request,
+  ) => stream.Stream<
+    RecommendationStep,
+    GetRecommendedPolicyV2Error,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: GetRecommendedPolicyV2Request,
+  output: GetRecommendedPolicyV2Response,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    InvalidInputException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "RecommendationSteps",
+    pageSize: "MaxResults",
+  } as const,
+}));
 export type GetResourcesStatisticsV2Error =
   | AccessDeniedException
   | ConflictException
   | InternalServerException
+  | OrganizationalUnitNotFoundException
+  | OrganizationNotFoundException
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
  * Retrieves statistical information about Amazon Web Services resources and their associated security findings.
+ *
+ * You can use the `Scopes` parameter to define the data boundary for the query. Currently, `Scopes` supports `AwsOrganizations`, which lets you aggregate resources from your entire organization or from specific organizational units. Only the delegated administrator account can use `Scopes`.
  */
 export const getResourcesStatisticsV2: API.OperationMethod<
   GetResourcesStatisticsV2Request,
@@ -21480,6 +21750,8 @@ export const getResourcesStatisticsV2: API.OperationMethod<
     AccessDeniedException,
     ConflictException,
     InternalServerException,
+    OrganizationalUnitNotFoundException,
+    OrganizationNotFoundException,
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
@@ -21534,12 +21806,18 @@ export type GetResourcesV2Error =
   | AccessDeniedException
   | ConflictException
   | InternalServerException
+  | OrganizationalUnitNotFoundException
+  | OrganizationNotFoundException
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
  * Returns a list of resources.
+ *
+ * You can use the `Scopes` parameter to define the data boundary for the query. Currently, `Scopes` supports `AwsOrganizations`, which lets you retrieve resources from your entire organization or from specific organizational units. Only the delegated administrator account can use `Scopes`.
+ *
+ * You can use the `Filters` parameter to refine results based on resource attributes. You can use `Scopes` and `Filters` independently or together. When both are provided, `Scopes` narrows the data set first, and then `Filters` refines results within that scoped data set.
  */
 export const getResourcesV2: API.OperationMethod<
   GetResourcesV2Request,
@@ -21568,6 +21846,8 @@ export const getResourcesV2: API.OperationMethod<
     AccessDeniedException,
     ConflictException,
     InternalServerException,
+    OrganizationalUnitNotFoundException,
+    OrganizationNotFoundException,
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,

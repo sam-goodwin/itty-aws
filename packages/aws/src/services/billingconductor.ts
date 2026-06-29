@@ -2811,6 +2811,7 @@ export const createCustomLineItem: API.OperationMethod<
 }));
 export type UpdateCustomLineItemError =
   | AccessDeniedException
+  | ConflictException
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
@@ -2829,6 +2830,7 @@ export const updateCustomLineItem: API.OperationMethod<
   output: UpdateCustomLineItemOutput,
   errors: [
     AccessDeniedException,
+    ConflictException,
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,

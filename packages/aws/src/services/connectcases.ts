@@ -3473,6 +3473,7 @@ export type UpdateRelatedItemError =
   | AccessDeniedException
   | InternalServerException
   | ResourceNotFoundException
+  | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
@@ -3505,6 +3506,7 @@ export const updateRelatedItem: API.OperationMethod<
     AccessDeniedException,
     InternalServerException,
     ResourceNotFoundException,
+    ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
   ],

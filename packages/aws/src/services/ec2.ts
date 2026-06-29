@@ -91,8 +91,10 @@ export type MillisecondDateTime = Date;
 export type CapacityReservationId = string;
 export type ReservationId = string;
 export type ReservedInstancesOfferingId = string;
-export type TransitGatewayMulticastDomainId = string;
 export type TransitGatewayAttachmentId = string;
+export type TransitGatewayId = string;
+export type ClientVpnEndpointId = string;
+export type TransitGatewayMulticastDomainId = string;
 export type VpcEndpointServiceId = string;
 export type VpcEndpointId = string;
 export type VpcPeeringConnectionIdWithResolver = string;
@@ -103,7 +105,6 @@ export type AssetId = string;
 export type AvailabilityZoneId = string;
 export type AvailabilityZoneName = string;
 export type IpamPoolAllocationId = string;
-export type ClientVpnEndpointId = string;
 export type VpcId = string;
 export type SecurityGroupId = string;
 export type NetworkInterfaceId = string;
@@ -134,6 +135,8 @@ export type TransitGatewayPolicyTableId = string;
 export type TransitGatewayRouteTableId = string;
 export type TrunkInterfaceAssociationId = string;
 export type Ipv6PoolEc2Id = string;
+export type ImageId = string;
+export type ImageWatermarkNameRequest = string;
 export type InternetGatewayId = string;
 export type VerifiedAccessInstanceId = string;
 export type VerifiedAccessTrustProviderId = string;
@@ -147,18 +150,21 @@ export type PrefixListResourceId = string;
 export type SecurityGroupName = string;
 export type S3StorageUploadPolicySignature = string | redacted.Redacted<string>;
 export type BundleId = string;
+export type CapacityReservationCancellationQuoteId = string;
 export type CapacityReservationFleetId = string;
 export type CancelCapacityReservationFleetErrorCode = string;
 export type CancelCapacityReservationFleetErrorMessage = string;
 export type ConversionTaskId = string;
 export type DeclarativePoliciesReportId = string;
 export type ExportVmTaskId = string;
-export type ImageId = string;
 export type ImportTaskId = string;
 export type ReservedInstancesListingId = string;
 export type SpotFleetRequestId = string;
 export type SpotInstanceRequestId = string;
+export type CopyImageClientToken = string;
+export type ImageDescriptionRequest = string;
 export type KmsKeyId = string;
+export type ImageNameRequest = string;
 export type CopySnapshotRequestPSU = string | redacted.Redacted<string>;
 export type SnapshotCompletionDurationMinutesRequest = number;
 export type CapacityManagerDataExportId = string;
@@ -167,6 +173,7 @@ export type PlacementGroupArn = string;
 export type CapacityReservationCommitmentDuration = number;
 export type CapacityBlockId = string;
 export type BoxedBoolean = boolean;
+export type BoxedLong = number;
 export type DoubleWithConstraints = number;
 export type IntegerWithConstraints = number;
 export type CarrierGatewayId = string;
@@ -186,8 +193,10 @@ export type ExcludedInstanceType = string;
 export type AllowedInstanceType = string;
 export type FleetId = string;
 export type FlowLogResourceId = string;
+export type TagKey = string;
 export type ImageUsageResourceTypeName = string;
 export type ImageUsageResourceTypeOptionValue = string;
+export type CreateImageUsageReportClientToken = string;
 export type ImageUsageReportId = string;
 export type InstanceConnectEndpointId = string;
 export type IpamScopeId = string;
@@ -195,7 +204,6 @@ export type IpamExternalResourceVerificationTokenId = string;
 export type IpamPolicyId = string;
 export type IpamNetmaskLength = number;
 export type IpamPrefixListResolverId = string;
-export type BoxedLong = number;
 export type IpamPrefixListResolverTargetId = string;
 export type SensitiveUserData = string | redacted.Redacted<string>;
 export type VersionDescription = string;
@@ -217,7 +225,6 @@ export type NetworkInsightsResourceId = string;
 export type Port = number;
 export type NetworkInsightsPathId = string;
 export type ReplaceRootVolumeTaskId = string;
-export type TransitGatewayId = string;
 export type CoreNetworkArn = string;
 export type OdbNetworkArn = string;
 export type VpcPeeringConnectionId = string;
@@ -280,6 +287,8 @@ export type DescribeCapacityBlockStatusMaxResults = number;
 export type DescribeCapacityManagerDataExportsRequestMaxResults = number;
 export type DescribeCapacityReservationBillingRequestsRequestMaxResults =
   number;
+export type DescribeCapacityReservationCancellationQuotesRequestMaxResults =
+  number;
 export type DescribeCapacityReservationFleetsMaxResults = number;
 export type DescribeCapacityReservationsMaxResults = number;
 export type DescribeCapacityReservationTopologyMaxResults = number;
@@ -327,6 +336,7 @@ export type DescribeInstanceTopologyMaxResults = number;
 export type DITOMaxResults = number;
 export type Location = string;
 export type DITMaxResults = number;
+export type IncludeUnsupportedInRegion = boolean;
 export type CurrentGenerationFlag = boolean;
 export type FreeTierEligibleFlag = boolean;
 export type BareMetalFlag = boolean;
@@ -406,9 +416,11 @@ export type NeuronDeviceCoreCount = number;
 export type NeuronDeviceCoreVersion = number;
 export type NeuronDeviceMemorySize = number;
 export type TotalNeuronMemory = number;
+export type SupportedInRegion = boolean;
 export type DescribeInternetGatewaysMaxResults = number;
 export type DescribeIpamByoasnMaxResults = number;
 export type IpamMaxResults = number;
+export type DescribeIpamPoolAllocationsMaxResults = number;
 export type Ipv6PoolMaxResults = number;
 export type DescribeLaunchTemplatesMaxResults = number;
 export type LocalGatewayMaxResults = number;
@@ -510,10 +522,11 @@ export type ListImagesInRecycleBinMaxResults = number;
 export type ListSnapshotsInRecycleBinMaxResults = number;
 export type CoolOffPeriodRequestHours = number;
 export type RetentionPeriodRequestDays = number;
-export type StringType = string;
+export type ModifyInstanceAttributeValue = string | redacted.Redacted<string>;
+export type ImageUefiDataRequest = string;
 export type ImageProviderRequest = string;
 export type MarketplaceProductCodeRequest = string;
-export type ImageNameRequest = string;
+export type ImageNameCriteriaRequest = string;
 export type NetworkAclAssociationId = string;
 export type ReportInstanceStatusRequestDescription =
   | string
@@ -632,6 +645,8 @@ export type ResourceType =
   | "secondary-subnet"
   | "capacity-manager-data-export"
   | "vpn-concentrator"
+  | "ipam-pool-allocation"
+  | "capacity-reservation-cancellation-quote"
   | (string & {});
 export const ResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface Tag {
@@ -864,6 +879,96 @@ export const AcceptReservedInstancesExchangeQuoteResult =
   ).annotate({
     identifier: "AcceptReservedInstancesExchangeQuoteResult",
   }) as any as S.Schema<AcceptReservedInstancesExchangeQuoteResult>;
+export interface AcceptTransitGatewayClientVpnAttachmentRequest {
+  TransitGatewayAttachmentId?: string;
+  DryRun?: boolean;
+}
+export const AcceptTransitGatewayClientVpnAttachmentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TransitGatewayAttachmentId: S.optional(S.String),
+      DryRun: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "AcceptTransitGatewayClientVpnAttachmentRequest",
+  }) as any as S.Schema<AcceptTransitGatewayClientVpnAttachmentRequest>;
+export type TransitGatewayAttachmentStatusType =
+  | "pending-acceptance"
+  | "pending"
+  | "rejected"
+  | "available"
+  | "deleting"
+  | "deleted"
+  | (string & {});
+export const TransitGatewayAttachmentStatusType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface TransitGatewayClientVpnAttachment {
+  TransitGatewayAttachmentId?: string;
+  TransitGatewayId?: string;
+  ClientVpnEndpointId?: string;
+  ClientVpnOwnerId?: string;
+  State?: TransitGatewayAttachmentStatusType;
+  CreationTime?: string;
+}
+export const TransitGatewayClientVpnAttachment =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TransitGatewayAttachmentId: S.optional(S.String).pipe(
+        T.XmlName("transitGatewayAttachmentId"),
+        T.Ec2QueryName("TransitGatewayAttachmentId"),
+      ),
+      TransitGatewayId: S.optional(S.String).pipe(
+        T.XmlName("transitGatewayId"),
+        T.Ec2QueryName("TransitGatewayId"),
+      ),
+      ClientVpnEndpointId: S.optional(S.String).pipe(
+        T.XmlName("clientVpnEndpointId"),
+        T.Ec2QueryName("ClientVpnEndpointId"),
+      ),
+      ClientVpnOwnerId: S.optional(S.String).pipe(
+        T.XmlName("clientVpnOwnerId"),
+        T.Ec2QueryName("ClientVpnOwnerId"),
+      ),
+      State: S.optional(TransitGatewayAttachmentStatusType).pipe(
+        T.XmlName("state"),
+        T.Ec2QueryName("State"),
+      ),
+      CreationTime: S.optional(S.String).pipe(
+        T.XmlName("creationTime"),
+        T.Ec2QueryName("CreationTime"),
+      ),
+    }),
+  ).annotate({
+    identifier: "TransitGatewayClientVpnAttachment",
+  }) as any as S.Schema<TransitGatewayClientVpnAttachment>;
+export interface AcceptTransitGatewayClientVpnAttachmentResult {
+  TransitGatewayClientVpnAttachment?: TransitGatewayClientVpnAttachment;
+}
+export const AcceptTransitGatewayClientVpnAttachmentResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TransitGatewayClientVpnAttachment: S.optional(
+        TransitGatewayClientVpnAttachment,
+      )
+        .pipe(
+          T.XmlName("transitGatewayClientVpnAttachment"),
+          T.Ec2QueryName("TransitGatewayClientVpnAttachment"),
+        )
+        .annotate({ identifier: "TransitGatewayClientVpnAttachment" }),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "AcceptTransitGatewayClientVpnAttachmentResult",
+  }) as any as S.Schema<AcceptTransitGatewayClientVpnAttachmentResult>;
 export type ValueStringList = string[];
 export const ValueStringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -904,6 +1009,7 @@ export type TransitGatewayAttachmentResourceType =
   | "peering"
   | "tgw-peering"
   | "network-function"
+  | "client-vpn"
   | (string & {});
 export const TransitGatewayAttachmentResourceType =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -1905,6 +2011,7 @@ export interface AllocateIpamPoolCidrRequest {
   PreviewNextCidr?: boolean;
   AllowedCidrs?: string[];
   DisallowedCidrs?: string[];
+  TagSpecifications?: TagSpecification[];
 }
 export const AllocateIpamPoolCidrRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1921,6 +2028,9 @@ export const AllocateIpamPoolCidrRequest =
       ),
       DisallowedCidrs: S.optional(IpamPoolAllocationDisallowedCidrs).pipe(
         T.XmlName("DisallowedCidr"),
+      ),
+      TagSpecifications: S.optional(TagSpecificationList).pipe(
+        T.XmlName("TagSpecification"),
       ),
     }).pipe(
       T.all(
@@ -1955,6 +2065,7 @@ export interface IpamPoolAllocation {
   ResourceType?: IpamPoolAllocationResourceType;
   ResourceRegion?: string;
   ResourceOwner?: string;
+  Tags?: Tag[];
 }
 export const IpamPoolAllocation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1982,6 +2093,10 @@ export const IpamPoolAllocation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ResourceOwner: S.optional(S.String).pipe(
       T.XmlName("resourceOwner"),
       T.Ec2QueryName("ResourceOwner"),
+    ),
+    Tags: S.optional(TagList).pipe(
+      T.XmlName("tagSet"),
+      T.Ec2QueryName("TagSet"),
     ),
   }),
 ).annotate({
@@ -2459,6 +2574,8 @@ export interface AssociateClientVpnTargetNetworkRequest {
   SubnetId?: string;
   ClientToken?: string;
   DryRun?: boolean;
+  AvailabilityZone?: string;
+  AvailabilityZoneId?: string;
 }
 export const AssociateClientVpnTargetNetworkRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2467,6 +2584,8 @@ export const AssociateClientVpnTargetNetworkRequest =
       SubnetId: S.optional(S.String),
       ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
       DryRun: S.optional(S.Boolean),
+      AvailabilityZone: S.optional(S.String),
+      AvailabilityZoneId: S.optional(S.String),
     }).pipe(
       T.all(
         ns,
@@ -3971,6 +4090,45 @@ export const AttachClassicLinkVpcResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AttachClassicLinkVpcResult",
 }) as any as S.Schema<AttachClassicLinkVpcResult>;
+export interface AttachImageWatermarkRequest {
+  ImageId?: string;
+  WatermarkName?: string;
+  DryRun?: boolean;
+}
+export const AttachImageWatermarkRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ImageId: S.optional(S.String),
+      WatermarkName: S.optional(S.String),
+      DryRun: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "AttachImageWatermarkRequest",
+  }) as any as S.Schema<AttachImageWatermarkRequest>;
+export interface AttachImageWatermarkResult {
+  WatermarkKey?: string;
+}
+export const AttachImageWatermarkResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      WatermarkKey: S.optional(S.String).pipe(
+        T.XmlName("watermarkKey"),
+        T.Ec2QueryName("WatermarkKey"),
+      ),
+    }).pipe(ns),
+).annotate({
+  identifier: "AttachImageWatermarkResult",
+}) as any as S.Schema<AttachImageWatermarkResult>;
 export interface AttachInternetGatewayRequest {
   DryRun?: boolean;
   InternetGatewayId?: string;
@@ -5309,15 +5467,21 @@ export const CancelBundleTaskResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CancelBundleTaskResult",
 }) as any as S.Schema<CancelBundleTaskResult>;
+export type ApplyCancellationCharges = "commitment-wind-down" | (string & {});
+export const ApplyCancellationCharges = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CancelCapacityReservationRequest {
   CapacityReservationId?: string;
   DryRun?: boolean;
+  ApplyCancellationCharges?: ApplyCancellationCharges;
+  QuoteId?: string;
 }
 export const CancelCapacityReservationRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       CapacityReservationId: S.optional(S.String),
       DryRun: S.optional(S.Boolean),
+      ApplyCancellationCharges: S.optional(ApplyCancellationCharges),
+      QuoteId: S.optional(S.String),
     }).pipe(
       T.all(
         ns,
@@ -6382,6 +6546,7 @@ export const SSEType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface OperatorResponse {
   Managed?: boolean;
   Principal?: string;
+  HiddenByDefault?: boolean;
 }
 export const OperatorResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6392,6 +6557,10 @@ export const OperatorResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Principal: S.optional(S.String).pipe(
       T.XmlName("principal"),
       T.Ec2QueryName("Principal"),
+    ),
+    HiddenByDefault: S.optional(S.Boolean).pipe(
+      T.XmlName("hiddenByDefault"),
+      T.Ec2QueryName("HiddenByDefault"),
     ),
   }),
 ).annotate({
@@ -6695,10 +6864,11 @@ export type CapacityReservationState =
   | "assessing"
   | "delayed"
   | "unsupported"
+  | "cancelling"
   | "unavailable"
   | (string & {});
 export const CapacityReservationState = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type AllocationType = "used" | "future" | (string & {});
+export type AllocationType = "used" | "future" | "cancelling" | (string & {});
 export const AllocationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CapacityAllocationMetadataEntry {
   Key?: string;
@@ -7077,6 +7247,166 @@ export const CreateCapacityReservationBySplittingResult =
   ).annotate({
     identifier: "CreateCapacityReservationBySplittingResult",
   }) as any as S.Schema<CreateCapacityReservationBySplittingResult>;
+export interface CreateCapacityReservationCancellationQuoteRequest {
+  CapacityReservationId?: string;
+  ClientToken?: string;
+  TagSpecifications?: TagSpecification[];
+  DryRun?: boolean;
+}
+export const CreateCapacityReservationCancellationQuoteRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      CapacityReservationId: S.optional(S.String),
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      TagSpecifications: S.optional(TagSpecificationList).pipe(
+        T.XmlName("TagSpecification"),
+      ),
+      DryRun: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "CreateCapacityReservationCancellationQuoteRequest",
+  }) as any as S.Schema<CreateCapacityReservationCancellationQuoteRequest>;
+export type CapacityReservationCancellationQuoteState =
+  | "pending"
+  | "active"
+  | "expired"
+  | (string & {});
+export const CapacityReservationCancellationQuoteState =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CapacityReservationConfiguration {
+  InstanceCount?: number;
+  ReservationState?: string;
+}
+export const CapacityReservationConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      InstanceCount: S.optional(S.Number).pipe(
+        T.XmlName("instanceCount"),
+        T.Ec2QueryName("InstanceCount"),
+      ),
+      ReservationState: S.optional(S.String).pipe(
+        T.XmlName("reservationState"),
+        T.Ec2QueryName("ReservationState"),
+      ),
+    }),
+  ).annotate({
+    identifier: "CapacityReservationConfiguration",
+  }) as any as S.Schema<CapacityReservationConfiguration>;
+export interface CancellationTerms {
+  CancellationType?: ApplyCancellationCharges;
+  ReservationState?: string;
+  CommittedInstanceCount?: number;
+  ChargeCommitmentDurationHours?: number;
+  ChargeEndDate?: Date;
+}
+export const CancellationTerms = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CancellationType: S.optional(ApplyCancellationCharges).pipe(
+      T.XmlName("cancellationType"),
+      T.Ec2QueryName("CancellationType"),
+    ),
+    ReservationState: S.optional(S.String).pipe(
+      T.XmlName("reservationState"),
+      T.Ec2QueryName("ReservationState"),
+    ),
+    CommittedInstanceCount: S.optional(S.Number).pipe(
+      T.XmlName("committedInstanceCount"),
+      T.Ec2QueryName("CommittedInstanceCount"),
+    ),
+    ChargeCommitmentDurationHours: S.optional(S.Number).pipe(
+      T.XmlName("chargeCommitmentDurationHours"),
+      T.Ec2QueryName("ChargeCommitmentDurationHours"),
+    ),
+    ChargeEndDate: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.XmlName("chargeEndDate"), T.Ec2QueryName("ChargeEndDate")),
+  }),
+).annotate({
+  identifier: "CancellationTerms",
+}) as any as S.Schema<CancellationTerms>;
+export type CancellationTermsSet = CancellationTerms[];
+export const CancellationTermsSet = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  CancellationTerms.pipe(T.XmlName("item")).annotate({
+    identifier: "CancellationTerms",
+  }),
+);
+export interface CapacityReservationCancellationQuote {
+  CapacityReservationCancellationQuoteId?: string;
+  CapacityReservationId?: string;
+  CreateTime?: Date;
+  ExpirationTime?: Date;
+  QuoteState?: CapacityReservationCancellationQuoteState;
+  CurrentConfiguration?: CapacityReservationConfiguration;
+  CancellationTerms?: CancellationTerms[];
+  Tags?: Tag[];
+}
+export const CapacityReservationCancellationQuote =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      CapacityReservationCancellationQuoteId: S.optional(S.String).pipe(
+        T.XmlName("capacityReservationCancellationQuoteId"),
+        T.Ec2QueryName("CapacityReservationCancellationQuoteId"),
+      ),
+      CapacityReservationId: S.optional(S.String).pipe(
+        T.XmlName("capacityReservationId"),
+        T.Ec2QueryName("CapacityReservationId"),
+      ),
+      CreateTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ).pipe(T.XmlName("createTime"), T.Ec2QueryName("CreateTime")),
+      ExpirationTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ).pipe(T.XmlName("expirationTime"), T.Ec2QueryName("ExpirationTime")),
+      QuoteState: S.optional(CapacityReservationCancellationQuoteState).pipe(
+        T.XmlName("quoteState"),
+        T.Ec2QueryName("QuoteState"),
+      ),
+      CurrentConfiguration: S.optional(CapacityReservationConfiguration)
+        .pipe(
+          T.XmlName("currentConfiguration"),
+          T.Ec2QueryName("CurrentConfiguration"),
+        )
+        .annotate({ identifier: "CapacityReservationConfiguration" }),
+      CancellationTerms: S.optional(CancellationTermsSet).pipe(
+        T.XmlName("cancellationTermSet"),
+        T.Ec2QueryName("CancellationTermSet"),
+      ),
+      Tags: S.optional(TagList).pipe(
+        T.XmlName("tagSet"),
+        T.Ec2QueryName("TagSet"),
+      ),
+    }),
+  ).annotate({
+    identifier: "CapacityReservationCancellationQuote",
+  }) as any as S.Schema<CapacityReservationCancellationQuote>;
+export interface CreateCapacityReservationCancellationQuoteResult {
+  CapacityReservationCancellationQuote?: CapacityReservationCancellationQuote;
+}
+export const CreateCapacityReservationCancellationQuoteResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      CapacityReservationCancellationQuote: S.optional(
+        CapacityReservationCancellationQuote,
+      )
+        .pipe(
+          T.XmlName("capacityReservationCancellationQuote"),
+          T.Ec2QueryName("CapacityReservationCancellationQuote"),
+        )
+        .annotate({ identifier: "CapacityReservationCancellationQuote" }),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "CreateCapacityReservationCancellationQuoteResult",
+  }) as any as S.Schema<CreateCapacityReservationCancellationQuoteResult>;
 export type InstanceType =
   | "a1.medium"
   | "a1.large"
@@ -8729,6 +9059,32 @@ export type TrafficIpAddressType =
   | "dual-stack"
   | (string & {});
 export const TrafficIpAddressType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type ClientVpnAvailabilityZoneSet = string[];
+export const ClientVpnAvailabilityZoneSet = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String.pipe(T.XmlName("item")),
+);
+export type ClientVpnAvailabilityZoneIdSet = string[];
+export const ClientVpnAvailabilityZoneIdSet =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export interface TransitGatewayConfigurationInputStructure {
+  TransitGatewayId?: string;
+  AvailabilityZones?: string[];
+  AvailabilityZoneIds?: string[];
+}
+export const TransitGatewayConfigurationInputStructure =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TransitGatewayId: S.optional(S.String),
+      AvailabilityZones: S.optional(ClientVpnAvailabilityZoneSet).pipe(
+        T.XmlName("AvailabilityZone"),
+      ),
+      AvailabilityZoneIds: S.optional(ClientVpnAvailabilityZoneIdSet).pipe(
+        T.XmlName("AvailabilityZoneId"),
+      ),
+    }),
+  ).annotate({
+    identifier: "TransitGatewayConfigurationInputStructure",
+  }) as any as S.Schema<TransitGatewayConfigurationInputStructure>;
 export interface CreateClientVpnEndpointRequest {
   ClientCidrBlock?: string;
   ServerCertificateArn?: string;
@@ -8752,6 +9108,7 @@ export interface CreateClientVpnEndpointRequest {
   DisconnectOnSessionTimeout?: boolean;
   EndpointIpAddressType?: EndpointIpAddressType;
   TrafficIpAddressType?: TrafficIpAddressType;
+  TransitGatewayConfiguration?: TransitGatewayConfigurationInputStructure;
 }
 export const CreateClientVpnEndpointRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -8784,6 +9141,9 @@ export const CreateClientVpnEndpointRequest =
       DisconnectOnSessionTimeout: S.optional(S.Boolean),
       EndpointIpAddressType: S.optional(EndpointIpAddressType),
       TrafficIpAddressType: S.optional(TrafficIpAddressType),
+      TransitGatewayConfiguration: S.optional(
+        TransitGatewayConfigurationInputStructure,
+      ),
     }).pipe(
       T.all(
         ns,
@@ -8803,6 +9163,7 @@ export type ClientVpnEndpointStatusCode =
   | "available"
   | "deleting"
   | "deleted"
+  | "pending"
   | (string & {});
 export const ClientVpnEndpointStatusCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ClientVpnEndpointStatus {
@@ -11378,6 +11739,36 @@ export const DestinationOptionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DestinationOptionsRequest",
 }) as any as S.Schema<DestinationOptionsRequest>;
+export type TaggableResourceType =
+  | "network-interface"
+  | "instance"
+  | "auto-scaling-group"
+  | (string & {});
+export const TaggableResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type TagKeyList = string[];
+export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String.pipe(T.XmlName("item")),
+);
+export interface TagFieldSpecificationRequest {
+  ResourceType?: TaggableResourceType;
+  TagKeys?: string[];
+}
+export const TagFieldSpecificationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ResourceType: S.optional(TaggableResourceType),
+      TagKeys: S.optional(TagKeyList).pipe(T.XmlName("TagKey")),
+    }),
+  ).annotate({
+    identifier: "TagFieldSpecificationRequest",
+  }) as any as S.Schema<TagFieldSpecificationRequest>;
+export type TagFieldSpecificationListRequest = TagFieldSpecificationRequest[];
+export const TagFieldSpecificationListRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(
+    TagFieldSpecificationRequest.pipe(T.XmlName("item")).annotate({
+      identifier: "TagFieldSpecificationRequest",
+    }),
+  );
 export interface CreateFlowLogsRequest {
   DryRun?: boolean;
   ClientToken?: string;
@@ -11393,6 +11784,7 @@ export interface CreateFlowLogsRequest {
   TagSpecifications?: TagSpecification[];
   MaxAggregationInterval?: number;
   DestinationOptions?: DestinationOptionsRequest;
+  TagFieldSpecifications?: TagFieldSpecificationRequest[];
 }
 export const CreateFlowLogsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11412,6 +11804,9 @@ export const CreateFlowLogsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ),
     MaxAggregationInterval: S.optional(S.Number),
     DestinationOptions: S.optional(DestinationOptionsRequest),
+    TagFieldSpecifications: S.optional(TagFieldSpecificationListRequest).pipe(
+      T.XmlName("TagFieldSpecification"),
+    ),
   }).pipe(
     T.all(
       ns,
@@ -18712,6 +19107,7 @@ export type PlacementStrategy =
   | "cluster"
   | "spread"
   | "partition"
+  | "precision-time"
   | (string & {});
 export const PlacementStrategy = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CreatePlacementGroupRequest {
@@ -18720,6 +19116,7 @@ export interface CreatePlacementGroupRequest {
   SpreadLevel?: SpreadLevel;
   LinkedGroupId?: string;
   Operator?: OperatorRequest;
+  ParentGroupId?: string;
   DryRun?: boolean;
   GroupName?: string;
   Strategy?: PlacementStrategy;
@@ -18734,6 +19131,7 @@ export const CreatePlacementGroupRequest =
       SpreadLevel: S.optional(SpreadLevel),
       LinkedGroupId: S.optional(S.String),
       Operator: S.optional(OperatorRequest),
+      ParentGroupId: S.optional(S.String),
       DryRun: S.optional(S.Boolean).pipe(
         T.XmlName("dryRun"),
         T.Ec2QueryName("DryRun"),
@@ -18778,6 +19176,7 @@ export interface PlacementGroup {
   SpreadLevel?: SpreadLevel;
   LinkedGroupId?: string;
   Operator?: OperatorResponse;
+  ParentGroupId?: string;
 }
 export const PlacementGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -18820,6 +19219,10 @@ export const PlacementGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Operator: S.optional(OperatorResponse)
       .pipe(T.XmlName("operator"), T.Ec2QueryName("Operator"))
       .annotate({ identifier: "OperatorResponse" }),
+    ParentGroupId: S.optional(S.String).pipe(
+      T.XmlName("parentGroupId"),
+      T.Ec2QueryName("ParentGroupId"),
+    ),
   }),
 ).annotate({ identifier: "PlacementGroup" }) as any as S.Schema<PlacementGroup>;
 export interface CreatePlacementGroupResult {
@@ -28876,6 +29279,47 @@ export const DeleteTransitGatewayResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeleteTransitGatewayResult",
 }) as any as S.Schema<DeleteTransitGatewayResult>;
+export interface DeleteTransitGatewayClientVpnAttachmentRequest {
+  TransitGatewayAttachmentId?: string;
+  DryRun?: boolean;
+}
+export const DeleteTransitGatewayClientVpnAttachmentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TransitGatewayAttachmentId: S.optional(S.String),
+      DryRun: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeleteTransitGatewayClientVpnAttachmentRequest",
+  }) as any as S.Schema<DeleteTransitGatewayClientVpnAttachmentRequest>;
+export interface DeleteTransitGatewayClientVpnAttachmentResult {
+  TransitGatewayClientVpnAttachment?: TransitGatewayClientVpnAttachment;
+}
+export const DeleteTransitGatewayClientVpnAttachmentResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TransitGatewayClientVpnAttachment: S.optional(
+        TransitGatewayClientVpnAttachment,
+      )
+        .pipe(
+          T.XmlName("transitGatewayClientVpnAttachment"),
+          T.Ec2QueryName("TransitGatewayClientVpnAttachment"),
+        )
+        .annotate({ identifier: "TransitGatewayClientVpnAttachment" }),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "DeleteTransitGatewayClientVpnAttachmentResult",
+  }) as any as S.Schema<DeleteTransitGatewayClientVpnAttachmentResult>;
 export interface DeleteTransitGatewayConnectRequest {
   TransitGatewayAttachmentId?: string;
   DryRun?: boolean;
@@ -32375,6 +32819,69 @@ export const DescribeCapacityReservationBillingRequestsResult =
   ).annotate({
     identifier: "DescribeCapacityReservationBillingRequestsResult",
   }) as any as S.Schema<DescribeCapacityReservationBillingRequestsResult>;
+export type CapacityReservationCancellationQuoteIdSet = string[];
+export const CapacityReservationCancellationQuoteIdSet =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export interface DescribeCapacityReservationCancellationQuotesRequest {
+  CapacityReservationCancellationQuoteIds?: string[];
+  MaxResults?: number;
+  NextToken?: string;
+  DryRun?: boolean;
+  Filters?: Filter[];
+}
+export const DescribeCapacityReservationCancellationQuotesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      CapacityReservationCancellationQuoteIds: S.optional(
+        CapacityReservationCancellationQuoteIdSet,
+      ).pipe(T.XmlName("CapacityReservationCancellationQuoteId")),
+      MaxResults: S.optional(S.Number),
+      NextToken: S.optional(S.String),
+      DryRun: S.optional(S.Boolean),
+      Filters: S.optional(FilterList).pipe(T.XmlName("Filter")),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeCapacityReservationCancellationQuotesRequest",
+  }) as any as S.Schema<DescribeCapacityReservationCancellationQuotesRequest>;
+export type CapacityReservationCancellationQuoteResponseSet =
+  CapacityReservationCancellationQuote[];
+export const CapacityReservationCancellationQuoteResponseSet =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(
+    CapacityReservationCancellationQuote.pipe(T.XmlName("item")).annotate({
+      identifier: "CapacityReservationCancellationQuote",
+    }),
+  );
+export interface DescribeCapacityReservationCancellationQuotesResult {
+  CapacityReservationCancellationQuotes?: CapacityReservationCancellationQuote[];
+  NextToken?: string;
+}
+export const DescribeCapacityReservationCancellationQuotesResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      CapacityReservationCancellationQuotes: S.optional(
+        CapacityReservationCancellationQuoteResponseSet,
+      ).pipe(
+        T.XmlName("capacityReservationCancellationQuoteSet"),
+        T.Ec2QueryName("CapacityReservationCancellationQuoteSet"),
+      ),
+      NextToken: S.optional(S.String).pipe(
+        T.XmlName("nextToken"),
+        T.Ec2QueryName("NextToken"),
+      ),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "DescribeCapacityReservationCancellationQuotesResult",
+  }) as any as S.Schema<DescribeCapacityReservationCancellationQuotesResult>;
 export interface DescribeCapacityReservationFleetsRequest {
   CapacityReservationFleetIds?: string[];
   NextToken?: string;
@@ -33320,6 +33827,35 @@ export const ClientRouteEnforcementResponseOptions =
   ).annotate({
     identifier: "ClientRouteEnforcementResponseOptions",
   }) as any as S.Schema<ClientRouteEnforcementResponseOptions>;
+export interface TransitGatewayConfigurationDescribeEndpointStructure {
+  TransitGatewayId?: string;
+  TransitGatewayAttachmentId?: string;
+  AvailabilityZones?: string[];
+  AvailabilityZoneIds?: string[];
+}
+export const TransitGatewayConfigurationDescribeEndpointStructure =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TransitGatewayId: S.optional(S.String).pipe(
+        T.XmlName("transitGatewayId"),
+        T.Ec2QueryName("TransitGatewayId"),
+      ),
+      TransitGatewayAttachmentId: S.optional(S.String).pipe(
+        T.XmlName("transitGatewayAttachmentId"),
+        T.Ec2QueryName("TransitGatewayAttachmentId"),
+      ),
+      AvailabilityZones: S.optional(ClientVpnAvailabilityZoneSet).pipe(
+        T.XmlName("availabilityZoneSet"),
+        T.Ec2QueryName("AvailabilityZoneSet"),
+      ),
+      AvailabilityZoneIds: S.optional(ClientVpnAvailabilityZoneIdSet).pipe(
+        T.XmlName("availabilityZoneIdSet"),
+        T.Ec2QueryName("AvailabilityZoneIdSet"),
+      ),
+    }),
+  ).annotate({
+    identifier: "TransitGatewayConfigurationDescribeEndpointStructure",
+  }) as any as S.Schema<TransitGatewayConfigurationDescribeEndpointStructure>;
 export interface ClientVpnEndpoint {
   ClientVpnEndpointId?: string;
   Description?: string;
@@ -33348,6 +33884,7 @@ export interface ClientVpnEndpoint {
   DisconnectOnSessionTimeout?: boolean;
   EndpointIpAddressType?: EndpointIpAddressType;
   TrafficIpAddressType?: TrafficIpAddressType;
+  TransitGatewayConfiguration?: TransitGatewayConfigurationDescribeEndpointStructure;
 }
 export const ClientVpnEndpoint = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -33468,6 +34005,16 @@ export const ClientVpnEndpoint = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       T.XmlName("trafficIpAddressType"),
       T.Ec2QueryName("TrafficIpAddressType"),
     ),
+    TransitGatewayConfiguration: S.optional(
+      TransitGatewayConfigurationDescribeEndpointStructure,
+    )
+      .pipe(
+        T.XmlName("transitGatewayConfiguration"),
+        T.Ec2QueryName("TransitGatewayConfiguration"),
+      )
+      .annotate({
+        identifier: "TransitGatewayConfigurationDescribeEndpointStructure",
+      }),
   }),
 ).annotate({
   identifier: "ClientVpnEndpoint",
@@ -33534,6 +34081,7 @@ export interface ClientVpnRoute {
   Origin?: string;
   Status?: ClientVpnRouteStatus;
   Description?: string;
+  TransitGatewayAttachmentId?: string;
 }
 export const ClientVpnRoute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -33560,6 +34108,10 @@ export const ClientVpnRoute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Description: S.optional(S.String).pipe(
       T.XmlName("description"),
       T.Ec2QueryName("Description"),
+    ),
+    TransitGatewayAttachmentId: S.optional(S.String).pipe(
+      T.XmlName("transitGatewayAttachmentId"),
+      T.Ec2QueryName("TransitGatewayAttachmentId"),
     ),
   }),
 ).annotate({ identifier: "ClientVpnRoute" }) as any as S.Schema<ClientVpnRoute>;
@@ -33626,6 +34178,8 @@ export interface TargetNetwork {
   ClientVpnEndpointId?: string;
   Status?: AssociationStatus;
   SecurityGroups?: string[];
+  AvailabilityZones?: string[];
+  AvailabilityZoneIds?: string[];
 }
 export const TargetNetwork = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -33651,6 +34205,14 @@ export const TargetNetwork = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     SecurityGroups: S.optional(ValueStringList).pipe(
       T.XmlName("securityGroups"),
       T.Ec2QueryName("SecurityGroups"),
+    ),
+    AvailabilityZones: S.optional(ClientVpnAvailabilityZoneSet).pipe(
+      T.XmlName("availabilityZoneSet"),
+      T.Ec2QueryName("AvailabilityZoneSet"),
+    ),
+    AvailabilityZoneIds: S.optional(ClientVpnAvailabilityZoneIdSet).pipe(
+      T.XmlName("availabilityZoneIdSet"),
+      T.Ec2QueryName("AvailabilityZoneIdSet"),
     ),
   }),
 ).annotate({ identifier: "TargetNetwork" }) as any as S.Schema<TargetNetwork>;
@@ -35608,6 +36170,32 @@ export const DestinationOptionsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DestinationOptionsResponse",
 }) as any as S.Schema<DestinationOptionsResponse>;
+export interface TagFieldSpecificationResponse {
+  ResourceType?: TaggableResourceType;
+  TagKeys?: string[];
+}
+export const TagFieldSpecificationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ResourceType: S.optional(TaggableResourceType).pipe(
+        T.XmlName("resourceType"),
+        T.Ec2QueryName("ResourceType"),
+      ),
+      TagKeys: S.optional(TagKeyList).pipe(
+        T.XmlName("tagKeySet"),
+        T.Ec2QueryName("TagKeySet"),
+      ),
+    }),
+  ).annotate({
+    identifier: "TagFieldSpecificationResponse",
+  }) as any as S.Schema<TagFieldSpecificationResponse>;
+export type TagFieldSpecificationListResponse = TagFieldSpecificationResponse[];
+export const TagFieldSpecificationListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(
+    TagFieldSpecificationResponse.pipe(T.XmlName("item")).annotate({
+      identifier: "TagFieldSpecificationResponse",
+    }),
+  );
 export interface FlowLog {
   CreationTime?: Date;
   DeliverLogsErrorMessage?: string;
@@ -35625,6 +36213,7 @@ export interface FlowLog {
   Tags?: Tag[];
   MaxAggregationInterval?: number;
   DestinationOptions?: DestinationOptionsResponse;
+  TagFieldSpecifications?: TagFieldSpecificationResponse[];
 }
 export const FlowLog = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -35693,6 +36282,10 @@ export const FlowLog = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
         T.Ec2QueryName("DestinationOptions"),
       )
       .annotate({ identifier: "DestinationOptionsResponse" }),
+    TagFieldSpecifications: S.optional(TagFieldSpecificationListResponse).pipe(
+      T.XmlName("tagFieldSpecificationSet"),
+      T.Ec2QueryName("TagFieldSpecificationSet"),
+    ),
   }),
 ).annotate({ identifier: "FlowLog" }) as any as S.Schema<FlowLog>;
 export type FlowLogSet = FlowLog[];
@@ -37045,6 +37638,47 @@ export type TpmSupportValues = "v2.0" | (string & {});
 export const TpmSupportValues = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type ImdsSupportValues = "v2.0" | (string & {});
 export const ImdsSupportValues = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ImageWatermark {
+  WatermarkKey?: string;
+  SourceImageRegion?: string;
+  SourceImageId?: string;
+  SourceImageCreationTime?: Date;
+  WatermarkCreationTime?: Date;
+}
+export const ImageWatermark = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WatermarkKey: S.optional(S.String).pipe(
+      T.XmlName("watermarkKey"),
+      T.Ec2QueryName("WatermarkKey"),
+    ),
+    SourceImageRegion: S.optional(S.String).pipe(
+      T.XmlName("sourceImageRegion"),
+      T.Ec2QueryName("SourceImageRegion"),
+    ),
+    SourceImageId: S.optional(S.String).pipe(
+      T.XmlName("sourceImageId"),
+      T.Ec2QueryName("SourceImageId"),
+    ),
+    SourceImageCreationTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(
+      T.XmlName("sourceImageCreationTime"),
+      T.Ec2QueryName("SourceImageCreationTime"),
+    ),
+    WatermarkCreationTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(
+      T.XmlName("watermarkCreationTime"),
+      T.Ec2QueryName("WatermarkCreationTime"),
+    ),
+  }),
+).annotate({ identifier: "ImageWatermark" }) as any as S.Schema<ImageWatermark>;
+export type ImageWatermarkList = ImageWatermark[];
+export const ImageWatermarkList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  ImageWatermark.pipe(T.XmlName("item")).annotate({
+    identifier: "ImageWatermark",
+  }),
+);
 export type ImageState =
   | "pending"
   | "available"
@@ -37092,6 +37726,7 @@ export interface Image {
   SourceImageId?: string;
   SourceImageRegion?: string;
   FreeTierEligible?: boolean;
+  ImageWatermarks?: ImageWatermark[];
   ImageId?: string;
   ImageLocation?: string;
   State?: ImageState;
@@ -37202,6 +37837,10 @@ export const Image = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     FreeTierEligible: S.optional(S.Boolean).pipe(
       T.XmlName("freeTierEligible"),
       T.Ec2QueryName("FreeTierEligible"),
+    ),
+    ImageWatermarks: S.optional(ImageWatermarkList).pipe(
+      T.XmlName("imageWatermarkSet"),
+      T.Ec2QueryName("ImageWatermarkSet"),
     ),
     ImageId: S.optional(S.String).pipe(
       T.XmlName("imageId"),
@@ -38483,6 +39122,7 @@ export interface ImageMetadata {
   DeprecationTime?: string;
   ImageAllowed?: boolean;
   IsPublic?: boolean;
+  ImageWatermarks?: ImageWatermark[];
 }
 export const ImageMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -38518,6 +39158,10 @@ export const ImageMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     IsPublic: S.optional(S.Boolean).pipe(
       T.XmlName("isPublic"),
       T.Ec2QueryName("IsPublic"),
+    ),
+    ImageWatermarks: S.optional(ImageWatermarkList).pipe(
+      T.XmlName("imageWatermarkSet"),
+      T.Ec2QueryName("ImageWatermarkSet"),
     ),
   }),
 ).annotate({ identifier: "ImageMetadata" }) as any as S.Schema<ImageMetadata>;
@@ -38602,6 +39246,7 @@ export const DescribeInstanceImageMetadataResult =
   }) as any as S.Schema<DescribeInstanceImageMetadataResult>;
 export interface DescribeInstancesRequest {
   InstanceIds?: string[];
+  IncludeManagedResources?: boolean;
   DryRun?: boolean;
   Filters?: Filter[];
   NextToken?: string;
@@ -38613,6 +39258,7 @@ export const DescribeInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       InstanceIds: S.optional(InstanceIdStringList).pipe(
         T.XmlName("InstanceId"),
       ),
+      IncludeManagedResources: S.optional(S.Boolean),
       DryRun: S.optional(S.Boolean).pipe(
         T.XmlName("dryRun"),
         T.Ec2QueryName("DryRun"),
@@ -39956,6 +40602,7 @@ export interface DescribeInstanceStatusRequest {
   InstanceIds?: string[];
   MaxResults?: number;
   NextToken?: string;
+  IncludeManagedResources?: boolean;
   DryRun?: boolean;
   Filters?: Filter[];
   IncludeAllInstances?: boolean;
@@ -39968,6 +40615,7 @@ export const DescribeInstanceStatusRequest =
       ),
       MaxResults: S.optional(S.Number),
       NextToken: S.optional(S.String),
+      IncludeManagedResources: S.optional(S.Boolean),
       DryRun: S.optional(S.Boolean).pipe(
         T.XmlName("dryRun"),
         T.Ec2QueryName("DryRun"),
@@ -40428,6 +41076,7 @@ export interface DescribeInstanceTypesRequest {
   Filters?: Filter[];
   MaxResults?: number;
   NextToken?: string;
+  IncludeUnsupportedInRegion?: boolean;
 }
 export const DescribeInstanceTypesRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -40439,6 +41088,7 @@ export const DescribeInstanceTypesRequest =
       Filters: S.optional(FilterList).pipe(T.XmlName("Filter")),
       MaxResults: S.optional(S.Number),
       NextToken: S.optional(S.String),
+      IncludeUnsupportedInRegion: S.optional(S.Boolean),
     }).pipe(
       T.all(
         ns,
@@ -41419,6 +42069,7 @@ export interface InstanceTypeInfo {
   NeuronInfo?: NeuronInfo;
   PhcSupport?: PhcSupport;
   RebootMigrationSupport?: RebootMigrationSupport;
+  SupportedInRegion?: boolean;
 }
 export const InstanceTypeInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -41544,6 +42195,10 @@ export const InstanceTypeInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     RebootMigrationSupport: S.optional(RebootMigrationSupport).pipe(
       T.XmlName("rebootMigrationSupport"),
       T.Ec2QueryName("RebootMigrationSupport"),
+    ),
+    SupportedInRegion: S.optional(S.Boolean).pipe(
+      T.XmlName("supportedInRegion"),
+      T.Ec2QueryName("SupportedInRegion"),
     ),
   }),
 ).annotate({
@@ -41800,6 +42455,62 @@ export const DescribeIpamPoliciesResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeIpamPoliciesResult",
 }) as any as S.Schema<DescribeIpamPoliciesResult>;
+export interface DescribeIpamPoolAllocationsRequest {
+  DryRun?: boolean;
+  IpamPoolAllocationIds?: string[];
+  Filters?: Filter[];
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const DescribeIpamPoolAllocationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DryRun: S.optional(S.Boolean),
+      IpamPoolAllocationIds: S.optional(ValueStringList).pipe(
+        T.XmlName("IpamPoolAllocationId"),
+      ),
+      Filters: S.optional(FilterList).pipe(T.XmlName("Filter")),
+      MaxResults: S.optional(S.Number),
+      NextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeIpamPoolAllocationsRequest",
+  }) as any as S.Schema<DescribeIpamPoolAllocationsRequest>;
+export type IpamPoolAllocationSet = IpamPoolAllocation[];
+export const IpamPoolAllocationSet = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  IpamPoolAllocation.pipe(T.XmlName("item")).annotate({
+    identifier: "IpamPoolAllocation",
+  }),
+);
+export interface DescribeIpamPoolAllocationsResult {
+  IpamPoolAllocations?: IpamPoolAllocation[];
+  NextToken?: string;
+}
+export const DescribeIpamPoolAllocationsResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      IpamPoolAllocations: S.optional(IpamPoolAllocationSet).pipe(
+        T.XmlName("ipamPoolAllocationSet"),
+        T.Ec2QueryName("IpamPoolAllocationSet"),
+      ),
+      NextToken: S.optional(S.String).pipe(
+        T.XmlName("nextToken"),
+        T.Ec2QueryName("NextToken"),
+      ),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "DescribeIpamPoolAllocationsResult",
+  }) as any as S.Schema<DescribeIpamPoolAllocationsResult>;
 export interface DescribeIpamPoolsRequest {
   DryRun?: boolean;
   Filters?: Filter[];
@@ -42399,6 +43110,7 @@ export interface DescribeLaunchTemplatesRequest {
   Filters?: Filter[];
   NextToken?: string;
   MaxResults?: number;
+  IncludeManagedResources?: boolean;
 }
 export const DescribeLaunchTemplatesRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -42413,6 +43125,7 @@ export const DescribeLaunchTemplatesRequest =
       Filters: S.optional(FilterList).pipe(T.XmlName("Filter")),
       NextToken: S.optional(S.String),
       MaxResults: S.optional(S.Number),
+      IncludeManagedResources: S.optional(S.Boolean),
     }).pipe(
       T.all(
         ns,
@@ -42463,6 +43176,7 @@ export interface DescribeLaunchTemplateVersionsRequest {
   MaxResults?: number;
   Filters?: Filter[];
   ResolveAlias?: boolean;
+  IncludeManagedResources?: boolean;
 }
 export const DescribeLaunchTemplateVersionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -42479,6 +43193,7 @@ export const DescribeLaunchTemplateVersionsRequest =
       MaxResults: S.optional(S.Number),
       Filters: S.optional(FilterList).pipe(T.XmlName("Filter")),
       ResolveAlias: S.optional(S.Boolean),
+      IncludeManagedResources: S.optional(S.Boolean),
     }).pipe(
       T.all(
         ns,
@@ -44953,6 +45668,7 @@ export const NetworkInterfaceIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
 export interface DescribeNetworkInterfacesRequest {
   NextToken?: string;
   MaxResults?: number;
+  IncludeManagedResources?: boolean;
   DryRun?: boolean;
   NetworkInterfaceIds?: string[];
   Filters?: Filter[];
@@ -44962,6 +45678,7 @@ export const DescribeNetworkInterfacesRequest =
     S.Struct({
       NextToken: S.optional(S.String),
       MaxResults: S.optional(S.Number),
+      IncludeManagedResources: S.optional(S.Boolean),
       DryRun: S.optional(S.Boolean).pipe(
         T.XmlName("dryRun"),
         T.Ec2QueryName("DryRun"),
@@ -51339,6 +52056,7 @@ export const DescribeVolumeAttributeResult =
   }) as any as S.Schema<DescribeVolumeAttributeResult>;
 export interface DescribeVolumesRequest {
   VolumeIds?: string[];
+  IncludeManagedResources?: boolean;
   DryRun?: boolean;
   Filters?: Filter[];
   NextToken?: string;
@@ -51348,6 +52066,7 @@ export const DescribeVolumesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       VolumeIds: S.optional(VolumeIdStringList).pipe(T.XmlName("VolumeId")),
+      IncludeManagedResources: S.optional(S.Boolean),
       DryRun: S.optional(S.Boolean).pipe(
         T.XmlName("dryRun"),
         T.Ec2QueryName("DryRun"),
@@ -51544,6 +52263,7 @@ export interface DescribeVolumeStatusRequest {
   MaxResults?: number;
   NextToken?: string;
   VolumeIds?: string[];
+  IncludeManagedResources?: boolean;
   DryRun?: boolean;
   Filters?: Filter[];
 }
@@ -51553,6 +52273,7 @@ export const DescribeVolumeStatusRequest =
       MaxResults: S.optional(S.Number),
       NextToken: S.optional(S.String),
       VolumeIds: S.optional(VolumeIdStringList).pipe(T.XmlName("VolumeId")),
+      IncludeManagedResources: S.optional(S.Boolean),
       DryRun: S.optional(S.Boolean).pipe(
         T.XmlName("dryRun"),
         T.Ec2QueryName("DryRun"),
@@ -51766,6 +52487,7 @@ export interface VolumeStatusItem {
   AttachmentStatuses?: VolumeStatusAttachmentStatus[];
   InitializationStatusDetails?: InitializationStatusDetails;
   AvailabilityZoneId?: string;
+  Operator?: OperatorResponse;
 }
 export const VolumeStatusItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -51806,6 +52528,9 @@ export const VolumeStatusItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       T.XmlName("availabilityZoneId"),
       T.Ec2QueryName("AvailabilityZoneId"),
     ),
+    Operator: S.optional(OperatorResponse)
+      .pipe(T.XmlName("operator"), T.Ec2QueryName("Operator"))
+      .annotate({ identifier: "OperatorResponse" }),
   }),
 ).annotate({
   identifier: "VolumeStatusItem",
@@ -53284,6 +54009,45 @@ export const DetachClassicLinkVpcResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DetachClassicLinkVpcResult",
 }) as any as S.Schema<DetachClassicLinkVpcResult>;
+export interface DetachImageWatermarkRequest {
+  ImageId?: string;
+  WatermarkKey?: string;
+  DryRun?: boolean;
+}
+export const DetachImageWatermarkRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ImageId: S.optional(S.String),
+      WatermarkKey: S.optional(S.String),
+      DryRun: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DetachImageWatermarkRequest",
+  }) as any as S.Schema<DetachImageWatermarkRequest>;
+export interface DetachImageWatermarkResult {
+  Return?: boolean;
+}
+export const DetachImageWatermarkResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Return: S.optional(S.Boolean).pipe(
+        T.XmlName("return"),
+        T.Ec2QueryName("Return"),
+      ),
+    }).pipe(ns),
+).annotate({
+  identifier: "DetachImageWatermarkResult",
+}) as any as S.Schema<DetachImageWatermarkResult>;
 export interface DetachInternetGatewayRequest {
   DryRun?: boolean;
   InternetGatewayId?: string;
@@ -57034,12 +57798,49 @@ export const CreationDateCondition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreationDateCondition",
 }) as any as S.Schema<CreationDateCondition>;
+export interface ImageWatermarkFilterResponse {
+  WatermarkKey?: string;
+  SourceImageRegion?: string;
+  MaximumDaysSinceSourceImageCreated?: number;
+  MaximumDaysSinceWatermarkCreated?: number;
+}
+export const ImageWatermarkFilterResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      WatermarkKey: S.optional(S.String).pipe(
+        T.XmlName("watermarkKey"),
+        T.Ec2QueryName("WatermarkKey"),
+      ),
+      SourceImageRegion: S.optional(S.String).pipe(
+        T.XmlName("sourceImageRegion"),
+        T.Ec2QueryName("SourceImageRegion"),
+      ),
+      MaximumDaysSinceSourceImageCreated: S.optional(S.Number).pipe(
+        T.XmlName("maximumDaysSinceSourceImageCreated"),
+        T.Ec2QueryName("MaximumDaysSinceSourceImageCreated"),
+      ),
+      MaximumDaysSinceWatermarkCreated: S.optional(S.Number).pipe(
+        T.XmlName("maximumDaysSinceWatermarkCreated"),
+        T.Ec2QueryName("MaximumDaysSinceWatermarkCreated"),
+      ),
+    }),
+  ).annotate({
+    identifier: "ImageWatermarkFilterResponse",
+  }) as any as S.Schema<ImageWatermarkFilterResponse>;
+export type ImageWatermarkFilterResponseList = ImageWatermarkFilterResponse[];
+export const ImageWatermarkFilterResponseList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(
+    ImageWatermarkFilterResponse.pipe(T.XmlName("item")).annotate({
+      identifier: "ImageWatermarkFilterResponse",
+    }),
+  );
 export interface ImageCriterion {
   ImageProviders?: string[];
   MarketplaceProductCodes?: string[];
   ImageNames?: string[];
   DeprecationTimeCondition?: DeprecationTimeCondition;
   CreationDateCondition?: CreationDateCondition;
+  ImageWatermarks?: ImageWatermarkFilterResponse[];
 }
 export const ImageCriterion = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -57067,6 +57868,10 @@ export const ImageCriterion = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
         T.Ec2QueryName("CreationDateCondition"),
       )
       .annotate({ identifier: "CreationDateCondition" }),
+    ImageWatermarks: S.optional(ImageWatermarkFilterResponseList).pipe(
+      T.XmlName("imageWatermarkSet"),
+      T.Ec2QueryName("ImageWatermarkSet"),
+    ),
   }),
 ).annotate({ identifier: "ImageCriterion" }) as any as S.Schema<ImageCriterion>;
 export type ImageCriterionList = ImageCriterion[];
@@ -60156,12 +60961,6 @@ export const GetIpamPoolAllocationsRequest =
   ).annotate({
     identifier: "GetIpamPoolAllocationsRequest",
   }) as any as S.Schema<GetIpamPoolAllocationsRequest>;
-export type IpamPoolAllocationSet = IpamPoolAllocation[];
-export const IpamPoolAllocationSet = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  IpamPoolAllocation.pipe(T.XmlName("item")).annotate({
-    identifier: "IpamPoolAllocation",
-  }),
-);
 export interface GetIpamPoolAllocationsResult {
   IpamPoolAllocations?: IpamPoolAllocation[];
   NextToken?: string;
@@ -60857,6 +61656,58 @@ export const GetManagedPrefixListEntriesResult =
   ).annotate({
     identifier: "GetManagedPrefixListEntriesResult",
   }) as any as S.Schema<GetManagedPrefixListEntriesResult>;
+export interface GetManagedResourceVisibilityRequest {
+  DryRun?: boolean;
+}
+export const GetManagedResourceVisibilityRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ DryRun: S.optional(S.Boolean) }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetManagedResourceVisibilityRequest",
+  }) as any as S.Schema<GetManagedResourceVisibilityRequest>;
+export type ManagedResourceDefaultVisibility =
+  | "hidden"
+  | "visible"
+  | (string & {});
+export const ManagedResourceDefaultVisibility =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ManagedResourceVisibilitySettings {
+  DefaultVisibility?: ManagedResourceDefaultVisibility;
+}
+export const ManagedResourceVisibilitySettings =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DefaultVisibility: S.optional(ManagedResourceDefaultVisibility).pipe(
+        T.XmlName("defaultVisibility"),
+        T.Ec2QueryName("DefaultVisibility"),
+      ),
+    }),
+  ).annotate({
+    identifier: "ManagedResourceVisibilitySettings",
+  }) as any as S.Schema<ManagedResourceVisibilitySettings>;
+export interface GetManagedResourceVisibilityResult {
+  Visibility?: ManagedResourceVisibilitySettings;
+}
+export const GetManagedResourceVisibilityResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Visibility: S.optional(ManagedResourceVisibilitySettings)
+        .pipe(T.XmlName("visibility"), T.Ec2QueryName("Visibility"))
+        .annotate({ identifier: "ManagedResourceVisibilitySettings" }),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "GetManagedResourceVisibilityResult",
+  }) as any as S.Schema<GetManagedResourceVisibilityResult>;
 export interface GetNetworkInsightsAccessScopeAnalysisFindingsRequest {
   NetworkInsightsAccessScopeAnalysisId?: string;
   MaxResults?: number;
@@ -64140,6 +64991,7 @@ export interface ModifyClientVpnEndpointRequest {
   ClientLoginBannerOptions?: ClientLoginBannerOptions;
   ClientRouteEnforcementOptions?: ClientRouteEnforcementOptions;
   DisconnectOnSessionTimeout?: boolean;
+  TransitGatewayConfiguration?: TransitGatewayConfigurationInputStructure;
 }
 export const ModifyClientVpnEndpointRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -64162,6 +65014,9 @@ export const ModifyClientVpnEndpointRequest =
       ClientLoginBannerOptions: S.optional(ClientLoginBannerOptions),
       ClientRouteEnforcementOptions: S.optional(ClientRouteEnforcementOptions),
       DisconnectOnSessionTimeout: S.optional(S.Boolean),
+      TransitGatewayConfiguration: S.optional(
+        TransitGatewayConfigurationInputStructure,
+      ),
     }).pipe(
       T.all(
         ns,
@@ -64627,6 +65482,14 @@ export const ModifyImageAttributeResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "ModifyImageAttributeResponse",
   }) as any as S.Schema<ModifyImageAttributeResponse>;
+export interface EnclaveOptionsRequest {
+  Enabled?: boolean;
+}
+export const EnclaveOptionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Enabled: S.optional(S.Boolean) }),
+).annotate({
+  identifier: "EnclaveOptionsRequest",
+}) as any as S.Schema<EnclaveOptionsRequest>;
 export interface EbsInstanceBlockDeviceSpecification {
   VolumeId?: string;
   DeleteOnTermination?: boolean;
@@ -64694,11 +65557,12 @@ export const BlobAttributeValue = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BlobAttributeValue>;
 export interface ModifyInstanceAttributeRequest {
   SourceDestCheck?: AttributeBooleanValue;
+  EnclaveOptions?: EnclaveOptionsRequest;
   DisableApiStop?: AttributeBooleanValue;
   DryRun?: boolean;
   InstanceId?: string;
   Attribute?: InstanceAttributeName;
-  Value?: string;
+  Value?: string | redacted.Redacted<string>;
   BlockDeviceMappings?: InstanceBlockDeviceMappingSpecification[];
   DisableApiTermination?: AttributeBooleanValue;
   InstanceType?: AttributeValue;
@@ -64715,6 +65579,7 @@ export const ModifyInstanceAttributeRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       SourceDestCheck: S.optional(AttributeBooleanValue),
+      EnclaveOptions: S.optional(EnclaveOptionsRequest),
       DisableApiStop: S.optional(AttributeBooleanValue),
       DryRun: S.optional(S.Boolean).pipe(
         T.XmlName("dryRun"),
@@ -64728,7 +65593,7 @@ export const ModifyInstanceAttributeRequest =
         T.XmlName("attribute"),
         T.Ec2QueryName("Attribute"),
       ),
-      Value: S.optional(S.String).pipe(
+      Value: S.optional(SensitiveString).pipe(
         T.XmlName("value"),
         T.Ec2QueryName("Value"),
       ),
@@ -65652,6 +66517,47 @@ export const ModifyIpamPoolResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ModifyIpamPoolResult",
 }) as any as S.Schema<ModifyIpamPoolResult>;
+export interface ModifyIpamPoolAllocationRequest {
+  DryRun?: boolean;
+  IpamPoolAllocationId?: string;
+  Description?: string;
+}
+export const ModifyIpamPoolAllocationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DryRun: S.optional(S.Boolean),
+      IpamPoolAllocationId: S.optional(S.String),
+      Description: S.optional(S.String),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ModifyIpamPoolAllocationRequest",
+  }) as any as S.Schema<ModifyIpamPoolAllocationRequest>;
+export interface ModifyIpamPoolAllocationResult {
+  IpamPoolAllocation?: IpamPoolAllocation;
+}
+export const ModifyIpamPoolAllocationResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      IpamPoolAllocation: S.optional(IpamPoolAllocation)
+        .pipe(
+          T.XmlName("ipamPoolAllocation"),
+          T.Ec2QueryName("IpamPoolAllocation"),
+        )
+        .annotate({ identifier: "IpamPoolAllocation" }),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "ModifyIpamPoolAllocationResult",
+  }) as any as S.Schema<ModifyIpamPoolAllocationResult>;
 export interface ModifyIpamPrefixListResolverRequest {
   DryRun?: boolean;
   IpamPrefixListResolverId?: string;
@@ -66062,6 +66968,42 @@ export const ModifyManagedPrefixListResult =
   ).annotate({
     identifier: "ModifyManagedPrefixListResult",
   }) as any as S.Schema<ModifyManagedPrefixListResult>;
+export interface ModifyManagedResourceVisibilityRequest {
+  DryRun?: boolean;
+  DefaultVisibility?: ManagedResourceDefaultVisibility;
+}
+export const ModifyManagedResourceVisibilityRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DryRun: S.optional(S.Boolean),
+      DefaultVisibility: S.optional(ManagedResourceDefaultVisibility),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ModifyManagedResourceVisibilityRequest",
+  }) as any as S.Schema<ModifyManagedResourceVisibilityRequest>;
+export interface ModifyManagedResourceVisibilityResult {
+  Visibility?: ManagedResourceVisibilitySettings;
+}
+export const ModifyManagedResourceVisibilityResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Visibility: S.optional(ManagedResourceVisibilitySettings)
+        .pipe(T.XmlName("visibility"), T.Ec2QueryName("Visibility"))
+        .annotate({ identifier: "ManagedResourceVisibilitySettings" }),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "ModifyManagedResourceVisibilityResult",
+  }) as any as S.Schema<ModifyManagedResourceVisibilityResult>;
 export type SubnetIdList = string[];
 export const SubnetIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("AssociatedSubnetId")),
@@ -68373,6 +69315,7 @@ export interface ModifyVpnConnectionOptionsRequest {
   RemoteIpv4NetworkCidr?: string;
   LocalIpv6NetworkCidr?: string;
   RemoteIpv6NetworkCidr?: string;
+  TunnelBandwidth?: VpnTunnelBandwidth;
   DryRun?: boolean;
 }
 export const ModifyVpnConnectionOptionsRequest =
@@ -68383,6 +69326,7 @@ export const ModifyVpnConnectionOptionsRequest =
       RemoteIpv4NetworkCidr: S.optional(S.String),
       LocalIpv6NetworkCidr: S.optional(S.String),
       RemoteIpv6NetworkCidr: S.optional(S.String),
+      TunnelBandwidth: S.optional(VpnTunnelBandwidth),
       DryRun: S.optional(S.Boolean),
     }).pipe(
       T.all(
@@ -69656,6 +70600,47 @@ export const RejectCapacityReservationBillingOwnershipResult =
   ).annotate({
     identifier: "RejectCapacityReservationBillingOwnershipResult",
   }) as any as S.Schema<RejectCapacityReservationBillingOwnershipResult>;
+export interface RejectTransitGatewayClientVpnAttachmentRequest {
+  TransitGatewayAttachmentId?: string;
+  DryRun?: boolean;
+}
+export const RejectTransitGatewayClientVpnAttachmentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TransitGatewayAttachmentId: S.optional(S.String),
+      DryRun: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "RejectTransitGatewayClientVpnAttachmentRequest",
+  }) as any as S.Schema<RejectTransitGatewayClientVpnAttachmentRequest>;
+export interface RejectTransitGatewayClientVpnAttachmentResult {
+  TransitGatewayClientVpnAttachment?: TransitGatewayClientVpnAttachment;
+}
+export const RejectTransitGatewayClientVpnAttachmentResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TransitGatewayClientVpnAttachment: S.optional(
+        TransitGatewayClientVpnAttachment,
+      )
+        .pipe(
+          T.XmlName("transitGatewayClientVpnAttachment"),
+          T.Ec2QueryName("TransitGatewayClientVpnAttachment"),
+        )
+        .annotate({ identifier: "TransitGatewayClientVpnAttachment" }),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "RejectTransitGatewayClientVpnAttachmentResult",
+  }) as any as S.Schema<RejectTransitGatewayClientVpnAttachmentResult>;
 export interface RejectTransitGatewayMulticastDomainAssociationsRequest {
   TransitGatewayMulticastDomainId?: string;
   TransitGatewayAttachmentId?: string;
@@ -70023,8 +71008,8 @@ export const ImageProviderRequestList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
 export type MarketplaceProductCodeRequestList = string[];
 export const MarketplaceProductCodeRequestList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
-export type ImageNameRequestList = string[];
-export const ImageNameRequestList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export type ImageNameCriteriaRequestList = string[];
+export const ImageNameCriteriaRequestList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
 export interface DeprecationTimeConditionRequest {
@@ -70045,12 +71030,37 @@ export const CreationDateConditionRequest =
   ).annotate({
     identifier: "CreationDateConditionRequest",
   }) as any as S.Schema<CreationDateConditionRequest>;
+export interface ImageWatermarkFilterRequest {
+  WatermarkKey?: string;
+  SourceImageRegion?: string;
+  MaximumDaysSinceSourceImageCreated?: number;
+  MaximumDaysSinceWatermarkCreated?: number;
+}
+export const ImageWatermarkFilterRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      WatermarkKey: S.optional(S.String),
+      SourceImageRegion: S.optional(S.String),
+      MaximumDaysSinceSourceImageCreated: S.optional(S.Number),
+      MaximumDaysSinceWatermarkCreated: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "ImageWatermarkFilterRequest",
+  }) as any as S.Schema<ImageWatermarkFilterRequest>;
+export type ImageWatermarkFilterRequestList = ImageWatermarkFilterRequest[];
+export const ImageWatermarkFilterRequestList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(
+    ImageWatermarkFilterRequest.pipe(T.XmlName("item")).annotate({
+      identifier: "ImageWatermarkFilterRequest",
+    }),
+  );
 export interface ImageCriterionRequest {
   ImageProviders?: string[];
   MarketplaceProductCodes?: string[];
   ImageNames?: string[];
   DeprecationTimeCondition?: DeprecationTimeConditionRequest;
   CreationDateCondition?: CreationDateConditionRequest;
+  ImageWatermarks?: ImageWatermarkFilterRequest[];
 }
 export const ImageCriterionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -70060,9 +71070,14 @@ export const ImageCriterionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     MarketplaceProductCodes: S.optional(MarketplaceProductCodeRequestList).pipe(
       T.XmlName("MarketplaceProductCode"),
     ),
-    ImageNames: S.optional(ImageNameRequestList).pipe(T.XmlName("ImageName")),
+    ImageNames: S.optional(ImageNameCriteriaRequestList).pipe(
+      T.XmlName("ImageName"),
+    ),
     DeprecationTimeCondition: S.optional(DeprecationTimeConditionRequest),
     CreationDateCondition: S.optional(CreationDateConditionRequest),
+    ImageWatermarks: S.optional(ImageWatermarkFilterRequestList).pipe(
+      T.XmlName("ImageWatermark"),
+    ),
   }),
 ).annotate({
   identifier: "ImageCriterionRequest",
@@ -71726,14 +72741,6 @@ export const InstanceMetadataOptionsRequest =
   ).annotate({
     identifier: "InstanceMetadataOptionsRequest",
   }) as any as S.Schema<InstanceMetadataOptionsRequest>;
-export interface EnclaveOptionsRequest {
-  Enabled?: boolean;
-}
-export const EnclaveOptionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ Enabled: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "EnclaveOptionsRequest",
-}) as any as S.Schema<EnclaveOptionsRequest>;
 export interface PrivateDnsNameOptionsRequest {
   HostnameType?: HostnameType;
   EnableResourceNameDnsARecord?: boolean;
@@ -74416,6 +75423,20 @@ export const acceptReservedInstancesExchangeQuote: API.OperationMethod<
   output: AcceptReservedInstancesExchangeQuoteResult,
   errors: [RequestLimitExceeded, InvalidReservedInstancesIDNotFound],
 }));
+export type AcceptTransitGatewayClientVpnAttachmentError = CommonErrors;
+/**
+ * Accepts a Transit Gateway attachment request for a Client VPN endpoint. The Transit Gateway owner must accept the attachment request before the Client VPN endpoint can route traffic through the Transit Gateway.
+ */
+export const acceptTransitGatewayClientVpnAttachment: API.OperationMethod<
+  AcceptTransitGatewayClientVpnAttachmentRequest,
+  AcceptTransitGatewayClientVpnAttachmentResult,
+  AcceptTransitGatewayClientVpnAttachmentError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: AcceptTransitGatewayClientVpnAttachmentRequest,
+  output: AcceptTransitGatewayClientVpnAttachmentResult,
+  errors: [],
+}));
 export type AcceptTransitGatewayMulticastDomainAssociationsError =
   | RequestLimitExceeded
   | MissingParameter
@@ -75276,6 +76297,26 @@ export const attachClassicLinkVpc: API.OperationMethod<
   output: AttachClassicLinkVpcResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed, MissingParameter],
 }));
+export type AttachImageWatermarkError = CommonErrors;
+/**
+ * Attaches a watermark to a non-public AMI. The watermark is a structured identifier that
+ * automatically propagates to all derivative images created through
+ * CreateImage, and
+ * CopyImage.
+ *
+ * Only the AMI owner can attach watermarks. Watermarks cannot be added to public
+ * AMIs.
+ */
+export const attachImageWatermark: API.OperationMethod<
+  AttachImageWatermarkRequest,
+  AttachImageWatermarkResult,
+  AttachImageWatermarkError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: AttachImageWatermarkRequest,
+  output: AttachImageWatermarkResult,
+  errors: [],
+}));
 export type AttachInternetGatewayError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
@@ -75582,9 +76623,16 @@ export type CancelCapacityReservationError =
  *
  * - `assessing`
  *
+ * - `scheduled`
+ *
  * - `active` and there is no commitment duration or the commitment
- * duration has elapsed. You can't cancel a future-dated Capacity Reservation
- * during the commitment duration.
+ * duration has elapsed.
+ *
+ * - `active` during the commitment duration, if you provide a
+ * cancellation quote ID and accept the cancellation charges. Use
+ * `CreateCapacityReservationCancellationQuote` to generate a quote.
+ * The Capacity Reservation transitions to `cancelling` while charges
+ * are applied.
  *
  * You can't modify or cancel a Capacity Block. For more information, see Capacity Blocks for ML.
  *
@@ -76101,6 +77149,23 @@ export const createCapacityReservationBySplitting: API.OperationMethod<
     InvalidCapacityReservationIdMalformed,
     InvalidCapacityReservationIdNotFound,
   ],
+}));
+export type CreateCapacityReservationCancellationQuoteError = CommonErrors;
+/**
+ * Generates a cancellation quote for a future-dated Capacity Reservation that is
+ * within its commitment duration. The quote includes the cancellation terms and a quote ID
+ * that you can pass to the `CancelCapacityReservation` action. Cancellation
+ * quotes are valid for 24 hours.
+ */
+export const createCapacityReservationCancellationQuote: API.OperationMethod<
+  CreateCapacityReservationCancellationQuoteRequest,
+  CreateCapacityReservationCancellationQuoteResult,
+  CreateCapacityReservationCancellationQuoteError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateCapacityReservationCancellationQuoteRequest,
+  output: CreateCapacityReservationCancellationQuoteResult,
+  errors: [],
 }));
 export type CreateCapacityReservationFleetError =
   | RequestLimitExceeded
@@ -77372,7 +78437,9 @@ export type CreatePlacementGroupError =
  * A `spread` placement group places instances on distinct hardware. A
  * `partition` placement group places groups of instances in different
  * partitions, where instances in one partition do not share the same hardware with
- * instances in another partition.
+ * instances in another partition. A `precision-time` placement group places
+ * instances on supported hardware with direct access to high-precision time sources in
+ * AWS infrastructure.
  *
  * For more information, see Placement groups in the
  * *Amazon EC2 User Guide*.
@@ -79888,7 +80955,9 @@ export type DeletePlacementGroupError =
   | CommonErrors;
 /**
  * Deletes the specified placement group. You must terminate all instances in the
- * placement group before you can delete the placement group. For more information, see
+ * placement group before you can delete the placement group. You cannot delete a
+ * placement group that is a parent of a cluster placement group. Delete the cluster
+ * placement groups first. For more information, see
  * Placement groups in the *Amazon EC2 User Guide*.
  */
 export const deletePlacementGroup: API.OperationMethod<
@@ -80393,6 +81462,20 @@ export const deleteTransitGateway: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+}));
+export type DeleteTransitGatewayClientVpnAttachmentError = CommonErrors;
+/**
+ * Deletes a Transit Gateway attachment for a Client VPN endpoint. The Transit Gateway owner can delete the attachment to remove the association between the Client VPN endpoint and the Transit Gateway.
+ */
+export const deleteTransitGatewayClientVpnAttachment: API.OperationMethod<
+  DeleteTransitGatewayClientVpnAttachmentRequest,
+  DeleteTransitGatewayClientVpnAttachmentResult,
+  DeleteTransitGatewayClientVpnAttachmentError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteTransitGatewayClientVpnAttachmentRequest,
+  output: DeleteTransitGatewayClientVpnAttachmentResult,
+  errors: [],
 }));
 export type DeleteTransitGatewayConnectError =
   | RequestLimitExceeded
@@ -81770,6 +82853,22 @@ export const describeCapacityReservationBillingRequests: API.OperationMethod<
     items: "CapacityReservationBillingRequests",
     pageSize: "MaxResults",
   } as const,
+}));
+export type DescribeCapacityReservationCancellationQuotesError = CommonErrors;
+/**
+ * Describes one or more Capacity Reservation cancellation quotes. The results describe
+ * only the quotes that you have previously generated by using the
+ * `CreateCapacityReservationCancellationQuote` action.
+ */
+export const describeCapacityReservationCancellationQuotes: API.OperationMethod<
+  DescribeCapacityReservationCancellationQuotesRequest,
+  DescribeCapacityReservationCancellationQuotesResult,
+  DescribeCapacityReservationCancellationQuotesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DescribeCapacityReservationCancellationQuotesRequest,
+  output: DescribeCapacityReservationCancellationQuotesResult,
+  errors: [],
 }));
 export type DescribeCapacityReservationFleetsError =
   | RequestLimitExceeded
@@ -83777,7 +84876,9 @@ export const describeInstanceTypeOfferings: API.OperationMethod<
 export type DescribeInstanceTypesError = CommonErrors;
 /**
  * Describes the specified instance types. By default, all instance types for the current
- * Region are described. Alternatively, you can filter the results.
+ * Region are described. Alternatively, you can filter the results. To include instance types
+ * that are not supported in the current Region, set `IncludeUnsupportedInRegion`
+ * to `true`.
  */
 export const describeInstanceTypes: API.OperationMethod<
   DescribeInstanceTypesRequest,
@@ -83905,6 +85006,45 @@ export const describeIpamPolicies: API.OperationMethod<
   input: DescribeIpamPoliciesRequest,
   output: DescribeIpamPoliciesResult,
   errors: [RequestLimitExceeded, InvalidIpamPolicyIdNotFound],
+}));
+export type DescribeIpamPoolAllocationsError = CommonErrors;
+/**
+ * Describes IPAM pool allocations. You can describe all allocations owned by you across all pools, or you can describe specific allocations by ID.
+ *
+ * If you specify `IpamPoolAllocationIds`, the results include only the specified allocations. If you do not specify `IpamPoolAllocationIds`, the results include all allocations owned by you. You can use `Filters` to narrow the results.
+ *
+ * This action returns only allocations directly owned by you. To view all allocations in a pool you own or that has been shared with you, including allocations owned by other accounts, use GetIpamPoolAllocations.
+ */
+export const describeIpamPoolAllocations: API.OperationMethod<
+  DescribeIpamPoolAllocationsRequest,
+  DescribeIpamPoolAllocationsResult,
+  DescribeIpamPoolAllocationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeIpamPoolAllocationsRequest,
+  ) => stream.Stream<
+    DescribeIpamPoolAllocationsResult,
+    DescribeIpamPoolAllocationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeIpamPoolAllocationsRequest,
+  ) => stream.Stream<
+    IpamPoolAllocation,
+    DescribeIpamPoolAllocationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: DescribeIpamPoolAllocationsRequest,
+  output: DescribeIpamPoolAllocationsResult,
+  errors: [],
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "IpamPoolAllocations",
+    pageSize: "MaxResults",
+  } as const,
 }));
 export type DescribeIpamPoolsError =
   | RequestLimitExceeded
@@ -88104,6 +89244,26 @@ export const detachClassicLinkVpc: API.OperationMethod<
     MissingParameter,
   ],
 }));
+export type DetachImageWatermarkError = CommonErrors;
+/**
+ * Removes a watermark from the specified AMI. This is an idempotent operation. It succeeds
+ * even if the watermark does not exist on the image.
+ *
+ * Removing a watermark from an image does not affect derivative images that already carry
+ * the watermark.
+ *
+ * Only the AMI owner can detach watermarks.
+ */
+export const detachImageWatermark: API.OperationMethod<
+  DetachImageWatermarkRequest,
+  DetachImageWatermarkResult,
+  DetachImageWatermarkError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DetachImageWatermarkRequest,
+  output: DetachImageWatermarkResult,
+  errors: [],
+}));
 export type DetachInternetGatewayError =
   | RequestLimitExceeded
   | DependencyViolation
@@ -91043,6 +92203,21 @@ export const getManagedPrefixListEntries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+export type GetManagedResourceVisibilityError = CommonErrors;
+/**
+ * Retrieves the managed resource visibility configuration for the account. The response
+ * indicates whether managed resources are hidden or visible by default.
+ */
+export const getManagedResourceVisibility: API.OperationMethod<
+  GetManagedResourceVisibilityRequest,
+  GetManagedResourceVisibilityResult,
+  GetManagedResourceVisibilityError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetManagedResourceVisibilityRequest,
+  output: GetManagedResourceVisibilityResult,
+  errors: [],
+}));
 export type GetNetworkInsightsAccessScopeAnalysisFindingsError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -92813,6 +93988,20 @@ export const modifyIpamPool: API.OperationMethod<
   output: ModifyIpamPoolResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound],
 }));
+export type ModifyIpamPoolAllocationError = CommonErrors;
+/**
+ * Modifies the description of an IPAM pool allocation. For more information, see Modify an IPAM pool allocation in the *Amazon VPC IPAM User Guide*.
+ */
+export const modifyIpamPoolAllocation: API.OperationMethod<
+  ModifyIpamPoolAllocationRequest,
+  ModifyIpamPoolAllocationResult,
+  ModifyIpamPoolAllocationError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ModifyIpamPoolAllocationRequest,
+  output: ModifyIpamPoolAllocationResult,
+  errors: [],
+}));
 export type ModifyIpamPrefixListResolverError =
   | RequestLimitExceeded
   | InvalidIpamPrefixListResolverIdMalformed
@@ -92983,6 +94172,23 @@ export const modifyManagedPrefixList: API.OperationMethod<
     InvalidPrefixListIDNotFound,
     InvalidPrefixListIdMalformed,
   ],
+}));
+export type ModifyManagedResourceVisibilityError = CommonErrors;
+/**
+ * Modifies the managed resource visibility configuration for the account. Use this
+ * operation to control whether managed resources are hidden or visible by default.
+ * Visibility settings are account-wide and affect all IAM principals uniformly. Hidden
+ * resources remain fully operational and billable.
+ */
+export const modifyManagedResourceVisibility: API.OperationMethod<
+  ModifyManagedResourceVisibilityRequest,
+  ModifyManagedResourceVisibilityResult,
+  ModifyManagedResourceVisibilityError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ModifyManagedResourceVisibilityRequest,
+  output: ModifyManagedResourceVisibilityResult,
+  errors: [],
 }));
 export type ModifyNetworkInterfaceAttributeError =
   | RequestLimitExceeded
@@ -94422,6 +95628,20 @@ export const rejectCapacityReservationBillingOwnership: API.OperationMethod<
   output: RejectCapacityReservationBillingOwnershipResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
 }));
+export type RejectTransitGatewayClientVpnAttachmentError = CommonErrors;
+/**
+ * Rejects a Transit Gateway attachment request for a Client VPN endpoint. The Transit Gateway owner can reject the attachment request to prevent the Client VPN endpoint from routing traffic through the Transit Gateway.
+ */
+export const rejectTransitGatewayClientVpnAttachment: API.OperationMethod<
+  RejectTransitGatewayClientVpnAttachmentRequest,
+  RejectTransitGatewayClientVpnAttachmentResult,
+  RejectTransitGatewayClientVpnAttachmentError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RejectTransitGatewayClientVpnAttachmentRequest,
+  output: RejectTransitGatewayClientVpnAttachmentResult,
+  errors: [],
+}));
 export type RejectTransitGatewayMulticastDomainAssociationsError =
   | RequestLimitExceeded
   | MissingParameter
@@ -94655,6 +95875,10 @@ export const replaceIamInstanceProfileAssociation: API.OperationMethod<
 export type ReplaceImageCriteriaInAllowedImagesSettingsError = CommonErrors;
 /**
  * Sets or replaces the criteria for Allowed AMIs.
+ *
+ * The `ImageCriteria` can include up to:
+ *
+ * - 10 `ImageCriterion`
  *
  * The Allowed AMIs feature does not restrict the AMIs owned by your account. Regardless of
  * the criteria you set, the AMIs created by your account will always be discoverable and

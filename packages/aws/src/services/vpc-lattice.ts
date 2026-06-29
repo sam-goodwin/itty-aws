@@ -136,7 +136,6 @@ export type ListenerId = string;
 export type ServiceArn = string;
 export type ServiceId = string;
 export type ResourceConfigurationName = string;
-export type ResourceConfigurationType = string;
 export type PortRange = string;
 export type ProtocolType = string;
 export type ResourceGatewayIdentifier = string;
@@ -160,6 +159,7 @@ export type SubnetId = string;
 export type SecurityGroupId = string;
 export type ResourceGatewayIpAddressType = string;
 export type Ipv4AddressesPerEni = number;
+export type ResourceConfigDnsResolution = string;
 export type ResourceGatewayArn = string;
 export type ResourceGatewayStatus = string;
 export type IpAddressType = string;
@@ -167,6 +167,7 @@ export type ServiceName = string;
 export type ServiceCustomDomainName = string;
 export type CertificateArn = string;
 export type AuthType = string;
+export type IdleTimeoutSeconds = number;
 export type ServiceStatus = string;
 export type ServiceNetworkName = string;
 export type ServiceNetworkId = string;
@@ -1431,6 +1432,13 @@ export const ListListenersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListListenersResponse",
 }) as any as S.Schema<ListListenersResponse>;
+export type ResourceConfigurationType =
+  | "GROUP"
+  | "CHILD"
+  | "SINGLE"
+  | "ARN"
+  | (string & {});
+export const ResourceConfigurationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type PortRangeList = string[];
 export const PortRangeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export interface DnsResource {
@@ -1467,7 +1475,7 @@ export const ResourceConfigurationDefinition =
   ]);
 export interface CreateResourceConfigurationRequest {
   name: string;
-  type: string;
+  type: ResourceConfigurationType;
   portRanges?: string[];
   protocol?: string;
   resourceGatewayIdentifier?: string;
@@ -1484,7 +1492,7 @@ export const CreateResourceConfigurationRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
-      type: S.String,
+      type: ResourceConfigurationType,
       portRanges: S.optional(PortRangeList),
       protocol: S.optional(S.String),
       resourceGatewayIdentifier: S.optional(S.String),
@@ -1517,7 +1525,7 @@ export interface CreateResourceConfigurationResponse {
   arn?: string;
   resourceGatewayId?: string;
   resourceConfigurationGroupId?: string;
-  type?: string;
+  type?: ResourceConfigurationType;
   portRanges?: string[];
   protocol?: string;
   status?: string;
@@ -1538,7 +1546,7 @@ export const CreateResourceConfigurationResponse =
       arn: S.optional(S.String),
       resourceGatewayId: S.optional(S.String),
       resourceConfigurationGroupId: S.optional(S.String),
-      type: S.optional(S.String),
+      type: S.optional(ResourceConfigurationType),
       portRanges: S.optional(PortRangeList),
       protocol: S.optional(S.String),
       status: S.optional(S.String),
@@ -1589,7 +1597,7 @@ export interface GetResourceConfigurationResponse {
   arn?: string;
   resourceGatewayId?: string;
   resourceConfigurationGroupId?: string;
-  type?: string;
+  type?: ResourceConfigurationType;
   allowAssociationToShareableServiceNetwork?: boolean;
   portRanges?: string[];
   protocol?: string;
@@ -1613,7 +1621,7 @@ export const GetResourceConfigurationResponse =
       arn: S.optional(S.String),
       resourceGatewayId: S.optional(S.String),
       resourceConfigurationGroupId: S.optional(S.String),
-      type: S.optional(S.String),
+      type: S.optional(ResourceConfigurationType),
       allowAssociationToShareableServiceNetwork: S.optional(S.Boolean),
       portRanges: S.optional(PortRangeList),
       protocol: S.optional(S.String),
@@ -1677,7 +1685,7 @@ export interface UpdateResourceConfigurationResponse {
   arn?: string;
   resourceGatewayId?: string;
   resourceConfigurationGroupId?: string;
-  type?: string;
+  type?: ResourceConfigurationType;
   portRanges?: string[];
   allowAssociationToShareableServiceNetwork?: boolean;
   protocol?: string;
@@ -1692,7 +1700,7 @@ export const UpdateResourceConfigurationResponse =
       arn: S.optional(S.String),
       resourceGatewayId: S.optional(S.String),
       resourceConfigurationGroupId: S.optional(S.String),
-      type: S.optional(S.String),
+      type: S.optional(ResourceConfigurationType),
       portRanges: S.optional(PortRangeList),
       allowAssociationToShareableServiceNetwork: S.optional(S.Boolean),
       protocol: S.optional(S.String),
@@ -1774,7 +1782,7 @@ export interface ResourceConfigurationSummary {
   arn?: string;
   resourceGatewayId?: string;
   resourceConfigurationGroupId?: string;
-  type?: string;
+  type?: ResourceConfigurationType;
   status?: string;
   amazonManaged?: boolean;
   createdAt?: Date;
@@ -1791,7 +1799,7 @@ export const ResourceConfigurationSummary =
       arn: S.optional(S.String),
       resourceGatewayId: S.optional(S.String),
       resourceConfigurationGroupId: S.optional(S.String),
-      type: S.optional(S.String),
+      type: S.optional(ResourceConfigurationType),
       status: S.optional(S.String),
       amazonManaged: S.optional(S.Boolean),
       createdAt: S.optional(
@@ -1961,6 +1969,7 @@ export interface CreateResourceGatewayRequest {
   securityGroupIds?: string[];
   ipAddressType?: string;
   ipv4AddressesPerEni?: number;
+  resourceConfigDnsResolution?: string;
   tags?: { [key: string]: string | undefined };
 }
 export const CreateResourceGatewayRequest =
@@ -1973,6 +1982,7 @@ export const CreateResourceGatewayRequest =
       securityGroupIds: S.optional(SecurityGroupList),
       ipAddressType: S.optional(S.String),
       ipv4AddressesPerEni: S.optional(S.Number),
+      resourceConfigDnsResolution: S.optional(S.String),
       tags: S.optional(TagMap),
     }).pipe(
       T.all(
@@ -1997,6 +2007,7 @@ export interface CreateResourceGatewayResponse {
   securityGroupIds?: string[];
   ipAddressType?: string;
   ipv4AddressesPerEni?: number;
+  resourceConfigDnsResolution?: string;
 }
 export const CreateResourceGatewayResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2010,6 +2021,7 @@ export const CreateResourceGatewayResponse =
       securityGroupIds: S.optional(SecurityGroupList),
       ipAddressType: S.optional(S.String),
       ipv4AddressesPerEni: S.optional(S.Number),
+      resourceConfigDnsResolution: S.optional(S.String),
     }),
   ).annotate({
     identifier: "CreateResourceGatewayResponse",
@@ -2046,9 +2058,12 @@ export interface GetResourceGatewayResponse {
   status?: string;
   vpcId?: string;
   subnetIds?: string[];
+  serviceManaged?: boolean;
+  managedBy?: string;
   securityGroupIds?: string[];
   ipAddressType?: string;
   ipv4AddressesPerEni?: number;
+  resourceConfigDnsResolution?: string;
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
@@ -2061,9 +2076,12 @@ export const GetResourceGatewayResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       status: S.optional(S.String),
       vpcId: S.optional(S.String),
       subnetIds: S.optional(SubnetList),
+      serviceManaged: S.optional(S.Boolean),
+      managedBy: S.optional(S.String),
       securityGroupIds: S.optional(SecurityGroupList),
       ipAddressType: S.optional(S.String),
       ipv4AddressesPerEni: S.optional(S.Number),
+      resourceConfigDnsResolution: S.optional(S.String),
       createdAt: S.optional(
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
       ),
@@ -2200,6 +2218,7 @@ export interface ResourceGatewaySummary {
   securityGroupIds?: string[];
   ipAddressType?: string;
   ipv4AddressesPerEni?: number;
+  resourceConfigDnsResolution?: string;
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
@@ -2215,6 +2234,7 @@ export const ResourceGatewaySummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       securityGroupIds: S.optional(SecurityGroupList),
       ipAddressType: S.optional(S.String),
       ipv4AddressesPerEni: S.optional(S.Number),
+      resourceConfigDnsResolution: S.optional(S.String),
       createdAt: S.optional(
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
       ),
@@ -2508,6 +2528,7 @@ export interface CreateServiceRequest {
   customDomainName?: string;
   certificateArn?: string;
   authType?: string;
+  idleTimeoutSeconds?: number;
 }
 export const CreateServiceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2517,6 +2538,7 @@ export const CreateServiceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     customDomainName: S.optional(S.String),
     certificateArn: S.optional(S.String),
     authType: S.optional(S.String),
+    idleTimeoutSeconds: S.optional(S.Number),
   }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/services" }),
@@ -2548,6 +2570,7 @@ export interface CreateServiceResponse {
   certificateArn?: string;
   status?: string;
   authType?: string;
+  idleTimeoutSeconds?: number;
   dnsEntry?: DnsEntry;
 }
 export const CreateServiceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2559,6 +2582,7 @@ export const CreateServiceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     certificateArn: S.optional(S.String),
     status: S.optional(S.String),
     authType: S.optional(S.String),
+    idleTimeoutSeconds: S.optional(S.Number),
     dnsEntry: S.optional(DnsEntry),
   }),
 ).annotate({
@@ -2594,6 +2618,7 @@ export interface GetServiceResponse {
   certificateArn?: string;
   status?: string;
   authType?: string;
+  idleTimeoutSeconds?: number;
   failureCode?: string;
   failureMessage?: string;
 }
@@ -2613,6 +2638,7 @@ export const GetServiceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     certificateArn: S.optional(S.String),
     status: S.optional(S.String),
     authType: S.optional(S.String),
+    idleTimeoutSeconds: S.optional(S.Number),
     failureCode: S.optional(S.String),
     failureMessage: S.optional(S.String),
   }),
@@ -2623,12 +2649,14 @@ export interface UpdateServiceRequest {
   serviceIdentifier: string;
   certificateArn?: string;
   authType?: string;
+  idleTimeoutSeconds?: number;
 }
 export const UpdateServiceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceIdentifier: S.String.pipe(T.HttpLabel("serviceIdentifier")),
     certificateArn: S.optional(S.String),
     authType: S.optional(S.String),
+    idleTimeoutSeconds: S.optional(S.Number),
   }).pipe(
     T.all(
       T.Http({ method: "PATCH", uri: "/services/{serviceIdentifier}" }),
@@ -2649,6 +2677,7 @@ export interface UpdateServiceResponse {
   customDomainName?: string;
   certificateArn?: string;
   authType?: string;
+  idleTimeoutSeconds?: number;
 }
 export const UpdateServiceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2658,6 +2687,7 @@ export const UpdateServiceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     customDomainName: S.optional(S.String),
     certificateArn: S.optional(S.String),
     authType: S.optional(S.String),
+    idleTimeoutSeconds: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "UpdateServiceResponse",

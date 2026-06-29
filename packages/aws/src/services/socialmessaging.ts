@@ -105,8 +105,13 @@ export type WhatsAppDisplayPhoneNumber = string;
 export type WhatsAppPhoneNumberQualityRating = string;
 export type LinkedWhatsAppBusinessAccountArn = string;
 export type WhatsAppBusinessAccountLinkDate = Date;
+export type WhatsAppBusinessAccountMarketingMessagesOnboardingStatus = string;
 export type NextToken = string;
 export type MaxResults = number;
+export type MetaFlowName = string;
+export type MetaFlowJsonBlob = Uint8Array;
+export type MetaFlowId = string;
+export type MetaFlowValidationError = string;
 export type MetaTemplateDefinition = Uint8Array;
 export type MetaTemplateId = string;
 export type MetaTemplateCategory = string;
@@ -121,7 +126,24 @@ export type AddSecurityRecommendation = boolean;
 export type AddTrackPackageLink = boolean;
 export type CodeExpirationMinutes = number;
 export type DeleteAllLanguages = boolean;
+export type MetaFlowStatus = string;
+export type MetaFlowJsonVersion = string;
+export type MetaFlowDataApiVersion = string;
+export type MetaFlowEndpointUri = string;
+export type MetaFlowPreviewUrl = string;
+export type MetaFlowTimestamp = string;
+export type MetaFlowWabaCurrency = string;
+export type MetaFlowWabaTimezoneId = string;
+export type MetaFlowWabaTemplateNamespace = string;
+export type MetaFlowApplicationLink = string;
+export type MetaFlowApplicationName = string;
+export type MetaFlowApplicationId = string;
+export type MetaFlowHealthStatusAvailability = string;
+export type MetaFlowHealthEntityType = string;
 export type MetaTemplate = string;
+export type MetaFlowAssetName = string;
+export type MetaFlowAssetType = string;
+export type MetaFlowAssetDownloadUrl = string;
 export type MetaTemplateStatus = string;
 export type MetaTemplateQualityScore = string;
 export type MetaTemplateTopic = string;
@@ -403,12 +425,14 @@ export const WhatsAppSignupCallbackResult =
 export interface AssociateWhatsAppBusinessAccountOutput {
   signupCallbackResult?: WhatsAppSignupCallbackResult;
   statusCode?: number;
+  linkedWhatsAppBusinessAccountId?: string;
 }
 export const AssociateWhatsAppBusinessAccountOutput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       signupCallbackResult: S.optional(WhatsAppSignupCallbackResult),
       statusCode: S.optional(S.Number),
+      linkedWhatsAppBusinessAccountId: S.optional(S.String),
     }),
   ).annotate({
     identifier: "AssociateWhatsAppBusinessAccountOutput",
@@ -467,6 +491,7 @@ export interface LinkedWhatsAppBusinessAccount {
   linkDate: Date;
   wabaName: string;
   eventDestinations: WhatsAppBusinessAccountEventDestination[];
+  marketingMessagesOnboardingStatus?: string;
   phoneNumbers: WhatsAppPhoneNumberSummary[];
 }
 export const LinkedWhatsAppBusinessAccount =
@@ -479,6 +504,7 @@ export const LinkedWhatsAppBusinessAccount =
       linkDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
       wabaName: S.String,
       eventDestinations: WhatsAppBusinessAccountEventDestinations,
+      marketingMessagesOnboardingStatus: S.optional(S.String),
       phoneNumbers: WhatsAppPhoneNumberSummaryList,
     }),
   ).annotate({
@@ -546,6 +572,7 @@ export interface LinkedWhatsAppBusinessAccountSummary {
   linkDate: Date;
   wabaName: string;
   eventDestinations: WhatsAppBusinessAccountEventDestination[];
+  marketingMessagesOnboardingStatus?: string;
 }
 export const LinkedWhatsAppBusinessAccountSummary =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -557,6 +584,7 @@ export const LinkedWhatsAppBusinessAccountSummary =
       linkDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
       wabaName: S.String,
       eventDestinations: WhatsAppBusinessAccountEventDestinations,
+      marketingMessagesOnboardingStatus: S.optional(S.String),
     }),
   ).annotate({
     identifier: "LinkedWhatsAppBusinessAccountSummary",
@@ -578,6 +606,68 @@ export const ListLinkedWhatsAppBusinessAccountsOutput =
   ).annotate({
     identifier: "ListLinkedWhatsAppBusinessAccountsOutput",
   }) as any as S.Schema<ListLinkedWhatsAppBusinessAccountsOutput>;
+export type MetaFlowCategory =
+  | "SIGN_UP"
+  | "SIGN_IN"
+  | "APPOINTMENT_BOOKING"
+  | "LEAD_GENERATION"
+  | "SHOPPING"
+  | "CONTACT_US"
+  | "CUSTOMER_SUPPORT"
+  | "SURVEY"
+  | "OTHER"
+  | (string & {});
+export const MetaFlowCategory = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type MetaFlowCategoryList = MetaFlowCategory[];
+export const MetaFlowCategoryList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(MetaFlowCategory);
+export interface CreateWhatsAppFlowInput {
+  id: string;
+  flowName: string;
+  categories: MetaFlowCategory[];
+  flowJson?: Uint8Array;
+  publish?: boolean;
+  cloneFlowId?: string;
+}
+export const CreateWhatsAppFlowInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      flowName: S.String,
+      categories: MetaFlowCategoryList,
+      flowJson: S.optional(T.Blob),
+      publish: S.optional(S.Boolean),
+      cloneFlowId: S.optional(S.String),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/v1/whatsapp/flow/create" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "CreateWhatsAppFlowInput",
+}) as any as S.Schema<CreateWhatsAppFlowInput>;
+export type ValidationErrorList = string[];
+export const ValidationErrorList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export interface CreateWhatsAppFlowOutput {
+  flowId?: string;
+  validationErrors?: string[];
+}
+export const CreateWhatsAppFlowOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      flowId: S.optional(S.String),
+      validationErrors: S.optional(ValidationErrorList),
+    }),
+).annotate({
+  identifier: "CreateWhatsAppFlowOutput",
+}) as any as S.Schema<CreateWhatsAppFlowOutput>;
 export interface CreateWhatsAppMessageTemplateInput {
   templateDefinition: Uint8Array;
   id: string;
@@ -756,6 +846,34 @@ export const CreateWhatsAppMessageTemplateMediaOutput =
   ).annotate({
     identifier: "CreateWhatsAppMessageTemplateMediaOutput",
   }) as any as S.Schema<CreateWhatsAppMessageTemplateMediaOutput>;
+export interface DeleteWhatsAppFlowInput {
+  id: string;
+  flowId: string;
+}
+export const DeleteWhatsAppFlowInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String.pipe(T.HttpQuery("id")),
+      flowId: S.String.pipe(T.HttpQuery("flowId")),
+    }).pipe(
+      T.all(
+        T.Http({ method: "DELETE", uri: "/v1/whatsapp/flow" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "DeleteWhatsAppFlowInput",
+}) as any as S.Schema<DeleteWhatsAppFlowInput>;
+export interface DeleteWhatsAppFlowOutput {}
+export const DeleteWhatsAppFlowOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteWhatsAppFlowOutput",
+}) as any as S.Schema<DeleteWhatsAppFlowOutput>;
 export interface DeleteWhatsAppMessageTemplateInput {
   metaTemplateId?: string;
   deleteAllLanguages?: boolean;
@@ -789,15 +907,195 @@ export const DeleteWhatsAppMessageTemplateOutput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteWhatsAppMessageTemplateOutput",
   }) as any as S.Schema<DeleteWhatsAppMessageTemplateOutput>;
-export interface GetWhatsAppMessageTemplateInput {
-  metaTemplateId: string;
+export interface DeprecateWhatsAppFlowInput {
   id: string;
+  flowId: string;
+}
+export const DeprecateWhatsAppFlowInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ id: S.String, flowId: S.String }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/v1/whatsapp/flow/deprecate" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "DeprecateWhatsAppFlowInput",
+}) as any as S.Schema<DeprecateWhatsAppFlowInput>;
+export interface DeprecateWhatsAppFlowOutput {}
+export const DeprecateWhatsAppFlowOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeprecateWhatsAppFlowOutput",
+  }) as any as S.Schema<DeprecateWhatsAppFlowOutput>;
+export interface GetWhatsAppFlowInput {
+  id: string;
+  flowId: string;
+}
+export const GetWhatsAppFlowInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String.pipe(T.HttpQuery("id")),
+    flowId: S.String.pipe(T.HttpQuery("flowId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v1/whatsapp/flow" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetWhatsAppFlowInput",
+}) as any as S.Schema<GetWhatsAppFlowInput>;
+export interface MetaFlowPreviewInfo {
+  previewUrl: string;
+  expiresAt: string;
+}
+export const MetaFlowPreviewInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ previewUrl: S.String, expiresAt: S.String }),
+).annotate({
+  identifier: "MetaFlowPreviewInfo",
+}) as any as S.Schema<MetaFlowPreviewInfo>;
+export interface MetaFlowWhatsAppBusinessAccountInfo {
+  id: string;
+  name: string;
+  currency?: string;
+  timezoneId?: string;
+  messageTemplateNamespace?: string;
+}
+export const MetaFlowWhatsAppBusinessAccountInfo =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      name: S.String,
+      currency: S.optional(S.String),
+      timezoneId: S.optional(S.String),
+      messageTemplateNamespace: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "MetaFlowWhatsAppBusinessAccountInfo",
+  }) as any as S.Schema<MetaFlowWhatsAppBusinessAccountInfo>;
+export interface MetaFlowApplicationInfo {
+  link?: string;
+  name: string;
+  id: string;
+}
+export const MetaFlowApplicationInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ link: S.optional(S.String), name: S.String, id: S.String }),
+).annotate({
+  identifier: "MetaFlowApplicationInfo",
+}) as any as S.Schema<MetaFlowApplicationInfo>;
+export interface MetaFlowHealthEntity {
+  entityType: string;
+  id: string;
+  canSendMessage: string;
+}
+export const MetaFlowHealthEntity = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ entityType: S.String, id: S.String, canSendMessage: S.String }),
+).annotate({
+  identifier: "MetaFlowHealthEntity",
+}) as any as S.Schema<MetaFlowHealthEntity>;
+export type MetaFlowHealthEntityList = MetaFlowHealthEntity[];
+export const MetaFlowHealthEntityList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(MetaFlowHealthEntity);
+export interface MetaFlowHealthStatus {
+  canSendMessage: string;
+  entities?: MetaFlowHealthEntity[];
+}
+export const MetaFlowHealthStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    canSendMessage: S.String,
+    entities: S.optional(MetaFlowHealthEntityList),
+  }),
+).annotate({
+  identifier: "MetaFlowHealthStatus",
+}) as any as S.Schema<MetaFlowHealthStatus>;
+export interface GetWhatsAppFlowOutput {
+  flowId: string;
+  flowName: string;
+  flowStatus: string;
+  categories?: MetaFlowCategory[];
+  validationErrors?: string[];
+  jsonVersion?: string;
+  dataApiVersion?: string;
+  endpointUri?: string;
+  preview?: MetaFlowPreviewInfo;
+  whatsAppBusinessAccount?: MetaFlowWhatsAppBusinessAccountInfo;
+  application?: MetaFlowApplicationInfo;
+  healthStatus?: MetaFlowHealthStatus;
+}
+export const GetWhatsAppFlowOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flowId: S.String,
+    flowName: S.String,
+    flowStatus: S.String,
+    categories: S.optional(MetaFlowCategoryList),
+    validationErrors: S.optional(ValidationErrorList),
+    jsonVersion: S.optional(S.String),
+    dataApiVersion: S.optional(S.String),
+    endpointUri: S.optional(S.String),
+    preview: S.optional(MetaFlowPreviewInfo),
+    whatsAppBusinessAccount: S.optional(MetaFlowWhatsAppBusinessAccountInfo),
+    application: S.optional(MetaFlowApplicationInfo),
+    healthStatus: S.optional(MetaFlowHealthStatus),
+  }),
+).annotate({
+  identifier: "GetWhatsAppFlowOutput",
+}) as any as S.Schema<GetWhatsAppFlowOutput>;
+export interface GetWhatsAppFlowPreviewInput {
+  id: string;
+  flowId: string;
+  invalidate?: boolean;
+}
+export const GetWhatsAppFlowPreviewInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String.pipe(T.HttpQuery("id")),
+      flowId: S.String.pipe(T.HttpQuery("flowId")),
+      invalidate: S.optional(S.Boolean).pipe(T.HttpQuery("invalidate")),
+    }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/v1/whatsapp/flow/preview" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetWhatsAppFlowPreviewInput",
+  }) as any as S.Schema<GetWhatsAppFlowPreviewInput>;
+export interface GetWhatsAppFlowPreviewOutput {
+  flowId: string;
+  preview: MetaFlowPreviewInfo;
+}
+export const GetWhatsAppFlowPreviewOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ flowId: S.String, preview: MetaFlowPreviewInfo }),
+  ).annotate({
+    identifier: "GetWhatsAppFlowPreviewOutput",
+  }) as any as S.Schema<GetWhatsAppFlowPreviewOutput>;
+export interface GetWhatsAppMessageTemplateInput {
+  metaTemplateId?: string;
+  id: string;
+  templateName?: string;
+  templateLanguageCode?: string;
 }
 export const GetWhatsAppMessageTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
-      metaTemplateId: S.String.pipe(T.HttpQuery("metaTemplateId")),
+      metaTemplateId: S.optional(S.String).pipe(T.HttpQuery("metaTemplateId")),
       id: S.String.pipe(T.HttpQuery("id")),
+      templateName: S.optional(S.String).pipe(T.HttpQuery("templateName")),
+      templateLanguageCode: S.optional(S.String).pipe(
+        T.HttpQuery("templateLanguageCode"),
+      ),
     }).pipe(
       T.all(
         T.Http({ method: "GET", uri: "/v1/whatsapp/template" }),
@@ -820,6 +1118,111 @@ export const GetWhatsAppMessageTemplateOutput =
   ).annotate({
     identifier: "GetWhatsAppMessageTemplateOutput",
   }) as any as S.Schema<GetWhatsAppMessageTemplateOutput>;
+export interface ListWhatsAppFlowAssetsInput {
+  id: string;
+  flowId: string;
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListWhatsAppFlowAssetsInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String.pipe(T.HttpQuery("id")),
+      flowId: S.String.pipe(T.HttpQuery("flowId")),
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/v1/whatsapp/flow/assets" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListWhatsAppFlowAssetsInput",
+  }) as any as S.Schema<ListWhatsAppFlowAssetsInput>;
+export interface MetaFlowAsset {
+  name: string;
+  assetType: string;
+  downloadUrl: string;
+}
+export const MetaFlowAsset = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, assetType: S.String, downloadUrl: S.String }),
+).annotate({ identifier: "MetaFlowAsset" }) as any as S.Schema<MetaFlowAsset>;
+export type MetaFlowAssetList = MetaFlowAsset[];
+export const MetaFlowAssetList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(MetaFlowAsset);
+export interface ListWhatsAppFlowAssetsOutput {
+  flowAssets: MetaFlowAsset[];
+  nextToken?: string;
+}
+export const ListWhatsAppFlowAssetsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      flowAssets: MetaFlowAssetList,
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListWhatsAppFlowAssetsOutput",
+  }) as any as S.Schema<ListWhatsAppFlowAssetsOutput>;
+export interface ListWhatsAppFlowsInput {
+  id: string;
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListWhatsAppFlowsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String.pipe(T.HttpQuery("id")),
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/v1/whatsapp/flow/list" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListWhatsAppFlowsInput",
+}) as any as S.Schema<ListWhatsAppFlowsInput>;
+export interface MetaFlowSummary {
+  flowId: string;
+  flowName: string;
+  flowStatus: string;
+  flowCategories: MetaFlowCategory[];
+  validationErrors: string[];
+}
+export const MetaFlowSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flowId: S.String,
+    flowName: S.String,
+    flowStatus: S.String,
+    flowCategories: MetaFlowCategoryList,
+    validationErrors: ValidationErrorList,
+  }),
+).annotate({
+  identifier: "MetaFlowSummary",
+}) as any as S.Schema<MetaFlowSummary>;
+export type MetaFlowSummaryList = MetaFlowSummary[];
+export const MetaFlowSummaryList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(MetaFlowSummary);
+export interface ListWhatsAppFlowsOutput {
+  flows: MetaFlowSummary[];
+  nextToken?: string;
+}
+export const ListWhatsAppFlowsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ flows: MetaFlowSummaryList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListWhatsAppFlowsOutput",
+}) as any as S.Schema<ListWhatsAppFlowsOutput>;
 export interface ListWhatsAppMessageTemplatesInput {
   id: string;
   nextToken?: string;
@@ -990,6 +1393,31 @@ export const ListWhatsAppTemplateLibraryOutput =
   ).annotate({
     identifier: "ListWhatsAppTemplateLibraryOutput",
   }) as any as S.Schema<ListWhatsAppTemplateLibraryOutput>;
+export interface PublishWhatsAppFlowInput {
+  id: string;
+  flowId: string;
+}
+export const PublishWhatsAppFlowInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ id: S.String, flowId: S.String }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/v1/whatsapp/flow/publish" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "PublishWhatsAppFlowInput",
+}) as any as S.Schema<PublishWhatsAppFlowInput>;
+export interface PublishWhatsAppFlowOutput {}
+export const PublishWhatsAppFlowOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "PublishWhatsAppFlowOutput",
+}) as any as S.Schema<PublishWhatsAppFlowOutput>;
 export interface PutWhatsAppBusinessAccountEventDestinationsInput {
   id: string;
   eventDestinations: WhatsAppBusinessAccountEventDestination[];
@@ -1017,9 +1445,72 @@ export const PutWhatsAppBusinessAccountEventDestinationsOutput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "PutWhatsAppBusinessAccountEventDestinationsOutput",
   }) as any as S.Schema<PutWhatsAppBusinessAccountEventDestinationsOutput>;
+export interface UpdateWhatsAppFlowInput {
+  id: string;
+  flowId: string;
+  flowName?: string;
+  categories?: MetaFlowCategory[];
+}
+export const UpdateWhatsAppFlowInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      flowId: S.String,
+      flowName: S.optional(S.String),
+      categories: S.optional(MetaFlowCategoryList),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/v1/whatsapp/flow/update" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "UpdateWhatsAppFlowInput",
+}) as any as S.Schema<UpdateWhatsAppFlowInput>;
+export interface UpdateWhatsAppFlowOutput {}
+export const UpdateWhatsAppFlowOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "UpdateWhatsAppFlowOutput",
+}) as any as S.Schema<UpdateWhatsAppFlowOutput>;
+export interface UpdateWhatsAppFlowAssetsInput {
+  id: string;
+  flowId: string;
+  flowJson: Uint8Array;
+}
+export const UpdateWhatsAppFlowAssetsInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ id: S.String, flowId: S.String, flowJson: T.Blob }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/v1/whatsapp/flow/assets/update" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "UpdateWhatsAppFlowAssetsInput",
+  }) as any as S.Schema<UpdateWhatsAppFlowAssetsInput>;
+export interface UpdateWhatsAppFlowAssetsOutput {
+  validationErrors?: string[];
+}
+export const UpdateWhatsAppFlowAssetsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ validationErrors: S.optional(ValidationErrorList) }),
+  ).annotate({
+    identifier: "UpdateWhatsAppFlowAssetsOutput",
+  }) as any as S.Schema<UpdateWhatsAppFlowAssetsOutput>;
 export interface UpdateWhatsAppMessageTemplateInput {
   id: string;
-  metaTemplateId: string;
+  metaTemplateId?: string;
+  templateName?: string;
+  templateLanguageCode?: string;
   parameterFormat?: string;
   templateCategory?: string;
   templateComponents?: Uint8Array;
@@ -1029,7 +1520,9 @@ export const UpdateWhatsAppMessageTemplateInput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      metaTemplateId: S.String,
+      metaTemplateId: S.optional(S.String),
+      templateName: S.optional(S.String),
+      templateLanguageCode: S.optional(S.String),
       parameterFormat: S.optional(S.String),
       templateCategory: S.optional(S.String),
       templateComponents: S.optional(T.Blob),
@@ -1455,7 +1948,38 @@ export const listLinkedWhatsAppBusinessAccounts: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+export type CreateWhatsAppFlowError =
+  | AccessDeniedByMetaException
+  | DependencyException
+  | InternalServiceException
+  | InvalidParametersException
+  | ResourceNotFoundException
+  | ThrottledRequestException
+  | CommonErrors;
+/**
+ * Creates a new WhatsApp Flow. Flows enable businesses to create rich, interactive forms and experiences
+ * that users can complete without leaving WhatsApp. The Flow is created in DRAFT status. If `publish`
+ * is set to `true` and a valid `flowJson` is provided, the Flow is published immediately.
+ */
+export const createWhatsAppFlow: API.OperationMethod<
+  CreateWhatsAppFlowInput,
+  CreateWhatsAppFlowOutput,
+  CreateWhatsAppFlowError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateWhatsAppFlowInput,
+  output: CreateWhatsAppFlowOutput,
+  errors: [
+    AccessDeniedByMetaException,
+    DependencyException,
+    InternalServiceException,
+    InvalidParametersException,
+    ResourceNotFoundException,
+    ThrottledRequestException,
+  ],
+}));
 export type CreateWhatsAppMessageTemplateError =
+  | AccessDeniedByMetaException
   | DependencyException
   | InternalServiceException
   | InvalidParametersException
@@ -1476,6 +2000,7 @@ export const createWhatsAppMessageTemplate: API.OperationMethod<
   input: CreateWhatsAppMessageTemplateInput,
   output: CreateWhatsAppMessageTemplateOutput,
   errors: [
+    AccessDeniedByMetaException,
     DependencyException,
     InternalServiceException,
     InvalidParametersException,
@@ -1484,6 +2009,7 @@ export const createWhatsAppMessageTemplate: API.OperationMethod<
   ],
 }));
 export type CreateWhatsAppMessageTemplateFromLibraryError =
+  | AccessDeniedByMetaException
   | DependencyException
   | InternalServiceException
   | InvalidParametersException
@@ -1502,6 +2028,7 @@ export const createWhatsAppMessageTemplateFromLibrary: API.OperationMethod<
   input: CreateWhatsAppMessageTemplateFromLibraryInput,
   output: CreateWhatsAppMessageTemplateFromLibraryOutput,
   errors: [
+    AccessDeniedByMetaException,
     DependencyException,
     InternalServiceException,
     InvalidParametersException,
@@ -1510,6 +2037,7 @@ export const createWhatsAppMessageTemplateFromLibrary: API.OperationMethod<
   ],
 }));
 export type CreateWhatsAppMessageTemplateMediaError =
+  | AccessDeniedByMetaException
   | DependencyException
   | InternalServiceException
   | InvalidParametersException
@@ -1528,6 +2056,35 @@ export const createWhatsAppMessageTemplateMedia: API.OperationMethod<
   input: CreateWhatsAppMessageTemplateMediaInput,
   output: CreateWhatsAppMessageTemplateMediaOutput,
   errors: [
+    AccessDeniedByMetaException,
+    DependencyException,
+    InternalServiceException,
+    InvalidParametersException,
+    ResourceNotFoundException,
+    ThrottledRequestException,
+  ],
+}));
+export type DeleteWhatsAppFlowError =
+  | AccessDeniedByMetaException
+  | DependencyException
+  | InternalServiceException
+  | InvalidParametersException
+  | ResourceNotFoundException
+  | ThrottledRequestException
+  | CommonErrors;
+/**
+ * Deletes a WhatsApp Flow permanently. Only Flows in DRAFT status can be deleted. Published or deprecated Flows cannot be deleted.
+ */
+export const deleteWhatsAppFlow: API.OperationMethod<
+  DeleteWhatsAppFlowInput,
+  DeleteWhatsAppFlowOutput,
+  DeleteWhatsAppFlowError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteWhatsAppFlowInput,
+  output: DeleteWhatsAppFlowOutput,
+  errors: [
+    AccessDeniedByMetaException,
     DependencyException,
     InternalServiceException,
     InvalidParametersException,
@@ -1536,6 +2093,7 @@ export const createWhatsAppMessageTemplateMedia: API.OperationMethod<
   ],
 }));
 export type DeleteWhatsAppMessageTemplateError =
+  | AccessDeniedByMetaException
   | DependencyException
   | InternalServiceException
   | InvalidParametersException
@@ -1554,6 +2112,91 @@ export const deleteWhatsAppMessageTemplate: API.OperationMethod<
   input: DeleteWhatsAppMessageTemplateInput,
   output: DeleteWhatsAppMessageTemplateOutput,
   errors: [
+    AccessDeniedByMetaException,
+    DependencyException,
+    InternalServiceException,
+    InvalidParametersException,
+    ResourceNotFoundException,
+    ThrottledRequestException,
+  ],
+}));
+export type DeprecateWhatsAppFlowError =
+  | AccessDeniedByMetaException
+  | DependencyException
+  | InternalServiceException
+  | InvalidParametersException
+  | ResourceNotFoundException
+  | ThrottledRequestException
+  | CommonErrors;
+/**
+ * Deprecates a published WhatsApp Flow, marking it as no longer recommended for use. The Flow must be in PUBLISHED status. This is an irreversible operation.
+ */
+export const deprecateWhatsAppFlow: API.OperationMethod<
+  DeprecateWhatsAppFlowInput,
+  DeprecateWhatsAppFlowOutput,
+  DeprecateWhatsAppFlowError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeprecateWhatsAppFlowInput,
+  output: DeprecateWhatsAppFlowOutput,
+  errors: [
+    AccessDeniedByMetaException,
+    DependencyException,
+    InternalServiceException,
+    InvalidParametersException,
+    ResourceNotFoundException,
+    ThrottledRequestException,
+  ],
+}));
+export type GetWhatsAppFlowError =
+  | AccessDeniedByMetaException
+  | DependencyException
+  | InternalServiceException
+  | InvalidParametersException
+  | ResourceNotFoundException
+  | ThrottledRequestException
+  | CommonErrors;
+/**
+ * Retrieves the metadata and status of a WhatsApp Flow, including validation errors, preview information, and health status.
+ */
+export const getWhatsAppFlow: API.OperationMethod<
+  GetWhatsAppFlowInput,
+  GetWhatsAppFlowOutput,
+  GetWhatsAppFlowError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetWhatsAppFlowInput,
+  output: GetWhatsAppFlowOutput,
+  errors: [
+    AccessDeniedByMetaException,
+    DependencyException,
+    InternalServiceException,
+    InvalidParametersException,
+    ResourceNotFoundException,
+    ThrottledRequestException,
+  ],
+}));
+export type GetWhatsAppFlowPreviewError =
+  | AccessDeniedByMetaException
+  | DependencyException
+  | InternalServiceException
+  | InvalidParametersException
+  | ResourceNotFoundException
+  | ThrottledRequestException
+  | CommonErrors;
+/**
+ * Generates a web preview URL for testing a WhatsApp Flow before publishing. Preview URLs expire in 30 days and can be shared with stakeholders for review.
+ */
+export const getWhatsAppFlowPreview: API.OperationMethod<
+  GetWhatsAppFlowPreviewInput,
+  GetWhatsAppFlowPreviewOutput,
+  GetWhatsAppFlowPreviewError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetWhatsAppFlowPreviewInput,
+  output: GetWhatsAppFlowPreviewOutput,
+  errors: [
+    AccessDeniedByMetaException,
     DependencyException,
     InternalServiceException,
     InvalidParametersException,
@@ -1562,6 +2205,7 @@ export const deleteWhatsAppMessageTemplate: API.OperationMethod<
   ],
 }));
 export type GetWhatsAppMessageTemplateError =
+  | AccessDeniedByMetaException
   | DependencyException
   | InternalServiceException
   | InvalidParametersException
@@ -1580,6 +2224,7 @@ export const getWhatsAppMessageTemplate: API.OperationMethod<
   input: GetWhatsAppMessageTemplateInput,
   output: GetWhatsAppMessageTemplateOutput,
   errors: [
+    AccessDeniedByMetaException,
     DependencyException,
     InternalServiceException,
     InvalidParametersException,
@@ -1587,7 +2232,106 @@ export const getWhatsAppMessageTemplate: API.OperationMethod<
     ThrottledRequestException,
   ],
 }));
+export type ListWhatsAppFlowAssetsError =
+  | AccessDeniedByMetaException
+  | DependencyException
+  | InternalServiceException
+  | InvalidParametersException
+  | ResourceNotFoundException
+  | ThrottledRequestException
+  | CommonErrors;
+/**
+ * Lists the assets (Flow JSON definition) of a WhatsApp Flow with presigned download URLs. Download URLs are generated by Meta and expire after a short period.
+ */
+export const listWhatsAppFlowAssets: API.OperationMethod<
+  ListWhatsAppFlowAssetsInput,
+  ListWhatsAppFlowAssetsOutput,
+  ListWhatsAppFlowAssetsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWhatsAppFlowAssetsInput,
+  ) => stream.Stream<
+    ListWhatsAppFlowAssetsOutput,
+    ListWhatsAppFlowAssetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWhatsAppFlowAssetsInput,
+  ) => stream.Stream<
+    MetaFlowAsset,
+    ListWhatsAppFlowAssetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListWhatsAppFlowAssetsInput,
+  output: ListWhatsAppFlowAssetsOutput,
+  errors: [
+    AccessDeniedByMetaException,
+    DependencyException,
+    InternalServiceException,
+    InvalidParametersException,
+    ResourceNotFoundException,
+    ThrottledRequestException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "flowAssets",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ListWhatsAppFlowsError =
+  | AccessDeniedByMetaException
+  | DependencyException
+  | InternalServiceException
+  | InvalidParametersException
+  | ResourceNotFoundException
+  | ThrottledRequestException
+  | CommonErrors;
+/**
+ * Lists all WhatsApp Flows for a WhatsApp Business Account. Returns summary information including Flow ID, name, status, and categories.
+ */
+export const listWhatsAppFlows: API.OperationMethod<
+  ListWhatsAppFlowsInput,
+  ListWhatsAppFlowsOutput,
+  ListWhatsAppFlowsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListWhatsAppFlowsInput,
+  ) => stream.Stream<
+    ListWhatsAppFlowsOutput,
+    ListWhatsAppFlowsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListWhatsAppFlowsInput,
+  ) => stream.Stream<
+    MetaFlowSummary,
+    ListWhatsAppFlowsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListWhatsAppFlowsInput,
+  output: ListWhatsAppFlowsOutput,
+  errors: [
+    AccessDeniedByMetaException,
+    DependencyException,
+    InternalServiceException,
+    InvalidParametersException,
+    ResourceNotFoundException,
+    ThrottledRequestException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "flows",
+    pageSize: "maxResults",
+  } as const,
+}));
 export type ListWhatsAppMessageTemplatesError =
+  | AccessDeniedByMetaException
   | DependencyException
   | InternalServiceException
   | InvalidParametersException
@@ -1621,6 +2365,7 @@ export const listWhatsAppMessageTemplates: API.OperationMethod<
   input: ListWhatsAppMessageTemplatesInput,
   output: ListWhatsAppMessageTemplatesOutput,
   errors: [
+    AccessDeniedByMetaException,
     DependencyException,
     InternalServiceException,
     InvalidParametersException,
@@ -1635,6 +2380,7 @@ export const listWhatsAppMessageTemplates: API.OperationMethod<
   } as const,
 }));
 export type ListWhatsAppTemplateLibraryError =
+  | AccessDeniedByMetaException
   | DependencyException
   | InternalServiceException
   | InvalidParametersException
@@ -1668,6 +2414,7 @@ export const listWhatsAppTemplateLibrary: API.OperationMethod<
   input: ListWhatsAppTemplateLibraryInput,
   output: ListWhatsAppTemplateLibraryOutput,
   errors: [
+    AccessDeniedByMetaException,
     DependencyException,
     InternalServiceException,
     InvalidParametersException,
@@ -1680,6 +2427,34 @@ export const listWhatsAppTemplateLibrary: API.OperationMethod<
     items: "metaLibraryTemplates",
     pageSize: "maxResults",
   } as const,
+}));
+export type PublishWhatsAppFlowError =
+  | AccessDeniedByMetaException
+  | DependencyException
+  | InternalServiceException
+  | InvalidParametersException
+  | ResourceNotFoundException
+  | ThrottledRequestException
+  | CommonErrors;
+/**
+ * Publishes a WhatsApp Flow, making it available for use in template messages. The Flow must be in DRAFT status with valid Flow JSON that passes Meta's validation. This is an irreversible operation.
+ */
+export const publishWhatsAppFlow: API.OperationMethod<
+  PublishWhatsAppFlowInput,
+  PublishWhatsAppFlowOutput,
+  PublishWhatsAppFlowError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PublishWhatsAppFlowInput,
+  output: PublishWhatsAppFlowOutput,
+  errors: [
+    AccessDeniedByMetaException,
+    DependencyException,
+    InternalServiceException,
+    InvalidParametersException,
+    ResourceNotFoundException,
+    ThrottledRequestException,
+  ],
 }));
 export type PutWhatsAppBusinessAccountEventDestinationsError =
   | InternalServiceException
@@ -1703,7 +2478,64 @@ export const putWhatsAppBusinessAccountEventDestinations: API.OperationMethod<
     ThrottledRequestException,
   ],
 }));
+export type UpdateWhatsAppFlowError =
+  | AccessDeniedByMetaException
+  | DependencyException
+  | InternalServiceException
+  | InvalidParametersException
+  | ResourceNotFoundException
+  | ThrottledRequestException
+  | CommonErrors;
+/**
+ * Updates the metadata of a WhatsApp Flow, such as its name or categories. This does not update the Flow JSON definition. Use UpdateWhatsAppFlowAssets to update the Flow JSON.
+ */
+export const updateWhatsAppFlow: API.OperationMethod<
+  UpdateWhatsAppFlowInput,
+  UpdateWhatsAppFlowOutput,
+  UpdateWhatsAppFlowError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateWhatsAppFlowInput,
+  output: UpdateWhatsAppFlowOutput,
+  errors: [
+    AccessDeniedByMetaException,
+    DependencyException,
+    InternalServiceException,
+    InvalidParametersException,
+    ResourceNotFoundException,
+    ThrottledRequestException,
+  ],
+}));
+export type UpdateWhatsAppFlowAssetsError =
+  | AccessDeniedByMetaException
+  | DependencyException
+  | InternalServiceException
+  | InvalidParametersException
+  | ResourceNotFoundException
+  | ThrottledRequestException
+  | CommonErrors;
+/**
+ * Updates the Flow JSON definition (assets) of a WhatsApp Flow. Updating a published Flow's assets reverts it to DRAFT status, requiring re-publishing.
+ */
+export const updateWhatsAppFlowAssets: API.OperationMethod<
+  UpdateWhatsAppFlowAssetsInput,
+  UpdateWhatsAppFlowAssetsOutput,
+  UpdateWhatsAppFlowAssetsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateWhatsAppFlowAssetsInput,
+  output: UpdateWhatsAppFlowAssetsOutput,
+  errors: [
+    AccessDeniedByMetaException,
+    DependencyException,
+    InternalServiceException,
+    InvalidParametersException,
+    ResourceNotFoundException,
+    ThrottledRequestException,
+  ],
+}));
 export type UpdateWhatsAppMessageTemplateError =
+  | AccessDeniedByMetaException
   | DependencyException
   | InternalServiceException
   | InvalidParametersException
@@ -1722,6 +2554,7 @@ export const updateWhatsAppMessageTemplate: API.OperationMethod<
   input: UpdateWhatsAppMessageTemplateInput,
   output: UpdateWhatsAppMessageTemplateOutput,
   errors: [
+    AccessDeniedByMetaException,
     DependencyException,
     InternalServiceException,
     InvalidParametersException,

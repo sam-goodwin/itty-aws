@@ -1,5 +1,6 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "effect/Schema";
+import * as stream from "effect/Stream";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
@@ -89,6 +90,8 @@ export type FeatureName = string;
 export type ExpiresAt = string;
 export type Message = string;
 export type TtlDurationValue = number;
+export type ListRecordsMaxResults = number;
+export type ListRecordsNextToken = string;
 
 //# Schemas
 export type RecordIdentifiers = string[];
@@ -228,6 +231,116 @@ export type TargetStore = "OnlineStore" | "OfflineStore" | (string & {});
 export const TargetStore = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type TargetStores = TargetStore[];
 export const TargetStores = /*@__PURE__*/ /*#__PURE__*/ S.Array(TargetStore);
+export type TtlDurationUnit =
+  | "Seconds"
+  | "Minutes"
+  | "Hours"
+  | "Days"
+  | "Weeks"
+  | (string & {});
+export const TtlDurationUnit = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface TtlDuration {
+  Unit?: TtlDurationUnit;
+  Value?: number;
+}
+export const TtlDuration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Unit: S.optional(TtlDurationUnit), Value: S.optional(S.Number) }),
+).annotate({ identifier: "TtlDuration" }) as any as S.Schema<TtlDuration>;
+export interface BatchWriteRecordEntry {
+  FeatureGroupName?: string;
+  Record?: FeatureValue[];
+  TargetStores?: TargetStore[];
+  TtlDuration?: TtlDuration;
+}
+export const BatchWriteRecordEntry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FeatureGroupName: S.optional(S.String),
+    Record: S.optional(Record),
+    TargetStores: S.optional(TargetStores),
+    TtlDuration: S.optional(TtlDuration),
+  }),
+).annotate({
+  identifier: "BatchWriteRecordEntry",
+}) as any as S.Schema<BatchWriteRecordEntry>;
+export type BatchWriteRecordEntries = BatchWriteRecordEntry[];
+export const BatchWriteRecordEntries = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  BatchWriteRecordEntry,
+);
+export interface BatchWriteRecordRequest {
+  Entries?: BatchWriteRecordEntry[];
+  TtlDuration?: TtlDuration;
+}
+export const BatchWriteRecordRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Entries: S.optional(BatchWriteRecordEntries),
+      TtlDuration: S.optional(TtlDuration),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/BatchWriteRecord" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "BatchWriteRecordRequest",
+}) as any as S.Schema<BatchWriteRecordRequest>;
+export interface BatchWriteRecordError_ {
+  Entry?: BatchWriteRecordEntry;
+  ErrorCode?: string;
+  ErrorMessage?: string;
+}
+export const BatchWriteRecordError_ = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Entry: S.optional(BatchWriteRecordEntry),
+      ErrorCode: S.optional(S.String),
+      ErrorMessage: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "BatchWriteRecordError",
+}) as any as S.Schema<BatchWriteRecordError_>;
+export type BatchWriteRecordErrors = BatchWriteRecordError_[];
+export const BatchWriteRecordErrors = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  BatchWriteRecordError_,
+);
+export type UnprocessedBatchWriteRecordEntries = BatchWriteRecordEntry[];
+export const UnprocessedBatchWriteRecordEntries =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(BatchWriteRecordEntry);
+export interface BatchWriteRecordResponse {
+  Errors: (BatchWriteRecordError & {
+    Entry: BatchWriteRecordEntry & {
+      FeatureGroupName: FeatureGroupNameOrArn;
+      Record: (FeatureValue & { FeatureName: FeatureName })[];
+      TtlDuration: TtlDuration & {
+        Unit: TtlDurationUnit;
+        Value: TtlDurationValue;
+      };
+    };
+    ErrorCode: ValueAsString;
+    ErrorMessage: Message;
+  })[];
+  UnprocessedEntries: (BatchWriteRecordEntry & {
+    FeatureGroupName: FeatureGroupNameOrArn;
+    Record: (FeatureValue & { FeatureName: FeatureName })[];
+    TtlDuration: TtlDuration & {
+      Unit: TtlDurationUnit;
+      Value: TtlDurationValue;
+    };
+  })[];
+}
+export const BatchWriteRecordResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Errors: S.optional(BatchWriteRecordErrors),
+      UnprocessedEntries: S.optional(UnprocessedBatchWriteRecordEntries),
+    }),
+).annotate({
+  identifier: "BatchWriteRecordResponse",
+}) as any as S.Schema<BatchWriteRecordResponse>;
 export type DeletionMode = "SoftDelete" | "HardDelete" | (string & {});
 export const DeletionMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface DeleteRecordRequest {
@@ -303,21 +416,50 @@ export const GetRecordResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRecordResponse",
 }) as any as S.Schema<GetRecordResponse>;
-export type TtlDurationUnit =
-  | "Seconds"
-  | "Minutes"
-  | "Hours"
-  | "Days"
-  | "Weeks"
-  | (string & {});
-export const TtlDurationUnit = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export interface TtlDuration {
-  Unit?: TtlDurationUnit;
-  Value?: number;
+export interface ListRecordsRequest {
+  FeatureGroupName: string;
+  MaxResults?: number;
+  NextToken?: string;
+  IncludeSoftDeletedRecords?: boolean;
 }
-export const TtlDuration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ Unit: S.optional(TtlDurationUnit), Value: S.optional(S.Number) }),
-).annotate({ identifier: "TtlDuration" }) as any as S.Schema<TtlDuration>;
+export const ListRecordsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FeatureGroupName: S.String.pipe(T.HttpLabel("FeatureGroupName")),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+    IncludeSoftDeletedRecords: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/FeatureGroup/{FeatureGroupName}/ListRecords",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListRecordsRequest",
+}) as any as S.Schema<ListRecordsRequest>;
+export type RecordIdentifierList = string[];
+export const RecordIdentifierList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export interface ListRecordsResponse {
+  RecordIdentifiers: string[];
+  NextToken?: string;
+}
+export const ListRecordsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RecordIdentifiers: S.optional(RecordIdentifierList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListRecordsResponse",
+}) as any as S.Schema<ListRecordsResponse>;
 export interface PutRecordRequest {
   FeatureGroupName: string;
   Record?: FeatureValue[];
@@ -393,6 +535,39 @@ export const batchGetRecord: API.OperationMethod<
   errors: [
     AccessForbidden,
     InternalFailure,
+    ServiceUnavailable,
+    ValidationError,
+  ],
+}));
+export type BatchWriteRecordError =
+  | AccessForbidden
+  | InternalFailure
+  | ResourceNotFound
+  | ServiceUnavailable
+  | ValidationError
+  | CommonErrors;
+/**
+ * Writes a batch of `Records` to one or more `FeatureGroup`s. Use
+ * this API for bulk ingestion of records into the `OnlineStore` and
+ * `OfflineStore`.
+ *
+ * You can set the ingested records to expire at a given time to live (TTL) duration after
+ * the record's event time by specifying the `TtlDuration` parameter. A request
+ * level `TtlDuration` applies to all entries that do not specify their own
+ * `TtlDuration`.
+ */
+export const batchWriteRecord: API.OperationMethod<
+  BatchWriteRecordRequest,
+  BatchWriteRecordResponse,
+  BatchWriteRecordError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BatchWriteRecordRequest,
+  output: BatchWriteRecordResponse,
+  errors: [
+    AccessForbidden,
+    InternalFailure,
+    ResourceNotFound,
     ServiceUnavailable,
     ValidationError,
   ],
@@ -478,6 +653,55 @@ export const getRecord: API.OperationMethod<
     ServiceUnavailable,
     ValidationError,
   ],
+}));
+export type ListRecordsError =
+  | AccessForbidden
+  | InternalFailure
+  | ResourceNotFound
+  | ServiceUnavailable
+  | ValidationError
+  | CommonErrors;
+/**
+ * Lists the `RecordIdentifier` values of all records stored in a
+ * `FeatureGroup`'s `OnlineStore`. This enables you to discover which
+ * records exist without retrieving the full record data.
+ */
+export const listRecords: API.OperationMethod<
+  ListRecordsRequest,
+  ListRecordsResponse,
+  ListRecordsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRecordsRequest,
+  ) => stream.Stream<
+    ListRecordsResponse,
+    ListRecordsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRecordsRequest,
+  ) => stream.Stream<
+    ValueAsString,
+    ListRecordsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListRecordsRequest,
+  output: ListRecordsResponse,
+  errors: [
+    AccessForbidden,
+    InternalFailure,
+    ResourceNotFound,
+    ServiceUnavailable,
+    ValidationError,
+  ],
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "RecordIdentifiers",
+    pageSize: "MaxResults",
+  } as const,
 }));
 export type PutRecordError =
   | AccessForbidden

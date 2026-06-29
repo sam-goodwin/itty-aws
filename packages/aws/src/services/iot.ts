@@ -383,6 +383,7 @@ export type EnableBatching = boolean;
 export type MaxBatchOpenMs = number;
 export type MaxBatchSize = number;
 export type MaxBatchSizeBytes = number;
+export type BatchAcrossTopics = boolean;
 export type KafkaHeaderKey = string;
 export type KafkaHeaderValue = string;
 export type IsDisabled = boolean;
@@ -498,6 +499,13 @@ export type SumOfSquares = number;
 export type Variance = number;
 export type StdDeviation = number;
 export type ConnectivityApiThingName = string | redacted.Redacted<string>;
+export type SourceIp = string | redacted.Redacted<string>;
+export type SourcePort = number;
+export type TargetIp = string | redacted.Redacted<string>;
+export type TargetPort = number;
+export type VpcEndpointId = string | redacted.Redacted<string>;
+export type KeepAliveDuration = number;
+export type SessionExpiry = number;
 export type RuleArn = string;
 export type VerboseFlag = boolean;
 export type DisableAllLogs = boolean;
@@ -4141,12 +4149,14 @@ export interface BatchConfig {
   maxBatchOpenMs?: number;
   maxBatchSize?: number;
   maxBatchSizeBytes?: number;
+  batchAcrossTopics?: boolean;
 }
 export const BatchConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     maxBatchOpenMs: S.optional(S.Number),
     maxBatchSize: S.optional(S.Number),
     maxBatchSizeBytes: S.optional(S.Number),
+    batchAcrossTopics: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "BatchConfig" }) as any as S.Schema<BatchConfig>;
 export interface HttpAction {
@@ -8473,14 +8483,29 @@ export const GeoLocationTarget = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type GeoLocationsFilter = GeoLocationTarget[];
 export const GeoLocationsFilter =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(GeoLocationTarget);
+export type FleetIndexingApi = "GET_THING_CONNECTIVITY_DATA" | (string & {});
+export const FleetIndexingApi = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type FleetIndexingApiList = FleetIndexingApi[];
+export const FleetIndexingApiList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(FleetIndexingApi);
+export interface ConnectivityFilter {
+  includeSocketInformation?: FleetIndexingApi[];
+}
+export const ConnectivityFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ includeSocketInformation: S.optional(FleetIndexingApiList) }),
+).annotate({
+  identifier: "ConnectivityFilter",
+}) as any as S.Schema<ConnectivityFilter>;
 export interface IndexingFilter {
   namedShadowNames?: string[];
   geoLocations?: GeoLocationTarget[];
+  connectivity?: ConnectivityFilter;
 }
 export const IndexingFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     namedShadowNames: S.optional(NamedShadowNamesFilter),
     geoLocations: S.optional(GeoLocationsFilter),
+    connectivity: S.optional(ConnectivityFilter),
   }),
 ).annotate({ identifier: "IndexingFilter" }) as any as S.Schema<IndexingFilter>;
 export interface ThingIndexingConfiguration {
@@ -9026,11 +9051,13 @@ export const GetStatisticsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetStatisticsResponse>;
 export interface GetThingConnectivityDataRequest {
   thingName: string | redacted.Redacted<string>;
+  includeSocketInformation?: boolean;
 }
 export const GetThingConnectivityDataRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       thingName: SensitiveString.pipe(T.HttpLabel("thingName")),
+      includeSocketInformation: S.optional(S.Boolean),
     }).pipe(
       T.all(
         T.Http({
@@ -9057,6 +9084,7 @@ export type DisconnectReasonValue =
   | "MQTT_KEEP_ALIVE_TIMEOUT"
   | "SERVER_ERROR"
   | "SERVER_INITIATED_DISCONNECT"
+  | "API_INITIATED_DISCONNECT"
   | "THROTTLED"
   | "WEBSOCKET_TTL_EXPIRATION"
   | "CUSTOMAUTH_TTL_EXPIRATION"
@@ -9069,6 +9097,15 @@ export interface GetThingConnectivityDataResponse {
   connected?: boolean;
   timestamp?: Date;
   disconnectReason?: DisconnectReasonValue;
+  sourceIp?: string | redacted.Redacted<string>;
+  sourcePort?: number;
+  targetIp?: string | redacted.Redacted<string>;
+  targetPort?: number;
+  vpcEndpointId?: string | redacted.Redacted<string>;
+  keepAliveDuration?: number;
+  cleanSession?: boolean;
+  sessionExpiry?: number;
+  clientId?: string;
 }
 export const GetThingConnectivityDataResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -9077,6 +9114,15 @@ export const GetThingConnectivityDataResponse =
       connected: S.optional(S.Boolean),
       timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
       disconnectReason: S.optional(DisconnectReasonValue),
+      sourceIp: S.optional(SensitiveString),
+      sourcePort: S.optional(S.Number),
+      targetIp: S.optional(SensitiveString),
+      targetPort: S.optional(S.Number),
+      vpcEndpointId: S.optional(SensitiveString),
+      keepAliveDuration: S.optional(S.Number),
+      cleanSession: S.optional(S.Boolean),
+      sessionExpiry: S.optional(S.Number),
+      clientId: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GetThingConnectivityDataResponse",
@@ -13169,12 +13215,20 @@ export interface ThingConnectivity {
   connected?: boolean;
   timestamp?: number;
   disconnectReason?: string;
+  keepAliveDuration?: number;
+  cleanSession?: boolean;
+  sessionExpiry?: number;
+  clientId?: string;
 }
 export const ThingConnectivity = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     connected: S.optional(S.Boolean),
     timestamp: S.optional(S.Number),
     disconnectReason: S.optional(S.String),
+    keepAliveDuration: S.optional(S.Number),
+    cleanSession: S.optional(S.Boolean),
+    sessionExpiry: S.optional(S.Number),
+    clientId: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ThingConnectivity",
@@ -19630,7 +19684,7 @@ export type GetThingConnectivityDataError =
   | UnauthorizedException
   | CommonErrors;
 /**
- * Retrieves the live connectivity status per device.
+ * Retrieves the live connectivity status per device. If a device has never connected to IoT Core or was disconnected for more than 1 hour before fleet indexing's `thingConnectivityIndexingMode` was enabled, the response will have the `connected` field set to `false` with no additional session details.
  */
 export const getThingConnectivityData: API.OperationMethod<
   GetThingConnectivityDataRequest,
@@ -23141,7 +23195,9 @@ export type SearchIndexError =
   | UnauthorizedException
   | CommonErrors;
 /**
- * The query search index.
+ * Searches the specified index.
+ *
+ * If a device has never connected to IoT Core or was disconnected for more than 1 hour before fleet indexing's `thingConnectivityIndexingMode` was enabled, the `connectivity` object for this device in the response will have the `connected` field set to `false` with no additional session details.
  *
  * Requires permission to access the SearchIndex action.
  */

@@ -90,31 +90,35 @@ export type ParameterName = string;
 export type BoxedBoolean = boolean;
 export type BoxedLong = number;
 export type BoxedDouble = number;
-export type TypeHint = string;
 export type Id = string;
 export type ErrorMessage = string;
 export type TransactionStatus = string;
 export type BoxedInteger = number;
 export type BoxedFloat = number;
 export type RecordsUpdated = number;
-export type DecimalReturnType = string;
-export type LongReturnType = string;
-export type RecordsFormatType = string;
 export type FormattedSqlRecords = string;
 
 //# Schemas
 export type BooleanArray = boolean[];
-export const BooleanArray = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.Boolean);
+export const BooleanArray = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.Boolean).pipe(
+  T.Sparse(),
+);
 export type LongArray = number[];
-export const LongArray = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.Number);
+export const LongArray = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.Number).pipe(
+  T.Sparse(),
+);
 export type DoubleArray = number[];
-export const DoubleArray = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.Number);
+export const DoubleArray = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.Number).pipe(
+  T.Sparse(),
+);
 export type StringArray = string[];
-export const StringArray = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const StringArray = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String).pipe(
+  T.Sparse(),
+);
 export type ArrayOfArray = ArrayValue[];
 export const ArrayOfArray = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   S.suspend(() => ArrayValue).annotate({ identifier: "ArrayValue" }),
-) as any as S.Schema<ArrayOfArray>;
+).pipe(T.Sparse()) as any as S.Schema<ArrayOfArray>;
 export type ArrayValue =
   | {
       booleanValues: boolean[];
@@ -235,16 +239,25 @@ export const Field = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ blobValue: T.Blob }),
   S.Struct({ arrayValue: ArrayValue }),
 ]);
+export type TypeHint =
+  | "JSON"
+  | "UUID"
+  | "TIMESTAMP"
+  | "DATE"
+  | "TIME"
+  | "DECIMAL"
+  | (string & {});
+export const TypeHint = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface SqlParameter {
   name?: string;
   value?: Field;
-  typeHint?: string;
+  typeHint?: TypeHint;
 }
 export const SqlParameter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(Field),
-    typeHint: S.optional(S.String),
+    typeHint: S.optional(TypeHint),
   }),
 ).annotate({ identifier: "SqlParameter" }) as any as S.Schema<SqlParameter>;
 export type SqlParametersList = SqlParameter[];
@@ -647,18 +660,24 @@ export const ExecuteSqlResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExecuteSqlResponse",
 }) as any as S.Schema<ExecuteSqlResponse>;
+export type DecimalReturnType = "STRING" | "DOUBLE_OR_LONG" | (string & {});
+export const DecimalReturnType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type LongReturnType = "STRING" | "LONG" | (string & {});
+export const LongReturnType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ResultSetOptions {
-  decimalReturnType?: string;
-  longReturnType?: string;
+  decimalReturnType?: DecimalReturnType;
+  longReturnType?: LongReturnType;
 }
 export const ResultSetOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
-    decimalReturnType: S.optional(S.String),
-    longReturnType: S.optional(S.String),
+    decimalReturnType: S.optional(DecimalReturnType),
+    longReturnType: S.optional(LongReturnType),
   }),
 ).annotate({
   identifier: "ResultSetOptions",
 }) as any as S.Schema<ResultSetOptions>;
+export type RecordsFormatType = "NONE" | "JSON" | (string & {});
+export const RecordsFormatType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ExecuteStatementRequest {
   resourceArn: string;
   secretArn: string;
@@ -670,7 +689,7 @@ export interface ExecuteStatementRequest {
   includeResultMetadata?: boolean;
   continueAfterTimeout?: boolean;
   resultSetOptions?: ResultSetOptions;
-  formatRecordsAs?: string;
+  formatRecordsAs?: RecordsFormatType;
 }
 export const ExecuteStatementRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -685,7 +704,7 @@ export const ExecuteStatementRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       includeResultMetadata: S.optional(S.Boolean),
       continueAfterTimeout: S.optional(S.Boolean),
       resultSetOptions: S.optional(ResultSetOptions),
-      formatRecordsAs: S.optional(S.String),
+      formatRecordsAs: S.optional(RecordsFormatType),
     }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/Execute" }),
@@ -845,18 +864,11 @@ export type BatchExecuteStatementError =
 /**
  * Runs a batch SQL statement over an array of data.
  *
- * You can run bulk update and insert operations for multiple records using a DML
- * statement with different parameter sets. Bulk operations can provide a significant
- * performance improvement over individual insert and update operations.
+ * You can run bulk update and insert operations for multiple records using a DML statement with different parameter sets. Bulk operations can provide a significant performance improvement over individual insert and update operations.
  *
- * If a call isn't part of a transaction because it doesn't include the `transactionID` parameter,
- * changes that result from the call are committed automatically.
+ * If a call isn't part of a transaction because it doesn't include the `transactionID` parameter, changes that result from the call are committed automatically.
  *
- * There isn't a fixed upper limit on the number of parameter sets. However, the maximum size of the HTTP request
- * submitted through the Data API is 4 MiB. If the request exceeds this limit, the Data API returns an error and doesn't
- * process the request. This 4-MiB limit includes the size of the HTTP headers and the JSON notation in the request. Thus, the
- * number of parameter sets that you can include depends on a combination of factors, such as the size of the SQL statement and
- * the size of each parameter set.
+ * There isn't a fixed upper limit on the number of parameter sets. However, the maximum size of the HTTP request submitted through the Data API is 4 MiB. If the request exceeds this limit, the Data API returns an error and doesn't process the request. This 4-MiB limit includes the size of the HTTP headers and the JSON notation in the request. Thus, the number of parameter sets that you can include depends on a combination of factors, such as the size of the SQL statement and the size of each parameter set.
  *
  * The response size limit is 1 MiB. If the call returns more than 1 MiB of response data, the call is terminated.
  */
@@ -906,14 +918,11 @@ export type BeginTransactionError =
 /**
  * Starts a SQL transaction.
  *
- * A transaction can run for a maximum of 24 hours. A transaction is terminated and rolled back automatically after 24
- * hours.
+ * A transaction can run for a maximum of 24 hours. A transaction is terminated and rolled back automatically after 24 hours.
  *
- * A transaction times out if no calls use its transaction ID in three minutes. If a transaction times out before it's
- * committed, it's rolled back automatically.
+ * A transaction times out if no calls use its transaction ID in three minutes. If a transaction times out before it's committed, it's rolled back automatically.
  *
- * For Aurora MySQL, DDL statements inside a transaction cause an implicit commit. We recommend that you run each MySQL DDL statement in a separate
- * `ExecuteStatement` call with `continueAfterTimeout` enabled.
+ * For Aurora MySQL, DDL statements inside a transaction cause an implicit commit. We recommend that you run each MySQL DDL statement in a separate `ExecuteStatement` call with `continueAfterTimeout` enabled.
  */
 export const beginTransaction: API.OperationMethod<
   BeginTransactionRequest,
@@ -959,8 +968,7 @@ export type CommitTransactionError =
   | TransactionNotFoundException
   | CommonErrors;
 /**
- * Ends a SQL transaction started with the `BeginTransaction` operation and
- * commits the changes.
+ * Ends a SQL transaction started with the `BeginTransaction` operation and commits the changes.
  */
 export const commitTransaction: API.OperationMethod<
   CommitTransactionRequest,
@@ -998,9 +1006,7 @@ export type ExecuteSqlError =
 /**
  * Runs one or more SQL statements.
  *
- * This operation isn't supported for Aurora Serverless v2 and provisioned DB clusters.
- * For Aurora Serverless v1 DB clusters, the operation is deprecated.
- * Use the `BatchExecuteStatement` or `ExecuteStatement` operation.
+ * This operation is deprecated. Please use the `BatchExecuteStatement` or `ExecuteStatement` operation.
  */
 export const executeSql: API.OperationMethod<
   ExecuteSqlRequest,
@@ -1039,9 +1045,7 @@ export type ExecuteStatementError =
 /**
  * Runs a SQL statement against a database.
  *
- * If a call isn't part of a transaction because it doesn't include the
- * `transactionID` parameter, changes that result from the call are
- * committed automatically.
+ * If a call isn't part of a transaction because it doesn't include the `transactionID` parameter, changes that result from the call are committed automatically.
  *
  * If the binary response data from the database is more than 1 MB, the call is terminated.
  */

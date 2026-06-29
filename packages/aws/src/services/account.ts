@@ -104,6 +104,7 @@ export type AccountId = string;
 export type SensitiveString = string | redacted.Redacted<string>;
 export type ValidationExceptionReason = string;
 export type AccountCreatedDate = Date;
+export type AccountState = string;
 export type Name = string | redacted.Redacted<string>;
 export type Title = string | redacted.Redacted<string>;
 export type EmailAddress = string | redacted.Redacted<string>;
@@ -189,6 +190,7 @@ export interface GetAccountInformationResponse {
   AccountId?: string;
   AccountName?: string | redacted.Redacted<string>;
   AccountCreatedDate?: Date;
+  AccountState?: string;
 }
 export const GetAccountInformationResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -198,6 +200,7 @@ export const GetAccountInformationResponse =
       AccountCreatedDate: S.optional(
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
       ),
+      AccountState: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GetAccountInformationResponse",
@@ -734,7 +737,7 @@ export type GetAccountInformationError =
   | ValidationException
   | CommonErrors;
 /**
- * Retrieves information about the specified account including its account name, account ID, and account creation date and time. To use this API, an IAM user or role must have the `account:GetAccountInformation` IAM permission.
+ * Retrieves information about the specified account including its account name, account ID, account creation date and time, and account state. To use this API, an IAM user or role must have the `account:GetAccountInformation` IAM permission.
  */
 export const getAccountInformation: API.OperationMethod<
   GetAccountInformationRequest,

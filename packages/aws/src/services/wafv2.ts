@@ -103,6 +103,7 @@ export type ForwardedIPHeaderName = string;
 export type ResponseStatusCode = number;
 export type CustomHTTPHeaderName = string;
 export type CustomHTTPHeaderValue = string;
+export type PriceMultiplier = string;
 export type RateLimit = number;
 export type EvaluationWindowSec = number;
 export type LabelNamespace = string;
@@ -135,6 +136,8 @@ export type EntityId = string;
 export type LockToken = string;
 export type CapacityUnit = number;
 export type ResponseContent = string;
+export type WalletAddress = string;
+export type PriceAmount = string;
 export type FieldToProtectKeyName = string;
 export type AttributeName = string;
 export type AttributeValue = string;
@@ -146,6 +149,17 @@ export type DownloadUrl = string;
 export type TimeWindowDay = number;
 export type ReleaseNotes = string;
 export type PolicyString = string;
+export type MonetizationFilterName = string;
+export type MonetizationFilterValue = string;
+export type NextMarker = string;
+export type PathStatisticsLimit = number;
+export type FilterString = string;
+export type PercentageValue = number;
+export type MonetizationAmountValue = string;
+export type RequestCount = number;
+export type VerifiedStatus = boolean;
+export type PathString = string;
+export type MaxDataPoints = number;
 export type ListMaxItems = number;
 export type IPString = string;
 export type Country = string;
@@ -160,16 +174,13 @@ export type ResponseCode = number;
 export type SolveTimestamp = number;
 export type PopulationSize = number;
 export type UriPathPrefixString = string;
-export type FilterString = string;
-export type PathStatisticsLimit = number;
 export type NumberOfTopTrafficBotsPerPath = number;
-export type NextMarker = string;
-export type PathString = string;
-export type RequestCount = number;
-export type PercentageValue = number;
 export type OutputUrl = string;
 export type PaginationLimit = number;
 export type APIKeyVersion = number;
+export type SettlementRecordLimit = number;
+export type SettlementFilterString = string;
+export type SettlementIdString = string;
 
 //# Schemas
 export interface AssociateWebACLRequest {
@@ -286,6 +297,10 @@ export type ParameterExceptionField =
   | "ACP_RULE_SET_RESPONSE_INSPECTION"
   | "DATA_PROTECTION_CONFIG"
   | "LOW_REPUTATION_MODE"
+  | "MONETIZATION_CONFIG"
+  | "WALLET_ADDRESS"
+  | "PRICE_AMOUNT"
+  | "PAYMENT_NETWORK"
   | (string & {});
 export const ParameterExceptionField = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type Scope = "CLOUDFRONT" | "REGIONAL" | (string & {});
@@ -954,12 +969,19 @@ export const ChallengeAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ChallengeAction",
 }) as any as S.Schema<ChallengeAction>;
+export interface MonetizeAction {
+  PriceMultiplier?: string;
+}
+export const MonetizeAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ PriceMultiplier: S.optional(S.String) }),
+).annotate({ identifier: "MonetizeAction" }) as any as S.Schema<MonetizeAction>;
 export interface RuleAction {
   Block?: BlockAction;
   Allow?: AllowAction;
   Count?: CountAction;
   Captcha?: CaptchaAction;
   Challenge?: ChallengeAction;
+  Monetize?: MonetizeAction;
 }
 export const RuleAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -968,6 +990,7 @@ export const RuleAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Count: S.optional(CountAction),
     Captcha: S.optional(CaptchaAction),
     Challenge: S.optional(ChallengeAction),
+    Monetize: S.optional(MonetizeAction),
   }),
 ).annotate({ identifier: "RuleAction" }) as any as S.Schema<RuleAction>;
 export interface RuleActionOverride {
@@ -1943,6 +1966,55 @@ export const CustomResponseBodies = /*@__PURE__*/ /*#__PURE__*/ S.Record(
   S.String,
   CustomResponseBody.pipe(S.optional),
 );
+export type BlockchainChain =
+  | "BASE"
+  | "SOLANA"
+  | "BASE_SEPOLIA"
+  | "SOLANA_DEVNET"
+  | (string & {});
+export const BlockchainChain = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type CryptoCurrency = "USDC" | (string & {});
+export const CryptoCurrency = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface Price {
+  Amount: string;
+  Currency: CryptoCurrency;
+}
+export const Price = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Amount: S.String, Currency: CryptoCurrency }),
+).annotate({ identifier: "Price" }) as any as S.Schema<Price>;
+export type Prices = Price[];
+export const Prices = /*@__PURE__*/ /*#__PURE__*/ S.Array(Price);
+export interface PaymentNetwork {
+  Chain: BlockchainChain;
+  WalletAddress: string;
+  Prices: Price[];
+}
+export const PaymentNetwork = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Chain: BlockchainChain, WalletAddress: S.String, Prices: Prices }),
+).annotate({ identifier: "PaymentNetwork" }) as any as S.Schema<PaymentNetwork>;
+export type PaymentNetworks = PaymentNetwork[];
+export const PaymentNetworks =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(PaymentNetwork);
+export interface CryptoConfig {
+  PaymentNetworks: PaymentNetwork[];
+}
+export const CryptoConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ PaymentNetworks: PaymentNetworks }),
+).annotate({ identifier: "CryptoConfig" }) as any as S.Schema<CryptoConfig>;
+export type CurrencyMode = "REAL" | "TEST" | (string & {});
+export const CurrencyMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface MonetizationConfig {
+  CryptoConfig?: CryptoConfig;
+  CurrencyMode?: CurrencyMode;
+}
+export const MonetizationConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CryptoConfig: S.optional(CryptoConfig),
+    CurrencyMode: S.optional(CurrencyMode),
+  }),
+).annotate({
+  identifier: "MonetizationConfig",
+}) as any as S.Schema<MonetizationConfig>;
 export interface CreateRuleGroupRequest {
   Name: string;
   Scope: Scope;
@@ -1952,6 +2024,7 @@ export interface CreateRuleGroupRequest {
   VisibilityConfig: VisibilityConfig;
   Tags?: Tag[];
   CustomResponseBodies?: { [key: string]: CustomResponseBody | undefined };
+  MonetizationConfig?: MonetizationConfig;
 }
 export const CreateRuleGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1964,6 +2037,7 @@ export const CreateRuleGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       VisibilityConfig: VisibilityConfig,
       Tags: S.optional(TagList),
       CustomResponseBodies: S.optional(CustomResponseBodies),
+      MonetizationConfig: S.optional(MonetizationConfig),
     }).pipe(
       T.all(
         ns,
@@ -2066,6 +2140,7 @@ export type AssociatedResourceType =
   | "COGNITO_USER_POOL"
   | "APP_RUNNER_SERVICE"
   | "VERIFIED_ACCESS_INSTANCE"
+  | "AGENTCORE_GATEWAY"
   | (string & {});
 export const AssociatedResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type SizeInspectionLimit =
@@ -2153,6 +2228,7 @@ export interface CreateWebACLRequest {
   AssociationConfig?: AssociationConfig;
   OnSourceDDoSProtectionConfig?: OnSourceDDoSProtectionConfig;
   ApplicationConfig?: ApplicationConfig;
+  MonetizationConfig?: MonetizationConfig;
 }
 export const CreateWebACLRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2171,6 +2247,7 @@ export const CreateWebACLRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     AssociationConfig: S.optional(AssociationConfig),
     OnSourceDDoSProtectionConfig: S.optional(OnSourceDDoSProtectionConfig),
     ApplicationConfig: S.optional(ApplicationConfig),
+    MonetizationConfig: S.optional(MonetizationConfig),
   }).pipe(
     T.all(
       ns,
@@ -2794,6 +2871,7 @@ export type ActionValue =
   | "COUNT"
   | "CAPTCHA"
   | "CHALLENGE"
+  | "MONETIZE"
   | "EXCLUDED_AS_COUNT"
   | (string & {});
 export const ActionValue = /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -3146,6 +3224,295 @@ export const GetRegexPatternSetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetRegexPatternSetResponse",
 }) as any as S.Schema<GetRegexPatternSetResponse>;
+export type RankingStatisticType =
+  | "TOP_SOURCES_BY_REVENUE"
+  | "TOP_PATHS_BY_REVENUE"
+  | (string & {});
+export const RankingStatisticType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface TimeWindow {
+  StartTime: Date;
+  EndTime: Date;
+}
+export const TimeWindow = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({ identifier: "TimeWindow" }) as any as S.Schema<TimeWindow>;
+export type Currency = "USDC" | (string & {});
+export const Currency = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type GroupByType =
+  | "NAME"
+  | "CATEGORY"
+  | "INTENT"
+  | "ORGANIZATION"
+  | "WEBACL"
+  | (string & {});
+export const GroupByType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type MonetizationFilterValueList = string[];
+export const MonetizationFilterValueList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export interface MonetizationFilter {
+  Name: string;
+  Values: string[];
+}
+export const MonetizationFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String, Values: MonetizationFilterValueList }),
+).annotate({
+  identifier: "MonetizationFilter",
+}) as any as S.Schema<MonetizationFilter>;
+export type MonetizationFilterList = MonetizationFilter[];
+export const MonetizationFilterList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(MonetizationFilter);
+export type RankingSortBy = "REVENUE" | "PERCENTAGE" | "NAME" | (string & {});
+export const RankingSortBy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type SortOrder = "ASC" | "DESC" | (string & {});
+export const SortOrder = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface GetRevenueStatisticsRequest {
+  StatisticType: RankingStatisticType;
+  TimeWindow: TimeWindow;
+  Scope: Scope;
+  Currency: Currency;
+  GroupBy?: GroupByType;
+  Filters?: MonetizationFilter[];
+  NextMarker?: string;
+  Limit?: number;
+  SortBy?: RankingSortBy;
+  SortOrder?: SortOrder;
+}
+export const GetRevenueStatisticsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      StatisticType: RankingStatisticType,
+      TimeWindow: TimeWindow,
+      Scope: Scope,
+      Currency: Currency,
+      GroupBy: S.optional(GroupByType),
+      Filters: S.optional(MonetizationFilterList),
+      NextMarker: S.optional(S.String),
+      Limit: S.optional(S.Number),
+      SortBy: S.optional(RankingSortBy),
+      SortOrder: S.optional(SortOrder),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetRevenueStatisticsRequest",
+  }) as any as S.Schema<GetRevenueStatisticsRequest>;
+export interface SourceStatistics {
+  SourceName: string;
+  Percentage: number;
+  Amount: string;
+  RequestCount: number;
+  SourceCategory?: string;
+  Intent?: string;
+  Organization?: string;
+  Verified?: boolean;
+  GroupByValue?: string;
+}
+export const SourceStatistics = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SourceName: S.String,
+    Percentage: S.Number,
+    Amount: S.String,
+    RequestCount: S.Number,
+    SourceCategory: S.optional(S.String),
+    Intent: S.optional(S.String),
+    Organization: S.optional(S.String),
+    Verified: S.optional(S.Boolean),
+    GroupByValue: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SourceStatistics",
+}) as any as S.Schema<SourceStatistics>;
+export type SourceStatisticsList = SourceStatistics[];
+export const SourceStatisticsList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(SourceStatistics);
+export interface RevenuePathStatistics {
+  Path: string;
+  Percentage: number;
+  Amount: string;
+  RequestCount: number;
+}
+export const RevenuePathStatistics = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Path: S.String,
+    Percentage: S.Number,
+    Amount: S.String,
+    RequestCount: S.Number,
+  }),
+).annotate({
+  identifier: "RevenuePathStatistics",
+}) as any as S.Schema<RevenuePathStatistics>;
+export type RevenuePathStatisticsList = RevenuePathStatistics[];
+export const RevenuePathStatisticsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  RevenuePathStatistics,
+);
+export interface GetRevenueStatisticsResponse {
+  SourceStatistics?: SourceStatistics[];
+  RevenuePathStatistics?: RevenuePathStatistics[];
+  NextMarker?: string;
+}
+export const GetRevenueStatisticsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      SourceStatistics: S.optional(SourceStatisticsList),
+      RevenuePathStatistics: S.optional(RevenuePathStatisticsList),
+      NextMarker: S.optional(S.String),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "GetRevenueStatisticsResponse",
+  }) as any as S.Schema<GetRevenueStatisticsResponse>;
+export interface GetRevenueStatisticsSummaryRequest {
+  TimeWindow: TimeWindow;
+  Scope: Scope;
+  Currency: Currency;
+  Filters?: MonetizationFilter[];
+}
+export const GetRevenueStatisticsSummaryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TimeWindow: TimeWindow,
+      Scope: Scope,
+      Currency: Currency,
+      Filters: S.optional(MonetizationFilterList),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetRevenueStatisticsSummaryRequest",
+  }) as any as S.Schema<GetRevenueStatisticsSummaryRequest>;
+export interface RevenueBreakdown {
+  TotalAmount?: string;
+  VerifiedAmount?: string;
+  UnverifiedAmount?: string;
+  Currency?: Currency;
+  TotalSettled?: number;
+  TotalMonetizeServed?: number;
+}
+export const RevenueBreakdown = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TotalAmount: S.optional(S.String),
+    VerifiedAmount: S.optional(S.String),
+    UnverifiedAmount: S.optional(S.String),
+    Currency: S.optional(Currency),
+    TotalSettled: S.optional(S.Number),
+    TotalMonetizeServed: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "RevenueBreakdown",
+}) as any as S.Schema<RevenueBreakdown>;
+export interface GetRevenueStatisticsSummaryResponse {
+  RevenueBreakdown?: RevenueBreakdown;
+}
+export const GetRevenueStatisticsSummaryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ RevenueBreakdown: S.optional(RevenueBreakdown) }).pipe(ns),
+  ).annotate({
+    identifier: "GetRevenueStatisticsSummaryResponse",
+  }) as any as S.Schema<GetRevenueStatisticsSummaryResponse>;
+export type TimeSeriesStatisticType =
+  | "DATE_HISTOGRAM"
+  | "PAYMENT_TRAFFIC"
+  | (string & {});
+export const TimeSeriesStatisticType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type IntervalType =
+  | "MINUTELY"
+  | "FIVE_MINUTELY"
+  | "HOURLY"
+  | "DAILY"
+  | (string & {});
+export const IntervalType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface GetRevenueStatisticsTimeSeriesRequest {
+  StatisticType: TimeSeriesStatisticType;
+  TimeWindow: TimeWindow;
+  Scope: Scope;
+  Interval: IntervalType;
+  Currency: Currency;
+  GroupBy?: GroupByType;
+  Filters?: MonetizationFilter[];
+  Limit?: number;
+  NextMarker?: string;
+}
+export const GetRevenueStatisticsTimeSeriesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      StatisticType: TimeSeriesStatisticType,
+      TimeWindow: TimeWindow,
+      Scope: Scope,
+      Interval: IntervalType,
+      Currency: Currency,
+      GroupBy: S.optional(GroupByType),
+      Filters: S.optional(MonetizationFilterList),
+      Limit: S.optional(S.Number),
+      NextMarker: S.optional(S.String),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetRevenueStatisticsTimeSeriesRequest",
+  }) as any as S.Schema<GetRevenueStatisticsTimeSeriesRequest>;
+export interface DataPointEntry {
+  Date?: Date;
+  MonetizeServedCount?: number;
+  SettledCount?: number;
+  TotalAmount?: string;
+  Category?: string;
+  Intent?: string;
+  GroupByValue?: string;
+}
+export const DataPointEntry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Date: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    MonetizeServedCount: S.optional(S.Number),
+    SettledCount: S.optional(S.Number),
+    TotalAmount: S.optional(S.String),
+    Category: S.optional(S.String),
+    Intent: S.optional(S.String),
+    GroupByValue: S.optional(S.String),
+  }),
+).annotate({ identifier: "DataPointEntry" }) as any as S.Schema<DataPointEntry>;
+export type DataPointsList = DataPointEntry[];
+export const DataPointsList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DataPointEntry);
+export interface GetRevenueStatisticsTimeSeriesResponse {
+  DataPoints?: DataPointEntry[];
+  NextMarker?: string;
+}
+export const GetRevenueStatisticsTimeSeriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DataPoints: S.optional(DataPointsList),
+      NextMarker: S.optional(S.String),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "GetRevenueStatisticsTimeSeriesResponse",
+  }) as any as S.Schema<GetRevenueStatisticsTimeSeriesResponse>;
 export interface GetRuleGroupRequest {
   Name?: string;
   Scope?: Scope;
@@ -3184,6 +3551,7 @@ export interface RuleGroup {
   CustomResponseBodies?: { [key: string]: CustomResponseBody | undefined };
   AvailableLabels?: LabelSummary[];
   ConsumedLabels?: LabelSummary[];
+  MonetizationConfig?: MonetizationConfig;
 }
 export const RuleGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3198,6 +3566,7 @@ export const RuleGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     CustomResponseBodies: S.optional(CustomResponseBodies),
     AvailableLabels: S.optional(LabelSummaries),
     ConsumedLabels: S.optional(LabelSummaries),
+    MonetizationConfig: S.optional(MonetizationConfig),
   }),
 ).annotate({ identifier: "RuleGroup" }) as any as S.Schema<RuleGroup>;
 export interface GetRuleGroupResponse {
@@ -3212,16 +3581,6 @@ export const GetRuleGroupResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRuleGroupResponse",
 }) as any as S.Schema<GetRuleGroupResponse>;
-export interface TimeWindow {
-  StartTime: Date;
-  EndTime: Date;
-}
-export const TimeWindow = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "TimeWindow" }) as any as S.Schema<TimeWindow>;
 export interface GetSampledRequestsRequest {
   WebAclArn: string;
   RuleMetricName: string;
@@ -3543,6 +3902,7 @@ export interface WebACL {
   RetrofittedByFirewallManager?: boolean;
   OnSourceDDoSProtectionConfig?: OnSourceDDoSProtectionConfig;
   ApplicationConfig?: ApplicationConfig;
+  MonetizationConfig?: MonetizationConfig;
 }
 export const WebACL = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3567,6 +3927,7 @@ export const WebACL = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     RetrofittedByFirewallManager: S.optional(S.Boolean),
     OnSourceDDoSProtectionConfig: S.optional(OnSourceDDoSProtectionConfig),
     ApplicationConfig: S.optional(ApplicationConfig),
+    MonetizationConfig: S.optional(MonetizationConfig),
   }),
 ).annotate({ identifier: "WebACL" }) as any as S.Schema<WebACL>;
 export interface GetWebACLResponse {
@@ -4034,6 +4395,7 @@ export type ResourceType =
   | "APP_RUNNER_SERVICE"
   | "VERIFIED_ACCESS_INSTANCE"
   | "AMPLIFY"
+  | "AGENTCORE_GATEWAY"
   | (string & {});
 export const ResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ListResourcesForWebACLRequest {
@@ -4110,6 +4472,117 @@ export const ListRuleGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListRuleGroupsResponse",
 }) as any as S.Schema<ListRuleGroupsResponse>;
+export type SettlementSortBy =
+  | "TIMESTAMP"
+  | "AMOUNT"
+  | "NAME"
+  | "STATUS"
+  | (string & {});
+export const SettlementSortBy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ListSettlementRecordsRequest {
+  TimeWindow: TimeWindow;
+  Scope: Scope;
+  Currency: Currency;
+  Filters?: MonetizationFilter[];
+  SortBy?: SettlementSortBy;
+  SortOrder?: SortOrder;
+  Limit?: number;
+  NextMarker?: string;
+}
+export const ListSettlementRecordsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TimeWindow: TimeWindow,
+      Scope: Scope,
+      Currency: Currency,
+      Filters: S.optional(MonetizationFilterList),
+      SortBy: S.optional(SettlementSortBy),
+      SortOrder: S.optional(SortOrder),
+      Limit: S.optional(S.Number),
+      NextMarker: S.optional(S.String),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListSettlementRecordsRequest",
+  }) as any as S.Schema<ListSettlementRecordsRequest>;
+export type SettlementStatus =
+  | "SETTLED"
+  | "PENDING"
+  | "FAILED"
+  | "SERVICE_ERROR"
+  | "SKIPPED_ORIGIN_ERROR"
+  | "DUPLICATE"
+  | (string & {});
+export const SettlementStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface SettlementRecord {
+  Timestamp: Date;
+  PayerAddress?: string;
+  WalletAddress?: string;
+  Status: SettlementStatus;
+  Amount: string;
+  Currency?: Currency;
+  Network?: string;
+  TransactionId?: string;
+  RequestId?: string;
+  SourceName?: string;
+  Organization?: string;
+  SourceCategory?: string;
+  Intent?: string;
+  Verified?: boolean;
+  ContentPath?: string;
+  WebAclArn?: string;
+  RequestTimestamp?: Date;
+}
+export const SettlementRecord = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    PayerAddress: S.optional(S.String),
+    WalletAddress: S.optional(S.String),
+    Status: SettlementStatus,
+    Amount: S.String,
+    Currency: S.optional(Currency),
+    Network: S.optional(S.String),
+    TransactionId: S.optional(S.String),
+    RequestId: S.optional(S.String),
+    SourceName: S.optional(S.String),
+    Organization: S.optional(S.String),
+    SourceCategory: S.optional(S.String),
+    Intent: S.optional(S.String),
+    Verified: S.optional(S.Boolean),
+    ContentPath: S.optional(S.String),
+    WebAclArn: S.optional(S.String),
+    RequestTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }),
+).annotate({
+  identifier: "SettlementRecord",
+}) as any as S.Schema<SettlementRecord>;
+export type SettlementRecordList = SettlementRecord[];
+export const SettlementRecordList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(SettlementRecord);
+export interface ListSettlementRecordsResponse {
+  Settlements?: SettlementRecord[];
+  NextMarker?: string;
+}
+export const ListSettlementRecordsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Settlements: S.optional(SettlementRecordList),
+      NextMarker: S.optional(S.String),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "ListSettlementRecordsResponse",
+  }) as any as S.Schema<ListSettlementRecordsResponse>;
 export interface ListTagsForResourceRequest {
   NextMarker?: string;
   Limit?: number;
@@ -4495,6 +4968,7 @@ export interface UpdateRuleGroupRequest {
   VisibilityConfig: VisibilityConfig;
   LockToken: string;
   CustomResponseBodies?: { [key: string]: CustomResponseBody | undefined };
+  MonetizationConfig?: MonetizationConfig;
 }
 export const UpdateRuleGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -4507,6 +4981,7 @@ export const UpdateRuleGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       VisibilityConfig: VisibilityConfig,
       LockToken: S.String,
       CustomResponseBodies: S.optional(CustomResponseBodies),
+      MonetizationConfig: S.optional(MonetizationConfig),
     }).pipe(
       T.all(
         ns,
@@ -4546,6 +5021,7 @@ export interface UpdateWebACLRequest {
   AssociationConfig?: AssociationConfig;
   OnSourceDDoSProtectionConfig?: OnSourceDDoSProtectionConfig;
   ApplicationConfig?: ApplicationConfig;
+  MonetizationConfig?: MonetizationConfig;
 }
 export const UpdateWebACLRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4565,6 +5041,7 @@ export const UpdateWebACLRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     AssociationConfig: S.optional(AssociationConfig),
     OnSourceDDoSProtectionConfig: S.optional(OnSourceDDoSProtectionConfig),
     ApplicationConfig: S.optional(ApplicationConfig),
+    MonetizationConfig: S.optional(MonetizationConfig),
   }).pipe(
     T.all(
       ns,
@@ -5573,6 +6050,78 @@ export const getRegexPatternSet: API.OperationMethod<
     WAFNonexistentItemException,
   ],
 }));
+export type GetRevenueStatisticsError =
+  | WAFInternalErrorException
+  | WAFInvalidOperationException
+  | WAFInvalidParameterException
+  | WAFNonexistentItemException
+  | CommonErrors;
+/**
+ * Retrieves ranked monetization statistics. Use the `StatisticType` parameter to specify the ranking: `TOP_SOURCES_BY_REVENUE` for top sources by revenue, or `TOP_PATHS_BY_REVENUE` for top content paths by revenue. This operation is only available for `CLOUDFRONT` scope. The maximum supported time window is 90 days. When no `CurrencyMode` filter is provided, results default to `REAL`. To retrieve test data, include a `CurrencyMode` filter with the value `TEST`.
+ */
+export const getRevenueStatistics: API.OperationMethod<
+  GetRevenueStatisticsRequest,
+  GetRevenueStatisticsResponse,
+  GetRevenueStatisticsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetRevenueStatisticsRequest,
+  output: GetRevenueStatisticsResponse,
+  errors: [
+    WAFInternalErrorException,
+    WAFInvalidOperationException,
+    WAFInvalidParameterException,
+    WAFNonexistentItemException,
+  ],
+}));
+export type GetRevenueStatisticsSummaryError =
+  | WAFInternalErrorException
+  | WAFInvalidOperationException
+  | WAFInvalidParameterException
+  | WAFNonexistentItemException
+  | CommonErrors;
+/**
+ * Retrieves a summary of monetization revenue for the specified time window. Returns total revenue, revenue by verification tier, total settlements, and total HTTP 402 responses served. This operation is only available for `CLOUDFRONT` scope. The maximum supported time window is 90 days. When no `CurrencyMode` filter is provided, results default to `REAL`. To retrieve test data, include a `CurrencyMode` filter with the value `TEST`.
+ */
+export const getRevenueStatisticsSummary: API.OperationMethod<
+  GetRevenueStatisticsSummaryRequest,
+  GetRevenueStatisticsSummaryResponse,
+  GetRevenueStatisticsSummaryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetRevenueStatisticsSummaryRequest,
+  output: GetRevenueStatisticsSummaryResponse,
+  errors: [
+    WAFInternalErrorException,
+    WAFInvalidOperationException,
+    WAFInvalidParameterException,
+    WAFNonexistentItemException,
+  ],
+}));
+export type GetRevenueStatisticsTimeSeriesError =
+  | WAFInternalErrorException
+  | WAFInvalidOperationException
+  | WAFInvalidParameterException
+  | WAFNonexistentItemException
+  | CommonErrors;
+/**
+ * Retrieves time series data for monetization revenue. Returns data points aggregated at the specified interval for the given time window. This operation is only available for `CLOUDFRONT` scope. The maximum supported time window is 90 days. When no `CurrencyMode` filter is provided, results default to `REAL`. To retrieve test data, include a `CurrencyMode` filter with the value `TEST`.
+ */
+export const getRevenueStatisticsTimeSeries: API.OperationMethod<
+  GetRevenueStatisticsTimeSeriesRequest,
+  GetRevenueStatisticsTimeSeriesResponse,
+  GetRevenueStatisticsTimeSeriesError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetRevenueStatisticsTimeSeriesRequest,
+  output: GetRevenueStatisticsTimeSeriesResponse,
+  errors: [
+    WAFInternalErrorException,
+    WAFInvalidOperationException,
+    WAFInvalidParameterException,
+    WAFNonexistentItemException,
+  ],
+}));
 export type GetRuleGroupError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -5969,6 +6518,30 @@ export const listRuleGroups: API.OperationMethod<
     WAFInternalErrorException,
     WAFInvalidOperationException,
     WAFInvalidParameterException,
+  ],
+}));
+export type ListSettlementRecordsError =
+  | WAFInternalErrorException
+  | WAFInvalidOperationException
+  | WAFInvalidParameterException
+  | WAFNonexistentItemException
+  | CommonErrors;
+/**
+ * Retrieves individual settlement transaction records for monetization. Each record represents a single payment transaction between a client and your protected resource. This operation is only available for `CLOUDFRONT` scope. The maximum supported time window is 90 days. When no `CurrencyMode` filter is provided, results default to `REAL`. To retrieve test data, include a `CurrencyMode` filter with the value `TEST`.
+ */
+export const listSettlementRecords: API.OperationMethod<
+  ListSettlementRecordsRequest,
+  ListSettlementRecordsResponse,
+  ListSettlementRecordsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListSettlementRecordsRequest,
+  output: ListSettlementRecordsResponse,
+  errors: [
+    WAFInternalErrorException,
+    WAFInvalidOperationException,
+    WAFInvalidParameterException,
+    WAFNonexistentItemException,
   ],
 }));
 export type ListTagsForResourceError =

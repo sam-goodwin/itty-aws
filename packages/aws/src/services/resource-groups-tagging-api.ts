@@ -290,12 +290,14 @@ export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export interface ComplianceDetails {
   NoncompliantKeys?: string[];
   KeysWithNoncompliantValues?: string[];
+  MissingTagKeys?: string[];
   ComplianceStatus?: boolean;
 }
 export const ComplianceDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     NoncompliantKeys: S.optional(TagKeyList),
     KeysWithNoncompliantValues: S.optional(TagKeyList),
+    MissingTagKeys: S.optional(TagKeyList),
     ComplianceStatus: S.optional(S.Boolean),
   }),
 ).annotate({

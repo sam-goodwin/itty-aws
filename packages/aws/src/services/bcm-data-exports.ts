@@ -161,7 +161,7 @@ export const DataQuery = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     TableConfigurations: S.optional(TableConfigurations),
   }),
 ).annotate({ identifier: "DataQuery" }) as any as S.Schema<DataQuery>;
-export type S3OutputType = "CUSTOM" | (string & {});
+export type S3OutputType = "CUSTOM" | "ATHENA" | "REDSHIFT" | (string & {});
 export const S3OutputType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type FormatOption = "TEXT_OR_CSV" | "PARQUET" | (string & {});
 export const FormatOption = /*@__PURE__*/ /*#__PURE__*/ S.String;

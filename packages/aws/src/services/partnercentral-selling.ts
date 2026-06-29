@@ -74,6 +74,18 @@ export type JobTitle = string | redacted.Redacted<string>;
 export type Email = string | redacted.Redacted<string>;
 export type Name = string | redacted.Redacted<string>;
 export type PhoneNumber = string | redacted.Redacted<string>;
+export type ProspectingTaskIdentifier = string;
+export type TaskArn = string;
+export type TaskName = string;
+export type ProspectingAccountName = string;
+export type ProspectingGeo = string;
+export type ProspectingRegion = string;
+export type ProspectingSubRegion = string;
+export type ProspectingSubIndustry = string;
+export type ProspectingSegment = string;
+export type ProspectingCompanySize = string;
+export type ProspectingPublicProfileSummary = string;
+export type EngagementScoreLevel = string;
 export type EngagementIdentifier = string;
 export type EngagementArn = string;
 export type EngagementContextIdentifier = string;
@@ -90,7 +102,6 @@ export type MemberPageSize = number;
 export type MemberCompanyName = string | redacted.Redacted<string>;
 export type EngagementInvitationArnOrIdentifier = string;
 export type TaskIdentifier = string;
-export type TaskArn = string;
 export type OpportunityIdentifier = string;
 export type ResourceSnapshotJobIdentifier = string;
 export type EngagementInvitationIdentifier = string;
@@ -113,6 +124,7 @@ export type SolutionIdentifier = string;
 export type AwsProductIdentifier = string;
 export type MonetaryAmount = string | redacted.Redacted<string>;
 export type ContextIdentifier = string;
+export type ProspectingTaskArn = string;
 export type ResourceIdentifier = string;
 export type ResourceTemplateName = string;
 export type ResourceArn = string;
@@ -122,7 +134,11 @@ export type ResourceSnapshotJobArn = string;
 export type SolutionArn = string;
 
 //# Schemas
-export type EngagementContextType = "CustomerProject" | "Lead" | (string & {});
+export type EngagementContextType =
+  | "CustomerProject"
+  | "Lead"
+  | "ProspectingResult"
+  | (string & {});
 export const EngagementContextType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type Industry =
   | "Aerospace"
@@ -451,6 +467,12 @@ export const CustomerProjectsContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CustomerProjectsContext",
 }) as any as S.Schema<CustomerProjectsContext>;
+export interface LeadInsights {
+  LeadReadinessScore?: string;
+}
+export const LeadInsights = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ LeadReadinessScore: S.optional(S.String) }),
+).annotate({ identifier: "LeadInsights" }) as any as S.Schema<LeadInsights>;
 export interface AddressSummary {
   City?: string | redacted.Redacted<string>;
   PostalCode?: string | redacted.Redacted<string>;
@@ -537,23 +559,118 @@ export type LeadInteractionList = LeadInteraction[];
 export const LeadInteractionList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(LeadInteraction);
 export interface LeadContext {
+  Insights?: LeadInsights;
   QualificationStatus?: string;
   Customer: LeadCustomer;
   Interactions: LeadInteraction[];
 }
 export const LeadContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
+    Insights: S.optional(LeadInsights),
     QualificationStatus: S.optional(S.String),
     Customer: LeadCustomer,
     Interactions: LeadInteractionList,
   }),
 ).annotate({ identifier: "LeadContext" }) as any as S.Schema<LeadContext>;
+export type EligibleProgramsList = string[];
+export const EligibleProgramsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export interface ProspectingResultCustomer {
+  AccountName?: string;
+  Geo?: string;
+  Region?: string;
+  SubRegion?: string;
+  Country?: CountryCode;
+  Industry?: Industry;
+  SubIndustry?: string;
+  Segment?: string;
+  CompanySize?: string;
+  EligiblePrograms?: string[];
+  PublicProfileSummary?: string;
+}
+export const ProspectingResultCustomer = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      AccountName: S.optional(S.String),
+      Geo: S.optional(S.String),
+      Region: S.optional(S.String),
+      SubRegion: S.optional(S.String),
+      Country: S.optional(CountryCode),
+      Industry: S.optional(Industry),
+      SubIndustry: S.optional(S.String),
+      Segment: S.optional(S.String),
+      CompanySize: S.optional(S.String),
+      EligiblePrograms: S.optional(EligibleProgramsList),
+      PublicProfileSummary: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ProspectingResultCustomer",
+}) as any as S.Schema<ProspectingResultCustomer>;
+export interface ProspectingInsights {
+  MarketplaceEngagementScore?: string;
+  SolutionScore?: string;
+  SolutionCategory?: string;
+  SolutionSubCategory?: string;
+}
+export const ProspectingInsights = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MarketplaceEngagementScore: S.optional(S.String),
+    SolutionScore: S.optional(S.String),
+    SolutionCategory: S.optional(S.String),
+    SolutionSubCategory: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ProspectingInsights",
+}) as any as S.Schema<ProspectingInsights>;
+export interface ProspectingResultAws {
+  StartTime?: Date;
+  EndTime?: Date;
+  TaskId?: string;
+  TaskArn?: string;
+  TaskName?: string;
+  Customer?: ProspectingResultCustomer;
+  Insights?: ProspectingInsights;
+}
+export const ProspectingResultAws = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StartTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+    TaskId: S.optional(S.String),
+    TaskArn: S.optional(S.String),
+    TaskName: S.optional(S.String),
+    Customer: S.optional(ProspectingResultCustomer),
+    Insights: S.optional(ProspectingInsights),
+  }),
+).annotate({
+  identifier: "ProspectingResultAws",
+}) as any as S.Schema<ProspectingResultAws>;
+export interface ProspectingResult {
+  Aws?: ProspectingResultAws;
+}
+export const ProspectingResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Aws: S.optional(ProspectingResultAws) }),
+).annotate({
+  identifier: "ProspectingResult",
+}) as any as S.Schema<ProspectingResult>;
 export type EngagementContextPayload =
-  | { CustomerProject: CustomerProjectsContext; Lead?: never }
-  | { CustomerProject?: never; Lead: LeadContext };
+  | {
+      CustomerProject: CustomerProjectsContext;
+      Lead?: never;
+      ProspectingResult?: never;
+    }
+  | { CustomerProject?: never; Lead: LeadContext; ProspectingResult?: never }
+  | {
+      CustomerProject?: never;
+      Lead?: never;
+      ProspectingResult: ProspectingResult;
+    };
 export const EngagementContextPayload = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ CustomerProject: CustomerProjectsContext }),
   S.Struct({ Lead: LeadContext }),
+  S.Struct({ ProspectingResult: ProspectingResult }),
 ]);
 export interface CreateEngagementContextRequest {
   Catalog: string;
@@ -801,23 +918,39 @@ export interface UpdateLeadContext {
   QualificationStatus?: string;
   Customer: LeadCustomer;
   Interaction?: LeadInteraction;
+  Insights?: LeadInsights;
 }
 export const UpdateLeadContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     QualificationStatus: S.optional(S.String),
     Customer: LeadCustomer,
     Interaction: S.optional(LeadInteraction),
+    Insights: S.optional(LeadInsights),
   }),
 ).annotate({
   identifier: "UpdateLeadContext",
 }) as any as S.Schema<UpdateLeadContext>;
 export type UpdateEngagementContextPayload =
-  | { Lead: UpdateLeadContext; CustomerProject?: never }
-  | { Lead?: never; CustomerProject: CustomerProjectsContext };
+  | {
+      Lead: UpdateLeadContext;
+      CustomerProject?: never;
+      ProspectingResult?: never;
+    }
+  | {
+      Lead?: never;
+      CustomerProject: CustomerProjectsContext;
+      ProspectingResult?: never;
+    }
+  | {
+      Lead?: never;
+      CustomerProject?: never;
+      ProspectingResult: ProspectingResult;
+    };
 export const UpdateEngagementContextPayload =
   /*@__PURE__*/ /*#__PURE__*/ S.Union([
     S.Struct({ Lead: UpdateLeadContext }),
     S.Struct({ CustomerProject: CustomerProjectsContext }),
+    S.Struct({ ProspectingResult: ProspectingResult }),
   ]);
 export interface UpdateEngagementContextRequest {
   Catalog: string;
@@ -2244,6 +2377,18 @@ export const DeliveryModel = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type DeliveryModels = DeliveryModel[];
 export const DeliveryModels =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(DeliveryModel);
+export type ExpectedContractDurationTerm = "Months" | (string & {});
+export const ExpectedContractDurationTerm =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ExpectedContractDuration {
+  Term: ExpectedContractDurationTerm;
+  Value: string;
+}
+export const ExpectedContractDuration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ Term: ExpectedContractDurationTerm, Value: S.String }),
+).annotate({
+  identifier: "ExpectedContractDuration",
+}) as any as S.Schema<ExpectedContractDuration>;
 export type ApnPrograms = string[];
 export const ApnPrograms = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export type SalesActivity =
@@ -2279,6 +2424,7 @@ export const AwsPartition = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface Project {
   DeliveryModels?: DeliveryModel[];
   ExpectedCustomerSpend?: ExpectedCustomerSpend[];
+  ExpectedContractDuration?: ExpectedContractDuration;
   Title?: string | redacted.Redacted<string>;
   ApnPrograms?: string[];
   CustomerBusinessProblem?: string | redacted.Redacted<string>;
@@ -2295,6 +2441,7 @@ export const Project = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     DeliveryModels: S.optional(DeliveryModels),
     ExpectedCustomerSpend: S.optional(ExpectedCustomerSpendList),
+    ExpectedContractDuration: S.optional(ExpectedContractDuration),
     Title: S.optional(SensitiveString),
     ApnPrograms: S.optional(ApnPrograms),
     CustomerBusinessProblem: S.optional(SensitiveString),
@@ -2836,11 +2983,13 @@ export const CustomerSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ProjectSummary {
   DeliveryModels?: DeliveryModel[];
   ExpectedCustomerSpend?: ExpectedCustomerSpend[];
+  ExpectedContractDuration?: ExpectedContractDuration;
 }
 export const ProjectSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     DeliveryModels: S.optional(DeliveryModels),
     ExpectedCustomerSpend: S.optional(ExpectedCustomerSpendList),
+    ExpectedContractDuration: S.optional(ExpectedContractDuration),
   }),
 ).annotate({ identifier: "ProjectSummary" }) as any as S.Schema<ProjectSummary>;
 export interface OpportunitySummary {
@@ -3254,10 +3403,41 @@ export const AwsProductsSpendInsightsBySource =
   ).annotate({
     identifier: "AwsProductsSpendInsightsBySource",
   }) as any as S.Schema<AwsProductsSpendInsightsBySource>;
+export interface OpportunityQuality {
+  Score?: number;
+  Trend?: string;
+}
+export const OpportunityQuality = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Score: S.optional(S.Number), Trend: S.optional(S.String) }),
+).annotate({
+  identifier: "OpportunityQuality",
+}) as any as S.Schema<OpportunityQuality>;
+export type RecommendationAttributeMap = { [key: string]: string | undefined };
+export const RecommendationAttributeMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface Recommendation {
+  Type: string;
+  Details: string;
+  Attributes?: { [key: string]: string | undefined };
+}
+export const Recommendation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Type: S.String,
+    Details: S.String,
+    Attributes: S.optional(RecommendationAttributeMap),
+  }),
+).annotate({ identifier: "Recommendation" }) as any as S.Schema<Recommendation>;
+export type RecommendationList = Recommendation[];
+export const RecommendationList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(Recommendation);
 export interface AwsOpportunityInsights {
   NextBestActions?: string;
   EngagementScore?: EngagementScore;
   AwsProductsSpendInsightsBySource?: AwsProductsSpendInsightsBySource;
+  OpportunityQuality?: OpportunityQuality;
+  Recommendations?: Recommendation[];
 }
 export const AwsOpportunityInsights = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -3267,6 +3447,8 @@ export const AwsOpportunityInsights = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       AwsProductsSpendInsightsBySource: S.optional(
         AwsProductsSpendInsightsBySource,
       ),
+      OpportunityQuality: S.optional(OpportunityQuality),
+      Recommendations: S.optional(RecommendationList),
     }),
 ).annotate({
   identifier: "AwsOpportunityInsights",
@@ -3324,6 +3506,7 @@ export interface GetAwsOpportunitySummaryResponse {
   RelatedEntityIds?: AwsOpportunityRelatedEntities;
   Customer?: AwsOpportunityCustomer;
   Project?: AwsOpportunityProject;
+  CosellMotion?: string;
   Catalog: string;
 }
 export const GetAwsOpportunitySummaryResponse =
@@ -3340,6 +3523,7 @@ export const GetAwsOpportunitySummaryResponse =
       RelatedEntityIds: S.optional(AwsOpportunityRelatedEntities),
       Customer: S.optional(AwsOpportunityCustomer),
       Project: S.optional(AwsOpportunityProject),
+      CosellMotion: S.optional(S.String),
       Catalog: S.String,
     }),
   ).annotate({
@@ -3522,6 +3706,238 @@ export const ListOpportunityFromEngagementTasksResponse =
   ).annotate({
     identifier: "ListOpportunityFromEngagementTasksResponse",
   }) as any as S.Schema<ListOpportunityFromEngagementTasksResponse>;
+export type EngagementIdentifierList = string[];
+export const EngagementIdentifierList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export interface StartProspectingFromEngagementTaskRequest {
+  Catalog: string;
+  Identifiers: string[];
+  TaskName: string;
+  ClientToken: string;
+}
+export const StartProspectingFromEngagementTaskRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Catalog: S.String,
+      Identifiers: EngagementIdentifierList,
+      TaskName: S.String,
+      ClientToken: S.String.pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/StartProspectingFromEngagementTask" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "StartProspectingFromEngagementTaskRequest",
+  }) as any as S.Schema<StartProspectingFromEngagementTaskRequest>;
+export type ProspectingTaskStatus =
+  | "PENDING"
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | (string & {});
+export const ProspectingTaskStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface StartProspectingFromEngagementTaskResponse {
+  Identifiers: string[];
+  TaskName: string;
+  Message?: string;
+  ReasonCode?: string;
+  StartTime: Date;
+  TaskId?: string;
+  TaskArn?: string;
+  TaskStatus: ProspectingTaskStatus;
+}
+export const StartProspectingFromEngagementTaskResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Identifiers: EngagementIdentifierList,
+      TaskName: S.String,
+      Message: S.optional(S.String),
+      ReasonCode: S.optional(S.String),
+      StartTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      TaskId: S.optional(S.String),
+      TaskArn: S.optional(S.String),
+      TaskStatus: ProspectingTaskStatus,
+    }),
+  ).annotate({
+    identifier: "StartProspectingFromEngagementTaskResponse",
+  }) as any as S.Schema<StartProspectingFromEngagementTaskResponse>;
+export interface GetProspectingFromEngagementTaskRequest {
+  Catalog: string;
+  TaskIdentifier: string;
+}
+export const GetProspectingFromEngagementTaskRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ Catalog: S.String, TaskIdentifier: S.String }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/GetProspectingFromEngagementTask" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetProspectingFromEngagementTaskRequest",
+  }) as any as S.Schema<GetProspectingFromEngagementTaskRequest>;
+export interface EngagementProspectingResult {
+  EngagementIdentifier: string;
+  EngagementContextId?: string;
+  Status: ProspectingTaskStatus;
+  ReasonCode?: string;
+  Message?: string;
+}
+export const EngagementProspectingResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      EngagementIdentifier: S.String,
+      EngagementContextId: S.optional(S.String),
+      Status: ProspectingTaskStatus,
+      ReasonCode: S.optional(S.String),
+      Message: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "EngagementProspectingResult",
+  }) as any as S.Schema<EngagementProspectingResult>;
+export type EngagementProspectingResultList = EngagementProspectingResult[];
+export const EngagementProspectingResultList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(EngagementProspectingResult);
+export interface GetProspectingFromEngagementTaskResponse {
+  TaskId: string;
+  TaskArn: string;
+  TaskName: string;
+  StartTime: Date;
+  EndTime?: Date;
+  Engagements: EngagementProspectingResult[];
+}
+export const GetProspectingFromEngagementTaskResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TaskId: S.String,
+      TaskArn: S.String,
+      TaskName: S.String,
+      StartTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      EndTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      Engagements: EngagementProspectingResultList,
+    }),
+  ).annotate({
+    identifier: "GetProspectingFromEngagementTaskResponse",
+  }) as any as S.Schema<GetProspectingFromEngagementTaskResponse>;
+export type TaskIdentifierList = string[];
+export const TaskIdentifierList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type TaskNameList = string[];
+export const TaskNameList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type ProspectingFromEngagementTaskSortName =
+  | "StartTime"
+  | "TaskName"
+  | "FailedEngagementCount"
+  | (string & {});
+export const ProspectingFromEngagementTaskSortName =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ProspectingFromEngagementTaskSort {
+  SortOrder: SortOrder;
+  SortBy: ProspectingFromEngagementTaskSortName;
+}
+export const ProspectingFromEngagementTaskSort =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      SortOrder: SortOrder,
+      SortBy: ProspectingFromEngagementTaskSortName,
+    }),
+  ).annotate({
+    identifier: "ProspectingFromEngagementTaskSort",
+  }) as any as S.Schema<ProspectingFromEngagementTaskSort>;
+export interface ListProspectingFromEngagementTasksRequest {
+  Catalog: string;
+  MaxResults?: number;
+  NextToken?: string;
+  TaskIdentifier?: string[];
+  TaskName?: string[];
+  StartAfter?: Date;
+  StartBefore?: Date;
+  Sort?: ProspectingFromEngagementTaskSort;
+}
+export const ListProspectingFromEngagementTasksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Catalog: S.String,
+      MaxResults: S.optional(S.Number),
+      NextToken: S.optional(S.String),
+      TaskIdentifier: S.optional(TaskIdentifierList),
+      TaskName: S.optional(TaskNameList),
+      StartAfter: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      StartBefore: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      Sort: S.optional(ProspectingFromEngagementTaskSort),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/ListProspectingFromEngagementTasks" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListProspectingFromEngagementTasksRequest",
+  }) as any as S.Schema<ListProspectingFromEngagementTasksRequest>;
+export interface ProspectingTaskSummary {
+  TaskId: string;
+  TaskArn: string;
+  TaskName: string;
+  StartTime: Date;
+  EndTime?: Date;
+  TotalEngagementCount: number;
+  CompletedEngagementCount: number;
+  FailedEngagementCount: number;
+}
+export const ProspectingTaskSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      TaskId: S.String,
+      TaskArn: S.String,
+      TaskName: S.String,
+      StartTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      EndTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      TotalEngagementCount: S.Number,
+      CompletedEngagementCount: S.Number,
+      FailedEngagementCount: S.Number,
+    }),
+).annotate({
+  identifier: "ProspectingTaskSummary",
+}) as any as S.Schema<ProspectingTaskSummary>;
+export type ProspectingTaskSummaryList = ProspectingTaskSummary[];
+export const ProspectingTaskSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  ProspectingTaskSummary,
+);
+export interface ListProspectingFromEngagementTasksResponse {
+  NextToken?: string;
+  TaskSummaries: ProspectingTaskSummary[];
+}
+export const ListProspectingFromEngagementTasksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      NextToken: S.optional(S.String),
+      TaskSummaries: ProspectingTaskSummaryList,
+    }),
+  ).annotate({
+    identifier: "ListProspectingFromEngagementTasksResponse",
+  }) as any as S.Schema<ListProspectingFromEngagementTasksResponse>;
 export type ResourceType = "Opportunity" | (string & {});
 export const ResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CreateResourceSnapshotRequest {
@@ -3613,6 +4029,7 @@ export const LifeCycleForView = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ProjectView {
   DeliveryModels?: DeliveryModel[];
   ExpectedCustomerSpend?: ExpectedCustomerSpend[];
+  ExpectedContractDuration?: ExpectedContractDuration;
   CustomerUseCase?: string;
   SalesActivities?: SalesActivity[];
   OtherSolutionDescription?: string | redacted.Redacted<string>;
@@ -3621,6 +4038,7 @@ export const ProjectView = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     DeliveryModels: S.optional(DeliveryModels),
     ExpectedCustomerSpend: S.optional(ExpectedCustomerSpendList),
+    ExpectedContractDuration: S.optional(ExpectedContractDuration),
     CustomerUseCase: S.optional(S.String),
     SalesActivities: S.optional(SalesActivities),
     OtherSolutionDescription: S.optional(SensitiveString),
@@ -3661,6 +4079,7 @@ export interface AwsOpportunitySummaryFullView {
   RelatedEntityIds?: AwsOpportunityRelatedEntities;
   Customer?: AwsOpportunityCustomer;
   Project?: AwsOpportunityProject;
+  CosellMotion?: string;
 }
 export const AwsOpportunitySummaryFullView =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -3676,6 +4095,7 @@ export const AwsOpportunitySummaryFullView =
       RelatedEntityIds: S.optional(AwsOpportunityRelatedEntities),
       Customer: S.optional(AwsOpportunityCustomer),
       Project: S.optional(AwsOpportunityProject),
+      CosellMotion: S.optional(S.String),
     }),
   ).annotate({
     identifier: "AwsOpportunitySummaryFullView",
@@ -5273,6 +5693,105 @@ export const listOpportunityFromEngagementTasks: API.OperationMethod<
     AccessDeniedException,
     InternalServerException,
     ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "TaskSummaries",
+    pageSize: "MaxResults",
+  } as const,
+}));
+export type StartProspectingFromEngagementTaskError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Starts a task to convert one or more engagement contexts into new prospecting leads. The task runs asynchronously. To poll for status, use `GetProspectingFromEngagementTask`, or use `ListProspectingFromEngagementTasks` to monitor multiple tasks.
+ */
+export const startProspectingFromEngagementTask: API.OperationMethod<
+  StartProspectingFromEngagementTaskRequest,
+  StartProspectingFromEngagementTaskResponse,
+  StartProspectingFromEngagementTaskError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartProspectingFromEngagementTaskRequest,
+  output: StartProspectingFromEngagementTaskResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type GetProspectingFromEngagementTaskError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the details and current status of a prospecting task previously started with `StartProspectingFromEngagementTask` to enable polling for completion and access to per-engagement processing results.
+ */
+export const getProspectingFromEngagementTask: API.OperationMethod<
+  GetProspectingFromEngagementTaskRequest,
+  GetProspectingFromEngagementTaskResponse,
+  GetProspectingFromEngagementTaskError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetProspectingFromEngagementTaskRequest,
+  output: GetProspectingFromEngagementTaskResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type ListProspectingFromEngagementTasksError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists all prospecting tasks initiated by the caller's account. Supports optional filters by task identifier, task name, or start time range. Results can be sorted using configurable options. The response is paginated. Use the `NextToken` value from each response to retrieve subsequent pages.
+ */
+export const listProspectingFromEngagementTasks: API.OperationMethod<
+  ListProspectingFromEngagementTasksRequest,
+  ListProspectingFromEngagementTasksResponse,
+  ListProspectingFromEngagementTasksError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListProspectingFromEngagementTasksRequest,
+  ) => stream.Stream<
+    ListProspectingFromEngagementTasksResponse,
+    ListProspectingFromEngagementTasksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListProspectingFromEngagementTasksRequest,
+  ) => stream.Stream<
+    ProspectingTaskSummary,
+    ListProspectingFromEngagementTasksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListProspectingFromEngagementTasksRequest,
+  output: ListProspectingFromEngagementTasksResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
     ThrottlingException,
     ValidationException,
   ],

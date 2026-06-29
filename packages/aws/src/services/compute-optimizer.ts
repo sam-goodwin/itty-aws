@@ -155,6 +155,8 @@ export type NumberOfMemberAccountsOptedIn = number;
 export type IdleMaxResults = number;
 export type ResourceId = string;
 export type IdleFindingDescription = string;
+export type IdleDimensionKey = string;
+export type IdleDimensionValue = string;
 export type FunctionArn = string;
 export type FunctionVersion = string;
 export type NumberOfInvocations = number;
@@ -535,6 +537,8 @@ export type ExportableVolumeField =
   | "UtilizationMetricsVolumeWriteOpsPerSecondMaximum"
   | "UtilizationMetricsVolumeReadBytesPerSecondMaximum"
   | "UtilizationMetricsVolumeWriteBytesPerSecondMaximum"
+  | "UtilizationMetricsVolumeIOPSExceededMaximum"
+  | "UtilizationMetricsVolumeThroughputExceededMaximum"
   | "LookbackPeriodInDays"
   | "CurrentConfigurationVolumeType"
   | "CurrentConfigurationVolumeBaselineIOPS"
@@ -563,6 +567,7 @@ export type ExportableVolumeField =
   | "RecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"
   | "RecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"
   | "RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"
+  | "EffectiveRecommendationPreferencesLookBackPeriod"
   | (string & {});
 export const ExportableVolumeField = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type ExportableVolumeFields = ExportableVolumeField[];
@@ -772,6 +777,7 @@ export type ExportableECSServiceField =
   | "RecommendationOptionsSavingsOpportunityAfterDiscountsPercentage"
   | "RecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"
   | "RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"
+  | "EffectiveRecommendationPreferencesLookBackPeriod"
   | (string & {});
 export const ExportableECSServiceField = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type ExportableECSServiceFields = ExportableECSServiceField[];
@@ -858,6 +864,22 @@ export type ExportableIdleField =
   | "UtilizationMetricsActiveConnectionCountMaximum"
   | "UtilizationMetricsPacketsInFromSourceMaximum"
   | "UtilizationMetricsPacketsInFromDestinationMaximum"
+  | "UtilizationMetricsConsumedReadCapacityUnitsSum"
+  | "UtilizationMetricsConsumedWriteCapacityUnitsSum"
+  | "UtilizationMetricsNewConnectionsSum"
+  | "UtilizationMetricsEngineCPUUtilizationMaximum"
+  | "UtilizationMetricsCacheHitsSum"
+  | "UtilizationMetricsCacheMissesSum"
+  | "UtilizationMetricsKeyspaceHitsSum"
+  | "UtilizationMetricsKeyspaceMissesSum"
+  | "UtilizationMetricsIsIdleMinimum"
+  | "UtilizationMetricsUserConnectedSum"
+  | "UtilizationMetricsInvocationsSum"
+  | "UtilizationMetricsGetTypeCmdsSum"
+  | "UtilizationMetricsSetTypeCmdsSum"
+  | "UtilizationMetricsElastiCacheProcessingUnitsSum"
+  | "UtilizationMetricsCurrConnectionsSum"
+  | "UtilizationMetricsDatabaseConnectionsSum"
   | "Finding"
   | "FindingDescription"
   | "Tags"
@@ -1753,6 +1775,8 @@ export type EBSMetricName =
   | "VolumeWriteOpsPerSecond"
   | "VolumeReadBytesPerSecond"
   | "VolumeWriteBytesPerSecond"
+  | "VolumeIOPSExceeded"
+  | "VolumeThroughputExceeded"
   | (string & {});
 export const EBSMetricName = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface EBSUtilizationMetric {
@@ -1837,10 +1861,14 @@ export const EBSSavingsEstimationMode = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<EBSSavingsEstimationMode>;
 export interface EBSEffectiveRecommendationPreferences {
   savingsEstimationMode?: EBSSavingsEstimationMode;
+  lookBackPeriod?: LookBackPeriodPreference;
 }
 export const EBSEffectiveRecommendationPreferences =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ savingsEstimationMode: S.optional(EBSSavingsEstimationMode) }),
+    S.Struct({
+      savingsEstimationMode: S.optional(EBSSavingsEstimationMode),
+      lookBackPeriod: S.optional(LookBackPeriodPreference),
+    }),
   ).annotate({
     identifier: "EBSEffectiveRecommendationPreferences",
   }) as any as S.Schema<EBSEffectiveRecommendationPreferences>;
@@ -2037,6 +2065,12 @@ export type RecommendationSourceType =
   | "RdsDBInstanceStorage"
   | "AuroraDBClusterStorage"
   | "NatGateway"
+  | "DynamoDBTable"
+  | "ElastiCacheCluster"
+  | "MemoryDBCluster"
+  | "DocumentDBCluster"
+  | "WorkSpaces"
+  | "SageMakerEndpoint"
   | (string & {});
 export const RecommendationSourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface RecommendationSource {
@@ -2546,10 +2580,14 @@ export const ECSSavingsEstimationMode = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<ECSSavingsEstimationMode>;
 export interface ECSEffectiveRecommendationPreferences {
   savingsEstimationMode?: ECSSavingsEstimationMode;
+  lookBackPeriod?: LookBackPeriodPreference;
 }
 export const ECSEffectiveRecommendationPreferences =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ savingsEstimationMode: S.optional(ECSSavingsEstimationMode) }),
+    S.Struct({
+      savingsEstimationMode: S.optional(ECSSavingsEstimationMode),
+      lookBackPeriod: S.optional(LookBackPeriodPreference),
+    }),
   ).annotate({
     identifier: "ECSEffectiveRecommendationPreferences",
   }) as any as S.Schema<ECSEffectiveRecommendationPreferences>;
@@ -2796,6 +2834,12 @@ export type IdleRecommendationResourceType =
   | "ECSService"
   | "RDSDBInstance"
   | "NatGateway"
+  | "DynamoDBTable"
+  | "ElastiCacheCluster"
+  | "MemoryDBCluster"
+  | "DocumentDBCluster"
+  | "WorkSpaces"
+  | "SageMakerEndpoint"
   | (string & {});
 export const IdleRecommendationResourceType =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -2850,18 +2894,53 @@ export type IdleMetricName =
   | "ActiveConnectionCount"
   | "PacketsInFromSource"
   | "PacketsInFromDestination"
+  | "ConsumedReadCapacityUnits"
+  | "ConsumedWriteCapacityUnits"
+  | "ConsumedChangeDataCaptureUnits"
+  | "NewConnections"
+  | "EngineCPUUtilization"
+  | "CacheHits"
+  | "CacheMisses"
+  | "KeyspaceHits"
+  | "KeyspaceMisses"
+  | "IsIdle"
+  | "UserConnected"
+  | "Invocations"
+  | "GetTypeCmds"
+  | "SetTypeCmds"
+  | "ElastiCacheProcessingUnits"
+  | "CurrConnections"
   | (string & {});
 export const IdleMetricName = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type IdleDimensionValues = string[];
+export const IdleDimensionValues = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export interface IdleDimension {
+  key?: string;
+  values?: string[];
+}
+export const IdleDimension = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(S.String),
+    values: S.optional(IdleDimensionValues),
+  }),
+).annotate({ identifier: "IdleDimension" }) as any as S.Schema<IdleDimension>;
+export type IdleDimensions = IdleDimension[];
+export const IdleDimensions =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(IdleDimension);
 export interface IdleUtilizationMetric {
   name?: IdleMetricName;
   statistic?: MetricStatistic;
   value?: number;
+  dimensions?: IdleDimension[];
 }
 export const IdleUtilizationMetric = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(IdleMetricName),
     statistic: S.optional(MetricStatistic),
     value: S.optional(S.Number),
+    dimensions: S.optional(IdleDimensions),
   }),
 ).annotate({
   identifier: "IdleUtilizationMetric",
@@ -4223,14 +4302,14 @@ export type ExportAutoScalingGroupRecommendationsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Exports optimization recommendations for Amazon EC2 Auto Scaling groups.
+ * Exports optimization recommendations for Auto Scaling groups.
  *
  * Recommendations are exported in a comma-separated values (.csv) file, and its metadata
  * in a JavaScript Object Notation (JSON) (.json) file, to an existing Amazon Simple Storage Service (Amazon S3) bucket that you specify. For more information, see Exporting
  * Recommendations in the Compute Optimizer User
  * Guide.
  *
- * You can have only one Amazon EC2 Auto Scaling group export job in progress per Amazon Web Services Region.
+ * You can have only one Auto Scaling group export job in progress per Amazon Web Services Region.
  */
 export const exportAutoScalingGroupRecommendations: API.OperationMethod<
   ExportAutoScalingGroupRecommendationsRequest,
@@ -4535,7 +4614,7 @@ export type GetAutoScalingGroupRecommendationsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Returns Amazon EC2 Auto Scaling group recommendations.
+ * Returns Auto Scaling group recommendations.
  *
  * Compute Optimizer generates recommendations for Amazon EC2 Auto Scaling groups that
  * meet a specific set of requirements. For more information, see the Supported
@@ -5082,7 +5161,7 @@ export type GetRecommendationPreferencesError =
  *
  * Use the `scope` parameter to specify which preferences to return. You can
  * specify to return preferences for an organization, a specific account ID, or a specific
- * EC2 instance or Amazon EC2 Auto Scaling group Amazon Resource Name (ARN).
+ * EC2 instance or Auto Scaling group Amazon Resource Name (ARN).
  *
  * For more information, see Activating
  * enhanced infrastructure metrics in the Compute Optimizer User
@@ -5146,7 +5225,7 @@ export type GetRecommendationSummariesError =
  * `Underprovisioned`, `Overprovisioned`, or
  * `Optimized`.
  *
- * - EC2Amazon EC2 Auto Scaling groups in an account that are `NotOptimized`, or
+ * - EC2Auto Scaling groups in an account that are `NotOptimized`, or
  * `Optimized`.
  *
  * - Amazon EBS volumes in an account that are `NotOptimized`,

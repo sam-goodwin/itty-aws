@@ -86,16 +86,21 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 //# Newtypes
+export type KnowledgeBaseId = string;
+export type FilterKey = string;
+export type FilterValue = unknown;
+export type BedrockModelArn = string;
+export type NextToken = string;
+export type MimeType = string;
+export type NonBlankString = string;
 export type FlowIdentifier = string;
 export type FlowAliasIdentifier = string;
 export type FlowExecutionIdentifier = string;
 export type Version = string;
 export type FlowExecutionRoleArn = string;
 export type KmsKeyArn = string;
-export type NonBlankString = string;
 export type NodeName = string;
 export type MaxResults = number;
-export type NextToken = string;
 export type NodeInputName = string;
 export type NodeOutputName = string;
 export type FlowNodeOutputName = string;
@@ -131,16 +136,15 @@ export type AgentVersion = string;
 export type FlowExecutionName = string;
 export type FlowExecutionId = string;
 export type KnowledgeBaseArn = string;
+export type KnowledgeBaseIdentifier = string;
+export type DataSourceId = string;
+export type DocumentId = string;
+export type PresignedUrl = string | redacted.Redacted<string>;
 export type S3Uri = string;
-export type MimeType = string;
 export type ByteContentBlob = Uint8Array | redacted.Redacted<Uint8Array>;
-export type KnowledgeBaseId = string;
-export type FilterKey = string;
-export type FilterValue = unknown;
 export type BedrockRerankingModelArn = string;
 export type AdditionalModelRequestFieldsKey = string;
 export type AdditionalModelRequestFieldsValue = unknown;
-export type BedrockModelArn = string;
 export type InputText = string | redacted.Redacted<string>;
 export type MemoryId = string;
 export type AWSResourceARN = string;
@@ -178,6 +182,1017 @@ export type InvocationIdentifier = string;
 export type TaggableResourcesArn = string;
 
 //# Schemas
+export interface AgenticRetrieveMessageContent {
+  text?: string;
+}
+export const AgenticRetrieveMessageContent =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ text: S.optional(S.String) }),
+  ).annotate({
+    identifier: "AgenticRetrieveMessageContent",
+  }) as any as S.Schema<AgenticRetrieveMessageContent>;
+export type ConversationRole = "user" | "assistant" | (string & {});
+export const ConversationRole = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AgenticRetrieveMessage {
+  content: AgenticRetrieveMessageContent;
+  role: ConversationRole;
+}
+export const AgenticRetrieveMessage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      content: AgenticRetrieveMessageContent,
+      role: ConversationRole,
+    }),
+).annotate({
+  identifier: "AgenticRetrieveMessage",
+}) as any as S.Schema<AgenticRetrieveMessage>;
+export type AgenticRetrieveMessages = AgenticRetrieveMessage[];
+export const AgenticRetrieveMessages = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  AgenticRetrieveMessage,
+);
+export interface FilterAttribute {
+  key: string;
+  value: any;
+}
+export const FilterAttribute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ key: S.String, value: S.Any }),
+).annotate({
+  identifier: "FilterAttribute",
+}) as any as S.Schema<FilterAttribute>;
+export type RetrievalFilterList = RetrievalFilter[];
+export const RetrievalFilterList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.suspend(() => RetrievalFilter).annotate({ identifier: "RetrievalFilter" }),
+) as any as S.Schema<RetrievalFilterList>;
+export type RetrievalFilter =
+  | {
+      equals: FilterAttribute;
+      notEquals?: never;
+      greaterThan?: never;
+      greaterThanOrEquals?: never;
+      lessThan?: never;
+      lessThanOrEquals?: never;
+      in?: never;
+      notIn?: never;
+      startsWith?: never;
+      listContains?: never;
+      stringContains?: never;
+      andAll?: never;
+      orAll?: never;
+    }
+  | {
+      equals?: never;
+      notEquals: FilterAttribute;
+      greaterThan?: never;
+      greaterThanOrEquals?: never;
+      lessThan?: never;
+      lessThanOrEquals?: never;
+      in?: never;
+      notIn?: never;
+      startsWith?: never;
+      listContains?: never;
+      stringContains?: never;
+      andAll?: never;
+      orAll?: never;
+    }
+  | {
+      equals?: never;
+      notEquals?: never;
+      greaterThan: FilterAttribute;
+      greaterThanOrEquals?: never;
+      lessThan?: never;
+      lessThanOrEquals?: never;
+      in?: never;
+      notIn?: never;
+      startsWith?: never;
+      listContains?: never;
+      stringContains?: never;
+      andAll?: never;
+      orAll?: never;
+    }
+  | {
+      equals?: never;
+      notEquals?: never;
+      greaterThan?: never;
+      greaterThanOrEquals: FilterAttribute;
+      lessThan?: never;
+      lessThanOrEquals?: never;
+      in?: never;
+      notIn?: never;
+      startsWith?: never;
+      listContains?: never;
+      stringContains?: never;
+      andAll?: never;
+      orAll?: never;
+    }
+  | {
+      equals?: never;
+      notEquals?: never;
+      greaterThan?: never;
+      greaterThanOrEquals?: never;
+      lessThan: FilterAttribute;
+      lessThanOrEquals?: never;
+      in?: never;
+      notIn?: never;
+      startsWith?: never;
+      listContains?: never;
+      stringContains?: never;
+      andAll?: never;
+      orAll?: never;
+    }
+  | {
+      equals?: never;
+      notEquals?: never;
+      greaterThan?: never;
+      greaterThanOrEquals?: never;
+      lessThan?: never;
+      lessThanOrEquals: FilterAttribute;
+      in?: never;
+      notIn?: never;
+      startsWith?: never;
+      listContains?: never;
+      stringContains?: never;
+      andAll?: never;
+      orAll?: never;
+    }
+  | {
+      equals?: never;
+      notEquals?: never;
+      greaterThan?: never;
+      greaterThanOrEquals?: never;
+      lessThan?: never;
+      lessThanOrEquals?: never;
+      in: FilterAttribute;
+      notIn?: never;
+      startsWith?: never;
+      listContains?: never;
+      stringContains?: never;
+      andAll?: never;
+      orAll?: never;
+    }
+  | {
+      equals?: never;
+      notEquals?: never;
+      greaterThan?: never;
+      greaterThanOrEquals?: never;
+      lessThan?: never;
+      lessThanOrEquals?: never;
+      in?: never;
+      notIn: FilterAttribute;
+      startsWith?: never;
+      listContains?: never;
+      stringContains?: never;
+      andAll?: never;
+      orAll?: never;
+    }
+  | {
+      equals?: never;
+      notEquals?: never;
+      greaterThan?: never;
+      greaterThanOrEquals?: never;
+      lessThan?: never;
+      lessThanOrEquals?: never;
+      in?: never;
+      notIn?: never;
+      startsWith: FilterAttribute;
+      listContains?: never;
+      stringContains?: never;
+      andAll?: never;
+      orAll?: never;
+    }
+  | {
+      equals?: never;
+      notEquals?: never;
+      greaterThan?: never;
+      greaterThanOrEquals?: never;
+      lessThan?: never;
+      lessThanOrEquals?: never;
+      in?: never;
+      notIn?: never;
+      startsWith?: never;
+      listContains: FilterAttribute;
+      stringContains?: never;
+      andAll?: never;
+      orAll?: never;
+    }
+  | {
+      equals?: never;
+      notEquals?: never;
+      greaterThan?: never;
+      greaterThanOrEquals?: never;
+      lessThan?: never;
+      lessThanOrEquals?: never;
+      in?: never;
+      notIn?: never;
+      startsWith?: never;
+      listContains?: never;
+      stringContains: FilterAttribute;
+      andAll?: never;
+      orAll?: never;
+    }
+  | {
+      equals?: never;
+      notEquals?: never;
+      greaterThan?: never;
+      greaterThanOrEquals?: never;
+      lessThan?: never;
+      lessThanOrEquals?: never;
+      in?: never;
+      notIn?: never;
+      startsWith?: never;
+      listContains?: never;
+      stringContains?: never;
+      andAll: RetrievalFilter[];
+      orAll?: never;
+    }
+  | {
+      equals?: never;
+      notEquals?: never;
+      greaterThan?: never;
+      greaterThanOrEquals?: never;
+      lessThan?: never;
+      lessThanOrEquals?: never;
+      in?: never;
+      notIn?: never;
+      startsWith?: never;
+      listContains?: never;
+      stringContains?: never;
+      andAll?: never;
+      orAll: RetrievalFilter[];
+    };
+export const RetrievalFilter = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ equals: FilterAttribute }),
+  S.Struct({ notEquals: FilterAttribute }),
+  S.Struct({ greaterThan: FilterAttribute }),
+  S.Struct({ greaterThanOrEquals: FilterAttribute }),
+  S.Struct({ lessThan: FilterAttribute }),
+  S.Struct({ lessThanOrEquals: FilterAttribute }),
+  S.Struct({ in: FilterAttribute }),
+  S.Struct({ notIn: FilterAttribute }),
+  S.Struct({ startsWith: FilterAttribute }),
+  S.Struct({ listContains: FilterAttribute }),
+  S.Struct({ stringContains: FilterAttribute }),
+  S.Struct({
+    andAll: S.suspend(() => RetrievalFilterList).annotate({
+      identifier: "RetrievalFilterList",
+    }),
+  }),
+  S.Struct({
+    orAll: S.suspend(() => RetrievalFilterList).annotate({
+      identifier: "RetrievalFilterList",
+    }),
+  }),
+]) as any as S.Schema<RetrievalFilter>;
+export interface RetrievalOverrides {
+  filter?: RetrievalFilter;
+  maxNumberOfResults?: number;
+}
+export const RetrievalOverrides = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filter: S.optional(RetrievalFilter),
+    maxNumberOfResults: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "RetrievalOverrides",
+}) as any as S.Schema<RetrievalOverrides>;
+export interface KnowledgeBaseRetrieverConfiguration {
+  knowledgeBaseId: string;
+  retrievalOverrides?: RetrievalOverrides;
+}
+export const KnowledgeBaseRetrieverConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      knowledgeBaseId: S.String,
+      retrievalOverrides: S.optional(RetrievalOverrides),
+    }),
+  ).annotate({
+    identifier: "KnowledgeBaseRetrieverConfiguration",
+  }) as any as S.Schema<KnowledgeBaseRetrieverConfiguration>;
+export type RetrieverConfiguration = {
+  knowledgeBase: KnowledgeBaseRetrieverConfiguration;
+};
+export const RetrieverConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ knowledgeBase: KnowledgeBaseRetrieverConfiguration }),
+]);
+export interface AgenticRetriever {
+  description?: string;
+  configuration: RetrieverConfiguration;
+}
+export const AgenticRetriever = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    configuration: RetrieverConfiguration,
+  }),
+).annotate({
+  identifier: "AgenticRetriever",
+}) as any as S.Schema<AgenticRetriever>;
+export type AgenticRetrievers = AgenticRetriever[];
+export const AgenticRetrievers =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(AgenticRetriever);
+export type FoundationModelType = "CUSTOM" | "MANAGED" | (string & {});
+export const FoundationModelType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type FoundationModelConfigurationType =
+  | "BEDROCK_FOUNDATION_MODEL"
+  | (string & {});
+export const FoundationModelConfigurationType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface BedrockFoundationModelModelConfiguration {
+  modelArn: string;
+}
+export const BedrockFoundationModelModelConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ modelArn: S.String }),
+  ).annotate({
+    identifier: "BedrockFoundationModelModelConfiguration",
+  }) as any as S.Schema<BedrockFoundationModelModelConfiguration>;
+export interface BedrockFoundationModelConfiguration {
+  modelConfiguration: BedrockFoundationModelModelConfiguration;
+}
+export const BedrockFoundationModelConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ modelConfiguration: BedrockFoundationModelModelConfiguration }),
+  ).annotate({
+    identifier: "BedrockFoundationModelConfiguration",
+  }) as any as S.Schema<BedrockFoundationModelConfiguration>;
+export interface FoundationModelConfiguration {
+  type: FoundationModelConfigurationType;
+  bedrockFoundationModelConfiguration?: BedrockFoundationModelConfiguration;
+}
+export const FoundationModelConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: FoundationModelConfigurationType,
+      bedrockFoundationModelConfiguration: S.optional(
+        BedrockFoundationModelConfiguration,
+      ),
+    }),
+  ).annotate({
+    identifier: "FoundationModelConfiguration",
+  }) as any as S.Schema<FoundationModelConfiguration>;
+export type AgenticRetrieveRerankingModelType =
+  | "CUSTOM"
+  | "MANAGED"
+  | "NONE"
+  | (string & {});
+export const AgenticRetrieveRerankingModelType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type AgenticRetrieveRerankingConfigurationType =
+  | "BEDROCK_RERANKING_MODEL"
+  | (string & {});
+export const AgenticRetrieveRerankingConfigurationType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AgenticRetrieveBedrockRerankingModelConfiguration {
+  modelArn: string;
+}
+export const AgenticRetrieveBedrockRerankingModelConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ modelArn: S.String }),
+  ).annotate({
+    identifier: "AgenticRetrieveBedrockRerankingModelConfiguration",
+  }) as any as S.Schema<AgenticRetrieveBedrockRerankingModelConfiguration>;
+export interface AgenticRetrieveBedrockRerankingConfiguration {
+  modelConfiguration: AgenticRetrieveBedrockRerankingModelConfiguration;
+}
+export const AgenticRetrieveBedrockRerankingConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      modelConfiguration: AgenticRetrieveBedrockRerankingModelConfiguration,
+    }),
+  ).annotate({
+    identifier: "AgenticRetrieveBedrockRerankingConfiguration",
+  }) as any as S.Schema<AgenticRetrieveBedrockRerankingConfiguration>;
+export interface AgenticRetrieveRerankingConfiguration {
+  type: AgenticRetrieveRerankingConfigurationType;
+  bedrockRerankingConfiguration?: AgenticRetrieveBedrockRerankingConfiguration;
+}
+export const AgenticRetrieveRerankingConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: AgenticRetrieveRerankingConfigurationType,
+      bedrockRerankingConfiguration: S.optional(
+        AgenticRetrieveBedrockRerankingConfiguration,
+      ),
+    }),
+  ).annotate({
+    identifier: "AgenticRetrieveRerankingConfiguration",
+  }) as any as S.Schema<AgenticRetrieveRerankingConfiguration>;
+export interface AgenticRetrieveConfiguration {
+  foundationModelType?: FoundationModelType;
+  foundationModelConfiguration?: FoundationModelConfiguration;
+  rerankingModelType?: AgenticRetrieveRerankingModelType;
+  rerankingConfiguration?: AgenticRetrieveRerankingConfiguration;
+  maxAgentIteration?: number;
+}
+export const AgenticRetrieveConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      foundationModelType: S.optional(FoundationModelType),
+      foundationModelConfiguration: S.optional(FoundationModelConfiguration),
+      rerankingModelType: S.optional(AgenticRetrieveRerankingModelType),
+      rerankingConfiguration: S.optional(AgenticRetrieveRerankingConfiguration),
+      maxAgentIteration: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "AgenticRetrieveConfiguration",
+  }) as any as S.Schema<AgenticRetrieveConfiguration>;
+export interface AgenticRetrieveBedrockGuardrailConfiguration {
+  guardrailId: string;
+  guardrailVersion: string;
+}
+export const AgenticRetrieveBedrockGuardrailConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ guardrailId: S.String, guardrailVersion: S.String }),
+  ).annotate({
+    identifier: "AgenticRetrieveBedrockGuardrailConfiguration",
+  }) as any as S.Schema<AgenticRetrieveBedrockGuardrailConfiguration>;
+export interface AgenticRetrievePolicyConfiguration {
+  bedrockGuardrailConfiguration?: AgenticRetrieveBedrockGuardrailConfiguration;
+}
+export const AgenticRetrievePolicyConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      bedrockGuardrailConfiguration: S.optional(
+        AgenticRetrieveBedrockGuardrailConfiguration,
+      ),
+    }),
+  ).annotate({
+    identifier: "AgenticRetrievePolicyConfiguration",
+  }) as any as S.Schema<AgenticRetrievePolicyConfiguration>;
+export interface UserContext {
+  userId: string;
+}
+export const UserContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ userId: S.String }),
+).annotate({ identifier: "UserContext" }) as any as S.Schema<UserContext>;
+export interface AgenticRetrieveStreamRequest {
+  messages: AgenticRetrieveMessage[];
+  retrievers: AgenticRetriever[];
+  agenticRetrieveConfiguration: AgenticRetrieveConfiguration;
+  policyConfiguration?: AgenticRetrievePolicyConfiguration;
+  nextToken?: string;
+  userContext?: UserContext;
+  generateResponse?: boolean;
+}
+export const AgenticRetrieveStreamRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      messages: AgenticRetrieveMessages,
+      retrievers: AgenticRetrievers,
+      agenticRetrieveConfiguration: AgenticRetrieveConfiguration,
+      policyConfiguration: S.optional(AgenticRetrievePolicyConfiguration),
+      nextToken: S.optional(S.String),
+      userContext: S.optional(UserContext),
+      generateResponse: S.optional(S.Boolean),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/agenticRetrieveStream" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "AgenticRetrieveStreamRequest",
+  }) as any as S.Schema<AgenticRetrieveStreamRequest>;
+export interface RetrievalContent {
+  byteContent?: Uint8Array;
+  text?: string;
+  mimeType: string;
+}
+export const RetrievalContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    byteContent: S.optional(T.Blob),
+    text: S.optional(S.String),
+    mimeType: S.String,
+  }),
+).annotate({
+  identifier: "RetrievalContent",
+}) as any as S.Schema<RetrievalContent>;
+export type AgenticRetrieveMetadata = { [key: string]: any | undefined };
+export const AgenticRetrieveMetadata = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  S.Any.pipe(S.optional),
+);
+export interface AgenticRetrieveSourceRetriever {
+  identifier: string;
+}
+export const AgenticRetrieveSourceRetriever =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ identifier: S.String }),
+  ).annotate({
+    identifier: "AgenticRetrieveSourceRetriever",
+  }) as any as S.Schema<AgenticRetrieveSourceRetriever>;
+export interface AgenticRetrieveResultItem {
+  content: RetrievalContent;
+  metadata?: { [key: string]: any | undefined };
+  sourceRetriever: AgenticRetrieveSourceRetriever;
+}
+export const AgenticRetrieveResultItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      content: RetrievalContent,
+      metadata: S.optional(AgenticRetrieveMetadata),
+      sourceRetriever: AgenticRetrieveSourceRetriever,
+    }),
+).annotate({
+  identifier: "AgenticRetrieveResultItem",
+}) as any as S.Schema<AgenticRetrieveResultItem>;
+export type AgenticRetrieveResults = AgenticRetrieveResultItem[];
+export const AgenticRetrieveResults = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  AgenticRetrieveResultItem,
+);
+export interface AgenticRetrieveCitationReference {
+  resultIndex: number;
+}
+export const AgenticRetrieveCitationReference =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ resultIndex: S.Number }),
+  ).annotate({
+    identifier: "AgenticRetrieveCitationReference",
+  }) as any as S.Schema<AgenticRetrieveCitationReference>;
+export type AgenticRetrieveCitationReferenceList =
+  AgenticRetrieveCitationReference[];
+export const AgenticRetrieveCitationReferenceList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(AgenticRetrieveCitationReference);
+export interface AgenticRetrieveCitation {
+  startIndex: number;
+  endIndex: number;
+  references: AgenticRetrieveCitationReference[];
+}
+export const AgenticRetrieveCitation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      startIndex: S.Number,
+      endIndex: S.Number,
+      references: AgenticRetrieveCitationReferenceList,
+    }),
+).annotate({
+  identifier: "AgenticRetrieveCitation",
+}) as any as S.Schema<AgenticRetrieveCitation>;
+export type AgenticRetrieveCitationList = AgenticRetrieveCitation[];
+export const AgenticRetrieveCitationList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  AgenticRetrieveCitation,
+);
+export interface AgenticRetrieveGeneratedResponse {
+  answer: string;
+  citations?: AgenticRetrieveCitation[];
+}
+export const AgenticRetrieveGeneratedResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      answer: S.String,
+      citations: S.optional(AgenticRetrieveCitationList),
+    }),
+  ).annotate({
+    identifier: "AgenticRetrieveGeneratedResponse",
+  }) as any as S.Schema<AgenticRetrieveGeneratedResponse>;
+export interface AgenticRetrieveResultEvent {
+  results: AgenticRetrieveResultItem[];
+  generatedResponse?: AgenticRetrieveGeneratedResponse;
+  nextToken?: string;
+}
+export const AgenticRetrieveResultEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      results: AgenticRetrieveResults,
+      generatedResponse: S.optional(AgenticRetrieveGeneratedResponse),
+      nextToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "AgenticRetrieveResultEvent",
+}) as any as S.Schema<AgenticRetrieveResultEvent>;
+export type AgenticRetrieveStep =
+  | "Planning"
+  | "Retrieval"
+  | "SpeculativeRetrieval"
+  | "FullDocumentExpansion"
+  | (string & {});
+export const AgenticRetrieveStep = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type AgenticRetrieveStatus =
+  | "IN_PROGRESS"
+  | "SUCCEEDED"
+  | "FAILED"
+  | (string & {});
+export const AgenticRetrieveStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type AgenticRetrieveSourceRetrieverList =
+  AgenticRetrieveSourceRetriever[];
+export const AgenticRetrieveSourceRetrieverList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(AgenticRetrieveSourceRetriever);
+export interface AgenticRetrieveActionDetails {
+  inputQuery: AgenticRetrieveMessageContent;
+  sourceRetrievers: AgenticRetrieveSourceRetriever[];
+}
+export const AgenticRetrieveActionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      inputQuery: AgenticRetrieveMessageContent,
+      sourceRetrievers: AgenticRetrieveSourceRetrieverList,
+    }),
+  ).annotate({
+    identifier: "AgenticRetrieveActionDetails",
+  }) as any as S.Schema<AgenticRetrieveActionDetails>;
+export interface AgenticRetrieveFullDocExpansionDetails {
+  documentId?: string;
+  sourceRetriever?: AgenticRetrieveSourceRetriever;
+}
+export const AgenticRetrieveFullDocExpansionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      documentId: S.optional(S.String),
+      sourceRetriever: S.optional(AgenticRetrieveSourceRetriever),
+    }),
+  ).annotate({
+    identifier: "AgenticRetrieveFullDocExpansionDetails",
+  }) as any as S.Schema<AgenticRetrieveFullDocExpansionDetails>;
+export interface AgenticRetrieveAction {
+  retrieve?: AgenticRetrieveActionDetails;
+  fullDocumentExpansion?: AgenticRetrieveFullDocExpansionDetails;
+}
+export const AgenticRetrieveAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    retrieve: S.optional(AgenticRetrieveActionDetails),
+    fullDocumentExpansion: S.optional(AgenticRetrieveFullDocExpansionDetails),
+  }),
+).annotate({
+  identifier: "AgenticRetrieveAction",
+}) as any as S.Schema<AgenticRetrieveAction>;
+export type AgenticRetrieveActions = AgenticRetrieveAction[];
+export const AgenticRetrieveActions = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  AgenticRetrieveAction,
+);
+export interface AgenticRetrieveWarningMessage {
+  message: string;
+}
+export const AgenticRetrieveWarningMessage =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ message: S.String }),
+  ).annotate({
+    identifier: "AgenticRetrieveWarningMessage",
+  }) as any as S.Schema<AgenticRetrieveWarningMessage>;
+export type GuardrailAction = "INTERVENED" | "NONE" | (string & {});
+export const GuardrailAction = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AgenticRetrieveGuardrailWarning {
+  id: string;
+  version: string;
+  action: GuardrailAction;
+  message?: string;
+}
+export const AgenticRetrieveGuardrailWarning =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      version: S.String,
+      action: GuardrailAction,
+      message: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AgenticRetrieveGuardrailWarning",
+  }) as any as S.Schema<AgenticRetrieveGuardrailWarning>;
+export type AgenticRetrieveWarning =
+  | { message: AgenticRetrieveWarningMessage; guardrail?: never }
+  | { message?: never; guardrail: AgenticRetrieveGuardrailWarning };
+export const AgenticRetrieveWarning = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ message: AgenticRetrieveWarningMessage }),
+  S.Struct({ guardrail: AgenticRetrieveGuardrailWarning }),
+]);
+export type AgenticRetrieveWarnings = AgenticRetrieveWarning[];
+export const AgenticRetrieveWarnings = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  AgenticRetrieveWarning,
+);
+export interface AgenticRetrieveFailure {
+  message: string;
+}
+export const AgenticRetrieveFailure = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ message: S.String }),
+).annotate({
+  identifier: "AgenticRetrieveFailure",
+}) as any as S.Schema<AgenticRetrieveFailure>;
+export type AgenticRetrieveFailures = AgenticRetrieveFailure[];
+export const AgenticRetrieveFailures = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  AgenticRetrieveFailure,
+);
+export type AgenticRetrieveType = "BedrockKnowledgeBase" | (string & {});
+export const AgenticRetrieveType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AgenticRetrieveSourceMetadata {
+  identifier?: string;
+  retrievalType?: AgenticRetrieveType;
+}
+export const AgenticRetrieveSourceMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      identifier: S.optional(S.String),
+      retrievalType: S.optional(AgenticRetrieveType),
+    }),
+  ).annotate({
+    identifier: "AgenticRetrieveSourceMetadata",
+  }) as any as S.Schema<AgenticRetrieveSourceMetadata>;
+export type AgenticRetrieveSourceMetadataList = AgenticRetrieveSourceMetadata[];
+export const AgenticRetrieveSourceMetadataList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(AgenticRetrieveSourceMetadata);
+export interface AgenticRetrieveTraceResultItem {
+  content?: RetrievalContent;
+  metadata?: { [key: string]: any | undefined };
+  sourceRetriever?: AgenticRetrieveSourceRetriever;
+}
+export const AgenticRetrieveTraceResultItem =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      content: S.optional(RetrievalContent),
+      metadata: S.optional(AgenticRetrieveMetadata),
+      sourceRetriever: S.optional(AgenticRetrieveSourceRetriever),
+    }),
+  ).annotate({
+    identifier: "AgenticRetrieveTraceResultItem",
+  }) as any as S.Schema<AgenticRetrieveTraceResultItem>;
+export type AgenticRetrieveTraceResults = AgenticRetrieveTraceResultItem[];
+export const AgenticRetrieveTraceResults = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  AgenticRetrieveTraceResultItem,
+);
+export interface AgenticRetrieveTraceEventAttributes {
+  step: AgenticRetrieveStep;
+  status: AgenticRetrieveStatus;
+  message: string;
+  actions?: AgenticRetrieveAction[];
+  warnings?: AgenticRetrieveWarning[];
+  failures?: AgenticRetrieveFailure[];
+  retrievalMetadata?: AgenticRetrieveSourceMetadata[];
+  retrievalResponse?: AgenticRetrieveTraceResultItem[];
+}
+export const AgenticRetrieveTraceEventAttributes =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      step: AgenticRetrieveStep,
+      status: AgenticRetrieveStatus,
+      message: S.String,
+      actions: S.optional(AgenticRetrieveActions),
+      warnings: S.optional(AgenticRetrieveWarnings),
+      failures: S.optional(AgenticRetrieveFailures),
+      retrievalMetadata: S.optional(AgenticRetrieveSourceMetadataList),
+      retrievalResponse: S.optional(AgenticRetrieveTraceResults),
+    }),
+  ).annotate({
+    identifier: "AgenticRetrieveTraceEventAttributes",
+  }) as any as S.Schema<AgenticRetrieveTraceEventAttributes>;
+export interface AgenticRetrieveTraceEvent {
+  id: string;
+  timestamp: number;
+  attributes: AgenticRetrieveTraceEventAttributes;
+}
+export const AgenticRetrieveTraceEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      timestamp: S.Number,
+      attributes: AgenticRetrieveTraceEventAttributes,
+    }),
+).annotate({
+  identifier: "AgenticRetrieveTraceEvent",
+}) as any as S.Schema<AgenticRetrieveTraceEvent>;
+export interface AgenticRetrieveResponseEvent {
+  text: string;
+}
+export const AgenticRetrieveResponseEvent =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ text: S.String }),
+  ).annotate({
+    identifier: "AgenticRetrieveResponseEvent",
+  }) as any as S.Schema<AgenticRetrieveResponseEvent>;
+export type AgenticRetrieveStreamResponseOutput =
+  | {
+      result: AgenticRetrieveResultEvent;
+      traceEvent?: never;
+      responseEvent?: never;
+      internalServerException?: never;
+      validationException?: never;
+      resourceNotFoundException?: never;
+      serviceQuotaExceededException?: never;
+      throttlingException?: never;
+      accessDeniedException?: never;
+      conflictException?: never;
+      dependencyFailedException?: never;
+      badGatewayException?: never;
+    }
+  | {
+      result?: never;
+      traceEvent: AgenticRetrieveTraceEvent;
+      responseEvent?: never;
+      internalServerException?: never;
+      validationException?: never;
+      resourceNotFoundException?: never;
+      serviceQuotaExceededException?: never;
+      throttlingException?: never;
+      accessDeniedException?: never;
+      conflictException?: never;
+      dependencyFailedException?: never;
+      badGatewayException?: never;
+    }
+  | {
+      result?: never;
+      traceEvent?: never;
+      responseEvent: AgenticRetrieveResponseEvent;
+      internalServerException?: never;
+      validationException?: never;
+      resourceNotFoundException?: never;
+      serviceQuotaExceededException?: never;
+      throttlingException?: never;
+      accessDeniedException?: never;
+      conflictException?: never;
+      dependencyFailedException?: never;
+      badGatewayException?: never;
+    }
+  | {
+      result?: never;
+      traceEvent?: never;
+      responseEvent?: never;
+      internalServerException: InternalServerException;
+      validationException?: never;
+      resourceNotFoundException?: never;
+      serviceQuotaExceededException?: never;
+      throttlingException?: never;
+      accessDeniedException?: never;
+      conflictException?: never;
+      dependencyFailedException?: never;
+      badGatewayException?: never;
+    }
+  | {
+      result?: never;
+      traceEvent?: never;
+      responseEvent?: never;
+      internalServerException?: never;
+      validationException: ValidationException;
+      resourceNotFoundException?: never;
+      serviceQuotaExceededException?: never;
+      throttlingException?: never;
+      accessDeniedException?: never;
+      conflictException?: never;
+      dependencyFailedException?: never;
+      badGatewayException?: never;
+    }
+  | {
+      result?: never;
+      traceEvent?: never;
+      responseEvent?: never;
+      internalServerException?: never;
+      validationException?: never;
+      resourceNotFoundException: ResourceNotFoundException;
+      serviceQuotaExceededException?: never;
+      throttlingException?: never;
+      accessDeniedException?: never;
+      conflictException?: never;
+      dependencyFailedException?: never;
+      badGatewayException?: never;
+    }
+  | {
+      result?: never;
+      traceEvent?: never;
+      responseEvent?: never;
+      internalServerException?: never;
+      validationException?: never;
+      resourceNotFoundException?: never;
+      serviceQuotaExceededException: ServiceQuotaExceededException;
+      throttlingException?: never;
+      accessDeniedException?: never;
+      conflictException?: never;
+      dependencyFailedException?: never;
+      badGatewayException?: never;
+    }
+  | {
+      result?: never;
+      traceEvent?: never;
+      responseEvent?: never;
+      internalServerException?: never;
+      validationException?: never;
+      resourceNotFoundException?: never;
+      serviceQuotaExceededException?: never;
+      throttlingException: ThrottlingException;
+      accessDeniedException?: never;
+      conflictException?: never;
+      dependencyFailedException?: never;
+      badGatewayException?: never;
+    }
+  | {
+      result?: never;
+      traceEvent?: never;
+      responseEvent?: never;
+      internalServerException?: never;
+      validationException?: never;
+      resourceNotFoundException?: never;
+      serviceQuotaExceededException?: never;
+      throttlingException?: never;
+      accessDeniedException: AccessDeniedException;
+      conflictException?: never;
+      dependencyFailedException?: never;
+      badGatewayException?: never;
+    }
+  | {
+      result?: never;
+      traceEvent?: never;
+      responseEvent?: never;
+      internalServerException?: never;
+      validationException?: never;
+      resourceNotFoundException?: never;
+      serviceQuotaExceededException?: never;
+      throttlingException?: never;
+      accessDeniedException?: never;
+      conflictException: ConflictException;
+      dependencyFailedException?: never;
+      badGatewayException?: never;
+    }
+  | {
+      result?: never;
+      traceEvent?: never;
+      responseEvent?: never;
+      internalServerException?: never;
+      validationException?: never;
+      resourceNotFoundException?: never;
+      serviceQuotaExceededException?: never;
+      throttlingException?: never;
+      accessDeniedException?: never;
+      conflictException?: never;
+      dependencyFailedException: DependencyFailedException;
+      badGatewayException?: never;
+    }
+  | {
+      result?: never;
+      traceEvent?: never;
+      responseEvent?: never;
+      internalServerException?: never;
+      validationException?: never;
+      resourceNotFoundException?: never;
+      serviceQuotaExceededException?: never;
+      throttlingException?: never;
+      accessDeniedException?: never;
+      conflictException?: never;
+      dependencyFailedException?: never;
+      badGatewayException: BadGatewayException;
+    };
+export const AgenticRetrieveStreamResponseOutput =
+  /*@__PURE__*/ /*#__PURE__*/ T.EventStream(
+    S.Union([
+      S.Struct({ result: AgenticRetrieveResultEvent }),
+      S.Struct({ traceEvent: AgenticRetrieveTraceEvent }),
+      S.Struct({ responseEvent: AgenticRetrieveResponseEvent }),
+      S.Struct({
+        internalServerException: S.suspend(
+          () => InternalServerException,
+        ).annotate({ identifier: "InternalServerException" }),
+      }),
+      S.Struct({
+        validationException: S.suspend(() => ValidationException).annotate({
+          identifier: "ValidationException",
+        }),
+      }),
+      S.Struct({
+        resourceNotFoundException: S.suspend(
+          () => ResourceNotFoundException,
+        ).annotate({ identifier: "ResourceNotFoundException" }),
+      }),
+      S.Struct({
+        serviceQuotaExceededException: S.suspend(
+          () => ServiceQuotaExceededException,
+        ).annotate({ identifier: "ServiceQuotaExceededException" }),
+      }),
+      S.Struct({
+        throttlingException: S.suspend(() => ThrottlingException).annotate({
+          identifier: "ThrottlingException",
+        }),
+      }),
+      S.Struct({
+        accessDeniedException: S.suspend(() => AccessDeniedException).annotate({
+          identifier: "AccessDeniedException",
+        }),
+      }),
+      S.Struct({
+        conflictException: S.suspend(() => ConflictException).annotate({
+          identifier: "ConflictException",
+        }),
+      }),
+      S.Struct({
+        dependencyFailedException: S.suspend(
+          () => DependencyFailedException,
+        ).annotate({ identifier: "DependencyFailedException" }),
+      }),
+      S.Struct({
+        badGatewayException: S.suspend(() => BadGatewayException).annotate({
+          identifier: "BadGatewayException",
+        }),
+      }),
+    ]),
+  ) as any as S.Schema<
+    stream.Stream<AgenticRetrieveStreamResponseOutput, Error, never>
+  >;
+export interface AgenticRetrieveStreamResponse {
+  stream: stream.Stream<AgenticRetrieveStreamResponseOutput, Error, never>;
+}
+export const AgenticRetrieveStreamResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      stream: AgenticRetrieveStreamResponseOutput.pipe(T.HttpPayload()),
+    }),
+  ).annotate({
+    identifier: "AgenticRetrieveStreamResponse",
+  }) as any as S.Schema<AgenticRetrieveStreamResponse>;
 export interface GetExecutionFlowSnapshotRequest {
   flowIdentifier: string;
   flowAliasIdentifier: string;
@@ -617,8 +1632,6 @@ export const NodeActionEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NodeActionEvent",
 }) as any as S.Schema<NodeActionEvent>;
-export type GuardrailAction = "INTERVENED" | "NONE" | (string & {});
-export const GuardrailAction = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type GuardrailTopicType = "DENY" | (string & {});
 export const GuardrailTopicType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type GuardrailTopicPolicyAction = "BLOCKED" | (string & {});
@@ -1530,6 +2543,8 @@ export type RetrievalResultLocationType =
   | "CUSTOM"
   | "KENDRA"
   | "SQL"
+  | "ONEDRIVE"
+  | "GOOGLEDRIVE"
   | (string & {});
 export const RetrievalResultLocationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface RetrievalResultS3Location {
@@ -1601,6 +2616,24 @@ export const RetrievalResultSqlLocation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "RetrievalResultSqlLocation",
 }) as any as S.Schema<RetrievalResultSqlLocation>;
+export interface RetrievalResultOneDriveLocation {
+  url?: string;
+}
+export const RetrievalResultOneDriveLocation =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ url: S.optional(S.String) }),
+  ).annotate({
+    identifier: "RetrievalResultOneDriveLocation",
+  }) as any as S.Schema<RetrievalResultOneDriveLocation>;
+export interface RetrievalResultGoogleDriveLocation {
+  url?: string;
+}
+export const RetrievalResultGoogleDriveLocation =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ url: S.optional(S.String) }),
+  ).annotate({
+    identifier: "RetrievalResultGoogleDriveLocation",
+  }) as any as S.Schema<RetrievalResultGoogleDriveLocation>;
 export interface RetrievalResultLocation {
   type: RetrievalResultLocationType;
   s3Location?: RetrievalResultS3Location;
@@ -1611,6 +2644,8 @@ export interface RetrievalResultLocation {
   customDocumentLocation?: RetrievalResultCustomDocumentLocation;
   kendraDocumentLocation?: RetrievalResultKendraDocumentLocation;
   sqlLocation?: RetrievalResultSqlLocation;
+  oneDriveLocation?: RetrievalResultOneDriveLocation;
+  googleDriveLocation?: RetrievalResultGoogleDriveLocation;
 }
 export const RetrievalResultLocation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1624,6 +2659,8 @@ export const RetrievalResultLocation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       customDocumentLocation: S.optional(RetrievalResultCustomDocumentLocation),
       kendraDocumentLocation: S.optional(RetrievalResultKendraDocumentLocation),
       sqlLocation: S.optional(RetrievalResultSqlLocation),
+      oneDriveLocation: S.optional(RetrievalResultOneDriveLocation),
+      googleDriveLocation: S.optional(RetrievalResultGoogleDriveLocation),
     }),
 ).annotate({
   identifier: "RetrievalResultLocation",
@@ -3045,6 +4082,54 @@ export const GenerateQueryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GenerateQueryResponse",
 }) as any as S.Schema<GenerateQueryResponse>;
+export type DocumentOutputFormat = "RAW" | "EXTRACTED" | (string & {});
+export const DocumentOutputFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface GetDocumentContentRequest {
+  knowledgeBaseId: string;
+  dataSourceId: string;
+  documentId: string;
+  outputFormat?: DocumentOutputFormat;
+  userContext?: UserContext;
+}
+export const GetDocumentContentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      knowledgeBaseId: S.String.pipe(T.HttpLabel("knowledgeBaseId")),
+      dataSourceId: S.String.pipe(T.HttpLabel("dataSourceId")),
+      documentId: S.String.pipe(T.HttpLabel("documentId")),
+      outputFormat: S.optional(DocumentOutputFormat),
+      userContext: S.optional(UserContext),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}/documents/{documentId}/content",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetDocumentContentRequest",
+}) as any as S.Schema<GetDocumentContentRequest>;
+export interface GetDocumentContentResponse {
+  mimeType: string;
+  presignedUrl: string | redacted.Redacted<string>;
+  documentContentLength?: number;
+}
+export const GetDocumentContentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      mimeType: S.String,
+      presignedUrl: SensitiveString,
+      documentContentLength: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "GetDocumentContentResponse",
+}) as any as S.Schema<GetDocumentContentResponse>;
 export type SessionAttributesMap = { [key: string]: string | undefined };
 export const SessionAttributesMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
   S.String,
@@ -3098,238 +4183,6 @@ export type InputFiles = InputFile[];
 export const InputFiles = /*@__PURE__*/ /*#__PURE__*/ S.Array(InputFile);
 export type SearchType = "HYBRID" | "SEMANTIC" | (string & {});
 export const SearchType = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export interface FilterAttribute {
-  key: string;
-  value: any;
-}
-export const FilterAttribute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.String, value: S.Any }),
-).annotate({
-  identifier: "FilterAttribute",
-}) as any as S.Schema<FilterAttribute>;
-export type RetrievalFilterList = RetrievalFilter[];
-export const RetrievalFilterList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.suspend(() => RetrievalFilter).annotate({ identifier: "RetrievalFilter" }),
-) as any as S.Schema<RetrievalFilterList>;
-export type RetrievalFilter =
-  | {
-      equals: FilterAttribute;
-      notEquals?: never;
-      greaterThan?: never;
-      greaterThanOrEquals?: never;
-      lessThan?: never;
-      lessThanOrEquals?: never;
-      in?: never;
-      notIn?: never;
-      startsWith?: never;
-      listContains?: never;
-      stringContains?: never;
-      andAll?: never;
-      orAll?: never;
-    }
-  | {
-      equals?: never;
-      notEquals: FilterAttribute;
-      greaterThan?: never;
-      greaterThanOrEquals?: never;
-      lessThan?: never;
-      lessThanOrEquals?: never;
-      in?: never;
-      notIn?: never;
-      startsWith?: never;
-      listContains?: never;
-      stringContains?: never;
-      andAll?: never;
-      orAll?: never;
-    }
-  | {
-      equals?: never;
-      notEquals?: never;
-      greaterThan: FilterAttribute;
-      greaterThanOrEquals?: never;
-      lessThan?: never;
-      lessThanOrEquals?: never;
-      in?: never;
-      notIn?: never;
-      startsWith?: never;
-      listContains?: never;
-      stringContains?: never;
-      andAll?: never;
-      orAll?: never;
-    }
-  | {
-      equals?: never;
-      notEquals?: never;
-      greaterThan?: never;
-      greaterThanOrEquals: FilterAttribute;
-      lessThan?: never;
-      lessThanOrEquals?: never;
-      in?: never;
-      notIn?: never;
-      startsWith?: never;
-      listContains?: never;
-      stringContains?: never;
-      andAll?: never;
-      orAll?: never;
-    }
-  | {
-      equals?: never;
-      notEquals?: never;
-      greaterThan?: never;
-      greaterThanOrEquals?: never;
-      lessThan: FilterAttribute;
-      lessThanOrEquals?: never;
-      in?: never;
-      notIn?: never;
-      startsWith?: never;
-      listContains?: never;
-      stringContains?: never;
-      andAll?: never;
-      orAll?: never;
-    }
-  | {
-      equals?: never;
-      notEquals?: never;
-      greaterThan?: never;
-      greaterThanOrEquals?: never;
-      lessThan?: never;
-      lessThanOrEquals: FilterAttribute;
-      in?: never;
-      notIn?: never;
-      startsWith?: never;
-      listContains?: never;
-      stringContains?: never;
-      andAll?: never;
-      orAll?: never;
-    }
-  | {
-      equals?: never;
-      notEquals?: never;
-      greaterThan?: never;
-      greaterThanOrEquals?: never;
-      lessThan?: never;
-      lessThanOrEquals?: never;
-      in: FilterAttribute;
-      notIn?: never;
-      startsWith?: never;
-      listContains?: never;
-      stringContains?: never;
-      andAll?: never;
-      orAll?: never;
-    }
-  | {
-      equals?: never;
-      notEquals?: never;
-      greaterThan?: never;
-      greaterThanOrEquals?: never;
-      lessThan?: never;
-      lessThanOrEquals?: never;
-      in?: never;
-      notIn: FilterAttribute;
-      startsWith?: never;
-      listContains?: never;
-      stringContains?: never;
-      andAll?: never;
-      orAll?: never;
-    }
-  | {
-      equals?: never;
-      notEquals?: never;
-      greaterThan?: never;
-      greaterThanOrEquals?: never;
-      lessThan?: never;
-      lessThanOrEquals?: never;
-      in?: never;
-      notIn?: never;
-      startsWith: FilterAttribute;
-      listContains?: never;
-      stringContains?: never;
-      andAll?: never;
-      orAll?: never;
-    }
-  | {
-      equals?: never;
-      notEquals?: never;
-      greaterThan?: never;
-      greaterThanOrEquals?: never;
-      lessThan?: never;
-      lessThanOrEquals?: never;
-      in?: never;
-      notIn?: never;
-      startsWith?: never;
-      listContains: FilterAttribute;
-      stringContains?: never;
-      andAll?: never;
-      orAll?: never;
-    }
-  | {
-      equals?: never;
-      notEquals?: never;
-      greaterThan?: never;
-      greaterThanOrEquals?: never;
-      lessThan?: never;
-      lessThanOrEquals?: never;
-      in?: never;
-      notIn?: never;
-      startsWith?: never;
-      listContains?: never;
-      stringContains: FilterAttribute;
-      andAll?: never;
-      orAll?: never;
-    }
-  | {
-      equals?: never;
-      notEquals?: never;
-      greaterThan?: never;
-      greaterThanOrEquals?: never;
-      lessThan?: never;
-      lessThanOrEquals?: never;
-      in?: never;
-      notIn?: never;
-      startsWith?: never;
-      listContains?: never;
-      stringContains?: never;
-      andAll: RetrievalFilter[];
-      orAll?: never;
-    }
-  | {
-      equals?: never;
-      notEquals?: never;
-      greaterThan?: never;
-      greaterThanOrEquals?: never;
-      lessThan?: never;
-      lessThanOrEquals?: never;
-      in?: never;
-      notIn?: never;
-      startsWith?: never;
-      listContains?: never;
-      stringContains?: never;
-      andAll?: never;
-      orAll: RetrievalFilter[];
-    };
-export const RetrievalFilter = /*@__PURE__*/ /*#__PURE__*/ S.Union([
-  S.Struct({ equals: FilterAttribute }),
-  S.Struct({ notEquals: FilterAttribute }),
-  S.Struct({ greaterThan: FilterAttribute }),
-  S.Struct({ greaterThanOrEquals: FilterAttribute }),
-  S.Struct({ lessThan: FilterAttribute }),
-  S.Struct({ lessThanOrEquals: FilterAttribute }),
-  S.Struct({ in: FilterAttribute }),
-  S.Struct({ notIn: FilterAttribute }),
-  S.Struct({ startsWith: FilterAttribute }),
-  S.Struct({ listContains: FilterAttribute }),
-  S.Struct({ stringContains: FilterAttribute }),
-  S.Struct({
-    andAll: S.suspend(() => RetrievalFilterList).annotate({
-      identifier: "RetrievalFilterList",
-    }),
-  }),
-  S.Struct({
-    orAll: S.suspend(() => RetrievalFilterList).annotate({
-      identifier: "RetrievalFilterList",
-    }),
-  }),
-]) as any as S.Schema<RetrievalFilter>;
 export type VectorSearchRerankingConfigurationType =
   | "BEDROCK_RERANKING_MODEL"
   | (string & {});
@@ -3474,13 +4327,84 @@ export const KnowledgeBaseVectorSearchConfiguration =
   ).annotate({
     identifier: "KnowledgeBaseVectorSearchConfiguration",
   }) as any as S.Schema<KnowledgeBaseVectorSearchConfiguration>;
+export type RerankingModelType = "CUSTOM" | "MANAGED" | "NONE" | (string & {});
+export const RerankingModelType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type ManagedSearchRerankingConfigurationType =
+  | "BEDROCK_RERANKING_MODEL"
+  | (string & {});
+export const ManagedSearchRerankingConfigurationType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ManagedSearchBedrockRerankingModelConfiguration {
+  modelArn: string;
+  additionalModelRequestFields?: { [key: string]: any | undefined };
+}
+export const ManagedSearchBedrockRerankingModelConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      modelArn: S.String,
+      additionalModelRequestFields: S.optional(AdditionalModelRequestFields),
+    }),
+  ).annotate({
+    identifier: "ManagedSearchBedrockRerankingModelConfiguration",
+  }) as any as S.Schema<ManagedSearchBedrockRerankingModelConfiguration>;
+export interface ManagedSearchBedrockRerankingConfiguration {
+  modelConfiguration: ManagedSearchBedrockRerankingModelConfiguration;
+  numberOfRerankedResults?: number;
+  metadataConfiguration?: MetadataConfigurationForReranking;
+}
+export const ManagedSearchBedrockRerankingConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      modelConfiguration: ManagedSearchBedrockRerankingModelConfiguration,
+      numberOfRerankedResults: S.optional(S.Number),
+      metadataConfiguration: S.optional(MetadataConfigurationForReranking),
+    }),
+  ).annotate({
+    identifier: "ManagedSearchBedrockRerankingConfiguration",
+  }) as any as S.Schema<ManagedSearchBedrockRerankingConfiguration>;
+export interface ManagedSearchRerankingConfiguration {
+  type: ManagedSearchRerankingConfigurationType;
+  bedrockRerankingConfiguration?: ManagedSearchBedrockRerankingConfiguration;
+}
+export const ManagedSearchRerankingConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: ManagedSearchRerankingConfigurationType,
+      bedrockRerankingConfiguration: S.optional(
+        ManagedSearchBedrockRerankingConfiguration,
+      ),
+    }),
+  ).annotate({
+    identifier: "ManagedSearchRerankingConfiguration",
+  }) as any as S.Schema<ManagedSearchRerankingConfiguration>;
+export interface ManagedSearchConfiguration {
+  numberOfResults?: number;
+  filter?: RetrievalFilter;
+  rerankingModelType?: RerankingModelType;
+  rerankingConfiguration?: ManagedSearchRerankingConfiguration;
+}
+export const ManagedSearchConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      numberOfResults: S.optional(S.Number),
+      filter: S.optional(RetrievalFilter),
+      rerankingModelType: S.optional(RerankingModelType),
+      rerankingConfiguration: S.optional(ManagedSearchRerankingConfiguration),
+    }),
+).annotate({
+  identifier: "ManagedSearchConfiguration",
+}) as any as S.Schema<ManagedSearchConfiguration>;
 export interface KnowledgeBaseRetrievalConfiguration {
-  vectorSearchConfiguration: KnowledgeBaseVectorSearchConfiguration;
+  vectorSearchConfiguration?: KnowledgeBaseVectorSearchConfiguration;
+  managedSearchConfiguration?: ManagedSearchConfiguration;
 }
 export const KnowledgeBaseRetrievalConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
-      vectorSearchConfiguration: KnowledgeBaseVectorSearchConfiguration,
+      vectorSearchConfiguration: S.optional(
+        KnowledgeBaseVectorSearchConfiguration,
+      ),
+      managedSearchConfiguration: S.optional(ManagedSearchConfiguration),
     }),
   ).annotate({
     identifier: "KnowledgeBaseRetrievalConfiguration",
@@ -3502,8 +4426,6 @@ export type KnowledgeBaseConfigurations = KnowledgeBaseConfiguration[];
 export const KnowledgeBaseConfigurations = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   KnowledgeBaseConfiguration,
 );
-export type ConversationRole = "user" | "assistant" | (string & {});
-export const ConversationRole = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type ContentBlock = { text: string };
 export const ContentBlock = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ text: S.String }),
@@ -5320,6 +6242,7 @@ export interface RetrieveAndGenerateRequest {
   input: RetrieveAndGenerateInput;
   retrieveAndGenerateConfiguration?: RetrieveAndGenerateConfiguration;
   sessionConfiguration?: RetrieveAndGenerateSessionConfiguration;
+  userContext?: UserContext;
 }
 export const RetrieveAndGenerateRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -5330,6 +6253,7 @@ export const RetrieveAndGenerateRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
         RetrieveAndGenerateConfiguration,
       ),
       sessionConfiguration: S.optional(RetrieveAndGenerateSessionConfiguration),
+      userContext: S.optional(UserContext),
     }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/retrieveAndGenerate" }),
@@ -5375,6 +6299,7 @@ export interface RetrieveAndGenerateStreamRequest {
   input: RetrieveAndGenerateInput;
   retrieveAndGenerateConfiguration?: RetrieveAndGenerateConfiguration;
   sessionConfiguration?: RetrieveAndGenerateSessionConfiguration;
+  userContext?: UserContext;
 }
 export const RetrieveAndGenerateStreamRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -5385,6 +6310,7 @@ export const RetrieveAndGenerateStreamRequest =
         RetrieveAndGenerateConfiguration,
       ),
       sessionConfiguration: S.optional(RetrieveAndGenerateSessionConfiguration),
+      userContext: S.optional(UserContext),
     }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/retrieveAndGenerateStream" }),
@@ -5695,6 +6621,7 @@ export interface RetrieveRequest {
   retrievalConfiguration?: KnowledgeBaseRetrievalConfiguration;
   guardrailConfiguration?: GuardrailConfiguration;
   nextToken?: string;
+  userContext?: UserContext;
 }
 export const RetrieveRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5703,6 +6630,7 @@ export const RetrieveRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     retrievalConfiguration: S.optional(KnowledgeBaseRetrievalConfiguration),
     guardrailConfiguration: S.optional(GuardrailConfiguration),
     nextToken: S.optional(S.String),
+    userContext: S.optional(UserContext),
   }).pipe(
     T.all(
       T.Http({
@@ -5724,6 +6652,7 @@ export interface KnowledgeBaseRetrievalResult {
   location?: RetrievalResultLocation;
   score?: number;
   metadata?: { [key: string]: any | undefined };
+  documentId?: string;
 }
 export const KnowledgeBaseRetrievalResult =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -5732,6 +6661,7 @@ export const KnowledgeBaseRetrievalResult =
       location: S.optional(RetrievalResultLocation),
       score: S.optional(S.Number),
       metadata: S.optional(RetrievalResultMetadata),
+      documentId: S.optional(S.String),
     }),
   ).annotate({
     identifier: "KnowledgeBaseRetrievalResult",
@@ -6373,22 +7303,6 @@ export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedExcept
   "AccessDeniedException",
   { message: S.optional(S.String) },
 ).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String), reason: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
 export class BadGatewayException extends S.TaggedErrorClass<BadGatewayException>()(
   "BadGatewayException",
   { message: S.optional(S.String), resourceName: S.optional(S.String) },
@@ -6401,8 +7315,24 @@ export class DependencyFailedException extends S.TaggedErrorClass<DependencyFail
   "DependencyFailedException",
   { message: S.optional(S.String), resourceName: S.optional(S.String) },
 ) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String), reason: S.optional(S.String) },
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
   { message: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
 export class ModelNotReadyException extends S.TaggedErrorClass<ModelNotReadyException>()(
@@ -6411,6 +7341,42 @@ export class ModelNotReadyException extends S.TaggedErrorClass<ModelNotReadyExce
 ) {}
 
 //# Operations
+export type AgenticRetrieveStreamError =
+  | AccessDeniedException
+  | BadGatewayException
+  | ConflictException
+  | DependencyFailedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information from one or more knowledge bases using an agentic approach. Agentic retrieval uses a foundation model to intelligently decompose complex queries into sub-queries and iteratively retrieve relevant information from your knowledge bases. This approach improves retrieval accuracy for complex, multi-step questions that a single retrieval pass might not fully address.
+ *
+ * The operation returns results through a stream that includes retrieval results, trace events for visibility into the process, and a generated response synthesized from the results by default, which can be turned off.
+ */
+export const agenticRetrieveStream: API.OperationMethod<
+  AgenticRetrieveStreamRequest,
+  AgenticRetrieveStreamResponse,
+  AgenticRetrieveStreamError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: AgenticRetrieveStreamRequest,
+  output: AgenticRetrieveStreamResponse,
+  errors: [
+    AccessDeniedException,
+    BadGatewayException,
+    ConflictException,
+    DependencyFailedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
 export type GetExecutionFlowSnapshotError =
   | AccessDeniedException
   | InternalServerException
@@ -6703,6 +7669,32 @@ export const generateQuery: API.OperationMethod<
     ValidationException,
   ],
 }));
+export type GetDocumentContentError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the content of an ingested document from a knowledge base. Returns a pre-signed URL for secure document access.
+ */
+export const getDocumentContent: API.OperationMethod<
+  GetDocumentContentRequest,
+  GetDocumentContentResponse,
+  GetDocumentContentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetDocumentContentRequest,
+  output: GetDocumentContentResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
 export type InvokeAgentError =
   | AccessDeniedException
   | BadGatewayException
@@ -6987,6 +7979,8 @@ export type RetrieveAndGenerateError =
   | CommonErrors;
 /**
  * Queries a knowledge base and generates responses based on the retrieved results and using the specified foundation model or inference profile. The response only cites sources that are relevant to the query.
+ *
+ * This API cannot be used with managed knowledge bases. Use AgenticRetrieveStream or Retrieve with managed knowledge bases.
  */
 export const retrieveAndGenerate: API.OperationMethod<
   RetrieveAndGenerateRequest,
@@ -7021,6 +8015,8 @@ export type RetrieveAndGenerateStreamError =
   | CommonErrors;
 /**
  * Queries a knowledge base and generates responses based on the retrieved results, with output in streaming format.
+ *
+ * This API cannot be used with managed knowledge bases. Use AgenticRetrieveStream or Retrieve with managed knowledge bases.
  *
  * The CLI doesn't support streaming operations in Amazon Bedrock, including `InvokeModelWithResponseStream`.
  *

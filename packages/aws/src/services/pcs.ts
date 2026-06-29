@@ -541,16 +541,26 @@ export const UpdateClusterSlurmConfigurationRequest =
   ).annotate({
     identifier: "UpdateClusterSlurmConfigurationRequest",
   }) as any as S.Schema<UpdateClusterSlurmConfigurationRequest>;
+export interface UpdateSchedulerRequest {
+  version: string;
+}
+export const UpdateSchedulerRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ version: S.String }),
+).annotate({
+  identifier: "UpdateSchedulerRequest",
+}) as any as S.Schema<UpdateSchedulerRequest>;
 export interface UpdateClusterRequest {
   clusterIdentifier: string;
   clientToken?: string;
   slurmConfiguration?: UpdateClusterSlurmConfigurationRequest;
+  scheduler?: UpdateSchedulerRequest;
 }
 export const UpdateClusterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterIdentifier: S.String,
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     slurmConfiguration: S.optional(UpdateClusterSlurmConfigurationRequest),
+    scheduler: S.optional(UpdateSchedulerRequest),
   }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -679,6 +689,7 @@ export type PurchaseOption =
   | "ONDEMAND"
   | "SPOT"
   | "CAPACITY_BLOCK"
+  | "INTERRUPTIBLE_CAPACITY_RESERVATION"
   | (string & {});
 export const PurchaseOption = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CustomLaunchTemplate {
@@ -721,11 +732,15 @@ export const SpotOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({ allocationStrategy: S.optional(SpotAllocationStrategy) }),
 ).annotate({ identifier: "SpotOptions" }) as any as S.Schema<SpotOptions>;
 export interface ComputeNodeGroupSlurmConfigurationRequest {
+  scaleDownIdleTimeInSeconds?: number;
   slurmCustomSettings?: SlurmCustomSetting[];
 }
 export const ComputeNodeGroupSlurmConfigurationRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ slurmCustomSettings: S.optional(SlurmCustomSettings) }),
+    S.Struct({
+      scaleDownIdleTimeInSeconds: S.optional(S.Number),
+      slurmCustomSettings: S.optional(SlurmCustomSettings),
+    }),
   ).annotate({
     identifier: "ComputeNodeGroupSlurmConfigurationRequest",
   }) as any as S.Schema<ComputeNodeGroupSlurmConfigurationRequest>;
@@ -790,11 +805,15 @@ export const ScalingConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ScalingConfiguration",
 }) as any as S.Schema<ScalingConfiguration>;
 export interface ComputeNodeGroupSlurmConfiguration {
+  scaleDownIdleTimeInSeconds?: number;
   slurmCustomSettings?: SlurmCustomSetting[];
 }
 export const ComputeNodeGroupSlurmConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ slurmCustomSettings: S.optional(SlurmCustomSettings) }),
+    S.Struct({
+      scaleDownIdleTimeInSeconds: S.optional(S.Number),
+      slurmCustomSettings: S.optional(SlurmCustomSettings),
+    }),
   ).annotate({
     identifier: "ComputeNodeGroupSlurmConfiguration",
   }) as any as S.Schema<ComputeNodeGroupSlurmConfiguration>;
@@ -850,11 +869,15 @@ export const CreateComputeNodeGroupResponse =
     identifier: "CreateComputeNodeGroupResponse",
   }) as any as S.Schema<CreateComputeNodeGroupResponse>;
 export interface UpdateComputeNodeGroupSlurmConfigurationRequest {
+  scaleDownIdleTimeInSeconds?: number;
   slurmCustomSettings?: SlurmCustomSetting[];
 }
 export const UpdateComputeNodeGroupSlurmConfigurationRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ slurmCustomSettings: S.optional(SlurmCustomSettings) }),
+    S.Struct({
+      scaleDownIdleTimeInSeconds: S.optional(S.Number),
+      slurmCustomSettings: S.optional(SlurmCustomSettings),
+    }),
   ).annotate({
     identifier: "UpdateComputeNodeGroupSlurmConfigurationRequest",
   }) as any as S.Schema<UpdateComputeNodeGroupSlurmConfigurationRequest>;
@@ -1363,7 +1386,7 @@ export type UpdateClusterError =
   | ValidationException
   | CommonErrors;
 /**
- * Updates a cluster configuration. You can modify Slurm scheduler settings, accounting configuration, and security groups for an existing cluster.
+ * Updates a cluster configuration. You can upgrade the Slurm version, modify scheduler settings, and update accounting configuration for an existing cluster. For more information about upgrading the Slurm version, see Upgrading the Slurm version on a cluster in the *PCS User Guide*.
  *
  * You can only update clusters that are in `ACTIVE`, `UPDATE_FAILED`, or `SUSPENDED` state. All associated resources (queues and compute node groups) must be in `ACTIVE` state before you can update the cluster.
  */

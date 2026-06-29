@@ -3009,16 +3009,24 @@ export const WebAppUnits = /*@__PURE__*/ /*#__PURE__*/ S.Union([
 ]);
 export type WebAppEndpointPolicy = "FIPS" | "STANDARD" | (string & {});
 export const WebAppEndpointPolicy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type WebAppVpcEndpointIpAddressType =
+  | "IPV4"
+  | "DUALSTACK"
+  | (string & {});
+export const WebAppVpcEndpointIpAddressType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface WebAppVpcConfig {
   SubnetIds?: string[];
   VpcId?: string;
   SecurityGroupIds?: string[];
+  IpAddressType?: WebAppVpcEndpointIpAddressType;
 }
 export const WebAppVpcConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     SubnetIds: S.optional(SubnetIds),
     VpcId: S.optional(S.String),
     SecurityGroupIds: S.optional(SecurityGroupIds),
+    IpAddressType: S.optional(WebAppVpcEndpointIpAddressType),
   }),
 ).annotate({
   identifier: "WebAppVpcConfig",
@@ -3181,9 +3189,13 @@ export const UpdateWebAppIdentityProviderDetails =
   ]);
 export interface UpdateWebAppVpcConfig {
   SubnetIds?: string[];
+  IpAddressType?: WebAppVpcEndpointIpAddressType;
 }
 export const UpdateWebAppVpcConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ SubnetIds: S.optional(SubnetIds) }),
+  S.Struct({
+    SubnetIds: S.optional(SubnetIds),
+    IpAddressType: S.optional(WebAppVpcEndpointIpAddressType),
+  }),
 ).annotate({
   identifier: "UpdateWebAppVpcConfig",
 }) as any as S.Schema<UpdateWebAppVpcConfig>;
@@ -4159,7 +4171,7 @@ export type StartDirectoryListingError =
  *
  * - `path`: the complete path of a remote directory, relative to the directory of the listing request for your SFTP connector on the remote server.
  *
- * - `truncated`: a flag indicating whether the list output contains all of the items contained in the remote directory or not. If your `Truncated` output value is true, you can increase the value provided in the optional `max-items` input attribute to be able to list more items (up to the maximum allowed list size of 10,000 items).
+ * - `truncated`: a flag indicating whether the list output contains all of the items contained in the remote directory or not. If your `Truncated` output value is true, you can increase the value provided in the optional `max-items` input attribute to be able to list more items (up to the maximum allowed list size of 200,000 items).
  */
 export const startDirectoryListing: API.OperationMethod<
   StartDirectoryListingRequest,

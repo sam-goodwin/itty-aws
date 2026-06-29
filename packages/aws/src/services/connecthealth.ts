@@ -948,6 +948,15 @@ export const MedicalScribeAudioEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "MedicalScribeAudioEvent",
 }) as any as S.Schema<MedicalScribeAudioEvent>;
+export interface MedicalScribeBinaryAudioEvent {
+  audioChunk: Uint8Array;
+}
+export const MedicalScribeBinaryAudioEvent =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ audioChunk: T.Blob.pipe(T.EventPayload()) }),
+  ).annotate({
+    identifier: "MedicalScribeBinaryAudioEvent",
+  }) as any as S.Schema<MedicalScribeBinaryAudioEvent>;
 export type MedicalScribeSessionControlEventType =
   | "END_OF_SESSION"
   | (string & {});
@@ -1052,16 +1061,25 @@ export const MedicalScribeConfigurationEvent =
 export type MedicalScribeInputStream =
   | {
       audioEvent: MedicalScribeAudioEvent;
+      binaryAudioEvent?: never;
       sessionControlEvent?: never;
       configurationEvent?: never;
     }
   | {
       audioEvent?: never;
+      binaryAudioEvent: MedicalScribeBinaryAudioEvent;
+      sessionControlEvent?: never;
+      configurationEvent?: never;
+    }
+  | {
+      audioEvent?: never;
+      binaryAudioEvent?: never;
       sessionControlEvent: MedicalScribeSessionControlEvent;
       configurationEvent?: never;
     }
   | {
       audioEvent?: never;
+      binaryAudioEvent?: never;
       sessionControlEvent?: never;
       configurationEvent: MedicalScribeConfigurationEvent;
     };
@@ -1069,6 +1087,7 @@ export const MedicalScribeInputStream =
   /*@__PURE__*/ /*#__PURE__*/ T.InputEventStream(
     S.Union([
       S.Struct({ audioEvent: MedicalScribeAudioEvent }),
+      S.Struct({ binaryAudioEvent: MedicalScribeBinaryAudioEvent }),
       S.Struct({ sessionControlEvent: MedicalScribeSessionControlEvent }),
       S.Struct({ configurationEvent: MedicalScribeConfigurationEvent }),
     ]),

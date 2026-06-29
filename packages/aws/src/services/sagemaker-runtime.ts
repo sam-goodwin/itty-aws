@@ -214,6 +214,7 @@ export interface InvokeEndpointAsyncInput {
   Filename?: string;
   RequestTTLSeconds?: number;
   InvocationTimeoutSeconds?: number;
+  Body?: T.StreamingInputBody;
 }
 export const InvokeEndpointAsyncInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -246,6 +247,7 @@ export const InvokeEndpointAsyncInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       InvocationTimeoutSeconds: S.optional(S.Number).pipe(
         T.HttpHeader("X-Amzn-SageMaker-InvocationTimeoutSeconds"),
       ),
+      Body: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
     }).pipe(
       T.all(
         T.Http({

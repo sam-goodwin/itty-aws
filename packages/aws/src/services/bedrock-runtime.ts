@@ -128,6 +128,7 @@ export type ImagesGuarded = number;
 export type ImagesTotal = number;
 export type GuardrailId = string;
 export type GuardrailArn = string;
+export type GuardrailChecksTextContent = string | redacted.Redacted<string>;
 export type ConversationalModelId = string;
 export type ToolUseId = string;
 export type ToolName = string;
@@ -137,6 +138,7 @@ export type StatusCode = number;
 export type NonNegativeInteger = number;
 export type MimeType = string;
 export type InvokeModelIdentifier = string;
+export type RequestMetadataJson = string | redacted.Redacted<string>;
 export type PartBody = Uint8Array | redacted.Redacted<Uint8Array>;
 export type FoundationModelVersionIdentifier = string;
 export type Body = Uint8Array | redacted.Redacted<Uint8Array>;
@@ -1191,7 +1193,364 @@ export const ApplyGuardrailResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ApplyGuardrailResponse",
 }) as any as S.Schema<ApplyGuardrailResponse>;
-export type ConversationRole = "user" | "assistant" | (string & {});
+export type GuardrailChecksRole =
+  | "user"
+  | "assistant"
+  | "system"
+  | (string & {});
+export const GuardrailChecksRole = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type GuardrailChecksContentBlock = {
+  text: string | redacted.Redacted<string>;
+};
+export const GuardrailChecksContentBlock = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ text: SensitiveString }),
+]);
+export type GuardrailChecksContentBlockList = GuardrailChecksContentBlock[];
+export const GuardrailChecksContentBlockList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(GuardrailChecksContentBlock);
+export interface GuardrailChecksMessage {
+  role: GuardrailChecksRole;
+  content: GuardrailChecksContentBlock[];
+}
+export const GuardrailChecksMessage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      role: GuardrailChecksRole,
+      content: GuardrailChecksContentBlockList,
+    }),
+).annotate({
+  identifier: "GuardrailChecksMessage",
+}) as any as S.Schema<GuardrailChecksMessage>;
+export type GuardrailChecksMessageList = GuardrailChecksMessage[];
+export const GuardrailChecksMessageList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  GuardrailChecksMessage,
+);
+export type GuardrailChecksContentFilterCategory =
+  | "VIOLENCE"
+  | "HATE"
+  | "SEXUAL"
+  | "MISCONDUCT"
+  | "INSULTS"
+  | (string & {});
+export const GuardrailChecksContentFilterCategory =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface GuardrailChecksContentFilterCategoryConfig {
+  category: GuardrailChecksContentFilterCategory;
+}
+export const GuardrailChecksContentFilterCategoryConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ category: GuardrailChecksContentFilterCategory }),
+  ).annotate({
+    identifier: "GuardrailChecksContentFilterCategoryConfig",
+  }) as any as S.Schema<GuardrailChecksContentFilterCategoryConfig>;
+export type GuardrailChecksContentFilterCategoryConfigList =
+  GuardrailChecksContentFilterCategoryConfig[];
+export const GuardrailChecksContentFilterCategoryConfigList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(
+    GuardrailChecksContentFilterCategoryConfig,
+  );
+export interface GuardrailChecksContentFilterConfig {
+  categories: GuardrailChecksContentFilterCategoryConfig[];
+}
+export const GuardrailChecksContentFilterConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ categories: GuardrailChecksContentFilterCategoryConfigList }),
+  ).annotate({
+    identifier: "GuardrailChecksContentFilterConfig",
+  }) as any as S.Schema<GuardrailChecksContentFilterConfig>;
+export type GuardrailChecksPromptAttackCategory =
+  | "JAILBREAK"
+  | "PROMPT_INJECTION"
+  | "PROMPT_LEAKAGE"
+  | (string & {});
+export const GuardrailChecksPromptAttackCategory =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface GuardrailChecksPromptAttackCategoryConfig {
+  category: GuardrailChecksPromptAttackCategory;
+}
+export const GuardrailChecksPromptAttackCategoryConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ category: GuardrailChecksPromptAttackCategory }),
+  ).annotate({
+    identifier: "GuardrailChecksPromptAttackCategoryConfig",
+  }) as any as S.Schema<GuardrailChecksPromptAttackCategoryConfig>;
+export type GuardrailChecksPromptAttackCategoryConfigList =
+  GuardrailChecksPromptAttackCategoryConfig[];
+export const GuardrailChecksPromptAttackCategoryConfigList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(
+    GuardrailChecksPromptAttackCategoryConfig,
+  );
+export interface GuardrailChecksPromptAttackConfig {
+  categories: GuardrailChecksPromptAttackCategoryConfig[];
+}
+export const GuardrailChecksPromptAttackConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ categories: GuardrailChecksPromptAttackCategoryConfigList }),
+  ).annotate({
+    identifier: "GuardrailChecksPromptAttackConfig",
+  }) as any as S.Schema<GuardrailChecksPromptAttackConfig>;
+export type GuardrailChecksSensitiveInformationEntityType =
+  | "ADDRESS"
+  | "AGE"
+  | "AWS_ACCESS_KEY"
+  | "AWS_SECRET_KEY"
+  | "CA_HEALTH_NUMBER"
+  | "CA_SOCIAL_INSURANCE_NUMBER"
+  | "CREDIT_DEBIT_CARD_CVV"
+  | "CREDIT_DEBIT_CARD_EXPIRY"
+  | "CREDIT_DEBIT_CARD_NUMBER"
+  | "DRIVER_ID"
+  | "EMAIL"
+  | "INTERNATIONAL_BANK_ACCOUNT_NUMBER"
+  | "IP_ADDRESS"
+  | "LICENSE_PLATE"
+  | "MAC_ADDRESS"
+  | "NAME"
+  | "PASSWORD"
+  | "PHONE"
+  | "PIN"
+  | "SWIFT_CODE"
+  | "UK_NATIONAL_HEALTH_SERVICE_NUMBER"
+  | "UK_NATIONAL_INSURANCE_NUMBER"
+  | "UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"
+  | "URL"
+  | "USERNAME"
+  | "US_BANK_ACCOUNT_NUMBER"
+  | "US_BANK_ROUTING_NUMBER"
+  | "US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"
+  | "US_PASSPORT_NUMBER"
+  | "US_SOCIAL_SECURITY_NUMBER"
+  | "VEHICLE_IDENTIFICATION_NUMBER"
+  | (string & {});
+export const GuardrailChecksSensitiveInformationEntityType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface GuardrailChecksSensitiveInformationEntityConfig {
+  type: GuardrailChecksSensitiveInformationEntityType;
+}
+export const GuardrailChecksSensitiveInformationEntityConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ type: GuardrailChecksSensitiveInformationEntityType }),
+  ).annotate({
+    identifier: "GuardrailChecksSensitiveInformationEntityConfig",
+  }) as any as S.Schema<GuardrailChecksSensitiveInformationEntityConfig>;
+export type GuardrailChecksSensitiveInformationEntityConfigList =
+  GuardrailChecksSensitiveInformationEntityConfig[];
+export const GuardrailChecksSensitiveInformationEntityConfigList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(
+    GuardrailChecksSensitiveInformationEntityConfig,
+  );
+export interface GuardrailChecksSensitiveInformationConfig {
+  entities: GuardrailChecksSensitiveInformationEntityConfig[];
+}
+export const GuardrailChecksSensitiveInformationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ entities: GuardrailChecksSensitiveInformationEntityConfigList }),
+  ).annotate({
+    identifier: "GuardrailChecksSensitiveInformationConfig",
+  }) as any as S.Schema<GuardrailChecksSensitiveInformationConfig>;
+export interface GuardrailChecksConfig {
+  contentFilter?: GuardrailChecksContentFilterConfig;
+  promptAttack?: GuardrailChecksPromptAttackConfig;
+  sensitiveInformation?: GuardrailChecksSensitiveInformationConfig;
+}
+export const GuardrailChecksConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contentFilter: S.optional(GuardrailChecksContentFilterConfig),
+    promptAttack: S.optional(GuardrailChecksPromptAttackConfig),
+    sensitiveInformation: S.optional(GuardrailChecksSensitiveInformationConfig),
+  }),
+).annotate({
+  identifier: "GuardrailChecksConfig",
+}) as any as S.Schema<GuardrailChecksConfig>;
+export interface InvokeGuardrailChecksRequest {
+  messages: GuardrailChecksMessage[];
+  checks: GuardrailChecksConfig;
+}
+export const InvokeGuardrailChecksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      messages: GuardrailChecksMessageList,
+      checks: GuardrailChecksConfig,
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/guardrail-checks/invoke" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "InvokeGuardrailChecksRequest",
+  }) as any as S.Schema<InvokeGuardrailChecksRequest>;
+export interface GuardrailChecksContentFilterResultEntry {
+  category: GuardrailChecksContentFilterCategory;
+  severityScore: number;
+}
+export const GuardrailChecksContentFilterResultEntry =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      category: GuardrailChecksContentFilterCategory,
+      severityScore: S.Number,
+    }),
+  ).annotate({
+    identifier: "GuardrailChecksContentFilterResultEntry",
+  }) as any as S.Schema<GuardrailChecksContentFilterResultEntry>;
+export type GuardrailChecksContentFilterResultList =
+  GuardrailChecksContentFilterResultEntry[];
+export const GuardrailChecksContentFilterResultList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(GuardrailChecksContentFilterResultEntry);
+export interface GuardrailChecksContentFilterResult {
+  results: GuardrailChecksContentFilterResultEntry[];
+}
+export const GuardrailChecksContentFilterResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ results: GuardrailChecksContentFilterResultList }),
+  ).annotate({
+    identifier: "GuardrailChecksContentFilterResult",
+  }) as any as S.Schema<GuardrailChecksContentFilterResult>;
+export interface GuardrailChecksPromptAttackResultEntry {
+  category: GuardrailChecksPromptAttackCategory;
+  severityScore: number;
+}
+export const GuardrailChecksPromptAttackResultEntry =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      category: GuardrailChecksPromptAttackCategory,
+      severityScore: S.Number,
+    }),
+  ).annotate({
+    identifier: "GuardrailChecksPromptAttackResultEntry",
+  }) as any as S.Schema<GuardrailChecksPromptAttackResultEntry>;
+export type GuardrailChecksPromptAttackResultList =
+  GuardrailChecksPromptAttackResultEntry[];
+export const GuardrailChecksPromptAttackResultList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(GuardrailChecksPromptAttackResultEntry);
+export interface GuardrailChecksPromptAttackResult {
+  results: GuardrailChecksPromptAttackResultEntry[];
+}
+export const GuardrailChecksPromptAttackResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ results: GuardrailChecksPromptAttackResultList }),
+  ).annotate({
+    identifier: "GuardrailChecksPromptAttackResult",
+  }) as any as S.Schema<GuardrailChecksPromptAttackResult>;
+export interface GuardrailChecksSensitiveInformationResultEntry {
+  type: GuardrailChecksSensitiveInformationEntityType;
+  confidenceScore: number;
+  beginOffset: number;
+  endOffset: number;
+  messageIndex: number;
+  contentIndex: number;
+}
+export const GuardrailChecksSensitiveInformationResultEntry =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: GuardrailChecksSensitiveInformationEntityType,
+      confidenceScore: S.Number,
+      beginOffset: S.Number,
+      endOffset: S.Number,
+      messageIndex: S.Number,
+      contentIndex: S.Number,
+    }),
+  ).annotate({
+    identifier: "GuardrailChecksSensitiveInformationResultEntry",
+  }) as any as S.Schema<GuardrailChecksSensitiveInformationResultEntry>;
+export type GuardrailChecksSensitiveInformationResultList =
+  GuardrailChecksSensitiveInformationResultEntry[];
+export const GuardrailChecksSensitiveInformationResultList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(
+    GuardrailChecksSensitiveInformationResultEntry,
+  );
+export interface GuardrailChecksSensitiveInformationResult {
+  results: GuardrailChecksSensitiveInformationResultEntry[];
+  truncated?: boolean;
+}
+export const GuardrailChecksSensitiveInformationResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      results: GuardrailChecksSensitiveInformationResultList,
+      truncated: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GuardrailChecksSensitiveInformationResult",
+  }) as any as S.Schema<GuardrailChecksSensitiveInformationResult>;
+export interface GuardrailChecksResults {
+  contentFilter?: GuardrailChecksContentFilterResult;
+  promptAttack?: GuardrailChecksPromptAttackResult;
+  sensitiveInformation?: GuardrailChecksSensitiveInformationResult;
+}
+export const GuardrailChecksResults = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      contentFilter: S.optional(GuardrailChecksContentFilterResult),
+      promptAttack: S.optional(GuardrailChecksPromptAttackResult),
+      sensitiveInformation: S.optional(
+        GuardrailChecksSensitiveInformationResult,
+      ),
+    }),
+).annotate({
+  identifier: "GuardrailChecksResults",
+}) as any as S.Schema<GuardrailChecksResults>;
+export interface GuardrailChecksContentFilterUsage {
+  textUnits: number;
+}
+export const GuardrailChecksContentFilterUsage =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ textUnits: S.Number }),
+  ).annotate({
+    identifier: "GuardrailChecksContentFilterUsage",
+  }) as any as S.Schema<GuardrailChecksContentFilterUsage>;
+export interface GuardrailChecksPromptAttackUsage {
+  textUnits: number;
+}
+export const GuardrailChecksPromptAttackUsage =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ textUnits: S.Number }),
+  ).annotate({
+    identifier: "GuardrailChecksPromptAttackUsage",
+  }) as any as S.Schema<GuardrailChecksPromptAttackUsage>;
+export interface GuardrailChecksSensitiveInformationUsage {
+  textUnits: number;
+}
+export const GuardrailChecksSensitiveInformationUsage =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ textUnits: S.Number }),
+  ).annotate({
+    identifier: "GuardrailChecksSensitiveInformationUsage",
+  }) as any as S.Schema<GuardrailChecksSensitiveInformationUsage>;
+export interface GuardrailChecksUsageResults {
+  contentFilter?: GuardrailChecksContentFilterUsage;
+  promptAttack?: GuardrailChecksPromptAttackUsage;
+  sensitiveInformation?: GuardrailChecksSensitiveInformationUsage;
+}
+export const GuardrailChecksUsageResults =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      contentFilter: S.optional(GuardrailChecksContentFilterUsage),
+      promptAttack: S.optional(GuardrailChecksPromptAttackUsage),
+      sensitiveInformation: S.optional(
+        GuardrailChecksSensitiveInformationUsage,
+      ),
+    }),
+  ).annotate({
+    identifier: "GuardrailChecksUsageResults",
+  }) as any as S.Schema<GuardrailChecksUsageResults>;
+export interface InvokeGuardrailChecksResponse {
+  results: GuardrailChecksResults;
+  usage: GuardrailChecksUsageResults;
+}
+export const InvokeGuardrailChecksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      results: GuardrailChecksResults,
+      usage: GuardrailChecksUsageResults,
+    }),
+  ).annotate({
+    identifier: "InvokeGuardrailChecksResponse",
+  }) as any as S.Schema<InvokeGuardrailChecksResponse>;
+export type ConversationRole = "user" | "assistant" | "system" | (string & {});
 export const ConversationRole = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type ImageFormat = "png" | "jpeg" | "gif" | "webp" | (string & {});
 export const ImageFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -2786,6 +3145,7 @@ export interface InvokeModelRequest {
   guardrailVersion?: string;
   performanceConfigLatency?: PerformanceConfigLatency;
   serviceTier?: ServiceTierType;
+  requestMetadata?: string | redacted.Redacted<string>;
 }
 export const InvokeModelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2805,6 +3165,9 @@ export const InvokeModelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ),
     serviceTier: S.optional(ServiceTierType).pipe(
       T.HttpHeader("X-Amzn-Bedrock-Service-Tier"),
+    ),
+    requestMetadata: S.optional(SensitiveString).pipe(
+      T.HttpHeader("X-Amzn-Bedrock-Request-Metadata"),
     ),
   }).pipe(
     T.all(
@@ -3014,6 +3377,7 @@ export interface InvokeModelWithResponseStreamRequest {
   guardrailVersion?: string;
   performanceConfigLatency?: PerformanceConfigLatency;
   serviceTier?: ServiceTierType;
+  requestMetadata?: string | redacted.Redacted<string>;
 }
 export const InvokeModelWithResponseStreamRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -3034,6 +3398,9 @@ export const InvokeModelWithResponseStreamRequest =
       ),
       serviceTier: S.optional(ServiceTierType).pipe(
         T.HttpHeader("X-Amzn-Bedrock-Service-Tier"),
+      ),
+      requestMetadata: S.optional(SensitiveString).pipe(
+        T.HttpHeader("X-Amzn-Bedrock-Request-Metadata"),
       ),
     }).pipe(
       T.all(
@@ -3430,6 +3797,32 @@ export const applyGuardrail: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ServiceQuotaExceededException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type InvokeGuardrailChecksError =
+  | AccessDeniedException
+  | InternalServerException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Evaluates messages against inline guardrail checks. You specify the check configurations directly in the request, and Amazon Bedrock returns per-check results with severity or confidence scores.
+ */
+export const invokeGuardrailChecks: API.OperationMethod<
+  InvokeGuardrailChecksRequest,
+  InvokeGuardrailChecksResponse,
+  InvokeGuardrailChecksError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: InvokeGuardrailChecksRequest,
+  output: InvokeGuardrailChecksResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
     ServiceUnavailableException,
     ThrottlingException,
     ValidationException,

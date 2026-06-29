@@ -867,6 +867,7 @@ export interface SecurityGroupSettings {
   showMasterRecoveryKey?: boolean;
   shredder?: ShredderSettings;
   ssoMaxIdleMinutes?: number;
+  maxNonSsoSessionMinutes?: number;
   federationMode?: number;
   lockoutThreshold?: number;
   permittedNetworks?: string[];
@@ -905,6 +906,7 @@ export const SecurityGroupSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     showMasterRecoveryKey: S.optional(S.Boolean),
     shredder: S.optional(ShredderSettings),
     ssoMaxIdleMinutes: S.optional(S.Number),
+    maxNonSsoSessionMinutes: S.optional(S.Number),
     federationMode: S.optional(S.Number),
     lockoutThreshold: S.optional(S.Number),
     permittedNetworks: S.optional(PermittedNetworksList),
@@ -2378,11 +2380,28 @@ export const ReadReceiptConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ReadReceiptConfig",
 }) as any as S.Schema<ReadReceiptConfig>;
+export interface ConsentPopupConfig {
+  enabled: boolean;
+  header?: string;
+  content?: string;
+  closeButtonLabel?: string;
+}
+export const ConsentPopupConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    header: S.optional(S.String),
+    content: S.optional(S.String),
+    closeButtonLabel: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConsentPopupConfig",
+}) as any as S.Schema<ConsentPopupConfig>;
 export interface NetworkSettings {
   enableClientMetrics?: boolean;
   readReceiptConfig?: ReadReceiptConfig;
   dataRetention?: boolean;
   enableTrustedDataFormat?: boolean;
+  consentPopup?: ConsentPopupConfig;
 }
 export const NetworkSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2390,6 +2409,7 @@ export const NetworkSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     readReceiptConfig: S.optional(ReadReceiptConfig),
     dataRetention: S.optional(S.Boolean),
     enableTrustedDataFormat: S.optional(S.Boolean),
+    consentPopup: S.optional(ConsentPopupConfig),
   }),
 ).annotate({
   identifier: "NetworkSettings",

@@ -140,8 +140,10 @@ export const CRType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type CRAllocationStrategy =
   | "BEST_FIT"
   | "BEST_FIT_PROGRESSIVE"
+  | "BEST_FIT_PROGRESSIVE_ORDERED"
   | "SPOT_CAPACITY_OPTIMIZED"
   | "SPOT_PRICE_CAPACITY_OPTIMIZED"
+  | "SPOT_CAPACITY_OPTIMIZED_PRIORITIZED"
   | (string & {});
 export const CRAllocationStrategy = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type StringList = string[];
@@ -1008,7 +1010,6 @@ export interface DescribeComputeEnvironmentsResponse {
     computeResources: ComputeResource & {
       type: CRType;
       maxvCpus: number;
-      subnets: StringList;
       ec2Configuration: (Ec2Configuration & { imageType: ImageType })[];
     };
     eksConfiguration: EksConfiguration & {
@@ -1176,16 +1177,35 @@ export const EFSVolumeConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "EFSVolumeConfiguration",
 }) as any as S.Schema<EFSVolumeConfiguration>;
+export interface S3FilesVolumeConfiguration {
+  fileSystemArn?: string;
+  rootDirectory?: string;
+  transitEncryptionPort?: number;
+  accessPointArn?: string;
+}
+export const S3FilesVolumeConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      fileSystemArn: S.optional(S.String),
+      rootDirectory: S.optional(S.String),
+      transitEncryptionPort: S.optional(S.Number),
+      accessPointArn: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "S3FilesVolumeConfiguration",
+}) as any as S.Schema<S3FilesVolumeConfiguration>;
 export interface Volume {
   host?: Host;
   name?: string;
   efsVolumeConfiguration?: EFSVolumeConfiguration;
+  s3filesVolumeConfiguration?: S3FilesVolumeConfiguration;
 }
 export const Volume = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(Host),
     name: S.optional(S.String),
     efsVolumeConfiguration: S.optional(EFSVolumeConfiguration),
+    s3filesVolumeConfiguration: S.optional(S3FilesVolumeConfiguration),
   }),
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 export type Volumes = Volume[];
@@ -1498,6 +1518,8 @@ export interface TaskContainerProperties {
   secrets?: Secret[];
   ulimits?: Ulimit[];
   user?: string;
+  startTimeout?: number;
+  stopTimeout?: number;
 }
 export const TaskContainerProperties = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1519,6 +1541,8 @@ export const TaskContainerProperties = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       secrets: S.optional(SecretList),
       ulimits: S.optional(Ulimits),
       user: S.optional(S.String),
+      startTimeout: S.optional(S.Number),
+      stopTimeout: S.optional(S.Number),
     }),
 ).annotate({
   identifier: "TaskContainerProperties",
@@ -1915,6 +1939,9 @@ export interface DescribeJobDefinitionsResponse {
         efsVolumeConfiguration: EFSVolumeConfiguration & {
           fileSystemId: string;
         };
+        s3filesVolumeConfiguration: S3FilesVolumeConfiguration & {
+          fileSystemArn: string;
+        };
       })[];
       ulimits: (Ulimit & {
         hardLimit: number;
@@ -1948,6 +1975,9 @@ export interface DescribeJobDefinitionsResponse {
           volumes: (Volume & {
             efsVolumeConfiguration: EFSVolumeConfiguration & {
               fileSystemId: string;
+            };
+            s3filesVolumeConfiguration: S3FilesVolumeConfiguration & {
+              fileSystemArn: string;
             };
           })[];
           ulimits: (Ulimit & {
@@ -2007,6 +2037,9 @@ export interface DescribeJobDefinitionsResponse {
               efsVolumeConfiguration: EFSVolumeConfiguration & {
                 fileSystemId: string;
               };
+              s3filesVolumeConfiguration: S3FilesVolumeConfiguration & {
+                fileSystemArn: string;
+              };
             })[];
           })[];
         };
@@ -2065,6 +2098,9 @@ export interface DescribeJobDefinitionsResponse {
         volumes: (Volume & {
           efsVolumeConfiguration: EFSVolumeConfiguration & {
             fileSystemId: string;
+          };
+          s3filesVolumeConfiguration: S3FilesVolumeConfiguration & {
+            fileSystemArn: string;
           };
         })[];
       })[];
@@ -2579,6 +2615,8 @@ export interface TaskContainerDetails {
   secrets?: Secret[];
   ulimits?: Ulimit[];
   user?: string;
+  startTimeout?: number;
+  stopTimeout?: number;
   exitCode?: number;
   reason?: string;
   logStreamName?: string;
@@ -2603,6 +2641,8 @@ export const TaskContainerDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     secrets: S.optional(SecretList),
     ulimits: S.optional(Ulimits),
     user: S.optional(S.String),
+    startTimeout: S.optional(S.Number),
+    stopTimeout: S.optional(S.Number),
     exitCode: S.optional(S.Number),
     reason: S.optional(S.String),
     logStreamName: S.optional(S.String),
@@ -2741,6 +2781,9 @@ export interface DescribeJobsResponse {
         efsVolumeConfiguration: EFSVolumeConfiguration & {
           fileSystemId: string;
         };
+        s3filesVolumeConfiguration: S3FilesVolumeConfiguration & {
+          fileSystemArn: string;
+        };
       })[];
       ulimits: (Ulimit & {
         hardLimit: number;
@@ -2774,6 +2817,9 @@ export interface DescribeJobsResponse {
           volumes: (Volume & {
             efsVolumeConfiguration: EFSVolumeConfiguration & {
               fileSystemId: string;
+            };
+            s3filesVolumeConfiguration: S3FilesVolumeConfiguration & {
+              fileSystemArn: string;
             };
           })[];
           ulimits: (Ulimit & {
@@ -2832,6 +2878,9 @@ export interface DescribeJobsResponse {
             volumes: (Volume & {
               efsVolumeConfiguration: EFSVolumeConfiguration & {
                 fileSystemId: string;
+              };
+              s3filesVolumeConfiguration: S3FilesVolumeConfiguration & {
+                fileSystemArn: string;
               };
             })[];
           })[];
@@ -2908,6 +2957,9 @@ export interface DescribeJobsResponse {
         volumes: (Volume & {
           efsVolumeConfiguration: EFSVolumeConfiguration & {
             fileSystemId: string;
+          };
+          s3filesVolumeConfiguration: S3FilesVolumeConfiguration & {
+            fileSystemArn: string;
           };
         })[];
       })[];
@@ -4609,8 +4661,10 @@ export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UntagResourceResponse>;
 export type CRUpdateAllocationStrategy =
   | "BEST_FIT_PROGRESSIVE"
+  | "BEST_FIT_PROGRESSIVE_ORDERED"
   | "SPOT_CAPACITY_OPTIMIZED"
   | "SPOT_PRICE_CAPACITY_OPTIMIZED"
+  | "SPOT_CAPACITY_OPTIMIZED_PRIORITIZED"
   | (string & {});
 export const CRUpdateAllocationStrategy = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ComputeResourceUpdate {

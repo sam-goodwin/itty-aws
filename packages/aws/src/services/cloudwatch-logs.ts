@@ -131,6 +131,7 @@ export type LogGroupIdentifier = string;
 export type ScheduleExpression = string;
 export type ScheduleTimezone = string;
 export type StartTimeOffset = number;
+export type EndTimeOffset = number;
 export type S3Uri = string;
 export type AccountId = string;
 export type PolicyName = string;
@@ -143,6 +144,7 @@ export type QueryId = string;
 export type Success = boolean;
 export type ExpectedRevisionId = string;
 export type ScheduledQueryIdentifier = string;
+export type VpcEndpointId = string;
 export type NextToken = string;
 export type AccountPolicyDocument = string;
 export type SelectionCriteria = string;
@@ -151,6 +153,12 @@ export type LogType = string;
 export type ResourceType = string;
 export type DescribeLimit = number;
 export type AllowedActionForAllowVendedLogsDeliveryForResource = string;
+export type DeliverySourceConfigurationSchemaField = string;
+export type DeliverySourceConfigurationNumericValue = number;
+export type S3TablesDatasourceName = string;
+export type S3TablesDatasourceType = string;
+export type DeliverySourceConfigurationKey = string;
+export type DeliverySourceConfigurationValue = string;
 export type TargetArn = string;
 export type AccessPolicy = string;
 export type ExportTaskStatusMessage = string;
@@ -188,6 +196,7 @@ export type QueryParameterDefaultValue = string;
 export type QueryParameterDescription = string;
 export type DestinationArn = string;
 export type EventsLimit = number;
+export type StartFromHead = boolean;
 export type Interleaved = boolean;
 export type Unmask = boolean;
 export type EventMessage = string;
@@ -203,7 +212,6 @@ export type OpenSearchCollectionEndpoint = string;
 export type OpenSearchWorkspaceId = string;
 export type OpenSearchPolicyName = string;
 export type EpochMillis = number;
-export type StartFromHead = boolean;
 export type LogFieldName = string;
 export type DataType = string;
 export type Field = string;
@@ -212,6 +220,8 @@ export type LogObjectPointer = string;
 export type Data = Uint8Array;
 export type LogRecordPointer = string;
 export type Value = string;
+export type GetQueryResultsNextToken = string;
+export type GetQueryResultsMaxItems = number;
 export type StatsValue = number;
 export type EncryptionKey = string;
 export type GetScheduledQueryHistoryMaxResults = number;
@@ -262,10 +272,13 @@ export type InferredTokenName = string;
 export type IntegrationNamePrefix = string;
 export type ListLogAnomalyDetectorsLimit = number;
 export type ListLimit = number;
+export type TagFilterKey = string;
+export type TagFilterValue = string;
 export type ListLogGroupsForQueryMaxResults = number;
 export type ListScheduledQueriesMaxResults = number;
 export type ListSourcesForS3TableIntegrationMaxResults = number;
 export type S3TableIntegrationSourceStatusReason = string;
+export type ListSyslogConfigurationsMaxResults = number;
 export type AmazonResourceName = string;
 export type ForceUpdate = boolean;
 export type CollectionRetentionDays = number;
@@ -278,6 +291,7 @@ export type ClientToken = string;
 export type RequestId = string;
 export type SessionId = string;
 export type IsSampled = boolean;
+export type EventsLimitStartQuery = number;
 export type QueryCharOffset = number;
 export type EventNumber = number;
 export type Token = string;
@@ -811,6 +825,7 @@ export interface CreateScheduledQueryRequest {
   scheduleExpression: string;
   timezone?: string;
   startTimeOffset?: number;
+  endTimeOffset?: number;
   destinationConfiguration?: DestinationConfiguration;
   scheduleStartTime?: number;
   scheduleEndTime?: number;
@@ -829,6 +844,7 @@ export const CreateScheduledQueryRequest =
       scheduleExpression: S.String,
       timezone: S.optional(S.String),
       startTimeOffset: S.optional(S.Number),
+      endTimeOffset: S.optional(S.Number),
       destinationConfiguration: S.optional(DestinationConfiguration),
       scheduleStartTime: S.optional(S.Number),
       scheduleEndTime: S.optional(S.Number),
@@ -1347,6 +1363,34 @@ export const DeleteSubscriptionFilterResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "DeleteSubscriptionFilterResponse",
   }) as any as S.Schema<DeleteSubscriptionFilterResponse>;
+export interface DeleteSyslogConfigurationRequest {
+  logGroupIdentifier: string;
+  vpcEndpointId?: string;
+}
+export const DeleteSyslogConfigurationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      logGroupIdentifier: S.String,
+      vpcEndpointId: S.optional(S.String),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeleteSyslogConfigurationRequest",
+  }) as any as S.Schema<DeleteSyslogConfigurationRequest>;
+export interface DeleteSyslogConfigurationResponse {}
+export const DeleteSyslogConfigurationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+    identifier: "DeleteSyslogConfigurationResponse",
+  }) as any as S.Schema<DeleteSyslogConfigurationResponse>;
 export interface DeleteTransformerRequest {
   logGroupIdentifier: string;
 }
@@ -1516,6 +1560,55 @@ export type AllowedFieldDelimiters = string[];
 export const AllowedFieldDelimiters = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   S.String,
 );
+export type DeliverySourceConfigurationSchemaValueType =
+  | "string"
+  | "boolean"
+  | "int"
+  | "double"
+  | "long"
+  | (string & {});
+export const DeliverySourceConfigurationSchemaValueType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type DeliverySourceConfigurationSupportedValues = string[];
+export const DeliverySourceConfigurationSupportedValues =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface DeliverySourceConfigurationSchema {
+  keyName: string;
+  valueType: DeliverySourceConfigurationSchemaValueType;
+  defaultValue: string;
+  supportedValues?: string[];
+  minValue?: number;
+  maxValue?: number;
+}
+export const DeliverySourceConfigurationSchema =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      keyName: S.String,
+      valueType: DeliverySourceConfigurationSchemaValueType,
+      defaultValue: S.String,
+      supportedValues: S.optional(DeliverySourceConfigurationSupportedValues),
+      minValue: S.optional(S.Number),
+      maxValue: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "DeliverySourceConfigurationSchema",
+  }) as any as S.Schema<DeliverySourceConfigurationSchema>;
+export type DeliverySourceConfigurationSchemas =
+  DeliverySourceConfigurationSchema[];
+export const DeliverySourceConfigurationSchemas =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DeliverySourceConfigurationSchema);
+export interface S3TablesIntegration {
+  datasourceName?: string;
+  datasourceType?: string;
+}
+export const S3TablesIntegration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datasourceName: S.optional(S.String),
+    datasourceType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "S3TablesIntegration",
+}) as any as S.Schema<S3TablesIntegration>;
 export interface ConfigurationTemplate {
   service?: string;
   logType?: string;
@@ -1527,6 +1620,8 @@ export interface ConfigurationTemplate {
   allowedActionForAllowVendedLogsDeliveryForResource?: string;
   allowedFieldDelimiters?: string[];
   allowedSuffixPathFields?: string[];
+  deliverySourceConfiguration?: DeliverySourceConfigurationSchema[];
+  s3TablesIntegration?: S3TablesIntegration;
 }
 export const ConfigurationTemplate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1542,6 +1637,8 @@ export const ConfigurationTemplate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     allowedActionForAllowVendedLogsDeliveryForResource: S.optional(S.String),
     allowedFieldDelimiters: S.optional(AllowedFieldDelimiters),
     allowedSuffixPathFields: S.optional(RecordFields),
+    deliverySourceConfiguration: S.optional(DeliverySourceConfigurationSchemas),
+    s3TablesIntegration: S.optional(S3TablesIntegration),
   }),
 ).annotate({
   identifier: "ConfigurationTemplate",
@@ -1696,6 +1793,15 @@ export const DescribeDeliverySourcesRequest =
   }) as any as S.Schema<DescribeDeliverySourcesRequest>;
 export type ResourceArns = string[];
 export const ResourceArns = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type DeliverySourceConfiguration = { [key: string]: string | undefined };
+export const DeliverySourceConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export type DeliverySourceStatus = "ACTIVE" | "INACTIVE" | (string & {});
+export const DeliverySourceStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type DeliverySourceStatusReason = "RESOURCE_DELETED" | (string & {});
+export const DeliverySourceStatusReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface DeliverySource {
   name?: string;
   arn?: string;
@@ -1703,6 +1809,9 @@ export interface DeliverySource {
   service?: string;
   logType?: string;
   tags?: { [key: string]: string | undefined };
+  deliverySourceConfiguration?: { [key: string]: string | undefined };
+  status?: DeliverySourceStatus;
+  statusReason?: DeliverySourceStatusReason;
 }
 export const DeliverySource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1712,6 +1821,9 @@ export const DeliverySource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     service: S.optional(S.String),
     logType: S.optional(S.String),
     tags: S.optional(Tags),
+    deliverySourceConfiguration: S.optional(DeliverySourceConfiguration),
+    status: S.optional(DeliverySourceStatus),
+    statusReason: S.optional(DeliverySourceStatusReason),
   }),
 ).annotate({ identifier: "DeliverySource" }) as any as S.Schema<DeliverySource>;
 export type DeliverySources = DeliverySource[];
@@ -2865,6 +2977,7 @@ export interface FilterLogEventsRequest {
   filterPattern?: string;
   nextToken?: string;
   limit?: number;
+  startFromHead?: boolean;
   interleaved?: boolean;
   unmask?: boolean;
 }
@@ -2880,6 +2993,7 @@ export const FilterLogEventsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       filterPattern: S.optional(S.String),
       nextToken: S.optional(S.String),
       limit: S.optional(S.Number),
+      startFromHead: S.optional(S.Boolean),
       interleaved: S.optional(S.Boolean),
       unmask: S.optional(S.Boolean),
     }).pipe(
@@ -3652,10 +3766,16 @@ export const GetLookupTableResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<GetLookupTableResponse>;
 export interface GetQueryResultsRequest {
   queryId: string;
+  nextToken?: string;
+  maxItems?: number;
 }
 export const GetQueryResultsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
-    S.Struct({ queryId: S.String }).pipe(
+    S.Struct({
+      queryId: S.String,
+      nextToken: S.optional(S.String),
+      maxItems: S.optional(S.Number),
+    }).pipe(
       T.all(
         ns,
         T.Http({ method: "POST", uri: "/" }),
@@ -3706,6 +3826,7 @@ export interface GetQueryResultsResponse {
   statistics?: QueryStatistics;
   status?: QueryStatus;
   encryptionKey?: string;
+  nextToken?: string;
 }
 export const GetQueryResultsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -3715,6 +3836,7 @@ export const GetQueryResultsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       statistics: S.optional(QueryStatistics),
       status: S.optional(QueryStatus),
       encryptionKey: S.optional(S.String),
+      nextToken: S.optional(S.String),
     }).pipe(ns),
 ).annotate({
   identifier: "GetQueryResultsResponse",
@@ -3738,6 +3860,8 @@ export const GetScheduledQueryRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetScheduledQueryRequest",
 }) as any as S.Schema<GetScheduledQueryRequest>;
+export type ScheduleType = "CUSTOMER_MANAGED" | "AWS_MANAGED" | (string & {});
+export const ScheduleType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type ExecutionStatus =
   | "Running"
   | "InvalidQuery"
@@ -3756,8 +3880,10 @@ export interface GetScheduledQueryResponse {
   scheduleExpression?: string;
   timezone?: string;
   startTimeOffset?: number;
+  endTimeOffset?: number;
   destinationConfiguration?: DestinationConfiguration;
   state?: ScheduledQueryState;
+  scheduleType?: ScheduleType;
   lastTriggeredTime?: number;
   lastExecutionStatus?: ExecutionStatus;
   scheduleStartTime?: number;
@@ -3778,8 +3904,10 @@ export const GetScheduledQueryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       scheduleExpression: S.optional(S.String),
       timezone: S.optional(S.String),
       startTimeOffset: S.optional(S.Number),
+      endTimeOffset: S.optional(S.Number),
       destinationConfiguration: S.optional(DestinationConfiguration),
       state: S.optional(ScheduledQueryState),
+      scheduleType: S.optional(ScheduleType),
       lastTriggeredTime: S.optional(S.Number),
       lastExecutionStatus: S.optional(ExecutionStatus),
       scheduleStartTime: S.optional(S.Number),
@@ -4662,6 +4790,17 @@ export const ListLogAnomalyDetectorsResponse =
   }) as any as S.Schema<ListLogAnomalyDetectorsResponse>;
 export type FieldIndexNames = string[];
 export const FieldIndexNames = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type TagFilterValues = string[];
+export const TagFilterValues = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface TagFilter {
+  key: string;
+  values?: string[];
+}
+export const TagFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ key: S.String, values: S.optional(TagFilterValues) }),
+).annotate({ identifier: "TagFilter" }) as any as S.Schema<TagFilter>;
+export type TagFilters = TagFilter[];
+export const TagFilters = /*@__PURE__*/ /*#__PURE__*/ S.Array(TagFilter);
 export interface ListLogGroupsRequest {
   logGroupNamePattern?: string;
   logGroupClass?: LogGroupClass;
@@ -4671,6 +4810,7 @@ export interface ListLogGroupsRequest {
   limit?: number;
   dataSources?: DataSourceFilter[];
   fieldIndexNames?: string[];
+  logGroupTags?: TagFilter[];
 }
 export const ListLogGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4682,6 +4822,7 @@ export const ListLogGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     limit: S.optional(S.Number),
     dataSources: S.optional(DataSourceFilters),
     fieldIndexNames: S.optional(FieldIndexNames),
+    logGroupTags: S.optional(TagFilters),
   }).pipe(
     T.all(
       ns,
@@ -4771,6 +4912,7 @@ export interface ListScheduledQueriesRequest {
   maxResults?: number;
   nextToken?: string;
   state?: ScheduledQueryState;
+  scheduleType?: ScheduleType;
 }
 export const ListScheduledQueriesRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -4778,6 +4920,7 @@ export const ListScheduledQueriesRequest =
       maxResults: S.optional(S.Number),
       nextToken: S.optional(S.String),
       state: S.optional(ScheduledQueryState),
+      scheduleType: S.optional(ScheduleType),
     }).pipe(
       T.all(
         ns,
@@ -4796,6 +4939,7 @@ export interface ScheduledQuerySummary {
   scheduledQueryArn?: string;
   name?: string;
   state?: ScheduledQueryState;
+  scheduleType?: ScheduleType;
   lastTriggeredTime?: number;
   lastExecutionStatus?: ExecutionStatus;
   scheduleExpression?: string;
@@ -4809,6 +4953,7 @@ export const ScheduledQuerySummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     scheduledQueryArn: S.optional(S.String),
     name: S.optional(S.String),
     state: S.optional(ScheduledQueryState),
+    scheduleType: S.optional(ScheduleType),
     lastTriggeredTime: S.optional(S.Number),
     lastExecutionStatus: S.optional(ExecutionStatus),
     scheduleExpression: S.optional(S.String),
@@ -4876,6 +5021,7 @@ export interface S3TableIntegrationSource {
   status?: S3TableIntegrationSourceStatus;
   statusReason?: string;
   createdTimeStamp?: number;
+  parentSourceIdentifier?: string;
 }
 export const S3TableIntegrationSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -4885,6 +5031,7 @@ export const S3TableIntegrationSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       status: S.optional(S3TableIntegrationSourceStatus),
       statusReason: S.optional(S.String),
       createdTimeStamp: S.optional(S.Number),
+      parentSourceIdentifier: S.optional(S.String),
     }),
 ).annotate({
   identifier: "S3TableIntegrationSource",
@@ -4906,6 +5053,67 @@ export const ListSourcesForS3TableIntegrationResponse =
   ).annotate({
     identifier: "ListSourcesForS3TableIntegrationResponse",
   }) as any as S.Schema<ListSourcesForS3TableIntegrationResponse>;
+export interface ListSyslogConfigurationsRequest {
+  logGroupIdentifier?: string;
+  vpcEndpointId?: string;
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListSyslogConfigurationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      logGroupIdentifier: S.optional(S.String),
+      vpcEndpointId: S.optional(S.String),
+      nextToken: S.optional(S.String),
+      maxResults: S.optional(S.Number),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListSyslogConfigurationsRequest",
+  }) as any as S.Schema<ListSyslogConfigurationsRequest>;
+export type SyslogSourceType = "VPCE" | (string & {});
+export const SyslogSourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface SyslogConfiguration {
+  logGroupArn?: string;
+  sourceType?: SyslogSourceType;
+  vpcEndpointId?: string;
+  createdAt?: number;
+}
+export const SyslogConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    logGroupArn: S.optional(S.String),
+    sourceType: S.optional(SyslogSourceType),
+    vpcEndpointId: S.optional(S.String),
+    createdAt: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SyslogConfiguration",
+}) as any as S.Schema<SyslogConfiguration>;
+export type SyslogConfigurations = SyslogConfiguration[];
+export const SyslogConfigurations =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(SyslogConfiguration);
+export interface ListSyslogConfigurationsResponse {
+  syslogConfigurations?: SyslogConfiguration[];
+  nextToken?: string;
+}
+export const ListSyslogConfigurationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      syslogConfigurations: S.optional(SyslogConfigurations),
+      nextToken: S.optional(S.String),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "ListSyslogConfigurationsResponse",
+  }) as any as S.Schema<ListSyslogConfigurationsResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -5138,6 +5346,7 @@ export interface PutDeliverySourceRequest {
   resourceArn: string;
   logType: string;
   tags?: { [key: string]: string | undefined };
+  deliverySourceConfiguration?: { [key: string]: string | undefined };
 }
 export const PutDeliverySourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -5146,6 +5355,7 @@ export const PutDeliverySourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       resourceArn: S.String,
       logType: S.String,
       tags: S.optional(Tags),
+      deliverySourceConfiguration: S.optional(DeliverySourceConfiguration),
     }).pipe(
       T.all(
         ns,
@@ -5645,6 +5855,34 @@ export const PutSubscriptionFilterResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "PutSubscriptionFilterResponse",
   }) as any as S.Schema<PutSubscriptionFilterResponse>;
+export interface PutSyslogConfigurationRequest {
+  logGroupIdentifier: string;
+  vpcEndpointId?: string;
+}
+export const PutSyslogConfigurationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      logGroupIdentifier: S.String,
+      vpcEndpointId: S.optional(S.String),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "PutSyslogConfigurationRequest",
+  }) as any as S.Schema<PutSyslogConfigurationRequest>;
+export interface PutSyslogConfigurationResponse {}
+export const PutSyslogConfigurationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+    identifier: "PutSyslogConfigurationResponse",
+  }) as any as S.Schema<PutSyslogConfigurationResponse>;
 export interface PutTransformerRequest {
   logGroupIdentifier: string;
   transformerConfig: Processor[];
@@ -6296,6 +6534,7 @@ export interface UpdateScheduledQueryRequest {
   scheduleExpression: string;
   timezone?: string;
   startTimeOffset?: number;
+  endTimeOffset?: number;
   destinationConfiguration?: DestinationConfiguration;
   scheduleStartTime?: number;
   scheduleEndTime?: number;
@@ -6313,6 +6552,7 @@ export const UpdateScheduledQueryRequest =
       scheduleExpression: S.String,
       timezone: S.optional(S.String),
       startTimeOffset: S.optional(S.Number),
+      endTimeOffset: S.optional(S.Number),
       destinationConfiguration: S.optional(DestinationConfiguration),
       scheduleStartTime: S.optional(S.Number),
       scheduleEndTime: S.optional(S.Number),
@@ -6342,8 +6582,10 @@ export interface UpdateScheduledQueryResponse {
   scheduleExpression?: string;
   timezone?: string;
   startTimeOffset?: number;
+  endTimeOffset?: number;
   destinationConfiguration?: DestinationConfiguration;
   state?: ScheduledQueryState;
+  scheduleType?: ScheduleType;
   lastTriggeredTime?: number;
   lastExecutionStatus?: ExecutionStatus;
   scheduleStartTime?: number;
@@ -6364,8 +6606,10 @@ export const UpdateScheduledQueryResponse =
       scheduleExpression: S.optional(S.String),
       timezone: S.optional(S.String),
       startTimeOffset: S.optional(S.Number),
+      endTimeOffset: S.optional(S.Number),
       destinationConfiguration: S.optional(DestinationConfiguration),
       state: S.optional(ScheduledQueryState),
+      scheduleType: S.optional(ScheduleType),
       lastTriggeredTime: S.optional(S.Number),
       lastExecutionStatus: S.optional(ExecutionStatus),
       scheduleStartTime: S.optional(S.Number),
@@ -7561,6 +7805,37 @@ export const deleteSubscriptionFilter: API.OperationMethod<
     ServiceUnavailableException,
   ],
 }));
+export type DeleteSyslogConfigurationError =
+  | AccessDeniedException
+  | InvalidOperationException
+  | InvalidParameterException
+  | OperationAbortedException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Deletes a syslog configuration for a log group. After deletion, syslog data is no
+ * longer ingested through the specified VPC endpoint.
+ */
+export const deleteSyslogConfiguration: API.OperationMethod<
+  DeleteSyslogConfigurationRequest,
+  DeleteSyslogConfigurationResponse,
+  DeleteSyslogConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteSyslogConfigurationRequest,
+  output: DeleteSyslogConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    InvalidOperationException,
+    InvalidParameterException,
+    OperationAbortedException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+  ],
+}));
 export type DeleteTransformerError =
   | InvalidOperationException
   | InvalidParameterException
@@ -8403,7 +8678,10 @@ export type FilterLogEventsError =
  * limit. This is the expected API behavior.
  *
  * The returned log events are sorted by event timestamp, the timestamp when the event was
- * ingested by CloudWatch Logs, and the ID of the `PutLogEvents` request.
+ * ingested by CloudWatch Logs, and the ID of the `PutLogEvents` request. By default,
+ * the events are returned in ascending timestamp order (oldest first). To return events in
+ * descending timestamp order (newest first), set the `startFromHead` parameter to
+ * `false`.
  *
  * If you are using CloudWatch cross-account observability, you can use this operation
  * in a monitoring account and view data from the linked source accounts. For more information,
@@ -8899,6 +9177,10 @@ export type GetQueryResultsError =
  * internally to retrieve query results for processing and delivery to configured
  * destinations.
  *
+ * You can retrieve up to 100,000 log event results from a query, if available, by using
+ * pagination. Use the `nextToken` returned in the response to request additional
+ * pages of results, with each page returning up to 10,000 log events. This is only supported for Logs Insights QL and is currently not supported for PPL and SQL query languages.
+ *
  * If you are using CloudWatch cross-account observability, you can use this operation
  * in a monitoring account to start queries in linked source accounts. For more information, see
  * CloudWatch cross-account observability.
@@ -9195,11 +9477,9 @@ export type ListLogGroupsError =
  * observability to set up monitoring accounts and source accounts, see
  * CloudWatch cross-account observability.
  *
- * You can optionally filter the list by log group class, by using regular expressions in
- * your request to match strings in the log group names, by using the fieldIndexes parameter to
- * filter log groups based on which field indexes are configured, by using the dataSources
- * parameter to filter log groups by data source types, and by using the fieldIndexNames
- * parameter to filter by specific field index names.
+ * You can optionally filter the results by log group class, log group name pattern,
+ * field indexes, data sources, field index names, or log group tags. If you specify more than
+ * one filter type, the results include log groups that satisfy all filters.
  *
  * This operation is paginated. By default, your first use of this operation returns 50
  * results, and includes a token to use in a subsequent operation to return more results.
@@ -9359,6 +9639,35 @@ export const listSourcesForS3TableIntegration: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+export type ListSyslogConfigurationsError =
+  | AccessDeniedException
+  | InvalidOperationException
+  | InvalidParameterException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Returns a list of syslog configurations. You can optionally filter the results by log
+ * group or VPC endpoint.
+ */
+export const listSyslogConfigurations: API.OperationMethod<
+  ListSyslogConfigurationsRequest,
+  ListSyslogConfigurationsResponse,
+  ListSyslogConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListSyslogConfigurationsRequest,
+  output: ListSyslogConfigurationsResponse,
+  errors: [
+    AccessDeniedException,
+    InvalidOperationException,
+    InvalidParameterException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+  ],
+}));
 export type ListTagsForResourceError =
   | InvalidParameterException
   | ResourceNotFoundException
@@ -9412,6 +9721,40 @@ export type PutAccountPolicyError =
  * Creates an account-level data protection policy, subscription filter policy, field index
  * policy, transformer policy, or metric extraction policy that applies to all log groups, a
  * subset of log groups, or a data source name and type combination in the account.
+ *
+ * `PutAccountPolicy` is an account-wide administrative operation intended for
+ * CloudWatch Logs administrators. Because it affects all log groups (or a broad subset) in
+ * the account, you should grant `logs:PutAccountPolicy` permissions only to
+ * administrators who manage logging configuration across the account, not to application teams
+ * or individual log group owners.
+ *
+ * Conflict resolution between account-level and log-group-level
+ * policies
+ *
+ * When both an account-level policy and a log-group-level policy of the same type apply to a
+ * log group, the resolution depends on the policy type:
+ *
+ * - *Data protection* — The two policies are cumulative. Any sensitive
+ * term specified in either the account-level or the log-group-level policy is masked.
+ *
+ * - *Subscription filters* — Account-level and log-group-level
+ * subscription filters are additive. A log group can have up to 1 account-level and up to 2
+ * log-group-level subscription filters.
+ *
+ * - *Transformers* — A log-group-level transformer overrides the
+ * account-level transformer. If a log group has its own transformer, it ignores the
+ * account-level transformer policy.
+ *
+ * - *Field index policies* — If a log group has its own field index
+ * policy (created with `PutIndexPolicy`), any account-level policy that uses
+ * `LogGroupNamePrefix` selection criteria or has no selection criteria is ignored
+ * for that log group. However, account-level policies that use `DataSourceName`
+ * and `DataSourceType` selection criteria still apply alongside the log-group-level
+ * policy.
+ *
+ * - *Metric extraction policies* — Metric extraction policies are
+ * account-level only and have no log-group-level equivalent, so no conflict resolution
+ * applies.
  *
  * For field index policies, you can configure indexed fields as *facets*
  * to enable interactive exploration of your logs. Facets provide value distributions and counts
@@ -10505,6 +10848,37 @@ export const putSubscriptionFilter: API.OperationMethod<
     ServiceUnavailableException,
   ],
 }));
+export type PutSyslogConfigurationError =
+  | AccessDeniedException
+  | InvalidOperationException
+  | InvalidParameterException
+  | OperationAbortedException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Creates or updates a syslog configuration for a log group. This enables ingestion of
+ * syslog data through the specified VPC endpoint into the log group.
+ */
+export const putSyslogConfiguration: API.OperationMethod<
+  PutSyslogConfigurationRequest,
+  PutSyslogConfigurationResponse,
+  PutSyslogConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PutSyslogConfigurationRequest,
+  output: PutSyslogConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    InvalidOperationException,
+    InvalidParameterException,
+    OperationAbortedException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+  ],
+}));
 export type PutTransformerError =
   | InvalidOperationException
   | InvalidParameterException
@@ -10664,7 +11038,8 @@ export type StartQueryError =
  * - Or the `queryString` must include a `SOURCE` command to select
  * log groups for the query. The `SOURCE` command can select log groups based on
  * log group name prefix, account ID, and log class, or select data sources using
- * dataSource syntax in LogsQL, PPL, and SQL.
+ * dataSource syntax in LogsQL, PPL, and SQL. In LogsQL, the `SOURCE` command
+ * also supports filtering by log group tags.
  *
  * For more information about the `SOURCE` command, see SOURCE.
  *
@@ -11010,6 +11385,7 @@ export const updateLookupTable: API.OperationMethod<
 }));
 export type UpdateScheduledQueryError =
   | AccessDeniedException
+  | ConflictException
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
@@ -11029,6 +11405,7 @@ export const updateScheduledQuery: API.OperationMethod<
   output: UpdateScheduledQueryResponse,
   errors: [
     AccessDeniedException,
+    ConflictException,
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,

@@ -8,7 +8,7 @@ import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import type { Region } from "../region.ts";
-import { SensitiveString } from "../sensitive.ts";
+import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 const svc = T.AwsApiService({ sdkId: "odb", serviceShapeName: "Odb" });
 const auth = T.AwsAuthSigv4({ name: "odb" });
 const ver = T.ServiceVersion("2024-08-20");
@@ -93,6 +93,12 @@ export type ResourceDisplayName = string;
 export type GeneralInputString = string;
 export type ResourceId = string;
 export type SensitiveString = string | redacted.Redacted<string>;
+export type KmsKeyIdOrArn = string;
+export type AutonomousDatabaseWalletFile =
+  | Uint8Array
+  | redacted.Redacted<Uint8Array>;
+export type Hostname = string;
+export type ClusterName = string;
 export type PolicyDocument = string;
 export type PeeredCidr = string;
 export type PeerNetworkRouteTableId = string;
@@ -234,11 +240,40 @@ export const OciIdentityDomain = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OciIdentityDomain",
 }) as any as S.Schema<OciIdentityDomain>;
+export type OciAwsIntegration = "KmsTde" | (string & {});
+export const OciAwsIntegration = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface OciIamRole {
+  iamRoleArn?: string;
+  awsIntegration?: OciAwsIntegration;
+}
+export const OciIamRole = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    iamRoleArn: S.optional(S.String),
+    awsIntegration: S.optional(OciAwsIntegration),
+  }),
+).annotate({ identifier: "OciIamRole" }) as any as S.Schema<OciIamRole>;
+export type OciIamRoleList = OciIamRole[];
+export const OciIamRoleList = /*@__PURE__*/ /*#__PURE__*/ S.Array(OciIamRole);
+export interface SubscriptionError {
+  errorMessage?: string;
+}
+export const SubscriptionError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ errorMessage: S.optional(S.String) }),
+).annotate({
+  identifier: "SubscriptionError",
+}) as any as S.Schema<SubscriptionError>;
+export type SubscriptionErrors = SubscriptionError[];
+export const SubscriptionErrors =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(SubscriptionError);
 export interface GetOciOnboardingStatusOutput {
   status?: OciOnboardingStatus;
   existingTenancyActivationLink?: string;
   newTenancyActivationLink?: string;
   ociIdentityDomain?: OciIdentityDomain;
+  autonomousDatabaseOciIntegrationIamRoles?: OciIamRole[];
+  linkedOciTenancyId?: string;
+  linkedOciCompartmentId?: string;
+  subscriptionErrors?: SubscriptionError[];
 }
 export const GetOciOnboardingStatusOutput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -247,6 +282,10 @@ export const GetOciOnboardingStatusOutput =
       existingTenancyActivationLink: S.optional(S.String),
       newTenancyActivationLink: S.optional(S.String),
       ociIdentityDomain: S.optional(OciIdentityDomain),
+      autonomousDatabaseOciIntegrationIamRoles: S.optional(OciIamRoleList),
+      linkedOciTenancyId: S.optional(S.String),
+      linkedOciCompartmentId: S.optional(S.String),
+      subscriptionErrors: S.optional(SubscriptionErrors),
     }),
   ).annotate({
     identifier: "GetOciOnboardingStatusOutput",
@@ -268,6 +307,101 @@ export const InitializeServiceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "InitializeServiceOutput",
 }) as any as S.Schema<InitializeServiceOutput>;
+export type CharacterSetType = "DATABASE" | "NATIONAL" | (string & {});
+export const CharacterSetType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ListAutonomousDatabaseCharacterSetsInput {
+  maxResults?: number;
+  nextToken?: string;
+  characterSetType?: CharacterSetType;
+}
+export const ListAutonomousDatabaseCharacterSetsInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+      characterSetType: S.optional(CharacterSetType),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "ListAutonomousDatabaseCharacterSetsInput",
+  }) as any as S.Schema<ListAutonomousDatabaseCharacterSetsInput>;
+export interface AutonomousDatabaseCharacterSetSummary {
+  characterSet?: string;
+}
+export const AutonomousDatabaseCharacterSetSummary =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ characterSet: S.optional(S.String) }),
+  ).annotate({
+    identifier: "AutonomousDatabaseCharacterSetSummary",
+  }) as any as S.Schema<AutonomousDatabaseCharacterSetSummary>;
+export type AutonomousDatabaseCharacterSetList =
+  AutonomousDatabaseCharacterSetSummary[];
+export const AutonomousDatabaseCharacterSetList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(AutonomousDatabaseCharacterSetSummary);
+export interface ListAutonomousDatabaseCharacterSetsOutput {
+  nextToken?: string;
+  autonomousDatabaseCharacterSets: AutonomousDatabaseCharacterSetSummary[];
+}
+export const ListAutonomousDatabaseCharacterSetsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextToken: S.optional(S.String),
+      autonomousDatabaseCharacterSets: AutonomousDatabaseCharacterSetList,
+    }),
+  ).annotate({
+    identifier: "ListAutonomousDatabaseCharacterSetsOutput",
+  }) as any as S.Schema<ListAutonomousDatabaseCharacterSetsOutput>;
+export type DbWorkload = "OLTP" | "AJD" | "APEX" | "LH" | (string & {});
+export const DbWorkload = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ListAutonomousDatabaseVersionsInput {
+  maxResults?: number;
+  nextToken?: string;
+  dbWorkload?: DbWorkload;
+}
+export const ListAutonomousDatabaseVersionsInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+      dbWorkload: S.optional(DbWorkload),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "ListAutonomousDatabaseVersionsInput",
+  }) as any as S.Schema<ListAutonomousDatabaseVersionsInput>;
+export interface AutonomousDatabaseVersionSummary {
+  dbWorkload?: DbWorkload;
+  details?: string;
+  version?: string;
+}
+export const AutonomousDatabaseVersionSummary =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dbWorkload: S.optional(DbWorkload),
+      details: S.optional(S.String),
+      version: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AutonomousDatabaseVersionSummary",
+  }) as any as S.Schema<AutonomousDatabaseVersionSummary>;
+export type AutonomousDatabaseVersionList = AutonomousDatabaseVersionSummary[];
+export const AutonomousDatabaseVersionList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(AutonomousDatabaseVersionSummary);
+export interface ListAutonomousDatabaseVersionsOutput {
+  nextToken?: string;
+  autonomousDatabaseVersions: AutonomousDatabaseVersionSummary[];
+}
+export const ListAutonomousDatabaseVersionsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextToken: S.optional(S.String),
+      autonomousDatabaseVersions: AutonomousDatabaseVersionList,
+    }),
+  ).annotate({
+    identifier: "ListAutonomousDatabaseVersionsOutput",
+  }) as any as S.Schema<ListAutonomousDatabaseVersionsOutput>;
 export interface ListDbSystemShapesInput {
   maxResults?: number;
   nextToken?: string;
@@ -524,11 +658,324 @@ export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
+export interface CreateAutonomousDatabaseBackupInput {
+  autonomousDatabaseId: string;
+  displayName?: string;
+  retentionPeriodInDays?: number;
+  clientToken?: string;
+  tags?: { [key: string]: string | undefined };
+}
+export const CreateAutonomousDatabaseBackupInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseId: S.String,
+      displayName: S.optional(S.String),
+      retentionPeriodInDays: S.optional(S.Number),
+      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      tags: S.optional(RequestTagMap),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "CreateAutonomousDatabaseBackupInput",
+  }) as any as S.Schema<CreateAutonomousDatabaseBackupInput>;
+export interface CreateAutonomousDatabaseBackupOutput {
+  displayName?: string;
+  status?: ResourceStatus;
+  statusReason?: string;
+  autonomousDatabaseBackupId: string;
+}
+export const CreateAutonomousDatabaseBackupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      displayName: S.optional(S.String),
+      status: S.optional(ResourceStatus),
+      statusReason: S.optional(S.String),
+      autonomousDatabaseBackupId: S.String,
+    }),
+  ).annotate({
+    identifier: "CreateAutonomousDatabaseBackupOutput",
+  }) as any as S.Schema<CreateAutonomousDatabaseBackupOutput>;
+export interface GetAutonomousDatabaseBackupInput {
+  autonomousDatabaseBackupId: string;
+}
+export const GetAutonomousDatabaseBackupInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseBackupId: S.String.pipe(
+        T.HttpLabel("autonomousDatabaseBackupId"),
+      ),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "GetAutonomousDatabaseBackupInput",
+  }) as any as S.Schema<GetAutonomousDatabaseBackupInput>;
+export type AutonomousDatabaseBackupStatus =
+  | "ACTIVE"
+  | "CREATING"
+  | "UPDATING"
+  | "DELETING"
+  | "FAILED"
+  | (string & {});
+export const AutonomousDatabaseBackupStatus =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type AutonomousDatabaseBackupType =
+  | "INCREMENTAL"
+  | "FULL"
+  | "LONGTERM"
+  | "VIRTUAL_FULL"
+  | "CUMULATIVE_INCREMENTAL"
+  | "ROLL_FORWARD_IMAGE_COPY"
+  | (string & {});
+export const AutonomousDatabaseBackupType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AutonomousDatabaseBackup {
+  autonomousDatabaseBackupId?: string;
+  autonomousDatabaseBackupArn?: string;
+  autonomousDatabaseId?: string;
+  ocid?: string;
+  displayName?: string;
+  dbVersion?: string;
+  status?: AutonomousDatabaseBackupStatus;
+  statusReason?: string;
+  isAutomatic?: boolean;
+  retentionPeriodInDays?: number;
+  sizeInTBs?: number;
+  timeAvailableTill?: Date;
+  timeStarted?: Date;
+  timeEnded?: Date;
+  type?: AutonomousDatabaseBackupType;
+}
+export const AutonomousDatabaseBackup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      autonomousDatabaseBackupId: S.optional(S.String),
+      autonomousDatabaseBackupArn: S.optional(S.String),
+      autonomousDatabaseId: S.optional(S.String),
+      ocid: S.optional(S.String),
+      displayName: S.optional(S.String),
+      dbVersion: S.optional(S.String),
+      status: S.optional(AutonomousDatabaseBackupStatus),
+      statusReason: S.optional(S.String),
+      isAutomatic: S.optional(S.Boolean),
+      retentionPeriodInDays: S.optional(S.Number),
+      sizeInTBs: S.optional(S.Number),
+      timeAvailableTill: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeStarted: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeEnded: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      type: S.optional(AutonomousDatabaseBackupType),
+    }),
+).annotate({
+  identifier: "AutonomousDatabaseBackup",
+}) as any as S.Schema<AutonomousDatabaseBackup>;
+export interface GetAutonomousDatabaseBackupOutput {
+  autonomousDatabaseBackup?: AutonomousDatabaseBackup;
+}
+export const GetAutonomousDatabaseBackupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseBackup: S.optional(AutonomousDatabaseBackup),
+    }),
+  ).annotate({
+    identifier: "GetAutonomousDatabaseBackupOutput",
+  }) as any as S.Schema<GetAutonomousDatabaseBackupOutput>;
+export interface UpdateAutonomousDatabaseBackupInput {
+  autonomousDatabaseBackupId: string;
+  retentionPeriodInDays?: number;
+}
+export const UpdateAutonomousDatabaseBackupInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseBackupId: S.String.pipe(
+        T.HttpLabel("autonomousDatabaseBackupId"),
+      ),
+      retentionPeriodInDays: S.optional(S.Number),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "UpdateAutonomousDatabaseBackupInput",
+  }) as any as S.Schema<UpdateAutonomousDatabaseBackupInput>;
+export interface UpdateAutonomousDatabaseBackupOutput {
+  displayName?: string;
+  status?: ResourceStatus;
+  statusReason?: string;
+  autonomousDatabaseBackupId: string;
+}
+export const UpdateAutonomousDatabaseBackupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      displayName: S.optional(S.String),
+      status: S.optional(ResourceStatus),
+      statusReason: S.optional(S.String),
+      autonomousDatabaseBackupId: S.String,
+    }),
+  ).annotate({
+    identifier: "UpdateAutonomousDatabaseBackupOutput",
+  }) as any as S.Schema<UpdateAutonomousDatabaseBackupOutput>;
+export interface DeleteAutonomousDatabaseBackupInput {
+  autonomousDatabaseBackupId: string;
+}
+export const DeleteAutonomousDatabaseBackupInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseBackupId: S.String.pipe(
+        T.HttpLabel("autonomousDatabaseBackupId"),
+      ),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "DeleteAutonomousDatabaseBackupInput",
+  }) as any as S.Schema<DeleteAutonomousDatabaseBackupInput>;
+export interface DeleteAutonomousDatabaseBackupOutput {}
+export const DeleteAutonomousDatabaseBackupOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteAutonomousDatabaseBackupOutput",
+  }) as any as S.Schema<DeleteAutonomousDatabaseBackupOutput>;
+export interface ListAutonomousDatabaseBackupsInput {
+  maxResults?: number;
+  nextToken?: string;
+  autonomousDatabaseId: string;
+  status?: AutonomousDatabaseBackupStatus;
+  type?: AutonomousDatabaseBackupType;
+}
+export const ListAutonomousDatabaseBackupsInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+      autonomousDatabaseId: S.String.pipe(T.HttpLabel("autonomousDatabaseId")),
+      status: S.optional(AutonomousDatabaseBackupStatus),
+      type: S.optional(AutonomousDatabaseBackupType),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "ListAutonomousDatabaseBackupsInput",
+  }) as any as S.Schema<ListAutonomousDatabaseBackupsInput>;
+export interface AutonomousDatabaseBackupSummary {
+  autonomousDatabaseBackupId?: string;
+  autonomousDatabaseBackupArn?: string;
+  autonomousDatabaseId?: string;
+  ocid?: string;
+  displayName?: string;
+  dbVersion?: string;
+  status?: AutonomousDatabaseBackupStatus;
+  statusReason?: string;
+  isAutomatic?: boolean;
+  retentionPeriodInDays?: number;
+  sizeInTBs?: number;
+  timeAvailableTill?: Date;
+  timeStarted?: Date;
+  timeEnded?: Date;
+  type?: AutonomousDatabaseBackupType;
+}
+export const AutonomousDatabaseBackupSummary =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseBackupId: S.optional(S.String),
+      autonomousDatabaseBackupArn: S.optional(S.String),
+      autonomousDatabaseId: S.optional(S.String),
+      ocid: S.optional(S.String),
+      displayName: S.optional(S.String),
+      dbVersion: S.optional(S.String),
+      status: S.optional(AutonomousDatabaseBackupStatus),
+      statusReason: S.optional(S.String),
+      isAutomatic: S.optional(S.Boolean),
+      retentionPeriodInDays: S.optional(S.Number),
+      sizeInTBs: S.optional(S.Number),
+      timeAvailableTill: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeStarted: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeEnded: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      type: S.optional(AutonomousDatabaseBackupType),
+    }),
+  ).annotate({
+    identifier: "AutonomousDatabaseBackupSummary",
+  }) as any as S.Schema<AutonomousDatabaseBackupSummary>;
+export type AutonomousDatabaseBackupList = AutonomousDatabaseBackupSummary[];
+export const AutonomousDatabaseBackupList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  AutonomousDatabaseBackupSummary,
+);
+export interface ListAutonomousDatabaseBackupsOutput {
+  nextToken?: string;
+  autonomousDatabaseBackups: AutonomousDatabaseBackupSummary[];
+}
+export const ListAutonomousDatabaseBackupsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextToken: S.optional(S.String),
+      autonomousDatabaseBackups: AutonomousDatabaseBackupList,
+    }),
+  ).annotate({
+    identifier: "ListAutonomousDatabaseBackupsOutput",
+  }) as any as S.Schema<ListAutonomousDatabaseBackupsOutput>;
 export type LicenseModel =
   | "BRING_YOUR_OWN_LICENSE"
   | "LICENSE_INCLUDED"
   | (string & {});
 export const LicenseModel = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type DatabaseEdition =
+  | "STANDARD_EDITION"
+  | "ENTERPRISE_EDITION"
+  | (string & {});
+export const DatabaseEdition = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type StandbyAllowlistedIpsSource =
+  | "PRIMARY"
+  | "SEPARATE"
+  | "NOT_APPLICABLE"
+  | (string & {});
+export const StandbyAllowlistedIpsSource = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type AutonomousMaintenanceScheduleType =
+  | "EARLY"
+  | "REGULAR"
+  | (string & {});
+export const AutonomousMaintenanceScheduleType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CustomerContact {
+  email?: string | redacted.Redacted<string>;
+}
+export const CustomerContact = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ email: S.optional(SensitiveString) }),
+).annotate({
+  identifier: "CustomerContact",
+}) as any as S.Schema<CustomerContact>;
+export type CustomerContacts = CustomerContact[];
+export const CustomerContacts =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(CustomerContact);
+export interface ResourcePoolSummary {
+  isDisabled?: boolean;
+  poolSize?: number;
+  poolStorageSizeInTBs?: number;
+  availableStorageCapacityInTBs?: number;
+  totalComputeCapacity?: number;
+  availableComputeCapacity?: number;
+}
+export const ResourcePoolSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    isDisabled: S.optional(S.Boolean),
+    poolSize: S.optional(S.Number),
+    poolStorageSizeInTBs: S.optional(S.Number),
+    availableStorageCapacityInTBs: S.optional(S.Number),
+    totalComputeCapacity: S.optional(S.Number),
+    availableComputeCapacity: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ResourcePoolSummary",
+}) as any as S.Schema<ResourcePoolSummary>;
 export type DayOfWeekName =
   | "MONDAY"
   | "TUESDAY"
@@ -545,6 +992,1758 @@ export interface DayOfWeek {
 export const DayOfWeek = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.optional(DayOfWeekName) }),
 ).annotate({ identifier: "DayOfWeek" }) as any as S.Schema<DayOfWeek>;
+export interface ScheduledOperationDetails {
+  dayOfWeek: DayOfWeek;
+  scheduledStartTime?: string;
+  scheduledStopTime?: string;
+}
+export const ScheduledOperationDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      dayOfWeek: DayOfWeek,
+      scheduledStartTime: S.optional(S.String),
+      scheduledStopTime: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ScheduledOperationDetails",
+}) as any as S.Schema<ScheduledOperationDetails>;
+export type ScheduledOperationDetailsList = ScheduledOperationDetails[];
+export const ScheduledOperationDetailsList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ScheduledOperationDetails);
+export interface TransportableTablespace {
+  ttsBundleUrl?: string;
+}
+export const TransportableTablespace = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ ttsBundleUrl: S.optional(S.String) }),
+).annotate({
+  identifier: "TransportableTablespace",
+}) as any as S.Schema<TransportableTablespace>;
+export interface DatabaseTool {
+  isEnabled?: boolean;
+  name?: string;
+  computeCount?: number;
+  maxIdleTimeInMinutes?: number;
+}
+export const DatabaseTool = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    isEnabled: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    computeCount: S.optional(S.Number),
+    maxIdleTimeInMinutes: S.optional(S.Number),
+  }),
+).annotate({ identifier: "DatabaseTool" }) as any as S.Schema<DatabaseTool>;
+export type DatabaseToolList = DatabaseTool[];
+export const DatabaseToolList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DatabaseTool);
+export type SourceType =
+  | "NONE"
+  | "DATABASE"
+  | "BACKUP_FROM_ID"
+  | "BACKUP_FROM_TIMESTAMP"
+  | "CROSS_REGION_DATAGUARD"
+  | "CROSS_REGION_DISASTER_RECOVERY"
+  | "CLONE_TO_REFRESHABLE"
+  | (string & {});
+export const SourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type CloneType = "FULL" | "METADATA" | "PARTIAL" | (string & {});
+export const CloneType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface DatabaseCloneConfiguration {
+  sourceAutonomousDatabaseId: string;
+  cloneType: CloneType;
+}
+export const DatabaseCloneConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ sourceAutonomousDatabaseId: S.String, cloneType: CloneType }),
+).annotate({
+  identifier: "DatabaseCloneConfiguration",
+}) as any as S.Schema<DatabaseCloneConfiguration>;
+export type IntegerList = number[];
+export const IntegerList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.Number);
+export interface RestoreFromBackupConfiguration {
+  autonomousDatabaseBackupId: string;
+  cloneType: CloneType;
+  cloneTableSpaceList?: number[];
+}
+export const RestoreFromBackupConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseBackupId: S.String,
+      cloneType: CloneType,
+      cloneTableSpaceList: S.optional(IntegerList),
+    }),
+  ).annotate({
+    identifier: "RestoreFromBackupConfiguration",
+  }) as any as S.Schema<RestoreFromBackupConfiguration>;
+export interface PointInTimeRestoreConfiguration {
+  sourceAutonomousDatabaseId: string;
+  cloneType: CloneType;
+  timestamp?: Date;
+  useLatestAvailableBackupTimestamp?: boolean;
+  cloneTableSpaceList?: number[];
+}
+export const PointInTimeRestoreConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      sourceAutonomousDatabaseId: S.String,
+      cloneType: CloneType,
+      timestamp: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      useLatestAvailableBackupTimestamp: S.optional(S.Boolean),
+      cloneTableSpaceList: S.optional(IntegerList),
+    }),
+  ).annotate({
+    identifier: "PointInTimeRestoreConfiguration",
+  }) as any as S.Schema<PointInTimeRestoreConfiguration>;
+export interface CrossRegionDataGuardConfiguration {
+  sourceAutonomousDatabaseArn: string;
+}
+export const CrossRegionDataGuardConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ sourceAutonomousDatabaseArn: S.String }),
+  ).annotate({
+    identifier: "CrossRegionDataGuardConfiguration",
+  }) as any as S.Schema<CrossRegionDataGuardConfiguration>;
+export type DisasterRecoveryType = "ADG" | "BACKUP_BASED" | (string & {});
+export const DisasterRecoveryType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CrossRegionDisasterRecoveryConfiguration {
+  sourceAutonomousDatabaseArn: string;
+  remoteDisasterRecoveryType: DisasterRecoveryType;
+  isReplicateAutomaticBackups?: boolean;
+}
+export const CrossRegionDisasterRecoveryConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      sourceAutonomousDatabaseArn: S.String,
+      remoteDisasterRecoveryType: DisasterRecoveryType,
+      isReplicateAutomaticBackups: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "CrossRegionDisasterRecoveryConfiguration",
+  }) as any as S.Schema<CrossRegionDisasterRecoveryConfiguration>;
+export type RefreshableMode = "AUTOMATIC" | "MANUAL" | (string & {});
+export const RefreshableMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type OpenMode = "READ_ONLY" | "READ_WRITE" | (string & {});
+export const OpenMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CloneToRefreshableConfiguration {
+  sourceAutonomousDatabaseId: string;
+  refreshableMode?: RefreshableMode;
+  autoRefreshFrequencyInSeconds?: number;
+  autoRefreshPointLagInSeconds?: number;
+  timeOfAutoRefreshStart?: Date;
+  openMode?: OpenMode;
+  cloneType?: CloneType;
+}
+export const CloneToRefreshableConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      sourceAutonomousDatabaseId: S.String,
+      refreshableMode: S.optional(RefreshableMode),
+      autoRefreshFrequencyInSeconds: S.optional(S.Number),
+      autoRefreshPointLagInSeconds: S.optional(S.Number),
+      timeOfAutoRefreshStart: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      openMode: S.optional(OpenMode),
+      cloneType: S.optional(CloneType),
+    }),
+  ).annotate({
+    identifier: "CloneToRefreshableConfiguration",
+  }) as any as S.Schema<CloneToRefreshableConfiguration>;
+export type SourceConfiguration =
+  | {
+      databaseClone: DatabaseCloneConfiguration;
+      restoreFromBackup?: never;
+      pointInTimeRestore?: never;
+      crossRegionDataGuard?: never;
+      crossRegionDisasterRecovery?: never;
+      cloneToRefreshable?: never;
+    }
+  | {
+      databaseClone?: never;
+      restoreFromBackup: RestoreFromBackupConfiguration;
+      pointInTimeRestore?: never;
+      crossRegionDataGuard?: never;
+      crossRegionDisasterRecovery?: never;
+      cloneToRefreshable?: never;
+    }
+  | {
+      databaseClone?: never;
+      restoreFromBackup?: never;
+      pointInTimeRestore: PointInTimeRestoreConfiguration;
+      crossRegionDataGuard?: never;
+      crossRegionDisasterRecovery?: never;
+      cloneToRefreshable?: never;
+    }
+  | {
+      databaseClone?: never;
+      restoreFromBackup?: never;
+      pointInTimeRestore?: never;
+      crossRegionDataGuard: CrossRegionDataGuardConfiguration;
+      crossRegionDisasterRecovery?: never;
+      cloneToRefreshable?: never;
+    }
+  | {
+      databaseClone?: never;
+      restoreFromBackup?: never;
+      pointInTimeRestore?: never;
+      crossRegionDataGuard?: never;
+      crossRegionDisasterRecovery: CrossRegionDisasterRecoveryConfiguration;
+      cloneToRefreshable?: never;
+    }
+  | {
+      databaseClone?: never;
+      restoreFromBackup?: never;
+      pointInTimeRestore?: never;
+      crossRegionDataGuard?: never;
+      crossRegionDisasterRecovery?: never;
+      cloneToRefreshable: CloneToRefreshableConfiguration;
+    };
+export const SourceConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ databaseClone: DatabaseCloneConfiguration }),
+  S.Struct({ restoreFromBackup: RestoreFromBackupConfiguration }),
+  S.Struct({ pointInTimeRestore: PointInTimeRestoreConfiguration }),
+  S.Struct({ crossRegionDataGuard: CrossRegionDataGuardConfiguration }),
+  S.Struct({
+    crossRegionDisasterRecovery: CrossRegionDisasterRecoveryConfiguration,
+  }),
+  S.Struct({ cloneToRefreshable: CloneToRefreshableConfiguration }),
+]);
+export type EncryptionKeyProviderInput =
+  | "ORACLE_MANAGED"
+  | "AWS_KMS"
+  | (string & {});
+export const EncryptionKeyProviderInput = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type ExternalIdType =
+  | "database_ocid"
+  | "compartment_ocid"
+  | "tenant_ocid"
+  | (string & {});
+export const ExternalIdType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AwsEncryptionKeyConfigurationInput {
+  iamRoleArn?: string;
+  externalIdType?: ExternalIdType;
+  kmsKeyId?: string;
+}
+export const AwsEncryptionKeyConfigurationInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      iamRoleArn: S.optional(S.String),
+      externalIdType: S.optional(ExternalIdType),
+      kmsKeyId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AwsEncryptionKeyConfigurationInput",
+  }) as any as S.Schema<AwsEncryptionKeyConfigurationInput>;
+export type EncryptionKeyConfigurationInput = {
+  awsEncryptionKey: AwsEncryptionKeyConfigurationInput;
+};
+export const EncryptionKeyConfigurationInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.Union([
+    S.Struct({ awsEncryptionKey: AwsEncryptionKeyConfigurationInput }),
+  ]);
+export interface CreateAutonomousDatabaseInput {
+  odbNetworkId?: string;
+  displayName?: string;
+  dbName?: string;
+  adminPassword?: string | redacted.Redacted<string>;
+  computeCount?: number;
+  dataStorageSizeInTBs?: number;
+  dataStorageSizeInGBs?: number;
+  dbWorkload?: DbWorkload;
+  isAutoScalingEnabled?: boolean;
+  isAutoScalingForStorageEnabled?: boolean;
+  licenseModel?: LicenseModel;
+  characterSet?: string;
+  ncharacterSet?: string;
+  dbVersion?: string;
+  databaseEdition?: DatabaseEdition;
+  standbyAllowlistedIpsSource?: StandbyAllowlistedIpsSource;
+  autonomousMaintenanceScheduleType?: AutonomousMaintenanceScheduleType;
+  backupRetentionPeriodInDays?: number;
+  byolComputeCountLimit?: number;
+  cpuCoreCount?: number;
+  customerContactsToSendToOCI?: CustomerContact[];
+  privateEndpointIp?: string;
+  privateEndpointLabel?: string;
+  resourcePoolLeaderId?: string;
+  resourcePoolSummary?: ResourcePoolSummary;
+  scheduledOperations?: ScheduledOperationDetails[];
+  standbyAllowlistedIps?: string[];
+  allowlistedIps?: string[];
+  transportableTablespace?: TransportableTablespace;
+  isBackupRetentionLocked?: boolean;
+  isLocalDataGuardEnabled?: boolean;
+  isMtlsConnectionRequired?: boolean;
+  dbToolsDetails?: DatabaseTool[];
+  source?: SourceType;
+  sourceConfiguration?: SourceConfiguration;
+  encryptionKeyProvider?: EncryptionKeyProviderInput;
+  encryptionKeyConfiguration?: EncryptionKeyConfigurationInput;
+  clientToken?: string;
+  tags?: { [key: string]: string | undefined };
+}
+export const CreateAutonomousDatabaseInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      odbNetworkId: S.optional(S.String),
+      displayName: S.optional(S.String),
+      dbName: S.optional(S.String),
+      adminPassword: S.optional(SensitiveString),
+      computeCount: S.optional(S.Number),
+      dataStorageSizeInTBs: S.optional(S.Number),
+      dataStorageSizeInGBs: S.optional(S.Number),
+      dbWorkload: S.optional(DbWorkload),
+      isAutoScalingEnabled: S.optional(S.Boolean),
+      isAutoScalingForStorageEnabled: S.optional(S.Boolean),
+      licenseModel: S.optional(LicenseModel),
+      characterSet: S.optional(S.String),
+      ncharacterSet: S.optional(S.String),
+      dbVersion: S.optional(S.String),
+      databaseEdition: S.optional(DatabaseEdition),
+      standbyAllowlistedIpsSource: S.optional(StandbyAllowlistedIpsSource),
+      autonomousMaintenanceScheduleType: S.optional(
+        AutonomousMaintenanceScheduleType,
+      ),
+      backupRetentionPeriodInDays: S.optional(S.Number),
+      byolComputeCountLimit: S.optional(S.Number),
+      cpuCoreCount: S.optional(S.Number),
+      customerContactsToSendToOCI: S.optional(CustomerContacts),
+      privateEndpointIp: S.optional(S.String),
+      privateEndpointLabel: S.optional(S.String),
+      resourcePoolLeaderId: S.optional(S.String),
+      resourcePoolSummary: S.optional(ResourcePoolSummary),
+      scheduledOperations: S.optional(ScheduledOperationDetailsList),
+      standbyAllowlistedIps: S.optional(StringList),
+      allowlistedIps: S.optional(StringList),
+      transportableTablespace: S.optional(TransportableTablespace),
+      isBackupRetentionLocked: S.optional(S.Boolean),
+      isLocalDataGuardEnabled: S.optional(S.Boolean),
+      isMtlsConnectionRequired: S.optional(S.Boolean),
+      dbToolsDetails: S.optional(DatabaseToolList),
+      source: S.optional(SourceType),
+      sourceConfiguration: S.optional(SourceConfiguration),
+      encryptionKeyProvider: S.optional(EncryptionKeyProviderInput),
+      encryptionKeyConfiguration: S.optional(EncryptionKeyConfigurationInput),
+      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      tags: S.optional(RequestTagMap),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "CreateAutonomousDatabaseInput",
+  }) as any as S.Schema<CreateAutonomousDatabaseInput>;
+export type AutonomousDatabaseResourceStatus =
+  | "AVAILABLE"
+  | "FAILED"
+  | "PROVISIONING"
+  | "TERMINATED"
+  | "TERMINATING"
+  | "UPDATING"
+  | "MAINTENANCE_IN_PROGRESS"
+  | "STOPPING"
+  | "STOPPED"
+  | "STARTING"
+  | "UNAVAILABLE"
+  | "RESTORE_IN_PROGRESS"
+  | "RESTORE_FAILED"
+  | "BACKUP_IN_PROGRESS"
+  | "SCALE_IN_PROGRESS"
+  | "AVAILABLE_NEEDS_ATTENTION"
+  | "RESTARTING"
+  | "RECREATING"
+  | "ROLE_CHANGE_IN_PROGRESS"
+  | "UPGRADING"
+  | "INACCESSIBLE"
+  | "STANDBY"
+  | (string & {});
+export const AutonomousDatabaseResourceStatus =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CreateAutonomousDatabaseOutput {
+  autonomousDatabaseId: string;
+  displayName?: string;
+  status?: AutonomousDatabaseResourceStatus;
+  statusReason?: string;
+}
+export const CreateAutonomousDatabaseOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseId: S.String,
+      displayName: S.optional(S.String),
+      status: S.optional(AutonomousDatabaseResourceStatus),
+      statusReason: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "CreateAutonomousDatabaseOutput",
+  }) as any as S.Schema<CreateAutonomousDatabaseOutput>;
+export interface GetAutonomousDatabaseInput {
+  autonomousDatabaseId: string;
+}
+export const GetAutonomousDatabaseInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      autonomousDatabaseId: S.String.pipe(T.HttpLabel("autonomousDatabaseId")),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+).annotate({
+  identifier: "GetAutonomousDatabaseInput",
+}) as any as S.Schema<GetAutonomousDatabaseInput>;
+export type DatabaseType = "REGULAR" | "CLONE" | (string & {});
+export const DatabaseType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type PermissionLevel = "RESTRICTED" | "UNRESTRICTED" | (string & {});
+export const PermissionLevel = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type NetServicesArchitecture = "DEDICATED" | "SHARED" | (string & {});
+export const NetServicesArchitecture = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type DatabaseConnectionStringMap = { [key: string]: string | undefined };
+export const DatabaseConnectionStringMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface DatabaseConnectionStringProfile {
+  consumerGroup?: string;
+  displayName?: string;
+  hostFormat?: string;
+  isRegional?: boolean;
+  protocol?: string;
+  sessionMode?: string;
+  syntaxFormat?: string;
+  tlsAuthentication?: string;
+  value?: string;
+}
+export const DatabaseConnectionStringProfile =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      consumerGroup: S.optional(S.String),
+      displayName: S.optional(S.String),
+      hostFormat: S.optional(S.String),
+      isRegional: S.optional(S.Boolean),
+      protocol: S.optional(S.String),
+      sessionMode: S.optional(S.String),
+      syntaxFormat: S.optional(S.String),
+      tlsAuthentication: S.optional(S.String),
+      value: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DatabaseConnectionStringProfile",
+  }) as any as S.Schema<DatabaseConnectionStringProfile>;
+export type DatabaseConnectionStringProfileList =
+  DatabaseConnectionStringProfile[];
+export const DatabaseConnectionStringProfileList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DatabaseConnectionStringProfile);
+export interface AutonomousDatabaseConnectionStrings {
+  allConnectionStrings?: { [key: string]: string | undefined };
+  dedicated?: string;
+  high?: string;
+  medium?: string;
+  low?: string;
+  profiles?: DatabaseConnectionStringProfile[];
+}
+export const AutonomousDatabaseConnectionStrings =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      allConnectionStrings: S.optional(DatabaseConnectionStringMap),
+      dedicated: S.optional(S.String),
+      high: S.optional(S.String),
+      medium: S.optional(S.String),
+      low: S.optional(S.String),
+      profiles: S.optional(DatabaseConnectionStringProfileList),
+    }),
+  ).annotate({
+    identifier: "AutonomousDatabaseConnectionStrings",
+  }) as any as S.Schema<AutonomousDatabaseConnectionStrings>;
+export interface AutonomousDatabaseApex {
+  apexVersion?: string;
+  ordsVersion?: string;
+}
+export const AutonomousDatabaseApex = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      apexVersion: S.optional(S.String),
+      ordsVersion: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "AutonomousDatabaseApex",
+}) as any as S.Schema<AutonomousDatabaseApex>;
+export interface DatabaseStandbySummary {
+  availabilityDomain?: string;
+  lagTimeInSeconds?: number;
+  status?: AutonomousDatabaseResourceStatus;
+  statusReason?: string;
+  maintenanceTargetComponent?: string;
+  timeDataGuardRoleChanged?: Date;
+  timeDisasterRecoveryRoleChanged?: Date;
+  timeMaintenanceBegin?: Date;
+  timeMaintenanceEnd?: Date;
+}
+export const DatabaseStandbySummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      availabilityDomain: S.optional(S.String),
+      lagTimeInSeconds: S.optional(S.Number),
+      status: S.optional(AutonomousDatabaseResourceStatus),
+      statusReason: S.optional(S.String),
+      maintenanceTargetComponent: S.optional(S.String),
+      timeDataGuardRoleChanged: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeDisasterRecoveryRoleChanged: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeMaintenanceBegin: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeMaintenanceEnd: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+    }),
+).annotate({
+  identifier: "DatabaseStandbySummary",
+}) as any as S.Schema<DatabaseStandbySummary>;
+export type DataSafeStatus =
+  | "REGISTERING"
+  | "REGISTERED"
+  | "DEREGISTERING"
+  | "NOT_REGISTERED"
+  | "FAILED"
+  | (string & {});
+export const DataSafeStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type DatabaseManagementStatus =
+  | "ENABLING"
+  | "ENABLED"
+  | "DISABLING"
+  | "NOT_ENABLED"
+  | "FAILED_ENABLING"
+  | "FAILED_DISABLING"
+  | (string & {});
+export const DatabaseManagementStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type OperationsInsightsStatus =
+  | "ENABLING"
+  | "ENABLED"
+  | "DISABLING"
+  | "NOT_ENABLED"
+  | "FAILED_ENABLING"
+  | "FAILED_DISABLING"
+  | (string & {});
+export const OperationsInsightsStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AutonomousDatabaseConnectionUrls {
+  apexUrl?: string;
+  databaseTransformsUrl?: string;
+  graphStudioUrl?: string;
+  machineLearningNotebookUrl?: string;
+  machineLearningUserManagementUrl?: string;
+  mongoDbUrl?: string;
+  ordsUrl?: string;
+  spatialStudioUrl?: string;
+  sqlDevWebUrl?: string;
+}
+export const AutonomousDatabaseConnectionUrls =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      apexUrl: S.optional(S.String),
+      databaseTransformsUrl: S.optional(S.String),
+      graphStudioUrl: S.optional(S.String),
+      machineLearningNotebookUrl: S.optional(S.String),
+      machineLearningUserManagementUrl: S.optional(S.String),
+      mongoDbUrl: S.optional(S.String),
+      ordsUrl: S.optional(S.String),
+      spatialStudioUrl: S.optional(S.String),
+      sqlDevWebUrl: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AutonomousDatabaseConnectionUrls",
+  }) as any as S.Schema<AutonomousDatabaseConnectionUrls>;
+export type DataGuardRole =
+  | "PRIMARY"
+  | "STANDBY"
+  | "DISABLED_STANDBY"
+  | "BACKUP_COPY"
+  | "SNAPSHOT_STANDBY"
+  | (string & {});
+export const DataGuardRole = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface DisasterRecoveryConfiguration {
+  disasterRecoveryType?: DisasterRecoveryType;
+  isReplicateAutomaticBackups?: boolean;
+  isSnapshotStandby?: boolean;
+  timeSnapshotStandbyEnabledTill?: Date;
+}
+export const DisasterRecoveryConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      disasterRecoveryType: S.optional(DisasterRecoveryType),
+      isReplicateAutomaticBackups: S.optional(S.Boolean),
+      isSnapshotStandby: S.optional(S.Boolean),
+      timeSnapshotStandbyEnabledTill: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+    }),
+  ).annotate({
+    identifier: "DisasterRecoveryConfiguration",
+  }) as any as S.Schema<DisasterRecoveryConfiguration>;
+export type RefreshableStatus = "REFRESHING" | "NOT_REFRESHING" | (string & {});
+export const RefreshableStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type RepeatCadence =
+  | "ONE_TIME"
+  | "WEEKLY"
+  | "MONTHLY"
+  | "YEARLY"
+  | (string & {});
+export const RepeatCadence = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface LongTermBackupSchedule {
+  isDisabled?: boolean;
+  repeatCadence?: RepeatCadence;
+  retentionPeriodInDays?: number;
+  timeOfBackup?: Date;
+}
+export const LongTermBackupSchedule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      isDisabled: S.optional(S.Boolean),
+      repeatCadence: S.optional(RepeatCadence),
+      retentionPeriodInDays: S.optional(S.Number),
+      timeOfBackup: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+    }),
+).annotate({
+  identifier: "LongTermBackupSchedule",
+}) as any as S.Schema<LongTermBackupSchedule>;
+export type EncryptionKeyProvider =
+  | "ORACLE_MANAGED"
+  | "AWS_KMS"
+  | "OKV"
+  | "OCI"
+  | (string & {});
+export const EncryptionKeyProvider = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AwsEncryptionKeyConfiguration {
+  iamRoleArn?: string;
+  externalIdType?: ExternalIdType;
+  kmsKeyId?: string;
+}
+export const AwsEncryptionKeyConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      iamRoleArn: S.optional(S.String),
+      externalIdType: S.optional(ExternalIdType),
+      kmsKeyId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AwsEncryptionKeyConfiguration",
+  }) as any as S.Schema<AwsEncryptionKeyConfiguration>;
+export interface OciEncryptionKeyConfiguration {
+  kmsKeyId: string;
+  vaultId: string;
+}
+export const OciEncryptionKeyConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ kmsKeyId: S.String, vaultId: S.String }),
+  ).annotate({
+    identifier: "OciEncryptionKeyConfiguration",
+  }) as any as S.Schema<OciEncryptionKeyConfiguration>;
+export interface OkvEncryptionKeyConfiguration {
+  certificateDirectoryName: string;
+  certificateId?: string;
+  directoryName: string;
+  okvKmsKey: string;
+  okvUri: string;
+}
+export const OkvEncryptionKeyConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      certificateDirectoryName: S.String,
+      certificateId: S.optional(S.String),
+      directoryName: S.String,
+      okvKmsKey: S.String,
+      okvUri: S.String,
+    }),
+  ).annotate({
+    identifier: "OkvEncryptionKeyConfiguration",
+  }) as any as S.Schema<OkvEncryptionKeyConfiguration>;
+export type EncryptionKeyConfiguration =
+  | {
+      awsEncryptionKey: AwsEncryptionKeyConfiguration;
+      ociEncryptionKey?: never;
+      okvEncryptionKey?: never;
+    }
+  | {
+      awsEncryptionKey?: never;
+      ociEncryptionKey: OciEncryptionKeyConfiguration;
+      okvEncryptionKey?: never;
+    }
+  | {
+      awsEncryptionKey?: never;
+      ociEncryptionKey?: never;
+      okvEncryptionKey: OkvEncryptionKeyConfiguration;
+    };
+export const EncryptionKeyConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ awsEncryptionKey: AwsEncryptionKeyConfiguration }),
+  S.Struct({ ociEncryptionKey: OciEncryptionKeyConfiguration }),
+  S.Struct({ okvEncryptionKey: OkvEncryptionKeyConfiguration }),
+]);
+export interface EncryptionSummary {
+  encryptionKeyProvider?: EncryptionKeyProvider;
+  encryptionKeyConfiguration?: EncryptionKeyConfiguration;
+}
+export const EncryptionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    encryptionKeyProvider: S.optional(EncryptionKeyProvider),
+    encryptionKeyConfiguration: S.optional(EncryptionKeyConfiguration),
+  }),
+).annotate({
+  identifier: "EncryptionSummary",
+}) as any as S.Schema<EncryptionSummary>;
+export interface AutonomousDatabase {
+  autonomousDatabaseId?: string;
+  autonomousDatabaseArn?: string;
+  ociResourceAnchorName?: string;
+  percentProgress?: number;
+  ocid?: string;
+  ociUrl?: string;
+  displayName?: string;
+  dbName?: string;
+  sourceId?: string;
+  status?: AutonomousDatabaseResourceStatus;
+  statusReason?: string;
+  databaseType?: DatabaseType;
+  dbVersion?: string;
+  dbWorkload?: DbWorkload;
+  characterSet?: string;
+  ncharacterSet?: string;
+  databaseEdition?: DatabaseEdition;
+  licenseModel?: LicenseModel;
+  openMode?: OpenMode;
+  permissionLevel?: PermissionLevel;
+  isMtlsConnectionRequired?: boolean;
+  autonomousMaintenanceScheduleType?: AutonomousMaintenanceScheduleType;
+  netServicesArchitecture?: NetServicesArchitecture;
+  availableUpgradeVersions?: string[];
+  byolComputeCountLimit?: number;
+  connectionStringDetails?: AutonomousDatabaseConnectionStrings;
+  serviceConsoleUrl?: string;
+  sqlWebDeveloperUrl?: string;
+  customerContacts?: CustomerContact[];
+  apexDetails?: AutonomousDatabaseApex;
+  standbyDb?: DatabaseStandbySummary;
+  localStandbyDb?: DatabaseStandbySummary;
+  dataSafeStatus?: DataSafeStatus;
+  databaseManagementStatus?: DatabaseManagementStatus;
+  operationsInsightsStatus?: OperationsInsightsStatus;
+  availabilityZone?: string;
+  availabilityZoneId?: string;
+  maintenanceTargetComponent?: string;
+  connectionUrls?: AutonomousDatabaseConnectionUrls;
+  dbToolsDetails?: DatabaseTool[];
+  scheduledOperations?: ScheduledOperationDetails[];
+  resourcePoolLeaderId?: string;
+  computeCount?: number;
+  computeModel?: ComputeModel;
+  cpuCoreCount?: number;
+  memoryPerOracleComputeUnitInGBs?: number;
+  provisionableCpus?: number[];
+  isAutoScalingEnabled?: boolean;
+  dataStorageSizeInTBs?: number;
+  dataStorageSizeInGBs?: number;
+  usedDataStorageSizeInTBs?: number;
+  usedDataStorageSizeInGBs?: number;
+  actualUsedDataStorageSizeInTBs?: number;
+  allocatedStorageSizeInTBs?: number;
+  inMemoryAreaInGBs?: number;
+  isAutoScalingForStorageEnabled?: boolean;
+  odbNetworkId?: string;
+  odbNetworkArn?: string;
+  privateEndpoint?: string;
+  privateEndpointIp?: string;
+  privateEndpointLabel?: string;
+  allowlistedIps?: string[];
+  standbyAllowlistedIps?: string[];
+  standbyAllowlistedIpsSource?: StandbyAllowlistedIpsSource;
+  isLocalDataGuardEnabled?: boolean;
+  isRemoteDataGuardEnabled?: boolean;
+  localDisasterRecoveryType?: DisasterRecoveryType;
+  role?: DataGuardRole;
+  peerDbIds?: string[];
+  failedDataRecoveryInSeconds?: number;
+  localAdgAutoFailoverMaxDataLossLimit?: number;
+  remoteDisasterRecoveryConfiguration?: DisasterRecoveryConfiguration;
+  isRefreshableClone?: boolean;
+  refreshableMode?: RefreshableMode;
+  refreshableStatus?: RefreshableStatus;
+  autoRefreshFrequencyInSeconds?: number;
+  autoRefreshPointLagInSeconds?: number;
+  isReconnectCloneEnabled?: boolean;
+  cloneTableSpaceList?: number[];
+  backupRetentionPeriodInDays?: number;
+  longTermBackupSchedule?: LongTermBackupSchedule;
+  isBackupRetentionLocked?: boolean;
+  totalBackupStorageSizeInGBs?: number;
+  resourcePoolSummary?: ResourcePoolSummary;
+  encryptionSummary?: EncryptionSummary;
+  createdAt?: Date;
+  timeOfLastBackup?: Date;
+  timeMaintenanceBegin?: Date;
+  timeMaintenanceEnd?: Date;
+  timeLocalDataGuardEnabled?: Date;
+  timeDataGuardRoleChanged?: Date;
+  timeOfLastSwitchover?: Date;
+  timeOfLastFailover?: Date;
+  timeOfLastRefresh?: Date;
+  timeOfLastRefreshPoint?: Date;
+  timeOfNextRefresh?: Date;
+  timeOfAutoRefreshStart?: Date;
+  timeDeletionOfFreeAutonomousDatabase?: Date;
+  timeReclamationOfFreeAutonomousDatabase?: Date;
+  timeDisasterRecoveryRoleChanged?: Date;
+  timeUntilReconnectCloneEnabled?: Date;
+  nextLongTermBackupTimeStamp?: Date;
+  timeUndeleted?: Date;
+}
+export const AutonomousDatabase = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    autonomousDatabaseId: S.optional(S.String),
+    autonomousDatabaseArn: S.optional(S.String),
+    ociResourceAnchorName: S.optional(S.String),
+    percentProgress: S.optional(S.Number),
+    ocid: S.optional(S.String),
+    ociUrl: S.optional(S.String),
+    displayName: S.optional(S.String),
+    dbName: S.optional(S.String),
+    sourceId: S.optional(S.String),
+    status: S.optional(AutonomousDatabaseResourceStatus),
+    statusReason: S.optional(S.String),
+    databaseType: S.optional(DatabaseType),
+    dbVersion: S.optional(S.String),
+    dbWorkload: S.optional(DbWorkload),
+    characterSet: S.optional(S.String),
+    ncharacterSet: S.optional(S.String),
+    databaseEdition: S.optional(DatabaseEdition),
+    licenseModel: S.optional(LicenseModel),
+    openMode: S.optional(OpenMode),
+    permissionLevel: S.optional(PermissionLevel),
+    isMtlsConnectionRequired: S.optional(S.Boolean),
+    autonomousMaintenanceScheduleType: S.optional(
+      AutonomousMaintenanceScheduleType,
+    ),
+    netServicesArchitecture: S.optional(NetServicesArchitecture),
+    availableUpgradeVersions: S.optional(StringList),
+    byolComputeCountLimit: S.optional(S.Number),
+    connectionStringDetails: S.optional(AutonomousDatabaseConnectionStrings),
+    serviceConsoleUrl: S.optional(S.String),
+    sqlWebDeveloperUrl: S.optional(S.String),
+    customerContacts: S.optional(CustomerContacts),
+    apexDetails: S.optional(AutonomousDatabaseApex),
+    standbyDb: S.optional(DatabaseStandbySummary),
+    localStandbyDb: S.optional(DatabaseStandbySummary),
+    dataSafeStatus: S.optional(DataSafeStatus),
+    databaseManagementStatus: S.optional(DatabaseManagementStatus),
+    operationsInsightsStatus: S.optional(OperationsInsightsStatus),
+    availabilityZone: S.optional(S.String),
+    availabilityZoneId: S.optional(S.String),
+    maintenanceTargetComponent: S.optional(S.String),
+    connectionUrls: S.optional(AutonomousDatabaseConnectionUrls),
+    dbToolsDetails: S.optional(DatabaseToolList),
+    scheduledOperations: S.optional(ScheduledOperationDetailsList),
+    resourcePoolLeaderId: S.optional(S.String),
+    computeCount: S.optional(S.Number),
+    computeModel: S.optional(ComputeModel),
+    cpuCoreCount: S.optional(S.Number),
+    memoryPerOracleComputeUnitInGBs: S.optional(S.Number),
+    provisionableCpus: S.optional(IntegerList),
+    isAutoScalingEnabled: S.optional(S.Boolean),
+    dataStorageSizeInTBs: S.optional(S.Number),
+    dataStorageSizeInGBs: S.optional(S.Number),
+    usedDataStorageSizeInTBs: S.optional(S.Number),
+    usedDataStorageSizeInGBs: S.optional(S.Number),
+    actualUsedDataStorageSizeInTBs: S.optional(S.Number),
+    allocatedStorageSizeInTBs: S.optional(S.Number),
+    inMemoryAreaInGBs: S.optional(S.Number),
+    isAutoScalingForStorageEnabled: S.optional(S.Boolean),
+    odbNetworkId: S.optional(S.String),
+    odbNetworkArn: S.optional(S.String),
+    privateEndpoint: S.optional(S.String),
+    privateEndpointIp: S.optional(S.String),
+    privateEndpointLabel: S.optional(S.String),
+    allowlistedIps: S.optional(StringList),
+    standbyAllowlistedIps: S.optional(StringList),
+    standbyAllowlistedIpsSource: S.optional(StandbyAllowlistedIpsSource),
+    isLocalDataGuardEnabled: S.optional(S.Boolean),
+    isRemoteDataGuardEnabled: S.optional(S.Boolean),
+    localDisasterRecoveryType: S.optional(DisasterRecoveryType),
+    role: S.optional(DataGuardRole),
+    peerDbIds: S.optional(StringList),
+    failedDataRecoveryInSeconds: S.optional(S.Number),
+    localAdgAutoFailoverMaxDataLossLimit: S.optional(S.Number),
+    remoteDisasterRecoveryConfiguration: S.optional(
+      DisasterRecoveryConfiguration,
+    ),
+    isRefreshableClone: S.optional(S.Boolean),
+    refreshableMode: S.optional(RefreshableMode),
+    refreshableStatus: S.optional(RefreshableStatus),
+    autoRefreshFrequencyInSeconds: S.optional(S.Number),
+    autoRefreshPointLagInSeconds: S.optional(S.Number),
+    isReconnectCloneEnabled: S.optional(S.Boolean),
+    cloneTableSpaceList: S.optional(IntegerList),
+    backupRetentionPeriodInDays: S.optional(S.Number),
+    longTermBackupSchedule: S.optional(LongTermBackupSchedule),
+    isBackupRetentionLocked: S.optional(S.Boolean),
+    totalBackupStorageSizeInGBs: S.optional(S.Number),
+    resourcePoolSummary: S.optional(ResourcePoolSummary),
+    encryptionSummary: S.optional(EncryptionSummary),
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    timeOfLastBackup: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    timeMaintenanceBegin: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    timeMaintenanceEnd: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    timeLocalDataGuardEnabled: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    timeDataGuardRoleChanged: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    timeOfLastSwitchover: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    timeOfLastFailover: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    timeOfLastRefresh: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    timeOfLastRefreshPoint: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    timeOfNextRefresh: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    timeOfAutoRefreshStart: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    timeDeletionOfFreeAutonomousDatabase: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    timeReclamationOfFreeAutonomousDatabase: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    timeDisasterRecoveryRoleChanged: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    timeUntilReconnectCloneEnabled: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    nextLongTermBackupTimeStamp: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    timeUndeleted: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "AutonomousDatabase",
+}) as any as S.Schema<AutonomousDatabase>;
+export interface GetAutonomousDatabaseOutput {
+  autonomousDatabase: AutonomousDatabase;
+}
+export const GetAutonomousDatabaseOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ autonomousDatabase: AutonomousDatabase }),
+  ).annotate({
+    identifier: "GetAutonomousDatabaseOutput",
+  }) as any as S.Schema<GetAutonomousDatabaseOutput>;
+export interface UpdateAutonomousDatabaseInput {
+  autonomousDatabaseId: string;
+  adminPassword?: string | redacted.Redacted<string>;
+  computeCount?: number;
+  cpuCoreCount?: number;
+  dataStorageSizeInTBs?: number;
+  dataStorageSizeInGBs?: number;
+  displayName?: string;
+  dbName?: string;
+  dbVersion?: string;
+  dbWorkload?: DbWorkload;
+  dbToolsDetails?: DatabaseTool[];
+  databaseEdition?: DatabaseEdition;
+  licenseModel?: LicenseModel;
+  isAutoScalingEnabled?: boolean;
+  isAutoScalingForStorageEnabled?: boolean;
+  isBackupRetentionLocked?: boolean;
+  isLocalDataGuardEnabled?: boolean;
+  isMtlsConnectionRequired?: boolean;
+  isRefreshableClone?: boolean;
+  isDisconnectPeer?: boolean;
+  backupRetentionPeriodInDays?: number;
+  byolComputeCountLimit?: number;
+  localAdgAutoFailoverMaxDataLossLimit?: number;
+  autonomousMaintenanceScheduleType?: AutonomousMaintenanceScheduleType;
+  customerContactsToSendToOCI?: CustomerContact[];
+  scheduledOperations?: ScheduledOperationDetails[];
+  longTermBackupSchedule?: LongTermBackupSchedule;
+  openMode?: OpenMode;
+  permissionLevel?: PermissionLevel;
+  refreshableMode?: RefreshableMode;
+  privateEndpointIp?: string;
+  privateEndpointLabel?: string;
+  peerDbId?: string;
+  resourcePoolLeaderId?: string;
+  resourcePoolSummary?: ResourcePoolSummary;
+  standbyAllowlistedIpsSource?: StandbyAllowlistedIpsSource;
+  standbyAllowlistedIps?: string[];
+  allowlistedIps?: string[];
+  autoRefreshFrequencyInSeconds?: number;
+  autoRefreshPointLagInSeconds?: number;
+  timeOfAutoRefreshStart?: Date;
+  encryptionKeyProvider?: EncryptionKeyProviderInput;
+  encryptionKeyConfiguration?: EncryptionKeyConfigurationInput;
+}
+export const UpdateAutonomousDatabaseInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseId: S.String,
+      adminPassword: S.optional(SensitiveString),
+      computeCount: S.optional(S.Number),
+      cpuCoreCount: S.optional(S.Number),
+      dataStorageSizeInTBs: S.optional(S.Number),
+      dataStorageSizeInGBs: S.optional(S.Number),
+      displayName: S.optional(S.String),
+      dbName: S.optional(S.String),
+      dbVersion: S.optional(S.String),
+      dbWorkload: S.optional(DbWorkload),
+      dbToolsDetails: S.optional(DatabaseToolList),
+      databaseEdition: S.optional(DatabaseEdition),
+      licenseModel: S.optional(LicenseModel),
+      isAutoScalingEnabled: S.optional(S.Boolean),
+      isAutoScalingForStorageEnabled: S.optional(S.Boolean),
+      isBackupRetentionLocked: S.optional(S.Boolean),
+      isLocalDataGuardEnabled: S.optional(S.Boolean),
+      isMtlsConnectionRequired: S.optional(S.Boolean),
+      isRefreshableClone: S.optional(S.Boolean),
+      isDisconnectPeer: S.optional(S.Boolean),
+      backupRetentionPeriodInDays: S.optional(S.Number),
+      byolComputeCountLimit: S.optional(S.Number),
+      localAdgAutoFailoverMaxDataLossLimit: S.optional(S.Number),
+      autonomousMaintenanceScheduleType: S.optional(
+        AutonomousMaintenanceScheduleType,
+      ),
+      customerContactsToSendToOCI: S.optional(CustomerContacts),
+      scheduledOperations: S.optional(ScheduledOperationDetailsList),
+      longTermBackupSchedule: S.optional(LongTermBackupSchedule),
+      openMode: S.optional(OpenMode),
+      permissionLevel: S.optional(PermissionLevel),
+      refreshableMode: S.optional(RefreshableMode),
+      privateEndpointIp: S.optional(S.String),
+      privateEndpointLabel: S.optional(S.String),
+      peerDbId: S.optional(S.String),
+      resourcePoolLeaderId: S.optional(S.String),
+      resourcePoolSummary: S.optional(ResourcePoolSummary),
+      standbyAllowlistedIpsSource: S.optional(StandbyAllowlistedIpsSource),
+      standbyAllowlistedIps: S.optional(StringList),
+      allowlistedIps: S.optional(StringList),
+      autoRefreshFrequencyInSeconds: S.optional(S.Number),
+      autoRefreshPointLagInSeconds: S.optional(S.Number),
+      timeOfAutoRefreshStart: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      encryptionKeyProvider: S.optional(EncryptionKeyProviderInput),
+      encryptionKeyConfiguration: S.optional(EncryptionKeyConfigurationInput),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "UpdateAutonomousDatabaseInput",
+  }) as any as S.Schema<UpdateAutonomousDatabaseInput>;
+export interface UpdateAutonomousDatabaseOutput {
+  autonomousDatabaseId: string;
+  displayName?: string;
+  status?: AutonomousDatabaseResourceStatus;
+  statusReason?: string;
+}
+export const UpdateAutonomousDatabaseOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseId: S.String,
+      displayName: S.optional(S.String),
+      status: S.optional(AutonomousDatabaseResourceStatus),
+      statusReason: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "UpdateAutonomousDatabaseOutput",
+  }) as any as S.Schema<UpdateAutonomousDatabaseOutput>;
+export interface DeleteAutonomousDatabaseInput {
+  autonomousDatabaseId: string;
+}
+export const DeleteAutonomousDatabaseInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseId: S.String.pipe(T.HttpLabel("autonomousDatabaseId")),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "DeleteAutonomousDatabaseInput",
+  }) as any as S.Schema<DeleteAutonomousDatabaseInput>;
+export interface DeleteAutonomousDatabaseOutput {}
+export const DeleteAutonomousDatabaseOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteAutonomousDatabaseOutput",
+  }) as any as S.Schema<DeleteAutonomousDatabaseOutput>;
+export interface ListAutonomousDatabasesInput {
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListAutonomousDatabasesInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "ListAutonomousDatabasesInput",
+  }) as any as S.Schema<ListAutonomousDatabasesInput>;
+export interface AutonomousDatabaseSummary {
+  autonomousDatabaseId?: string;
+  autonomousDatabaseArn?: string;
+  ociResourceAnchorName?: string;
+  percentProgress?: number;
+  ocid?: string;
+  ociUrl?: string;
+  displayName?: string;
+  dbName?: string;
+  sourceId?: string;
+  status?: AutonomousDatabaseResourceStatus;
+  statusReason?: string;
+  databaseType?: DatabaseType;
+  dbVersion?: string;
+  dbWorkload?: DbWorkload;
+  characterSet?: string;
+  ncharacterSet?: string;
+  databaseEdition?: DatabaseEdition;
+  licenseModel?: LicenseModel;
+  openMode?: OpenMode;
+  permissionLevel?: PermissionLevel;
+  isMtlsConnectionRequired?: boolean;
+  autonomousMaintenanceScheduleType?: AutonomousMaintenanceScheduleType;
+  netServicesArchitecture?: NetServicesArchitecture;
+  availableUpgradeVersions?: string[];
+  byolComputeCountLimit?: number;
+  connectionStringDetails?: AutonomousDatabaseConnectionStrings;
+  serviceConsoleUrl?: string;
+  sqlWebDeveloperUrl?: string;
+  customerContacts?: CustomerContact[];
+  apexDetails?: AutonomousDatabaseApex;
+  standbyDb?: DatabaseStandbySummary;
+  localStandbyDb?: DatabaseStandbySummary;
+  dataSafeStatus?: DataSafeStatus;
+  databaseManagementStatus?: DatabaseManagementStatus;
+  operationsInsightsStatus?: OperationsInsightsStatus;
+  availabilityZone?: string;
+  availabilityZoneId?: string;
+  maintenanceTargetComponent?: string;
+  connectionUrls?: AutonomousDatabaseConnectionUrls;
+  dbToolsDetails?: DatabaseTool[];
+  scheduledOperations?: ScheduledOperationDetails[];
+  resourcePoolLeaderId?: string;
+  computeCount?: number;
+  computeModel?: ComputeModel;
+  cpuCoreCount?: number;
+  memoryPerOracleComputeUnitInGBs?: number;
+  provisionableCpus?: number[];
+  isAutoScalingEnabled?: boolean;
+  dataStorageSizeInTBs?: number;
+  dataStorageSizeInGBs?: number;
+  usedDataStorageSizeInTBs?: number;
+  usedDataStorageSizeInGBs?: number;
+  actualUsedDataStorageSizeInTBs?: number;
+  allocatedStorageSizeInTBs?: number;
+  inMemoryAreaInGBs?: number;
+  isAutoScalingForStorageEnabled?: boolean;
+  odbNetworkId?: string;
+  odbNetworkArn?: string;
+  privateEndpoint?: string;
+  privateEndpointIp?: string;
+  privateEndpointLabel?: string;
+  allowlistedIps?: string[];
+  standbyAllowlistedIps?: string[];
+  standbyAllowlistedIpsSource?: StandbyAllowlistedIpsSource;
+  isLocalDataGuardEnabled?: boolean;
+  isRemoteDataGuardEnabled?: boolean;
+  localDisasterRecoveryType?: DisasterRecoveryType;
+  role?: DataGuardRole;
+  peerDbIds?: string[];
+  failedDataRecoveryInSeconds?: number;
+  localAdgAutoFailoverMaxDataLossLimit?: number;
+  remoteDisasterRecoveryConfiguration?: DisasterRecoveryConfiguration;
+  isRefreshableClone?: boolean;
+  refreshableMode?: RefreshableMode;
+  refreshableStatus?: RefreshableStatus;
+  autoRefreshFrequencyInSeconds?: number;
+  autoRefreshPointLagInSeconds?: number;
+  isReconnectCloneEnabled?: boolean;
+  cloneTableSpaceList?: number[];
+  backupRetentionPeriodInDays?: number;
+  longTermBackupSchedule?: LongTermBackupSchedule;
+  isBackupRetentionLocked?: boolean;
+  totalBackupStorageSizeInGBs?: number;
+  resourcePoolSummary?: ResourcePoolSummary;
+  encryptionSummary?: EncryptionSummary;
+  createdAt?: Date;
+  timeOfLastBackup?: Date;
+  timeMaintenanceBegin?: Date;
+  timeMaintenanceEnd?: Date;
+  timeLocalDataGuardEnabled?: Date;
+  timeDataGuardRoleChanged?: Date;
+  timeOfLastSwitchover?: Date;
+  timeOfLastFailover?: Date;
+  timeOfLastRefresh?: Date;
+  timeOfLastRefreshPoint?: Date;
+  timeOfNextRefresh?: Date;
+  timeOfAutoRefreshStart?: Date;
+  timeDeletionOfFreeAutonomousDatabase?: Date;
+  timeReclamationOfFreeAutonomousDatabase?: Date;
+  timeDisasterRecoveryRoleChanged?: Date;
+  timeUntilReconnectCloneEnabled?: Date;
+  nextLongTermBackupTimeStamp?: Date;
+  timeUndeleted?: Date;
+}
+export const AutonomousDatabaseSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      autonomousDatabaseId: S.optional(S.String),
+      autonomousDatabaseArn: S.optional(S.String),
+      ociResourceAnchorName: S.optional(S.String),
+      percentProgress: S.optional(S.Number),
+      ocid: S.optional(S.String),
+      ociUrl: S.optional(S.String),
+      displayName: S.optional(S.String),
+      dbName: S.optional(S.String),
+      sourceId: S.optional(S.String),
+      status: S.optional(AutonomousDatabaseResourceStatus),
+      statusReason: S.optional(S.String),
+      databaseType: S.optional(DatabaseType),
+      dbVersion: S.optional(S.String),
+      dbWorkload: S.optional(DbWorkload),
+      characterSet: S.optional(S.String),
+      ncharacterSet: S.optional(S.String),
+      databaseEdition: S.optional(DatabaseEdition),
+      licenseModel: S.optional(LicenseModel),
+      openMode: S.optional(OpenMode),
+      permissionLevel: S.optional(PermissionLevel),
+      isMtlsConnectionRequired: S.optional(S.Boolean),
+      autonomousMaintenanceScheduleType: S.optional(
+        AutonomousMaintenanceScheduleType,
+      ),
+      netServicesArchitecture: S.optional(NetServicesArchitecture),
+      availableUpgradeVersions: S.optional(StringList),
+      byolComputeCountLimit: S.optional(S.Number),
+      connectionStringDetails: S.optional(AutonomousDatabaseConnectionStrings),
+      serviceConsoleUrl: S.optional(S.String),
+      sqlWebDeveloperUrl: S.optional(S.String),
+      customerContacts: S.optional(CustomerContacts),
+      apexDetails: S.optional(AutonomousDatabaseApex),
+      standbyDb: S.optional(DatabaseStandbySummary),
+      localStandbyDb: S.optional(DatabaseStandbySummary),
+      dataSafeStatus: S.optional(DataSafeStatus),
+      databaseManagementStatus: S.optional(DatabaseManagementStatus),
+      operationsInsightsStatus: S.optional(OperationsInsightsStatus),
+      availabilityZone: S.optional(S.String),
+      availabilityZoneId: S.optional(S.String),
+      maintenanceTargetComponent: S.optional(S.String),
+      connectionUrls: S.optional(AutonomousDatabaseConnectionUrls),
+      dbToolsDetails: S.optional(DatabaseToolList),
+      scheduledOperations: S.optional(ScheduledOperationDetailsList),
+      resourcePoolLeaderId: S.optional(S.String),
+      computeCount: S.optional(S.Number),
+      computeModel: S.optional(ComputeModel),
+      cpuCoreCount: S.optional(S.Number),
+      memoryPerOracleComputeUnitInGBs: S.optional(S.Number),
+      provisionableCpus: S.optional(IntegerList),
+      isAutoScalingEnabled: S.optional(S.Boolean),
+      dataStorageSizeInTBs: S.optional(S.Number),
+      dataStorageSizeInGBs: S.optional(S.Number),
+      usedDataStorageSizeInTBs: S.optional(S.Number),
+      usedDataStorageSizeInGBs: S.optional(S.Number),
+      actualUsedDataStorageSizeInTBs: S.optional(S.Number),
+      allocatedStorageSizeInTBs: S.optional(S.Number),
+      inMemoryAreaInGBs: S.optional(S.Number),
+      isAutoScalingForStorageEnabled: S.optional(S.Boolean),
+      odbNetworkId: S.optional(S.String),
+      odbNetworkArn: S.optional(S.String),
+      privateEndpoint: S.optional(S.String),
+      privateEndpointIp: S.optional(S.String),
+      privateEndpointLabel: S.optional(S.String),
+      allowlistedIps: S.optional(StringList),
+      standbyAllowlistedIps: S.optional(StringList),
+      standbyAllowlistedIpsSource: S.optional(StandbyAllowlistedIpsSource),
+      isLocalDataGuardEnabled: S.optional(S.Boolean),
+      isRemoteDataGuardEnabled: S.optional(S.Boolean),
+      localDisasterRecoveryType: S.optional(DisasterRecoveryType),
+      role: S.optional(DataGuardRole),
+      peerDbIds: S.optional(StringList),
+      failedDataRecoveryInSeconds: S.optional(S.Number),
+      localAdgAutoFailoverMaxDataLossLimit: S.optional(S.Number),
+      remoteDisasterRecoveryConfiguration: S.optional(
+        DisasterRecoveryConfiguration,
+      ),
+      isRefreshableClone: S.optional(S.Boolean),
+      refreshableMode: S.optional(RefreshableMode),
+      refreshableStatus: S.optional(RefreshableStatus),
+      autoRefreshFrequencyInSeconds: S.optional(S.Number),
+      autoRefreshPointLagInSeconds: S.optional(S.Number),
+      isReconnectCloneEnabled: S.optional(S.Boolean),
+      cloneTableSpaceList: S.optional(IntegerList),
+      backupRetentionPeriodInDays: S.optional(S.Number),
+      longTermBackupSchedule: S.optional(LongTermBackupSchedule),
+      isBackupRetentionLocked: S.optional(S.Boolean),
+      totalBackupStorageSizeInGBs: S.optional(S.Number),
+      resourcePoolSummary: S.optional(ResourcePoolSummary),
+      encryptionSummary: S.optional(EncryptionSummary),
+      createdAt: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeOfLastBackup: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeMaintenanceBegin: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeMaintenanceEnd: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeLocalDataGuardEnabled: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeDataGuardRoleChanged: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeOfLastSwitchover: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeOfLastFailover: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeOfLastRefresh: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeOfLastRefreshPoint: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeOfNextRefresh: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeOfAutoRefreshStart: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeDeletionOfFreeAutonomousDatabase: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeReclamationOfFreeAutonomousDatabase: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeDisasterRecoveryRoleChanged: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeUntilReconnectCloneEnabled: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      nextLongTermBackupTimeStamp: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      timeUndeleted: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+    }),
+).annotate({
+  identifier: "AutonomousDatabaseSummary",
+}) as any as S.Schema<AutonomousDatabaseSummary>;
+export type AutonomousDatabaseList = AutonomousDatabaseSummary[];
+export const AutonomousDatabaseList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  AutonomousDatabaseSummary,
+);
+export interface ListAutonomousDatabasesOutput {
+  nextToken?: string;
+  autonomousDatabases: AutonomousDatabaseSummary[];
+}
+export const ListAutonomousDatabasesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextToken: S.optional(S.String),
+      autonomousDatabases: AutonomousDatabaseList,
+    }),
+  ).annotate({
+    identifier: "ListAutonomousDatabasesOutput",
+  }) as any as S.Schema<ListAutonomousDatabasesOutput>;
+export type WalletType = "REGIONAL" | "INSTANCE" | (string & {});
+export const WalletType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CreateAutonomousDatabaseWalletInput {
+  autonomousDatabaseId: string;
+  walletType?: WalletType;
+  password: string | redacted.Redacted<string>;
+  clientToken?: string;
+}
+export const CreateAutonomousDatabaseWalletInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseId: S.String,
+      walletType: S.optional(WalletType),
+      password: SensitiveString,
+      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "CreateAutonomousDatabaseWalletInput",
+  }) as any as S.Schema<CreateAutonomousDatabaseWalletInput>;
+export interface CreateAutonomousDatabaseWalletOutput {
+  autonomousDatabaseWalletFile: Uint8Array | redacted.Redacted<Uint8Array>;
+}
+export const CreateAutonomousDatabaseWalletOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ autonomousDatabaseWalletFile: SensitiveBlob }),
+  ).annotate({
+    identifier: "CreateAutonomousDatabaseWalletOutput",
+  }) as any as S.Schema<CreateAutonomousDatabaseWalletOutput>;
+export interface FailoverAutonomousDatabaseInput {
+  autonomousDatabaseId: string;
+  peerDbArn?: string;
+}
+export const FailoverAutonomousDatabaseInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseId: S.String,
+      peerDbArn: S.optional(S.String),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "FailoverAutonomousDatabaseInput",
+  }) as any as S.Schema<FailoverAutonomousDatabaseInput>;
+export interface FailoverAutonomousDatabaseOutput {
+  autonomousDatabaseId: string;
+  displayName?: string;
+  status?: AutonomousDatabaseResourceStatus;
+  statusReason?: string;
+}
+export const FailoverAutonomousDatabaseOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseId: S.String,
+      displayName: S.optional(S.String),
+      status: S.optional(AutonomousDatabaseResourceStatus),
+      statusReason: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "FailoverAutonomousDatabaseOutput",
+  }) as any as S.Schema<FailoverAutonomousDatabaseOutput>;
+export interface GetAutonomousDatabaseWalletDetailsInput {
+  autonomousDatabaseId: string;
+}
+export const GetAutonomousDatabaseWalletDetailsInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ autonomousDatabaseId: S.String }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "GetAutonomousDatabaseWalletDetailsInput",
+  }) as any as S.Schema<GetAutonomousDatabaseWalletDetailsInput>;
+export type AutonomousDatabaseWalletStatus =
+  | "ACTIVE"
+  | "UPDATING"
+  | (string & {});
+export const AutonomousDatabaseWalletStatus =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AutonomousDatabaseWalletDetails {
+  status?: AutonomousDatabaseWalletStatus;
+  timeRotated?: Date;
+}
+export const AutonomousDatabaseWalletDetails =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      status: S.optional(AutonomousDatabaseWalletStatus),
+      timeRotated: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+    }),
+  ).annotate({
+    identifier: "AutonomousDatabaseWalletDetails",
+  }) as any as S.Schema<AutonomousDatabaseWalletDetails>;
+export interface GetAutonomousDatabaseWalletDetailsOutput {
+  autonomousDatabaseWalletDetails: AutonomousDatabaseWalletDetails;
+}
+export const GetAutonomousDatabaseWalletDetailsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseWalletDetails: AutonomousDatabaseWalletDetails,
+    }),
+  ).annotate({
+    identifier: "GetAutonomousDatabaseWalletDetailsOutput",
+  }) as any as S.Schema<GetAutonomousDatabaseWalletDetailsOutput>;
+export interface ListAutonomousDatabaseClonesInput {
+  maxResults?: number;
+  nextToken?: string;
+  autonomousDatabaseId: string;
+}
+export const ListAutonomousDatabaseClonesInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+      autonomousDatabaseId: S.String.pipe(T.HttpLabel("autonomousDatabaseId")),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "ListAutonomousDatabaseClonesInput",
+  }) as any as S.Schema<ListAutonomousDatabaseClonesInput>;
+export interface ListAutonomousDatabaseClonesOutput {
+  nextToken?: string;
+  autonomousDatabaseClones: AutonomousDatabaseSummary[];
+}
+export const ListAutonomousDatabaseClonesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextToken: S.optional(S.String),
+      autonomousDatabaseClones: AutonomousDatabaseList,
+    }),
+  ).annotate({
+    identifier: "ListAutonomousDatabaseClonesOutput",
+  }) as any as S.Schema<ListAutonomousDatabaseClonesOutput>;
+export interface ListAutonomousDatabasePeersInput {
+  maxResults?: number;
+  nextToken?: string;
+  autonomousDatabaseId: string;
+}
+export const ListAutonomousDatabasePeersInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+      autonomousDatabaseId: S.String.pipe(T.HttpLabel("autonomousDatabaseId")),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "ListAutonomousDatabasePeersInput",
+  }) as any as S.Schema<ListAutonomousDatabasePeersInput>;
+export interface AutonomousDatabasePeerSummary {
+  autonomousDatabaseId?: string;
+  autonomousDatabaseArn?: string;
+  ocid?: string;
+  region?: string;
+}
+export const AutonomousDatabasePeerSummary =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseId: S.optional(S.String),
+      autonomousDatabaseArn: S.optional(S.String),
+      ocid: S.optional(S.String),
+      region: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AutonomousDatabasePeerSummary",
+  }) as any as S.Schema<AutonomousDatabasePeerSummary>;
+export type AutonomousDatabasePeerList = AutonomousDatabasePeerSummary[];
+export const AutonomousDatabasePeerList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  AutonomousDatabasePeerSummary,
+);
+export interface ListAutonomousDatabasePeersOutput {
+  nextToken?: string;
+  autonomousDatabasePeers: AutonomousDatabasePeerSummary[];
+}
+export const ListAutonomousDatabasePeersOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextToken: S.optional(S.String),
+      autonomousDatabasePeers: AutonomousDatabasePeerList,
+    }),
+  ).annotate({
+    identifier: "ListAutonomousDatabasePeersOutput",
+  }) as any as S.Schema<ListAutonomousDatabasePeersOutput>;
+export interface RebootAutonomousDatabaseInput {
+  autonomousDatabaseId: string;
+  isOnlineReboot?: boolean;
+}
+export const RebootAutonomousDatabaseInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseId: S.String,
+      isOnlineReboot: S.optional(S.Boolean),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "RebootAutonomousDatabaseInput",
+  }) as any as S.Schema<RebootAutonomousDatabaseInput>;
+export interface RebootAutonomousDatabaseOutput {
+  autonomousDatabaseId: string;
+  displayName?: string;
+  status?: AutonomousDatabaseResourceStatus;
+  statusReason?: string;
+}
+export const RebootAutonomousDatabaseOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseId: S.String,
+      displayName: S.optional(S.String),
+      status: S.optional(AutonomousDatabaseResourceStatus),
+      statusReason: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RebootAutonomousDatabaseOutput",
+  }) as any as S.Schema<RebootAutonomousDatabaseOutput>;
+export interface RestoreAutonomousDatabaseInput {
+  autonomousDatabaseId: string;
+  timestamp: Date;
+}
+export const RestoreAutonomousDatabaseInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseId: S.String,
+      timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "RestoreAutonomousDatabaseInput",
+  }) as any as S.Schema<RestoreAutonomousDatabaseInput>;
+export interface RestoreAutonomousDatabaseOutput {
+  autonomousDatabaseId: string;
+  displayName?: string;
+  status?: AutonomousDatabaseResourceStatus;
+  statusReason?: string;
+}
+export const RestoreAutonomousDatabaseOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseId: S.String,
+      displayName: S.optional(S.String),
+      status: S.optional(AutonomousDatabaseResourceStatus),
+      statusReason: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RestoreAutonomousDatabaseOutput",
+  }) as any as S.Schema<RestoreAutonomousDatabaseOutput>;
+export interface ShrinkAutonomousDatabaseInput {
+  autonomousDatabaseId: string;
+}
+export const ShrinkAutonomousDatabaseInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ autonomousDatabaseId: S.String }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "ShrinkAutonomousDatabaseInput",
+  }) as any as S.Schema<ShrinkAutonomousDatabaseInput>;
+export interface ShrinkAutonomousDatabaseOutput {
+  autonomousDatabaseId: string;
+  displayName?: string;
+  status?: AutonomousDatabaseResourceStatus;
+  statusReason?: string;
+}
+export const ShrinkAutonomousDatabaseOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseId: S.String,
+      displayName: S.optional(S.String),
+      status: S.optional(AutonomousDatabaseResourceStatus),
+      statusReason: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ShrinkAutonomousDatabaseOutput",
+  }) as any as S.Schema<ShrinkAutonomousDatabaseOutput>;
+export interface StartAutonomousDatabaseInput {
+  autonomousDatabaseId: string;
+}
+export const StartAutonomousDatabaseInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ autonomousDatabaseId: S.String }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "StartAutonomousDatabaseInput",
+  }) as any as S.Schema<StartAutonomousDatabaseInput>;
+export interface StartAutonomousDatabaseOutput {
+  autonomousDatabaseId: string;
+  displayName?: string;
+  status?: AutonomousDatabaseResourceStatus;
+  statusReason?: string;
+}
+export const StartAutonomousDatabaseOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseId: S.String,
+      displayName: S.optional(S.String),
+      status: S.optional(AutonomousDatabaseResourceStatus),
+      statusReason: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "StartAutonomousDatabaseOutput",
+  }) as any as S.Schema<StartAutonomousDatabaseOutput>;
+export interface StopAutonomousDatabaseInput {
+  autonomousDatabaseId: string;
+}
+export const StopAutonomousDatabaseInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ autonomousDatabaseId: S.String }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "StopAutonomousDatabaseInput",
+  }) as any as S.Schema<StopAutonomousDatabaseInput>;
+export interface StopAutonomousDatabaseOutput {
+  autonomousDatabaseId: string;
+  displayName?: string;
+  status?: AutonomousDatabaseResourceStatus;
+  statusReason?: string;
+}
+export const StopAutonomousDatabaseOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseId: S.String,
+      displayName: S.optional(S.String),
+      status: S.optional(AutonomousDatabaseResourceStatus),
+      statusReason: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "StopAutonomousDatabaseOutput",
+  }) as any as S.Schema<StopAutonomousDatabaseOutput>;
+export interface SwitchoverAutonomousDatabaseInput {
+  autonomousDatabaseId: string;
+  peerDbArn?: string;
+}
+export const SwitchoverAutonomousDatabaseInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseId: S.String,
+      peerDbArn: S.optional(S.String),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "SwitchoverAutonomousDatabaseInput",
+  }) as any as S.Schema<SwitchoverAutonomousDatabaseInput>;
+export interface SwitchoverAutonomousDatabaseOutput {
+  autonomousDatabaseId: string;
+  displayName?: string;
+  status?: AutonomousDatabaseResourceStatus;
+  statusReason?: string;
+}
+export const SwitchoverAutonomousDatabaseOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      autonomousDatabaseId: S.String,
+      displayName: S.optional(S.String),
+      status: S.optional(AutonomousDatabaseResourceStatus),
+      statusReason: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "SwitchoverAutonomousDatabaseOutput",
+  }) as any as S.Schema<SwitchoverAutonomousDatabaseOutput>;
 export type DaysOfWeek = DayOfWeek[];
 export const DaysOfWeek = /*@__PURE__*/ /*#__PURE__*/ S.Array(DayOfWeek);
 export type HoursOfDay = number[];
@@ -1086,17 +3285,6 @@ export const ListAutonomousVirtualMachinesOutput =
   ).annotate({
     identifier: "ListAutonomousVirtualMachinesOutput",
   }) as any as S.Schema<ListAutonomousVirtualMachinesOutput>;
-export interface CustomerContact {
-  email?: string | redacted.Redacted<string>;
-}
-export const CustomerContact = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ email: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "CustomerContact",
-}) as any as S.Schema<CustomerContact>;
-export type CustomerContacts = CustomerContact[];
-export const CustomerContacts =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(CustomerContact);
 export interface CreateCloudExadataInfrastructureInput {
   displayName: string;
   shape: string;
@@ -3199,6 +5387,96 @@ export const initializeService: API.OperationMethod<
     ValidationException,
   ],
 }));
+export type ListAutonomousDatabaseCharacterSetsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists the available character sets for Autonomous Databases.
+ */
+export const listAutonomousDatabaseCharacterSets: API.OperationMethod<
+  ListAutonomousDatabaseCharacterSetsInput,
+  ListAutonomousDatabaseCharacterSetsOutput,
+  ListAutonomousDatabaseCharacterSetsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAutonomousDatabaseCharacterSetsInput,
+  ) => stream.Stream<
+    ListAutonomousDatabaseCharacterSetsOutput,
+    ListAutonomousDatabaseCharacterSetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAutonomousDatabaseCharacterSetsInput,
+  ) => stream.Stream<
+    AutonomousDatabaseCharacterSetSummary,
+    ListAutonomousDatabaseCharacterSetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAutonomousDatabaseCharacterSetsInput,
+  output: ListAutonomousDatabaseCharacterSetsOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "autonomousDatabaseCharacterSets",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ListAutonomousDatabaseVersionsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists the available Oracle Database software versions for Autonomous Databases.
+ */
+export const listAutonomousDatabaseVersions: API.OperationMethod<
+  ListAutonomousDatabaseVersionsInput,
+  ListAutonomousDatabaseVersionsOutput,
+  ListAutonomousDatabaseVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAutonomousDatabaseVersionsInput,
+  ) => stream.Stream<
+    ListAutonomousDatabaseVersionsOutput,
+    ListAutonomousDatabaseVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAutonomousDatabaseVersionsInput,
+  ) => stream.Stream<
+    AutonomousDatabaseVersionSummary,
+    ListAutonomousDatabaseVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAutonomousDatabaseVersionsInput,
+  output: ListAutonomousDatabaseVersionsOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "autonomousDatabaseVersions",
+    pageSize: "maxResults",
+  } as const,
+}));
 export type ListDbSystemShapesError =
   | AccessDeniedException
   | InternalServerException
@@ -3380,6 +5658,664 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+}));
+export type CreateAutonomousDatabaseBackupError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new backup of the specified Autonomous Database.
+ */
+export const createAutonomousDatabaseBackup: API.OperationMethod<
+  CreateAutonomousDatabaseBackupInput,
+  CreateAutonomousDatabaseBackupOutput,
+  CreateAutonomousDatabaseBackupError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateAutonomousDatabaseBackupInput,
+  output: CreateAutonomousDatabaseBackupOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type GetAutonomousDatabaseBackupError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets information about a specific Autonomous Database backup.
+ */
+export const getAutonomousDatabaseBackup: API.OperationMethod<
+  GetAutonomousDatabaseBackupInput,
+  GetAutonomousDatabaseBackupOutput,
+  GetAutonomousDatabaseBackupError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAutonomousDatabaseBackupInput,
+  output: GetAutonomousDatabaseBackupOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type UpdateAutonomousDatabaseBackupError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the properties of an Autonomous Database backup.
+ */
+export const updateAutonomousDatabaseBackup: API.OperationMethod<
+  UpdateAutonomousDatabaseBackupInput,
+  UpdateAutonomousDatabaseBackupOutput,
+  UpdateAutonomousDatabaseBackupError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateAutonomousDatabaseBackupInput,
+  output: UpdateAutonomousDatabaseBackupOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type DeleteAutonomousDatabaseBackupError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes the specified Autonomous Database backup.
+ */
+export const deleteAutonomousDatabaseBackup: API.OperationMethod<
+  DeleteAutonomousDatabaseBackupInput,
+  DeleteAutonomousDatabaseBackupOutput,
+  DeleteAutonomousDatabaseBackupError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteAutonomousDatabaseBackupInput,
+  output: DeleteAutonomousDatabaseBackupOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type ListAutonomousDatabaseBackupsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists the backups of the specified Autonomous Database.
+ */
+export const listAutonomousDatabaseBackups: API.OperationMethod<
+  ListAutonomousDatabaseBackupsInput,
+  ListAutonomousDatabaseBackupsOutput,
+  ListAutonomousDatabaseBackupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAutonomousDatabaseBackupsInput,
+  ) => stream.Stream<
+    ListAutonomousDatabaseBackupsOutput,
+    ListAutonomousDatabaseBackupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAutonomousDatabaseBackupsInput,
+  ) => stream.Stream<
+    AutonomousDatabaseBackupSummary,
+    ListAutonomousDatabaseBackupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAutonomousDatabaseBackupsInput,
+  output: ListAutonomousDatabaseBackupsOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "autonomousDatabaseBackups",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type CreateAutonomousDatabaseError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new Autonomous Database.
+ */
+export const createAutonomousDatabase: API.OperationMethod<
+  CreateAutonomousDatabaseInput,
+  CreateAutonomousDatabaseOutput,
+  CreateAutonomousDatabaseError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateAutonomousDatabaseInput,
+  output: CreateAutonomousDatabaseOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type GetAutonomousDatabaseError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets information about a specific Autonomous Database.
+ */
+export const getAutonomousDatabase: API.OperationMethod<
+  GetAutonomousDatabaseInput,
+  GetAutonomousDatabaseOutput,
+  GetAutonomousDatabaseError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAutonomousDatabaseInput,
+  output: GetAutonomousDatabaseOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type UpdateAutonomousDatabaseError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the properties of an Autonomous Database.
+ */
+export const updateAutonomousDatabase: API.OperationMethod<
+  UpdateAutonomousDatabaseInput,
+  UpdateAutonomousDatabaseOutput,
+  UpdateAutonomousDatabaseError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateAutonomousDatabaseInput,
+  output: UpdateAutonomousDatabaseOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type DeleteAutonomousDatabaseError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes the specified Autonomous Database.
+ */
+export const deleteAutonomousDatabase: API.OperationMethod<
+  DeleteAutonomousDatabaseInput,
+  DeleteAutonomousDatabaseOutput,
+  DeleteAutonomousDatabaseError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteAutonomousDatabaseInput,
+  output: DeleteAutonomousDatabaseOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type ListAutonomousDatabasesError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns information about the Autonomous Databases owned by your Amazon Web Services account in the current Amazon Web Services Region.
+ */
+export const listAutonomousDatabases: API.OperationMethod<
+  ListAutonomousDatabasesInput,
+  ListAutonomousDatabasesOutput,
+  ListAutonomousDatabasesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAutonomousDatabasesInput,
+  ) => stream.Stream<
+    ListAutonomousDatabasesOutput,
+    ListAutonomousDatabasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAutonomousDatabasesInput,
+  ) => stream.Stream<
+    AutonomousDatabaseSummary,
+    ListAutonomousDatabasesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAutonomousDatabasesInput,
+  output: ListAutonomousDatabasesOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "autonomousDatabases",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type CreateAutonomousDatabaseWalletError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new wallet for the specified Autonomous Database.
+ */
+export const createAutonomousDatabaseWallet: API.OperationMethod<
+  CreateAutonomousDatabaseWalletInput,
+  CreateAutonomousDatabaseWalletOutput,
+  CreateAutonomousDatabaseWalletError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateAutonomousDatabaseWalletInput,
+  output: CreateAutonomousDatabaseWalletOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type FailoverAutonomousDatabaseError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Initiates a failover of the specified Autonomous Database to a standby peer database.
+ */
+export const failoverAutonomousDatabase: API.OperationMethod<
+  FailoverAutonomousDatabaseInput,
+  FailoverAutonomousDatabaseOutput,
+  FailoverAutonomousDatabaseError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: FailoverAutonomousDatabaseInput,
+  output: FailoverAutonomousDatabaseOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type GetAutonomousDatabaseWalletDetailsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets the wallet details for the specified Autonomous Database.
+ */
+export const getAutonomousDatabaseWalletDetails: API.OperationMethod<
+  GetAutonomousDatabaseWalletDetailsInput,
+  GetAutonomousDatabaseWalletDetailsOutput,
+  GetAutonomousDatabaseWalletDetailsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAutonomousDatabaseWalletDetailsInput,
+  output: GetAutonomousDatabaseWalletDetailsOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type ListAutonomousDatabaseClonesError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists the clones of the specified Autonomous Database.
+ */
+export const listAutonomousDatabaseClones: API.OperationMethod<
+  ListAutonomousDatabaseClonesInput,
+  ListAutonomousDatabaseClonesOutput,
+  ListAutonomousDatabaseClonesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAutonomousDatabaseClonesInput,
+  ) => stream.Stream<
+    ListAutonomousDatabaseClonesOutput,
+    ListAutonomousDatabaseClonesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAutonomousDatabaseClonesInput,
+  ) => stream.Stream<
+    AutonomousDatabaseSummary,
+    ListAutonomousDatabaseClonesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAutonomousDatabaseClonesInput,
+  output: ListAutonomousDatabaseClonesOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "autonomousDatabaseClones",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ListAutonomousDatabasePeersError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists the peer databases of the specified Autonomous Database.
+ */
+export const listAutonomousDatabasePeers: API.OperationMethod<
+  ListAutonomousDatabasePeersInput,
+  ListAutonomousDatabasePeersOutput,
+  ListAutonomousDatabasePeersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAutonomousDatabasePeersInput,
+  ) => stream.Stream<
+    ListAutonomousDatabasePeersOutput,
+    ListAutonomousDatabasePeersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAutonomousDatabasePeersInput,
+  ) => stream.Stream<
+    AutonomousDatabasePeerSummary,
+    ListAutonomousDatabasePeersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAutonomousDatabasePeersInput,
+  output: ListAutonomousDatabasePeersOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "autonomousDatabasePeers",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type RebootAutonomousDatabaseError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Reboots the specified Autonomous Database.
+ */
+export const rebootAutonomousDatabase: API.OperationMethod<
+  RebootAutonomousDatabaseInput,
+  RebootAutonomousDatabaseOutput,
+  RebootAutonomousDatabaseError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RebootAutonomousDatabaseInput,
+  output: RebootAutonomousDatabaseOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type RestoreAutonomousDatabaseError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Restores the specified Autonomous Database to a point in time.
+ */
+export const restoreAutonomousDatabase: API.OperationMethod<
+  RestoreAutonomousDatabaseInput,
+  RestoreAutonomousDatabaseOutput,
+  RestoreAutonomousDatabaseError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RestoreAutonomousDatabaseInput,
+  output: RestoreAutonomousDatabaseOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type ShrinkAutonomousDatabaseError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Shrinks the storage of the specified Autonomous Database to reclaim unused space.
+ */
+export const shrinkAutonomousDatabase: API.OperationMethod<
+  ShrinkAutonomousDatabaseInput,
+  ShrinkAutonomousDatabaseOutput,
+  ShrinkAutonomousDatabaseError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ShrinkAutonomousDatabaseInput,
+  output: ShrinkAutonomousDatabaseOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type StartAutonomousDatabaseError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Starts the specified Autonomous Database.
+ */
+export const startAutonomousDatabase: API.OperationMethod<
+  StartAutonomousDatabaseInput,
+  StartAutonomousDatabaseOutput,
+  StartAutonomousDatabaseError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartAutonomousDatabaseInput,
+  output: StartAutonomousDatabaseOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type StopAutonomousDatabaseError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Stops the specified Autonomous Database.
+ */
+export const stopAutonomousDatabase: API.OperationMethod<
+  StopAutonomousDatabaseInput,
+  StopAutonomousDatabaseOutput,
+  StopAutonomousDatabaseError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StopAutonomousDatabaseInput,
+  output: StopAutonomousDatabaseOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type SwitchoverAutonomousDatabaseError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Performs a switchover of the specified Autonomous Database to a standby peer database.
+ */
+export const switchoverAutonomousDatabase: API.OperationMethod<
+  SwitchoverAutonomousDatabaseInput,
+  SwitchoverAutonomousDatabaseOutput,
+  SwitchoverAutonomousDatabaseError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SwitchoverAutonomousDatabaseInput,
+  output: SwitchoverAutonomousDatabaseOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
 }));
 export type CreateCloudAutonomousVmClusterError =
   | AccessDeniedException

@@ -97,6 +97,9 @@ export type String1To1000 = string;
 export type DisplayName = string;
 export type SensitiveString1To255 = string | redacted.Redacted<string>;
 export type SensitiveString1To1000 = string | redacted.Redacted<string>;
+export type StringifiedJson = string | redacted.Redacted<string>;
+export type ResponseCode = number;
+export type Text = string;
 export type SensitiveText = string | redacted.Redacted<string>;
 export type AttributeName = string;
 export type Value = number;
@@ -107,7 +110,6 @@ export type OptionalBoolean = boolean;
 export type TagKey = string;
 export type TagValue = string;
 export type PercentageInteger = number;
-export type Text = string;
 export type ExpirationDaysInteger = number;
 export type EncryptionKey = string;
 export type SqsQueueUrl = string;
@@ -120,7 +122,7 @@ export type MaxAllowedRuleLevelForMatching = number;
 export type SensitiveString1To2000000 = string | redacted.Redacted<string>;
 export type FieldName = string;
 export type OptionalLong = number;
-export type MaxSize24 = number;
+export type MaxSize60 = number;
 export type MaxSize1000 = number;
 export type FlowDescription = string;
 export type FlowName = string;
@@ -147,7 +149,6 @@ export type SensitiveString1To4000 = string | redacted.Redacted<string>;
 export type SensitiveString1To50000 = string | redacted.Redacted<string>;
 export type SegmentDefinitionArn = string;
 export type StatusCode = number;
-export type StringifiedJson = string | redacted.Redacted<string>;
 export type SensitiveString1To10000 = string | redacted.Redacted<string>;
 export type DomainObjectTypeFieldName = string;
 export type S3KeyName = string;
@@ -540,6 +541,88 @@ export const BatchGetProfileResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "BatchGetProfileResponse",
 }) as any as S.Schema<BatchGetProfileResponse>;
+export interface BatchPutProfileObjectRequestItem {
+  Id: string;
+  Object: string | redacted.Redacted<string>;
+}
+export const BatchPutProfileObjectRequestItem =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ Id: S.String, Object: SensitiveString }),
+  ).annotate({
+    identifier: "BatchPutProfileObjectRequestItem",
+  }) as any as S.Schema<BatchPutProfileObjectRequestItem>;
+export type BatchPutProfileObjectRequestItemList =
+  BatchPutProfileObjectRequestItem[];
+export const BatchPutProfileObjectRequestItemList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(BatchPutProfileObjectRequestItem);
+export interface BatchPutProfileObjectRequest {
+  DomainName: string;
+  ObjectTypeName: string;
+  Items: BatchPutProfileObjectRequestItem[];
+}
+export const BatchPutProfileObjectRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DomainName: S.String.pipe(T.HttpLabel("DomainName")),
+      ObjectTypeName: S.String,
+      Items: BatchPutProfileObjectRequestItemList,
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "PUT",
+          uri: "/domains/{DomainName}/profiles/objects/batch-put-profile-object",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "BatchPutProfileObjectRequest",
+  }) as any as S.Schema<BatchPutProfileObjectRequest>;
+export interface BatchPutProfileObjectResponseItem {
+  Id: string;
+  ProfileObjectUniqueKey: string;
+}
+export const BatchPutProfileObjectResponseItem =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ Id: S.String, ProfileObjectUniqueKey: S.String }),
+  ).annotate({
+    identifier: "BatchPutProfileObjectResponseItem",
+  }) as any as S.Schema<BatchPutProfileObjectResponseItem>;
+export type BatchPutProfileObjectResponseList =
+  BatchPutProfileObjectResponseItem[];
+export const BatchPutProfileObjectResponseList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(BatchPutProfileObjectResponseItem);
+export interface BatchPutProfileObjectErrorItem {
+  Id: string;
+  Code: number;
+  Message?: string;
+}
+export const BatchPutProfileObjectErrorItem =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ Id: S.String, Code: S.Number, Message: S.optional(S.String) }),
+  ).annotate({
+    identifier: "BatchPutProfileObjectErrorItem",
+  }) as any as S.Schema<BatchPutProfileObjectErrorItem>;
+export type BatchPutProfileObjectErrorList = BatchPutProfileObjectErrorItem[];
+export const BatchPutProfileObjectErrorList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(BatchPutProfileObjectErrorItem);
+export interface BatchPutProfileObjectResponse {
+  Successful?: BatchPutProfileObjectResponseItem[];
+  Failed?: BatchPutProfileObjectErrorItem[];
+}
+export const BatchPutProfileObjectResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Successful: S.optional(BatchPutProfileObjectResponseList),
+      Failed: S.optional(BatchPutProfileObjectErrorList),
+    }),
+  ).annotate({
+    identifier: "BatchPutProfileObjectResponse",
+  }) as any as S.Schema<BatchPutProfileObjectResponse>;
 export interface AttributeItem {
   Name: string;
 }
@@ -1249,7 +1332,13 @@ export type EventTriggerConditions = EventTriggerCondition[];
 export const EventTriggerConditions = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   EventTriggerCondition,
 );
-export type PeriodUnit = "HOURS" | "DAYS" | "WEEKS" | "MONTHS" | (string & {});
+export type PeriodUnit =
+  | "MINUTES"
+  | "HOURS"
+  | "DAYS"
+  | "WEEKS"
+  | "MONTHS"
+  | (string & {});
 export const PeriodUnit = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface Period {
   Unit: PeriodUnit;
@@ -1881,16 +1970,27 @@ export const InferenceConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InferenceConfig",
 }) as any as S.Schema<InferenceConfig>;
+export type ColumnNamesList = string[];
+export const ColumnNamesList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type IncludedColumns = { [key: string]: string[] | undefined };
+export const IncludedColumns = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  ColumnNamesList.pipe(S.optional),
+);
 export interface RecommenderConfig {
   EventsConfig?: EventsConfig;
   TrainingFrequency?: number;
   InferenceConfig?: InferenceConfig;
+  IncludedColumns?: { [key: string]: string[] | undefined };
+  ExcludedColumns?: { [key: string]: string[] | undefined };
 }
 export const RecommenderConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     EventsConfig: S.optional(EventsConfig),
     TrainingFrequency: S.optional(S.Number),
     InferenceConfig: S.optional(InferenceConfig),
+    IncludedColumns: S.optional(IncludedColumns),
+    ExcludedColumns: S.optional(IncludedColumns),
   }),
 ).annotate({
   identifier: "RecommenderConfig",
@@ -1901,6 +2001,7 @@ export interface CreateRecommenderRequest {
   RecommenderRecipeName: RecommenderRecipeName;
   RecommenderConfig?: RecommenderConfig;
   Description?: string | redacted.Redacted<string>;
+  RecommenderSchemaName?: string;
   Tags?: { [key: string]: string | undefined };
 }
 export const CreateRecommenderRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
@@ -1911,6 +2012,7 @@ export const CreateRecommenderRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       RecommenderRecipeName: RecommenderRecipeName,
       RecommenderConfig: S.optional(RecommenderConfig),
       Description: S.optional(SensitiveString),
+      RecommenderSchemaName: S.optional(S.String),
       Tags: S.optional(TagMap),
     }).pipe(
       T.all(
@@ -1941,6 +2043,7 @@ export interface CreateRecommenderFilterRequest {
   DomainName: string;
   RecommenderFilterName: string;
   RecommenderFilterExpression: string | redacted.Redacted<string>;
+  RecommenderSchemaName?: string;
   Description?: string | redacted.Redacted<string>;
   Tags?: { [key: string]: string | undefined };
 }
@@ -1952,6 +2055,7 @@ export const CreateRecommenderFilterRequest =
         T.HttpLabel("RecommenderFilterName"),
       ),
       RecommenderFilterExpression: SensitiveString,
+      RecommenderSchemaName: S.optional(S.String),
       Description: S.optional(SensitiveString),
       Tags: S.optional(TagMap),
     }).pipe(
@@ -1980,6 +2084,90 @@ export const CreateRecommenderFilterResponse =
   ).annotate({
     identifier: "CreateRecommenderFilterResponse",
   }) as any as S.Schema<CreateRecommenderFilterResponse>;
+export type ContentType = "STRING" | "NUMBER" | (string & {});
+export const ContentType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type FeatureType = "TEXTUAL" | "CATEGORICAL" | (string & {});
+export const FeatureType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface RecommenderSchemaField {
+  TargetFieldName: string;
+  ContentType?: ContentType;
+  FeatureType?: FeatureType;
+}
+export const RecommenderSchemaField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      TargetFieldName: S.String,
+      ContentType: S.optional(ContentType),
+      FeatureType: S.optional(FeatureType),
+    }),
+).annotate({
+  identifier: "RecommenderSchemaField",
+}) as any as S.Schema<RecommenderSchemaField>;
+export type RecommenderSchemaFieldList = RecommenderSchemaField[];
+export const RecommenderSchemaFieldList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  RecommenderSchemaField,
+);
+export type RecommenderSchemaFields = {
+  [key: string]: RecommenderSchemaField[] | undefined;
+};
+export const RecommenderSchemaFields = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  RecommenderSchemaFieldList.pipe(S.optional),
+);
+export interface CreateRecommenderSchemaRequest {
+  DomainName: string;
+  RecommenderSchemaName: string;
+  Fields: { [key: string]: RecommenderSchemaField[] | undefined };
+  Tags?: { [key: string]: string | undefined };
+}
+export const CreateRecommenderSchemaRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DomainName: S.String.pipe(T.HttpLabel("DomainName")),
+      RecommenderSchemaName: S.String.pipe(
+        T.HttpLabel("RecommenderSchemaName"),
+      ),
+      Fields: RecommenderSchemaFields,
+      Tags: S.optional(TagMap),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/domains/{DomainName}/recommender-schemas/{RecommenderSchemaName}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "CreateRecommenderSchemaRequest",
+  }) as any as S.Schema<CreateRecommenderSchemaRequest>;
+export type RecommenderSchemaStatus = "ACTIVE" | "DELETING" | (string & {});
+export const RecommenderSchemaStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CreateRecommenderSchemaResponse {
+  RecommenderSchemaArn: string;
+  RecommenderSchemaName: string;
+  Fields: { [key: string]: RecommenderSchemaField[] | undefined };
+  CreatedAt: Date;
+  Status: RecommenderSchemaStatus;
+  Tags?: { [key: string]: string | undefined };
+}
+export const CreateRecommenderSchemaResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      RecommenderSchemaArn: S.String,
+      RecommenderSchemaName: S.String,
+      Fields: RecommenderSchemaFields,
+      CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      Status: RecommenderSchemaStatus,
+      Tags: S.optional(TagMap),
+    }),
+  ).annotate({
+    identifier: "CreateRecommenderSchemaResponse",
+  }) as any as S.Schema<CreateRecommenderSchemaResponse>;
 export type StringDimensionType =
   | "INCLUSIVE"
   | "EXCLUSIVE"
@@ -2227,6 +2415,35 @@ export const SegmentGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Include: S.optional(IncludeOptions),
   }),
 ).annotate({ identifier: "SegmentGroup" }) as any as S.Schema<SegmentGroup>;
+export type SegmentSortDataType = "STRING" | "NUMBER" | "DATE" | (string & {});
+export const SegmentSortDataType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type SegmentSortOrder = "ASC" | "DESC" | (string & {});
+export const SegmentSortOrder = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type SortAttributeType = "PROFILE" | "CALCULATED" | (string & {});
+export const SortAttributeType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface SortAttribute {
+  Name: string;
+  DataType?: SegmentSortDataType;
+  Order: SegmentSortOrder;
+  Type?: SortAttributeType;
+}
+export const SortAttribute = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    DataType: S.optional(SegmentSortDataType),
+    Order: SegmentSortOrder,
+    Type: S.optional(SortAttributeType),
+  }),
+).annotate({ identifier: "SortAttribute" }) as any as S.Schema<SortAttribute>;
+export type SortAttributeList = SortAttribute[];
+export const SortAttributeList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(SortAttribute);
+export interface SegmentSort {
+  Attributes: SortAttribute[];
+}
+export const SegmentSort = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Attributes: SortAttributeList }),
+).annotate({ identifier: "SegmentSort" }) as any as S.Schema<SegmentSort>;
 export interface CreateSegmentDefinitionRequest {
   DomainName: string;
   SegmentDefinitionName: string;
@@ -2234,6 +2451,7 @@ export interface CreateSegmentDefinitionRequest {
   Description?: string | redacted.Redacted<string>;
   SegmentGroups?: SegmentGroup;
   SegmentSqlQuery?: string | redacted.Redacted<string>;
+  SegmentSort?: SegmentSort;
   Tags?: { [key: string]: string | undefined };
 }
 export const CreateSegmentDefinitionRequest =
@@ -2247,6 +2465,7 @@ export const CreateSegmentDefinitionRequest =
       Description: S.optional(SensitiveString),
       SegmentGroups: S.optional(SegmentGroup),
       SegmentSqlQuery: S.optional(SensitiveString),
+      SegmentSort: S.optional(SegmentSort),
       Tags: S.optional(TagMap),
     }).pipe(
       T.all(
@@ -2870,6 +3089,38 @@ export const DeleteRecommenderFilterResponse =
   ).annotate({
     identifier: "DeleteRecommenderFilterResponse",
   }) as any as S.Schema<DeleteRecommenderFilterResponse>;
+export interface DeleteRecommenderSchemaRequest {
+  DomainName: string;
+  RecommenderSchemaName: string;
+}
+export const DeleteRecommenderSchemaRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DomainName: S.String.pipe(T.HttpLabel("DomainName")),
+      RecommenderSchemaName: S.String.pipe(
+        T.HttpLabel("RecommenderSchemaName"),
+      ),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "DELETE",
+          uri: "/domains/{DomainName}/recommender-schemas/{RecommenderSchemaName}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeleteRecommenderSchemaRequest",
+  }) as any as S.Schema<DeleteRecommenderSchemaRequest>;
+export interface DeleteRecommenderSchemaResponse {}
+export const DeleteRecommenderSchemaResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteRecommenderSchemaResponse",
+  }) as any as S.Schema<DeleteRecommenderSchemaResponse>;
 export interface DeleteSegmentDefinitionRequest {
   DomainName: string;
   SegmentDefinitionName: string;
@@ -3339,10 +3590,6 @@ export const GetDomainObjectTypeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetDomainObjectTypeRequest",
 }) as any as S.Schema<GetDomainObjectTypeRequest>;
-export type ContentType = "STRING" | "NUMBER" | (string & {});
-export const ContentType = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type FeatureType = "TEXTUAL" | "CATEGORICAL" | (string & {});
-export const FeatureType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface DomainObjectTypeField {
   Source: string;
   Target: string;
@@ -4208,6 +4455,13 @@ export type TrainingMetricName =
   | "popularity"
   | "freshness"
   | "similarity"
+  | "mean_reciprocal_rank_at_25"
+  | "normalized_discounted_cumulative_gain_at_5"
+  | "normalized_discounted_cumulative_gain_at_10"
+  | "normalized_discounted_cumulative_gain_at_25"
+  | "precision_at_5"
+  | "precision_at_10"
+  | "precision_at_25"
   | (string & {});
 export const TrainingMetricName = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type Metrics = { [key in TrainingMetricName]?: number };
@@ -4233,6 +4487,7 @@ export const TrainingMetricsList =
 export interface GetRecommenderResponse {
   RecommenderName: string;
   RecommenderRecipeName: RecommenderRecipeName;
+  RecommenderSchemaName?: string;
   RecommenderConfig?: RecommenderConfig;
   Description?: string | redacted.Redacted<string>;
   Status?: RecommenderStatus;
@@ -4248,6 +4503,7 @@ export const GetRecommenderResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     S.Struct({
       RecommenderName: S.String,
       RecommenderRecipeName: RecommenderRecipeName,
+      RecommenderSchemaName: S.optional(S.String),
       RecommenderConfig: S.optional(RecommenderConfig),
       Description: S.optional(SensitiveString),
       Status: S.optional(RecommenderStatus),
@@ -4301,6 +4557,7 @@ export const RecommenderFilterStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface GetRecommenderFilterResponse {
   RecommenderFilterName: string;
   RecommenderFilterExpression: string | redacted.Redacted<string>;
+  RecommenderSchemaName?: string;
   CreatedAt: Date;
   Status: RecommenderFilterStatus;
   Description?: string | redacted.Redacted<string>;
@@ -4312,6 +4569,7 @@ export const GetRecommenderFilterResponse =
     S.Struct({
       RecommenderFilterName: S.String,
       RecommenderFilterExpression: SensitiveString,
+      RecommenderSchemaName: S.optional(S.String),
       CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
       Status: RecommenderFilterStatus,
       Description: S.optional(SensitiveString),
@@ -4321,6 +4579,50 @@ export const GetRecommenderFilterResponse =
   ).annotate({
     identifier: "GetRecommenderFilterResponse",
   }) as any as S.Schema<GetRecommenderFilterResponse>;
+export interface GetRecommenderSchemaRequest {
+  DomainName: string;
+  RecommenderSchemaName: string;
+}
+export const GetRecommenderSchemaRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DomainName: S.String.pipe(T.HttpLabel("DomainName")),
+      RecommenderSchemaName: S.String.pipe(
+        T.HttpLabel("RecommenderSchemaName"),
+      ),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/domains/{DomainName}/recommender-schemas/{RecommenderSchemaName}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetRecommenderSchemaRequest",
+  }) as any as S.Schema<GetRecommenderSchemaRequest>;
+export interface GetRecommenderSchemaResponse {
+  RecommenderSchemaName: string;
+  Fields: { [key: string]: RecommenderSchemaField[] | undefined };
+  CreatedAt: Date;
+  Status: RecommenderSchemaStatus;
+}
+export const GetRecommenderSchemaResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      RecommenderSchemaName: S.String,
+      Fields: RecommenderSchemaFields,
+      CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      Status: RecommenderSchemaStatus,
+    }),
+  ).annotate({
+    identifier: "GetRecommenderSchemaResponse",
+  }) as any as S.Schema<GetRecommenderSchemaResponse>;
 export interface GetSegmentDefinitionRequest {
   DomainName: string;
   SegmentDefinitionName: string;
@@ -4355,6 +4657,7 @@ export interface GetSegmentDefinitionResponse {
   DisplayName?: string;
   Description?: string | redacted.Redacted<string>;
   SegmentGroups?: SegmentGroup;
+  SegmentSort?: SegmentSort;
   SegmentDefinitionArn: string;
   CreatedAt?: Date;
   Tags?: { [key: string]: string | undefined };
@@ -4368,6 +4671,7 @@ export const GetSegmentDefinitionResponse =
       DisplayName: S.optional(S.String),
       Description: S.optional(SensitiveString),
       SegmentGroups: S.optional(SegmentGroup),
+      SegmentSort: S.optional(SegmentSort),
       SegmentDefinitionArn: S.String,
       CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
       Tags: S.optional(TagMap),
@@ -6031,6 +6335,7 @@ export const ListRecommenderFiltersRequest =
   }) as any as S.Schema<ListRecommenderFiltersRequest>;
 export interface RecommenderFilterSummary {
   RecommenderFilterName?: string;
+  RecommenderSchemaName?: string;
   RecommenderFilterExpression?: string | redacted.Redacted<string>;
   CreatedAt?: Date;
   Description?: string | redacted.Redacted<string>;
@@ -6042,6 +6347,7 @@ export const RecommenderFilterSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       RecommenderFilterName: S.optional(S.String),
+      RecommenderSchemaName: S.optional(S.String),
       RecommenderFilterExpression: S.optional(SensitiveString),
       CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
       Description: S.optional(SensitiveString),
@@ -6146,6 +6452,7 @@ export const ListRecommendersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export interface RecommenderSummary {
   RecommenderName?: string;
   RecipeName?: RecommenderRecipeName;
+  RecommenderSchemaName?: string;
   RecommenderConfig?: RecommenderConfig;
   CreatedAt?: Date;
   Description?: string | redacted.Redacted<string>;
@@ -6159,6 +6466,7 @@ export const RecommenderSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     RecommenderName: S.optional(S.String),
     RecipeName: S.optional(RecommenderRecipeName),
+    RecommenderSchemaName: S.optional(S.String),
     RecommenderConfig: S.optional(RecommenderConfig),
     CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     Description: S.optional(SensitiveString),
@@ -6187,6 +6495,67 @@ export const ListRecommendersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListRecommendersResponse",
 }) as any as S.Schema<ListRecommendersResponse>;
+export interface ListRecommenderSchemasRequest {
+  DomainName: string;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListRecommenderSchemasRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      DomainName: S.String.pipe(T.HttpLabel("DomainName")),
+      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+      NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/domains/{DomainName}/recommender-schemas",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListRecommenderSchemasRequest",
+  }) as any as S.Schema<ListRecommenderSchemasRequest>;
+export interface RecommenderSchemaSummary {
+  RecommenderSchemaName: string;
+  Fields: { [key: string]: RecommenderSchemaField[] | undefined };
+  CreatedAt: Date;
+  Status: RecommenderSchemaStatus;
+}
+export const RecommenderSchemaSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      RecommenderSchemaName: S.String,
+      Fields: RecommenderSchemaFields,
+      CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      Status: RecommenderSchemaStatus,
+    }),
+).annotate({
+  identifier: "RecommenderSchemaSummary",
+}) as any as S.Schema<RecommenderSchemaSummary>;
+export type RecommenderSchemaSummaryList = RecommenderSchemaSummary[];
+export const RecommenderSchemaSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  RecommenderSchemaSummary,
+);
+export interface ListRecommenderSchemasResponse {
+  NextToken?: string;
+  RecommenderSchemas?: RecommenderSchemaSummary[];
+}
+export const ListRecommenderSchemasResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      NextToken: S.optional(S.String),
+      RecommenderSchemas: S.optional(RecommenderSchemaSummaryList),
+    }),
+  ).annotate({
+    identifier: "ListRecommenderSchemasResponse",
+  }) as any as S.Schema<ListRecommenderSchemasResponse>;
 export interface ListRuleBasedMatchesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -7543,6 +7912,44 @@ export const batchGetProfile: API.OperationMethod<
     ThrottlingException,
   ],
 }));
+export type BatchPutProfileObjectError =
+  | AccessDeniedException
+  | BadRequestException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Adds multiple profile objects to a domain of a given ObjectType in a single API call.
+ *
+ * When adding a specific profile object, like a Contact Record, an inferred profile can
+ * get created if it is not mapped to an existing profile. The resulting profile will only
+ * have a phone number populated in the standard ProfileObject. Any additional Contact Records
+ * with the same phone number will be mapped to the same inferred profile.
+ *
+ * When a ProfileObject is created and if a ProfileObjectType already exists for the
+ * ProfileObject, it will provide data to a standard profile depending on the
+ * ProfileObjectType definition.
+ *
+ * BatchPutProfileObject needs an ObjectType, which can be created using
+ * PutProfileObjectType.
+ */
+export const batchPutProfileObject: API.OperationMethod<
+  BatchPutProfileObjectRequest,
+  BatchPutProfileObjectResponse,
+  BatchPutProfileObjectError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BatchPutProfileObjectRequest,
+  output: BatchPutProfileObjectResponse,
+  errors: [
+    AccessDeniedException,
+    BadRequestException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+}));
 export type CreateCalculatedAttributeDefinitionError =
   | AccessDeniedException
   | BadRequestException
@@ -7586,8 +7993,8 @@ export type CreateDomainError =
  * attributes, object types, profile keys, and encryption keys. You can create multiple
  * domains, and each domain can have multiple third-party integrations.
  *
- * Each Amazon Connect instance can be associated with only one domain. Multiple
- * Amazon Connect instances can be associated with one domain.
+ * Each Connect Customer instance can be associated with only one domain. Multiple
+ * Connect Customer instances can be associated with one domain.
  *
  * Use this API or UpdateDomain to
  * enable identity
@@ -7655,7 +8062,7 @@ export type CreateEventStreamError =
   | CommonErrors;
 /**
  * Creates an event stream, which is a subscription to real-time events, such as when
- * profiles are created and updated through Amazon Connect Customer Profiles.
+ * profiles are created and updated through Connect Customer Customer Profiles.
  *
  * Each event stream can be associated with only one Kinesis Data Stream destination in the
  * same region and Amazon Web Services account as the customer profiles domain
@@ -7806,6 +8213,32 @@ export const createRecommenderFilter: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRecommenderFilterRequest,
   output: CreateRecommenderFilterResponse,
+  errors: [
+    AccessDeniedException,
+    BadRequestException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+}));
+export type CreateRecommenderSchemaError =
+  | AccessDeniedException
+  | BadRequestException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Creates a recommender schema. A recommender schema defines the set of data columns available for training recommenders and filters under a domain.
+ */
+export const createRecommenderSchema: API.OperationMethod<
+  CreateRecommenderSchemaRequest,
+  CreateRecommenderSchemaResponse,
+  CreateRecommenderSchemaError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateRecommenderSchemaRequest,
+  output: CreateRecommenderSchemaResponse,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -8259,6 +8692,32 @@ export const deleteRecommenderFilter: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRecommenderFilterRequest,
   output: DeleteRecommenderFilterResponse,
+  errors: [
+    AccessDeniedException,
+    BadRequestException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+}));
+export type DeleteRecommenderSchemaError =
+  | AccessDeniedException
+  | BadRequestException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Deletes a recommender schema from a domain.
+ */
+export const deleteRecommenderSchema: API.OperationMethod<
+  DeleteRecommenderSchemaRequest,
+  DeleteRecommenderSchemaResponse,
+  DeleteRecommenderSchemaError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteRecommenderSchemaRequest,
+  output: DeleteRecommenderSchemaResponse,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -8871,6 +9330,32 @@ export const getRecommenderFilter: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRecommenderFilterRequest,
   output: GetRecommenderFilterResponse,
+  errors: [
+    AccessDeniedException,
+    BadRequestException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+}));
+export type GetRecommenderSchemaError =
+  | AccessDeniedException
+  | BadRequestException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Retrieves information about a specific recommender schema in a domain.
+ */
+export const getRecommenderSchema: API.OperationMethod<
+  GetRecommenderSchemaRequest,
+  GetRecommenderSchemaResponse,
+  GetRecommenderSchemaError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetRecommenderSchemaRequest,
+  output: GetRecommenderSchemaResponse,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -9823,6 +10308,53 @@ export const listRecommenders: API.OperationMethod<
     inputToken: "NextToken",
     outputToken: "NextToken",
     items: "Recommenders",
+    pageSize: "MaxResults",
+  } as const,
+}));
+export type ListRecommenderSchemasError =
+  | AccessDeniedException
+  | BadRequestException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Returns a list of recommender schemas in the specified domain.
+ */
+export const listRecommenderSchemas: API.OperationMethod<
+  ListRecommenderSchemasRequest,
+  ListRecommenderSchemasResponse,
+  ListRecommenderSchemasError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRecommenderSchemasRequest,
+  ) => stream.Stream<
+    ListRecommenderSchemasResponse,
+    ListRecommenderSchemasError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRecommenderSchemasRequest,
+  ) => stream.Stream<
+    RecommenderSchemaSummary,
+    ListRecommenderSchemasError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListRecommenderSchemasRequest,
+  output: ListRecommenderSchemasResponse,
+  errors: [
+    AccessDeniedException,
+    BadRequestException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "RecommenderSchemas",
     pageSize: "MaxResults",
   } as const,
 }));

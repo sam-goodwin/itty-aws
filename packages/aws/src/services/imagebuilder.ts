@@ -134,6 +134,7 @@ export type Timezone = string;
 export type AutoDisableFailureCount = number;
 export type ImagePipelineArn = string;
 export type UserDataOverride = string;
+export type AmiWatermarkName = string;
 export type InstanceType = string;
 export type InstanceProfileNameType = string;
 export type SnsTopicArn = string;
@@ -171,6 +172,8 @@ export type WorkflowStepMessage = string;
 export type WorkflowStepInputs = string;
 export type WorkflowStepOutputs = string;
 export type WorkflowStepTimeoutSecondsInteger = number;
+export type UefiData = string;
+export type WindowsConfigurationImageIndex = number;
 export type ComponentVersionArn = string;
 export type RestrictedInteger = number;
 export type PaginationToken = string;
@@ -1040,6 +1043,8 @@ export const AdditionalInstanceConfiguration =
   ).annotate({
     identifier: "AdditionalInstanceConfiguration",
   }) as any as S.Schema<AdditionalInstanceConfiguration>;
+export type AmiWatermarksList = string[];
+export const AmiWatermarksList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export interface CreateImageRecipeRequest {
   name: string;
   description?: string;
@@ -1051,6 +1056,7 @@ export interface CreateImageRecipeRequest {
   workingDirectory?: string;
   additionalInstanceConfiguration?: AdditionalInstanceConfiguration;
   amiTags?: { [key: string]: string | undefined };
+  amiWatermarks?: string[];
   clientToken: string;
 }
 export const CreateImageRecipeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
@@ -1068,6 +1074,7 @@ export const CreateImageRecipeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
         AdditionalInstanceConfiguration,
       ),
       amiTags: S.optional(TagMap),
+      amiWatermarks: S.optional(AmiWatermarksList),
       clientToken: S.String.pipe(T.IdempotencyToken()),
     }).pipe(
       T.all(
@@ -2201,6 +2208,7 @@ export interface ImageRecipe {
   workingDirectory?: string;
   additionalInstanceConfiguration?: AdditionalInstanceConfiguration;
   amiTags?: { [key: string]: string | undefined };
+  amiWatermarks?: string[];
 }
 export const ImageRecipe = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2221,6 +2229,7 @@ export const ImageRecipe = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       AdditionalInstanceConfiguration,
     ),
     amiTags: S.optional(TagMap),
+    amiWatermarks: S.optional(AmiWatermarksList),
   }),
 ).annotate({ identifier: "ImageRecipe" }) as any as S.Schema<ImageRecipe>;
 export interface InfrastructureConfiguration {
@@ -3121,6 +3130,26 @@ export const ImportComponentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ImportComponentResponse",
 }) as any as S.Schema<ImportComponentResponse>;
+export interface RegisterImageOptions {
+  secureBootEnabled?: boolean;
+  uefiData?: string;
+}
+export const RegisterImageOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    secureBootEnabled: S.optional(S.Boolean),
+    uefiData: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RegisterImageOptions",
+}) as any as S.Schema<RegisterImageOptions>;
+export interface WindowsConfiguration {
+  imageIndex: number;
+}
+export const WindowsConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ imageIndex: S.Number }),
+).annotate({
+  identifier: "WindowsConfiguration",
+}) as any as S.Schema<WindowsConfiguration>;
 export interface ImportDiskImageRequest {
   name: string;
   semanticVersion: string;
@@ -3132,6 +3161,8 @@ export interface ImportDiskImageRequest {
   uri: string;
   loggingConfiguration?: ImageLoggingConfiguration;
   tags?: { [key: string]: string | undefined };
+  registerImageOptions?: RegisterImageOptions;
+  windowsConfiguration?: WindowsConfiguration;
   clientToken: string;
 }
 export const ImportDiskImageRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
@@ -3147,6 +3178,8 @@ export const ImportDiskImageRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       uri: S.String,
       loggingConfiguration: S.optional(ImageLoggingConfiguration),
       tags: S.optional(TagMap),
+      registerImageOptions: S.optional(RegisterImageOptions),
+      windowsConfiguration: S.optional(WindowsConfiguration),
       clientToken: S.String.pipe(T.IdempotencyToken()),
     }).pipe(
       T.all(
@@ -6349,7 +6382,9 @@ export type DistributeImageError =
   | TooManyRequestsException
   | CommonErrors;
 /**
- * DistributeImage distributes existing AMIs to additional regions and accounts without rebuilding the image.
+ * Distributes an existing AMI to target Regions and accounts without running
+ * the full image build process. This operation only runs the distribution
+ * phase on an image that has already been built.
  */
 export const distributeImage: API.OperationMethod<
   DistributeImageRequest,
@@ -6891,9 +6926,11 @@ export const importComponent: API.OperationMethod<
   ],
 }));
 export type ImportDiskImageError =
+  | AccessDeniedException
   | ClientException
   | ServiceException
   | ServiceUnavailableException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Import a Windows operating system image from a verified Microsoft ISO disk
@@ -6909,7 +6946,13 @@ export const importDiskImage: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportDiskImageRequest,
   output: ImportDiskImageResponse,
-  errors: [ClientException, ServiceException, ServiceUnavailableException],
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    ServiceException,
+    ServiceUnavailableException,
+    TooManyRequestsException,
+  ],
 }));
 export type ImportVmImageError =
   | ClientException

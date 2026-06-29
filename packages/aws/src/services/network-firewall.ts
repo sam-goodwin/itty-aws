@@ -908,6 +908,7 @@ export interface FirewallPolicyResponse {
   Tags?: Tag[];
   ConsumedStatelessRuleCapacity?: number;
   ConsumedStatefulRuleCapacity?: number;
+  ConsumedStatefulDomainCapacity?: number;
   NumberOfAssociations?: number;
   EncryptionConfiguration?: EncryptionConfiguration;
   LastModifiedTime?: Date;
@@ -923,6 +924,7 @@ export const FirewallPolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       Tags: S.optional(TagList),
       ConsumedStatelessRuleCapacity: S.optional(S.Number),
       ConsumedStatefulRuleCapacity: S.optional(S.Number),
+      ConsumedStatefulDomainCapacity: S.optional(S.Number),
       NumberOfAssociations: S.optional(S.Number),
       EncryptionConfiguration: S.optional(EncryptionConfiguration),
       LastModifiedTime: S.optional(
@@ -1562,7 +1564,11 @@ export const RuleGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     StatefulRuleOptions: S.optional(StatefulRuleOptions),
   }),
 ).annotate({ identifier: "RuleGroup" }) as any as S.Schema<RuleGroup>;
-export type RuleGroupType = "STATELESS" | "STATEFUL" | (string & {});
+export type RuleGroupType =
+  | "STATELESS"
+  | "STATEFUL"
+  | "STATEFUL_DOMAIN"
+  | (string & {});
 export const RuleGroupType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface SourceMetadata {
   SourceArn?: string;

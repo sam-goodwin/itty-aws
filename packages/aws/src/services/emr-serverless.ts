@@ -122,6 +122,9 @@ export type String256 = string;
 export type ImageDigest = string;
 export type IdentityCenterApplicationArn = string;
 export type NextToken = string;
+export type ResourceId = string;
+export type ResourceType = string;
+export type Url = string;
 export type IAMRoleArn = string;
 export type PolicyDocument = string;
 export type Arn = string;
@@ -140,7 +143,11 @@ export type RequestIdentityUserArn = string;
 export type JobRunState = string;
 export type ShutdownGracePeriodInSeconds = number;
 export type JobRunType = string;
-export type Url = string;
+export type SessionId = string;
+export type SessionArn = string;
+export type SessionState = string;
+export type EndpointUrl = string;
+export type SessionAuthToken = string | redacted.Redacted<string>;
 
 //# Schemas
 export interface ListTagsForResourceRequest {
@@ -313,9 +320,14 @@ export const NetworkConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkConfiguration>;
 export interface ImageConfigurationInput {
   imageUri?: string;
+  applicationLevelDigestResolution?: boolean;
 }
 export const ImageConfigurationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ imageUri: S.optional(S.String) }),
+  () =>
+    S.Struct({
+      imageUri: S.optional(S.String),
+      applicationLevelDigestResolution: S.optional(S.Boolean),
+    }),
 ).annotate({
   identifier: "ImageConfigurationInput",
 }) as any as S.Schema<ImageConfigurationInput>;
@@ -468,12 +480,14 @@ export const DiskEncryptionConfiguration =
 export interface InteractiveConfiguration {
   studioEnabled?: boolean;
   livyEndpointEnabled?: boolean;
+  sessionEnabled?: boolean;
 }
 export const InteractiveConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       studioEnabled: S.optional(S.Boolean),
       livyEndpointEnabled: S.optional(S.Boolean),
+      sessionEnabled: S.optional(S.Boolean),
     }),
 ).annotate({
   identifier: "InteractiveConfiguration",
@@ -610,9 +624,14 @@ export const GetApplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ImageConfiguration {
   imageUri: string;
   resolvedImageDigest?: string;
+  applicationLevelDigestResolution?: boolean;
 }
 export const ImageConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ imageUri: S.String, resolvedImageDigest: S.optional(S.String) }),
+  S.Struct({
+    imageUri: S.String,
+    resolvedImageDigest: S.optional(S.String),
+    applicationLevelDigestResolution: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "ImageConfiguration",
 }) as any as S.Schema<ImageConfiguration>;
@@ -878,6 +897,42 @@ export const ListApplicationsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListApplicationsResponse",
 }) as any as S.Schema<ListApplicationsResponse>;
+export interface GetResourceDashboardRequest {
+  applicationId: string;
+  resourceId: string;
+  resourceType: string;
+}
+export const GetResourceDashboardRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+      resourceId: S.String.pipe(T.HttpQuery("resourceId")),
+      resourceType: S.String.pipe(T.HttpQuery("resourceType")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/applications/{applicationId}/dashboard",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetResourceDashboardRequest",
+  }) as any as S.Schema<GetResourceDashboardRequest>;
+export interface GetResourceDashboardResponse {
+  url?: string;
+}
+export const GetResourceDashboardResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ url: S.optional(S.String) }),
+  ).annotate({
+    identifier: "GetResourceDashboardResponse",
+  }) as any as S.Schema<GetResourceDashboardResponse>;
 export interface StartApplicationRequest {
   applicationId: string;
 }
@@ -1137,6 +1192,10 @@ export interface JobRun {
   startedAt?: Date;
   endedAt?: Date;
   queuedDurationMilliseconds?: number;
+  imageConfiguration?: ImageConfiguration;
+  workerTypeSpecifications?: {
+    [key: string]: WorkerTypeSpecification | undefined;
+  };
 }
 export const JobRun = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1172,6 +1231,8 @@ export const JobRun = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     queuedDurationMilliseconds: S.optional(S.Number),
+    imageConfiguration: S.optional(ImageConfiguration),
+    workerTypeSpecifications: S.optional(WorkerTypeSpecificationMap),
   }),
 ).annotate({ identifier: "JobRun" }) as any as S.Schema<JobRun>;
 export interface GetJobRunResponse {
@@ -1432,6 +1493,288 @@ export const ListJobRunAttemptsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListJobRunAttemptsResponse",
 }) as any as S.Schema<ListJobRunAttemptsResponse>;
+export interface SessionConfigurationOverrides {
+  runtimeConfiguration?: Configuration[];
+}
+export const SessionConfigurationOverrides =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ runtimeConfiguration: S.optional(ConfigurationList) }),
+  ).annotate({
+    identifier: "SessionConfigurationOverrides",
+  }) as any as S.Schema<SessionConfigurationOverrides>;
+export interface StartSessionRequest {
+  applicationId: string;
+  clientToken: string;
+  executionRoleArn: string;
+  configurationOverrides?: SessionConfigurationOverrides;
+  tags?: { [key: string]: string | undefined };
+  idleTimeoutMinutes?: number;
+  name?: string;
+}
+export const StartSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+    clientToken: S.String.pipe(T.IdempotencyToken()),
+    executionRoleArn: S.String,
+    configurationOverrides: S.optional(SessionConfigurationOverrides),
+    tags: S.optional(TagMap),
+    idleTimeoutMinutes: S.optional(S.Number),
+    name: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/applications/{applicationId}/sessions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "StartSessionRequest",
+}) as any as S.Schema<StartSessionRequest>;
+export interface StartSessionResponse {
+  applicationId: string;
+  sessionId: string;
+  arn: string;
+}
+export const StartSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ applicationId: S.String, sessionId: S.String, arn: S.String }),
+).annotate({
+  identifier: "StartSessionResponse",
+}) as any as S.Schema<StartSessionResponse>;
+export interface GetSessionRequest {
+  applicationId: string;
+  sessionId: string;
+}
+export const GetSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+    sessionId: S.String.pipe(T.HttpLabel("sessionId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/applications/{applicationId}/sessions/{sessionId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetSessionRequest",
+}) as any as S.Schema<GetSessionRequest>;
+export interface Session {
+  applicationId: string;
+  sessionId: string;
+  arn: string;
+  name?: string;
+  state: string;
+  stateDetails: string;
+  releaseLabel: string;
+  executionRoleArn: string;
+  createdBy: string;
+  createdAt: Date;
+  updatedAt: Date;
+  startedAt?: Date;
+  endedAt?: Date;
+  idleSince?: Date;
+  configurationOverrides?: SessionConfigurationOverrides;
+  networkConfiguration?: NetworkConfiguration;
+  idleTimeoutMinutes?: number;
+  tags?: { [key: string]: string | undefined };
+  totalResourceUtilization?: TotalResourceUtilization;
+  billedResourceUtilization?: ResourceUtilization;
+  totalExecutionDurationSeconds?: number;
+}
+export const Session = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String,
+    sessionId: S.String,
+    arn: S.String,
+    name: S.optional(S.String),
+    state: S.String,
+    stateDetails: S.String,
+    releaseLabel: S.String,
+    executionRoleArn: S.String,
+    createdBy: S.String,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    idleSince: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    configurationOverrides: S.optional(SessionConfigurationOverrides),
+    networkConfiguration: S.optional(NetworkConfiguration),
+    idleTimeoutMinutes: S.optional(S.Number),
+    tags: S.optional(TagMap),
+    totalResourceUtilization: S.optional(TotalResourceUtilization),
+    billedResourceUtilization: S.optional(ResourceUtilization),
+    totalExecutionDurationSeconds: S.optional(S.Number),
+  }),
+).annotate({ identifier: "Session" }) as any as S.Schema<Session>;
+export interface GetSessionResponse {
+  session: Session;
+}
+export const GetSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ session: Session }),
+).annotate({
+  identifier: "GetSessionResponse",
+}) as any as S.Schema<GetSessionResponse>;
+export interface TerminateSessionRequest {
+  applicationId: string;
+  sessionId: string;
+}
+export const TerminateSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+      sessionId: S.String.pipe(T.HttpLabel("sessionId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "DELETE",
+          uri: "/applications/{applicationId}/sessions/{sessionId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "TerminateSessionRequest",
+}) as any as S.Schema<TerminateSessionRequest>;
+export interface TerminateSessionResponse {
+  applicationId: string;
+  sessionId: string;
+}
+export const TerminateSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ applicationId: S.String, sessionId: S.String }),
+).annotate({
+  identifier: "TerminateSessionResponse",
+}) as any as S.Schema<TerminateSessionResponse>;
+export type SessionStateSet = string[];
+export const SessionStateSet = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface ListSessionsRequest {
+  applicationId: string;
+  nextToken?: string;
+  maxResults?: number;
+  states?: string[];
+  createdAtAfter?: Date;
+  createdAtBefore?: Date;
+}
+export const ListSessionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    states: S.optional(SessionStateSet).pipe(T.HttpQuery("states")),
+    createdAtAfter: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ).pipe(T.HttpQuery("createdAtAfter")),
+    createdAtBefore: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ).pipe(T.HttpQuery("createdAtBefore")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/applications/{applicationId}/sessions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListSessionsRequest",
+}) as any as S.Schema<ListSessionsRequest>;
+export interface SessionSummary {
+  applicationId: string;
+  sessionId: string;
+  arn: string;
+  name?: string;
+  state: string;
+  stateDetails: string;
+  releaseLabel: string;
+  executionRoleArn: string;
+  createdBy: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const SessionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String,
+    sessionId: S.String,
+    arn: S.String,
+    name: S.optional(S.String),
+    state: S.String,
+    stateDetails: S.String,
+    releaseLabel: S.String,
+    executionRoleArn: S.String,
+    createdBy: S.String,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({ identifier: "SessionSummary" }) as any as S.Schema<SessionSummary>;
+export type Sessions = SessionSummary[];
+export const Sessions = /*@__PURE__*/ /*#__PURE__*/ S.Array(SessionSummary);
+export interface ListSessionsResponse {
+  sessions: SessionSummary[];
+  nextToken?: string;
+}
+export const ListSessionsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ sessions: Sessions, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListSessionsResponse",
+}) as any as S.Schema<ListSessionsResponse>;
+export interface GetSessionEndpointRequest {
+  applicationId: string;
+  sessionId: string;
+}
+export const GetSessionEndpointRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+      sessionId: S.String.pipe(T.HttpLabel("sessionId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/applications/{applicationId}/sessions/{sessionId}/endpoint",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetSessionEndpointRequest",
+}) as any as S.Schema<GetSessionEndpointRequest>;
+export interface GetSessionEndpointResponse {
+  applicationId: string;
+  sessionId: string;
+  endpoint: string;
+  authToken: string | redacted.Redacted<string>;
+  authTokenExpiresAt: Date;
+}
+export const GetSessionEndpointResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      applicationId: S.String,
+      sessionId: S.String,
+      endpoint: S.String,
+      authToken: SensitiveString,
+      authTokenExpiresAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    }),
+).annotate({
+  identifier: "GetSessionEndpointResponse",
+}) as any as S.Schema<GetSessionEndpointResponse>;
 
 //# Errors
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
@@ -1649,6 +1992,32 @@ export const listApplications: API.OperationMethod<
     items: "applications",
     pageSize: "maxResults",
   } as const,
+}));
+export type GetResourceDashboardError =
+  | InternalServerException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns a URL that you can use to access the application UIs for a specified resource, such as a session.
+ *
+ * For resources in a running state, the application UI is a live user interface such as the Spark web UI. For terminated resources, the application UI is a persistent application user interface such as the Spark History Server.
+ *
+ * The URL is valid for one hour after you generate it. To access the application UI after that hour elapses, you must invoke the API again to generate a new URL.
+ */
+export const getResourceDashboard: API.OperationMethod<
+  GetResourceDashboardRequest,
+  GetResourceDashboardResponse,
+  GetResourceDashboardError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetResourceDashboardRequest,
+  output: GetResourceDashboardResponse,
+  errors: [
+    InternalServerException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
 }));
 export type StartApplicationError =
   | InternalServerException
@@ -1870,4 +2239,139 @@ export const listJobRunAttempts: API.OperationMethod<
     items: "jobRunAttempts",
     pageSize: "maxResults",
   } as const,
+}));
+export type StartSessionError =
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates and starts a new session on the specified application. The application must be in the `STARTED` state or have `AutoStart` enabled, and have interactive sessions enabled. This operation is supported for EMR release 7.13.0 and later.
+ */
+export const startSession: API.OperationMethod<
+  StartSessionRequest,
+  StartSessionResponse,
+  StartSessionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartSessionRequest,
+  output: StartSessionResponse,
+  errors: [
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ValidationException,
+  ],
+}));
+export type GetSessionError =
+  | InternalServerException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Displays detailed information about a session.
+ */
+export const getSession: API.OperationMethod<
+  GetSessionRequest,
+  GetSessionResponse,
+  GetSessionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetSessionRequest,
+  output: GetSessionResponse,
+  errors: [
+    InternalServerException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+}));
+export type TerminateSessionError =
+  | InternalServerException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Terminates the specified session. After you terminate a session, it enters the `TERMINATING` state and then the `TERMINATED` state. You can still access the Spark History Server for a terminated session through the `GetResourceDashboard` operation.
+ */
+export const terminateSession: API.OperationMethod<
+  TerminateSessionRequest,
+  TerminateSessionResponse,
+  TerminateSessionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: TerminateSessionRequest,
+  output: TerminateSessionResponse,
+  errors: [
+    InternalServerException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+}));
+export type ListSessionsError =
+  | InternalServerException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists sessions for the specified application. You can filter sessions by state and creation time.
+ */
+export const listSessions: API.OperationMethod<
+  ListSessionsRequest,
+  ListSessionsResponse,
+  ListSessionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSessionsRequest,
+  ) => stream.Stream<
+    ListSessionsResponse,
+    ListSessionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSessionsRequest,
+  ) => stream.Stream<
+    SessionSummary,
+    ListSessionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListSessionsRequest,
+  output: ListSessionsResponse,
+  errors: [
+    InternalServerException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "sessions",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type GetSessionEndpointError =
+  | InternalServerException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns the session endpoint URL and a time-limited authentication token for the specified session. Use the endpoint and token to connect a client to the session. Call this operation again when the authentication token expires to obtain a new token.
+ */
+export const getSessionEndpoint: API.OperationMethod<
+  GetSessionEndpointRequest,
+  GetSessionEndpointResponse,
+  GetSessionEndpointError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetSessionEndpointRequest,
+  output: GetSessionEndpointResponse,
+  errors: [
+    InternalServerException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
 }));

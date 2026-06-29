@@ -101,6 +101,7 @@ export type SrtPassphrase = string | redacted.Redacted<string>;
 export type ChannelPlaybackRestrictionPolicyArn = string;
 export type IsMultitrackInputEnabled = boolean;
 export type ContainerFormat = string;
+export type ChannelAdConfigurationArn = string;
 export type ResourceArn = string;
 export type ErrorCode = string;
 export type ErrorMessage = string;
@@ -108,6 +109,9 @@ export type StreamKeyArn = string;
 export type StreamKeyValue = string | redacted.Redacted<string>;
 export type ViewerId = string;
 export type ViewerSessionVersion = number;
+export type AdConfigurationName = string;
+export type MediaTailorPlaybackConfigurationArn = string;
+export type AdConfigurationArn = string;
 export type PlaybackRestrictionPolicyAllowedCountry = string;
 export type PlaybackRestrictionPolicyAllowedOrigin = string;
 export type PlaybackRestrictionPolicyEnableStrictOriginEnforcement = boolean;
@@ -131,7 +135,10 @@ export type StreamState = string;
 export type StreamHealth = string;
 export type StreamViewerCount = number;
 export type PlaybackPublicKeyMaterial = string;
+export type AdDurationSeconds = number;
+export type AdBreakId = string;
 export type PaginationToken = string;
+export type MaxAdConfigurationResults = number;
 export type MaxChannelResults = number;
 export type MaxPlaybackKeyPairResults = number;
 export type MaxPlaybackRestrictionPolicyResults = number;
@@ -227,6 +234,7 @@ export interface Channel {
   playbackRestrictionPolicyArn?: string;
   multitrackInputConfiguration?: MultitrackInputConfiguration;
   containerFormat?: string;
+  adConfigurationArn?: string;
 }
 export const Channel = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -245,6 +253,7 @@ export const Channel = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     playbackRestrictionPolicyArn: S.optional(S.String),
     multitrackInputConfiguration: S.optional(MultitrackInputConfiguration),
     containerFormat: S.optional(S.String),
+    adConfigurationArn: S.optional(S.String),
   }),
 ).annotate({ identifier: "Channel" }) as any as S.Schema<Channel>;
 export type Channels = Channel[];
@@ -264,12 +273,36 @@ export const BatchError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type BatchErrors = BatchError[];
 export const BatchErrors = /*@__PURE__*/ /*#__PURE__*/ S.Array(BatchError);
 export interface BatchGetChannelResponse {
+  accessControlAllowOrigin?: string;
+  accessControlExposeHeaders?: string;
+  cacheControl?: string;
+  contentSecurityPolicy?: string;
+  strictTransportSecurity?: string;
+  xContentTypeOptions?: string;
+  xFrameOptions?: string;
   channels?: Channel[];
   errors?: BatchError[];
 }
 export const BatchGetChannelResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
+      accessControlAllowOrigin: S.optional(S.String).pipe(
+        T.HttpHeader("Access-Control-Allow-Origin"),
+      ),
+      accessControlExposeHeaders: S.optional(S.String).pipe(
+        T.HttpHeader("Access-Control-Expose-Headers"),
+      ),
+      cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+      contentSecurityPolicy: S.optional(S.String).pipe(
+        T.HttpHeader("Content-Security-Policy"),
+      ),
+      strictTransportSecurity: S.optional(S.String).pipe(
+        T.HttpHeader("Strict-Transport-Security"),
+      ),
+      xContentTypeOptions: S.optional(S.String).pipe(
+        T.HttpHeader("X-Content-Type-Options"),
+      ),
+      xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
       channels: S.optional(Channels),
       errors: S.optional(BatchErrors),
     }),
@@ -313,12 +346,36 @@ export const StreamKey = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type StreamKeys = StreamKey[];
 export const StreamKeys = /*@__PURE__*/ /*#__PURE__*/ S.Array(StreamKey);
 export interface BatchGetStreamKeyResponse {
+  accessControlAllowOrigin?: string;
+  accessControlExposeHeaders?: string;
+  cacheControl?: string;
+  contentSecurityPolicy?: string;
+  strictTransportSecurity?: string;
+  xContentTypeOptions?: string;
+  xFrameOptions?: string;
   streamKeys?: StreamKey[];
   errors?: BatchError[];
 }
 export const BatchGetStreamKeyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
+      accessControlAllowOrigin: S.optional(S.String).pipe(
+        T.HttpHeader("Access-Control-Allow-Origin"),
+      ),
+      accessControlExposeHeaders: S.optional(S.String).pipe(
+        T.HttpHeader("Access-Control-Expose-Headers"),
+      ),
+      cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+      contentSecurityPolicy: S.optional(S.String).pipe(
+        T.HttpHeader("Content-Security-Policy"),
+      ),
+      strictTransportSecurity: S.optional(S.String).pipe(
+        T.HttpHeader("Strict-Transport-Security"),
+      ),
+      xContentTypeOptions: S.optional(S.String).pipe(
+        T.HttpHeader("X-Content-Type-Options"),
+      ),
+      xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
       streamKeys: S.optional(StreamKeys),
       errors: S.optional(BatchErrors),
     }),
@@ -388,14 +445,102 @@ export type BatchStartViewerSessionRevocationErrors =
 export const BatchStartViewerSessionRevocationErrors =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(BatchStartViewerSessionRevocationError_);
 export interface BatchStartViewerSessionRevocationResponse {
+  accessControlAllowOrigin?: string;
+  accessControlExposeHeaders?: string;
+  cacheControl?: string;
+  contentSecurityPolicy?: string;
+  strictTransportSecurity?: string;
+  xContentTypeOptions?: string;
+  xFrameOptions?: string;
   errors?: BatchStartViewerSessionRevocationError_[];
 }
 export const BatchStartViewerSessionRevocationResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ errors: S.optional(BatchStartViewerSessionRevocationErrors) }),
+    S.Struct({
+      accessControlAllowOrigin: S.optional(S.String).pipe(
+        T.HttpHeader("Access-Control-Allow-Origin"),
+      ),
+      accessControlExposeHeaders: S.optional(S.String).pipe(
+        T.HttpHeader("Access-Control-Expose-Headers"),
+      ),
+      cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+      contentSecurityPolicy: S.optional(S.String).pipe(
+        T.HttpHeader("Content-Security-Policy"),
+      ),
+      strictTransportSecurity: S.optional(S.String).pipe(
+        T.HttpHeader("Strict-Transport-Security"),
+      ),
+      xContentTypeOptions: S.optional(S.String).pipe(
+        T.HttpHeader("X-Content-Type-Options"),
+      ),
+      xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+      errors: S.optional(BatchStartViewerSessionRevocationErrors),
+    }),
   ).annotate({
     identifier: "BatchStartViewerSessionRevocationResponse",
   }) as any as S.Schema<BatchStartViewerSessionRevocationResponse>;
+export interface MediaTailorPlaybackConfiguration {
+  playbackConfigurationArn?: string;
+}
+export const MediaTailorPlaybackConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ playbackConfigurationArn: S.optional(S.String) }),
+  ).annotate({
+    identifier: "MediaTailorPlaybackConfiguration",
+  }) as any as S.Schema<MediaTailorPlaybackConfiguration>;
+export type MediaTailorPlaybackConfigurationsList =
+  MediaTailorPlaybackConfiguration[];
+export const MediaTailorPlaybackConfigurationsList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(MediaTailorPlaybackConfiguration);
+export interface CreateAdConfigurationRequest {
+  name?: string;
+  mediaTailorPlaybackConfigurations: MediaTailorPlaybackConfiguration[];
+  tags?: { [key: string]: string | undefined };
+}
+export const CreateAdConfigurationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.optional(S.String),
+      mediaTailorPlaybackConfigurations: MediaTailorPlaybackConfigurationsList,
+      tags: S.optional(Tags),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/CreateAdConfiguration" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "CreateAdConfigurationRequest",
+  }) as any as S.Schema<CreateAdConfigurationRequest>;
+export interface AdConfiguration {
+  arn: string;
+  name?: string;
+  mediaTailorPlaybackConfigurations: MediaTailorPlaybackConfiguration[];
+  tags?: { [key: string]: string | undefined };
+}
+export const AdConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String,
+    name: S.optional(S.String),
+    mediaTailorPlaybackConfigurations: MediaTailorPlaybackConfigurationsList,
+    tags: S.optional(Tags),
+  }),
+).annotate({
+  identifier: "AdConfiguration",
+}) as any as S.Schema<AdConfiguration>;
+export interface CreateAdConfigurationResponse {
+  adConfiguration: AdConfiguration;
+}
+export const CreateAdConfigurationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ adConfiguration: AdConfiguration }),
+  ).annotate({
+    identifier: "CreateAdConfigurationResponse",
+  }) as any as S.Schema<CreateAdConfigurationResponse>;
 export interface CreateChannelRequest {
   name?: string;
   latencyMode?: string;
@@ -408,6 +553,7 @@ export interface CreateChannelRequest {
   playbackRestrictionPolicyArn?: string;
   multitrackInputConfiguration?: MultitrackInputConfiguration;
   containerFormat?: string;
+  adConfigurationArn?: string;
 }
 export const CreateChannelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -422,6 +568,7 @@ export const CreateChannelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     playbackRestrictionPolicyArn: S.optional(S.String),
     multitrackInputConfiguration: S.optional(MultitrackInputConfiguration),
     containerFormat: S.optional(S.String),
+    adConfigurationArn: S.optional(S.String),
   }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/CreateChannel" }),
@@ -670,6 +817,29 @@ export const CreateStreamKeyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateStreamKeyResponse",
 }) as any as S.Schema<CreateStreamKeyResponse>;
+export interface DeleteAdConfigurationRequest {
+  arn: string;
+}
+export const DeleteAdConfigurationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ arn: S.String }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/DeleteAdConfiguration" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeleteAdConfigurationRequest",
+  }) as any as S.Schema<DeleteAdConfigurationRequest>;
+export interface DeleteAdConfigurationResponse {}
+export const DeleteAdConfigurationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteAdConfigurationResponse",
+  }) as any as S.Schema<DeleteAdConfigurationResponse>;
 export interface DeleteChannelRequest {
   arn: string;
 }
@@ -786,6 +956,32 @@ export const DeleteStreamKeyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeleteStreamKeyResponse",
 }) as any as S.Schema<DeleteStreamKeyResponse>;
+export interface GetAdConfigurationRequest {
+  arn: string;
+}
+export const GetAdConfigurationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ arn: S.String }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/GetAdConfiguration" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetAdConfigurationRequest",
+}) as any as S.Schema<GetAdConfigurationRequest>;
+export interface GetAdConfigurationResponse {
+  adConfiguration?: AdConfiguration;
+}
+export const GetAdConfigurationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ adConfiguration: S.optional(AdConfiguration) }),
+).annotate({
+  identifier: "GetAdConfigurationResponse",
+}) as any as S.Schema<GetAdConfigurationResponse>;
 export interface GetChannelRequest {
   arn: string;
 }
@@ -1161,10 +1357,93 @@ export const ImportPlaybackKeyPairResponse =
   ).annotate({
     identifier: "ImportPlaybackKeyPairResponse",
   }) as any as S.Schema<ImportPlaybackKeyPairResponse>;
+export interface InsertAdBreakRequest {
+  channelArn: string;
+  durationSeconds: number;
+}
+export const InsertAdBreakRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ channelArn: S.String, durationSeconds: S.Number }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/InsertAdBreak" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "InsertAdBreakRequest",
+}) as any as S.Schema<InsertAdBreakRequest>;
+export interface InsertAdBreakResponse {
+  adBreakId?: string;
+}
+export const InsertAdBreakResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ adBreakId: S.optional(S.String) }),
+).annotate({
+  identifier: "InsertAdBreakResponse",
+}) as any as S.Schema<InsertAdBreakResponse>;
+export interface ListAdConfigurationsRequest {
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListAdConfigurationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextToken: S.optional(S.String),
+      maxResults: S.optional(S.Number),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/ListAdConfigurations" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListAdConfigurationsRequest",
+  }) as any as S.Schema<ListAdConfigurationsRequest>;
+export interface AdConfigurationSummary {
+  arn: string;
+  name?: string;
+  mediaTailorPlaybackConfigurations: MediaTailorPlaybackConfiguration[];
+  tags?: { [key: string]: string | undefined };
+}
+export const AdConfigurationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      arn: S.String,
+      name: S.optional(S.String),
+      mediaTailorPlaybackConfigurations: MediaTailorPlaybackConfigurationsList,
+      tags: S.optional(Tags),
+    }),
+).annotate({
+  identifier: "AdConfigurationSummary",
+}) as any as S.Schema<AdConfigurationSummary>;
+export type AdConfigurationList = AdConfigurationSummary[];
+export const AdConfigurationList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  AdConfigurationSummary,
+);
+export interface ListAdConfigurationsResponse {
+  adConfigurations: AdConfigurationSummary[];
+  nextToken?: string;
+}
+export const ListAdConfigurationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      adConfigurations: AdConfigurationList,
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListAdConfigurationsResponse",
+  }) as any as S.Schema<ListAdConfigurationsResponse>;
 export interface ListChannelsRequest {
   filterByName?: string;
   filterByRecordingConfigurationArn?: string;
   filterByPlaybackRestrictionPolicyArn?: string;
+  filterByAdConfigurationArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
@@ -1173,6 +1452,7 @@ export const ListChannelsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     filterByName: S.optional(S.String),
     filterByRecordingConfigurationArn: S.optional(S.String),
     filterByPlaybackRestrictionPolicyArn: S.optional(S.String),
+    filterByAdConfigurationArn: S.optional(S.String),
     nextToken: S.optional(S.String),
     maxResults: S.optional(S.Number),
   }).pipe(
@@ -1199,6 +1479,7 @@ export interface ChannelSummary {
   type?: ChannelType;
   preset?: TranscodePreset;
   playbackRestrictionPolicyArn?: string;
+  adConfigurationArn?: string;
 }
 export const ChannelSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1212,6 +1493,7 @@ export const ChannelSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     type: S.optional(ChannelType),
     preset: S.optional(TranscodePreset),
     playbackRestrictionPolicyArn: S.optional(S.String),
+    adConfigurationArn: S.optional(S.String),
   }),
 ).annotate({ identifier: "ChannelSummary" }) as any as S.Schema<ChannelSummary>;
 export type ChannelList = ChannelSummary[];
@@ -1723,6 +2005,41 @@ export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
+export interface UpdateAdConfigurationRequest {
+  arn: string;
+  name?: string;
+  mediaTailorPlaybackConfigurations?: MediaTailorPlaybackConfiguration[];
+}
+export const UpdateAdConfigurationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      arn: S.String,
+      name: S.optional(S.String),
+      mediaTailorPlaybackConfigurations: S.optional(
+        MediaTailorPlaybackConfigurationsList,
+      ),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/UpdateAdConfiguration" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "UpdateAdConfigurationRequest",
+  }) as any as S.Schema<UpdateAdConfigurationRequest>;
+export interface UpdateAdConfigurationResponse {
+  adConfiguration: AdConfiguration;
+}
+export const UpdateAdConfigurationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ adConfiguration: AdConfiguration }),
+  ).annotate({
+    identifier: "UpdateAdConfigurationResponse",
+  }) as any as S.Schema<UpdateAdConfigurationResponse>;
 export interface UpdateChannelRequest {
   arn: string;
   name?: string;
@@ -1735,6 +2052,7 @@ export interface UpdateChannelRequest {
   playbackRestrictionPolicyArn?: string;
   multitrackInputConfiguration?: MultitrackInputConfiguration;
   containerFormat?: string;
+  adConfigurationArn?: string;
 }
 export const UpdateChannelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1749,6 +2067,7 @@ export const UpdateChannelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     playbackRestrictionPolicyArn: S.optional(S.String),
     multitrackInputConfiguration: S.optional(MultitrackInputConfiguration),
     containerFormat: S.optional(S.String),
+    adConfigurationArn: S.optional(S.String),
   }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/UpdateChannel" }),
@@ -1813,47 +2132,275 @@ export const UpdatePlaybackRestrictionPolicyResponse =
 //# Errors
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
-  { exceptionMessage: S.optional(S.String) },
+  {
+    accessControlAllowOrigin: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Allow-Origin"),
+    ),
+    accessControlExposeHeaders: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Expose-Headers"),
+    ),
+    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+    contentSecurityPolicy: S.optional(S.String).pipe(
+      T.HttpHeader("Content-Security-Policy"),
+    ),
+    strictTransportSecurity: S.optional(S.String).pipe(
+      T.HttpHeader("Strict-Transport-Security"),
+    ),
+    xContentTypeOptions: S.optional(S.String).pipe(
+      T.HttpHeader("X-Content-Type-Options"),
+    ),
+    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+    exceptionMessage: S.optional(S.String),
+  },
 ).pipe(C.withAuthError) {}
+export class ServiceUnavailable extends S.TaggedErrorClass<ServiceUnavailable>()(
+  "ServiceUnavailable",
+  {
+    accessControlAllowOrigin: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Allow-Origin"),
+    ),
+    accessControlExposeHeaders: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Expose-Headers"),
+    ),
+    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+    contentSecurityPolicy: S.optional(S.String).pipe(
+      T.HttpHeader("Content-Security-Policy"),
+    ),
+    strictTransportSecurity: S.optional(S.String).pipe(
+      T.HttpHeader("Strict-Transport-Security"),
+    ),
+    xContentTypeOptions: S.optional(S.String).pipe(
+      T.HttpHeader("X-Content-Type-Options"),
+    ),
+    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+    exceptionMessage: S.optional(S.String),
+  },
+).pipe(C.withServerError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    accessControlAllowOrigin: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Allow-Origin"),
+    ),
+    accessControlExposeHeaders: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Expose-Headers"),
+    ),
+    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+    contentSecurityPolicy: S.optional(S.String).pipe(
+      T.HttpHeader("Content-Security-Policy"),
+    ),
+    strictTransportSecurity: S.optional(S.String).pipe(
+      T.HttpHeader("Strict-Transport-Security"),
+    ),
+    xContentTypeOptions: S.optional(S.String).pipe(
+      T.HttpHeader("X-Content-Type-Options"),
+    ),
+    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+    exceptionMessage: S.optional(S.String),
+  },
+).pipe(C.withBadRequestError) {}
 export class PendingVerification extends S.TaggedErrorClass<PendingVerification>()(
   "PendingVerification",
-  { exceptionMessage: S.optional(S.String) },
+  {
+    accessControlAllowOrigin: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Allow-Origin"),
+    ),
+    accessControlExposeHeaders: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Expose-Headers"),
+    ),
+    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+    contentSecurityPolicy: S.optional(S.String).pipe(
+      T.HttpHeader("Content-Security-Policy"),
+    ),
+    strictTransportSecurity: S.optional(S.String).pipe(
+      T.HttpHeader("Strict-Transport-Security"),
+    ),
+    xContentTypeOptions: S.optional(S.String).pipe(
+      T.HttpHeader("X-Content-Type-Options"),
+    ),
+    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+    exceptionMessage: S.optional(S.String),
+  },
 ).pipe(C.withAuthError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
-  { exceptionMessage: S.optional(S.String) },
+  {
+    accessControlAllowOrigin: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Allow-Origin"),
+    ),
+    accessControlExposeHeaders: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Expose-Headers"),
+    ),
+    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+    contentSecurityPolicy: S.optional(S.String).pipe(
+      T.HttpHeader("Content-Security-Policy"),
+    ),
+    strictTransportSecurity: S.optional(S.String).pipe(
+      T.HttpHeader("Strict-Transport-Security"),
+    ),
+    xContentTypeOptions: S.optional(S.String).pipe(
+      T.HttpHeader("X-Content-Type-Options"),
+    ),
+    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+    exceptionMessage: S.optional(S.String),
+  },
 ).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { exceptionMessage: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { exceptionMessage: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { exceptionMessage: S.optional(S.String) },
-).pipe(C.withQuotaError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
-  { exceptionMessage: S.optional(S.String) },
+  {
+    accessControlAllowOrigin: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Allow-Origin"),
+    ),
+    accessControlExposeHeaders: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Expose-Headers"),
+    ),
+    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+    contentSecurityPolicy: S.optional(S.String).pipe(
+      T.HttpHeader("Content-Security-Policy"),
+    ),
+    strictTransportSecurity: S.optional(S.String).pipe(
+      T.HttpHeader("Strict-Transport-Security"),
+    ),
+    xContentTypeOptions: S.optional(S.String).pipe(
+      T.HttpHeader("X-Content-Type-Options"),
+    ),
+    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+    exceptionMessage: S.optional(S.String),
+  },
 ).pipe(C.withConflictError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
-  { exceptionMessage: S.optional(S.String) },
+  {
+    accessControlAllowOrigin: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Allow-Origin"),
+    ),
+    accessControlExposeHeaders: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Expose-Headers"),
+    ),
+    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+    contentSecurityPolicy: S.optional(S.String).pipe(
+      T.HttpHeader("Content-Security-Policy"),
+    ),
+    strictTransportSecurity: S.optional(S.String).pipe(
+      T.HttpHeader("Strict-Transport-Security"),
+    ),
+    xContentTypeOptions: S.optional(S.String).pipe(
+      T.HttpHeader("X-Content-Type-Options"),
+    ),
+    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+    exceptionMessage: S.optional(S.String),
+  },
 ).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    accessControlAllowOrigin: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Allow-Origin"),
+    ),
+    accessControlExposeHeaders: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Expose-Headers"),
+    ),
+    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+    contentSecurityPolicy: S.optional(S.String).pipe(
+      T.HttpHeader("Content-Security-Policy"),
+    ),
+    strictTransportSecurity: S.optional(S.String).pipe(
+      T.HttpHeader("Strict-Transport-Security"),
+    ),
+    xContentTypeOptions: S.optional(S.String).pipe(
+      T.HttpHeader("X-Content-Type-Options"),
+    ),
+    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+    exceptionMessage: S.optional(S.String),
+  },
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    accessControlAllowOrigin: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Allow-Origin"),
+    ),
+    accessControlExposeHeaders: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Expose-Headers"),
+    ),
+    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+    contentSecurityPolicy: S.optional(S.String).pipe(
+      T.HttpHeader("Content-Security-Policy"),
+    ),
+    strictTransportSecurity: S.optional(S.String).pipe(
+      T.HttpHeader("Strict-Transport-Security"),
+    ),
+    xContentTypeOptions: S.optional(S.String).pipe(
+      T.HttpHeader("X-Content-Type-Options"),
+    ),
+    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+    exceptionMessage: S.optional(S.String),
+  },
+).pipe(C.withQuotaError) {}
 export class ChannelNotBroadcasting extends S.TaggedErrorClass<ChannelNotBroadcasting>()(
   "ChannelNotBroadcasting",
-  { exceptionMessage: S.optional(S.String) },
+  {
+    accessControlAllowOrigin: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Allow-Origin"),
+    ),
+    accessControlExposeHeaders: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Expose-Headers"),
+    ),
+    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+    contentSecurityPolicy: S.optional(S.String).pipe(
+      T.HttpHeader("Content-Security-Policy"),
+    ),
+    strictTransportSecurity: S.optional(S.String).pipe(
+      T.HttpHeader("Strict-Transport-Security"),
+    ),
+    xContentTypeOptions: S.optional(S.String).pipe(
+      T.HttpHeader("X-Content-Type-Options"),
+    ),
+    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+    exceptionMessage: S.optional(S.String),
+  },
 ).pipe(C.withBadRequestError) {}
 export class StreamUnavailable extends S.TaggedErrorClass<StreamUnavailable>()(
   "StreamUnavailable",
-  { exceptionMessage: S.optional(S.String) },
+  {
+    accessControlAllowOrigin: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Allow-Origin"),
+    ),
+    accessControlExposeHeaders: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Expose-Headers"),
+    ),
+    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+    contentSecurityPolicy: S.optional(S.String).pipe(
+      T.HttpHeader("Content-Security-Policy"),
+    ),
+    strictTransportSecurity: S.optional(S.String).pipe(
+      T.HttpHeader("Strict-Transport-Security"),
+    ),
+    xContentTypeOptions: S.optional(S.String).pipe(
+      T.HttpHeader("X-Content-Type-Options"),
+    ),
+    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+    exceptionMessage: S.optional(S.String),
+  },
 ).pipe(C.withServerError) {}
 
 //# Operations
-export type BatchGetChannelError = CommonErrors;
+export type BatchGetChannelError =
+  | AccessDeniedException
+  | ServiceUnavailable
+  | ValidationException
+  | CommonErrors;
 /**
  * Performs GetChannel on multiple ARNs simultaneously.
  */
@@ -1865,9 +2412,13 @@ export const batchGetChannel: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetChannelRequest,
   output: BatchGetChannelResponse,
-  errors: [],
+  errors: [AccessDeniedException, ServiceUnavailable, ValidationException],
 }));
-export type BatchGetStreamKeyError = CommonErrors;
+export type BatchGetStreamKeyError =
+  | AccessDeniedException
+  | ServiceUnavailable
+  | ValidationException
+  | CommonErrors;
 /**
  * Performs GetStreamKey on multiple ARNs simultaneously.
  */
@@ -1879,7 +2430,7 @@ export const batchGetStreamKey: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetStreamKeyRequest,
   output: BatchGetStreamKeyResponse,
-  errors: [],
+  errors: [AccessDeniedException, ServiceUnavailable, ValidationException],
 }));
 export type BatchStartViewerSessionRevocationError =
   | AccessDeniedException
@@ -1888,8 +2439,7 @@ export type BatchStartViewerSessionRevocationError =
   | ValidationException
   | CommonErrors;
 /**
- * Performs StartViewerSessionRevocation on multiple channel ARN and viewer
- * ID pairs simultaneously.
+ * Performs StartViewerSessionRevocation on multiple channel ARN and viewer ID pairs simultaneously.
  */
 export const batchStartViewerSessionRevocation: API.OperationMethod<
   BatchStartViewerSessionRevocationRequest,
@@ -1902,6 +2452,38 @@ export const batchStartViewerSessionRevocation: API.OperationMethod<
   errors: [
     AccessDeniedException,
     PendingVerification,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type CreateAdConfigurationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | PendingVerification
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new ad configuration to be used for server-side ad insertion.
+ */
+export const createAdConfiguration: API.OperationMethod<
+  CreateAdConfigurationRequest,
+  CreateAdConfigurationResponse,
+  CreateAdConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateAdConfigurationRequest,
+  output: CreateAdConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    PendingVerification,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
   ],
@@ -1940,8 +2522,7 @@ export type CreatePlaybackRestrictionPolicyError =
   | ValidationException
   | CommonErrors;
 /**
- * Creates a new playback restriction policy, for constraining playback by countries and/or
- * origins.
+ * Creates a new playback restriction policy, for constraining playback by countries and/or origins.
  */
 export const createPlaybackRestrictionPolicy: API.OperationMethod<
   CreatePlaybackRestrictionPolicyRequest,
@@ -1970,16 +2551,9 @@ export type CreateRecordingConfigurationError =
 /**
  * Creates a new recording configuration, used to enable recording to Amazon S3.
  *
- * **Known issue:** In the us-east-1 region, if you use the
- * Amazon Web Services CLI to create a recording configuration, it returns success even if the
- * S3 bucket is in a different region. In this case, the `state` of the recording
- * configuration is `CREATE_FAILED` (instead of `ACTIVE`). (In other
- * regions, the CLI correctly returns failure if the bucket is in a different region.)
+ * **Known issue:** In the us-east-1 region, if you use the Amazon Web Services CLI to create a recording configuration, it returns success even if the S3 bucket is in a different region. In this case, the `state` of the recording configuration is `CREATE_FAILED` (instead of `ACTIVE`). (In other regions, the CLI correctly returns failure if the bucket is in a different region.)
  *
- * **Workaround:** Ensure that your S3 bucket is in the same
- * region as the recording configuration. If you create a recording configuration in a different
- * region as your S3 bucket, delete that recording configuration and create a new one with an S3
- * bucket from the correct region.
+ * **Workaround:** Ensure that your S3 bucket is in the same region as the recording configuration. If you create a recording configuration in a different region as your S3 bucket, delete that recording configuration and create a new one with an S3 bucket from the correct region.
  */
 export const createRecordingConfiguration: API.OperationMethod<
   CreateRecordingConfigurationRequest,
@@ -2008,9 +2582,7 @@ export type CreateStreamKeyError =
 /**
  * Creates a stream key, used to initiate a stream, for the specified channel ARN.
  *
- * Note that CreateChannel creates a stream key. If you subsequently use
- * CreateStreamKey on the same channel, it will fail because a stream key already exists and
- * there is a limit of 1 stream key per channel. To reset the stream key on a channel, use DeleteStreamKey and then CreateStreamKey.
+ * Note that CreateChannel creates a stream key. If you subsequently use CreateStreamKey on the same channel, it will fail because a stream key already exists and there is a limit of 1 stream key per channel. To reset the stream key on a channel, use DeleteStreamKey and then CreateStreamKey.
  */
 export const createStreamKey: API.OperationMethod<
   CreateStreamKeyRequest,
@@ -2028,6 +2600,32 @@ export const createStreamKey: API.OperationMethod<
     ValidationException,
   ],
 }));
+export type DeleteAdConfigurationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes the specified ad configuration.
+ */
+export const deleteAdConfiguration: API.OperationMethod<
+  DeleteAdConfigurationRequest,
+  DeleteAdConfigurationResponse,
+  DeleteAdConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteAdConfigurationRequest,
+  output: DeleteAdConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+}));
 export type DeleteChannelError =
   | AccessDeniedException
   | ConflictException
@@ -2038,10 +2636,7 @@ export type DeleteChannelError =
 /**
  * Deletes the specified channel and its associated stream keys.
  *
- * If you try to delete a live channel, you will get an error (409 ConflictException). To
- * delete a channel that is live, call StopStream, wait for the Amazon
- * EventBridge "Stream End" event (to verify that the stream's state is no longer Live), then
- * call DeleteChannel. (See Using EventBridge with Amazon IVS.)
+ * If you try to delete a live channel, you will get an error (409 ConflictException). To delete a channel that is live, call StopStream, wait for the Amazon EventBridge "Stream End" event (to verify that the stream's state is no longer Live), then call DeleteChannel. (See Using EventBridge with Amazon IVS.)
  */
 export const deleteChannel: API.OperationMethod<
   DeleteChannelRequest,
@@ -2066,9 +2661,7 @@ export type DeletePlaybackKeyPairError =
   | ValidationException
   | CommonErrors;
 /**
- * Deletes a specified authorization key pair. This invalidates future viewer tokens
- * generated using the key pair’s `privateKey`. For more information, see Setting Up Private
- * Channels in the *Amazon IVS User Guide*.
+ * Deletes a specified authorization key pair. This invalidates future viewer tokens generated using the key pair’s `privateKey`. For more information, see Setting Up Private Channels in the *Amazon IVS User Guide*.
  */
 export const deletePlaybackKeyPair: API.OperationMethod<
   DeletePlaybackKeyPairRequest,
@@ -2121,11 +2714,7 @@ export type DeleteRecordingConfigurationError =
 /**
  * Deletes the recording configuration for the specified ARN.
  *
- * If you try to delete a recording configuration that is associated with a channel, you will
- * get an error (409 ConflictException). To avoid this, for all channels that reference the
- * recording configuration, first use UpdateChannel to set the
- * `recordingConfigurationArn` field to an empty string, then use
- * DeleteRecordingConfiguration.
+ * If you try to delete a recording configuration that is associated with a channel, you will get an error (409 ConflictException). To avoid this, for all channels that reference the recording configuration, first use UpdateChannel to set the `recordingConfigurationArn` field to an empty string, then use DeleteRecordingConfiguration.
  */
 export const deleteRecordingConfiguration: API.OperationMethod<
   DeleteRecordingConfigurationRequest,
@@ -2150,8 +2739,7 @@ export type DeleteStreamKeyError =
   | ValidationException
   | CommonErrors;
 /**
- * Deletes the stream key for the specified ARN, so it can no longer be used to
- * stream.
+ * Deletes the stream key for the specified ARN, so it can no longer be used to stream.
  */
 export const deleteStreamKey: API.OperationMethod<
   DeleteStreamKeyRequest,
@@ -2164,6 +2752,30 @@ export const deleteStreamKey: API.OperationMethod<
   errors: [
     AccessDeniedException,
     PendingVerification,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+}));
+export type GetAdConfigurationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets the ad configuration represented by the specified ARN.
+ */
+export const getAdConfiguration: API.OperationMethod<
+  GetAdConfigurationRequest,
+  GetAdConfigurationResponse,
+  GetAdConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAdConfigurationRequest,
+  output: GetAdConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
     ResourceNotFoundException,
     ValidationException,
   ],
@@ -2196,11 +2808,7 @@ export type GetPlaybackKeyPairError =
   | ValidationException
   | CommonErrors;
 /**
- * Gets a specified playback authorization key pair and returns the `arn` and
- * `fingerprint`. The `privateKey` held by the caller can be used to
- * generate viewer authorization tokens, to grant viewers access to private channels. For more
- * information, see Setting Up Private Channels in the Amazon IVS User
- * Guide.
+ * Gets a specified playback authorization key pair and returns the `arn` and `fingerprint`. The `privateKey` held by the caller can be used to generate viewer authorization tokens, to grant viewers access to private channels. For more information, see Setting Up Private Channels in the *Amazon IVS User Guide*.
  */
 export const getPlaybackKeyPair: API.OperationMethod<
   GetPlaybackKeyPairRequest,
@@ -2340,11 +2948,7 @@ export type ImportPlaybackKeyPairError =
   | ValidationException
   | CommonErrors;
 /**
- * Imports the public portion of a new key pair and returns its `arn` and
- * `fingerprint`. The `privateKey` can then be used to generate viewer
- * authorization tokens, to grant viewers access to private channels. For more information, see
- * Setting Up
- * Private Channels in the *Amazon IVS User Guide*.
+ * Imports the public portion of a new key pair and returns its `arn` and `fingerprint`. The `privateKey` can then be used to generate viewer authorization tokens, to grant viewers access to private channels. For more information, see Setting Up Private Channels in the *Amazon IVS User Guide*.
  */
 export const importPlaybackKeyPair: API.OperationMethod<
   ImportPlaybackKeyPairRequest,
@@ -2362,16 +2966,84 @@ export const importPlaybackKeyPair: API.OperationMethod<
     ValidationException,
   ],
 }));
+export type InsertAdBreakError =
+  | AccessDeniedException
+  | ChannelNotBroadcasting
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Inserts an ad marker in the playlist for the specified channel and duration using the ad configuration associated with the channel.
+ *
+ * **Note:** AWS Elemental MediaTailor (EMT), the service that handles ad requests, provides CloudWatch metrics to help you monitor the success or failure of each InsertAdBreak operation. See Monitoring AWS Elemental MediaTailor with Amazon CloudWatch metrics in the *AWS Elemental MediaTailor User Guide* for details on available metrics.
+ */
+export const insertAdBreak: API.OperationMethod<
+  InsertAdBreakRequest,
+  InsertAdBreakResponse,
+  InsertAdBreakError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: InsertAdBreakRequest,
+  output: InsertAdBreakResponse,
+  errors: [
+    AccessDeniedException,
+    ChannelNotBroadcasting,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type ListAdConfigurationsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets summary information about all ad configurations in your account, in the AWS region where the API request is processed.
+ */
+export const listAdConfigurations: API.OperationMethod<
+  ListAdConfigurationsRequest,
+  ListAdConfigurationsResponse,
+  ListAdConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAdConfigurationsRequest,
+  ) => stream.Stream<
+    ListAdConfigurationsResponse,
+    ListAdConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAdConfigurationsRequest,
+  ) => stream.Stream<
+    AdConfigurationSummary,
+    ListAdConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAdConfigurationsRequest,
+  output: ListAdConfigurationsResponse,
+  errors: [AccessDeniedException, InternalServerException, ValidationException],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "adConfigurations",
+    pageSize: "maxResults",
+  } as const,
+}));
 export type ListChannelsError =
   | AccessDeniedException
   | ConflictException
   | ValidationException
   | CommonErrors;
 /**
- * Gets summary information about all channels in your account, in the Amazon Web Services
- * region where the API request is processed. This list can be filtered to match a specified name
- * or recording-configuration ARN. Filters are mutually exclusive and cannot be used together. If
- * you try to use both filters, you will get an error (409 ConflictException).
+ * Gets summary information about all channels in your account, in the Amazon Web Services region where the API request is processed. This list can be filtered to match a specified name or recording-configuration ARN. Filters are mutually exclusive and cannot be used together. If you try to use both filters, you will get an error (409 ConflictException).
  */
 export const listChannels: API.OperationMethod<
   ListChannelsRequest,
@@ -2408,8 +3080,7 @@ export type ListPlaybackKeyPairsError =
   | ValidationException
   | CommonErrors;
 /**
- * Gets summary information about playback key pairs. For more information, see Setting Up Private
- * Channels in the *Amazon IVS User Guide*.
+ * Gets summary information about playback key pairs. For more information, see Setting Up Private Channels in the *Amazon IVS User Guide*.
  */
 export const listPlaybackKeyPairs: API.OperationMethod<
   ListPlaybackKeyPairsRequest,
@@ -2491,8 +3162,7 @@ export type ListRecordingConfigurationsError =
   | ValidationException
   | CommonErrors;
 /**
- * Gets summary information about all recording configurations in your account, in the
- * Amazon Web Services region where the API request is processed.
+ * Gets summary information about all recording configurations in your account, in the Amazon Web Services region where the API request is processed.
  */
 export const listRecordingConfigurations: API.OperationMethod<
   ListRecordingConfigurationsRequest,
@@ -2571,8 +3241,7 @@ export type ListStreamsError =
   | ValidationException
   | CommonErrors;
 /**
- * Gets summary information about live streams in your account, in the Amazon Web Services
- * region where the API request is processed.
+ * Gets summary information about live streams in your account, in the Amazon Web Services region where the API request is processed.
  */
 export const listStreams: API.OperationMethod<
   ListStreamsRequest,
@@ -2610,8 +3279,7 @@ export type ListStreamSessionsError =
   | ValidationException
   | CommonErrors;
 /**
- * Gets a summary of current and previous streams for a specified channel in your account, in
- * the AWS region where the API request is processed.
+ * Gets a summary of current and previous streams for a specified channel in your account, in the AWS region where the API request is processed.
  */
 export const listStreamSessions: API.OperationMethod<
   ListStreamSessionsRequest,
@@ -2677,11 +3345,7 @@ export type PutMetadataError =
   | ValidationException
   | CommonErrors;
 /**
- * Inserts metadata into the active stream of the specified channel. At most 5 requests per
- * second per channel are allowed, each with a maximum 1 KB payload. (If 5 TPS is not sufficient
- * for your needs, we recommend batching your data into a single PutMetadata call.) At most 155
- * requests per second per account are allowed. Also see Embedding Metadata within a Video Stream in
- * the *Amazon IVS User Guide*.
+ * Inserts metadata into the active stream of the specified channel. At most 5 requests per second per channel are allowed, each with a maximum 1 KB payload. (If 5 TPS is not sufficient for your needs, we recommend batching your data into a single PutMetadata call.) At most 155 requests per second per account are allowed. Also see Embedding Metadata within a Video Stream in the *Amazon IVS User Guide*.
  */
 export const putMetadata: API.OperationMethod<
   PutMetadataRequest,
@@ -2708,11 +3372,7 @@ export type StartViewerSessionRevocationError =
   | ValidationException
   | CommonErrors;
 /**
- * Starts the process of revoking the viewer session associated with a specified channel ARN
- * and viewer ID. Optionally, you can provide a version to revoke viewer sessions less than and
- * including that version. For instructions on associating a viewer ID with a viewer session, see
- * Setting Up
- * Private Channels.
+ * Starts the process of revoking the viewer session associated with a specified channel ARN and viewer ID. Optionally, you can provide a version to revoke viewer sessions less than and including that version. For instructions on associating a viewer ID with a viewer session, see Setting Up Private Channels.
  */
 export const startViewerSessionRevocation: API.OperationMethod<
   StartViewerSessionRevocationRequest,
@@ -2739,13 +3399,9 @@ export type StopStreamError =
   | ValidationException
   | CommonErrors;
 /**
- * Disconnects the incoming RTMPS stream for the specified channel. Can be used in
- * conjunction with DeleteStreamKey to prevent further streaming to a
- * channel.
+ * Disconnects the incoming RTMPS stream for the specified channel. Can be used in conjunction with DeleteStreamKey to prevent further streaming to a channel.
  *
- * Many streaming client-software libraries automatically reconnect a dropped RTMPS
- * session, so to stop the stream permanently, you may want to first revoke the
- * `streamKey` attached to the channel.
+ * Many streaming client-software libraries automatically reconnect a dropped RTMPS session, so to stop the stream permanently, you may want to first revoke the `streamKey` attached to the channel.
  */
 export const stopStream: API.OperationMethod<
   StopStreamRequest,
@@ -2807,6 +3463,38 @@ export const untagResource: API.OperationMethod<
     ValidationException,
   ],
 }));
+export type UpdateAdConfigurationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | PendingVerification
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates a specified ad configuration.
+ */
+export const updateAdConfiguration: API.OperationMethod<
+  UpdateAdConfigurationRequest,
+  UpdateAdConfigurationResponse,
+  UpdateAdConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateAdConfigurationRequest,
+  output: UpdateAdConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    PendingVerification,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
 export type UpdateChannelError =
   | AccessDeniedException
   | ConflictException
@@ -2815,9 +3503,7 @@ export type UpdateChannelError =
   | ValidationException
   | CommonErrors;
 /**
- * Updates a channel's configuration. Live channels cannot be updated. You must stop the
- * ongoing stream, update the channel, and restart the stream for the changes to take
- * effect.
+ * Updates a channel's configuration. Live channels cannot be updated. You must stop the ongoing stream, update the channel, and restart the stream for the changes to take effect.
  */
 export const updateChannel: API.OperationMethod<
   UpdateChannelRequest,

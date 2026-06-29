@@ -127,6 +127,9 @@ export type PoolStatus = string;
 export type TwoWayChannelArn = string;
 export type OptOutListNameOrArn = string;
 export type RcsAgentStatus = string;
+export type TwoWayMediaS3BucketName = string;
+export type TwoWayMediaS3KeyPrefix = string;
+export type RcsEventType = string;
 export type RegistrationType = string;
 export type RegistrationStatus = string;
 export type RegistrationVersionNumber = number;
@@ -219,11 +222,29 @@ export type MaxPrice = string;
 export type TimeToLive = number;
 export type TemplateVariableName = string;
 export type TemplateVariableValue = string;
+export type RcsMessageOriginationIdentity = string;
+export type RcsTextBody = string;
+export type RcsMediaUrl = string;
+export type RcsCardTitle = string;
+export type RcsCardDescription = string;
+export type RcsSuggestedActionText = string;
+export type RcsPostbackData = string;
+export type RcsOpenUrlValue = string;
+export type RcsLocationLabel = string;
+export type RcsCalendarEventTitle = string;
+export type RcsCalendarEventDescription = string;
+export type RcsTimeToLive = number;
+export type RcsMessageTrafficType = string;
+export type RcsFallbackChannel = string;
+export type RcsFallbackMessageBody = string;
+export type RcsFallbackOriginationIdentity = string;
 export type TextMessageOriginationIdentity = string;
 export type VoiceMessageOriginationIdentity = string;
 export type VoiceMessageBody = string;
 export type VoiceMessageBodyTextType = string;
 export type NotifyPoolIdOrUnset = string;
+export type TwoWayMediaS3BucketNameOrUnset = string;
+export type IamRoleArnOrUnset = string;
 export type VerificationCode = string;
 
 //# Schemas
@@ -699,6 +720,8 @@ export const CreateRcsAgentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRcsAgentRequest",
 }) as any as S.Schema<CreateRcsAgentRequest>;
+export type RcsEventTypeList = string[];
+export const RcsEventTypeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export interface CreateRcsAgentResult {
   RcsAgentArn: string;
   RcsAgentId: string;
@@ -710,6 +733,10 @@ export interface CreateRcsAgentResult {
   TwoWayChannelArn?: string;
   TwoWayChannelRole?: string;
   TwoWayEnabled: boolean;
+  TwoWayMediaS3BucketName?: string;
+  TwoWayMediaS3KeyPrefix?: string;
+  TwoWayMediaS3Role?: string;
+  TwoWayRcsEventsEnabled?: string[];
   Tags?: Tag[];
 }
 export const CreateRcsAgentResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -724,6 +751,10 @@ export const CreateRcsAgentResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     TwoWayChannelArn: S.optional(S.String),
     TwoWayChannelRole: S.optional(S.String),
     TwoWayEnabled: S.Boolean,
+    TwoWayMediaS3BucketName: S.optional(S.String),
+    TwoWayMediaS3KeyPrefix: S.optional(S.String),
+    TwoWayMediaS3Role: S.optional(S.String),
+    TwoWayRcsEventsEnabled: S.optional(RcsEventTypeList),
     Tags: S.optional(TagList),
   }),
 ).annotate({
@@ -1420,6 +1451,7 @@ export interface DeleteRcsAgentResult {
   TwoWayChannelArn?: string;
   TwoWayChannelRole?: string;
   TwoWayEnabled: boolean;
+  TwoWayRcsEventsEnabled?: string[];
 }
 export const DeleteRcsAgentResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1433,10 +1465,29 @@ export const DeleteRcsAgentResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     TwoWayChannelArn: S.optional(S.String),
     TwoWayChannelRole: S.optional(S.String),
     TwoWayEnabled: S.Boolean,
+    TwoWayRcsEventsEnabled: S.optional(RcsEventTypeList),
   }),
 ).annotate({
   identifier: "DeleteRcsAgentResult",
 }) as any as S.Schema<DeleteRcsAgentResult>;
+export interface DeleteRcsMessageSpendLimitOverrideRequest {}
+export const DeleteRcsMessageSpendLimitOverrideRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "DeleteRcsMessageSpendLimitOverrideRequest",
+  }) as any as S.Schema<DeleteRcsMessageSpendLimitOverrideRequest>;
+export interface DeleteRcsMessageSpendLimitOverrideResult {
+  MonthlyLimit?: number;
+}
+export const DeleteRcsMessageSpendLimitOverrideResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ MonthlyLimit: S.optional(S.Number) }),
+  ).annotate({
+    identifier: "DeleteRcsMessageSpendLimitOverrideResult",
+  }) as any as S.Schema<DeleteRcsMessageSpendLimitOverrideResult>;
 export interface DeleteRegistrationRequest {
   RegistrationId: string;
 }
@@ -2592,6 +2643,10 @@ export interface RcsAgentInformation {
   TwoWayChannelRole?: string;
   TwoWayEnabled: boolean;
   PoolId?: string;
+  TwoWayMediaS3BucketName?: string;
+  TwoWayMediaS3KeyPrefix?: string;
+  TwoWayMediaS3Role?: string;
+  TwoWayRcsEventsEnabled?: string[];
   TestingAgent?: TestingAgentInformation;
 }
 export const RcsAgentInformation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2607,6 +2662,10 @@ export const RcsAgentInformation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     TwoWayChannelRole: S.optional(S.String),
     TwoWayEnabled: S.Boolean,
     PoolId: S.optional(S.String),
+    TwoWayMediaS3BucketName: S.optional(S.String),
+    TwoWayMediaS3KeyPrefix: S.optional(S.String),
+    TwoWayMediaS3Role: S.optional(S.String),
+    TwoWayRcsEventsEnabled: S.optional(RcsEventTypeList),
     TestingAgent: S.optional(TestingAgentInformation),
   }),
 ).annotate({
@@ -4560,6 +4619,349 @@ export const SendNotifyVoiceMessageResult =
   ).annotate({
     identifier: "SendNotifyVoiceMessageResult",
   }) as any as S.Schema<SendNotifyVoiceMessageResult>;
+export interface RcsTextMessage {
+  Body: string;
+}
+export const RcsTextMessage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Body: S.String }),
+).annotate({ identifier: "RcsTextMessage" }) as any as S.Schema<RcsTextMessage>;
+export interface RcsFileMessage {
+  FileUrl: string;
+  ThumbnailUrl?: string;
+}
+export const RcsFileMessage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ FileUrl: S.String, ThumbnailUrl: S.optional(S.String) }),
+).annotate({ identifier: "RcsFileMessage" }) as any as S.Schema<RcsFileMessage>;
+export interface RcsCardMedia {
+  FileUrl: string;
+  ThumbnailUrl?: string;
+  Height?: string;
+}
+export const RcsCardMedia = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FileUrl: S.String,
+    ThumbnailUrl: S.optional(S.String),
+    Height: S.optional(S.String),
+  }),
+).annotate({ identifier: "RcsCardMedia" }) as any as S.Schema<RcsCardMedia>;
+export interface RcsReplyAction {
+  Text: string;
+  PostbackData: string;
+}
+export const RcsReplyAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Text: S.String, PostbackData: S.String }),
+).annotate({ identifier: "RcsReplyAction" }) as any as S.Schema<RcsReplyAction>;
+export interface RcsOpenUrlAction {
+  Text: string;
+  PostbackData: string;
+  Url: string;
+  Application?: string;
+  WebviewViewMode?: string;
+}
+export const RcsOpenUrlAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Text: S.String,
+    PostbackData: S.String,
+    Url: S.String,
+    Application: S.optional(S.String),
+    WebviewViewMode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RcsOpenUrlAction",
+}) as any as S.Schema<RcsOpenUrlAction>;
+export interface RcsDialPhoneAction {
+  Text: string;
+  PostbackData: string;
+  PhoneNumber: string;
+}
+export const RcsDialPhoneAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Text: S.String, PostbackData: S.String, PhoneNumber: S.String }),
+).annotate({
+  identifier: "RcsDialPhoneAction",
+}) as any as S.Schema<RcsDialPhoneAction>;
+export interface RcsShowLocationAction {
+  Text: string;
+  PostbackData: string;
+  Latitude: number;
+  Longitude: number;
+  Label?: string;
+}
+export const RcsShowLocationAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Text: S.String,
+    PostbackData: S.String,
+    Latitude: S.Number,
+    Longitude: S.Number,
+    Label: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RcsShowLocationAction",
+}) as any as S.Schema<RcsShowLocationAction>;
+export interface RcsRequestLocationAction {
+  Text: string;
+  PostbackData: string;
+}
+export const RcsRequestLocationAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ Text: S.String, PostbackData: S.String }),
+).annotate({
+  identifier: "RcsRequestLocationAction",
+}) as any as S.Schema<RcsRequestLocationAction>;
+export interface RcsCreateCalendarEventAction {
+  Text: string;
+  PostbackData: string;
+  Title: string;
+  StartTime: Date;
+  EndTime: Date;
+  Description?: string;
+}
+export const RcsCreateCalendarEventAction =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Text: S.String,
+      PostbackData: S.String,
+      Title: S.String,
+      StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      Description: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RcsCreateCalendarEventAction",
+  }) as any as S.Schema<RcsCreateCalendarEventAction>;
+export type RcsSuggestedAction =
+  | {
+      Reply: RcsReplyAction;
+      OpenUrl?: never;
+      DialPhone?: never;
+      ShowLocation?: never;
+      RequestLocation?: never;
+      CreateCalendarEvent?: never;
+    }
+  | {
+      Reply?: never;
+      OpenUrl: RcsOpenUrlAction;
+      DialPhone?: never;
+      ShowLocation?: never;
+      RequestLocation?: never;
+      CreateCalendarEvent?: never;
+    }
+  | {
+      Reply?: never;
+      OpenUrl?: never;
+      DialPhone: RcsDialPhoneAction;
+      ShowLocation?: never;
+      RequestLocation?: never;
+      CreateCalendarEvent?: never;
+    }
+  | {
+      Reply?: never;
+      OpenUrl?: never;
+      DialPhone?: never;
+      ShowLocation: RcsShowLocationAction;
+      RequestLocation?: never;
+      CreateCalendarEvent?: never;
+    }
+  | {
+      Reply?: never;
+      OpenUrl?: never;
+      DialPhone?: never;
+      ShowLocation?: never;
+      RequestLocation: RcsRequestLocationAction;
+      CreateCalendarEvent?: never;
+    }
+  | {
+      Reply?: never;
+      OpenUrl?: never;
+      DialPhone?: never;
+      ShowLocation?: never;
+      RequestLocation?: never;
+      CreateCalendarEvent: RcsCreateCalendarEventAction;
+    };
+export const RcsSuggestedAction = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ Reply: RcsReplyAction }),
+  S.Struct({ OpenUrl: RcsOpenUrlAction }),
+  S.Struct({ DialPhone: RcsDialPhoneAction }),
+  S.Struct({ ShowLocation: RcsShowLocationAction }),
+  S.Struct({ RequestLocation: RcsRequestLocationAction }),
+  S.Struct({ CreateCalendarEvent: RcsCreateCalendarEventAction }),
+]);
+export type RcsCardSuggestedActionList = RcsSuggestedAction[];
+export const RcsCardSuggestedActionList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(RcsSuggestedAction);
+export interface RcsCardContent {
+  Title?: string;
+  Description?: string;
+  Media?: RcsCardMedia;
+  Suggestions?: RcsSuggestedAction[];
+}
+export const RcsCardContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Title: S.optional(S.String),
+    Description: S.optional(S.String),
+    Media: S.optional(RcsCardMedia),
+    Suggestions: S.optional(RcsCardSuggestedActionList),
+  }),
+).annotate({ identifier: "RcsCardContent" }) as any as S.Schema<RcsCardContent>;
+export interface RcsStandaloneCard {
+  CardOrientation: string;
+  ThumbnailImageAlignment?: string;
+  CardContent: RcsCardContent;
+}
+export const RcsStandaloneCard = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CardOrientation: S.String,
+    ThumbnailImageAlignment: S.optional(S.String),
+    CardContent: RcsCardContent,
+  }),
+).annotate({
+  identifier: "RcsStandaloneCard",
+}) as any as S.Schema<RcsStandaloneCard>;
+export interface RcsCarouselCardMedia {
+  FileUrl: string;
+  ThumbnailUrl?: string;
+  Height?: string;
+}
+export const RcsCarouselCardMedia = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FileUrl: S.String,
+    ThumbnailUrl: S.optional(S.String),
+    Height: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RcsCarouselCardMedia",
+}) as any as S.Schema<RcsCarouselCardMedia>;
+export interface RcsCarouselCardContent {
+  Title?: string;
+  Description?: string;
+  Media?: RcsCarouselCardMedia;
+  Suggestions?: RcsSuggestedAction[];
+}
+export const RcsCarouselCardContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Title: S.optional(S.String),
+      Description: S.optional(S.String),
+      Media: S.optional(RcsCarouselCardMedia),
+      Suggestions: S.optional(RcsCardSuggestedActionList),
+    }),
+).annotate({
+  identifier: "RcsCarouselCardContent",
+}) as any as S.Schema<RcsCarouselCardContent>;
+export type RcsCarouselCardContentList = RcsCarouselCardContent[];
+export const RcsCarouselCardContentList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  RcsCarouselCardContent,
+);
+export interface RcsCarousel {
+  CardWidth: string;
+  CardContents: RcsCarouselCardContent[];
+}
+export const RcsCarousel = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ CardWidth: S.String, CardContents: RcsCarouselCardContentList }),
+).annotate({ identifier: "RcsCarousel" }) as any as S.Schema<RcsCarousel>;
+export type RcsContent =
+  | {
+      TextMessage: RcsTextMessage;
+      FileMessage?: never;
+      RichCard?: never;
+      Carousel?: never;
+    }
+  | {
+      TextMessage?: never;
+      FileMessage: RcsFileMessage;
+      RichCard?: never;
+      Carousel?: never;
+    }
+  | {
+      TextMessage?: never;
+      FileMessage?: never;
+      RichCard: RcsStandaloneCard;
+      Carousel?: never;
+    }
+  | {
+      TextMessage?: never;
+      FileMessage?: never;
+      RichCard?: never;
+      Carousel: RcsCarousel;
+    };
+export const RcsContent = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ TextMessage: RcsTextMessage }),
+  S.Struct({ FileMessage: RcsFileMessage }),
+  S.Struct({ RichCard: RcsStandaloneCard }),
+  S.Struct({ Carousel: RcsCarousel }),
+]);
+export type RcsSuggestedActionList = RcsSuggestedAction[];
+export const RcsSuggestedActionList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(RcsSuggestedAction);
+export interface RcsMessageContent {
+  Content: RcsContent;
+  Suggestions?: RcsSuggestedAction[];
+}
+export const RcsMessageContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Content: RcsContent,
+    Suggestions: S.optional(RcsSuggestedActionList),
+  }),
+).annotate({
+  identifier: "RcsMessageContent",
+}) as any as S.Schema<RcsMessageContent>;
+export interface RcsFallbackConfiguration {
+  Channel: string;
+  MessageBody?: string;
+  MediaUrls?: string[];
+  OriginationIdentity?: string;
+}
+export const RcsFallbackConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Channel: S.String,
+      MessageBody: S.optional(S.String),
+      MediaUrls: S.optional(MediaUrlList),
+      OriginationIdentity: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "RcsFallbackConfiguration",
+}) as any as S.Schema<RcsFallbackConfiguration>;
+export interface SendRcsMessageRequest {
+  DestinationPhoneNumber: string;
+  OriginationIdentity: string;
+  RcsMessageContent?: RcsMessageContent;
+  TimeToLive?: number;
+  MessageTrafficType?: string;
+  FallbackConfiguration?: RcsFallbackConfiguration;
+  ProtectConfigurationId?: string;
+  ConfigurationSetName?: string;
+  MaxPrice?: string;
+  DryRun?: boolean;
+  Context?: { [key: string]: string | undefined };
+  MessageFeedbackEnabled?: boolean;
+}
+export const SendRcsMessageRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DestinationPhoneNumber: S.String,
+    OriginationIdentity: S.String,
+    RcsMessageContent: S.optional(RcsMessageContent),
+    TimeToLive: S.optional(S.Number),
+    MessageTrafficType: S.optional(S.String),
+    FallbackConfiguration: S.optional(RcsFallbackConfiguration),
+    ProtectConfigurationId: S.optional(S.String),
+    ConfigurationSetName: S.optional(S.String),
+    MaxPrice: S.optional(S.String),
+    DryRun: S.optional(S.Boolean),
+    Context: S.optional(ContextMap),
+    MessageFeedbackEnabled: S.optional(S.Boolean),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "SendRcsMessageRequest",
+}) as any as S.Schema<SendRcsMessageRequest>;
+export interface SendRcsMessageResult {
+  MessageId?: string;
+}
+export const SendRcsMessageResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ MessageId: S.optional(S.String) }),
+).annotate({
+  identifier: "SendRcsMessageResult",
+}) as any as S.Schema<SendRcsMessageResult>;
 export interface SendTextMessageRequest {
   DestinationPhoneNumber: string;
   OriginationIdentity?: string;
@@ -4796,6 +5198,26 @@ export const SetNotifyMessageSpendLimitOverrideResult =
   ).annotate({
     identifier: "SetNotifyMessageSpendLimitOverrideResult",
   }) as any as S.Schema<SetNotifyMessageSpendLimitOverrideResult>;
+export interface SetRcsMessageSpendLimitOverrideRequest {
+  MonthlyLimit: number;
+}
+export const SetRcsMessageSpendLimitOverrideRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ MonthlyLimit: S.Number }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "SetRcsMessageSpendLimitOverrideRequest",
+  }) as any as S.Schema<SetRcsMessageSpendLimitOverrideRequest>;
+export interface SetRcsMessageSpendLimitOverrideResult {
+  MonthlyLimit?: number;
+}
+export const SetRcsMessageSpendLimitOverrideResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ MonthlyLimit: S.optional(S.Number) }),
+  ).annotate({
+    identifier: "SetRcsMessageSpendLimitOverrideResult",
+  }) as any as S.Schema<SetRcsMessageSpendLimitOverrideResult>;
 export interface SetTextMessageSpendLimitOverrideRequest {
   MonthlyLimit: number;
 }
@@ -5224,6 +5646,10 @@ export interface UpdateRcsAgentRequest {
   TwoWayChannelArn?: string;
   TwoWayChannelRole?: string;
   TwoWayEnabled?: boolean;
+  TwoWayMediaS3BucketName?: string;
+  TwoWayMediaS3KeyPrefix?: string;
+  TwoWayMediaS3Role?: string;
+  TwoWayRcsEventsEnabled?: string[];
 }
 export const UpdateRcsAgentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5234,6 +5660,10 @@ export const UpdateRcsAgentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     TwoWayChannelArn: S.optional(S.String),
     TwoWayChannelRole: S.optional(S.String),
     TwoWayEnabled: S.optional(S.Boolean),
+    TwoWayMediaS3BucketName: S.optional(S.String),
+    TwoWayMediaS3KeyPrefix: S.optional(S.String),
+    TwoWayMediaS3Role: S.optional(S.String),
+    TwoWayRcsEventsEnabled: S.optional(RcsEventTypeList),
   }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -5251,6 +5681,10 @@ export interface UpdateRcsAgentResult {
   TwoWayChannelArn?: string;
   TwoWayChannelRole?: string;
   TwoWayEnabled: boolean;
+  TwoWayMediaS3BucketName?: string;
+  TwoWayMediaS3KeyPrefix?: string;
+  TwoWayMediaS3Role?: string;
+  TwoWayRcsEventsEnabled?: string[];
 }
 export const UpdateRcsAgentResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5264,6 +5698,10 @@ export const UpdateRcsAgentResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     TwoWayChannelArn: S.optional(S.String),
     TwoWayChannelRole: S.optional(S.String),
     TwoWayEnabled: S.Boolean,
+    TwoWayMediaS3BucketName: S.optional(S.String),
+    TwoWayMediaS3KeyPrefix: S.optional(S.String),
+    TwoWayMediaS3Role: S.optional(S.String),
+    TwoWayRcsEventsEnabled: S.optional(RcsEventTypeList),
   }),
 ).annotate({
   identifier: "UpdateRcsAgentResult",
@@ -6267,6 +6705,30 @@ export const deleteRcsAgent: API.OperationMethod<
     ConflictException,
     InternalServerException,
     ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type DeleteRcsMessageSpendLimitOverrideError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes an account-level monthly spending limit override for sending RCS messages. Deleting a spend limit override sets the `EnforcedLimit` to equal the `MaxLimit`, which is set by Amazon Web Services.
+ */
+export const deleteRcsMessageSpendLimitOverride: API.OperationMethod<
+  DeleteRcsMessageSpendLimitOverrideRequest,
+  DeleteRcsMessageSpendLimitOverrideResult,
+  DeleteRcsMessageSpendLimitOverrideError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteRcsMessageSpendLimitOverrideRequest,
+  output: DeleteRcsMessageSpendLimitOverrideResult,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
     ThrottlingException,
     ValidationException,
   ],
@@ -8334,6 +8796,36 @@ export const sendNotifyVoiceMessage: API.OperationMethod<
     ValidationException,
   ],
 }));
+export type SendRcsMessageError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new RCS message and sends it to a recipient's phone number. RCS messages support rich content including text, files, rich cards, and carousels with interactive suggested actions.
+ */
+export const sendRcsMessage: API.OperationMethod<
+  SendRcsMessageRequest,
+  SendRcsMessageResult,
+  SendRcsMessageError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SendRcsMessageRequest,
+  output: SendRcsMessageResult,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
 export type SendTextMessageError =
   | AccessDeniedException
   | ConflictException
@@ -8545,6 +9037,30 @@ export const setNotifyMessageSpendLimitOverride: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetNotifyMessageSpendLimitOverrideRequest,
   output: SetNotifyMessageSpendLimitOverrideResult,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type SetRcsMessageSpendLimitOverrideError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Sets an account level monthly spend limit override for sending RCS messages. The requested spend limit must be less than or equal to the `MaxLimit`, which is set by Amazon Web Services.
+ */
+export const setRcsMessageSpendLimitOverride: API.OperationMethod<
+  SetRcsMessageSpendLimitOverrideRequest,
+  SetRcsMessageSpendLimitOverrideResult,
+  SetRcsMessageSpendLimitOverrideError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SetRcsMessageSpendLimitOverrideRequest,
+  output: SetRcsMessageSpendLimitOverrideResult,
   errors: [
     AccessDeniedException,
     InternalServerException,

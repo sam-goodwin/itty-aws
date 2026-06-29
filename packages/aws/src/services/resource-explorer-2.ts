@@ -92,6 +92,7 @@ export type IndexType = string;
 export type IndexState = string;
 export type OperationStatus = string;
 export type ServiceViewName = string;
+export type RecorderType = string;
 export type AccountId = string;
 export type QueryString = string | redacted.Redacted<string>;
 
@@ -541,6 +542,21 @@ export const GetServiceViewInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetServiceViewInput",
 }) as any as S.Schema<GetServiceViewInput>;
+export interface ServiceLinkedRecorderInfo {
+  ServicePrincipal?: string;
+  RecorderName?: string;
+  RecorderType?: string;
+}
+export const ServiceLinkedRecorderInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ServicePrincipal: S.optional(S.String),
+      RecorderName: S.optional(S.String),
+      RecorderType: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ServiceLinkedRecorderInfo",
+}) as any as S.Schema<ServiceLinkedRecorderInfo>;
 export interface ServiceView {
   ServiceViewArn: string;
   ServiceViewName?: string;
@@ -548,6 +564,7 @@ export interface ServiceView {
   IncludedProperties?: IncludedProperty[];
   StreamingAccessForService?: string;
   ScopeType?: string;
+  ServiceLinkedRecorder?: ServiceLinkedRecorderInfo;
 }
 export const ServiceView = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -557,6 +574,7 @@ export const ServiceView = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     IncludedProperties: S.optional(IncludedPropertyList),
     StreamingAccessForService: S.optional(S.String),
     ScopeType: S.optional(S.String),
+    ServiceLinkedRecorder: S.optional(ServiceLinkedRecorderInfo),
   }),
 ).annotate({ identifier: "ServiceView" }) as any as S.Schema<ServiceView>;
 export interface GetServiceViewOutput {
@@ -710,6 +728,7 @@ export interface Resource {
   Region?: string;
   ResourceType?: string;
   Service?: string;
+  CfnResourceType?: string;
   LastReportedAt?: Date;
   Properties?: ResourceProperty[];
 }
@@ -720,6 +739,7 @@ export const Resource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Region: S.optional(S.String),
     ResourceType: S.optional(S.String),
     Service: S.optional(S.String),
+    CfnResourceType: S.optional(S.String),
     LastReportedAt: S.optional(
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
@@ -891,14 +911,20 @@ export const ListSupportedResourceTypesInput =
   ).annotate({
     identifier: "ListSupportedResourceTypesInput",
   }) as any as S.Schema<ListSupportedResourceTypesInput>;
+export type CFNResourceTypeList = string[];
+export const CFNResourceTypeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
 export interface SupportedResourceType {
   Service?: string;
   ResourceType?: string;
+  CFNResourceTypes?: string[];
 }
 export const SupportedResourceType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     Service: S.optional(S.String),
     ResourceType: S.optional(S.String),
+    CFNResourceTypes: S.optional(CFNResourceTypeList),
   }),
 ).annotate({
   identifier: "SupportedResourceType",

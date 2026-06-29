@@ -89,6 +89,7 @@ export type Region = string;
 export type SourceFilterString = string;
 export type LogsFilterString = string;
 export type DataSourceFilterString = string;
+export type MetricsFilterString = string;
 export type AccountIdentifier = string;
 export type ResourceArn = string;
 export type LogGroupNamePattern = string;
@@ -135,10 +136,19 @@ export const SourceLogsConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "SourceLogsConfiguration",
 }) as any as S.Schema<SourceLogsConfiguration>;
+export interface SourceMetricsConfiguration {
+  MetricsSelectionCriteria?: string;
+}
+export const SourceMetricsConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ MetricsSelectionCriteria: S.optional(S.String) }),
+).annotate({
+  identifier: "SourceMetricsConfiguration",
+}) as any as S.Schema<SourceMetricsConfiguration>;
 export interface CentralizationRuleSource {
   Regions: string[];
   Scope?: string;
   SourceLogsConfiguration?: SourceLogsConfiguration;
+  SourceMetricsConfiguration?: SourceMetricsConfiguration;
 }
 export const CentralizationRuleSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -146,6 +156,7 @@ export const CentralizationRuleSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       Regions: Regions,
       Scope: S.optional(S.String),
       SourceLogsConfiguration: S.optional(SourceLogsConfiguration),
+      SourceMetricsConfiguration: S.optional(SourceMetricsConfiguration),
     }),
 ).annotate({
   identifier: "CentralizationRuleSource",
@@ -210,10 +221,28 @@ export const DestinationLogsConfiguration =
   ).annotate({
     identifier: "DestinationLogsConfiguration",
   }) as any as S.Schema<DestinationLogsConfiguration>;
+export interface MetricsBackupConfiguration {
+  Region: string;
+}
+export const MetricsBackupConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ Region: S.String }),
+).annotate({
+  identifier: "MetricsBackupConfiguration",
+}) as any as S.Schema<MetricsBackupConfiguration>;
+export interface DestinationMetricsConfiguration {
+  BackupConfiguration?: MetricsBackupConfiguration;
+}
+export const DestinationMetricsConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ BackupConfiguration: S.optional(MetricsBackupConfiguration) }),
+  ).annotate({
+    identifier: "DestinationMetricsConfiguration",
+  }) as any as S.Schema<DestinationMetricsConfiguration>;
 export interface CentralizationRuleDestination {
   Region: string;
   Account?: string;
   DestinationLogsConfiguration?: DestinationLogsConfiguration;
+  DestinationMetricsConfiguration?: DestinationMetricsConfiguration;
 }
 export const CentralizationRuleDestination =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -221,6 +250,9 @@ export const CentralizationRuleDestination =
       Region: S.String,
       Account: S.optional(S.String),
       DestinationLogsConfiguration: S.optional(DestinationLogsConfiguration),
+      DestinationMetricsConfiguration: S.optional(
+        DestinationMetricsConfiguration,
+      ),
     }),
   ).annotate({
     identifier: "CentralizationRuleDestination",
@@ -356,8 +388,12 @@ export type ResourceType =
   | "AWS::BedrockAgentCore::CodeInterpreter"
   | "AWS::BedrockAgentCore::Gateway"
   | "AWS::BedrockAgentCore::Memory"
+  | "AWS::BedrockAgentCore::WorkloadIdentity"
   | "AWS::SecurityHub::Hub"
   | "AWS::CloudFront::Distribution"
+  | "AWS::SecurityHub::HubV2"
+  | "AWS::CloudWatch::OTelEnrichment"
+  | "AWS::MSK::Cluster"
   | (string & {});
 export const ResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type TelemetryType = "Logs" | "Metrics" | "Traces" | (string & {});
@@ -576,6 +612,22 @@ export const LogDeliveryParameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LogDeliveryParameters",
 }) as any as S.Schema<LogDeliveryParameters>;
+export type MskEnhancedMonitoringLevel =
+  | "DEFAULT"
+  | "PER_BROKER"
+  | "PER_TOPIC_PER_BROKER"
+  | "PER_TOPIC_PER_PARTITION"
+  | (string & {});
+export const MskEnhancedMonitoringLevel = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface MskMonitoringParameters {
+  EnhancedMonitoring?: MskEnhancedMonitoringLevel;
+}
+export const MskMonitoringParameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ EnhancedMonitoring: S.optional(MskEnhancedMonitoringLevel) }),
+).annotate({
+  identifier: "MskMonitoringParameters",
+}) as any as S.Schema<MskMonitoringParameters>;
 export interface TelemetryDestinationConfiguration {
   DestinationType?: DestinationType;
   DestinationPattern?: string;
@@ -585,6 +637,7 @@ export interface TelemetryDestinationConfiguration {
   ELBLoadBalancerLoggingParameters?: ELBLoadBalancerLoggingParameters;
   WAFLoggingParameters?: WAFLoggingParameters;
   LogDeliveryParameters?: LogDeliveryParameters;
+  MskMonitoringParameters?: MskMonitoringParameters;
 }
 export const TelemetryDestinationConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -599,6 +652,7 @@ export const TelemetryDestinationConfiguration =
       ),
       WAFLoggingParameters: S.optional(WAFLoggingParameters),
       LogDeliveryParameters: S.optional(LogDeliveryParameters),
+      MskMonitoringParameters: S.optional(MskMonitoringParameters),
     }),
   ).annotate({
     identifier: "TelemetryDestinationConfiguration",
@@ -610,6 +664,7 @@ export interface TelemetryRule {
   DestinationConfiguration?: TelemetryDestinationConfiguration;
   Scope?: string;
   SelectionCriteria?: string;
+  AllowFieldUpdates?: boolean;
   Regions?: string[];
   AllRegions?: boolean;
 }
@@ -621,6 +676,7 @@ export const TelemetryRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     DestinationConfiguration: S.optional(TelemetryDestinationConfiguration),
     Scope: S.optional(S.String),
     SelectionCriteria: S.optional(S.String),
+    AllowFieldUpdates: S.optional(S.Boolean),
     Regions: S.optional(Regions),
     AllRegions: S.optional(S.Boolean),
   }),

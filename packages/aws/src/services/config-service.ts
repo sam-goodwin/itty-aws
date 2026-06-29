@@ -1983,11 +1983,18 @@ export const DescribeConfigRuleEvaluationStatusResponse =
   }) as any as S.Schema<DescribeConfigRuleEvaluationStatusResponse>;
 export type EvaluationMode = "DETECTIVE" | "PROACTIVE" | (string & {});
 export const EvaluationMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type RuleEvaluationVisibility = "EXTERNAL" | "INTERNAL" | (string & {});
+export const RuleEvaluationVisibility = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface DescribeConfigRulesFilters {
   EvaluationMode?: EvaluationMode;
+  RuleEvaluationVisibility?: RuleEvaluationVisibility;
 }
 export const DescribeConfigRulesFilters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ EvaluationMode: S.optional(EvaluationMode) }),
+  () =>
+    S.Struct({
+      EvaluationMode: S.optional(EvaluationMode),
+      RuleEvaluationVisibility: S.optional(RuleEvaluationVisibility),
+    }),
 ).annotate({
   identifier: "DescribeConfigRulesFilters",
 }) as any as S.Schema<DescribeConfigRulesFilters>;
@@ -2020,11 +2027,14 @@ export type ComplianceResourceTypes = string[];
 export const ComplianceResourceTypes = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   S.String,
 );
+export type ServicePrincipals = string[];
+export const ServicePrincipals = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export interface Scope {
   ComplianceResourceTypes?: string[];
   TagKey?: string;
   TagValue?: string;
   ComplianceResourceId?: string;
+  ServicePrincipals?: string[];
 }
 export const Scope = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2032,6 +2042,7 @@ export const Scope = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     TagKey: S.optional(S.String),
     TagValue: S.optional(S.String),
     ComplianceResourceId: S.optional(S.String),
+    ServicePrincipals: S.optional(ServicePrincipals),
   }),
 ).annotate({ identifier: "Scope" }) as any as S.Schema<Scope>;
 export type Owner = "CUSTOM_LAMBDA" | "AWS" | "CUSTOM_POLICY" | (string & {});
@@ -2127,6 +2138,7 @@ export interface ConfigRule {
   ConfigRuleState?: ConfigRuleState;
   CreatedBy?: string;
   EvaluationModes?: EvaluationModeConfiguration[];
+  RuleEvaluationVisibility?: RuleEvaluationVisibility;
 }
 export const ConfigRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2141,6 +2153,7 @@ export const ConfigRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ConfigRuleState: S.optional(ConfigRuleState),
     CreatedBy: S.optional(S.String),
     EvaluationModes: S.optional(EvaluationModes),
+    RuleEvaluationVisibility: S.optional(RuleEvaluationVisibility),
   }),
 ).annotate({ identifier: "ConfigRule" }) as any as S.Schema<ConfigRule>;
 export type ConfigRules = ConfigRule[];

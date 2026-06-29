@@ -119,6 +119,11 @@ export type NonEmptySensitiveString = string | redacted.Redacted<string>;
 export type RecommendationTriggerType = string;
 export type RecommendationSourceType = string;
 export type QueryText = string | redacted.Redacted<string>;
+export type AIPromptType = string;
+export type ModelLifecycle = string;
+export type ModelId = string;
+export type ModelDisplayName = string;
+export type CrossRegionStatus = string;
 export type NotifyRecommendationsReceivedErrorMessage = string;
 export type TargetType = string;
 export type Relevance = string;
@@ -159,7 +164,6 @@ export type GuardrailContextualGroundingFilterType =
   | string
   | redacted.Redacted<string>;
 export type GuardrailContextualGroundingFilterThreshold = number;
-export type AIPromptType = string;
 export type TextAIPrompt = string | redacted.Redacted<string>;
 export type AIPromptTemplateType = string;
 export type AIPromptModelIdentifier = string;
@@ -178,6 +182,9 @@ export type MessageFilterType = string;
 export type SpanType = string;
 export type SpanStatus = string;
 export type ArnWithQualifier = string;
+export type GuardrailSource = string;
+export type GuardrailAction = string;
+export type GuardrailPolicyType = string;
 export type SessionDataNamespace = string;
 export type KnowledgeBaseType = string;
 export type WebUrl = string;
@@ -1203,6 +1210,76 @@ export const GetRecommendationsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetRecommendationsResponse",
 }) as any as S.Schema<GetRecommendationsResponse>;
+export interface ListModelsRequest {
+  assistantId: string;
+  aiPromptType?: string;
+  modelLifecycle?: string;
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListModelsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assistantId: S.String.pipe(T.HttpLabel("assistantId")),
+    aiPromptType: S.optional(S.String).pipe(T.HttpQuery("aiPromptType")),
+    modelLifecycle: S.optional(S.String).pipe(T.HttpQuery("modelLifecycle")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/assistants/{assistantId}/models" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListModelsRequest",
+}) as any as S.Schema<ListModelsRequest>;
+export type AIPromptTypeList = string[];
+export const AIPromptTypeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface ModelSummary {
+  modelId: string;
+  displayName: string;
+  crossRegionStatus?: string;
+  supportsPromptCaching?: boolean;
+  supportedAIPromptTypes?: string[];
+  modelLifecycle?: string;
+  legacyTimestamp?: Date;
+  endOfLifeTimestamp?: Date;
+}
+export const ModelSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    modelId: S.String,
+    displayName: S.String,
+    crossRegionStatus: S.optional(S.String),
+    supportsPromptCaching: S.optional(S.Boolean),
+    supportedAIPromptTypes: S.optional(AIPromptTypeList),
+    modelLifecycle: S.optional(S.String),
+    legacyTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    endOfLifeTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }),
+).annotate({ identifier: "ModelSummary" }) as any as S.Schema<ModelSummary>;
+export type ModelSummaryList = ModelSummary[];
+export const ModelSummaryList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ModelSummary);
+export interface ListModelsResponse {
+  modelSummaries: ModelSummary[];
+  nextToken?: string;
+}
+export const ListModelsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    modelSummaries: ModelSummaryList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListModelsResponse",
+}) as any as S.Schema<ListModelsResponse>;
 export interface NotifyRecommendationsReceivedRequest {
   assistantId: string;
   sessionId: string;
@@ -4512,10 +4589,39 @@ export const SpanToolResultValue = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SpanToolResultValue",
 }) as any as S.Schema<SpanToolResultValue>;
+export interface SpanReasoningValue {
+  value: string | redacted.Redacted<string>;
+}
+export const SpanReasoningValue = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ value: SensitiveString }),
+).annotate({
+  identifier: "SpanReasoningValue",
+}) as any as S.Schema<SpanReasoningValue>;
 export type SpanMessageValue =
-  | { text: SpanTextValue; toolUse?: never; toolResult?: never }
-  | { text?: never; toolUse: SpanToolUseValue; toolResult?: never }
-  | { text?: never; toolUse?: never; toolResult: SpanToolResultValue };
+  | {
+      text: SpanTextValue;
+      toolUse?: never;
+      toolResult?: never;
+      reasoning?: never;
+    }
+  | {
+      text?: never;
+      toolUse: SpanToolUseValue;
+      toolResult?: never;
+      reasoning?: never;
+    }
+  | {
+      text?: never;
+      toolUse?: never;
+      toolResult: SpanToolResultValue;
+      reasoning?: never;
+    }
+  | {
+      text?: never;
+      toolUse?: never;
+      toolResult?: never;
+      reasoning: SpanReasoningValue;
+    };
 export const SpanMessageValue = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ text: SpanTextValue }),
   S.Struct({ toolUse: SpanToolUseValue }),
@@ -4524,6 +4630,7 @@ export const SpanMessageValue = /*@__PURE__*/ /*#__PURE__*/ S.Union([
       (): S.Schema<SpanToolResultValue> => SpanToolResultValue,
     ).annotate({ identifier: "SpanToolResultValue" }),
   }),
+  S.Struct({ reasoning: SpanReasoningValue }),
 ]) as any as S.Schema<SpanMessageValue>;
 export type SpanMessageValueList = SpanMessageValue[];
 export const SpanMessageValueList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
@@ -4547,6 +4654,47 @@ export const SpanMessage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SpanMessage" }) as any as S.Schema<SpanMessage>;
 export type SpanMessageList = SpanMessage[];
 export const SpanMessageList = /*@__PURE__*/ /*#__PURE__*/ S.Array(SpanMessage);
+export interface GuardrailPolicyResult {
+  policyType: string;
+  action: string;
+  details?: string;
+}
+export const GuardrailPolicyResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyType: S.String,
+    action: S.String,
+    details: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GuardrailPolicyResult",
+}) as any as S.Schema<GuardrailPolicyResult>;
+export type GuardrailPolicyResultList = GuardrailPolicyResult[];
+export const GuardrailPolicyResultList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  GuardrailPolicyResult,
+);
+export interface SpanGuardrailAssessment {
+  guardrailId: string;
+  guardrailName: string;
+  source: string;
+  action: string;
+  policies?: GuardrailPolicyResult[];
+}
+export const SpanGuardrailAssessment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      guardrailId: S.String,
+      guardrailName: S.String,
+      source: S.String,
+      action: S.String,
+      policies: S.optional(GuardrailPolicyResultList),
+    }),
+).annotate({
+  identifier: "SpanGuardrailAssessment",
+}) as any as S.Schema<SpanGuardrailAssessment>;
+export type SpanGuardrailAssessmentList = SpanGuardrailAssessment[];
+export const SpanGuardrailAssessmentList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  SpanGuardrailAssessment,
+);
 export interface SpanAttributes {
   operationName?: string;
   providerName?: string;
@@ -4582,6 +4730,8 @@ export interface SpanAttributes {
   promptType?: string;
   promptName?: string;
   promptVersion?: number;
+  timeToFirstTokenMs?: number;
+  guardrailAssessments?: SpanGuardrailAssessment[];
 }
 export const SpanAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4619,6 +4769,8 @@ export const SpanAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     promptType: S.optional(S.String),
     promptName: S.optional(S.String),
     promptVersion: S.optional(S.Number),
+    timeToFirstTokenMs: S.optional(S.Number),
+    guardrailAssessments: S.optional(SpanGuardrailAssessmentList),
   }),
 ).annotate({ identifier: "SpanAttributes" }) as any as S.Schema<SpanAttributes>;
 export interface Span {
@@ -4631,6 +4783,7 @@ export interface Span {
   startTimestamp: Date;
   endTimestamp: Date;
   status: string;
+  statusDescription?: string;
   requestId: string;
   originRequestId?: string;
   attributes: SpanAttributes;
@@ -4646,6 +4799,7 @@ export const Span = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     startTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     endTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     status: S.String,
+    statusDescription: S.optional(S.String),
     requestId: S.String,
     originRequestId: S.optional(S.String),
     attributes: SpanAttributes,
@@ -8022,16 +8176,16 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
   "ValidationException",
   { message: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
-export class RequestTimeoutException extends S.TaggedErrorClass<RequestTimeoutException>()(
-  "RequestTimeoutException",
-  { message: S.optional(S.String) },
-  T.Retryable(),
-).pipe(C.withTimeoutError, C.withRetryableError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.optional(S.String) },
   T.Retryable(),
 ).pipe(C.withBadRequestError, C.withRetryableError) {}
+export class RequestTimeoutException extends S.TaggedErrorClass<RequestTimeoutException>()(
+  "RequestTimeoutException",
+  { message: S.optional(S.String) },
+  T.Retryable(),
+).pipe(C.withTimeoutError, C.withRetryableError) {}
 export class DependencyFailedException extends S.TaggedErrorClass<DependencyFailedException>()(
   "DependencyFailedException",
   { message: S.optional(S.String) },
@@ -8227,6 +8381,55 @@ export const getRecommendations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+}));
+export type ListModelsError =
+  | AccessDeniedException
+  | ConflictException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists the models available to an Amazon Q in Connect assistant in the assistant's Amazon Web Services Region. The available models are determined by the region of the specified assistant.
+ */
+export const listModels: API.OperationMethod<
+  ListModelsRequest,
+  ListModelsResponse,
+  ListModelsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListModelsRequest,
+  ) => stream.Stream<
+    ListModelsResponse,
+    ListModelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListModelsRequest,
+  ) => stream.Stream<
+    ModelSummary,
+    ListModelsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListModelsRequest,
+  output: ListModelsResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "modelSummaries",
+    pageSize: "maxResults",
+  } as const,
 }));
 export type NotifyRecommendationsReceivedError =
   | AccessDeniedException

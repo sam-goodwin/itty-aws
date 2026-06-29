@@ -839,6 +839,10 @@ export class InternalServerException extends S.TaggedErrorClass<InternalServerEx
   "InternalServerException",
   { message: S.optional(S.String) },
 ).pipe(C.withServerError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { message: S.optional(S.String) },
+).pipe(C.withServerError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.optional(S.String) },
@@ -879,6 +883,7 @@ export const createCliToken: API.OperationMethod<
 }));
 export type CreateEnvironmentError =
   | InternalServerException
+  | ServiceUnavailableException
   | ValidationException
   | CommonErrors;
 /**
@@ -892,7 +897,11 @@ export const createEnvironment: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEnvironmentInput,
   output: CreateEnvironmentOutput,
-  errors: [InternalServerException, ValidationException],
+  errors: [
+    InternalServerException,
+    ServiceUnavailableException,
+    ValidationException,
+  ],
 }));
 export type CreateWebLoginTokenError =
   | AccessDeniedException
@@ -921,6 +930,7 @@ export const createWebLoginToken: API.OperationMethod<
 export type DeleteEnvironmentError =
   | InternalServerException
   | ResourceNotFoundException
+  | ServiceUnavailableException
   | ValidationException
   | CommonErrors;
 /**
@@ -937,6 +947,7 @@ export const deleteEnvironment: API.OperationMethod<
   errors: [
     InternalServerException,
     ResourceNotFoundException,
+    ServiceUnavailableException,
     ValidationException,
   ],
 }));
@@ -971,8 +982,7 @@ export type InvokeRestApiError =
   | ValidationException
   | CommonErrors;
 /**
- * Invokes the Apache Airflow REST API on the webserver with the specified inputs. To
- * learn more, see Using the Apache Airflow REST API
+ * Invokes the Apache Airflow REST API on the webserver with the specified inputs. To learn more, see Using the Apache Airflow REST API
  */
 export const invokeRestApi: API.OperationMethod<
   InvokeRestApiRequest,
@@ -1115,6 +1125,7 @@ export const untagResource: API.OperationMethod<
 export type UpdateEnvironmentError =
   | InternalServerException
   | ResourceNotFoundException
+  | ServiceUnavailableException
   | ValidationException
   | CommonErrors;
 /**
@@ -1131,6 +1142,7 @@ export const updateEnvironment: API.OperationMethod<
   errors: [
     InternalServerException,
     ResourceNotFoundException,
+    ServiceUnavailableException,
     ValidationException,
   ],
 }));

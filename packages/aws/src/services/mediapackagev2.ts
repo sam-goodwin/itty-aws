@@ -230,6 +230,8 @@ export type ValidationExceptionType =
   | "INVALID_CERTIFICATE_SIGNATURE_ALGORITHM"
   | "MISSING_CERTIFICATE_DOMAIN_NAME"
   | "INVALID_ARN"
+  | "SCTE_IN_MANIFESTS_INVALID_CONFIGURATION"
+  | "CUSTOM_AD_TYPES_INVALID_CONFIGURATION"
   | (string & {});
 export const ValidationExceptionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface TagResourceRequest {
@@ -1015,20 +1017,43 @@ export type ScteFilter =
   | "PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"
   | "DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
   | "PROGRAM"
+  | "CHAPTER"
+  | "UNSCHEDULED_EVENT"
+  | "ALTERNATE_CONTENT_OPPORTUNITY"
+  | "NETWORK"
+  | "PROVIDER_PROMO"
+  | "DISTRIBUTOR_PROMO"
+  | "PROVIDER_AD_BLOCK"
+  | "DISTRIBUTOR_AD_BLOCK"
+  | "CONTENT_IDENTIFICATION"
+  | "CALL_AD_SERVER"
   | (string & {});
 export const ScteFilter = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type ScteFilterList = ScteFilter[];
 export const ScteFilterList = /*@__PURE__*/ /*#__PURE__*/ S.Array(ScteFilter);
-export type ScteInSegments = "NONE" | "ALL" | (string & {});
+export type ScteInSegments = "NONE" | "ALL" | "MATCHES_FILTER" | (string & {});
 export const ScteInSegments = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type CustomAdType =
+  | "PROGRAM"
+  | "CHAPTER"
+  | "UNSCHEDULED_EVENT"
+  | "ALTERNATE_CONTENT_OPPORTUNITY"
+  | "NETWORK"
+  | (string & {});
+export const CustomAdType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type CustomAdTypeList = CustomAdType[];
+export const CustomAdTypeList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(CustomAdType);
 export interface Scte {
   ScteFilter?: ScteFilter[];
   ScteInSegments?: ScteInSegments;
+  CustomAdTypes?: CustomAdType[];
 }
 export const Scte = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     ScteFilter: S.optional(ScteFilterList),
     ScteInSegments: S.optional(ScteInSegments),
+    CustomAdTypes: S.optional(CustomAdTypeList),
   }),
 ).annotate({ identifier: "Scte" }) as any as S.Schema<Scte>;
 export type TsEncryptionMethod = "AES_128" | "SAMPLE_AES" | (string & {});
@@ -1153,11 +1178,17 @@ export const Segment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Segment" }) as any as S.Schema<Segment>;
 export type AdMarkerHls = "DATERANGE" | "SCTE35_ENHANCED" | (string & {});
 export const AdMarkerHls = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type ScteInManifests = "ALL" | "MATCHES_FILTER" | (string & {});
+export const ScteInManifests = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ScteHls {
   AdMarkerHls?: AdMarkerHls;
+  ScteInManifests?: ScteInManifests;
 }
 export const ScteHls = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ AdMarkerHls: S.optional(AdMarkerHls) }),
+  S.Struct({
+    AdMarkerHls: S.optional(AdMarkerHls),
+    ScteInManifests: S.optional(ScteInManifests),
+  }),
 ).annotate({ identifier: "ScteHls" }) as any as S.Schema<ScteHls>;
 export interface StartTag {
   TimeOffset: number;
@@ -1186,6 +1217,8 @@ export const FilterConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FilterConfiguration",
 }) as any as S.Schema<FilterConfiguration>;
+export type UriPathType = "LEAF" | "ROOT" | (string & {});
+export const UriPathType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CreateHlsManifestConfiguration {
   ManifestName: string;
   ChildManifestName?: string;
@@ -1195,6 +1228,7 @@ export interface CreateHlsManifestConfiguration {
   ProgramDateTimeIntervalSeconds?: number;
   FilterConfiguration?: FilterConfiguration;
   UrlEncodeChildManifest?: boolean;
+  UriPathType?: UriPathType;
 }
 export const CreateHlsManifestConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1207,6 +1241,7 @@ export const CreateHlsManifestConfiguration =
       ProgramDateTimeIntervalSeconds: S.optional(S.Number),
       FilterConfiguration: S.optional(FilterConfiguration),
       UrlEncodeChildManifest: S.optional(S.Boolean),
+      UriPathType: S.optional(UriPathType),
     }),
   ).annotate({
     identifier: "CreateHlsManifestConfiguration",
@@ -1224,6 +1259,7 @@ export interface CreateLowLatencyHlsManifestConfiguration {
   ProgramDateTimeIntervalSeconds?: number;
   FilterConfiguration?: FilterConfiguration;
   UrlEncodeChildManifest?: boolean;
+  UriPathType?: UriPathType;
 }
 export const CreateLowLatencyHlsManifestConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1236,6 +1272,7 @@ export const CreateLowLatencyHlsManifestConfiguration =
       ProgramDateTimeIntervalSeconds: S.optional(S.Number),
       FilterConfiguration: S.optional(FilterConfiguration),
       UrlEncodeChildManifest: S.optional(S.Boolean),
+      UriPathType: S.optional(UriPathType),
     }),
   ).annotate({
     identifier: "CreateLowLatencyHlsManifestConfiguration",
@@ -1262,9 +1299,13 @@ export type AdMarkerDash = "BINARY" | "XML" | (string & {});
 export const AdMarkerDash = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ScteDash {
   AdMarkerDash?: AdMarkerDash;
+  ScteInManifests?: ScteInManifests;
 }
 export const ScteDash = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ AdMarkerDash: S.optional(AdMarkerDash) }),
+  S.Struct({
+    AdMarkerDash: S.optional(AdMarkerDash),
+    ScteInManifests: S.optional(ScteInManifests),
+  }),
 ).annotate({ identifier: "ScteDash" }) as any as S.Schema<ScteDash>;
 export type DashDrmSignaling = "INDIVIDUAL" | "REFERENCED" | (string & {});
 export const DashDrmSignaling = /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -1365,6 +1406,8 @@ export const DashDvbSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DashDvbSettings>;
 export type DashCompactness = "STANDARD" | "NONE" | (string & {});
 export const DashCompactness = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type DashAudioTimelinePattern = "NONE" | "PATTERNED" | (string & {});
+export const DashAudioTimelinePattern = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type DashTtmlProfile = "IMSC_1" | "EBU_TT_D_101" | (string & {});
 export const DashTtmlProfile = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface DashTtmlConfiguration {
@@ -1383,6 +1426,17 @@ export const DashSubtitleConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DashSubtitleConfiguration",
 }) as any as S.Schema<DashSubtitleConfiguration>;
+export type DashAvailabilityStartTimeConfiguration = {
+  FixedAvailabilityStartTime: Date;
+};
+export const DashAvailabilityStartTimeConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.Union([
+    S.Struct({
+      FixedAvailabilityStartTime: S.Date.pipe(
+        T.TimestampFormat("epoch-seconds"),
+      ),
+    }),
+  ]);
 export interface CreateDashManifestConfiguration {
   ManifestName: string;
   ManifestWindowSeconds?: number;
@@ -1400,7 +1454,10 @@ export interface CreateDashManifestConfiguration {
   ProgramInformation?: DashProgramInformation;
   DvbSettings?: DashDvbSettings;
   Compactness?: DashCompactness;
+  AudioTimelinePattern?: DashAudioTimelinePattern;
   SubtitleConfiguration?: DashSubtitleConfiguration;
+  UriPathType?: UriPathType;
+  AvailabilityStartTimeConfiguration?: DashAvailabilityStartTimeConfiguration;
 }
 export const CreateDashManifestConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1421,7 +1478,12 @@ export const CreateDashManifestConfiguration =
       ProgramInformation: S.optional(DashProgramInformation),
       DvbSettings: S.optional(DashDvbSettings),
       Compactness: S.optional(DashCompactness),
+      AudioTimelinePattern: S.optional(DashAudioTimelinePattern),
       SubtitleConfiguration: S.optional(DashSubtitleConfiguration),
+      UriPathType: S.optional(UriPathType),
+      AvailabilityStartTimeConfiguration: S.optional(
+        DashAvailabilityStartTimeConfiguration,
+      ),
     }),
   ).annotate({
     identifier: "CreateDashManifestConfiguration",
@@ -1473,6 +1535,8 @@ export const ForceEndpointErrorConfiguration =
   ).annotate({
     identifier: "ForceEndpointErrorConfiguration",
   }) as any as S.Schema<ForceEndpointErrorConfiguration>;
+export type UriSeparator = "UNDERSCORE" | "HYPHEN" | (string & {});
+export const UriSeparator = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CreateOriginEndpointRequest {
   ChannelGroupName: string;
   ChannelName: string;
@@ -1487,6 +1551,7 @@ export interface CreateOriginEndpointRequest {
   DashManifests?: CreateDashManifestConfiguration[];
   MssManifests?: CreateMssManifestConfiguration[];
   ForceEndpointErrorConfiguration?: ForceEndpointErrorConfiguration;
+  UriSeparator?: UriSeparator;
   Tags?: { [key: string]: string | undefined };
 }
 export const CreateOriginEndpointRequest =
@@ -1510,6 +1575,7 @@ export const CreateOriginEndpointRequest =
       ForceEndpointErrorConfiguration: S.optional(
         ForceEndpointErrorConfiguration,
       ),
+      UriSeparator: S.optional(UriSeparator),
       Tags: S.optional(TagMap),
     }).pipe(
       T.all(
@@ -1537,6 +1603,7 @@ export interface GetHlsManifestConfiguration {
   FilterConfiguration?: FilterConfiguration;
   StartTag?: StartTag;
   UrlEncodeChildManifest?: boolean;
+  UriPathType?: UriPathType;
 }
 export const GetHlsManifestConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1550,6 +1617,7 @@ export const GetHlsManifestConfiguration =
       FilterConfiguration: S.optional(FilterConfiguration),
       StartTag: S.optional(StartTag),
       UrlEncodeChildManifest: S.optional(S.Boolean),
+      UriPathType: S.optional(UriPathType),
     }),
   ).annotate({
     identifier: "GetHlsManifestConfiguration",
@@ -1568,6 +1636,7 @@ export interface GetLowLatencyHlsManifestConfiguration {
   FilterConfiguration?: FilterConfiguration;
   StartTag?: StartTag;
   UrlEncodeChildManifest?: boolean;
+  UriPathType?: UriPathType;
 }
 export const GetLowLatencyHlsManifestConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1581,6 +1650,7 @@ export const GetLowLatencyHlsManifestConfiguration =
       FilterConfiguration: S.optional(FilterConfiguration),
       StartTag: S.optional(StartTag),
       UrlEncodeChildManifest: S.optional(S.Boolean),
+      UriPathType: S.optional(UriPathType),
     }),
   ).annotate({
     identifier: "GetLowLatencyHlsManifestConfiguration",
@@ -1607,7 +1677,10 @@ export interface GetDashManifestConfiguration {
   ProgramInformation?: DashProgramInformation;
   DvbSettings?: DashDvbSettings;
   Compactness?: DashCompactness;
+  AudioTimelinePattern?: DashAudioTimelinePattern;
   SubtitleConfiguration?: DashSubtitleConfiguration;
+  UriPathType?: UriPathType;
+  AvailabilityStartTimeConfiguration?: DashAvailabilityStartTimeConfiguration;
 }
 export const GetDashManifestConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1629,7 +1702,12 @@ export const GetDashManifestConfiguration =
       ProgramInformation: S.optional(DashProgramInformation),
       DvbSettings: S.optional(DashDvbSettings),
       Compactness: S.optional(DashCompactness),
+      AudioTimelinePattern: S.optional(DashAudioTimelinePattern),
       SubtitleConfiguration: S.optional(DashSubtitleConfiguration),
+      UriPathType: S.optional(UriPathType),
+      AvailabilityStartTimeConfiguration: S.optional(
+        DashAvailabilityStartTimeConfiguration,
+      ),
     }),
   ).annotate({
     identifier: "GetDashManifestConfiguration",
@@ -1677,6 +1755,7 @@ export interface CreateOriginEndpointResponse {
   DashManifests?: GetDashManifestConfiguration[];
   MssManifests?: GetMssManifestConfiguration[];
   ForceEndpointErrorConfiguration?: ForceEndpointErrorConfiguration;
+  UriSeparator?: UriSeparator;
   ETag?: string;
   Tags?: { [key: string]: string | undefined };
 }
@@ -1700,6 +1779,7 @@ export const CreateOriginEndpointResponse =
       ForceEndpointErrorConfiguration: S.optional(
         ForceEndpointErrorConfiguration,
       ),
+      UriSeparator: S.optional(UriSeparator),
       ETag: S.optional(S.String),
       Tags: S.optional(TagMap),
     }),
@@ -1750,6 +1830,7 @@ export interface GetOriginEndpointResponse {
   DashManifests?: GetDashManifestConfiguration[];
   MssManifests?: GetMssManifestConfiguration[];
   ForceEndpointErrorConfiguration?: ForceEndpointErrorConfiguration;
+  UriSeparator?: UriSeparator;
   ETag?: string;
   Tags?: { [key: string]: string | undefined };
 }
@@ -1774,6 +1855,7 @@ export const GetOriginEndpointResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       ForceEndpointErrorConfiguration: S.optional(
         ForceEndpointErrorConfiguration,
       ),
+      UriSeparator: S.optional(UriSeparator),
       ETag: S.optional(S.String),
       Tags: S.optional(TagMap),
     }),
@@ -1793,6 +1875,7 @@ export interface UpdateOriginEndpointRequest {
   DashManifests?: CreateDashManifestConfiguration[];
   MssManifests?: CreateMssManifestConfiguration[];
   ForceEndpointErrorConfiguration?: ForceEndpointErrorConfiguration;
+  UriSeparator?: UriSeparator;
   ETag?: string;
 }
 export const UpdateOriginEndpointRequest =
@@ -1812,6 +1895,7 @@ export const UpdateOriginEndpointRequest =
       ForceEndpointErrorConfiguration: S.optional(
         ForceEndpointErrorConfiguration,
       ),
+      UriSeparator: S.optional(UriSeparator),
       ETag: S.optional(S.String).pipe(T.HttpHeader("x-amzn-update-if-match")),
     }).pipe(
       T.all(
@@ -1844,6 +1928,7 @@ export interface UpdateOriginEndpointResponse {
   LowLatencyHlsManifests?: GetLowLatencyHlsManifestConfiguration[];
   MssManifests?: GetMssManifestConfiguration[];
   ForceEndpointErrorConfiguration?: ForceEndpointErrorConfiguration;
+  UriSeparator?: UriSeparator;
   ETag?: string;
   Tags?: { [key: string]: string | undefined };
   DashManifests?: GetDashManifestConfiguration[];
@@ -1867,6 +1952,7 @@ export const UpdateOriginEndpointResponse =
       ForceEndpointErrorConfiguration: S.optional(
         ForceEndpointErrorConfiguration,
       ),
+      UriSeparator: S.optional(UriSeparator),
       ETag: S.optional(S.String),
       Tags: S.optional(TagMap),
       DashManifests: S.optional(GetDashManifests),
@@ -2016,6 +2102,7 @@ export interface OriginEndpointListConfiguration {
   DashManifests?: ListDashManifestConfiguration[];
   MssManifests?: ListMssManifestConfiguration[];
   ForceEndpointErrorConfiguration?: ForceEndpointErrorConfiguration;
+  UriSeparator?: UriSeparator;
 }
 export const OriginEndpointListConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2035,6 +2122,7 @@ export const OriginEndpointListConfiguration =
       ForceEndpointErrorConfiguration: S.optional(
         ForceEndpointErrorConfiguration,
       ),
+      UriSeparator: S.optional(UriSeparator),
     }),
   ).annotate({
     identifier: "OriginEndpointListConfiguration",

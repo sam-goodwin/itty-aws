@@ -98,14 +98,60 @@ export type ResourceOauth2ReturnUrlType = string;
 export type CustomRequestKeyType = string;
 export type CustomRequestValueType = string | redacted.Redacted<string>;
 export type State = string | redacted.Redacted<string>;
+export type ResourceType = string;
+export type AudienceType = string;
 export type AuthorizationUrlType = string | redacted.Redacted<string>;
 export type AccessTokenType = string | redacted.Redacted<string>;
+export type PaymentRequestHostType = string;
+export type PaymentRequestPathType = string;
+export type CoinbaseCdpPaymentRequestBodyType = string;
+export type StripePrivyRequestHostType = string;
+export type StripePrivyRequestPathType = string;
+export type StripePrivyRequestBodyType = string | redacted.Redacted<string>;
+export type CoinbaseCdpPaymentJwtTokenType = string | redacted.Redacted<string>;
+export type StripePrivyAuthorizationSignatureType =
+  | string
+  | redacted.Redacted<string>;
+export type StripePrivyAppIdType = string;
+export type StripePrivyBasicAuthTokenType = string | redacted.Redacted<string>;
 export type WorkloadIdentityNameType = string;
 export type CodeInterpreterSessionId = string;
 export type MaxLenString = string;
 export type Body = Uint8Array | redacted.Redacted<Uint8Array>;
-export type SessionType = string;
+export type HarnessArn = string;
+export type HarnessEndpointName = string;
 export type SessionId = string;
+export type SensitiveText = string | redacted.Redacted<string>;
+export type HarnessToolName = string;
+export type HarnessToolUseId = string;
+export type SensitiveJson = unknown;
+export type ModelId = string;
+export type MaxTokens = number;
+export type Temperature = number;
+export type TopP = number;
+export type ApiKeyArn = string;
+export type TopK = number;
+export type HarnessLiteLlmApiBase = string | redacted.Redacted<string>;
+export type HarnessRemoteMcpUrl = string | redacted.Redacted<string>;
+export type HttpHeaderKey = string;
+export type HttpHeaderValue = string;
+export type HarnessBrowserArn = string;
+export type GatewayArn = string;
+export type OAuthCredentialProviderArn = string;
+export type OAuthScope = string;
+export type OAuthCustomParametersKey = string;
+export type OAuthCustomParametersValue = string | redacted.Redacted<string>;
+export type OAuthDefaultReturnUrl = string;
+export type HarnessInlineFunctionDescription =
+  | string
+  | redacted.Redacted<string>;
+export type HarnessCodeInterpreterArn = string;
+export type HarnessSkillPath = string;
+export type HarnessSkillS3Uri = string;
+export type HarnessSkillGitUrl = string;
+export type HarnessAwsSkillPath = string;
+export type HarnessAllowedTool = string;
+export type SessionType = string;
 export type AgentCard = unknown;
 export type HttpResponseCode = number;
 export type MimeType = string;
@@ -124,6 +170,22 @@ export type SecretArn = string;
 export type MaxResults = number;
 export type NextToken = string;
 export type CodeInterpreterSessionTimeout = number;
+export type ABTestName = string;
+export type ABTestDescription = string;
+export type VariantName = string;
+export type ConfigurationBundleArn = string;
+export type ConfigurationBundleVersion = string;
+export type TargetName = string;
+export type PathPattern = string;
+export type OnlineEvaluationConfigArn = string;
+export type RoleArn = string;
+export type TagKey = string;
+export type TagValue = string;
+export type ABTestId = string;
+export type ABTestArn = string;
+export type BatchEvaluationId = string;
+export type BatchEvaluationArn = string;
+export type RecommendationId = string;
 export type EvaluatorId = string;
 export type Span = unknown;
 export type SpanId = string;
@@ -135,18 +197,47 @@ export type EvaluationExplanation = string | redacted.Redacted<string>;
 export type EvaluationErrorMessage = string;
 export type EvaluationErrorCode = string;
 export type IgnoredReferenceInputField = string;
+export type BatchEvaluationName = string;
+export type InsightId = string;
+export type BatchEvaluationDescription = string;
+export type KmsKeyArn = string;
+export type RecommendationArn = string;
+export type RecommendationName = string;
+export type RecommendationDescription = string;
+export type SystemPromptText = string | redacted.Redacted<string>;
+export type ConfigurationBundleVersionId = string;
+export type ServiceName = string;
+export type FilterStringValue = string;
+export type RecommendationToolName = string;
+export type ToolDescriptionText = string | redacted.Redacted<string>;
+export type RecommendationExplanation = string;
+export type RecommendationErrorCode = string;
+export type RecommendationErrorMessage = string;
 export type MemoryId = string;
 export type RequestIdentifier = string;
 export type Namespace = string;
 export type SensitiveString = string | redacted.Redacted<string>;
 export type MemoryStrategyId = string;
+export type MetadataKey = string;
+export type StringValue = string;
+export type StringListMemberValue = string;
 export type MemoryRecordId = string;
 export type ActorId = string;
-export type Document = unknown;
+export type MemoryDocument = unknown;
 export type EventId = string;
 export type BranchName = string;
-export type MetadataKey = string;
 export type PaginationToken = string;
+export type UserId = string;
+export type PaymentAgentName = string;
+export type PaymentManagerArn = string;
+export type PaymentConnectorId = string;
+export type Email = string | redacted.Redacted<string>;
+export type PhoneNumber = string | redacted.Redacted<string>;
+export type JwtKeyId = string;
+export type PaymentInstrumentId = string;
+export type PaymentSessionId = string;
+export type PaymentDocument = unknown;
+export type ProcessPaymentId = string;
 export type RegistryIdentifier = string;
 export type MetadataFilterExpression = unknown;
 export type RegistryArn = string;
@@ -246,7 +337,11 @@ export const GetResourceApiKeyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<GetResourceApiKeyResponse>;
 export type ScopesListType = string[];
 export const ScopesListType = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
-export type Oauth2FlowType = "USER_FEDERATION" | "M2M" | (string & {});
+export type Oauth2FlowType =
+  | "USER_FEDERATION"
+  | "M2M"
+  | "ON_BEHALF_OF_TOKEN_EXCHANGE"
+  | (string & {});
 export const Oauth2FlowType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type CustomRequestParametersType = {
   [key: string]: string | redacted.Redacted<string> | undefined;
@@ -255,6 +350,10 @@ export const CustomRequestParametersType = /*@__PURE__*/ /*#__PURE__*/ S.Record(
   S.String,
   SensitiveString.pipe(S.optional),
 );
+export type ResourcesListType = string[];
+export const ResourcesListType = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type AudiencesListType = string[];
+export const AudiencesListType = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export interface GetResourceOauth2TokenRequest {
   workloadIdentityToken: string | redacted.Redacted<string>;
   resourceCredentialProviderName: string;
@@ -267,6 +366,8 @@ export interface GetResourceOauth2TokenRequest {
     [key: string]: string | redacted.Redacted<string> | undefined;
   };
   customState?: string | redacted.Redacted<string>;
+  resources?: string[];
+  audiences?: string[];
 }
 export const GetResourceOauth2TokenRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -280,6 +381,8 @@ export const GetResourceOauth2TokenRequest =
       forceAuthentication: S.optional(S.Boolean),
       customParameters: S.optional(CustomRequestParametersType),
       customState: S.optional(SensitiveString),
+      resources: S.optional(ResourcesListType),
+      audiences: S.optional(AudiencesListType),
     }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/identities/oauth2/token" }),
@@ -312,6 +415,139 @@ export const GetResourceOauth2TokenResponse =
   ).annotate({
     identifier: "GetResourceOauth2TokenResponse",
   }) as any as S.Schema<GetResourceOauth2TokenResponse>;
+export type PaymentHttpMethodType =
+  | "GET"
+  | "POST"
+  | "PUT"
+  | "DELETE"
+  | "PATCH"
+  | (string & {});
+export const PaymentHttpMethodType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CoinbaseCdpTokenRequestInput {
+  requestMethod: PaymentHttpMethodType;
+  requestHost?: string;
+  requestPath: string;
+  includeWalletAuthToken?: boolean;
+  requestBody?: string;
+}
+export const CoinbaseCdpTokenRequestInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestMethod: PaymentHttpMethodType,
+      requestHost: S.optional(S.String),
+      requestPath: S.String,
+      includeWalletAuthToken: S.optional(S.Boolean),
+      requestBody: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "CoinbaseCdpTokenRequestInput",
+  }) as any as S.Schema<CoinbaseCdpTokenRequestInput>;
+export interface StripePrivyTokenRequestInput {
+  requestHost?: string;
+  requestPath: string;
+  requestBody: string | redacted.Redacted<string>;
+  includeAuthorizationSignature?: boolean;
+}
+export const StripePrivyTokenRequestInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requestHost: S.optional(S.String),
+      requestPath: S.String,
+      requestBody: SensitiveString,
+      includeAuthorizationSignature: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "StripePrivyTokenRequestInput",
+  }) as any as S.Schema<StripePrivyTokenRequestInput>;
+export type PaymentTokenRequestInput =
+  | {
+      coinbaseCdpTokenRequest: CoinbaseCdpTokenRequestInput;
+      stripePrivyTokenRequest?: never;
+    }
+  | {
+      coinbaseCdpTokenRequest?: never;
+      stripePrivyTokenRequest: StripePrivyTokenRequestInput;
+    };
+export const PaymentTokenRequestInput = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ coinbaseCdpTokenRequest: CoinbaseCdpTokenRequestInput }),
+  S.Struct({ stripePrivyTokenRequest: StripePrivyTokenRequestInput }),
+]);
+export interface GetResourcePaymentTokenRequest {
+  workloadIdentityToken: string | redacted.Redacted<string>;
+  resourceCredentialProviderName: string;
+  paymentTokenRequest: PaymentTokenRequestInput;
+}
+export const GetResourcePaymentTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      workloadIdentityToken: SensitiveString,
+      resourceCredentialProviderName: S.String,
+      paymentTokenRequest: PaymentTokenRequestInput,
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/identities/payment/token" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetResourcePaymentTokenRequest",
+  }) as any as S.Schema<GetResourcePaymentTokenRequest>;
+export interface CoinbaseCdpTokenResponseOutput {
+  bearerToken: string | redacted.Redacted<string>;
+  walletAuthToken?: string | redacted.Redacted<string>;
+}
+export const CoinbaseCdpTokenResponseOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      bearerToken: SensitiveString,
+      walletAuthToken: S.optional(SensitiveString),
+    }),
+  ).annotate({
+    identifier: "CoinbaseCdpTokenResponseOutput",
+  }) as any as S.Schema<CoinbaseCdpTokenResponseOutput>;
+export interface StripePrivyTokenResponseOutput {
+  authorizationSignature?: string | redacted.Redacted<string>;
+  requestExpiry?: number;
+  appId: string;
+  basicAuthToken: string | redacted.Redacted<string>;
+}
+export const StripePrivyTokenResponseOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      authorizationSignature: S.optional(SensitiveString),
+      requestExpiry: S.optional(S.Number),
+      appId: S.String,
+      basicAuthToken: SensitiveString,
+    }),
+  ).annotate({
+    identifier: "StripePrivyTokenResponseOutput",
+  }) as any as S.Schema<StripePrivyTokenResponseOutput>;
+export type PaymentTokenResponseOutput =
+  | {
+      coinbaseCdpTokenResponse: CoinbaseCdpTokenResponseOutput;
+      stripePrivyTokenResponse?: never;
+    }
+  | {
+      coinbaseCdpTokenResponse?: never;
+      stripePrivyTokenResponse: StripePrivyTokenResponseOutput;
+    };
+export const PaymentTokenResponseOutput = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ coinbaseCdpTokenResponse: CoinbaseCdpTokenResponseOutput }),
+  S.Struct({ stripePrivyTokenResponse: StripePrivyTokenResponseOutput }),
+]);
+export interface GetResourcePaymentTokenResponse {
+  paymentTokenResponse: PaymentTokenResponseOutput;
+}
+export const GetResourcePaymentTokenResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ paymentTokenResponse: PaymentTokenResponseOutput }),
+  ).annotate({
+    identifier: "GetResourcePaymentTokenResponse",
+  }) as any as S.Schema<GetResourcePaymentTokenResponse>;
 export interface GetWorkloadAccessTokenRequest {
   workloadName: string;
 }
@@ -739,6 +975,873 @@ export const InvokeCodeInterpreterResponse =
   ).annotate({
     identifier: "InvokeCodeInterpreterResponse",
   }) as any as S.Schema<InvokeCodeInterpreterResponse>;
+export type HarnessConversationRole = "user" | "assistant" | (string & {});
+export const HarnessConversationRole = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type HarnessToolUseType =
+  | "tool_use"
+  | "server_tool_use"
+  | "mcp_tool_use"
+  | (string & {});
+export const HarnessToolUseType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface HarnessToolUseBlock {
+  name: string;
+  toolUseId: string;
+  input: any;
+  type?: HarnessToolUseType;
+  serverName?: string;
+}
+export const HarnessToolUseBlock = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    toolUseId: S.String,
+    input: S.Any,
+    type: S.optional(HarnessToolUseType),
+    serverName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HarnessToolUseBlock",
+}) as any as S.Schema<HarnessToolUseBlock>;
+export type HarnessToolResultContentBlock =
+  | { text: string | redacted.Redacted<string>; json?: never }
+  | { text?: never; json: any };
+export const HarnessToolResultContentBlock =
+  /*@__PURE__*/ /*#__PURE__*/ S.Union([
+    S.Struct({ text: SensitiveString }),
+    S.Struct({ json: S.Any }),
+  ]);
+export type HarnessToolResultContentBlocks = HarnessToolResultContentBlock[];
+export const HarnessToolResultContentBlocks =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(HarnessToolResultContentBlock);
+export type HarnessToolUseStatus = "success" | "error" | (string & {});
+export const HarnessToolUseStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface HarnessToolResultBlock {
+  toolUseId: string;
+  content: HarnessToolResultContentBlock[];
+  status?: HarnessToolUseStatus;
+  type?: HarnessToolUseType;
+}
+export const HarnessToolResultBlock = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      toolUseId: S.String,
+      content: HarnessToolResultContentBlocks,
+      status: S.optional(HarnessToolUseStatus),
+      type: S.optional(HarnessToolUseType),
+    }),
+).annotate({
+  identifier: "HarnessToolResultBlock",
+}) as any as S.Schema<HarnessToolResultBlock>;
+export interface HarnessReasoningTextBlock {
+  text: string;
+  signature?: string;
+}
+export const HarnessReasoningTextBlock = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ text: S.String, signature: S.optional(S.String) }),
+).annotate({
+  identifier: "HarnessReasoningTextBlock",
+}) as any as S.Schema<HarnessReasoningTextBlock>;
+export type HarnessReasoningContentBlock =
+  | { reasoningText: HarnessReasoningTextBlock; redactedContent?: never }
+  | { reasoningText?: never; redactedContent: Uint8Array };
+export const HarnessReasoningContentBlock = /*@__PURE__*/ /*#__PURE__*/ S.Union(
+  [
+    S.Struct({ reasoningText: HarnessReasoningTextBlock }),
+    S.Struct({ redactedContent: T.Blob }),
+  ],
+);
+export type HarnessContentBlock =
+  | {
+      text: string | redacted.Redacted<string>;
+      toolUse?: never;
+      toolResult?: never;
+      reasoningContent?: never;
+    }
+  | {
+      text?: never;
+      toolUse: HarnessToolUseBlock;
+      toolResult?: never;
+      reasoningContent?: never;
+    }
+  | {
+      text?: never;
+      toolUse?: never;
+      toolResult: HarnessToolResultBlock;
+      reasoningContent?: never;
+    }
+  | {
+      text?: never;
+      toolUse?: never;
+      toolResult?: never;
+      reasoningContent: HarnessReasoningContentBlock;
+    };
+export const HarnessContentBlock = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ text: SensitiveString }),
+  S.Struct({ toolUse: HarnessToolUseBlock }),
+  S.Struct({ toolResult: HarnessToolResultBlock }),
+  S.Struct({ reasoningContent: HarnessReasoningContentBlock }),
+]);
+export type HarnessContentBlocks = HarnessContentBlock[];
+export const HarnessContentBlocks =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(HarnessContentBlock);
+export interface HarnessMessage {
+  role: HarnessConversationRole;
+  content: HarnessContentBlock[];
+}
+export const HarnessMessage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ role: HarnessConversationRole, content: HarnessContentBlocks }),
+).annotate({ identifier: "HarnessMessage" }) as any as S.Schema<HarnessMessage>;
+export type HarnessMessages = HarnessMessage[];
+export const HarnessMessages =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(HarnessMessage);
+export type HarnessBedrockApiFormat =
+  | "converse_stream"
+  | "responses"
+  | "chat_completions"
+  | (string & {});
+export const HarnessBedrockApiFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface HarnessBedrockModelConfig {
+  modelId: string;
+  maxTokens?: number;
+  temperature?: number;
+  topP?: number;
+  apiFormat?: HarnessBedrockApiFormat;
+  additionalParams?: any;
+}
+export const HarnessBedrockModelConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      modelId: S.String,
+      maxTokens: S.optional(S.Number),
+      temperature: S.optional(S.Number),
+      topP: S.optional(S.Number),
+      apiFormat: S.optional(HarnessBedrockApiFormat),
+      additionalParams: S.optional(S.Any),
+    }),
+).annotate({
+  identifier: "HarnessBedrockModelConfig",
+}) as any as S.Schema<HarnessBedrockModelConfig>;
+export type HarnessOpenAiApiFormat =
+  | "chat_completions"
+  | "responses"
+  | (string & {});
+export const HarnessOpenAiApiFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface HarnessOpenAiModelConfig {
+  modelId: string;
+  apiKeyArn: string;
+  maxTokens?: number;
+  temperature?: number;
+  topP?: number;
+  apiFormat?: HarnessOpenAiApiFormat;
+  additionalParams?: any;
+}
+export const HarnessOpenAiModelConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      modelId: S.String,
+      apiKeyArn: S.String,
+      maxTokens: S.optional(S.Number),
+      temperature: S.optional(S.Number),
+      topP: S.optional(S.Number),
+      apiFormat: S.optional(HarnessOpenAiApiFormat),
+      additionalParams: S.optional(S.Any),
+    }),
+).annotate({
+  identifier: "HarnessOpenAiModelConfig",
+}) as any as S.Schema<HarnessOpenAiModelConfig>;
+export interface HarnessGeminiModelConfig {
+  modelId: string;
+  apiKeyArn: string;
+  maxTokens?: number;
+  temperature?: number;
+  topP?: number;
+  topK?: number;
+}
+export const HarnessGeminiModelConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      modelId: S.String,
+      apiKeyArn: S.String,
+      maxTokens: S.optional(S.Number),
+      temperature: S.optional(S.Number),
+      topP: S.optional(S.Number),
+      topK: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "HarnessGeminiModelConfig",
+}) as any as S.Schema<HarnessGeminiModelConfig>;
+export interface HarnessLiteLlmModelConfig {
+  modelId: string;
+  apiKeyArn?: string;
+  apiBase?: string | redacted.Redacted<string>;
+  maxTokens?: number;
+  temperature?: number;
+  topP?: number;
+  additionalParams?: any;
+}
+export const HarnessLiteLlmModelConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      modelId: S.String,
+      apiKeyArn: S.optional(S.String),
+      apiBase: S.optional(SensitiveString),
+      maxTokens: S.optional(S.Number),
+      temperature: S.optional(S.Number),
+      topP: S.optional(S.Number),
+      additionalParams: S.optional(S.Any),
+    }),
+).annotate({
+  identifier: "HarnessLiteLlmModelConfig",
+}) as any as S.Schema<HarnessLiteLlmModelConfig>;
+export type HarnessModelConfiguration =
+  | {
+      bedrockModelConfig: HarnessBedrockModelConfig;
+      openAiModelConfig?: never;
+      geminiModelConfig?: never;
+      liteLlmModelConfig?: never;
+    }
+  | {
+      bedrockModelConfig?: never;
+      openAiModelConfig: HarnessOpenAiModelConfig;
+      geminiModelConfig?: never;
+      liteLlmModelConfig?: never;
+    }
+  | {
+      bedrockModelConfig?: never;
+      openAiModelConfig?: never;
+      geminiModelConfig: HarnessGeminiModelConfig;
+      liteLlmModelConfig?: never;
+    }
+  | {
+      bedrockModelConfig?: never;
+      openAiModelConfig?: never;
+      geminiModelConfig?: never;
+      liteLlmModelConfig: HarnessLiteLlmModelConfig;
+    };
+export const HarnessModelConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ bedrockModelConfig: HarnessBedrockModelConfig }),
+  S.Struct({ openAiModelConfig: HarnessOpenAiModelConfig }),
+  S.Struct({ geminiModelConfig: HarnessGeminiModelConfig }),
+  S.Struct({ liteLlmModelConfig: HarnessLiteLlmModelConfig }),
+]);
+export type HarnessSystemContentBlock = {
+  text: string | redacted.Redacted<string>;
+};
+export const HarnessSystemContentBlock = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ text: SensitiveString }),
+]);
+export type HarnessSystemPrompt = HarnessSystemContentBlock[];
+export const HarnessSystemPrompt = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  HarnessSystemContentBlock,
+);
+export type HarnessToolType =
+  | "remote_mcp"
+  | "agentcore_browser"
+  | "agentcore_gateway"
+  | "inline_function"
+  | "agentcore_code_interpreter"
+  | (string & {});
+export const HarnessToolType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type HttpHeadersMap = { [key: string]: string | undefined };
+export const HttpHeadersMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface HarnessRemoteMcpConfig {
+  url: string | redacted.Redacted<string>;
+  headers?: { [key: string]: string | undefined };
+}
+export const HarnessRemoteMcpConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ url: SensitiveString, headers: S.optional(HttpHeadersMap) }),
+).annotate({
+  identifier: "HarnessRemoteMcpConfig",
+}) as any as S.Schema<HarnessRemoteMcpConfig>;
+export interface HarnessAgentCoreBrowserConfig {
+  browserArn?: string;
+}
+export const HarnessAgentCoreBrowserConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ browserArn: S.optional(S.String) }),
+  ).annotate({
+    identifier: "HarnessAgentCoreBrowserConfig",
+  }) as any as S.Schema<HarnessAgentCoreBrowserConfig>;
+export type OAuthScopes = string[];
+export const OAuthScopes = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type OAuthCustomParameters = {
+  [key: string]: string | redacted.Redacted<string> | undefined;
+};
+export const OAuthCustomParameters = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  SensitiveString.pipe(S.optional),
+);
+export type OAuthGrantType =
+  | "CLIENT_CREDENTIALS"
+  | "AUTHORIZATION_CODE"
+  | "TOKEN_EXCHANGE"
+  | (string & {});
+export const OAuthGrantType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface OAuthCredentialProvider {
+  providerArn: string;
+  scopes: string[];
+  customParameters?: {
+    [key: string]: string | redacted.Redacted<string> | undefined;
+  };
+  grantType?: OAuthGrantType;
+  defaultReturnUrl?: string;
+}
+export const OAuthCredentialProvider = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      providerArn: S.String,
+      scopes: OAuthScopes,
+      customParameters: S.optional(OAuthCustomParameters),
+      grantType: S.optional(OAuthGrantType),
+      defaultReturnUrl: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "OAuthCredentialProvider",
+}) as any as S.Schema<OAuthCredentialProvider>;
+export type HarnessGatewayOutboundAuth =
+  | { awsIam: Record<string, never>; none?: never; oauth?: never }
+  | { awsIam?: never; none: Record<string, never>; oauth?: never }
+  | { awsIam?: never; none?: never; oauth: OAuthCredentialProvider };
+export const HarnessGatewayOutboundAuth = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ awsIam: S.Struct({}) }),
+  S.Struct({ none: S.Struct({}) }),
+  S.Struct({ oauth: OAuthCredentialProvider }),
+]);
+export interface HarnessAgentCoreGatewayConfig {
+  gatewayArn: string;
+  outboundAuth?: HarnessGatewayOutboundAuth;
+}
+export const HarnessAgentCoreGatewayConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      gatewayArn: S.String,
+      outboundAuth: S.optional(HarnessGatewayOutboundAuth),
+    }),
+  ).annotate({
+    identifier: "HarnessAgentCoreGatewayConfig",
+  }) as any as S.Schema<HarnessAgentCoreGatewayConfig>;
+export interface HarnessInlineFunctionConfig {
+  description: string | redacted.Redacted<string>;
+  inputSchema: any;
+}
+export const HarnessInlineFunctionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ description: SensitiveString, inputSchema: S.Any }),
+  ).annotate({
+    identifier: "HarnessInlineFunctionConfig",
+  }) as any as S.Schema<HarnessInlineFunctionConfig>;
+export interface HarnessAgentCoreCodeInterpreterConfig {
+  codeInterpreterArn?: string;
+}
+export const HarnessAgentCoreCodeInterpreterConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ codeInterpreterArn: S.optional(S.String) }),
+  ).annotate({
+    identifier: "HarnessAgentCoreCodeInterpreterConfig",
+  }) as any as S.Schema<HarnessAgentCoreCodeInterpreterConfig>;
+export type HarnessToolConfiguration =
+  | {
+      remoteMcp: HarnessRemoteMcpConfig;
+      agentCoreBrowser?: never;
+      agentCoreGateway?: never;
+      inlineFunction?: never;
+      agentCoreCodeInterpreter?: never;
+    }
+  | {
+      remoteMcp?: never;
+      agentCoreBrowser: HarnessAgentCoreBrowserConfig;
+      agentCoreGateway?: never;
+      inlineFunction?: never;
+      agentCoreCodeInterpreter?: never;
+    }
+  | {
+      remoteMcp?: never;
+      agentCoreBrowser?: never;
+      agentCoreGateway: HarnessAgentCoreGatewayConfig;
+      inlineFunction?: never;
+      agentCoreCodeInterpreter?: never;
+    }
+  | {
+      remoteMcp?: never;
+      agentCoreBrowser?: never;
+      agentCoreGateway?: never;
+      inlineFunction: HarnessInlineFunctionConfig;
+      agentCoreCodeInterpreter?: never;
+    }
+  | {
+      remoteMcp?: never;
+      agentCoreBrowser?: never;
+      agentCoreGateway?: never;
+      inlineFunction?: never;
+      agentCoreCodeInterpreter: HarnessAgentCoreCodeInterpreterConfig;
+    };
+export const HarnessToolConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ remoteMcp: HarnessRemoteMcpConfig }),
+  S.Struct({ agentCoreBrowser: HarnessAgentCoreBrowserConfig }),
+  S.Struct({ agentCoreGateway: HarnessAgentCoreGatewayConfig }),
+  S.Struct({ inlineFunction: HarnessInlineFunctionConfig }),
+  S.Struct({ agentCoreCodeInterpreter: HarnessAgentCoreCodeInterpreterConfig }),
+]);
+export interface HarnessTool {
+  type: HarnessToolType;
+  name?: string;
+  config?: HarnessToolConfiguration;
+}
+export const HarnessTool = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: HarnessToolType,
+    name: S.optional(S.String),
+    config: S.optional(HarnessToolConfiguration),
+  }),
+).annotate({ identifier: "HarnessTool" }) as any as S.Schema<HarnessTool>;
+export type HarnessTools = HarnessTool[];
+export const HarnessTools = /*@__PURE__*/ /*#__PURE__*/ S.Array(HarnessTool);
+export interface HarnessSkillS3Source {
+  uri: string;
+}
+export const HarnessSkillS3Source = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ uri: S.String }),
+).annotate({
+  identifier: "HarnessSkillS3Source",
+}) as any as S.Schema<HarnessSkillS3Source>;
+export interface HarnessSkillGitAuth {
+  credentialArn: string;
+  username?: string;
+}
+export const HarnessSkillGitAuth = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ credentialArn: S.String, username: S.optional(S.String) }),
+).annotate({
+  identifier: "HarnessSkillGitAuth",
+}) as any as S.Schema<HarnessSkillGitAuth>;
+export interface HarnessSkillGitSource {
+  url: string;
+  path?: string;
+  auth?: HarnessSkillGitAuth;
+}
+export const HarnessSkillGitSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    url: S.String,
+    path: S.optional(S.String),
+    auth: S.optional(HarnessSkillGitAuth),
+  }),
+).annotate({
+  identifier: "HarnessSkillGitSource",
+}) as any as S.Schema<HarnessSkillGitSource>;
+export type HarnessAwsSkillPaths = string[];
+export const HarnessAwsSkillPaths = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export interface HarnessSkillAwsSkillsSource {
+  paths?: string[];
+}
+export const HarnessSkillAwsSkillsSource =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ paths: S.optional(HarnessAwsSkillPaths) }),
+  ).annotate({
+    identifier: "HarnessSkillAwsSkillsSource",
+  }) as any as S.Schema<HarnessSkillAwsSkillsSource>;
+export type HarnessSkill =
+  | { path: string; s3?: never; git?: never; awsSkills?: never }
+  | { path?: never; s3: HarnessSkillS3Source; git?: never; awsSkills?: never }
+  | { path?: never; s3?: never; git: HarnessSkillGitSource; awsSkills?: never }
+  | {
+      path?: never;
+      s3?: never;
+      git?: never;
+      awsSkills: HarnessSkillAwsSkillsSource;
+    };
+export const HarnessSkill = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ path: S.String }),
+  S.Struct({ s3: HarnessSkillS3Source }),
+  S.Struct({ git: HarnessSkillGitSource }),
+  S.Struct({ awsSkills: HarnessSkillAwsSkillsSource }),
+]);
+export type HarnessSkills = HarnessSkill[];
+export const HarnessSkills = /*@__PURE__*/ /*#__PURE__*/ S.Array(HarnessSkill);
+export type HarnessAllowedTools = string[];
+export const HarnessAllowedTools = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export interface InvokeHarnessRequest {
+  harnessArn: string;
+  qualifier?: string;
+  runtimeSessionId: string;
+  runtimeUserId?: string;
+  messages: HarnessMessage[];
+  model?: HarnessModelConfiguration;
+  systemPrompt?: HarnessSystemContentBlock[];
+  tools?: HarnessTool[];
+  skills?: HarnessSkill[];
+  allowedTools?: string[];
+  maxIterations?: number;
+  maxTokens?: number;
+  timeoutSeconds?: number;
+  actorId?: string;
+}
+export const InvokeHarnessRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    harnessArn: S.String.pipe(T.HttpQuery("harnessArn")),
+    qualifier: S.optional(S.String).pipe(T.HttpQuery("qualifier")),
+    runtimeSessionId: S.String.pipe(
+      T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-Session-Id"),
+    ),
+    runtimeUserId: S.optional(S.String).pipe(
+      T.HttpHeader("X-Amzn-Bedrock-AgentCore-Runtime-User-Id"),
+    ),
+    messages: HarnessMessages,
+    model: S.optional(HarnessModelConfiguration),
+    systemPrompt: S.optional(HarnessSystemPrompt),
+    tools: S.optional(HarnessTools),
+    skills: S.optional(HarnessSkills),
+    allowedTools: S.optional(HarnessAllowedTools),
+    maxIterations: S.optional(S.Number),
+    maxTokens: S.optional(S.Number),
+    timeoutSeconds: S.optional(S.Number),
+    actorId: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/harnesses/invoke" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "InvokeHarnessRequest",
+}) as any as S.Schema<InvokeHarnessRequest>;
+export interface HarnessMessageStartEvent {
+  role: HarnessConversationRole;
+}
+export const HarnessMessageStartEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ role: HarnessConversationRole }),
+).annotate({
+  identifier: "HarnessMessageStartEvent",
+}) as any as S.Schema<HarnessMessageStartEvent>;
+export interface HarnessToolUseBlockStart {
+  toolUseId: string;
+  name: string;
+  type?: HarnessToolUseType;
+  serverName?: string;
+}
+export const HarnessToolUseBlockStart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      toolUseId: S.String,
+      name: S.String,
+      type: S.optional(HarnessToolUseType),
+      serverName: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "HarnessToolUseBlockStart",
+}) as any as S.Schema<HarnessToolUseBlockStart>;
+export interface HarnessToolResultBlockStart {
+  toolUseId: string;
+  status?: HarnessToolUseStatus;
+}
+export const HarnessToolResultBlockStart =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ toolUseId: S.String, status: S.optional(HarnessToolUseStatus) }),
+  ).annotate({
+    identifier: "HarnessToolResultBlockStart",
+  }) as any as S.Schema<HarnessToolResultBlockStart>;
+export type HarnessContentBlockStart =
+  | { toolUse: HarnessToolUseBlockStart; toolResult?: never }
+  | { toolUse?: never; toolResult: HarnessToolResultBlockStart };
+export const HarnessContentBlockStart = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ toolUse: HarnessToolUseBlockStart }),
+  S.Struct({ toolResult: HarnessToolResultBlockStart }),
+]);
+export interface HarnessContentBlockStartEvent {
+  contentBlockIndex: number;
+  start: HarnessContentBlockStart;
+}
+export const HarnessContentBlockStartEvent =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ contentBlockIndex: S.Number, start: HarnessContentBlockStart }),
+  ).annotate({
+    identifier: "HarnessContentBlockStartEvent",
+  }) as any as S.Schema<HarnessContentBlockStartEvent>;
+export interface HarnessToolUseBlockDelta {
+  input: string | redacted.Redacted<string>;
+}
+export const HarnessToolUseBlockDelta = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ input: SensitiveString }),
+).annotate({
+  identifier: "HarnessToolUseBlockDelta",
+}) as any as S.Schema<HarnessToolUseBlockDelta>;
+export type HarnessToolResultBlockDelta =
+  | { text: string | redacted.Redacted<string>; json?: never }
+  | { text?: never; json: any };
+export const HarnessToolResultBlockDelta = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ text: SensitiveString }),
+  S.Struct({ json: S.Any }),
+]);
+export type HarnessToolResultBlocksDelta = HarnessToolResultBlockDelta[];
+export const HarnessToolResultBlocksDelta = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  HarnessToolResultBlockDelta,
+);
+export type HarnessReasoningContentBlockDelta =
+  | { text: string; redactedContent?: never; signature?: never }
+  | {
+      text?: never;
+      redactedContent: Uint8Array | redacted.Redacted<Uint8Array>;
+      signature?: never;
+    }
+  | { text?: never; redactedContent?: never; signature: string };
+export const HarnessReasoningContentBlockDelta =
+  /*@__PURE__*/ /*#__PURE__*/ S.Union([
+    S.Struct({ text: S.String }),
+    S.Struct({ redactedContent: SensitiveBlob }),
+    S.Struct({ signature: S.String }),
+  ]);
+export type HarnessContentBlockDelta =
+  | {
+      text: string | redacted.Redacted<string>;
+      toolUse?: never;
+      toolResult?: never;
+      reasoningContent?: never;
+    }
+  | {
+      text?: never;
+      toolUse: HarnessToolUseBlockDelta;
+      toolResult?: never;
+      reasoningContent?: never;
+    }
+  | {
+      text?: never;
+      toolUse?: never;
+      toolResult: HarnessToolResultBlockDelta[];
+      reasoningContent?: never;
+    }
+  | {
+      text?: never;
+      toolUse?: never;
+      toolResult?: never;
+      reasoningContent: HarnessReasoningContentBlockDelta;
+    };
+export const HarnessContentBlockDelta = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ text: SensitiveString }),
+  S.Struct({ toolUse: HarnessToolUseBlockDelta }),
+  S.Struct({ toolResult: HarnessToolResultBlocksDelta }),
+  S.Struct({ reasoningContent: HarnessReasoningContentBlockDelta }),
+]);
+export interface HarnessContentBlockDeltaEvent {
+  contentBlockIndex: number;
+  delta: HarnessContentBlockDelta;
+}
+export const HarnessContentBlockDeltaEvent =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ contentBlockIndex: S.Number, delta: HarnessContentBlockDelta }),
+  ).annotate({
+    identifier: "HarnessContentBlockDeltaEvent",
+  }) as any as S.Schema<HarnessContentBlockDeltaEvent>;
+export interface HarnessContentBlockStopEvent {
+  contentBlockIndex: number;
+}
+export const HarnessContentBlockStopEvent =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ contentBlockIndex: S.Number }),
+  ).annotate({
+    identifier: "HarnessContentBlockStopEvent",
+  }) as any as S.Schema<HarnessContentBlockStopEvent>;
+export type HarnessStopReason =
+  | "end_turn"
+  | "tool_use"
+  | "tool_result"
+  | "max_tokens"
+  | "stop_sequence"
+  | "content_filtered"
+  | "malformed_model_output"
+  | "malformed_tool_use"
+  | "interrupted"
+  | "partial_turn"
+  | "model_context_window_exceeded"
+  | "max_iterations_exceeded"
+  | "max_output_tokens_exceeded"
+  | "timeout_exceeded"
+  | (string & {});
+export const HarnessStopReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface HarnessMessageStopEvent {
+  stopReason: HarnessStopReason;
+}
+export const HarnessMessageStopEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ stopReason: HarnessStopReason }),
+).annotate({
+  identifier: "HarnessMessageStopEvent",
+}) as any as S.Schema<HarnessMessageStopEvent>;
+export interface HarnessTokenUsage {
+  inputTokens: number;
+  outputTokens: number;
+  totalTokens: number;
+  cacheReadInputTokens?: number;
+  cacheWriteInputTokens?: number;
+}
+export const HarnessTokenUsage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    inputTokens: S.Number,
+    outputTokens: S.Number,
+    totalTokens: S.Number,
+    cacheReadInputTokens: S.optional(S.Number),
+    cacheWriteInputTokens: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "HarnessTokenUsage",
+}) as any as S.Schema<HarnessTokenUsage>;
+export interface HarnessStreamMetrics {
+  latencyMs: number;
+}
+export const HarnessStreamMetrics = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ latencyMs: S.Number }),
+).annotate({
+  identifier: "HarnessStreamMetrics",
+}) as any as S.Schema<HarnessStreamMetrics>;
+export interface HarnessMetadataEvent {
+  usage: HarnessTokenUsage;
+  metrics: HarnessStreamMetrics;
+}
+export const HarnessMetadataEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ usage: HarnessTokenUsage, metrics: HarnessStreamMetrics }),
+).annotate({
+  identifier: "HarnessMetadataEvent",
+}) as any as S.Schema<HarnessMetadataEvent>;
+export type InvokeHarnessStreamOutput =
+  | {
+      messageStart: HarnessMessageStartEvent;
+      contentBlockStart?: never;
+      contentBlockDelta?: never;
+      contentBlockStop?: never;
+      messageStop?: never;
+      metadata?: never;
+      internalServerException?: never;
+      validationException?: never;
+      runtimeClientError?: never;
+    }
+  | {
+      messageStart?: never;
+      contentBlockStart: HarnessContentBlockStartEvent;
+      contentBlockDelta?: never;
+      contentBlockStop?: never;
+      messageStop?: never;
+      metadata?: never;
+      internalServerException?: never;
+      validationException?: never;
+      runtimeClientError?: never;
+    }
+  | {
+      messageStart?: never;
+      contentBlockStart?: never;
+      contentBlockDelta: HarnessContentBlockDeltaEvent;
+      contentBlockStop?: never;
+      messageStop?: never;
+      metadata?: never;
+      internalServerException?: never;
+      validationException?: never;
+      runtimeClientError?: never;
+    }
+  | {
+      messageStart?: never;
+      contentBlockStart?: never;
+      contentBlockDelta?: never;
+      contentBlockStop: HarnessContentBlockStopEvent;
+      messageStop?: never;
+      metadata?: never;
+      internalServerException?: never;
+      validationException?: never;
+      runtimeClientError?: never;
+    }
+  | {
+      messageStart?: never;
+      contentBlockStart?: never;
+      contentBlockDelta?: never;
+      contentBlockStop?: never;
+      messageStop: HarnessMessageStopEvent;
+      metadata?: never;
+      internalServerException?: never;
+      validationException?: never;
+      runtimeClientError?: never;
+    }
+  | {
+      messageStart?: never;
+      contentBlockStart?: never;
+      contentBlockDelta?: never;
+      contentBlockStop?: never;
+      messageStop?: never;
+      metadata: HarnessMetadataEvent;
+      internalServerException?: never;
+      validationException?: never;
+      runtimeClientError?: never;
+    }
+  | {
+      messageStart?: never;
+      contentBlockStart?: never;
+      contentBlockDelta?: never;
+      contentBlockStop?: never;
+      messageStop?: never;
+      metadata?: never;
+      internalServerException: InternalServerException;
+      validationException?: never;
+      runtimeClientError?: never;
+    }
+  | {
+      messageStart?: never;
+      contentBlockStart?: never;
+      contentBlockDelta?: never;
+      contentBlockStop?: never;
+      messageStop?: never;
+      metadata?: never;
+      internalServerException?: never;
+      validationException: ValidationException;
+      runtimeClientError?: never;
+    }
+  | {
+      messageStart?: never;
+      contentBlockStart?: never;
+      contentBlockDelta?: never;
+      contentBlockStop?: never;
+      messageStop?: never;
+      metadata?: never;
+      internalServerException?: never;
+      validationException?: never;
+      runtimeClientError: RuntimeClientError;
+    };
+export const InvokeHarnessStreamOutput =
+  /*@__PURE__*/ /*#__PURE__*/ T.EventStream(
+    S.Union([
+      S.Struct({ messageStart: HarnessMessageStartEvent }),
+      S.Struct({ contentBlockStart: HarnessContentBlockStartEvent }),
+      S.Struct({ contentBlockDelta: HarnessContentBlockDeltaEvent }),
+      S.Struct({ contentBlockStop: HarnessContentBlockStopEvent }),
+      S.Struct({ messageStop: HarnessMessageStopEvent }),
+      S.Struct({ metadata: HarnessMetadataEvent }),
+      S.Struct({
+        internalServerException: S.suspend(
+          () => InternalServerException,
+        ).annotate({ identifier: "InternalServerException" }),
+      }),
+      S.Struct({
+        validationException: S.suspend(() => ValidationException).annotate({
+          identifier: "ValidationException",
+        }),
+      }),
+      S.Struct({
+        runtimeClientError: S.suspend(() => RuntimeClientError).annotate({
+          identifier: "RuntimeClientError",
+        }),
+      }),
+    ]),
+  ) as any as S.Schema<stream.Stream<InvokeHarnessStreamOutput, Error, never>>;
+export interface InvokeHarnessResponse {
+  stream: stream.Stream<InvokeHarnessStreamOutput, Error, never>;
+}
+export const InvokeHarnessResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ stream: InvokeHarnessStreamOutput.pipe(T.HttpPayload()) }),
+).annotate({
+  identifier: "InvokeHarnessResponse",
+}) as any as S.Schema<InvokeHarnessResponse>;
 export interface GetAgentCardRequest {
   runtimeSessionId?: string;
   agentRuntimeArn: string;
@@ -2295,6 +3398,281 @@ export const StopCodeInterpreterSessionResponse =
   ).annotate({
     identifier: "StopCodeInterpreterSessionResponse",
   }) as any as S.Schema<StopCodeInterpreterSessionResponse>;
+export interface ConfigurationBundleRef {
+  bundleArn: string;
+  bundleVersion: string;
+}
+export const ConfigurationBundleRef = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ bundleArn: S.String, bundleVersion: S.String }),
+).annotate({
+  identifier: "ConfigurationBundleRef",
+}) as any as S.Schema<ConfigurationBundleRef>;
+export interface TargetRef {
+  name: string;
+}
+export const TargetRef = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String }),
+).annotate({ identifier: "TargetRef" }) as any as S.Schema<TargetRef>;
+export interface VariantConfiguration {
+  configurationBundle?: ConfigurationBundleRef;
+  target?: TargetRef;
+}
+export const VariantConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    configurationBundle: S.optional(ConfigurationBundleRef),
+    target: S.optional(TargetRef),
+  }),
+).annotate({
+  identifier: "VariantConfiguration",
+}) as any as S.Schema<VariantConfiguration>;
+export interface Variant {
+  name: string;
+  weight: number;
+  variantConfiguration: VariantConfiguration;
+}
+export const Variant = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    weight: S.Number,
+    variantConfiguration: VariantConfiguration,
+  }),
+).annotate({ identifier: "Variant" }) as any as S.Schema<Variant>;
+export type VariantList = Variant[];
+export const VariantList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Variant);
+export type TargetPathList = string[];
+export const TargetPathList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface GatewayFilter {
+  targetPaths?: string[];
+}
+export const GatewayFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ targetPaths: S.optional(TargetPathList) }),
+).annotate({ identifier: "GatewayFilter" }) as any as S.Schema<GatewayFilter>;
+export interface PerVariantOnlineEvaluationConfig {
+  name: string;
+  onlineEvaluationConfigArn: string;
+}
+export const PerVariantOnlineEvaluationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ name: S.String, onlineEvaluationConfigArn: S.String }),
+  ).annotate({
+    identifier: "PerVariantOnlineEvaluationConfig",
+  }) as any as S.Schema<PerVariantOnlineEvaluationConfig>;
+export type PerVariantOnlineEvaluationConfigList =
+  PerVariantOnlineEvaluationConfig[];
+export const PerVariantOnlineEvaluationConfigList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(PerVariantOnlineEvaluationConfig);
+export type ABTestEvaluationConfig =
+  | {
+      onlineEvaluationConfigArn: string;
+      perVariantOnlineEvaluationConfig?: never;
+    }
+  | {
+      onlineEvaluationConfigArn?: never;
+      perVariantOnlineEvaluationConfig: PerVariantOnlineEvaluationConfig[];
+    };
+export const ABTestEvaluationConfig = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ onlineEvaluationConfigArn: S.String }),
+  S.Struct({
+    perVariantOnlineEvaluationConfig: PerVariantOnlineEvaluationConfigList,
+  }),
+]);
+export type TagsMap = { [key: string]: string | undefined };
+export const TagsMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface CreateABTestRequest {
+  name: string;
+  description?: string;
+  gatewayArn: string;
+  variants: Variant[];
+  gatewayFilter?: GatewayFilter;
+  evaluationConfig: ABTestEvaluationConfig;
+  roleArn: string;
+  enableOnCreate?: boolean;
+  clientToken?: string;
+  tags?: { [key: string]: string | undefined };
+}
+export const CreateABTestRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    description: S.optional(S.String),
+    gatewayArn: S.String,
+    variants: VariantList,
+    gatewayFilter: S.optional(GatewayFilter),
+    evaluationConfig: ABTestEvaluationConfig,
+    roleArn: S.String,
+    enableOnCreate: S.optional(S.Boolean),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    tags: S.optional(TagsMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ab-tests" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateABTestRequest",
+}) as any as S.Schema<CreateABTestRequest>;
+export type ABTestStatus =
+  | "CREATING"
+  | "ACTIVE"
+  | "CREATE_FAILED"
+  | "UPDATING"
+  | "UPDATE_FAILED"
+  | "DELETING"
+  | "DELETE_FAILED"
+  | "FAILED"
+  | (string & {});
+export const ABTestStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type ABTestExecutionStatus =
+  | "PAUSED"
+  | "RUNNING"
+  | "STOPPED"
+  | "NOT_STARTED"
+  | (string & {});
+export const ABTestExecutionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CreateABTestResponse {
+  abTestId: string;
+  abTestArn: string;
+  name?: string;
+  status: ABTestStatus;
+  executionStatus: ABTestExecutionStatus;
+  createdAt: Date;
+}
+export const CreateABTestResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    abTestId: S.String,
+    abTestArn: S.String,
+    name: S.optional(S.String),
+    status: ABTestStatus,
+    executionStatus: ABTestExecutionStatus,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "CreateABTestResponse",
+}) as any as S.Schema<CreateABTestResponse>;
+export interface DeleteABTestRequest {
+  abTestId: string;
+}
+export const DeleteABTestRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ abTestId: S.String.pipe(T.HttpLabel("abTestId")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/ab-tests/{abTestId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteABTestRequest",
+}) as any as S.Schema<DeleteABTestRequest>;
+export interface DeleteABTestResponse {
+  abTestId: string;
+  abTestArn: string;
+  status: ABTestStatus;
+}
+export const DeleteABTestResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ abTestId: S.String, abTestArn: S.String, status: ABTestStatus }),
+).annotate({
+  identifier: "DeleteABTestResponse",
+}) as any as S.Schema<DeleteABTestResponse>;
+export interface DeleteBatchEvaluationRequest {
+  batchEvaluationId: string;
+}
+export const DeleteBatchEvaluationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      batchEvaluationId: S.String.pipe(T.HttpLabel("batchEvaluationId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "DELETE",
+          uri: "/evaluations/batch-evaluate/{batchEvaluationId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeleteBatchEvaluationRequest",
+  }) as any as S.Schema<DeleteBatchEvaluationRequest>;
+export type BatchEvaluationStatus =
+  | "PENDING"
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "COMPLETED_WITH_ERRORS"
+  | "FAILED"
+  | "STOPPING"
+  | "STOPPED"
+  | "DELETING"
+  | (string & {});
+export const BatchEvaluationStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface DeleteBatchEvaluationResponse {
+  batchEvaluationId: string;
+  batchEvaluationArn: string;
+  status: BatchEvaluationStatus;
+}
+export const DeleteBatchEvaluationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      batchEvaluationId: S.String,
+      batchEvaluationArn: S.String,
+      status: BatchEvaluationStatus,
+    }),
+  ).annotate({
+    identifier: "DeleteBatchEvaluationResponse",
+  }) as any as S.Schema<DeleteBatchEvaluationResponse>;
+export interface DeleteRecommendationRequest {
+  recommendationId: string;
+}
+export const DeleteRecommendationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      recommendationId: S.String.pipe(T.HttpLabel("recommendationId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "DELETE",
+          uri: "/recommendations/{recommendationId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeleteRecommendationRequest",
+  }) as any as S.Schema<DeleteRecommendationRequest>;
+export type RecommendationStatus =
+  | "PENDING"
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | "DELETING"
+  | (string & {});
+export const RecommendationStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface DeleteRecommendationResponse {
+  recommendationId: string;
+  status: RecommendationStatus;
+}
+export const DeleteRecommendationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ recommendationId: S.String, status: RecommendationStatus }),
+  ).annotate({
+    identifier: "DeleteRecommendationResponse",
+  }) as any as S.Schema<DeleteRecommendationResponse>;
 export type Spans = any[];
 export const Spans = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.Any);
 export type EvaluationInput = { sessionSpans: any[] };
@@ -2453,18 +3831,1548 @@ export const EvaluateResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EvaluateResponse",
 }) as any as S.Schema<EvaluateResponse>;
+export interface GetABTestRequest {
+  abTestId: string;
+}
+export const GetABTestRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ abTestId: S.String.pipe(T.HttpLabel("abTestId")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/ab-tests/{abTestId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetABTestRequest",
+}) as any as S.Schema<GetABTestRequest>;
+export type ErrorDetailsList = string[];
+export const ErrorDetailsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface ControlStats {
+  variantName: string;
+  sampleSize: number;
+  mean: number;
+}
+export const ControlStats = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ variantName: S.String, sampleSize: S.Number, mean: S.Number }),
+).annotate({ identifier: "ControlStats" }) as any as S.Schema<ControlStats>;
+export interface ConfidenceInterval {
+  lower?: number;
+  upper?: number;
+}
+export const ConfidenceInterval = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ lower: S.optional(S.Number), upper: S.optional(S.Number) }),
+).annotate({
+  identifier: "ConfidenceInterval",
+}) as any as S.Schema<ConfidenceInterval>;
+export interface VariantResult {
+  variantName: string;
+  sampleSize: number;
+  mean: number;
+  absoluteChange?: number;
+  percentChange?: number;
+  pValue?: number;
+  confidenceInterval?: ConfidenceInterval;
+  isSignificant: boolean;
+}
+export const VariantResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    variantName: S.String,
+    sampleSize: S.Number,
+    mean: S.Number,
+    absoluteChange: S.optional(S.Number),
+    percentChange: S.optional(S.Number),
+    pValue: S.optional(S.Number),
+    confidenceInterval: S.optional(ConfidenceInterval),
+    isSignificant: S.Boolean,
+  }),
+).annotate({ identifier: "VariantResult" }) as any as S.Schema<VariantResult>;
+export type VariantResultList = VariantResult[];
+export const VariantResultList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(VariantResult);
+export interface EvaluatorMetric {
+  evaluatorArn: string;
+  controlStats: ControlStats;
+  variantResults: VariantResult[];
+}
+export const EvaluatorMetric = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    evaluatorArn: S.String,
+    controlStats: ControlStats,
+    variantResults: VariantResultList,
+  }),
+).annotate({
+  identifier: "EvaluatorMetric",
+}) as any as S.Schema<EvaluatorMetric>;
+export type EvaluatorMetricList = EvaluatorMetric[];
+export const EvaluatorMetricList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(EvaluatorMetric);
+export interface ABTestResults {
+  analysisTimestamp?: Date;
+  evaluatorMetrics: EvaluatorMetric[];
+}
+export const ABTestResults = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    analysisTimestamp: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    evaluatorMetrics: EvaluatorMetricList,
+  }),
+).annotate({ identifier: "ABTestResults" }) as any as S.Schema<ABTestResults>;
+export interface GetABTestResponse {
+  abTestId: string;
+  abTestArn: string;
+  name: string;
+  description?: string;
+  status: ABTestStatus;
+  executionStatus: ABTestExecutionStatus;
+  gatewayArn: string;
+  variants: Variant[];
+  gatewayFilter?: GatewayFilter;
+  evaluationConfig: ABTestEvaluationConfig;
+  roleArn?: string;
+  currentRunId?: string;
+  errorDetails?: string[];
+  startedAt?: Date;
+  stoppedAt?: Date;
+  maxDurationExpiresAt?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  results?: ABTestResults;
+}
+export const GetABTestResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    abTestId: S.String,
+    abTestArn: S.String,
+    name: S.String,
+    description: S.optional(S.String),
+    status: ABTestStatus,
+    executionStatus: ABTestExecutionStatus,
+    gatewayArn: S.String,
+    variants: VariantList,
+    gatewayFilter: S.optional(GatewayFilter),
+    evaluationConfig: ABTestEvaluationConfig,
+    roleArn: S.optional(S.String),
+    currentRunId: S.optional(S.String),
+    errorDetails: S.optional(ErrorDetailsList),
+    startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    stoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    maxDurationExpiresAt: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    results: S.optional(ABTestResults),
+  }),
+).annotate({
+  identifier: "GetABTestResponse",
+}) as any as S.Schema<GetABTestResponse>;
+export interface GetBatchEvaluationRequest {
+  batchEvaluationId: string;
+}
+export const GetBatchEvaluationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      batchEvaluationId: S.String.pipe(T.HttpLabel("batchEvaluationId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/evaluations/batch-evaluate/{batchEvaluationId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetBatchEvaluationRequest",
+}) as any as S.Schema<GetBatchEvaluationRequest>;
+export interface Evaluator {
+  evaluatorId: string;
+}
+export const Evaluator = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ evaluatorId: S.String }),
+).annotate({ identifier: "Evaluator" }) as any as S.Schema<Evaluator>;
+export type EvaluatorList = Evaluator[];
+export const EvaluatorList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Evaluator);
+export interface Insight {
+  insightId: string;
+}
+export const Insight = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ insightId: S.String }),
+).annotate({ identifier: "Insight" }) as any as S.Schema<Insight>;
+export type InsightList = Insight[];
+export const InsightList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Insight);
+export type EvaluationStringList = string[];
+export const EvaluationStringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export interface SessionFilterConfig {
+  startTime?: Date;
+  endTime?: Date;
+}
+export const SessionFilterConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    startTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+  }),
+).annotate({
+  identifier: "SessionFilterConfig",
+}) as any as S.Schema<SessionFilterConfig>;
+export interface CloudWatchFilterConfig {
+  sessionIds?: string[];
+  timeRange?: SessionFilterConfig;
+}
+export const CloudWatchFilterConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      sessionIds: S.optional(EvaluationStringList),
+      timeRange: S.optional(SessionFilterConfig),
+    }),
+).annotate({
+  identifier: "CloudWatchFilterConfig",
+}) as any as S.Schema<CloudWatchFilterConfig>;
+export interface CloudWatchLogsSource {
+  serviceNames: string[];
+  logGroupNames: string[];
+  filterConfig?: CloudWatchFilterConfig;
+}
+export const CloudWatchLogsSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceNames: EvaluationStringList,
+    logGroupNames: EvaluationStringList,
+    filterConfig: S.optional(CloudWatchFilterConfig),
+  }),
+).annotate({
+  identifier: "CloudWatchLogsSource",
+}) as any as S.Schema<CloudWatchLogsSource>;
+export interface OnlineEvaluationConfigSource {
+  onlineEvaluationConfigArn: string;
+  timeRange?: SessionFilterConfig;
+}
+export const OnlineEvaluationConfigSource =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      onlineEvaluationConfigArn: S.String,
+      timeRange: S.optional(SessionFilterConfig),
+    }),
+  ).annotate({
+    identifier: "OnlineEvaluationConfigSource",
+  }) as any as S.Schema<OnlineEvaluationConfigSource>;
+export type DataSourceConfig =
+  | {
+      cloudWatchLogs: CloudWatchLogsSource;
+      onlineEvaluationConfigSource?: never;
+    }
+  | {
+      cloudWatchLogs?: never;
+      onlineEvaluationConfigSource: OnlineEvaluationConfigSource;
+    };
+export const DataSourceConfig = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ cloudWatchLogs: CloudWatchLogsSource }),
+  S.Struct({ onlineEvaluationConfigSource: OnlineEvaluationConfigSource }),
+]);
+export interface CloudWatchOutputConfig {
+  logGroupName: string;
+  logStreamName: string;
+}
+export const CloudWatchOutputConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ logGroupName: S.String, logStreamName: S.String }),
+).annotate({
+  identifier: "CloudWatchOutputConfig",
+}) as any as S.Schema<CloudWatchOutputConfig>;
+export type OutputConfig = { cloudWatchConfig: CloudWatchOutputConfig };
+export const OutputConfig = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ cloudWatchConfig: CloudWatchOutputConfig }),
+]);
+export interface EvaluatorStatistics {
+  averageScore?: number;
+}
+export const EvaluatorStatistics = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ averageScore: S.optional(S.Number) }),
+).annotate({
+  identifier: "EvaluatorStatistics",
+}) as any as S.Schema<EvaluatorStatistics>;
+export interface EvaluatorSummary {
+  evaluatorId?: string;
+  statistics?: EvaluatorStatistics;
+  totalEvaluated?: number;
+  totalFailed?: number;
+}
+export const EvaluatorSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    evaluatorId: S.optional(S.String),
+    statistics: S.optional(EvaluatorStatistics),
+    totalEvaluated: S.optional(S.Number),
+    totalFailed: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "EvaluatorSummary",
+}) as any as S.Schema<EvaluatorSummary>;
+export type EvaluatorSummaryList = EvaluatorSummary[];
+export const EvaluatorSummaryList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(EvaluatorSummary);
+export interface EvaluationJobResults {
+  numberOfSessionsCompleted?: number;
+  numberOfSessionsInProgress?: number;
+  numberOfSessionsFailed?: number;
+  totalNumberOfSessions?: number;
+  numberOfSessionsIgnored?: number;
+  evaluatorSummaries?: EvaluatorSummary[];
+}
+export const EvaluationJobResults = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    numberOfSessionsCompleted: S.optional(S.Number),
+    numberOfSessionsInProgress: S.optional(S.Number),
+    numberOfSessionsFailed: S.optional(S.Number),
+    totalNumberOfSessions: S.optional(S.Number),
+    numberOfSessionsIgnored: S.optional(S.Number),
+    evaluatorSummaries: S.optional(EvaluatorSummaryList),
+  }),
+).annotate({
+  identifier: "EvaluationJobResults",
+}) as any as S.Schema<EvaluationJobResults>;
+export type InsightsFailureCategory =
+  | "execution-error-category-authentication"
+  | "execution-error-category-resource-not-found"
+  | "execution-error-category-service-errors"
+  | "execution-error-category-rate-limiting"
+  | "execution-error-category-formatting"
+  | "execution-error-category-timeout"
+  | "execution-error-category-resource-exhaustion"
+  | "execution-error-category-environment"
+  | "execution-error-category-tool-schema"
+  | "task-instruction-category-non-compliance"
+  | "task-instruction-category-problem-id"
+  | "incorrect-actions-category-tool-selection"
+  | "incorrect-actions-category-poor-information-retrieval"
+  | "incorrect-actions-category-clarification"
+  | "incorrect-actions-category-inappropriate-info-request"
+  | "context-handling-error-category-context-handling-failures"
+  | "hallucination-category-hall-capabilities"
+  | "hallucination-category-hall-misunderstand"
+  | "hallucination-category-hall-usage"
+  | "hallucination-category-hall-history"
+  | "hallucination-category-hall-params"
+  | "hallucination-category-fabricate-tool-outputs"
+  | "repetitive-behavior-category-repetition-tool"
+  | "repetitive-behavior-category-repetition-info"
+  | "repetitive-behavior-category-step-repetition"
+  | "orchestration-related-errors-category-reasoning-mismatch"
+  | "orchestration-related-errors-category-goal-deviation"
+  | "orchestration-related-errors-category-premature-termination"
+  | "orchestration-related-errors-category-unaware-termination"
+  | "llm-output-category-nonsensical"
+  | "configuration-mismatch-category-tool-definition"
+  | "coding-use-case-specific-failure-types-category-edge-case-oversights"
+  | "coding-use-case-specific-failure-types-category-dependency-issues"
+  | "other"
+  | (string & {});
+export const InsightsFailureCategory = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface InsightsFailureSignal {
+  category: InsightsFailureCategory;
+  evidence: string;
+  confidence: number;
+}
+export const InsightsFailureSignal = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    category: InsightsFailureCategory,
+    evidence: S.String,
+    confidence: S.Number,
+  }),
+).annotate({
+  identifier: "InsightsFailureSignal",
+}) as any as S.Schema<InsightsFailureSignal>;
+export type InsightsFailureSignalList = InsightsFailureSignal[];
+export const InsightsFailureSignalList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  InsightsFailureSignal,
+);
+export interface FailureSpanDetail {
+  spanId: string;
+  traceId: string;
+  signals: InsightsFailureSignal[];
+}
+export const FailureSpanDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    spanId: S.String,
+    traceId: S.String,
+    signals: InsightsFailureSignalList,
+  }),
+).annotate({
+  identifier: "FailureSpanDetail",
+}) as any as S.Schema<FailureSpanDetail>;
+export type FailureSpanDetailList = FailureSpanDetail[];
+export const FailureSpanDetailList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(FailureSpanDetail);
+export interface AffectedSession {
+  sessionId: string;
+  explanation: string;
+  fixType: string;
+  recommendation: string;
+  failureSpans: FailureSpanDetail[];
+}
+export const AffectedSession = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sessionId: S.String,
+    explanation: S.String,
+    fixType: S.String,
+    recommendation: S.String,
+    failureSpans: FailureSpanDetailList,
+  }),
+).annotate({
+  identifier: "AffectedSession",
+}) as any as S.Schema<AffectedSession>;
+export type AffectedSessionList = AffectedSession[];
+export const AffectedSessionList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(AffectedSession);
+export interface RootCauseCluster {
+  clusterId: number;
+  name: string;
+  rootCause: string;
+  recommendation: string;
+  affectedSessionCount: number;
+  affectedSessions: AffectedSession[];
+}
+export const RootCauseCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clusterId: S.Number,
+    name: S.String,
+    rootCause: S.String,
+    recommendation: S.String,
+    affectedSessionCount: S.Number,
+    affectedSessions: AffectedSessionList,
+  }),
+).annotate({
+  identifier: "RootCauseCluster",
+}) as any as S.Schema<RootCauseCluster>;
+export type RootCauseClusterList = RootCauseCluster[];
+export const RootCauseClusterList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(RootCauseCluster);
+export interface FailureSubCategoryCluster {
+  clusterId: number;
+  name: string;
+  description: string;
+  affectedSessionCount: number;
+  rootCauses: RootCauseCluster[];
+}
+export const FailureSubCategoryCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      clusterId: S.Number,
+      name: S.String,
+      description: S.String,
+      affectedSessionCount: S.Number,
+      rootCauses: RootCauseClusterList,
+    }),
+).annotate({
+  identifier: "FailureSubCategoryCluster",
+}) as any as S.Schema<FailureSubCategoryCluster>;
+export type FailureSubCategoryClusterList = FailureSubCategoryCluster[];
+export const FailureSubCategoryClusterList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(FailureSubCategoryCluster);
+export interface FailureCategoryCluster {
+  clusterId: number;
+  name: string;
+  description: string;
+  affectedSessionCount: number;
+  subCategories: FailureSubCategoryCluster[];
+}
+export const FailureCategoryCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      clusterId: S.Number,
+      name: S.String,
+      description: S.String,
+      affectedSessionCount: S.Number,
+      subCategories: FailureSubCategoryClusterList,
+    }),
+).annotate({
+  identifier: "FailureCategoryCluster",
+}) as any as S.Schema<FailureCategoryCluster>;
+export type FailureCategoryClusterList = FailureCategoryCluster[];
+export const FailureCategoryClusterList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  FailureCategoryCluster,
+);
+export interface FailureAnalysisResultContent {
+  failures: FailureCategoryCluster[];
+}
+export const FailureAnalysisResultContent =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ failures: FailureCategoryClusterList }),
+  ).annotate({
+    identifier: "FailureAnalysisResultContent",
+  }) as any as S.Schema<FailureAnalysisResultContent>;
+export type UserIntentList = string[];
+export const UserIntentList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface UserIntentAffectedSession {
+  sessionId: string;
+  userMessages: string[];
+}
+export const UserIntentAffectedSession = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ sessionId: S.String, userMessages: UserIntentList }),
+).annotate({
+  identifier: "UserIntentAffectedSession",
+}) as any as S.Schema<UserIntentAffectedSession>;
+export type UserIntentAffectedSessionList = UserIntentAffectedSession[];
+export const UserIntentAffectedSessionList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(UserIntentAffectedSession);
+export interface UserIntentCluster {
+  clusterId: number;
+  name: string;
+  description: string;
+  affectedSessionCount: number;
+  affectedSessions: UserIntentAffectedSession[];
+}
+export const UserIntentCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clusterId: S.Number,
+    name: S.String,
+    description: S.String,
+    affectedSessionCount: S.Number,
+    affectedSessions: UserIntentAffectedSessionList,
+  }),
+).annotate({
+  identifier: "UserIntentCluster",
+}) as any as S.Schema<UserIntentCluster>;
+export type UserIntentClusterList = UserIntentCluster[];
+export const UserIntentClusterList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(UserIntentCluster);
+export interface UserIntentClusteringResultContent {
+  userIntents: UserIntentCluster[];
+}
+export const UserIntentClusteringResultContent =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ userIntents: UserIntentClusterList }),
+  ).annotate({
+    identifier: "UserIntentClusteringResultContent",
+  }) as any as S.Schema<UserIntentClusteringResultContent>;
+export interface ExecutionSummaryAffectedSession {
+  sessionId: string;
+  approachTaken: string;
+  finalOutcome: string;
+}
+export const ExecutionSummaryAffectedSession =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      sessionId: S.String,
+      approachTaken: S.String,
+      finalOutcome: S.String,
+    }),
+  ).annotate({
+    identifier: "ExecutionSummaryAffectedSession",
+  }) as any as S.Schema<ExecutionSummaryAffectedSession>;
+export type ExecutionSummaryAffectedSessionList =
+  ExecutionSummaryAffectedSession[];
+export const ExecutionSummaryAffectedSessionList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ExecutionSummaryAffectedSession);
+export interface ExecutionSummaryCluster {
+  clusterId: number;
+  name: string;
+  description: string;
+  affectedSessionCount: number;
+  affectedSessions: ExecutionSummaryAffectedSession[];
+}
+export const ExecutionSummaryCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      clusterId: S.Number,
+      name: S.String,
+      description: S.String,
+      affectedSessionCount: S.Number,
+      affectedSessions: ExecutionSummaryAffectedSessionList,
+    }),
+).annotate({
+  identifier: "ExecutionSummaryCluster",
+}) as any as S.Schema<ExecutionSummaryCluster>;
+export type ExecutionSummaryClusterList = ExecutionSummaryCluster[];
+export const ExecutionSummaryClusterList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  ExecutionSummaryCluster,
+);
+export interface ExecutionSummaryClusteringResultContent {
+  executionSummaries: ExecutionSummaryCluster[];
+}
+export const ExecutionSummaryClusteringResultContent =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ executionSummaries: ExecutionSummaryClusterList }),
+  ).annotate({
+    identifier: "ExecutionSummaryClusteringResultContent",
+  }) as any as S.Schema<ExecutionSummaryClusteringResultContent>;
+export interface GetBatchEvaluationResponse {
+  batchEvaluationId: string;
+  batchEvaluationArn: string;
+  batchEvaluationName: string;
+  status: BatchEvaluationStatus;
+  createdAt: Date;
+  evaluators?: Evaluator[];
+  insights?: Insight[];
+  dataSourceConfig?: DataSourceConfig;
+  outputConfig?: OutputConfig;
+  evaluationResults?: EvaluationJobResults;
+  failureAnalysisResult?: FailureAnalysisResultContent;
+  userIntentResult?: UserIntentClusteringResultContent;
+  executionSummaryResult?: ExecutionSummaryClusteringResultContent;
+  errorDetails?: string[];
+  description?: string;
+  updatedAt?: Date;
+  kmsKeyArn?: string;
+}
+export const GetBatchEvaluationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      batchEvaluationId: S.String,
+      batchEvaluationArn: S.String,
+      batchEvaluationName: S.String,
+      status: BatchEvaluationStatus,
+      createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      evaluators: S.optional(EvaluatorList),
+      insights: S.optional(InsightList),
+      dataSourceConfig: S.optional(DataSourceConfig),
+      outputConfig: S.optional(OutputConfig),
+      evaluationResults: S.optional(EvaluationJobResults),
+      failureAnalysisResult: S.optional(FailureAnalysisResultContent),
+      userIntentResult: S.optional(UserIntentClusteringResultContent),
+      executionSummaryResult: S.optional(
+        ExecutionSummaryClusteringResultContent,
+      ),
+      errorDetails: S.optional(ErrorDetailsList),
+      description: S.optional(S.String),
+      updatedAt: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      kmsKeyArn: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GetBatchEvaluationResponse",
+}) as any as S.Schema<GetBatchEvaluationResponse>;
+export interface GetRecommendationRequest {
+  recommendationId: string;
+}
+export const GetRecommendationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      recommendationId: S.String.pipe(T.HttpLabel("recommendationId")),
+    }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/recommendations/{recommendationId}" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetRecommendationRequest",
+}) as any as S.Schema<GetRecommendationRequest>;
+export type RecommendationType =
+  | "SYSTEM_PROMPT_RECOMMENDATION"
+  | "TOOL_DESCRIPTION_RECOMMENDATION"
+  | (string & {});
+export const RecommendationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface SystemPromptConfigurationBundle {
+  bundleArn: string;
+  versionId: string;
+  systemPromptJsonPath: string;
+}
+export const SystemPromptConfigurationBundle =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      bundleArn: S.String,
+      versionId: S.String,
+      systemPromptJsonPath: S.String,
+    }),
+  ).annotate({
+    identifier: "SystemPromptConfigurationBundle",
+  }) as any as S.Schema<SystemPromptConfigurationBundle>;
+export type SystemPromptConfig =
+  | { text: string | redacted.Redacted<string>; configurationBundle?: never }
+  | { text?: never; configurationBundle: SystemPromptConfigurationBundle };
+export const SystemPromptConfig = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ text: SensitiveString }),
+  S.Struct({ configurationBundle: SystemPromptConfigurationBundle }),
+]);
+export type LogGroupArnList = string[];
+export const LogGroupArnList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type ServiceNameList = string[];
+export const ServiceNameList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type CloudWatchLogsFilterOperator =
+  | "Equals"
+  | "NotEquals"
+  | "GreaterThan"
+  | "LessThan"
+  | "GreaterThanOrEqual"
+  | "LessThanOrEqual"
+  | "Contains"
+  | "NotContains"
+  | (string & {});
+export const CloudWatchLogsFilterOperator =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type FilterValue =
+  | { stringValue: string; doubleValue?: never; booleanValue?: never }
+  | { stringValue?: never; doubleValue: number; booleanValue?: never }
+  | { stringValue?: never; doubleValue?: never; booleanValue: boolean };
+export const FilterValue = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ stringValue: S.String }),
+  S.Struct({ doubleValue: S.Number }),
+  S.Struct({ booleanValue: S.Boolean }),
+]);
+export interface CloudWatchLogsFilter {
+  key: string;
+  operator: CloudWatchLogsFilterOperator;
+  value: FilterValue;
+}
+export const CloudWatchLogsFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.String,
+    operator: CloudWatchLogsFilterOperator,
+    value: FilterValue,
+  }),
+).annotate({
+  identifier: "CloudWatchLogsFilter",
+}) as any as S.Schema<CloudWatchLogsFilter>;
+export type CloudWatchLogsFilterList = CloudWatchLogsFilter[];
+export const CloudWatchLogsFilterList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(CloudWatchLogsFilter);
+export interface CloudWatchLogsRule {
+  filters?: CloudWatchLogsFilter[];
+}
+export const CloudWatchLogsRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ filters: S.optional(CloudWatchLogsFilterList) }),
+).annotate({
+  identifier: "CloudWatchLogsRule",
+}) as any as S.Schema<CloudWatchLogsRule>;
+export interface CloudWatchLogsTraceConfig {
+  logGroupArns: string[];
+  serviceNames: string[];
+  startTime: Date;
+  endTime: Date;
+  rule?: CloudWatchLogsRule;
+}
+export const CloudWatchLogsTraceConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      logGroupArns: LogGroupArnList,
+      serviceNames: ServiceNameList,
+      startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      endTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      rule: S.optional(CloudWatchLogsRule),
+    }),
+).annotate({
+  identifier: "CloudWatchLogsTraceConfig",
+}) as any as S.Schema<CloudWatchLogsTraceConfig>;
+export interface BatchEvaluationTraceConfig {
+  batchEvaluationArn: string;
+}
+export const BatchEvaluationTraceConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ batchEvaluationArn: S.String }),
+).annotate({
+  identifier: "BatchEvaluationTraceConfig",
+}) as any as S.Schema<BatchEvaluationTraceConfig>;
+export type AgentTracesConfig =
+  | { sessionSpans: any[]; cloudwatchLogs?: never; batchEvaluation?: never }
+  | {
+      sessionSpans?: never;
+      cloudwatchLogs: CloudWatchLogsTraceConfig;
+      batchEvaluation?: never;
+    }
+  | {
+      sessionSpans?: never;
+      cloudwatchLogs?: never;
+      batchEvaluation: BatchEvaluationTraceConfig;
+    };
+export const AgentTracesConfig = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ sessionSpans: Spans }),
+  S.Struct({ cloudwatchLogs: CloudWatchLogsTraceConfig }),
+  S.Struct({ batchEvaluation: BatchEvaluationTraceConfig }),
+]);
+export interface RecommendationEvaluatorReference {
+  evaluatorArn: string;
+}
+export const RecommendationEvaluatorReference =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ evaluatorArn: S.String }),
+  ).annotate({
+    identifier: "RecommendationEvaluatorReference",
+  }) as any as S.Schema<RecommendationEvaluatorReference>;
+export type RecommendationEvaluatorList = RecommendationEvaluatorReference[];
+export const RecommendationEvaluatorList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  RecommendationEvaluatorReference,
+);
+export interface RecommendationEvaluationConfig {
+  evaluators: RecommendationEvaluatorReference[];
+}
+export const RecommendationEvaluationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ evaluators: RecommendationEvaluatorList }),
+  ).annotate({
+    identifier: "RecommendationEvaluationConfig",
+  }) as any as S.Schema<RecommendationEvaluationConfig>;
+export interface SystemPromptRecommendationConfig {
+  systemPrompt: SystemPromptConfig;
+  agentTraces: AgentTracesConfig;
+  evaluationConfig?: RecommendationEvaluationConfig;
+}
+export const SystemPromptRecommendationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      systemPrompt: SystemPromptConfig,
+      agentTraces: AgentTracesConfig,
+      evaluationConfig: S.optional(RecommendationEvaluationConfig),
+    }),
+  ).annotate({
+    identifier: "SystemPromptRecommendationConfig",
+  }) as any as S.Schema<SystemPromptRecommendationConfig>;
+export type ToolDescriptionConfig = {
+  text: string | redacted.Redacted<string>;
+};
+export const ToolDescriptionConfig = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ text: SensitiveString }),
+]);
+export interface ToolDescriptionInput {
+  toolName: string;
+  toolDescription: ToolDescriptionConfig;
+}
+export const ToolDescriptionInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ toolName: S.String, toolDescription: ToolDescriptionConfig }),
+).annotate({
+  identifier: "ToolDescriptionInput",
+}) as any as S.Schema<ToolDescriptionInput>;
+export type ToolDescriptionList = ToolDescriptionInput[];
+export const ToolDescriptionList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ToolDescriptionInput);
+export interface ToolDescriptionTextInput {
+  tools: ToolDescriptionInput[];
+}
+export const ToolDescriptionTextInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ tools: ToolDescriptionList }),
+).annotate({
+  identifier: "ToolDescriptionTextInput",
+}) as any as S.Schema<ToolDescriptionTextInput>;
+export interface ConfigurationBundleToolEntry {
+  toolName: string;
+  toolDescriptionJsonPath: string;
+}
+export const ConfigurationBundleToolEntry =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ toolName: S.String, toolDescriptionJsonPath: S.String }),
+  ).annotate({
+    identifier: "ConfigurationBundleToolEntry",
+  }) as any as S.Schema<ConfigurationBundleToolEntry>;
+export type ConfigurationBundleToolEntryList = ConfigurationBundleToolEntry[];
+export const ConfigurationBundleToolEntryList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ConfigurationBundleToolEntry);
+export interface ToolDescriptionConfigurationBundle {
+  bundleArn: string;
+  versionId: string;
+  tools: ConfigurationBundleToolEntry[];
+}
+export const ToolDescriptionConfigurationBundle =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      bundleArn: S.String,
+      versionId: S.String,
+      tools: ConfigurationBundleToolEntryList,
+    }),
+  ).annotate({
+    identifier: "ToolDescriptionConfigurationBundle",
+  }) as any as S.Schema<ToolDescriptionConfigurationBundle>;
+export type ToolDescriptionSource =
+  | {
+      toolDescriptionText: ToolDescriptionTextInput;
+      configurationBundle?: never;
+    }
+  | {
+      toolDescriptionText?: never;
+      configurationBundle: ToolDescriptionConfigurationBundle;
+    };
+export const ToolDescriptionSource = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ toolDescriptionText: ToolDescriptionTextInput }),
+  S.Struct({ configurationBundle: ToolDescriptionConfigurationBundle }),
+]);
+export interface ToolDescriptionRecommendationConfig {
+  toolDescription: ToolDescriptionSource;
+  agentTraces: AgentTracesConfig;
+}
+export const ToolDescriptionRecommendationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      toolDescription: ToolDescriptionSource,
+      agentTraces: AgentTracesConfig,
+    }),
+  ).annotate({
+    identifier: "ToolDescriptionRecommendationConfig",
+  }) as any as S.Schema<ToolDescriptionRecommendationConfig>;
+export type RecommendationConfig =
+  | {
+      systemPromptRecommendationConfig: SystemPromptRecommendationConfig;
+      toolDescriptionRecommendationConfig?: never;
+    }
+  | {
+      systemPromptRecommendationConfig?: never;
+      toolDescriptionRecommendationConfig: ToolDescriptionRecommendationConfig;
+    };
+export const RecommendationConfig = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({
+    systemPromptRecommendationConfig: SystemPromptRecommendationConfig,
+  }),
+  S.Struct({
+    toolDescriptionRecommendationConfig: ToolDescriptionRecommendationConfig,
+  }),
+]);
+export interface RecommendationResultConfigurationBundle {
+  bundleArn: string;
+  versionId: string;
+}
+export const RecommendationResultConfigurationBundle =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ bundleArn: S.String, versionId: S.String }),
+  ).annotate({
+    identifier: "RecommendationResultConfigurationBundle",
+  }) as any as S.Schema<RecommendationResultConfigurationBundle>;
+export interface SystemPromptRecommendationResult {
+  recommendedSystemPrompt?: string | redacted.Redacted<string>;
+  configurationBundle?: RecommendationResultConfigurationBundle;
+  explanation?: string;
+  errorCode?: string;
+  errorMessage?: string;
+}
+export const SystemPromptRecommendationResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      recommendedSystemPrompt: S.optional(SensitiveString),
+      configurationBundle: S.optional(RecommendationResultConfigurationBundle),
+      explanation: S.optional(S.String),
+      errorCode: S.optional(S.String),
+      errorMessage: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "SystemPromptRecommendationResult",
+  }) as any as S.Schema<SystemPromptRecommendationResult>;
+export interface ToolDescriptionOutput {
+  toolName: string;
+  recommendedToolDescription?: string | redacted.Redacted<string>;
+  explanation?: string;
+}
+export const ToolDescriptionOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    toolName: S.String,
+    recommendedToolDescription: S.optional(SensitiveString),
+    explanation: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ToolDescriptionOutput",
+}) as any as S.Schema<ToolDescriptionOutput>;
+export type ToolDescriptionResultList = ToolDescriptionOutput[];
+export const ToolDescriptionResultList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  ToolDescriptionOutput,
+);
+export interface ToolDescriptionRecommendationResult {
+  tools?: ToolDescriptionOutput[];
+  configurationBundle?: RecommendationResultConfigurationBundle;
+  errorCode?: string;
+  errorMessage?: string;
+}
+export const ToolDescriptionRecommendationResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tools: S.optional(ToolDescriptionResultList),
+      configurationBundle: S.optional(RecommendationResultConfigurationBundle),
+      errorCode: S.optional(S.String),
+      errorMessage: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ToolDescriptionRecommendationResult",
+  }) as any as S.Schema<ToolDescriptionRecommendationResult>;
+export type RecommendationResult =
+  | {
+      systemPromptRecommendationResult: SystemPromptRecommendationResult;
+      toolDescriptionRecommendationResult?: never;
+    }
+  | {
+      systemPromptRecommendationResult?: never;
+      toolDescriptionRecommendationResult: ToolDescriptionRecommendationResult;
+    };
+export const RecommendationResult = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({
+    systemPromptRecommendationResult: SystemPromptRecommendationResult,
+  }),
+  S.Struct({
+    toolDescriptionRecommendationResult: ToolDescriptionRecommendationResult,
+  }),
+]);
+export interface GetRecommendationResponse {
+  recommendationId: string;
+  recommendationArn: string;
+  name: string;
+  description?: string;
+  type: RecommendationType;
+  recommendationConfig: RecommendationConfig;
+  status: RecommendationStatus;
+  createdAt: Date;
+  updatedAt: Date;
+  recommendationResult?: RecommendationResult;
+  kmsKeyArn?: string;
+}
+export const GetRecommendationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      recommendationId: S.String,
+      recommendationArn: S.String,
+      name: S.String,
+      description: S.optional(S.String),
+      type: RecommendationType,
+      recommendationConfig: RecommendationConfig,
+      status: RecommendationStatus,
+      createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      recommendationResult: S.optional(RecommendationResult),
+      kmsKeyArn: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GetRecommendationResponse",
+}) as any as S.Schema<GetRecommendationResponse>;
+export interface ListABTestsRequest {
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListABTestsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/ab-tests" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListABTestsRequest",
+}) as any as S.Schema<ListABTestsRequest>;
+export interface ABTestSummary {
+  abTestId: string;
+  abTestArn: string;
+  name: string;
+  status: ABTestStatus;
+  executionStatus: ABTestExecutionStatus;
+  description?: string;
+  gatewayArn?: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const ABTestSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    abTestId: S.String,
+    abTestArn: S.String,
+    name: S.String,
+    status: ABTestStatus,
+    executionStatus: ABTestExecutionStatus,
+    description: S.optional(S.String),
+    gatewayArn: S.optional(S.String),
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({ identifier: "ABTestSummary" }) as any as S.Schema<ABTestSummary>;
+export type ABTestSummaryList = ABTestSummary[];
+export const ABTestSummaryList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ABTestSummary);
+export interface ListABTestsResponse {
+  abTests: ABTestSummary[];
+  nextToken?: string;
+}
+export const ListABTestsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ abTests: ABTestSummaryList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListABTestsResponse",
+}) as any as S.Schema<ListABTestsResponse>;
+export interface ListBatchEvaluationsRequest {
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListBatchEvaluationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/evaluations/batch-evaluate" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListBatchEvaluationsRequest",
+  }) as any as S.Schema<ListBatchEvaluationsRequest>;
+export interface BatchEvaluationSummary {
+  batchEvaluationId: string;
+  batchEvaluationArn: string;
+  batchEvaluationName: string;
+  status: BatchEvaluationStatus;
+  createdAt: Date;
+  description?: string;
+  evaluators?: Evaluator[];
+  insights?: Insight[];
+  evaluationResults?: EvaluationJobResults;
+  errorDetails?: string[];
+  kmsKeyArn?: string;
+  updatedAt?: Date;
+}
+export const BatchEvaluationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      batchEvaluationId: S.String,
+      batchEvaluationArn: S.String,
+      batchEvaluationName: S.String,
+      status: BatchEvaluationStatus,
+      createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      description: S.optional(S.String),
+      evaluators: S.optional(EvaluatorList),
+      insights: S.optional(InsightList),
+      evaluationResults: S.optional(EvaluationJobResults),
+      errorDetails: S.optional(ErrorDetailsList),
+      kmsKeyArn: S.optional(S.String),
+      updatedAt: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+    }),
+).annotate({
+  identifier: "BatchEvaluationSummary",
+}) as any as S.Schema<BatchEvaluationSummary>;
+export type BatchEvaluationSummaryList = BatchEvaluationSummary[];
+export const BatchEvaluationSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  BatchEvaluationSummary,
+);
+export interface ListBatchEvaluationsResponse {
+  batchEvaluations: BatchEvaluationSummary[];
+  nextToken?: string;
+}
+export const ListBatchEvaluationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      batchEvaluations: BatchEvaluationSummaryList,
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListBatchEvaluationsResponse",
+  }) as any as S.Schema<ListBatchEvaluationsResponse>;
+export interface ListRecommendationsRequest {
+  maxResults?: number;
+  nextToken?: string;
+  statusFilter?: RecommendationStatus;
+}
+export const ListRecommendationsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+      statusFilter: S.optional(RecommendationStatus).pipe(
+        T.HttpQuery("status"),
+      ),
+    }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/recommendations" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListRecommendationsRequest",
+}) as any as S.Schema<ListRecommendationsRequest>;
+export interface RecommendationSummary {
+  recommendationId: string;
+  recommendationArn: string;
+  name: string;
+  description?: string;
+  type: RecommendationType;
+  status: RecommendationStatus;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const RecommendationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    recommendationId: S.String,
+    recommendationArn: S.String,
+    name: S.String,
+    description: S.optional(S.String),
+    type: RecommendationType,
+    status: RecommendationStatus,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "RecommendationSummary",
+}) as any as S.Schema<RecommendationSummary>;
+export type RecommendationSummaryList = RecommendationSummary[];
+export const RecommendationSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  RecommendationSummary,
+);
+export interface ListRecommendationsResponse {
+  recommendationSummaries: RecommendationSummary[];
+  nextToken?: string;
+}
+export const ListRecommendationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      recommendationSummaries: RecommendationSummaryList,
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListRecommendationsResponse",
+  }) as any as S.Schema<ListRecommendationsResponse>;
+export type GroundTruthTurnInput = { prompt: string };
+export const GroundTruthTurnInput = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ prompt: S.String }),
+]);
+export interface GroundTruthTurn {
+  input?: GroundTruthTurnInput;
+  expectedResponse?: EvaluationContent;
+}
+export const GroundTruthTurn = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: S.optional(GroundTruthTurnInput),
+    expectedResponse: S.optional(EvaluationContent),
+  }),
+).annotate({
+  identifier: "GroundTruthTurn",
+}) as any as S.Schema<GroundTruthTurn>;
+export type GroundTruthTurnList = GroundTruthTurn[];
+export const GroundTruthTurnList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(GroundTruthTurn);
+export interface InlineGroundTruth {
+  assertions?: EvaluationContent[];
+  expectedTrajectory?: EvaluationExpectedTrajectory;
+  turns?: GroundTruthTurn[];
+}
+export const InlineGroundTruth = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assertions: S.optional(EvaluationContentList),
+    expectedTrajectory: S.optional(EvaluationExpectedTrajectory),
+    turns: S.optional(GroundTruthTurnList),
+  }),
+).annotate({
+  identifier: "InlineGroundTruth",
+}) as any as S.Schema<InlineGroundTruth>;
+export type GroundTruthSource = { inline: InlineGroundTruth };
+export const GroundTruthSource = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ inline: InlineGroundTruth }),
+]);
+export type StringMap = { [key: string]: string | undefined };
+export const StringMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface SessionMetadataShape {
+  sessionId: string;
+  testScenarioId?: string;
+  groundTruth?: GroundTruthSource;
+  metadata?: { [key: string]: string | undefined };
+}
+export const SessionMetadataShape = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sessionId: S.String,
+    testScenarioId: S.optional(S.String),
+    groundTruth: S.optional(GroundTruthSource),
+    metadata: S.optional(StringMap),
+  }),
+).annotate({
+  identifier: "SessionMetadataShape",
+}) as any as S.Schema<SessionMetadataShape>;
+export type SessionMetadataList = SessionMetadataShape[];
+export const SessionMetadataList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(SessionMetadataShape);
+export type EvaluationMetadata = { sessionMetadata: SessionMetadataShape[] };
+export const EvaluationMetadata = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ sessionMetadata: SessionMetadataList }),
+]);
+export interface StartBatchEvaluationRequest {
+  batchEvaluationName: string;
+  evaluators?: Evaluator[];
+  insights?: Insight[];
+  dataSourceConfig: DataSourceConfig;
+  clientToken?: string;
+  evaluationMetadata?: EvaluationMetadata;
+  tags?: { [key: string]: string | undefined };
+  kmsKeyArn?: string;
+  description?: string;
+}
+export const StartBatchEvaluationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      batchEvaluationName: S.String,
+      evaluators: S.optional(EvaluatorList),
+      insights: S.optional(InsightList),
+      dataSourceConfig: DataSourceConfig,
+      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      evaluationMetadata: S.optional(EvaluationMetadata),
+      tags: S.optional(TagsMap),
+      kmsKeyArn: S.optional(S.String),
+      description: S.optional(S.String),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/evaluations/batch-evaluate" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "StartBatchEvaluationRequest",
+  }) as any as S.Schema<StartBatchEvaluationRequest>;
+export interface StartBatchEvaluationResponse {
+  batchEvaluationId: string;
+  batchEvaluationArn: string;
+  batchEvaluationName: string;
+  evaluators?: Evaluator[];
+  insights?: Insight[];
+  status: BatchEvaluationStatus;
+  createdAt: Date;
+  outputConfig?: OutputConfig;
+  tags?: { [key: string]: string | undefined };
+  kmsKeyArn?: string;
+  description?: string;
+}
+export const StartBatchEvaluationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      batchEvaluationId: S.String,
+      batchEvaluationArn: S.String,
+      batchEvaluationName: S.String,
+      evaluators: S.optional(EvaluatorList),
+      insights: S.optional(InsightList),
+      status: BatchEvaluationStatus,
+      createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      outputConfig: S.optional(OutputConfig),
+      tags: S.optional(TagsMap),
+      kmsKeyArn: S.optional(S.String),
+      description: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "StartBatchEvaluationResponse",
+  }) as any as S.Schema<StartBatchEvaluationResponse>;
+export interface StartRecommendationRequest {
+  name: string;
+  description?: string;
+  type: RecommendationType;
+  recommendationConfig: RecommendationConfig;
+  kmsKeyArn?: string;
+  clientToken?: string;
+  tags?: { [key: string]: string | undefined };
+}
+export const StartRecommendationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      description: S.optional(S.String),
+      type: RecommendationType,
+      recommendationConfig: RecommendationConfig,
+      kmsKeyArn: S.optional(S.String),
+      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      tags: S.optional(TagsMap),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/recommendations" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "StartRecommendationRequest",
+}) as any as S.Schema<StartRecommendationRequest>;
+export interface StartRecommendationResponse {
+  recommendationId: string;
+  recommendationArn: string;
+  name: string;
+  description?: string;
+  type: RecommendationType;
+  recommendationConfig: RecommendationConfig;
+  status: RecommendationStatus;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const StartRecommendationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      recommendationId: S.String,
+      recommendationArn: S.String,
+      name: S.String,
+      description: S.optional(S.String),
+      type: RecommendationType,
+      recommendationConfig: RecommendationConfig,
+      status: RecommendationStatus,
+      createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    }),
+  ).annotate({
+    identifier: "StartRecommendationResponse",
+  }) as any as S.Schema<StartRecommendationResponse>;
+export interface StopBatchEvaluationRequest {
+  batchEvaluationId: string;
+}
+export const StopBatchEvaluationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      batchEvaluationId: S.String.pipe(T.HttpLabel("batchEvaluationId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/evaluations/batch-evaluate/{batchEvaluationId}/stop",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "StopBatchEvaluationRequest",
+}) as any as S.Schema<StopBatchEvaluationRequest>;
+export interface StopBatchEvaluationResponse {
+  batchEvaluationId: string;
+  batchEvaluationArn: string;
+  status: BatchEvaluationStatus;
+  description?: string;
+}
+export const StopBatchEvaluationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      batchEvaluationId: S.String,
+      batchEvaluationArn: S.String,
+      status: BatchEvaluationStatus,
+      description: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "StopBatchEvaluationResponse",
+  }) as any as S.Schema<StopBatchEvaluationResponse>;
+export interface UpdateABTestRequest {
+  abTestId: string;
+  clientToken?: string;
+  name?: string;
+  description?: string;
+  variants?: Variant[];
+  gatewayFilter?: GatewayFilter;
+  evaluationConfig?: ABTestEvaluationConfig;
+  roleArn?: string;
+  executionStatus?: ABTestExecutionStatus;
+}
+export const UpdateABTestRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    abTestId: S.String.pipe(T.HttpLabel("abTestId")),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    variants: S.optional(VariantList),
+    gatewayFilter: S.optional(GatewayFilter),
+    evaluationConfig: S.optional(ABTestEvaluationConfig),
+    roleArn: S.optional(S.String),
+    executionStatus: S.optional(ABTestExecutionStatus),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/ab-tests/{abTestId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateABTestRequest",
+}) as any as S.Schema<UpdateABTestRequest>;
+export interface UpdateABTestResponse {
+  abTestId: string;
+  abTestArn: string;
+  status: ABTestStatus;
+  executionStatus: ABTestExecutionStatus;
+  updatedAt: Date;
+}
+export const UpdateABTestResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    abTestId: S.String,
+    abTestArn: S.String,
+    status: ABTestStatus,
+    executionStatus: ABTestExecutionStatus,
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "UpdateABTestResponse",
+}) as any as S.Schema<UpdateABTestResponse>;
 export type NamespacesList = string[];
 export const NamespacesList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export type MemoryContent = { text: string | redacted.Redacted<string> };
 export const MemoryContent = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ text: SensitiveString }),
 ]);
+export type StringValueList = string[];
+export const StringValueList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type MemoryRecordMetadataValue =
+  | {
+      stringValue: string;
+      stringListValue?: never;
+      numberValue?: never;
+      dateTimeValue?: never;
+    }
+  | {
+      stringValue?: never;
+      stringListValue: string[];
+      numberValue?: never;
+      dateTimeValue?: never;
+    }
+  | {
+      stringValue?: never;
+      stringListValue?: never;
+      numberValue: number;
+      dateTimeValue?: never;
+    }
+  | {
+      stringValue?: never;
+      stringListValue?: never;
+      numberValue?: never;
+      dateTimeValue: Date;
+    };
+export const MemoryRecordMetadataValue = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ stringValue: S.String }),
+  S.Struct({ stringListValue: StringValueList }),
+  S.Struct({ numberValue: S.Number }),
+  S.Struct({ dateTimeValue: S.Date.pipe(T.TimestampFormat("epoch-seconds")) }),
+]);
+export type MemoryRecordMetadataMap = {
+  [key: string]: MemoryRecordMetadataValue | undefined;
+};
+export const MemoryRecordMetadataMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  MemoryRecordMetadataValue.pipe(S.optional),
+);
 export interface MemoryRecordCreateInput {
   requestIdentifier: string;
   namespaces: string[];
   content: MemoryContent;
   timestamp: Date;
   memoryStrategyId?: string;
+  metadata?: { [key: string]: MemoryRecordMetadataValue | undefined };
 }
 export const MemoryRecordCreateInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -2474,6 +5382,7 @@ export const MemoryRecordCreateInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       content: MemoryContent,
       timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
       memoryStrategyId: S.optional(S.String),
+      metadata: S.optional(MemoryRecordMetadataMap),
     }),
 ).annotate({
   identifier: "MemoryRecordCreateInput",
@@ -2601,6 +5510,7 @@ export interface MemoryRecordUpdateInput {
   content?: MemoryContent;
   namespaces?: string[];
   memoryStrategyId?: string;
+  metadata?: { [key: string]: MemoryRecordMetadataValue | undefined };
 }
 export const MemoryRecordUpdateInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -2610,6 +5520,7 @@ export const MemoryRecordUpdateInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       content: S.optional(MemoryContent),
       namespaces: S.optional(NamespacesList),
       memoryStrategyId: S.optional(S.String),
+      metadata: S.optional(MemoryRecordMetadataMap),
     }),
 ).annotate({
   identifier: "MemoryRecordUpdateInput",
@@ -2694,6 +5605,8 @@ export const MetadataMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
   S.String,
   MetadataValue.pipe(S.optional),
 );
+export type ExtractionMode = "SKIP" | (string & {});
+export const ExtractionMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CreateEventInput {
   memoryId: string;
   actorId: string;
@@ -2703,6 +5616,7 @@ export interface CreateEventInput {
   branch?: Branch;
   clientToken?: string;
   metadata?: { [key: string]: MetadataValue | undefined };
+  extractionMode?: ExtractionMode;
 }
 export const CreateEventInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2714,6 +5628,7 @@ export const CreateEventInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     branch: S.optional(Branch),
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     metadata: S.optional(MetadataMap),
+    extractionMode: S.optional(ExtractionMode),
   }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/memories/{memoryId}/events" }),
@@ -2888,7 +5803,7 @@ export interface MemoryRecord {
   memoryStrategyId: string;
   namespaces: string[];
   createdAt: Date;
-  metadata?: { [key: string]: MetadataValue | undefined };
+  metadata?: { [key: string]: MemoryRecordMetadataValue | undefined };
 }
 export const MemoryRecord = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2897,7 +5812,7 @@ export const MemoryRecord = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     memoryStrategyId: S.String,
     namespaces: NamespacesList,
     createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    metadata: S.optional(MetadataMap),
+    metadata: S.optional(MemoryRecordMetadataMap),
   }),
 ).annotate({ identifier: "MemoryRecord" }) as any as S.Schema<MemoryRecord>;
 export interface GetMemoryRecordOutput {
@@ -3147,21 +6062,67 @@ export const ListMemoryExtractionJobsOutput =
   ).annotate({
     identifier: "ListMemoryExtractionJobsOutput",
   }) as any as S.Schema<ListMemoryExtractionJobsOutput>;
+export type MemoryRecordLeftExpression = { metadataKey: string };
+export const MemoryRecordLeftExpression = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ metadataKey: S.String }),
+]);
+export type MemoryRecordOperatorType =
+  | "EQUALS_TO"
+  | "EXISTS"
+  | "NOT_EXISTS"
+  | "BEFORE"
+  | "AFTER"
+  | "CONTAINS"
+  | "GREATER_THAN"
+  | "GREATER_THAN_OR_EQUALS"
+  | "LESS_THAN"
+  | "LESS_THAN_OR_EQUALS"
+  | (string & {});
+export const MemoryRecordOperatorType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type MemoryRecordRightExpression = {
+  metadataValue: MemoryRecordMetadataValue;
+};
+export const MemoryRecordRightExpression = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ metadataValue: MemoryRecordMetadataValue }),
+]);
+export interface MemoryMetadataFilterExpression {
+  left: MemoryRecordLeftExpression;
+  operator: MemoryRecordOperatorType;
+  right?: MemoryRecordRightExpression;
+}
+export const MemoryMetadataFilterExpression =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      left: MemoryRecordLeftExpression,
+      operator: MemoryRecordOperatorType,
+      right: S.optional(MemoryRecordRightExpression),
+    }),
+  ).annotate({
+    identifier: "MemoryMetadataFilterExpression",
+  }) as any as S.Schema<MemoryMetadataFilterExpression>;
+export type MemoryMetadataFilterList = MemoryMetadataFilterExpression[];
+export const MemoryMetadataFilterList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  MemoryMetadataFilterExpression,
+);
 export interface ListMemoryRecordsInput {
   memoryId: string;
-  namespace: string;
+  namespace?: string;
+  namespacePath?: string;
   memoryStrategyId?: string;
   maxResults?: number;
   nextToken?: string;
+  metadataFilters?: MemoryMetadataFilterExpression[];
 }
 export const ListMemoryRecordsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       memoryId: S.String.pipe(T.HttpLabel("memoryId")),
-      namespace: S.String,
+      namespace: S.optional(S.String),
+      namespacePath: S.optional(S.String),
       memoryStrategyId: S.optional(S.String),
       maxResults: S.optional(S.Number),
       nextToken: S.optional(S.String),
+      metadataFilters: S.optional(MemoryMetadataFilterList),
     }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/memories/{memoryId}/memoryRecords" }),
@@ -3182,7 +6143,7 @@ export interface MemoryRecordSummary {
   namespaces: string[];
   createdAt: Date;
   score?: number;
-  metadata?: { [key: string]: MetadataValue | undefined };
+  metadata?: { [key: string]: MemoryRecordMetadataValue | undefined };
 }
 export const MemoryRecordSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3192,7 +6153,7 @@ export const MemoryRecordSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     namespaces: NamespacesList,
     createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     score: S.optional(S.Number),
-    metadata: S.optional(MetadataMap),
+    metadata: S.optional(MemoryRecordMetadataMap),
   }),
 ).annotate({
   identifier: "MemoryRecordSummary",
@@ -3278,25 +6239,6 @@ export const ListSessionsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSessionsOutput",
 }) as any as S.Schema<ListSessionsOutput>;
-export interface MemoryMetadataFilterExpression {
-  left: LeftExpression;
-  operator: OperatorType;
-  right?: RightExpression;
-}
-export const MemoryMetadataFilterExpression =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      left: LeftExpression,
-      operator: OperatorType,
-      right: S.optional(RightExpression),
-    }),
-  ).annotate({
-    identifier: "MemoryMetadataFilterExpression",
-  }) as any as S.Schema<MemoryMetadataFilterExpression>;
-export type MemoryMetadataFilterList = MemoryMetadataFilterExpression[];
-export const MemoryMetadataFilterList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  MemoryMetadataFilterExpression,
-);
 export interface SearchCriteria {
   searchQuery: string | redacted.Redacted<string>;
   memoryStrategyId?: string;
@@ -3313,7 +6255,8 @@ export const SearchCriteria = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchCriteria" }) as any as S.Schema<SearchCriteria>;
 export interface RetrieveMemoryRecordsInput {
   memoryId: string;
-  namespace: string;
+  namespace?: string;
+  namespacePath?: string;
   searchCriteria: SearchCriteria;
   nextToken?: string;
   maxResults?: number;
@@ -3322,7 +6265,8 @@ export const RetrieveMemoryRecordsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       memoryId: S.String.pipe(T.HttpLabel("memoryId")),
-      namespace: S.String,
+      namespace: S.optional(S.String),
+      namespacePath: S.optional(S.String),
       searchCriteria: SearchCriteria,
       nextToken: S.optional(S.String),
       maxResults: S.optional(S.Number),
@@ -3394,6 +6338,793 @@ export const StartMemoryExtractionJobOutput =
   ).annotate({
     identifier: "StartMemoryExtractionJobOutput",
   }) as any as S.Schema<StartMemoryExtractionJobOutput>;
+export type PaymentInstrumentType = "EMBEDDED_CRYPTO_WALLET" | (string & {});
+export const PaymentInstrumentType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type CryptoWalletNetwork = "ETHEREUM" | "SOLANA" | (string & {});
+export const CryptoWalletNetwork = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface LinkedAccountEmail {
+  emailAddress: string | redacted.Redacted<string>;
+}
+export const LinkedAccountEmail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ emailAddress: SensitiveString }),
+).annotate({
+  identifier: "LinkedAccountEmail",
+}) as any as S.Schema<LinkedAccountEmail>;
+export interface LinkedAccountSms {
+  phoneNumber: string | redacted.Redacted<string>;
+}
+export const LinkedAccountSms = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ phoneNumber: SensitiveString }),
+).annotate({
+  identifier: "LinkedAccountSms",
+}) as any as S.Schema<LinkedAccountSms>;
+export interface LinkedAccountDeveloperJwt {
+  kid: string;
+  sub: string;
+}
+export const LinkedAccountDeveloperJwt = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ kid: S.String, sub: S.String }),
+).annotate({
+  identifier: "LinkedAccountDeveloperJwt",
+}) as any as S.Schema<LinkedAccountDeveloperJwt>;
+export interface OAuth2Authentication {
+  sub: string;
+  emailAddress?: string | redacted.Redacted<string>;
+  name?: string;
+  username?: string;
+}
+export const OAuth2Authentication = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sub: S.String,
+    emailAddress: S.optional(SensitiveString),
+    name: S.optional(S.String),
+    username: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OAuth2Authentication",
+}) as any as S.Schema<OAuth2Authentication>;
+export type LinkedAccountOAuth2 =
+  | {
+      google: OAuth2Authentication;
+      apple?: never;
+      x?: never;
+      telegram?: never;
+      github?: never;
+    }
+  | {
+      google?: never;
+      apple: OAuth2Authentication;
+      x?: never;
+      telegram?: never;
+      github?: never;
+    }
+  | {
+      google?: never;
+      apple?: never;
+      x: OAuth2Authentication;
+      telegram?: never;
+      github?: never;
+    }
+  | {
+      google?: never;
+      apple?: never;
+      x?: never;
+      telegram: OAuth2Authentication;
+      github?: never;
+    }
+  | {
+      google?: never;
+      apple?: never;
+      x?: never;
+      telegram?: never;
+      github: OAuth2Authentication;
+    };
+export const LinkedAccountOAuth2 = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ google: OAuth2Authentication }),
+  S.Struct({ apple: OAuth2Authentication }),
+  S.Struct({ x: OAuth2Authentication }),
+  S.Struct({ telegram: OAuth2Authentication }),
+  S.Struct({ github: OAuth2Authentication }),
+]);
+export type LinkedAccount =
+  | {
+      email: LinkedAccountEmail;
+      sms?: never;
+      developerJwt?: never;
+      oAuth2?: never;
+    }
+  | {
+      email?: never;
+      sms: LinkedAccountSms;
+      developerJwt?: never;
+      oAuth2?: never;
+    }
+  | {
+      email?: never;
+      sms?: never;
+      developerJwt: LinkedAccountDeveloperJwt;
+      oAuth2?: never;
+    }
+  | {
+      email?: never;
+      sms?: never;
+      developerJwt?: never;
+      oAuth2: LinkedAccountOAuth2;
+    };
+export const LinkedAccount = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ email: LinkedAccountEmail }),
+  S.Struct({ sms: LinkedAccountSms }),
+  S.Struct({ developerJwt: LinkedAccountDeveloperJwt }),
+  S.Struct({ oAuth2: LinkedAccountOAuth2 }),
+]);
+export type LinkedAccountList = LinkedAccount[];
+export const LinkedAccountList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(LinkedAccount);
+export interface EmbeddedCryptoWallet {
+  network: CryptoWalletNetwork;
+  linkedAccounts: LinkedAccount[];
+  walletAddress?: string;
+  redirectUrl?: string;
+}
+export const EmbeddedCryptoWallet = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    network: CryptoWalletNetwork,
+    linkedAccounts: LinkedAccountList,
+    walletAddress: S.optional(S.String),
+    redirectUrl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EmbeddedCryptoWallet",
+}) as any as S.Schema<EmbeddedCryptoWallet>;
+export type PaymentInstrumentDetails = {
+  embeddedCryptoWallet: EmbeddedCryptoWallet;
+};
+export const PaymentInstrumentDetails = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ embeddedCryptoWallet: EmbeddedCryptoWallet }),
+]);
+export interface CreatePaymentInstrumentRequest {
+  userId?: string;
+  agentName?: string;
+  paymentManagerArn: string;
+  paymentConnectorId: string;
+  paymentInstrumentType: PaymentInstrumentType;
+  paymentInstrumentDetails: PaymentInstrumentDetails;
+  clientToken?: string;
+}
+export const CreatePaymentInstrumentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      userId: S.optional(S.String).pipe(
+        T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id"),
+      ),
+      agentName: S.optional(S.String).pipe(
+        T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
+      ),
+      paymentManagerArn: S.String,
+      paymentConnectorId: S.String,
+      paymentInstrumentType: PaymentInstrumentType,
+      paymentInstrumentDetails: PaymentInstrumentDetails,
+      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/payments/createPaymentInstrument" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "CreatePaymentInstrumentRequest",
+  }) as any as S.Schema<CreatePaymentInstrumentRequest>;
+export type PaymentInstrumentStatus =
+  | "INITIATED"
+  | "ACTIVE"
+  | "FAILED"
+  | "DELETED"
+  | (string & {});
+export const PaymentInstrumentStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface PaymentInstrument {
+  paymentInstrumentId: string;
+  paymentManagerArn: string;
+  paymentConnectorId: string;
+  userId: string;
+  paymentInstrumentType: PaymentInstrumentType;
+  paymentInstrumentDetails: PaymentInstrumentDetails;
+  createdAt: Date;
+  status: PaymentInstrumentStatus;
+  updatedAt: Date;
+}
+export const PaymentInstrument = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paymentInstrumentId: S.String,
+    paymentManagerArn: S.String,
+    paymentConnectorId: S.String,
+    userId: S.String,
+    paymentInstrumentType: PaymentInstrumentType,
+    paymentInstrumentDetails: PaymentInstrumentDetails,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    status: PaymentInstrumentStatus,
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "PaymentInstrument",
+}) as any as S.Schema<PaymentInstrument>;
+export interface CreatePaymentInstrumentResponse {
+  paymentInstrument: PaymentInstrument;
+}
+export const CreatePaymentInstrumentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ paymentInstrument: PaymentInstrument }),
+  ).annotate({
+    identifier: "CreatePaymentInstrumentResponse",
+  }) as any as S.Schema<CreatePaymentInstrumentResponse>;
+export interface GetPaymentInstrumentRequest {
+  userId?: string;
+  agentName?: string;
+  paymentManagerArn: string;
+  paymentConnectorId?: string;
+  paymentInstrumentId: string;
+}
+export const GetPaymentInstrumentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      userId: S.optional(S.String).pipe(
+        T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id"),
+      ),
+      agentName: S.optional(S.String).pipe(
+        T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
+      ),
+      paymentManagerArn: S.String,
+      paymentConnectorId: S.optional(S.String),
+      paymentInstrumentId: S.String,
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/payments/getPaymentInstrument" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetPaymentInstrumentRequest",
+  }) as any as S.Schema<GetPaymentInstrumentRequest>;
+export interface GetPaymentInstrumentResponse {
+  paymentInstrument: PaymentInstrument;
+}
+export const GetPaymentInstrumentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ paymentInstrument: PaymentInstrument }),
+  ).annotate({
+    identifier: "GetPaymentInstrumentResponse",
+  }) as any as S.Schema<GetPaymentInstrumentResponse>;
+export interface DeletePaymentInstrumentRequest {
+  userId?: string;
+  paymentManagerArn: string;
+  paymentConnectorId: string;
+  paymentInstrumentId: string;
+}
+export const DeletePaymentInstrumentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      userId: S.optional(S.String).pipe(
+        T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id"),
+      ),
+      paymentManagerArn: S.String,
+      paymentConnectorId: S.String,
+      paymentInstrumentId: S.String,
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/payments/deletePaymentInstrument" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeletePaymentInstrumentRequest",
+  }) as any as S.Schema<DeletePaymentInstrumentRequest>;
+export interface DeletePaymentInstrumentResponse {
+  status: PaymentInstrumentStatus;
+}
+export const DeletePaymentInstrumentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ status: PaymentInstrumentStatus }),
+  ).annotate({
+    identifier: "DeletePaymentInstrumentResponse",
+  }) as any as S.Schema<DeletePaymentInstrumentResponse>;
+export interface ListPaymentInstrumentsRequest {
+  userId?: string;
+  agentName?: string;
+  paymentManagerArn: string;
+  paymentConnectorId?: string;
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListPaymentInstrumentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      userId: S.optional(S.String).pipe(
+        T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id"),
+      ),
+      agentName: S.optional(S.String).pipe(
+        T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
+      ),
+      paymentManagerArn: S.String,
+      paymentConnectorId: S.optional(S.String),
+      nextToken: S.optional(S.String),
+      maxResults: S.optional(S.Number),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/payments/listPaymentInstruments" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListPaymentInstrumentsRequest",
+  }) as any as S.Schema<ListPaymentInstrumentsRequest>;
+export interface PaymentInstrumentSummary {
+  paymentInstrumentId: string;
+  paymentManagerArn: string;
+  paymentConnectorId: string;
+  userId: string;
+  paymentInstrumentType: PaymentInstrumentType;
+  status: PaymentInstrumentStatus;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const PaymentInstrumentSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      paymentInstrumentId: S.String,
+      paymentManagerArn: S.String,
+      paymentConnectorId: S.String,
+      userId: S.String,
+      paymentInstrumentType: PaymentInstrumentType,
+      status: PaymentInstrumentStatus,
+      createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    }),
+).annotate({
+  identifier: "PaymentInstrumentSummary",
+}) as any as S.Schema<PaymentInstrumentSummary>;
+export type PaymentInstrumentSummaryList = PaymentInstrumentSummary[];
+export const PaymentInstrumentSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  PaymentInstrumentSummary,
+);
+export interface ListPaymentInstrumentsResponse {
+  paymentInstruments: PaymentInstrumentSummary[];
+  nextToken?: string;
+}
+export const ListPaymentInstrumentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      paymentInstruments: PaymentInstrumentSummaryList,
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListPaymentInstrumentsResponse",
+  }) as any as S.Schema<ListPaymentInstrumentsResponse>;
+export type BlockchainChainId =
+  | "BASE"
+  | "BASE_SEPOLIA"
+  | "ETHEREUM"
+  | "SOLANA"
+  | "SOLANA_DEVNET"
+  | (string & {});
+export const BlockchainChainId = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type InstrumentBalanceToken = "USDC" | (string & {});
+export const InstrumentBalanceToken = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface GetPaymentInstrumentBalanceRequest {
+  userId?: string;
+  agentName?: string;
+  paymentManagerArn: string;
+  paymentConnectorId: string;
+  paymentInstrumentId: string;
+  chain: BlockchainChainId;
+  token: InstrumentBalanceToken;
+}
+export const GetPaymentInstrumentBalanceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      userId: S.optional(S.String).pipe(
+        T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id"),
+      ),
+      agentName: S.optional(S.String).pipe(
+        T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
+      ),
+      paymentManagerArn: S.String,
+      paymentConnectorId: S.String,
+      paymentInstrumentId: S.String,
+      chain: BlockchainChainId,
+      token: InstrumentBalanceToken,
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/payments/getPaymentInstrumentBalance",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetPaymentInstrumentBalanceRequest",
+  }) as any as S.Schema<GetPaymentInstrumentBalanceRequest>;
+export interface TokenBalance {
+  amount: string;
+  decimals: number;
+  token: InstrumentBalanceToken;
+  network: CryptoWalletNetwork;
+  chain: BlockchainChainId;
+}
+export const TokenBalance = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    amount: S.String,
+    decimals: S.Number,
+    token: InstrumentBalanceToken,
+    network: CryptoWalletNetwork,
+    chain: BlockchainChainId,
+  }),
+).annotate({ identifier: "TokenBalance" }) as any as S.Schema<TokenBalance>;
+export interface GetPaymentInstrumentBalanceResponse {
+  paymentInstrumentId: string;
+  tokenBalance: TokenBalance;
+}
+export const GetPaymentInstrumentBalanceResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ paymentInstrumentId: S.String, tokenBalance: TokenBalance }),
+  ).annotate({
+    identifier: "GetPaymentInstrumentBalanceResponse",
+  }) as any as S.Schema<GetPaymentInstrumentBalanceResponse>;
+export type Currency = "USD" | (string & {});
+export const Currency = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface Amount {
+  value: string;
+  currency: Currency;
+}
+export const Amount = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ value: S.String, currency: Currency }),
+).annotate({ identifier: "Amount" }) as any as S.Schema<Amount>;
+export interface SessionLimits {
+  maxSpendAmount: Amount;
+}
+export const SessionLimits = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ maxSpendAmount: Amount }),
+).annotate({ identifier: "SessionLimits" }) as any as S.Schema<SessionLimits>;
+export interface CreatePaymentSessionRequest {
+  userId?: string;
+  agentName?: string;
+  paymentManagerArn: string;
+  limits?: SessionLimits;
+  expiryTimeInMinutes: number;
+  clientToken?: string;
+}
+export const CreatePaymentSessionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      userId: S.optional(S.String).pipe(
+        T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id"),
+      ),
+      agentName: S.optional(S.String).pipe(
+        T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
+      ),
+      paymentManagerArn: S.String,
+      limits: S.optional(SessionLimits),
+      expiryTimeInMinutes: S.Number,
+      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/payments/createPaymentSession" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "CreatePaymentSessionRequest",
+  }) as any as S.Schema<CreatePaymentSessionRequest>;
+export interface AvailableLimits {
+  availableSpendAmount?: Amount;
+  updatedAt?: Date;
+}
+export const AvailableLimits = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    availableSpendAmount: S.optional(Amount),
+    updatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "AvailableLimits",
+}) as any as S.Schema<AvailableLimits>;
+export interface PaymentSession {
+  paymentSessionId: string;
+  paymentManagerArn: string;
+  limits?: SessionLimits;
+  userId: string;
+  expiryTimeInMinutes: number;
+  createdAt: Date;
+  availableLimits?: AvailableLimits;
+  updatedAt: Date;
+}
+export const PaymentSession = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paymentSessionId: S.String,
+    paymentManagerArn: S.String,
+    limits: S.optional(SessionLimits),
+    userId: S.String,
+    expiryTimeInMinutes: S.Number,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    availableLimits: S.optional(AvailableLimits),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({ identifier: "PaymentSession" }) as any as S.Schema<PaymentSession>;
+export interface CreatePaymentSessionResponse {
+  paymentSession: PaymentSession;
+}
+export const CreatePaymentSessionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ paymentSession: PaymentSession }),
+  ).annotate({
+    identifier: "CreatePaymentSessionResponse",
+  }) as any as S.Schema<CreatePaymentSessionResponse>;
+export interface GetPaymentSessionRequest {
+  userId?: string;
+  agentName?: string;
+  paymentManagerArn: string;
+  paymentSessionId: string;
+}
+export const GetPaymentSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      userId: S.optional(S.String).pipe(
+        T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id"),
+      ),
+      agentName: S.optional(S.String).pipe(
+        T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
+      ),
+      paymentManagerArn: S.String,
+      paymentSessionId: S.String,
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/payments/getPaymentSession" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetPaymentSessionRequest",
+}) as any as S.Schema<GetPaymentSessionRequest>;
+export interface GetPaymentSessionResponse {
+  paymentSession: PaymentSession;
+}
+export const GetPaymentSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ paymentSession: PaymentSession }),
+).annotate({
+  identifier: "GetPaymentSessionResponse",
+}) as any as S.Schema<GetPaymentSessionResponse>;
+export interface DeletePaymentSessionRequest {
+  userId?: string;
+  paymentManagerArn: string;
+  paymentSessionId: string;
+}
+export const DeletePaymentSessionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      userId: S.optional(S.String).pipe(
+        T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id"),
+      ),
+      paymentManagerArn: S.String,
+      paymentSessionId: S.String,
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/payments/deletePaymentSession" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeletePaymentSessionRequest",
+  }) as any as S.Schema<DeletePaymentSessionRequest>;
+export type PaymentSessionStatus =
+  | "ACTIVE"
+  | "EXPIRED"
+  | "DELETED"
+  | (string & {});
+export const PaymentSessionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface DeletePaymentSessionResponse {
+  status: PaymentSessionStatus;
+}
+export const DeletePaymentSessionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ status: PaymentSessionStatus }),
+  ).annotate({
+    identifier: "DeletePaymentSessionResponse",
+  }) as any as S.Schema<DeletePaymentSessionResponse>;
+export interface ListPaymentSessionsRequest {
+  userId?: string;
+  agentName?: string;
+  paymentManagerArn: string;
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListPaymentSessionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      userId: S.optional(S.String).pipe(
+        T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id"),
+      ),
+      agentName: S.optional(S.String).pipe(
+        T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
+      ),
+      paymentManagerArn: S.String,
+      nextToken: S.optional(S.String),
+      maxResults: S.optional(S.Number),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/payments/listPaymentSessions" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListPaymentSessionsRequest",
+}) as any as S.Schema<ListPaymentSessionsRequest>;
+export interface PaymentSessionSummary {
+  paymentSessionId: string;
+  paymentManagerArn: string;
+  userId: string;
+  expiryTimeInMinutes: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const PaymentSessionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paymentSessionId: S.String,
+    paymentManagerArn: S.String,
+    userId: S.String,
+    expiryTimeInMinutes: S.Number,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "PaymentSessionSummary",
+}) as any as S.Schema<PaymentSessionSummary>;
+export type PaymentSessionSummaryList = PaymentSessionSummary[];
+export const PaymentSessionSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  PaymentSessionSummary,
+);
+export interface ListPaymentSessionsResponse {
+  paymentSessions: PaymentSessionSummary[];
+  nextToken?: string;
+}
+export const ListPaymentSessionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      paymentSessions: PaymentSessionSummaryList,
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListPaymentSessionsResponse",
+  }) as any as S.Schema<ListPaymentSessionsResponse>;
+export type PaymentType = "CRYPTO_X402" | (string & {});
+export const PaymentType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CryptoX402PaymentInput {
+  version: string;
+  payload: any;
+}
+export const CryptoX402PaymentInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ version: S.String, payload: S.Any }),
+).annotate({
+  identifier: "CryptoX402PaymentInput",
+}) as any as S.Schema<CryptoX402PaymentInput>;
+export type PaymentInput = { cryptoX402: CryptoX402PaymentInput };
+export const PaymentInput = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ cryptoX402: CryptoX402PaymentInput }),
+]);
+export interface ProcessPaymentRequest {
+  userId?: string;
+  agentName?: string;
+  paymentManagerArn: string;
+  paymentSessionId: string;
+  paymentInstrumentId: string;
+  paymentType: PaymentType;
+  paymentInput: PaymentInput;
+  clientToken?: string;
+}
+export const ProcessPaymentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userId: S.optional(S.String).pipe(
+      T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-User-Id"),
+    ),
+    agentName: S.optional(S.String).pipe(
+      T.HttpHeader("X-Amzn-Bedrock-AgentCore-Payments-Agent-Name"),
+    ),
+    paymentManagerArn: S.String,
+    paymentSessionId: S.String,
+    paymentInstrumentId: S.String,
+    paymentType: PaymentType,
+    paymentInput: PaymentInput,
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/payments/processPayment" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ProcessPaymentRequest",
+}) as any as S.Schema<ProcessPaymentRequest>;
+export type PaymentStatus = "PROOF_GENERATED" | (string & {});
+export const PaymentStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CryptoX402PaymentOutput {
+  version: string;
+  payload: any;
+}
+export const CryptoX402PaymentOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ version: S.String, payload: S.Any }),
+).annotate({
+  identifier: "CryptoX402PaymentOutput",
+}) as any as S.Schema<CryptoX402PaymentOutput>;
+export type PaymentOutput = { cryptoX402: CryptoX402PaymentOutput };
+export const PaymentOutput = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ cryptoX402: CryptoX402PaymentOutput }),
+]);
+export interface ProcessPaymentResponse {
+  processPaymentId: string;
+  paymentManagerArn: string;
+  paymentSessionId: string;
+  paymentInstrumentId: string;
+  paymentType: PaymentType;
+  status: PaymentStatus;
+  paymentOutput: PaymentOutput;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const ProcessPaymentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      processPaymentId: S.String,
+      paymentManagerArn: S.String,
+      paymentSessionId: S.String,
+      paymentInstrumentId: S.String,
+      paymentType: PaymentType,
+      status: PaymentStatus,
+      paymentOutput: PaymentOutput,
+      createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    }),
+).annotate({
+  identifier: "ProcessPaymentResponse",
+}) as any as S.Schema<ProcessPaymentResponse>;
 export type RegistryIdList = string[];
 export const RegistryIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export interface SearchRegistryRecordsRequest {
@@ -3625,6 +7356,11 @@ export class RuntimeClientError extends S.TaggedErrorClass<RuntimeClientError>()
   "RuntimeClientError",
   { message: S.optional(S.String) },
 ) {}
+export class RetryableConflictException extends S.TaggedErrorClass<RetryableConflictException>()(
+  "RetryableConflictException",
+  { message: S.String },
+  T.Retryable(),
+).pipe(C.withConflictError, C.withRetryableError) {}
 export class DuplicateIdException extends S.TaggedErrorClass<DuplicateIdException>()(
   "DuplicateIdException",
   { message: S.optional(S.String) },
@@ -3641,11 +7377,6 @@ export class InvalidInputException extends S.TaggedErrorClass<InvalidInputExcept
   "InvalidInputException",
   { message: S.String },
 ).pipe(C.withBadRequestError) {}
-export class RetryableConflictException extends S.TaggedErrorClass<RetryableConflictException>()(
-  "RetryableConflictException",
-  { message: S.String },
-  T.Retryable(),
-).pipe(C.withConflictError, C.withRetryableError) {}
 
 //# Operations
 export type CompleteResourceTokenAuthError =
@@ -3723,6 +7454,34 @@ export const getResourceOauth2Token: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourceOauth2TokenRequest,
   output: GetResourceOauth2TokenResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+}));
+export type GetResourcePaymentTokenError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Generates authentication tokens for payment providers that use vendor-specific authentication mechanisms.
+ */
+export const getResourcePaymentToken: API.OperationMethod<
+  GetResourcePaymentTokenRequest,
+  GetResourcePaymentTokenResponse,
+  GetResourcePaymentTokenError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetResourcePaymentTokenRequest,
+  output: GetResourcePaymentTokenResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3856,10 +7615,41 @@ export const invokeCodeInterpreter: API.OperationMethod<
     ValidationException,
   ],
 }));
+export type InvokeHarnessError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | RuntimeClientError
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Operation to invoke a Harness.
+ */
+export const invokeHarness: API.OperationMethod<
+  InvokeHarnessRequest,
+  InvokeHarnessResponse,
+  InvokeHarnessError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: InvokeHarnessRequest,
+  output: InvokeHarnessResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    RuntimeClientError,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
 export type GetAgentCardError =
   | AccessDeniedException
   | InternalServerException
   | ResourceNotFoundException
+  | RetryableConflictException
   | RuntimeClientError
   | ServiceQuotaExceededException
   | ThrottlingException
@@ -3880,6 +7670,7 @@ export const getAgentCard: API.OperationMethod<
     AccessDeniedException,
     InternalServerException,
     ResourceNotFoundException,
+    RetryableConflictException,
     RuntimeClientError,
     ServiceQuotaExceededException,
     ThrottlingException,
@@ -3890,6 +7681,7 @@ export type InvokeAgentRuntimeError =
   | AccessDeniedException
   | InternalServerException
   | ResourceNotFoundException
+  | RetryableConflictException
   | RuntimeClientError
   | ServiceQuotaExceededException
   | ThrottlingException
@@ -3920,6 +7712,7 @@ export const invokeAgentRuntime: API.OperationMethod<
     AccessDeniedException,
     InternalServerException,
     ResourceNotFoundException,
+    RetryableConflictException,
     RuntimeClientError,
     ServiceQuotaExceededException,
     ThrottlingException,
@@ -3930,6 +7723,7 @@ export type InvokeAgentRuntimeCommandError =
   | AccessDeniedException
   | InternalServerException
   | ResourceNotFoundException
+  | RetryableConflictException
   | RuntimeClientError
   | ServiceQuotaExceededException
   | ThrottlingException
@@ -3954,6 +7748,7 @@ export const invokeAgentRuntimeCommand: API.OperationMethod<
     AccessDeniedException,
     InternalServerException,
     ResourceNotFoundException,
+    RetryableConflictException,
     RuntimeClientError,
     ServiceQuotaExceededException,
     ThrottlingException,
@@ -3965,6 +7760,7 @@ export type StopRuntimeSessionError =
   | ConflictException
   | InternalServerException
   | ResourceNotFoundException
+  | RetryableConflictException
   | RuntimeClientError
   | ServiceQuotaExceededException
   | ThrottlingException
@@ -3987,6 +7783,7 @@ export const stopRuntimeSession: API.OperationMethod<
     ConflictException,
     InternalServerException,
     ResourceNotFoundException,
+    RetryableConflictException,
     RuntimeClientError,
     ServiceQuotaExceededException,
     ThrottlingException,
@@ -4404,6 +8201,124 @@ export const stopCodeInterpreterSession: API.OperationMethod<
     ValidationException,
   ],
 }));
+export type CreateABTestError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates an A/B test for comparing agent configurations. A/B tests split traffic between a control variant and a treatment variant through a gateway, then evaluate performance using online evaluation configurations to determine which variant performs better.
+ */
+export const createABTest: API.OperationMethod<
+  CreateABTestRequest,
+  CreateABTestResponse,
+  CreateABTestError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateABTestRequest,
+  output: CreateABTestResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+}));
+export type DeleteABTestError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes an A/B test and its associated gateway rules.
+ */
+export const deleteABTest: API.OperationMethod<
+  DeleteABTestRequest,
+  DeleteABTestResponse,
+  DeleteABTestError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteABTestRequest,
+  output: DeleteABTestResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+}));
+export type DeleteBatchEvaluationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a batch evaluation and its associated results.
+ */
+export const deleteBatchEvaluation: API.OperationMethod<
+  DeleteBatchEvaluationRequest,
+  DeleteBatchEvaluationResponse,
+  DeleteBatchEvaluationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteBatchEvaluationRequest,
+  output: DeleteBatchEvaluationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+}));
+export type DeleteRecommendationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a recommendation and its associated results.
+ */
+export const deleteRecommendation: API.OperationMethod<
+  DeleteRecommendationRequest,
+  DeleteRecommendationResponse,
+  DeleteRecommendationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteRecommendationRequest,
+  output: DeleteRecommendationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
 export type EvaluateError =
   | AccessDeniedException
   | ConflictException
@@ -4430,6 +8345,347 @@ export const evaluate: API.OperationMethod<
     AccessDeniedException,
     ConflictException,
     DuplicateIdException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+}));
+export type GetABTestError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves detailed information about an A/B test, including its configuration, status, and statistical results.
+ */
+export const getABTest: API.OperationMethod<
+  GetABTestRequest,
+  GetABTestResponse,
+  GetABTestError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetABTestRequest,
+  output: GetABTestResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+}));
+export type GetBatchEvaluationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves detailed information about a batch evaluation, including its status, configuration, results, and any error details.
+ */
+export const getBatchEvaluation: API.OperationMethod<
+  GetBatchEvaluationRequest,
+  GetBatchEvaluationResponse,
+  GetBatchEvaluationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetBatchEvaluationRequest,
+  output: GetBatchEvaluationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+}));
+export type GetRecommendationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves detailed information about a recommendation, including its configuration, status, and results.
+ */
+export const getRecommendation: API.OperationMethod<
+  GetRecommendationRequest,
+  GetRecommendationResponse,
+  GetRecommendationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetRecommendationRequest,
+  output: GetRecommendationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type ListABTestsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists all A/B tests in the account.
+ */
+export const listABTests: API.OperationMethod<
+  ListABTestsRequest,
+  ListABTestsResponse,
+  ListABTestsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListABTestsRequest,
+  ) => stream.Stream<
+    ListABTestsResponse,
+    ListABTestsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListABTestsRequest,
+  ) => stream.Stream<
+    ABTestSummary,
+    ListABTestsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListABTestsRequest,
+  output: ListABTestsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "abTests",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ListBatchEvaluationsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists all batch evaluations in the account, providing summary information about each evaluation's status and configuration.
+ */
+export const listBatchEvaluations: API.OperationMethod<
+  ListBatchEvaluationsRequest,
+  ListBatchEvaluationsResponse,
+  ListBatchEvaluationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListBatchEvaluationsRequest,
+  ) => stream.Stream<
+    ListBatchEvaluationsResponse,
+    ListBatchEvaluationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListBatchEvaluationsRequest,
+  ) => stream.Stream<
+    BatchEvaluationSummary,
+    ListBatchEvaluationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListBatchEvaluationsRequest,
+  output: ListBatchEvaluationsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "batchEvaluations",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ListRecommendationsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists all recommendations in the account, with optional filtering by status.
+ */
+export const listRecommendations: API.OperationMethod<
+  ListRecommendationsRequest,
+  ListRecommendationsResponse,
+  ListRecommendationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListRecommendationsRequest,
+  ) => stream.Stream<
+    ListRecommendationsResponse,
+    ListRecommendationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRecommendationsRequest,
+  ) => stream.Stream<
+    RecommendationSummary,
+    ListRecommendationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListRecommendationsRequest,
+  output: ListRecommendationsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "recommendationSummaries",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type StartBatchEvaluationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Starts a batch evaluation job that evaluates agent performance across multiple sessions. Batch evaluations pull agent traces from CloudWatch Logs or an existing online evaluation configuration and run specified evaluators and insights against them.
+ */
+export const startBatchEvaluation: API.OperationMethod<
+  StartBatchEvaluationRequest,
+  StartBatchEvaluationResponse,
+  StartBatchEvaluationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartBatchEvaluationRequest,
+  output: StartBatchEvaluationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+}));
+export type StartRecommendationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Starts a recommendation job that analyzes agent traces and generates optimization suggestions for system prompts or tool descriptions to improve agent performance.
+ */
+export const startRecommendation: API.OperationMethod<
+  StartRecommendationRequest,
+  StartRecommendationResponse,
+  StartRecommendationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartRecommendationRequest,
+  output: StartRecommendationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type StopBatchEvaluationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Stops a running batch evaluation. Sessions that have already been evaluated retain their results.
+ */
+export const stopBatchEvaluation: API.OperationMethod<
+  StopBatchEvaluationRequest,
+  StopBatchEvaluationResponse,
+  StopBatchEvaluationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StopBatchEvaluationRequest,
+  output: StopBatchEvaluationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+}));
+export type UpdateABTestError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an A/B test's configuration, including variants, traffic allocation, evaluation settings, or execution status.
+ */
+export const updateABTest: API.OperationMethod<
+  UpdateABTestRequest,
+  UpdateABTestResponse,
+  UpdateABTestError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateABTestRequest,
+  output: UpdateABTestResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
     InternalServerException,
     ResourceNotFoundException,
     ServiceQuotaExceededException,
@@ -5031,6 +9287,310 @@ export const startMemoryExtractionJob: API.OperationMethod<
     ServiceException,
     ServiceQuotaExceededException,
     ThrottledException,
+    ValidationException,
+  ],
+}));
+export type CreatePaymentInstrumentError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Create a new payment instrument for a connector.
+ */
+export const createPaymentInstrument: API.OperationMethod<
+  CreatePaymentInstrumentRequest,
+  CreatePaymentInstrumentResponse,
+  CreatePaymentInstrumentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreatePaymentInstrumentRequest,
+  output: CreatePaymentInstrumentResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type GetPaymentInstrumentError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get a payment instrument by ID.
+ */
+export const getPaymentInstrument: API.OperationMethod<
+  GetPaymentInstrumentRequest,
+  GetPaymentInstrumentResponse,
+  GetPaymentInstrumentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetPaymentInstrumentRequest,
+  output: GetPaymentInstrumentResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type DeletePaymentInstrumentError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a payment instrument. This is a soft delete operation that preserves the record for audit and compliance purposes.
+ */
+export const deletePaymentInstrument: API.OperationMethod<
+  DeletePaymentInstrumentRequest,
+  DeletePaymentInstrumentResponse,
+  DeletePaymentInstrumentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeletePaymentInstrumentRequest,
+  output: DeletePaymentInstrumentResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type ListPaymentInstrumentsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * List payment instruments for a manager.
+ */
+export const listPaymentInstruments: API.OperationMethod<
+  ListPaymentInstrumentsRequest,
+  ListPaymentInstrumentsResponse,
+  ListPaymentInstrumentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPaymentInstrumentsRequest,
+  ) => stream.Stream<
+    ListPaymentInstrumentsResponse,
+    ListPaymentInstrumentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPaymentInstrumentsRequest,
+  ) => stream.Stream<
+    PaymentInstrumentSummary,
+    ListPaymentInstrumentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListPaymentInstrumentsRequest,
+  output: ListPaymentInstrumentsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "paymentInstruments",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type GetPaymentInstrumentBalanceError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get the balance of a payment instrument.
+ */
+export const getPaymentInstrumentBalance: API.OperationMethod<
+  GetPaymentInstrumentBalanceRequest,
+  GetPaymentInstrumentBalanceResponse,
+  GetPaymentInstrumentBalanceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetPaymentInstrumentBalanceRequest,
+  output: GetPaymentInstrumentBalanceResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type CreatePaymentSessionError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Create a new payment session.
+ */
+export const createPaymentSession: API.OperationMethod<
+  CreatePaymentSessionRequest,
+  CreatePaymentSessionResponse,
+  CreatePaymentSessionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreatePaymentSessionRequest,
+  output: CreatePaymentSessionResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type GetPaymentSessionError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get a payment session.
+ */
+export const getPaymentSession: API.OperationMethod<
+  GetPaymentSessionRequest,
+  GetPaymentSessionResponse,
+  GetPaymentSessionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetPaymentSessionRequest,
+  output: GetPaymentSessionResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type DeletePaymentSessionError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a payment session. This permanently removes the payment session record.
+ */
+export const deletePaymentSession: API.OperationMethod<
+  DeletePaymentSessionRequest,
+  DeletePaymentSessionResponse,
+  DeletePaymentSessionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeletePaymentSessionRequest,
+  output: DeletePaymentSessionResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type ListPaymentSessionsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * List payment sessions.
+ */
+export const listPaymentSessions: API.OperationMethod<
+  ListPaymentSessionsRequest,
+  ListPaymentSessionsResponse,
+  ListPaymentSessionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPaymentSessionsRequest,
+  ) => stream.Stream<
+    ListPaymentSessionsResponse,
+    ListPaymentSessionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPaymentSessionsRequest,
+  ) => stream.Stream<
+    PaymentSessionSummary,
+    ListPaymentSessionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListPaymentSessionsRequest,
+  output: ListPaymentSessionsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "paymentSessions",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ProcessPaymentError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Processes a payment using a payment instrument within a payment session.
+ */
+export const processPayment: API.OperationMethod<
+  ProcessPaymentRequest,
+  ProcessPaymentResponse,
+  ProcessPaymentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ProcessPaymentRequest,
+  output: ProcessPaymentResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
     ValidationException,
   ],
 }));

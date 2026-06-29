@@ -107,6 +107,8 @@ export type PaginationToken = string;
 export type MissionProfileArn = string;
 export type SatelliteArn = string;
 export type GroundStationName = string;
+export type VersionId = number;
+export type ClientToken = string;
 export type DataflowEndpointGroupDurationInSeconds = number;
 export type DataflowEndpointGroupArn = string;
 export type CustomerEphemerisPriority = number;
@@ -119,6 +121,7 @@ export type TleLineTwo = string;
 export type EphemerisPriority = number;
 export type ErrorString = string;
 export type AWSRegion = string;
+export type AntennaName = string;
 export type DurationInSeconds = number;
 export type PositiveDurationInSeconds = number;
 export type KeyAliasArn = string;
@@ -944,15 +947,36 @@ export const AzElProgramTrackSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AzElProgramTrackSettings",
 }) as any as S.Schema<AzElProgramTrackSettings>;
-export type ProgramTrackSettings = { azEl: AzElProgramTrackSettings };
+export interface OemProgramTrackSettings {
+  ephemerisId: string;
+}
+export const OemProgramTrackSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ ephemerisId: S.String }),
+).annotate({
+  identifier: "OemProgramTrackSettings",
+}) as any as S.Schema<OemProgramTrackSettings>;
+export interface TleProgramTrackSettings {
+  ephemerisId: string;
+}
+export const TleProgramTrackSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ ephemerisId: S.String }),
+).annotate({
+  identifier: "TleProgramTrackSettings",
+}) as any as S.Schema<TleProgramTrackSettings>;
+export type ProgramTrackSettings =
+  | { azEl: AzElProgramTrackSettings; oem?: never; tle?: never }
+  | { azEl?: never; oem: OemProgramTrackSettings; tle?: never }
+  | { azEl?: never; oem?: never; tle: TleProgramTrackSettings };
 export const ProgramTrackSettings = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ azEl: AzElProgramTrackSettings }),
+  S.Struct({ oem: OemProgramTrackSettings }),
+  S.Struct({ tle: TleProgramTrackSettings }),
 ]);
 export interface TrackingOverrides {
-  programTrackSettings: ProgramTrackSettings;
+  programTrackSettings?: ProgramTrackSettings;
 }
 export const TrackingOverrides = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ programTrackSettings: ProgramTrackSettings }),
+  S.Struct({ programTrackSettings: S.optional(ProgramTrackSettings) }),
 ).annotate({
   identifier: "TrackingOverrides",
 }) as any as S.Schema<TrackingOverrides>;
@@ -989,9 +1013,13 @@ export const ReserveContactRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReserveContactRequest>;
 export interface ContactIdResponse {
   contactId?: string;
+  versionId?: number;
 }
 export const ContactIdResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ contactId: S.optional(S.String) }),
+  S.Struct({
+    contactId: S.optional(S.String),
+    versionId: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "ContactIdResponse",
 }) as any as S.Schema<ContactIdResponse>;
@@ -1358,6 +1386,54 @@ export const EphemerisResponseData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EphemerisResponseData",
 }) as any as S.Schema<EphemerisResponseData>;
+export type VersionStatus =
+  | "UPDATING"
+  | "ACTIVE"
+  | "SUPERSEDED"
+  | "FAILED_TO_UPDATE"
+  | (string & {});
+export const VersionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type VersionFailureReasonCode =
+  | "INTERNAL_ERROR"
+  | "INVALID_SATELLITE_ARN"
+  | "INVALID_UPDATE_CONTACT_REQUEST"
+  | "EPHEMERIS_NOT_FOUND"
+  | "EPHEMERIS_TIME_RANGE_INVALID"
+  | "EPHEMERIS_NOT_ENABLED"
+  | "SATELLITE_DOES_NOT_MATCH_EPHEMERIS"
+  | "NOT_ONBOARDED_TO_AZEL_EPHEMERIS"
+  | "AZEL_EPHEMERIS_NOT_FOUND"
+  | "AZEL_EPHEMERIS_WRONG_GROUND_STATION"
+  | "AZEL_EPHEMERIS_INVALID_STATUS"
+  | "AZEL_EPHEMERIS_TIME_RANGE_INVALID"
+  | (string & {});
+export const VersionFailureReasonCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type VersionFailureReasonCodes = VersionFailureReasonCode[];
+export const VersionFailureReasonCodes = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  VersionFailureReasonCode,
+);
+export interface ContactVersion {
+  versionId?: number;
+  created?: Date;
+  activated?: Date;
+  superseded?: Date;
+  lastUpdated?: Date;
+  status?: VersionStatus;
+  failureCodes?: VersionFailureReasonCode[];
+  failureMessage?: string;
+}
+export const ContactVersion = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    versionId: S.optional(S.Number),
+    created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    activated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    superseded: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    lastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    status: S.optional(VersionStatus),
+    failureCodes: S.optional(VersionFailureReasonCodes),
+    failureMessage: S.optional(S.String),
+  }),
+).annotate({ identifier: "ContactVersion" }) as any as S.Schema<ContactVersion>;
 export interface DescribeContactResponse {
   contactId?: string;
   missionProfileArn?: string;
@@ -1377,6 +1453,7 @@ export interface DescribeContactResponse {
   visibilityEndTime?: Date;
   trackingOverrides?: TrackingOverrides;
   ephemeris?: EphemerisResponseData;
+  version?: ContactVersion;
 }
 export const DescribeContactResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1407,10 +1484,48 @@ export const DescribeContactResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       ),
       trackingOverrides: S.optional(TrackingOverrides),
       ephemeris: S.optional(EphemerisResponseData),
+      version: S.optional(ContactVersion),
     }),
 ).annotate({
   identifier: "DescribeContactResponse",
 }) as any as S.Schema<DescribeContactResponse>;
+export interface UpdateContactRequest {
+  contactId: string;
+  clientToken?: string;
+  trackingOverrides?: TrackingOverrides;
+  satelliteArn?: string;
+}
+export const UpdateContactRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contactId: S.String.pipe(T.HttpLabel("contactId")),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    trackingOverrides: S.optional(TrackingOverrides),
+    satelliteArn: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/contact/{contactId}/versions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateContactRequest",
+}) as any as S.Schema<UpdateContactRequest>;
+export interface UpdateContactResponse {
+  contactId?: string;
+  versionId?: number;
+}
+export const UpdateContactResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contactId: S.optional(S.String),
+    versionId: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "UpdateContactResponse",
+}) as any as S.Schema<UpdateContactResponse>;
 export interface CancelContactRequest {
   contactId: string;
 }
@@ -1494,6 +1609,7 @@ export interface ContactData {
   visibilityStartTime?: Date;
   visibilityEndTime?: Date;
   ephemeris?: EphemerisResponseData;
+  version?: ContactVersion;
 }
 export const ContactData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1521,6 +1637,7 @@ export const ContactData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     ),
     ephemeris: S.optional(EphemerisResponseData),
+    version: S.optional(ContactVersion),
   }),
 ).annotate({ identifier: "ContactData" }) as any as S.Schema<ContactData>;
 export type ContactList = ContactData[];
@@ -1537,6 +1654,126 @@ export const ListContactsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListContactsResponse",
 }) as any as S.Schema<ListContactsResponse>;
+export interface DescribeContactVersionRequest {
+  contactId: string;
+  versionId: number;
+}
+export const DescribeContactVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      contactId: S.String.pipe(T.HttpLabel("contactId")),
+      versionId: S.Number.pipe(T.HttpLabel("versionId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/contact/{contactId}/versions/{versionId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeContactVersionRequest",
+  }) as any as S.Schema<DescribeContactVersionRequest>;
+export interface DescribeContactVersionResponse {
+  contactId?: string;
+  missionProfileArn?: string;
+  satelliteArn?: string;
+  startTime?: Date;
+  endTime?: Date;
+  prePassStartTime?: Date;
+  postPassEndTime?: Date;
+  groundStation?: string;
+  contactStatus?: ContactStatus;
+  errorMessage?: string;
+  maximumElevation?: Elevation;
+  tags?: { [key: string]: string | undefined };
+  region?: string;
+  dataflowList?: DataflowDetail[];
+  visibilityStartTime?: Date;
+  visibilityEndTime?: Date;
+  trackingOverrides?: TrackingOverrides;
+  ephemeris?: EphemerisResponseData;
+  version?: ContactVersion;
+}
+export const DescribeContactVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      contactId: S.optional(S.String),
+      missionProfileArn: S.optional(S.String),
+      satelliteArn: S.optional(S.String),
+      startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      prePassStartTime: S.optional(
+        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      ),
+      postPassEndTime: S.optional(
+        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      ),
+      groundStation: S.optional(S.String),
+      contactStatus: S.optional(ContactStatus),
+      errorMessage: S.optional(S.String),
+      maximumElevation: S.optional(Elevation),
+      tags: S.optional(TagsMap),
+      region: S.optional(S.String),
+      dataflowList: S.optional(DataflowList),
+      visibilityStartTime: S.optional(
+        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      ),
+      visibilityEndTime: S.optional(
+        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      ),
+      trackingOverrides: S.optional(TrackingOverrides),
+      ephemeris: S.optional(EphemerisResponseData),
+      version: S.optional(ContactVersion),
+    }),
+  ).annotate({
+    identifier: "DescribeContactVersionResponse",
+  }) as any as S.Schema<DescribeContactVersionResponse>;
+export interface ListContactVersionsRequest {
+  contactId: string;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListContactVersionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      contactId: S.String.pipe(T.HttpLabel("contactId")),
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/contact/{contactId}/versions" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListContactVersionsRequest",
+}) as any as S.Schema<ListContactVersionsRequest>;
+export type ContactVersionsList = ContactVersion[];
+export const ContactVersionsList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ContactVersion);
+export interface ListContactVersionsResponse {
+  nextToken?: string;
+  contactVersionsList?: ContactVersion[];
+}
+export const ListContactVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextToken: S.optional(S.String),
+      contactVersionsList: S.optional(ContactVersionsList),
+    }),
+  ).annotate({
+    identifier: "ListContactVersionsResponse",
+  }) as any as S.Schema<ListContactVersionsResponse>;
 export type EndpointDetailsList = EndpointDetails[];
 export const EndpointDetailsList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(EndpointDetails);
@@ -2249,6 +2486,165 @@ export const ListGroundStationsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListGroundStationsResponse",
 }) as any as S.Schema<ListGroundStationsResponse>;
+export interface ListAntennasRequest {
+  groundStationId: string;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListAntennasRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groundStationId: S.String.pipe(T.HttpLabel("groundStationId")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/groundstation/{groundStationId}/antenna",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListAntennasRequest",
+}) as any as S.Schema<ListAntennasRequest>;
+export interface AntennaListItem {
+  groundStationName: string;
+  antennaName: string;
+  region: string;
+}
+export const AntennaListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groundStationName: S.String,
+    antennaName: S.String,
+    region: S.String,
+  }),
+).annotate({
+  identifier: "AntennaListItem",
+}) as any as S.Schema<AntennaListItem>;
+export type AntennaList = AntennaListItem[];
+export const AntennaList = /*@__PURE__*/ /*#__PURE__*/ S.Array(AntennaListItem);
+export interface ListAntennasResponse {
+  antennaList: AntennaListItem[];
+  nextToken?: string;
+}
+export const ListAntennasResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ antennaList: AntennaList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListAntennasResponse",
+}) as any as S.Schema<ListAntennasResponse>;
+export type ReservationType = "MAINTENANCE" | "CONTACT" | (string & {});
+export const ReservationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type ReservationTypeFilterList = ReservationType[];
+export const ReservationTypeFilterList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ReservationType);
+export interface ListGroundStationReservationsRequest {
+  groundStationId: string;
+  startTime: Date;
+  endTime: Date;
+  reservationTypes?: ReservationType[];
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListGroundStationReservationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groundStationId: S.String.pipe(T.HttpLabel("groundStationId")),
+      startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(
+        T.HttpQuery("startTime"),
+      ),
+      endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(
+        T.HttpQuery("endTime"),
+      ),
+      reservationTypes: S.optional(ReservationTypeFilterList).pipe(
+        T.HttpQuery("reservationTypes"),
+      ),
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/groundstation/{groundStationId}/reservation",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListGroundStationReservationsRequest",
+  }) as any as S.Schema<ListGroundStationReservationsRequest>;
+export type MaintenanceType = "PLANNED" | "UNPLANNED" | (string & {});
+export const MaintenanceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface MaintenanceReservationDetails {
+  maintenanceType: MaintenanceType;
+}
+export const MaintenanceReservationDetails =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ maintenanceType: MaintenanceType }),
+  ).annotate({
+    identifier: "MaintenanceReservationDetails",
+  }) as any as S.Schema<MaintenanceReservationDetails>;
+export interface ContactReservationDetails {
+  contactId?: string;
+}
+export const ContactReservationDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ contactId: S.optional(S.String) }),
+).annotate({
+  identifier: "ContactReservationDetails",
+}) as any as S.Schema<ContactReservationDetails>;
+export type ReservationDetails =
+  | { maintenance: MaintenanceReservationDetails; contact?: never }
+  | { maintenance?: never; contact: ContactReservationDetails };
+export const ReservationDetails = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ maintenance: MaintenanceReservationDetails }),
+  S.Struct({ contact: ContactReservationDetails }),
+]);
+export interface GroundStationReservationListItem {
+  reservationType: ReservationType;
+  groundStationId: string;
+  antennaName: string;
+  startTime: Date;
+  endTime: Date;
+  reservationDetails: ReservationDetails;
+}
+export const GroundStationReservationListItem =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      reservationType: ReservationType,
+      groundStationId: S.String,
+      antennaName: S.String,
+      startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      reservationDetails: ReservationDetails,
+    }),
+  ).annotate({
+    identifier: "GroundStationReservationListItem",
+  }) as any as S.Schema<GroundStationReservationListItem>;
+export type GroundStationReservationList = GroundStationReservationListItem[];
+export const GroundStationReservationList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  GroundStationReservationListItem,
+);
+export interface ListGroundStationReservationsResponse {
+  reservationList: GroundStationReservationListItem[];
+  nextToken?: string;
+}
+export const ListGroundStationReservationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      reservationList: GroundStationReservationList,
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListGroundStationReservationsResponse",
+  }) as any as S.Schema<ListGroundStationReservationsResponse>;
 export type DataflowEdge = string[];
 export const DataflowEdge = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export type DataflowEdgeList = string[][];
@@ -2990,6 +3386,30 @@ export const describeContact: API.OperationMethod<
     ResourceNotFoundException,
   ],
 }));
+export type UpdateContactError =
+  | DependencyException
+  | InvalidParameterException
+  | ResourceLimitExceededException
+  | ResourceNotFoundException
+  | CommonErrors;
+/**
+ * Updates a specific contact.
+ */
+export const updateContact: API.OperationMethod<
+  UpdateContactRequest,
+  UpdateContactResponse,
+  UpdateContactError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateContactRequest,
+  output: UpdateContactResponse,
+  errors: [
+    DependencyException,
+    InvalidParameterException,
+    ResourceLimitExceededException,
+    ResourceNotFoundException,
+  ],
+}));
 export type CancelContactError =
   | DependencyException
   | InvalidParameterException
@@ -3060,6 +3480,71 @@ export const listContacts: API.OperationMethod<
     inputToken: "nextToken",
     outputToken: "nextToken",
     items: "contactList",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type DescribeContactVersionError =
+  | DependencyException
+  | InvalidParameterException
+  | ResourceNotFoundException
+  | CommonErrors;
+/**
+ * Describes a specific version of a contact.
+ */
+export const describeContactVersion: API.OperationMethod<
+  DescribeContactVersionRequest,
+  DescribeContactVersionResponse,
+  DescribeContactVersionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DescribeContactVersionRequest,
+  output: DescribeContactVersionResponse,
+  errors: [
+    DependencyException,
+    InvalidParameterException,
+    ResourceNotFoundException,
+  ],
+}));
+export type ListContactVersionsError =
+  | DependencyException
+  | InvalidParameterException
+  | ResourceNotFoundException
+  | CommonErrors;
+/**
+ * Returns a list of versions for a specified contact.
+ */
+export const listContactVersions: API.OperationMethod<
+  ListContactVersionsRequest,
+  ListContactVersionsResponse,
+  ListContactVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListContactVersionsRequest,
+  ) => stream.Stream<
+    ListContactVersionsResponse,
+    ListContactVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListContactVersionsRequest,
+  ) => stream.Stream<
+    ContactVersion,
+    ListContactVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListContactVersionsRequest,
+  output: ListContactVersionsResponse,
+  errors: [
+    DependencyException,
+    InvalidParameterException,
+    ResourceNotFoundException,
+  ],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "contactVersionsList",
     pageSize: "maxResults",
   } as const,
 }));
@@ -3377,6 +3862,82 @@ export const listGroundStations: API.OperationMethod<
     inputToken: "nextToken",
     outputToken: "nextToken",
     items: "groundStationList",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ListAntennasError =
+  | DependencyException
+  | InvalidParameterException
+  | CommonErrors;
+/**
+ * Returns a list of antennas at a specified ground station.
+ */
+export const listAntennas: API.OperationMethod<
+  ListAntennasRequest,
+  ListAntennasResponse,
+  ListAntennasError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAntennasRequest,
+  ) => stream.Stream<
+    ListAntennasResponse,
+    ListAntennasError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAntennasRequest,
+  ) => stream.Stream<
+    AntennaListItem,
+    ListAntennasError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAntennasRequest,
+  output: ListAntennasResponse,
+  errors: [DependencyException, InvalidParameterException],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "antennaList",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ListGroundStationReservationsError =
+  | DependencyException
+  | InvalidParameterException
+  | CommonErrors;
+/**
+ * Returns a list of reservations for a specified ground station.
+ */
+export const listGroundStationReservations: API.OperationMethod<
+  ListGroundStationReservationsRequest,
+  ListGroundStationReservationsResponse,
+  ListGroundStationReservationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGroundStationReservationsRequest,
+  ) => stream.Stream<
+    ListGroundStationReservationsResponse,
+    ListGroundStationReservationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGroundStationReservationsRequest,
+  ) => stream.Stream<
+    GroundStationReservationListItem,
+    ListGroundStationReservationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListGroundStationReservationsRequest,
+  output: ListGroundStationReservationsResponse,
+  errors: [DependencyException, InvalidParameterException],
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "reservationList",
     pageSize: "maxResults",
   } as const,
 }));

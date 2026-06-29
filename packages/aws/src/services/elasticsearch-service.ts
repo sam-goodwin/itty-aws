@@ -131,11 +131,11 @@ export type SAMLEntityId = string;
 export type BackendRole = string;
 export type StartAt = Date;
 export type DurationValue = number;
+export type UpdateTimestamp = Date;
 export type DomainId = string;
 export type ServiceUrl = string;
 export type DisableTimestamp = Date;
 export type Message = string;
-export type UpdateTimestamp = Date;
 export type ConnectionAlias = string;
 export type PackageDescription = string;
 export type S3BucketName = string;
@@ -916,6 +916,21 @@ export const DeploymentStrategyOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeploymentStrategyOptions",
 }) as any as S.Schema<DeploymentStrategyOptions>;
+export interface AutomatedSnapshotPauseRequestOptions {
+  Enabled: boolean;
+  StartTime?: Date;
+  EndTime?: Date;
+}
+export const AutomatedSnapshotPauseRequestOptions =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Enabled: S.Boolean,
+      StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    }),
+  ).annotate({
+    identifier: "AutomatedSnapshotPauseRequestOptions",
+  }) as any as S.Schema<AutomatedSnapshotPauseRequestOptions>;
 export interface CreateElasticsearchDomainRequest {
   DomainName: string;
   ElasticsearchVersion?: string;
@@ -934,6 +949,7 @@ export interface CreateElasticsearchDomainRequest {
   AutoTuneOptions?: AutoTuneOptionsInput;
   TagList?: Tag[];
   DeploymentStrategyOptions?: DeploymentStrategyOptions;
+  AutomatedSnapshotPauseOptions?: AutomatedSnapshotPauseRequestOptions;
 }
 export const CreateElasticsearchDomainRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -955,6 +971,9 @@ export const CreateElasticsearchDomainRequest =
       AutoTuneOptions: S.optional(AutoTuneOptionsInput),
       TagList: S.optional(TagList),
       DeploymentStrategyOptions: S.optional(DeploymentStrategyOptions),
+      AutomatedSnapshotPauseOptions: S.optional(
+        AutomatedSnapshotPauseRequestOptions,
+      ),
     }).pipe(
       T.all(
         ns,
@@ -1120,6 +1139,30 @@ export const ModifyingProperties = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type ModifyingPropertiesList = ModifyingProperties[];
 export const ModifyingPropertiesList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(ModifyingProperties);
+export type PauseState =
+  | "Active"
+  | "Completed"
+  | "Scheduled"
+  | "Disabled"
+  | (string & {});
+export const PauseState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AutomatedSnapshotPauseOptions {
+  Enabled: boolean;
+  StartTime?: Date;
+  EndTime?: Date;
+  State?: PauseState;
+}
+export const AutomatedSnapshotPauseOptions =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Enabled: S.Boolean,
+      StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      State: S.optional(PauseState),
+    }),
+  ).annotate({
+    identifier: "AutomatedSnapshotPauseOptions",
+  }) as any as S.Schema<AutomatedSnapshotPauseOptions>;
 export interface ElasticsearchDomainStatus {
   DomainId: string;
   DomainName: string;
@@ -1149,6 +1192,7 @@ export interface ElasticsearchDomainStatus {
   DomainProcessingStatus?: DomainProcessingStatusType;
   ModifyingProperties?: ModifyingProperties[];
   DeploymentStrategyOptions?: DeploymentStrategyOptions;
+  AutomatedSnapshotPauseOptions?: AutomatedSnapshotPauseOptions;
 }
 export const ElasticsearchDomainStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1181,6 +1225,7 @@ export const ElasticsearchDomainStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       DomainProcessingStatus: S.optional(DomainProcessingStatusType),
       ModifyingProperties: S.optional(ModifyingPropertiesList),
       DeploymentStrategyOptions: S.optional(DeploymentStrategyOptions),
+      AutomatedSnapshotPauseOptions: S.optional(AutomatedSnapshotPauseOptions),
     }),
 ).annotate({
   identifier: "ElasticsearchDomainStatus",
@@ -2067,6 +2112,16 @@ export const DeploymentStrategyOptionsStatus =
   ).annotate({
     identifier: "DeploymentStrategyOptionsStatus",
   }) as any as S.Schema<DeploymentStrategyOptionsStatus>;
+export interface AutomatedSnapshotPauseOptionsStatus {
+  Options: AutomatedSnapshotPauseOptions;
+  Status: OptionStatus;
+}
+export const AutomatedSnapshotPauseOptionsStatus =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ Options: AutomatedSnapshotPauseOptions, Status: OptionStatus }),
+  ).annotate({
+    identifier: "AutomatedSnapshotPauseOptionsStatus",
+  }) as any as S.Schema<AutomatedSnapshotPauseOptionsStatus>;
 export interface ElasticsearchDomainConfig {
   ElasticsearchVersion?: ElasticsearchVersionStatus;
   ElasticsearchClusterConfig?: ElasticsearchClusterConfigStatus;
@@ -2085,6 +2140,7 @@ export interface ElasticsearchDomainConfig {
   ChangeProgressDetails?: ChangeProgressDetails;
   ModifyingProperties?: ModifyingProperties[];
   DeploymentStrategyOptions?: DeploymentStrategyOptionsStatus;
+  AutomatedSnapshotPauseOptions?: AutomatedSnapshotPauseOptionsStatus;
 }
 export const ElasticsearchDomainConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -2108,6 +2164,9 @@ export const ElasticsearchDomainConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       ChangeProgressDetails: S.optional(ChangeProgressDetails),
       ModifyingProperties: S.optional(ModifyingPropertiesList),
       DeploymentStrategyOptions: S.optional(DeploymentStrategyOptionsStatus),
+      AutomatedSnapshotPauseOptions: S.optional(
+        AutomatedSnapshotPauseOptionsStatus,
+      ),
     }),
 ).annotate({
   identifier: "ElasticsearchDomainConfig",
@@ -3506,6 +3565,7 @@ export interface UpdateElasticsearchDomainConfigRequest {
   AutoTuneOptions?: AutoTuneOptions;
   DryRun?: boolean;
   DeploymentStrategyOptions?: DeploymentStrategyOptions;
+  AutomatedSnapshotPauseOptions?: AutomatedSnapshotPauseRequestOptions;
 }
 export const UpdateElasticsearchDomainConfigRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -3526,6 +3586,9 @@ export const UpdateElasticsearchDomainConfigRequest =
       AutoTuneOptions: S.optional(AutoTuneOptions),
       DryRun: S.optional(S.Boolean),
       DeploymentStrategyOptions: S.optional(DeploymentStrategyOptions),
+      AutomatedSnapshotPauseOptions: S.optional(
+        AutomatedSnapshotPauseRequestOptions,
+      ),
     }).pipe(
       T.all(
         ns,

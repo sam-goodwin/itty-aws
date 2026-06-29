@@ -154,6 +154,10 @@ export type Route53ResourceRecordSetIdentifier = string;
 export type DocumentDbGlobalClusterIdentifier = string;
 export type DocumentDbClusterArn = string;
 export type RdsDbInstanceArn = string;
+export type EventSourceMappingArn = string;
+export type AuroraInstanceArn = string;
+export type NeptuneGlobalClusterIdentifier = string;
+export type NeptuneClusterArn = string;
 export type AccountId = string;
 export type PlanName = string;
 export type Duration = string;
@@ -854,6 +858,155 @@ export const RdsCreateCrossRegionReplicaConfiguration =
   ).annotate({
     identifier: "RdsCreateCrossRegionReplicaConfiguration",
   }) as any as S.Schema<RdsCreateCrossRegionReplicaConfiguration>;
+export type EventSourceMappingAction = "enable" | "disable" | (string & {});
+export const EventSourceMappingAction = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface EventSourceMapping {
+  crossAccountRole?: string;
+  externalId?: string;
+  arn: string;
+}
+export const EventSourceMapping = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    crossAccountRole: S.optional(S.String),
+    externalId: S.optional(S.String),
+    arn: S.String,
+  }),
+).annotate({
+  identifier: "EventSourceMapping",
+}) as any as S.Schema<EventSourceMapping>;
+export type RegionEventSourceMappingMap = {
+  [key: string]: EventSourceMapping | undefined;
+};
+export const RegionEventSourceMappingMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  EventSourceMapping.pipe(S.optional),
+);
+export type LambdaEventSourceMappingUngracefulBehavior = "skip" | (string & {});
+export const LambdaEventSourceMappingUngracefulBehavior =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface LambdaEventSourceMappingUngraceful {
+  behavior?: LambdaEventSourceMappingUngracefulBehavior;
+}
+export const LambdaEventSourceMappingUngraceful =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      behavior: S.optional(LambdaEventSourceMappingUngracefulBehavior),
+    }),
+  ).annotate({
+    identifier: "LambdaEventSourceMappingUngraceful",
+  }) as any as S.Schema<LambdaEventSourceMappingUngraceful>;
+export interface LambdaEventSourceMappingConfiguration {
+  timeoutMinutes?: number;
+  action: EventSourceMappingAction;
+  regionEventSourceMappings: { [key: string]: EventSourceMapping | undefined };
+  ungraceful?: LambdaEventSourceMappingUngraceful;
+}
+export const LambdaEventSourceMappingConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      timeoutMinutes: S.optional(S.Number),
+      action: EventSourceMappingAction,
+      regionEventSourceMappings: RegionEventSourceMappingMap,
+      ungraceful: S.optional(LambdaEventSourceMappingUngraceful),
+    }),
+  ).annotate({
+    identifier: "LambdaEventSourceMappingConfiguration",
+  }) as any as S.Schema<LambdaEventSourceMappingConfiguration>;
+export type RegionAuroraClusterMap = { [key: string]: string | undefined };
+export const RegionAuroraClusterMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface AuroraServerlessScalingConfiguration {
+  timeoutMinutes?: number;
+  crossAccountRole?: string;
+  externalId?: string;
+  globalClusterIdentifier: string;
+  regionDatabaseClusterArns: { [key: string]: string | undefined };
+  targetPercent?: number;
+}
+export const AuroraServerlessScalingConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      timeoutMinutes: S.optional(S.Number),
+      crossAccountRole: S.optional(S.String),
+      externalId: S.optional(S.String),
+      globalClusterIdentifier: S.String,
+      regionDatabaseClusterArns: RegionAuroraClusterMap,
+      targetPercent: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "AuroraServerlessScalingConfiguration",
+  }) as any as S.Schema<AuroraServerlessScalingConfiguration>;
+export type RegionAuroraInstanceArnMap = { [key: string]: string | undefined };
+export const RegionAuroraInstanceArnMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface AuroraProvisionedScalingConfiguration {
+  timeoutMinutes?: number;
+  crossAccountRole?: string;
+  externalId?: string;
+  globalClusterIdentifier: string;
+  regionDatabaseClusterArns: { [key: string]: string | undefined };
+  instanceArns: { [key: string]: string | undefined };
+}
+export const AuroraProvisionedScalingConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      timeoutMinutes: S.optional(S.Number),
+      crossAccountRole: S.optional(S.String),
+      externalId: S.optional(S.String),
+      globalClusterIdentifier: S.String,
+      regionDatabaseClusterArns: RegionAuroraClusterMap,
+      instanceArns: RegionAuroraInstanceArnMap,
+    }),
+  ).annotate({
+    identifier: "AuroraProvisionedScalingConfiguration",
+  }) as any as S.Schema<AuroraProvisionedScalingConfiguration>;
+export type NeptuneDefaultBehavior =
+  | "switchoverOnly"
+  | "failover"
+  | (string & {});
+export const NeptuneDefaultBehavior = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type NeptuneUngracefulBehavior = "failover" | (string & {});
+export const NeptuneUngracefulBehavior = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface NeptuneUngraceful {
+  ungraceful?: NeptuneUngracefulBehavior;
+}
+export const NeptuneUngraceful = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ ungraceful: S.optional(NeptuneUngracefulBehavior) }),
+).annotate({
+  identifier: "NeptuneUngraceful",
+}) as any as S.Schema<NeptuneUngraceful>;
+export type RegionNeptuneClusterArnMap = { [key: string]: string | undefined };
+export const RegionNeptuneClusterArnMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface NeptuneGlobalDatabaseConfiguration {
+  timeoutMinutes?: number;
+  crossAccountRole?: string;
+  externalId?: string;
+  behavior: NeptuneDefaultBehavior;
+  ungraceful?: NeptuneUngraceful;
+  globalClusterIdentifier: string;
+  regionDatabaseClusterArns: { [key: string]: string | undefined };
+}
+export const NeptuneGlobalDatabaseConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      timeoutMinutes: S.optional(S.Number),
+      crossAccountRole: S.optional(S.String),
+      externalId: S.optional(S.String),
+      behavior: NeptuneDefaultBehavior,
+      ungraceful: S.optional(NeptuneUngraceful),
+      globalClusterIdentifier: S.String,
+      regionDatabaseClusterArns: RegionNeptuneClusterArnMap,
+    }),
+  ).annotate({
+    identifier: "NeptuneGlobalDatabaseConfiguration",
+  }) as any as S.Schema<NeptuneGlobalDatabaseConfiguration>;
 export type ExecutionBlockConfiguration =
   | {
       customActionLambdaConfig: CustomActionLambdaConfiguration;
@@ -869,6 +1022,10 @@ export type ExecutionBlockConfiguration =
       documentDbConfig?: never;
       rdsPromoteReadReplicaConfig?: never;
       rdsCreateCrossRegionReadReplicaConfig?: never;
+      lambdaEventSourceMappingConfig?: never;
+      auroraServerlessScalingConfig?: never;
+      auroraProvisionedScalingConfig?: never;
+      neptuneGlobalDatabaseConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -884,6 +1041,10 @@ export type ExecutionBlockConfiguration =
       documentDbConfig?: never;
       rdsPromoteReadReplicaConfig?: never;
       rdsCreateCrossRegionReadReplicaConfig?: never;
+      lambdaEventSourceMappingConfig?: never;
+      auroraServerlessScalingConfig?: never;
+      auroraProvisionedScalingConfig?: never;
+      neptuneGlobalDatabaseConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -899,6 +1060,10 @@ export type ExecutionBlockConfiguration =
       documentDbConfig?: never;
       rdsPromoteReadReplicaConfig?: never;
       rdsCreateCrossRegionReadReplicaConfig?: never;
+      lambdaEventSourceMappingConfig?: never;
+      auroraServerlessScalingConfig?: never;
+      auroraProvisionedScalingConfig?: never;
+      neptuneGlobalDatabaseConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -914,6 +1079,10 @@ export type ExecutionBlockConfiguration =
       documentDbConfig?: never;
       rdsPromoteReadReplicaConfig?: never;
       rdsCreateCrossRegionReadReplicaConfig?: never;
+      lambdaEventSourceMappingConfig?: never;
+      auroraServerlessScalingConfig?: never;
+      auroraProvisionedScalingConfig?: never;
+      neptuneGlobalDatabaseConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -929,6 +1098,10 @@ export type ExecutionBlockConfiguration =
       documentDbConfig?: never;
       rdsPromoteReadReplicaConfig?: never;
       rdsCreateCrossRegionReadReplicaConfig?: never;
+      lambdaEventSourceMappingConfig?: never;
+      auroraServerlessScalingConfig?: never;
+      auroraProvisionedScalingConfig?: never;
+      neptuneGlobalDatabaseConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -944,6 +1117,10 @@ export type ExecutionBlockConfiguration =
       documentDbConfig?: never;
       rdsPromoteReadReplicaConfig?: never;
       rdsCreateCrossRegionReadReplicaConfig?: never;
+      lambdaEventSourceMappingConfig?: never;
+      auroraServerlessScalingConfig?: never;
+      auroraProvisionedScalingConfig?: never;
+      neptuneGlobalDatabaseConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -959,6 +1136,10 @@ export type ExecutionBlockConfiguration =
       documentDbConfig?: never;
       rdsPromoteReadReplicaConfig?: never;
       rdsCreateCrossRegionReadReplicaConfig?: never;
+      lambdaEventSourceMappingConfig?: never;
+      auroraServerlessScalingConfig?: never;
+      auroraProvisionedScalingConfig?: never;
+      neptuneGlobalDatabaseConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -974,6 +1155,10 @@ export type ExecutionBlockConfiguration =
       documentDbConfig?: never;
       rdsPromoteReadReplicaConfig?: never;
       rdsCreateCrossRegionReadReplicaConfig?: never;
+      lambdaEventSourceMappingConfig?: never;
+      auroraServerlessScalingConfig?: never;
+      auroraProvisionedScalingConfig?: never;
+      neptuneGlobalDatabaseConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -989,6 +1174,10 @@ export type ExecutionBlockConfiguration =
       documentDbConfig?: never;
       rdsPromoteReadReplicaConfig?: never;
       rdsCreateCrossRegionReadReplicaConfig?: never;
+      lambdaEventSourceMappingConfig?: never;
+      auroraServerlessScalingConfig?: never;
+      auroraProvisionedScalingConfig?: never;
+      neptuneGlobalDatabaseConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -1004,6 +1193,10 @@ export type ExecutionBlockConfiguration =
       documentDbConfig?: never;
       rdsPromoteReadReplicaConfig?: never;
       rdsCreateCrossRegionReadReplicaConfig?: never;
+      lambdaEventSourceMappingConfig?: never;
+      auroraServerlessScalingConfig?: never;
+      auroraProvisionedScalingConfig?: never;
+      neptuneGlobalDatabaseConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -1019,6 +1212,10 @@ export type ExecutionBlockConfiguration =
       documentDbConfig: DocumentDbConfiguration;
       rdsPromoteReadReplicaConfig?: never;
       rdsCreateCrossRegionReadReplicaConfig?: never;
+      lambdaEventSourceMappingConfig?: never;
+      auroraServerlessScalingConfig?: never;
+      auroraProvisionedScalingConfig?: never;
+      neptuneGlobalDatabaseConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -1034,6 +1231,10 @@ export type ExecutionBlockConfiguration =
       documentDbConfig?: never;
       rdsPromoteReadReplicaConfig: RdsPromoteReadReplicaConfiguration;
       rdsCreateCrossRegionReadReplicaConfig?: never;
+      lambdaEventSourceMappingConfig?: never;
+      auroraServerlessScalingConfig?: never;
+      auroraProvisionedScalingConfig?: never;
+      neptuneGlobalDatabaseConfig?: never;
     }
   | {
       customActionLambdaConfig?: never;
@@ -1049,6 +1250,86 @@ export type ExecutionBlockConfiguration =
       documentDbConfig?: never;
       rdsPromoteReadReplicaConfig?: never;
       rdsCreateCrossRegionReadReplicaConfig: RdsCreateCrossRegionReplicaConfiguration;
+      lambdaEventSourceMappingConfig?: never;
+      auroraServerlessScalingConfig?: never;
+      auroraProvisionedScalingConfig?: never;
+      neptuneGlobalDatabaseConfig?: never;
+    }
+  | {
+      customActionLambdaConfig?: never;
+      ec2AsgCapacityIncreaseConfig?: never;
+      executionApprovalConfig?: never;
+      arcRoutingControlConfig?: never;
+      globalAuroraConfig?: never;
+      parallelConfig?: never;
+      regionSwitchPlanConfig?: never;
+      ecsCapacityIncreaseConfig?: never;
+      eksResourceScalingConfig?: never;
+      route53HealthCheckConfig?: never;
+      documentDbConfig?: never;
+      rdsPromoteReadReplicaConfig?: never;
+      rdsCreateCrossRegionReadReplicaConfig?: never;
+      lambdaEventSourceMappingConfig: LambdaEventSourceMappingConfiguration;
+      auroraServerlessScalingConfig?: never;
+      auroraProvisionedScalingConfig?: never;
+      neptuneGlobalDatabaseConfig?: never;
+    }
+  | {
+      customActionLambdaConfig?: never;
+      ec2AsgCapacityIncreaseConfig?: never;
+      executionApprovalConfig?: never;
+      arcRoutingControlConfig?: never;
+      globalAuroraConfig?: never;
+      parallelConfig?: never;
+      regionSwitchPlanConfig?: never;
+      ecsCapacityIncreaseConfig?: never;
+      eksResourceScalingConfig?: never;
+      route53HealthCheckConfig?: never;
+      documentDbConfig?: never;
+      rdsPromoteReadReplicaConfig?: never;
+      rdsCreateCrossRegionReadReplicaConfig?: never;
+      lambdaEventSourceMappingConfig?: never;
+      auroraServerlessScalingConfig: AuroraServerlessScalingConfiguration;
+      auroraProvisionedScalingConfig?: never;
+      neptuneGlobalDatabaseConfig?: never;
+    }
+  | {
+      customActionLambdaConfig?: never;
+      ec2AsgCapacityIncreaseConfig?: never;
+      executionApprovalConfig?: never;
+      arcRoutingControlConfig?: never;
+      globalAuroraConfig?: never;
+      parallelConfig?: never;
+      regionSwitchPlanConfig?: never;
+      ecsCapacityIncreaseConfig?: never;
+      eksResourceScalingConfig?: never;
+      route53HealthCheckConfig?: never;
+      documentDbConfig?: never;
+      rdsPromoteReadReplicaConfig?: never;
+      rdsCreateCrossRegionReadReplicaConfig?: never;
+      lambdaEventSourceMappingConfig?: never;
+      auroraServerlessScalingConfig?: never;
+      auroraProvisionedScalingConfig: AuroraProvisionedScalingConfiguration;
+      neptuneGlobalDatabaseConfig?: never;
+    }
+  | {
+      customActionLambdaConfig?: never;
+      ec2AsgCapacityIncreaseConfig?: never;
+      executionApprovalConfig?: never;
+      arcRoutingControlConfig?: never;
+      globalAuroraConfig?: never;
+      parallelConfig?: never;
+      regionSwitchPlanConfig?: never;
+      ecsCapacityIncreaseConfig?: never;
+      eksResourceScalingConfig?: never;
+      route53HealthCheckConfig?: never;
+      documentDbConfig?: never;
+      rdsPromoteReadReplicaConfig?: never;
+      rdsCreateCrossRegionReadReplicaConfig?: never;
+      lambdaEventSourceMappingConfig?: never;
+      auroraServerlessScalingConfig?: never;
+      auroraProvisionedScalingConfig?: never;
+      neptuneGlobalDatabaseConfig: NeptuneGlobalDatabaseConfiguration;
     };
 export const ExecutionBlockConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ customActionLambdaConfig: CustomActionLambdaConfiguration }),
@@ -1074,6 +1355,16 @@ export const ExecutionBlockConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
     rdsCreateCrossRegionReadReplicaConfig:
       RdsCreateCrossRegionReplicaConfiguration,
   }),
+  S.Struct({
+    lambdaEventSourceMappingConfig: LambdaEventSourceMappingConfiguration,
+  }),
+  S.Struct({
+    auroraServerlessScalingConfig: AuroraServerlessScalingConfiguration,
+  }),
+  S.Struct({
+    auroraProvisionedScalingConfig: AuroraProvisionedScalingConfiguration,
+  }),
+  S.Struct({ neptuneGlobalDatabaseConfig: NeptuneGlobalDatabaseConfiguration }),
 ]) as any as S.Schema<ExecutionBlockConfiguration>;
 export type ExecutionBlockType =
   | "CustomActionLambda"
@@ -1089,6 +1380,10 @@ export type ExecutionBlockType =
   | "DocumentDb"
   | "RdsPromoteReadReplica"
   | "RdsCreateCrossRegionReplica"
+  | "LambdaEventSourceMapping"
+  | "AuroraServerlessScaling"
+  | "AuroraProvisionedScaling"
+  | "NeptuneGlobalDatabase"
   | (string & {});
 export const ExecutionBlockType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface Step {
@@ -2065,14 +2360,14 @@ export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFou
   "ResourceNotFoundException",
   { message: S.String },
 ).pipe(C.withBadRequestError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.String },
-).pipe(C.withServerError) {}
 export class IllegalArgumentException extends S.TaggedErrorClass<IllegalArgumentException>()(
   "IllegalArgumentException",
   { message: S.String },
 ).pipe(C.withBadRequestError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.String },
+).pipe(C.withServerError) {}
 export class IllegalStateException extends S.TaggedErrorClass<IllegalStateException>()(
   "IllegalStateException",
   { message: S.String },
@@ -2323,6 +2618,7 @@ export const listPlansInRegion: API.OperationMethod<
 }));
 export type ListRoute53HealthChecksError =
   | AccessDeniedException
+  | IllegalArgumentException
   | InternalServerException
   | ResourceNotFoundException
   | CommonErrors;
@@ -2354,6 +2650,7 @@ export const listRoute53HealthChecks: API.OperationMethod<
   output: ListRoute53HealthChecksResponse,
   errors: [
     AccessDeniedException,
+    IllegalArgumentException,
     InternalServerException,
     ResourceNotFoundException,
   ],

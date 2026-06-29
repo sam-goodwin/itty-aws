@@ -271,6 +271,7 @@ export type CaptureTimeAccuracy = number;
 export type Coordinate = number;
 export type Use2DSolver = boolean;
 export type CreationDate = Date;
+export type ConfidencePercent = number;
 export type ResourceIdentifier = string;
 export type EndPoint = string;
 export type CertificatePEM = string;
@@ -3239,12 +3240,27 @@ export const Gnss = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Use2DSolver: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "Gnss" }) as any as S.Schema<Gnss>;
+export interface WiFiCellular {
+  ConfidencePercent?: number;
+}
+export const WiFiCellular = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ ConfidencePercent: S.optional(S.Number) }),
+).annotate({ identifier: "WiFiCellular" }) as any as S.Schema<WiFiCellular>;
+export interface AdvancedConfiguration {
+  WiFiCellular?: WiFiCellular;
+}
+export const AdvancedConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ WiFiCellular: S.optional(WiFiCellular) }),
+).annotate({
+  identifier: "AdvancedConfiguration",
+}) as any as S.Schema<AdvancedConfiguration>;
 export interface GetPositionEstimateRequest {
   WiFiAccessPoints?: WiFiAccessPoint[];
   CellTowers?: CellTowers;
   Ip?: Ip;
   Gnss?: Gnss;
   Timestamp?: Date;
+  AdvancedConfiguration?: AdvancedConfiguration;
 }
 export const GetPositionEstimateRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -3254,6 +3270,7 @@ export const GetPositionEstimateRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       Ip: S.optional(Ip),
       Gnss: S.optional(Gnss),
       Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      AdvancedConfiguration: S.optional(AdvancedConfiguration),
     }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/position-estimate" }),

@@ -8279,11 +8279,20 @@ export type CreateServiceSpecificCredentialError =
  * You can have a maximum of two sets of service-specific credentials for each supported
  * service per user.
  *
- * You can create service-specific credentials for Amazon Bedrock, Amazon CloudWatch Logs, CodeCommit and Amazon Keyspaces (for Apache Cassandra).
- *
  * You can reset the password to a new service-generated value by calling ResetServiceSpecificCredential.
  *
- * For more information about service-specific credentials, see Service-specific credentials for IAM users in the
+ * For more information about using service-specific credentials to authenticate to an
+ * Amazon Web Services service, refer to the following docs:
+ *
+ * - For service-specific credentials with CodeCommit, refer to IAM credentials for CodeCommit: Git credentials, SSH keys, and Amazon Web Services access
+ * keys in the *IAM User Guide*.
+ *
+ * - For service-specific credentials with Amazon Keyspaces (for Apache Cassandra), refer to Use IAM with
+ * Amazon Keyspaces (for Apache Cassandra) in the
+ * *IAM User Guide*.
+ *
+ * - For services that support long-term API keys, refer to API
+ * keys for Amazon Web Services services in the
  * *IAM User Guide*.
  */
 export const createServiceSpecificCredential: API.OperationMethod<
@@ -11741,8 +11750,18 @@ export type ListServiceSpecificCredentialsError =
  * specified IAM user. If none exists, the operation returns an empty list. The
  * service-specific credentials returned by this operation are used only for authenticating
  * the IAM user to a specific service. For more information about using service-specific
- * credentials to authenticate to an Amazon Web Services service, see Set up service-specific credentials
- * in the CodeCommit User Guide.
+ * credentials to authenticate to an Amazon Web Services service, refer to the following docs:
+ *
+ * - For service-specific credentials with CodeCommit, refer to IAM credentials for CodeCommit: Git credentials, SSH keys, and Amazon Web Services access
+ * keys in the *IAM User Guide*.
+ *
+ * - For service-specific credentials with Amazon Keyspaces (for Apache Cassandra), refer to Use IAM with
+ * Amazon Keyspaces (for Apache Cassandra) in the
+ * *IAM User Guide*.
+ *
+ * - For services that support long-term API keys, refer to API
+ * keys for Amazon Web Services services in the
+ * *IAM User Guide*.
  */
 export const listServiceSpecificCredentials: API.OperationMethod<
   ListServiceSpecificCredentialsRequest,

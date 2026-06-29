@@ -1924,6 +1924,11 @@ export type S3ChecksumAlgorithm =
   | "SHA1"
   | "SHA256"
   | "CRC64NVME"
+  | "SHA512"
+  | "MD5"
+  | "XXHASH64"
+  | "XXHASH3"
+  | "XXHASH128"
   | (string & {});
 export const S3ChecksumAlgorithm = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface S3CopyObjectOperation {
@@ -2093,6 +2098,10 @@ export type ComputeObjectChecksumAlgorithm =
   | "MD5"
   | "SHA1"
   | "SHA256"
+  | "SHA512"
+  | "XXHASH64"
+  | "XXHASH3"
+  | "XXHASH128"
   | (string & {});
 export const ComputeObjectChecksumAlgorithm =
   /*@__PURE__*/ /*#__PURE__*/ S.String;

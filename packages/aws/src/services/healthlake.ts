@@ -171,6 +171,48 @@ export const IdentityProviderConfiguration =
   ).annotate({
     identifier: "IdentityProviderConfiguration",
   }) as any as S.Schema<IdentityProviderConfiguration>;
+export type AnalyticsStatus =
+  | "ENABLED"
+  | "ENABLING"
+  | "DISABLED"
+  | "DISABLING"
+  | "PAUSING"
+  | "PAUSED"
+  | (string & {});
+export const AnalyticsStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AnalyticsConfiguration {
+  Status?: AnalyticsStatus;
+}
+export const AnalyticsConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ Status: S.optional(AnalyticsStatus) }),
+).annotate({
+  identifier: "AnalyticsConfiguration",
+}) as any as S.Schema<AnalyticsConfiguration>;
+export type NlpStatus =
+  | "ENABLED"
+  | "DISABLED"
+  | "ENABLING"
+  | "DISABLING"
+  | (string & {});
+export const NlpStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface NlpConfiguration {
+  Status?: NlpStatus;
+}
+export const NlpConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Status: S.optional(NlpStatus) }),
+).annotate({
+  identifier: "NlpConfiguration",
+}) as any as S.Schema<NlpConfiguration>;
+export type DefaultProfiles = string[];
+export const DefaultProfiles = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface ProfileConfiguration {
+  DefaultProfiles?: string[];
+}
+export const ProfileConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ DefaultProfiles: S.optional(DefaultProfiles) }),
+).annotate({
+  identifier: "ProfileConfiguration",
+}) as any as S.Schema<ProfileConfiguration>;
 export interface CreateFHIRDatastoreRequest {
   DatastoreName?: string;
   DatastoreTypeVersion: FHIRVersion;
@@ -179,6 +221,9 @@ export interface CreateFHIRDatastoreRequest {
   ClientToken?: string;
   Tags?: Tag[];
   IdentityProviderConfiguration?: IdentityProviderConfiguration;
+  AnalyticsConfiguration?: AnalyticsConfiguration;
+  NlpConfiguration?: NlpConfiguration;
+  ProfileConfiguration?: ProfileConfiguration;
 }
 export const CreateFHIRDatastoreRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -190,6 +235,9 @@ export const CreateFHIRDatastoreRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
       Tags: S.optional(TagList),
       IdentityProviderConfiguration: S.optional(IdentityProviderConfiguration),
+      AnalyticsConfiguration: S.optional(AnalyticsConfiguration),
+      NlpConfiguration: S.optional(NlpConfiguration),
+      ProfileConfiguration: S.optional(ProfileConfiguration),
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -202,6 +250,8 @@ export type DatastoreStatus =
   | "DELETING"
   | "DELETED"
   | "CREATE_FAILED"
+  | "UPDATING"
+  | "UPDATE_FAILED"
   | (string & {});
 export const DatastoreStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CreateFHIRDatastoreResponse {
@@ -287,6 +337,9 @@ export interface DatastoreProperties {
   PreloadDataConfig?: PreloadDataConfig;
   IdentityProviderConfiguration?: IdentityProviderConfiguration;
   ErrorCause?: ErrorCause;
+  NlpConfiguration?: NlpConfiguration;
+  AnalyticsConfiguration?: AnalyticsConfiguration;
+  ProfileConfiguration?: ProfileConfiguration;
 }
 export const DatastoreProperties = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -301,6 +354,9 @@ export const DatastoreProperties = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     PreloadDataConfig: S.optional(PreloadDataConfig),
     IdentityProviderConfiguration: S.optional(IdentityProviderConfiguration),
     ErrorCause: S.optional(ErrorCause),
+    NlpConfiguration: S.optional(NlpConfiguration),
+    AnalyticsConfiguration: S.optional(AnalyticsConfiguration),
+    ProfileConfiguration: S.optional(ProfileConfiguration),
   }),
 ).annotate({
   identifier: "DatastoreProperties",
@@ -745,6 +801,38 @@ export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
+export interface UpdateFHIRDatastoreRequest {
+  DatastoreId: string;
+  DatastoreName?: string;
+  NlpConfiguration?: NlpConfiguration;
+  AnalyticsConfiguration?: AnalyticsConfiguration;
+  ProfileConfiguration?: ProfileConfiguration;
+  IdentityProviderConfiguration?: IdentityProviderConfiguration;
+}
+export const UpdateFHIRDatastoreRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      DatastoreId: S.String,
+      DatastoreName: S.optional(S.String),
+      NlpConfiguration: S.optional(NlpConfiguration),
+      AnalyticsConfiguration: S.optional(AnalyticsConfiguration),
+      ProfileConfiguration: S.optional(ProfileConfiguration),
+      IdentityProviderConfiguration: S.optional(IdentityProviderConfiguration),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+).annotate({
+  identifier: "UpdateFHIRDatastoreRequest",
+}) as any as S.Schema<UpdateFHIRDatastoreRequest>;
+export interface UpdateFHIRDatastoreResponse {
+  DatastoreProperties: DatastoreProperties;
+}
+export const UpdateFHIRDatastoreResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ DatastoreProperties: DatastoreProperties }),
+  ).annotate({
+    identifier: "UpdateFHIRDatastoreResponse",
+  }) as any as S.Schema<UpdateFHIRDatastoreResponse>;
 
 //# Errors
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
@@ -1132,4 +1220,32 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+}));
+export type UpdateFHIRDatastoreError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Update the properties of a FHIR-enabled data store.
+ */
+export const updateFHIRDatastore: API.OperationMethod<
+  UpdateFHIRDatastoreRequest,
+  UpdateFHIRDatastoreResponse,
+  UpdateFHIRDatastoreError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateFHIRDatastoreRequest,
+  output: UpdateFHIRDatastoreResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
 }));

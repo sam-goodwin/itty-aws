@@ -103,6 +103,7 @@ export type ExternalCampaignType = string;
 export type Iso8601Duration = string;
 export type TimeZone = string;
 export type LocalTimeZoneDetectionType = string;
+export type LocalTimeZoneDetectionScope = string;
 export type DayOfWeek = string;
 export type Iso8601Time = string;
 export type RestrictedPeriodName = string;
@@ -139,6 +140,9 @@ export type AttributeValue = string;
 export type DialRequestId = string;
 export type FailureCode = string;
 export type ProfileId = string;
+export type SourceEvent = string;
+export type SessionId = string;
+export type BrowserId = string;
 export type ProfileOutboundRequestId = string;
 export type ProfileOutboundRequestFailureCode = string;
 
@@ -400,6 +404,15 @@ export const Schedule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     refreshFrequency: S.optional(S.String),
   }),
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
+export interface EntryLimitsConfig {
+  maxEntryCount: number;
+  minEntryInterval: string;
+}
+export const EntryLimitsConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ maxEntryCount: S.Number, minEntryInterval: S.String }),
+).annotate({
+  identifier: "EntryLimitsConfig",
+}) as any as S.Schema<EntryLimitsConfig>;
 export type LocalTimeZoneDetection = string[];
 export const LocalTimeZoneDetection = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   S.String,
@@ -407,11 +420,13 @@ export const LocalTimeZoneDetection = /*@__PURE__*/ /*#__PURE__*/ S.Array(
 export interface LocalTimeZoneConfig {
   defaultTimeZone?: string;
   localTimeZoneDetection?: string[];
+  localTimeZoneDetectionScope?: string;
 }
 export const LocalTimeZoneConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultTimeZone: S.optional(S.String),
     localTimeZoneDetection: S.optional(LocalTimeZoneDetection),
+    localTimeZoneDetectionScope: S.optional(S.String),
   }),
 ).annotate({
   identifier: "LocalTimeZoneConfig",
@@ -535,6 +550,7 @@ export interface CreateCampaignRequest {
   source?: Source;
   connectCampaignFlowArn?: string;
   schedule?: Schedule;
+  entryLimitsConfig?: EntryLimitsConfig;
   communicationTimeConfig?: CommunicationTimeConfig;
   communicationLimitsOverride?: CommunicationLimitsConfig;
   tags?: { [key: string]: string | undefined };
@@ -548,6 +564,7 @@ export const CreateCampaignRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     source: S.optional(Source),
     connectCampaignFlowArn: S.optional(S.String),
     schedule: S.optional(Schedule),
+    entryLimitsConfig: S.optional(EntryLimitsConfig),
     communicationTimeConfig: S.optional(CommunicationTimeConfig),
     communicationLimitsOverride: S.optional(CommunicationLimitsConfig),
     tags: S.optional(TagMap),
@@ -692,6 +709,29 @@ export const DeleteCampaignCommunicationTimeResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteCampaignCommunicationTimeResponse",
   }) as any as S.Schema<DeleteCampaignCommunicationTimeResponse>;
+export interface DeleteCampaignEntryLimitsRequest {
+  id: string;
+}
+export const DeleteCampaignEntryLimitsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
+      T.all(
+        T.Http({ method: "DELETE", uri: "/v2/campaigns/{id}/entry-limits" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeleteCampaignEntryLimitsRequest",
+  }) as any as S.Schema<DeleteCampaignEntryLimitsRequest>;
+export interface DeleteCampaignEntryLimitsResponse {}
+export const DeleteCampaignEntryLimitsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteCampaignEntryLimitsResponse",
+  }) as any as S.Schema<DeleteCampaignEntryLimitsResponse>;
 export interface DeleteConnectInstanceConfigRequest {
   connectInstanceId: string;
   campaignDeletionPolicy?: string;
@@ -858,6 +898,7 @@ export interface Campaign {
   source?: Source;
   connectCampaignFlowArn?: string;
   schedule?: Schedule;
+  entryLimitsConfig?: EntryLimitsConfig;
   communicationTimeConfig?: CommunicationTimeConfig;
   communicationLimitsOverride?: CommunicationLimitsConfig;
   tags?: { [key: string]: string | undefined };
@@ -873,6 +914,7 @@ export const Campaign = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     source: S.optional(Source),
     connectCampaignFlowArn: S.optional(S.String),
     schedule: S.optional(Schedule),
+    entryLimitsConfig: S.optional(EntryLimitsConfig),
     communicationTimeConfig: S.optional(CommunicationTimeConfig),
     communicationLimitsOverride: S.optional(CommunicationLimitsConfig),
     tags: S.optional(TagMap),
@@ -1177,6 +1219,7 @@ export interface CampaignSummary {
   channelSubtypes: string[];
   type?: string;
   schedule?: Schedule;
+  entryLimitsConfig?: EntryLimitsConfig;
   connectCampaignFlowArn?: string;
 }
 export const CampaignSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1188,6 +1231,7 @@ export const CampaignSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     channelSubtypes: ChannelSubtypeList,
     type: S.optional(S.String),
     schedule: S.optional(Schedule),
+    entryLimitsConfig: S.optional(EntryLimitsConfig),
     connectCampaignFlowArn: S.optional(S.String),
   }),
 ).annotate({
@@ -1645,10 +1689,42 @@ export const PutOutboundRequestBatchResponse =
   ).annotate({
     identifier: "PutOutboundRequestBatchResponse",
   }) as any as S.Schema<PutOutboundRequestBatchResponse>;
+export interface WebNotificationContext {
+  sessionId?: string;
+  browserId?: string;
+}
+export const WebNotificationContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      sessionId: S.optional(S.String),
+      browserId: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "WebNotificationContext",
+}) as any as S.Schema<WebNotificationContext>;
+export interface ChannelContext {
+  webNotificationContext?: WebNotificationContext;
+}
+export const ChannelContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ webNotificationContext: S.optional(WebNotificationContext) }),
+).annotate({ identifier: "ChannelContext" }) as any as S.Schema<ChannelContext>;
+export interface EventTriggerContext {
+  sourceEvent?: string;
+  channelContext?: ChannelContext;
+}
+export const EventTriggerContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceEvent: S.optional(S.String),
+    channelContext: S.optional(ChannelContext),
+  }),
+).annotate({
+  identifier: "EventTriggerContext",
+}) as any as S.Schema<EventTriggerContext>;
 export interface ProfileOutboundRequest {
   clientToken: string;
   profileId: string;
   expirationTime?: Date;
+  eventTriggerContext?: EventTriggerContext;
 }
 export const ProfileOutboundRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1658,6 +1734,7 @@ export const ProfileOutboundRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       expirationTime: S.optional(
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
       ),
+      eventTriggerContext: S.optional(EventTriggerContext),
     }),
 ).annotate({
   identifier: "ProfileOutboundRequest",
@@ -1986,6 +2063,33 @@ export const UpdateCampaignCommunicationTimeResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateCampaignCommunicationTimeResponse",
   }) as any as S.Schema<UpdateCampaignCommunicationTimeResponse>;
+export interface UpdateCampaignEntryLimitsRequest {
+  id: string;
+  entryLimitsConfig: EntryLimitsConfig;
+}
+export const UpdateCampaignEntryLimitsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String.pipe(T.HttpLabel("id")),
+      entryLimitsConfig: EntryLimitsConfig,
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/v2/campaigns/{id}/entry-limits" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "UpdateCampaignEntryLimitsRequest",
+  }) as any as S.Schema<UpdateCampaignEntryLimitsRequest>;
+export interface UpdateCampaignEntryLimitsResponse {}
+export const UpdateCampaignEntryLimitsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "UpdateCampaignEntryLimitsResponse",
+  }) as any as S.Schema<UpdateCampaignEntryLimitsResponse>;
 export interface UpdateCampaignFlowAssociationRequest {
   id: string;
   connectCampaignFlowArn: string;
@@ -2283,6 +2387,34 @@ export const deleteCampaignCommunicationTime: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCampaignCommunicationTimeRequest,
   output: DeleteCampaignCommunicationTimeResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    InvalidCampaignStateException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+}));
+export type DeleteCampaignEntryLimitsError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | InvalidCampaignStateException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes the entry limits config for a campaign. This API is idempotent.
+ */
+export const deleteCampaignEntryLimits: API.OperationMethod<
+  DeleteCampaignEntryLimitsRequest,
+  DeleteCampaignEntryLimitsResponse,
+  DeleteCampaignEntryLimitsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteCampaignEntryLimitsRequest,
+  output: DeleteCampaignEntryLimitsResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3017,6 +3149,34 @@ export const updateCampaignCommunicationTime: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCampaignCommunicationTimeRequest,
   output: UpdateCampaignCommunicationTimeResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    InvalidCampaignStateException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+}));
+export type UpdateCampaignEntryLimitsError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | InvalidCampaignStateException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the entry limits config for a campaign. This API is idempotent.
+ */
+export const updateCampaignEntryLimits: API.OperationMethod<
+  UpdateCampaignEntryLimitsRequest,
+  UpdateCampaignEntryLimitsResponse,
+  UpdateCampaignEntryLimitsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateCampaignEntryLimitsRequest,
+  output: UpdateCampaignEntryLimitsResponse,
   errors: [
     AccessDeniedException,
     ConflictException,

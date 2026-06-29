@@ -86,6 +86,14 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 //# Newtypes
+export type MpaOperation = string;
+export type MpaTeamArn = string;
+export type MpaRequesterComment = string | redacted.Redacted<string>;
+export type AssociationState = string;
+export type MpaSessionArn = string;
+export type SessionStatus = string;
+export type MpaStatusMessage = string;
+export type ResourceArn = string;
 export type Region = string;
 export type KeyArnOrKeyAliasType = string;
 export type KeyExportability = string;
@@ -109,6 +117,7 @@ export type CertificateSigningRequestType = string | redacted.Redacted<string>;
 export type KeyMaterialType = string;
 export type KeyAlgorithm = string;
 export type ImportTokenId = string;
+export type ResourcePolicy = string;
 export type KeyUsage = string;
 export type KeyClass = string;
 export type Tr31WrappedKeyBlock = string | redacted.Redacted<string>;
@@ -121,12 +130,82 @@ export type KeyOrigin = string;
 export type DeriveKeyUsage = string;
 export type MultiRegionKeyType = string;
 export type KeyReplicationState = string;
-export type ResourceArn = string;
 export type NextToken = string;
 export type MaxResults = number;
 export type AliasName = string;
 
 //# Schemas
+export interface AssociateMpaTeamInput {
+  Action: string;
+  MpaTeamArn: string;
+  RequesterComment?: string | redacted.Redacted<string>;
+}
+export const AssociateMpaTeamInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Action: S.String,
+    MpaTeamArn: S.String,
+    RequesterComment: S.optional(SensitiveString),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "AssociateMpaTeamInput",
+}) as any as S.Schema<AssociateMpaTeamInput>;
+export interface MpaStatus {
+  MpaSessionArn: string;
+  Status: string;
+  InitiationDate: Date;
+  StatusMessage?: string;
+}
+export const MpaStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MpaSessionArn: S.String,
+    Status: S.String,
+    InitiationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    StatusMessage: S.optional(S.String),
+  }),
+).annotate({ identifier: "MpaStatus" }) as any as S.Schema<MpaStatus>;
+export interface MpaTeamAssociation {
+  Action: string;
+  MpaTeamArn: string;
+  AssociationState: string;
+  MpaStatus?: MpaStatus;
+}
+export const MpaTeamAssociation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Action: S.String,
+    MpaTeamArn: S.String,
+    AssociationState: S.String,
+    MpaStatus: S.optional(MpaStatus),
+  }),
+).annotate({
+  identifier: "MpaTeamAssociation",
+}) as any as S.Schema<MpaTeamAssociation>;
+export interface AssociateMpaTeamOutput {
+  MpaTeamAssociation: MpaTeamAssociation;
+}
+export const AssociateMpaTeamOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ MpaTeamAssociation: MpaTeamAssociation }),
+).annotate({
+  identifier: "AssociateMpaTeamOutput",
+}) as any as S.Schema<AssociateMpaTeamOutput>;
+export interface DeleteResourcePolicyInput {
+  ResourceArn: string;
+}
+export const DeleteResourcePolicyInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ ResourceArn: S.String }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+).annotate({
+  identifier: "DeleteResourcePolicyInput",
+}) as any as S.Schema<DeleteResourcePolicyInput>;
+export interface DeleteResourcePolicyOutput {}
+export const DeleteResourcePolicyOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteResourcePolicyOutput",
+}) as any as S.Schema<DeleteResourcePolicyOutput>;
 export type Regions = string[];
 export const Regions = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export interface DisableDefaultKeyReplicationRegionsInput {
@@ -149,6 +228,29 @@ export const DisableDefaultKeyReplicationRegionsOutput =
   ).annotate({
     identifier: "DisableDefaultKeyReplicationRegionsOutput",
   }) as any as S.Schema<DisableDefaultKeyReplicationRegionsOutput>;
+export interface DisassociateMpaTeamInput {
+  Action: string;
+  RequesterComment?: string | redacted.Redacted<string>;
+}
+export const DisassociateMpaTeamInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Action: S.String,
+      RequesterComment: S.optional(SensitiveString),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+).annotate({
+  identifier: "DisassociateMpaTeamInput",
+}) as any as S.Schema<DisassociateMpaTeamInput>;
+export interface DisassociateMpaTeamOutput {
+  MpaTeamAssociation: MpaTeamAssociation;
+}
+export const DisassociateMpaTeamOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ MpaTeamAssociation: MpaTeamAssociation }),
+).annotate({
+  identifier: "DisassociateMpaTeamOutput",
+}) as any as S.Schema<DisassociateMpaTeamOutput>;
 export interface EnableDefaultKeyReplicationRegionsInput {
   ReplicationRegions: string[];
 }
@@ -505,6 +607,26 @@ export const GetDefaultKeyReplicationRegionsOutput =
   ).annotate({
     identifier: "GetDefaultKeyReplicationRegionsOutput",
   }) as any as S.Schema<GetDefaultKeyReplicationRegionsOutput>;
+export interface GetMpaTeamAssociationInput {
+  Action: string;
+}
+export const GetMpaTeamAssociationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ Action: S.String }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+).annotate({
+  identifier: "GetMpaTeamAssociationInput",
+}) as any as S.Schema<GetMpaTeamAssociationInput>;
+export interface GetMpaTeamAssociationOutput {
+  MpaTeamAssociation: MpaTeamAssociation;
+}
+export const GetMpaTeamAssociationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ MpaTeamAssociation: MpaTeamAssociation }),
+  ).annotate({
+    identifier: "GetMpaTeamAssociationOutput",
+  }) as any as S.Schema<GetMpaTeamAssociationOutput>;
 export interface GetParametersForExportInput {
   KeyMaterialType: string;
   SigningKeyAlgorithm: string;
@@ -602,6 +724,26 @@ export const GetPublicKeyCertificateOutput =
   ).annotate({
     identifier: "GetPublicKeyCertificateOutput",
   }) as any as S.Schema<GetPublicKeyCertificateOutput>;
+export interface GetResourcePolicyInput {
+  ResourceArn: string;
+}
+export const GetResourcePolicyInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ ResourceArn: S.String }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+).annotate({
+  identifier: "GetResourcePolicyInput",
+}) as any as S.Schema<GetResourcePolicyInput>;
+export interface GetResourcePolicyOutput {
+  ResourceArn: string;
+  Policy: string;
+}
+export const GetResourcePolicyOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ ResourceArn: S.String, Policy: S.String }),
+).annotate({
+  identifier: "GetResourcePolicyOutput",
+}) as any as S.Schema<GetResourcePolicyOutput>;
 export interface KeyAttributes {
   KeyUsage: string;
   KeyClass: string;
@@ -829,6 +971,7 @@ export interface ImportKeyInput {
   Enabled?: boolean;
   Tags?: Tag[];
   ReplicationRegions?: string[];
+  RequesterComment?: string | redacted.Redacted<string>;
 }
 export const ImportKeyInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -837,6 +980,7 @@ export const ImportKeyInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Enabled: S.optional(S.Boolean),
     Tags: S.optional(Tags),
     ReplicationRegions: S.optional(Regions),
+    RequesterComment: S.optional(SensitiveString),
   }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -876,6 +1020,7 @@ export interface Key {
   PrimaryRegion?: string;
   ReplicationStatus?: { [key: string]: ReplicationStatusType | undefined };
   UsingDefaultReplicationRegions?: boolean;
+  MpaStatus?: MpaStatus;
 }
 export const Key = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -905,6 +1050,7 @@ export const Key = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     PrimaryRegion: S.optional(S.String),
     ReplicationStatus: S.optional(ReplicationStatus),
     UsingDefaultReplicationRegions: S.optional(S.Boolean),
+    MpaStatus: S.optional(MpaStatus),
   }),
 ).annotate({ identifier: "Key" }) as any as S.Schema<Key>;
 export interface ImportKeyOutput {
@@ -941,6 +1087,27 @@ export const ListTagsForResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListTagsForResourceOutput",
 }) as any as S.Schema<ListTagsForResourceOutput>;
+export interface PutResourcePolicyInput {
+  ResourceArn: string;
+  Policy: string;
+}
+export const PutResourcePolicyInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ ResourceArn: S.String, Policy: S.String }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+).annotate({
+  identifier: "PutResourcePolicyInput",
+}) as any as S.Schema<PutResourcePolicyInput>;
+export interface PutResourcePolicyOutput {
+  ResourceArn: string;
+  Policy: string;
+}
+export const PutResourcePolicyOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ ResourceArn: S.String, Policy: S.String }),
+).annotate({
+  identifier: "PutResourcePolicyOutput",
+}) as any as S.Schema<PutResourcePolicyOutput>;
 export interface TagResourceInput {
   ResourceArn: string;
   Tags: Tag[];
@@ -1302,6 +1469,10 @@ export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuo
   "ServiceQuotaExceededException",
   { Message: S.optional(S.String) },
 ).pipe(C.withQuotaError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { Message: S.optional(S.String) },
+).pipe(C.withServerError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { Message: S.optional(S.String) },
@@ -1310,12 +1481,90 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
   "ValidationException",
   { Message: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
+export class PublicPolicyException extends S.TaggedErrorClass<PublicPolicyException>()(
+  "PublicPolicyException",
   { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
+).pipe(C.withBadRequestError) {}
 
 //# Operations
+export type AssociateMpaTeamError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Associates a Multi-Party Approval (MPA) team with a protected operation. For more information, see Multi-Party Approval in the *Amazon Web Services Payment Cryptography User Guide.*
+ *
+ * **Cross-account use:** This operation can't be used across different Amazon Web Services accounts.
+ *
+ * **Related operations:**
+ *
+ * - DisassociateMpaTeam
+ *
+ * - GetMpaTeamAssociation
+ */
+export const associateMpaTeam: API.OperationMethod<
+  AssociateMpaTeamInput,
+  AssociateMpaTeamOutput,
+  AssociateMpaTeamError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: AssociateMpaTeamInput,
+  output: AssociateMpaTeamOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type DeleteResourcePolicyError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Removes the resource-based policy attached to an Amazon Web Services Payment Cryptography key.
+ *
+ * **Cross-account use:** This operation can't be used across different Amazon Web Services accounts.
+ *
+ * **Related operations:**
+ *
+ * - PutResourcePolicy
+ *
+ * - GetResourcePolicy
+ */
+export const deleteResourcePolicy: API.OperationMethod<
+  DeleteResourcePolicyInput,
+  DeleteResourcePolicyOutput,
+  DeleteResourcePolicyError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteResourcePolicyInput,
+  output: DeleteResourcePolicyOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
 export type DisableDefaultKeyReplicationRegionsError =
   | AccessDeniedException
   | ConflictException
@@ -1354,6 +1603,46 @@ export const disableDefaultKeyReplicationRegions: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type DisassociateMpaTeamError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Removes the association between a Multi-Party Approval (MPA) team and a protected operation.
+ *
+ * **Cross-account use:** This operation can't be used across different Amazon Web Services accounts.
+ *
+ * **Related operations:**
+ *
+ * - AssociateMpaTeam
+ *
+ * - GetMpaTeamAssociation
+ */
+export const disassociateMpaTeam: API.OperationMethod<
+  DisassociateMpaTeamInput,
+  DisassociateMpaTeamOutput,
+  DisassociateMpaTeamError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DisassociateMpaTeamInput,
+  output: DisassociateMpaTeamOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ServiceUnavailableException,
     ThrottlingException,
     ValidationException,
   ],
@@ -1492,7 +1781,7 @@ export type ExportKeyError =
  *
  * When this operation is successful, Amazon Web Services Payment Cryptography returns the working key as a TR-31 WrappedKeyBlock, where the wrapping key is the ECDH derived key.
  *
- * **Cross-account use:** This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use:** This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -1582,6 +1871,46 @@ export const getDefaultKeyReplicationRegions: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type GetMpaTeamAssociationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns the Multi-Party Approval (MPA) team association for a protected operation.
+ *
+ * **Cross-account use:** This operation can't be used across different Amazon Web Services accounts.
+ *
+ * **Related operations:**
+ *
+ * - AssociateMpaTeam
+ *
+ * - DisassociateMpaTeam
+ */
+export const getMpaTeamAssociation: API.OperationMethod<
+  GetMpaTeamAssociationInput,
+  GetMpaTeamAssociationOutput,
+  GetMpaTeamAssociationError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetMpaTeamAssociationInput,
+  output: GetMpaTeamAssociationOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ServiceUnavailableException,
     ThrottlingException,
     ValidationException,
   ],
@@ -1687,7 +2016,7 @@ export type GetPublicKeyCertificateError =
  *
  * Unlike the private key of an asymmetric key, which never leaves Amazon Web Services Payment Cryptography unencrypted, callers with `GetPublicKeyCertificate` permission can download the public key certificate of the asymmetric key. You can share the public key certificate to allow others to encrypt messages and verify signatures outside of Amazon Web Services Payment Cryptography
  *
- * **Cross-account use:** This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use:** This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  */
 export const getPublicKeyCertificate: API.OperationMethod<
   GetPublicKeyCertificateInput,
@@ -1697,6 +2026,42 @@ export const getPublicKeyCertificate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPublicKeyCertificateInput,
   output: GetPublicKeyCertificateOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type GetResourcePolicyError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns the resource-based policy attached to an Amazon Web Services Payment Cryptography key.
+ *
+ * **Cross-account use:** This operation can't be used across different Amazon Web Services accounts.
+ *
+ * **Related operations:**
+ *
+ * - PutResourcePolicy
+ *
+ * - DeleteResourcePolicy
+ */
+export const getResourcePolicy: API.OperationMethod<
+  GetResourcePolicyInput,
+  GetResourcePolicyOutput,
+  GetResourcePolicyError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetResourcePolicyInput,
+  output: GetResourcePolicyOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1805,7 +2170,7 @@ export type ImportKeyError =
  *
  * - `CertificateAuthorityPublicKeyIdentifier`: The `keyARN` of the CA that signed the public key certificate of the receiving ECC key pair.
  *
- * **Cross-account use:** This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use:** This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -1845,7 +2210,7 @@ export type ListTagsForResourceError =
  *
  * This is a paginated operation, which means that each response might contain only a subset of all the tags. When the response contains only a subset of tags, it includes a `NextToken` value. Use this value in a subsequent `ListTagsForResource` request to get more tags. When you receive a response with no NextToken (or an empty or null value), that means there are no more tags to get.
  *
- * **Cross-account use:** This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use:** This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -1891,6 +2256,52 @@ export const listTagsForResource: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+export type PutResourcePolicyError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | PublicPolicyException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Attaches or replaces a resource-based policy on an Amazon Web Services Payment Cryptography key. A resource-based policy can grant cross-account access to your key.
+ *
+ * If the policy would grant public access, the request fails with a `PublicPolicyException`.
+ *
+ * To remove a resource-based policy from a key, use DeleteResourcePolicy.
+ *
+ * **Cross-account use:** This operation can't be used across different Amazon Web Services accounts.
+ *
+ * **Related operations:**
+ *
+ * - GetResourcePolicy
+ *
+ * - DeleteResourcePolicy
+ */
+export const putResourcePolicy: API.OperationMethod<
+  PutResourcePolicyInput,
+  PutResourcePolicyOutput,
+  PutResourcePolicyError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PutResourcePolicyInput,
+  output: PutResourcePolicyOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    PublicPolicyException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
 export type TagResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1908,7 +2319,7 @@ export type TagResourceError =
  *
  * Each tag consists of a tag key and a tag value, both of which are case-sensitive strings. The tag value can be an empty (null) string. To add a tag, specify a new tag key and a tag value. To edit a tag, specify an existing tag key and a new tag value. You can also add tags to an Amazon Web Services Payment Cryptography key when you create it with CreateKey.
  *
- * **Cross-account use:** This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use:** This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -1949,7 +2360,7 @@ export type UntagResourceError =
  *
  * Tagging or untagging an Amazon Web Services Payment Cryptography key can allow or deny permission to the key.
  *
- * **Cross-account use:** This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use:** This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -2275,7 +2686,7 @@ export type GetKeyError =
 /**
  * Gets the key metadata for an Amazon Web Services Payment Cryptography key, including the immutable and mutable attributes specified when the key was created. Returns key metadata including attributes, state, and timestamps, but does not return the actual cryptographic key material.
  *
- * **Cross-account use:** This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use:** This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -2318,7 +2729,7 @@ export type DeleteKeyError =
  *
  * You should delete a key only when you are sure that you don't need to use it anymore and no other parties are utilizing this key. If you aren't sure, consider deactivating it instead by calling StopKeyUsage.
  *
- * **Cross-account use:** This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use:** This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -2423,7 +2834,7 @@ export type AddKeyReplicationRegionsError =
  *
  * The key must be in an active state to add Replication Regions. You can add multiple regions in a single operation, and the key will be available for use in those regions once replication is complete.
  *
- * **Cross-account use:** This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use:** This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -2467,7 +2878,7 @@ export type RemoveKeyReplicationRegionsError =
  *
  * Ensure that no active cryptographic operations or applications depend on the key in the regions you're removing before performing this operation.
  *
- * **Cross-account use:** This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use:** This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -2508,7 +2919,7 @@ export type RestoreKeyError =
  *
  * During the waiting period, the `KeyState` is `DELETE_PENDING` and `deletePendingTimestamp` contains the date and time after which the `Key` will be deleted. After `Key` is restored, the `KeyState` is `CREATE_COMPLETE`, and the value for `deletePendingTimestamp` is removed.
  *
- * **Cross-account use:** This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use:** This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -2550,7 +2961,7 @@ export type StartKeyUsageError =
 /**
  * Enables an Amazon Web Services Payment Cryptography key, which makes it active for cryptographic operations within Amazon Web Services Payment Cryptography
  *
- * **Cross-account use:** This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use:** This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -2590,7 +3001,7 @@ export type StopKeyUsageError =
  *
  * You can use this operation instead of DeleteKey to deactivate a key. You can enable the key in the future by calling StartKeyUsage.
  *
- * **Cross-account use:** This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use:** This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *

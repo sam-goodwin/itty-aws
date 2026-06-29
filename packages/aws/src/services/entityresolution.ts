@@ -670,11 +670,22 @@ export const RuleCondition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type RuleConditionList = RuleCondition[];
 export const RuleConditionList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(RuleCondition);
+export interface MatchingConfig {
+  enableTransitiveMatching?: boolean;
+}
+export const MatchingConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ enableTransitiveMatching: S.optional(S.Boolean) }),
+).annotate({ identifier: "MatchingConfig" }) as any as S.Schema<MatchingConfig>;
 export interface RuleConditionProperties {
   rules: RuleCondition[];
+  matchingConfig?: MatchingConfig;
 }
 export const RuleConditionProperties = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ rules: RuleConditionList }),
+  () =>
+    S.Struct({
+      rules: RuleConditionList,
+      matchingConfig: S.optional(MatchingConfig),
+    }),
 ).annotate({
   identifier: "RuleConditionProperties",
 }) as any as S.Schema<RuleConditionProperties>;

@@ -113,10 +113,22 @@ export type LargeToken = string;
 export type Uuid = string;
 export type NearestDistance = number;
 export type ForecastedGeofenceEventType = string;
+export type ClientToken = string;
+export type JobAction = string;
+export type ValidateAddressAdditionalFeature = string;
+export type IamRoleArn = string;
+export type JobInputLocation = string;
+export type JobInputFormat = string;
+export type JobOutputFormat = string;
+export type JobOutputLocation = string;
+export type GeoArn = string;
+export type JobId = string;
+export type JobStatus = string;
+export type JobErrorCode = string;
+export type JobErrorMessage = string;
 export type MapStyle = string;
 export type CountryCode3 = string | redacted.Redacted<string>;
 export type CustomLayer = string;
-export type GeoArn = string;
 export type CountryCode3OrEmpty = string | redacted.Redacted<string>;
 export type SensitiveString = string | redacted.Redacted<string>;
 export type IntendedUse = string;
@@ -1246,6 +1258,261 @@ export const PutGeofenceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutGeofenceResponse",
 }) as any as S.Schema<PutGeofenceResponse>;
+export type ValidateAddressAdditionalFeatureList = string[];
+export const ValidateAddressAdditionalFeatureList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface ValidateAddressActionOptions {
+  AdditionalFeatures?: string[];
+}
+export const ValidateAddressActionOptions =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AdditionalFeatures: S.optional(ValidateAddressAdditionalFeatureList),
+    }),
+  ).annotate({
+    identifier: "ValidateAddressActionOptions",
+  }) as any as S.Schema<ValidateAddressActionOptions>;
+export interface JobActionOptions {
+  ValidateAddress?: ValidateAddressActionOptions;
+}
+export const JobActionOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ ValidateAddress: S.optional(ValidateAddressActionOptions) }),
+).annotate({
+  identifier: "JobActionOptions",
+}) as any as S.Schema<JobActionOptions>;
+export interface JobInputOptions {
+  Location: string;
+  Format: string;
+}
+export const JobInputOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Location: S.String, Format: S.String }),
+).annotate({
+  identifier: "JobInputOptions",
+}) as any as S.Schema<JobInputOptions>;
+export interface JobOutputOptions {
+  Format: string;
+  Location: string;
+}
+export const JobOutputOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Format: S.String, Location: S.String }),
+).annotate({
+  identifier: "JobOutputOptions",
+}) as any as S.Schema<JobOutputOptions>;
+export interface StartJobRequest {
+  ClientToken?: string;
+  Action: string;
+  ActionOptions?: JobActionOptions;
+  ExecutionRoleArn: string;
+  InputOptions: JobInputOptions;
+  Name?: string;
+  OutputOptions: JobOutputOptions;
+  Tags?: { [key: string]: string | undefined };
+}
+export const StartJobRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    Action: S.String,
+    ActionOptions: S.optional(JobActionOptions),
+    ExecutionRoleArn: S.String,
+    InputOptions: JobInputOptions,
+    Name: S.optional(S.String),
+    OutputOptions: JobOutputOptions,
+    Tags: S.optional(TagMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/metadata/v0/jobs" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "StartJobRequest",
+}) as any as S.Schema<StartJobRequest>;
+export interface StartJobResponse {
+  CreatedAt: Date;
+  JobArn: string;
+  JobId: string;
+  Status: string;
+}
+export const StartJobResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    JobArn: S.String,
+    JobId: S.String,
+    Status: S.String,
+  }),
+).annotate({
+  identifier: "StartJobResponse",
+}) as any as S.Schema<StartJobResponse>;
+export interface GetJobRequest {
+  JobId: string;
+}
+export const GetJobRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ JobId: S.String.pipe(T.HttpLabel("JobId")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/metadata/v0/jobs/{JobId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({ identifier: "GetJobRequest" }) as any as S.Schema<GetJobRequest>;
+export type JobErrorMessagesList = string[];
+export const JobErrorMessagesList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export interface JobError {
+  Code: string;
+  Messages?: string[];
+}
+export const JobError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Code: S.String, Messages: S.optional(JobErrorMessagesList) }),
+).annotate({ identifier: "JobError" }) as any as S.Schema<JobError>;
+export interface GetJobResponse {
+  Action: string;
+  ActionOptions?: JobActionOptions;
+  CreatedAt: Date;
+  EndedAt?: Date;
+  Error?: JobError;
+  ExecutionRoleArn: string;
+  InputOptions: JobInputOptions;
+  JobArn: string;
+  JobId: string;
+  Name?: string;
+  OutputOptions: JobOutputOptions;
+  Status: string;
+  UpdatedAt: Date;
+  Tags?: { [key: string]: string | undefined };
+}
+export const GetJobResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Action: S.String,
+    ActionOptions: S.optional(JobActionOptions),
+    CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+    Error: S.optional(JobError),
+    ExecutionRoleArn: S.String,
+    InputOptions: JobInputOptions,
+    JobArn: S.String,
+    JobId: S.String,
+    Name: S.optional(S.String),
+    OutputOptions: JobOutputOptions,
+    Status: S.String,
+    UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    Tags: S.optional(TagMap),
+  }),
+).annotate({ identifier: "GetJobResponse" }) as any as S.Schema<GetJobResponse>;
+export interface JobsFilter {
+  JobStatus?: string;
+}
+export const JobsFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ JobStatus: S.optional(S.String) }),
+).annotate({ identifier: "JobsFilter" }) as any as S.Schema<JobsFilter>;
+export interface ListJobsRequest {
+  Filter?: JobsFilter;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListJobsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Filter: S.optional(JobsFilter),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/metadata/v0/jobs/list-jobs" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListJobsRequest",
+}) as any as S.Schema<ListJobsRequest>;
+export interface ListJobsResponseEntry {
+  Action: string;
+  ActionOptions?: JobActionOptions;
+  CreatedAt: Date;
+  ExecutionRoleArn: string;
+  EndedAt?: Date;
+  Error?: JobError;
+  InputOptions: JobInputOptions;
+  JobId: string;
+  JobArn: string;
+  Name?: string;
+  OutputOptions: JobOutputOptions;
+  Status: string;
+  UpdatedAt: Date;
+}
+export const ListJobsResponseEntry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Action: S.String,
+    ActionOptions: S.optional(JobActionOptions),
+    CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ExecutionRoleArn: S.String,
+    EndedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+    Error: S.optional(JobError),
+    InputOptions: JobInputOptions,
+    JobId: S.String,
+    JobArn: S.String,
+    Name: S.optional(S.String),
+    OutputOptions: JobOutputOptions,
+    Status: S.String,
+    UpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "ListJobsResponseEntry",
+}) as any as S.Schema<ListJobsResponseEntry>;
+export type ListJobsResponseEntryList = ListJobsResponseEntry[];
+export const ListJobsResponseEntryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  ListJobsResponseEntry,
+);
+export interface ListJobsResponse {
+  Entries: ListJobsResponseEntry[];
+  NextToken?: string;
+}
+export const ListJobsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Entries: ListJobsResponseEntryList,
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListJobsResponse",
+}) as any as S.Schema<ListJobsResponse>;
+export interface CancelJobRequest {
+  JobId: string;
+}
+export const CancelJobRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ JobId: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/metadata/v0/jobs/cancel-job" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CancelJobRequest",
+}) as any as S.Schema<CancelJobRequest>;
+export interface CancelJobResponse {
+  JobArn: string;
+  JobId: string;
+  Status: string;
+}
+export const CancelJobResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ JobArn: S.String, JobId: S.String, Status: S.String }),
+).annotate({
+  identifier: "CancelJobResponse",
+}) as any as S.Schema<CancelJobResponse>;
 export type CustomLayerList = string[];
 export const CustomLayerList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export interface MapConfiguration {
@@ -4260,6 +4527,133 @@ export const putGeofence: API.OperationMethod<
     ConflictException,
     InternalServerException,
     ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type StartJobError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * `StartJob` starts a new asynchronous bulk processing job. You specify the input data location in Amazon S3, the action to perform, and the output location where results are written.
+ *
+ * For more information, see Job concepts in the *Amazon Location Service Developer Guide*.
+ */
+export const startJob: API.OperationMethod<
+  StartJobRequest,
+  StartJobResponse,
+  StartJobError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartJobRequest,
+  output: StartJobResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type GetJobError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * `GetJob` retrieves detailed information about a specific job, including its current status, configuration, and error information if the job failed.
+ *
+ * For more information, see Job concepts in the *Amazon Location Service Developer Guide*.
+ */
+export const getJob: API.OperationMethod<
+  GetJobRequest,
+  GetJobResponse,
+  GetJobError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetJobRequest,
+  output: GetJobResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+}));
+export type ListJobsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * `ListJobs` retrieves a list of jobs with optional filtering and pagination support.
+ *
+ * For more information, see Job concepts in the *Amazon Location Service Developer Guide*.
+ */
+export const listJobs: API.OperationMethod<
+  ListJobsRequest,
+  ListJobsResponse,
+  ListJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListJobsRequest,
+  ) => stream.Stream<
+    ListJobsResponse,
+    ListJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListJobsRequest,
+  ) => stream.Stream<
+    ListJobsResponseEntry,
+    ListJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListJobsRequest,
+  output: ListJobsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Entries",
+    pageSize: "MaxResults",
+  } as const,
+}));
+export type CancelJobError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * `CancelJob` cancels a job that is currently running or pending. If the job is already in a terminal state (`Completed`, `Failed`, or `Cancelled`), the operation returns successfully with the current status.
+ *
+ * For more information, see Job concepts in the *Amazon Location Service Developer Guide*.
+ */
+export const cancelJob: API.OperationMethod<
+  CancelJobRequest,
+  CancelJobResponse,
+  CancelJobError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CancelJobRequest,
+  output: CancelJobResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
     ThrottlingException,
     ValidationException,
   ],
