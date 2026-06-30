@@ -1,0 +1,43 @@
+{
+  "errors": {
+    "DispatchNamespaceNotFound": [{ "code": 100119 }],
+    "DispatchNamespaceScriptNotFound": [{ "code": 10007 }],
+    "Forbidden": [{ "status": 403 }]
+  },
+  "response": {
+    "properties": {
+      "placement": {
+        "appendUnion": [
+          {
+            "kind": "object",
+            "properties": [
+              {
+                "name": "mode",
+                "required": false,
+                "type": { "kind": "literal", "value": "smart" }
+              },
+              {
+                "name": "status",
+                "required": false,
+                "type": {
+                  "kind": "union",
+                  "values": [
+                    { "kind": "literal", "value": "SUCCESS" },
+                    { "kind": "literal", "value": "UNSUPPORTED_APPLICATION" },
+                    { "kind": "literal", "value": "INSUFFICIENT_INVOCATIONS" }
+                  ]
+                }
+              },
+              {
+                "name": "lastAnalyzedAt",
+                "required": false,
+                "wireKey": "last_analyzed_at",
+                "type": { "kind": "primitive", "value": "string" }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

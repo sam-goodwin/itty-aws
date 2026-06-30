@@ -4579,6 +4579,16 @@ export interface GetDispatchNamespaceScriptSettingResponse {
           | { host: string }
         )[];
       }
+    | {
+        mode?: "smart" | null;
+        status?:
+          | "SUCCESS"
+          | "UNSUPPORTED_APPLICATION"
+          | "INSUFFICIENT_INVOCATIONS"
+          | (string & {})
+          | null;
+        lastAnalyzedAt?: string | null;
+      }
     | null;
   /** Tags associated with the Worker. */
   tags?: string[] | null;
@@ -5151,6 +5161,33 @@ export const GetDispatchNamespaceScriptSettingResponse =
             Schema.Struct({
               host: Schema.String,
             }),
+            Schema.Struct({
+              mode: Schema.optional(
+                Schema.Union([Schema.Literal("smart"), Schema.Null]),
+              ),
+              status: Schema.optional(
+                Schema.Union([
+                  Schema.Union([
+                    Schema.Literals([
+                      "SUCCESS",
+                      "UNSUPPORTED_APPLICATION",
+                      "INSUFFICIENT_INVOCATIONS",
+                    ]),
+                    Schema.String,
+                  ]),
+                  Schema.Null,
+                ]),
+              ),
+              lastAnalyzedAt: Schema.optional(
+                Schema.Union([Schema.String, Schema.Null]),
+              ),
+            }).pipe(
+              Schema.encodeKeys({
+                mode: "mode",
+                status: "status",
+                lastAnalyzedAt: "last_analyzed_at",
+              }),
+            ),
           ]),
           Schema.Null,
         ]),
@@ -5201,7 +5238,11 @@ export const GetDispatchNamespaceScriptSettingResponse =
       .pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Schema<GetDispatchNamespaceScriptSettingResponse>;
 
-export type GetDispatchNamespaceScriptSettingError = DefaultErrors;
+export type GetDispatchNamespaceScriptSettingError =
+  | DefaultErrors
+  | DispatchNamespaceNotFound
+  | DispatchNamespaceScriptNotFound
+  | Forbidden;
 
 export const getDispatchNamespaceScriptSetting: API.OperationMethod<
   GetDispatchNamespaceScriptSettingRequest,
@@ -5211,7 +5252,11 @@ export const getDispatchNamespaceScriptSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDispatchNamespaceScriptSettingRequest,
   output: GetDispatchNamespaceScriptSettingResponse,
-  errors: [],
+  errors: [
+    DispatchNamespaceNotFound,
+    DispatchNamespaceScriptNotFound,
+    Forbidden,
+  ],
 }));
 
 export interface PatchDispatchNamespaceScriptSettingRequest {
