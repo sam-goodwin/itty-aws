@@ -287,7 +287,9 @@ const loadServicePatches = (
       return yield* Effect.die(
         `Orphaned patch file(s) in ${patchDir}: ${orphans
           .map((o) => `${o}.json`)
-          .join(", ")} — no matching operation in the regenerated '${serviceName}' service. ` +
+          .join(
+            ", ",
+          )} — no matching operation in the regenerated '${serviceName}' service. ` +
           `The upstream spec likely renamed or removed the operation; ` +
           `re-key the patch to the new operation name (available: ${[...opNames].sort().join(", ")}) ` +
           `or delete it, and migrate consumers in packages/alchemy.`,
@@ -570,6 +572,15 @@ function applyPropertyPatch(
     }
     if (patch.wireKey) {
       prop.wireKey = patch.wireKey;
+    }
+    // `definition` replaces the property's type outright (not just when the
+    // property is missing). Used when the vendor SDK models a field with the
+    // wrong shape — e.g. a response field that reuses a request union — and the
+    // correct type can't be expressed by the narrower `type`/`nullable`/
+    // `appendUnion` ops. Applied before the other ops so `nullable` etc. can
+    // still compose on top of the replacement.
+    if (patch.definition) {
+      prop.type = JSON.parse(JSON.stringify(patch.definition)) as TypeInfo;
     }
     applyPatchToTypeInfo(prop.type, patch);
   } else {

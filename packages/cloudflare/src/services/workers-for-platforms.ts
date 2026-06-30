@@ -4563,7 +4563,16 @@ export interface GetDispatchNamespaceScriptSettingResponse {
     } | null;
   } | null;
   /** Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). Specify mode='smart' for Smart Placement, or one of region/hostname/host. */
-  placement?: unknown | null;
+  placement?: {
+    mode?: "smart" | null;
+    status?:
+      | "SUCCESS"
+      | "UNSUPPORTED_APPLICATION"
+      | "INSUFFICIENT_INVOCATIONS"
+      | (string & {})
+      | null;
+    lastAnalyzedAt?: string | null;
+  } | null;
   /** Tags associated with the Worker. */
   tags?: string[] | null;
   /** List of Workers that will consume logs from the attached Worker. */
@@ -5092,7 +5101,38 @@ export const GetDispatchNamespaceScriptSettingResponse =
           Schema.Null,
         ]),
       ),
-      placement: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
+      placement: Schema.optional(
+        Schema.Union([
+          Schema.Struct({
+            mode: Schema.optional(
+              Schema.Union([Schema.Literal("smart"), Schema.Null]),
+            ),
+            status: Schema.optional(
+              Schema.Union([
+                Schema.Union([
+                  Schema.Literals([
+                    "SUCCESS",
+                    "UNSUPPORTED_APPLICATION",
+                    "INSUFFICIENT_INVOCATIONS",
+                  ]),
+                  Schema.String,
+                ]),
+                Schema.Null,
+              ]),
+            ),
+            lastAnalyzedAt: Schema.optional(
+              Schema.Union([Schema.String, Schema.Null]),
+            ),
+          }).pipe(
+            Schema.encodeKeys({
+              mode: "mode",
+              status: "status",
+              lastAnalyzedAt: "last_analyzed_at",
+            }),
+          ),
+          Schema.Null,
+        ]),
+      ),
       tags: Schema.optional(
         Schema.Union([Schema.Array(Schema.String), Schema.Null]),
       ),

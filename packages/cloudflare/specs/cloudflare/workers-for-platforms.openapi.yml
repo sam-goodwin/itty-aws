@@ -5037,6 +5037,22 @@ paths:
                       - enabled
                     description: Observability settings for the Worker.
                   placement:
+                    oneOf:
+                      - type: object
+                        properties:
+                          mode:
+                            type: string
+                            enum:
+                              - smart
+                          status:
+                            type: string
+                            enum:
+                              - SUCCESS
+                              - UNSUPPORTED_APPLICATION
+                              - INSUFFICIENT_INVOCATIONS
+                          last_analyzed_at:
+                            type: string
+                    nullable: true
                     description: Configuration for [Smart
                       Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
                       Specify mode='smart' for Smart Placement, or one of
